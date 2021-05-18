@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Notice">
+	<select id="noticelist" parameterType="bit.com.a.dto.NoticeParam" 
+		resultType="bit.com.a.dto.NoticeDto">
+		SELECT NOTICESEQ, MEMBERID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_FILENAME, NOTICE_NEWFILENAME, READCOUNT, DOWNCOUNT, REGDATE,NOTICE_REF
+		FROM (SELECT ROW_NUMBER()OVER(ORDER BY NOTICE_REF DESC) AS RNUM,
+				NOTICESEQ, MEMBERID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_FILENAME,NOTICE_NEWFILENAME, READCOUNT, DOWNCOUNT,REGDATE, NOTICE_REF	 
+			 FROM NOTICE
+			 WHERE 1=1
+		 		 <if test="choice != null and choice != ''
+		  			and search != null and search != ''">
+		  			  <!-- AND DEL=0 -->		
+				  <if test="choice == ' title'">
+			  		AND NOTICE_TITLE LIKE '%'||#{search}||'%'		  
+				  </if>
+			 	 <if test="choice == 'content'">
+			  		AND NOTICE_CONTENT LIKE '%'||#{search}||'%'			  
+				  </if>
+				  <if test="choice == 'writer'">
+				  	AND MEMBERID=#{search}  
+				  </if>	
+		 	 </if>	 
+		 	 ORDER BY NOTICE_REF DESC)
+			WHERE RNUM BETWEEN ${start} AND ${end}
+	</select> 
+	
+	<!-- 글의 총수 --> 
+	<select id="getNoticeCount" parameterType="bit.com.a.dto.NoticeParam"
+		resultType="java.lang.Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM BBS
+		WHERE 1=1
+		<if test="choice != null and choice != ''
+	  		and search != null and search != ''">	  	  		
+		 <if test="choice == 'title'">
+		 AND NOTICE_TITLE LIKE '%'||#{search}||'%'		  
+		 </if>
+		 <if test="choice == 'content'">
+		 AND NOTICE_CONTENT LIKE '%'||#{search}||'%'			  
+		 </if>
+		 <if test="choice == 'writer'">
+		 AND MEMBERID=#{search}  
+		 </if>	
+	  	</if>
+</select>
+
+</mapper>

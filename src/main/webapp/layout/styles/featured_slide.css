@@ -1,0 +1,30 @@
+@charset "utf-8";
+/*
+Template Name: BusyBusiness
+Author: <a href="http://www.os-templates.com/">OS Templates</a>
+Author URI: http://www.os-templates.com/
+Licence: Free to use under our free template licence terms
+Licence URI: http://www.os-templates.com/template-terms
+File: Featured Slider CSS
+*/
+
+#featured_slide{padding:30px 0;}
+#featured_slide h5, #featured_slide ul, #featured_slide p, #featured_slide a{margin:0; padding:0; border:none; outline:none; list-style:none; line-height:normal; text-decoration:none;}
+
+.preview_holder{display:block; position:relative; float:left; width:660px; height:270px; overflow:hidden; color:#FFFFFF; background-color:#fff;}
+.preview_holder img{display:block; width:660px; height:270px;}
+.preview_holder .text_holder{display:none; position:absolute; bottom:0; left:0; width:100%;}
+.preview_holder .introtext{display:block; width:640px; margin:0; padding:10px; color:#FFFFFF; background:#fff;}
+
+.selector{display:block; float:right; width:300px;}
+.selector, .selector a{color:#666666; background:#F0F0F0;}
+.selector li, .selector li.middle{display:block; width:250px; height:75px; margin:0; padding:15px 20px 0 30px; cursor:pointer; overflow:hidden;}
+.selector li.middle{display:block; height:73px; border-top:1px solid #2186eb; border-bottom:1px solid #2186eb;}
+.selector li.active, .selector li:hover{color:#666666; background:url("images/active.gif") top left no-repeat #DDDDDD;}
+.selector li.active a, .selector li:hover a{color:#333333; background:#DDDDDD;}
+.selector li img{float:left; width:50px; height:50px; margin:0 15px 0 0; padding:4px; color:#333333; background:#FFFFFF; }
+.selector p{visibility:hidden;}
+
+p.title{font-size:20px; font-weight:bold; visibility:visible;}
+#featured_slide .selector .introtext p.title{margin-top:6px;}
+.preview_holder p.title a{font-size:16px; color:#C6CFD5; background:#333333;}

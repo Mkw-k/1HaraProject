@@ -1,0 +1,20 @@
+@charset "utf-8";
+/*
+ * Futura Fonts
+ */
+@font-face {
+  font-family: 'Futura';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../font/futura/FuturaStd-Medium.woff2) format('woff2'),
+       url(../font/futura/FuturaStd-Medium.woff) format('woff'),
+       url(../font/futura/FuturaStd-Medium.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Futura';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../font/futura/FuturaStd-Bold.woff2) format('woff2'),
+       url(../font/futura/FuturaStd-Bold.woff) format('woff'),
+       url(../font/futura/FuturaStd-Bold.ttf) format('truetype');
+}
