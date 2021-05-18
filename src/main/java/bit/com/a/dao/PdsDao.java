@@ -8,5 +8,5 @@ public interface PdsDao {
 
 	List<PdsDto> getPdsList();
 
-	boolean uploadPds(PdsDto dto);
+
 }
