@@ -617,7 +617,7 @@ margin-right : 450px;
     </li>
 
     <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
+      <a class="nav-link bgc" href="recuruitlist.do" style="color:#2186eb">채용공고</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
