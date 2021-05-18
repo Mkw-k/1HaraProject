@@ -23,10 +23,6 @@ public class PdsServiceImpl implements PdsService {
 		return dao.getPdsList();
 	}
 
-	@Override
-	public boolean uploadPds(PdsDto dto) {
-		
-		return dao.uploadPds(dto);
-	}
+	
 		
 }
