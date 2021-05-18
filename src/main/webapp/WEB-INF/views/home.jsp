@@ -16,6 +16,12 @@
 <meta name="keywords" content="#">
 <meta name="selected-menu" content="0, 0, 0, 0">
 
+
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!-- 제이쿼리 -->
 <script src="//https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- 네비바 -->
@@ -641,6 +647,34 @@ margin-right : 450px;
      <li class="nav-item">
      <!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
       <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
+      <div style="width: 100%;height: 53px; border-bottom: 1px solid #5e5e5e">
+	<div style="width: 100%;height: 100%; clear: both; display: inline-block;">
+	
+	<div id="_title_image" style="width: 30%; float: left; display: inline;">
+		<img alt="" src="./image/bbslogo1.jpg" style="height: 53px">	
+	</div>
+	
+	<div id="_title_today" style="width: 70%; float: left; text-align: right;">
+		<div style="position: relative; top: 27px">
+			
+			<c:if test="${login.memberid != ''}">
+				<a href="logout.do" title="로그아웃">[로그아웃]</a>&nbsp;&nbsp;&nbsp;
+			</c:if>
+		
+			<c:if test="${login.name != '' }">
+				[${login.name }]님 환영합니다
+			</c:if>
+		
+			<fmt:formatDate value="${nows }" var="now" pattern="yyyy/MM/dd"/>
+			${now}
+		</div>
+	</div>
+	
+	</div>
+</div>
+      
+      
+      
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
@@ -662,19 +696,22 @@ margin-right : 450px;
             <div class="modal-body">
             
             <!-- memberController - loginAf.do로 이동 -->
-              <form action="member" method="post">
-                 <input type="hidden" name="param" value="loginAf.do">
+              <form action="loginAf.do" method="post" id="_frmFrom">
+             <!--     <input type="hidden" name="param" value="loginAf.do"> -->
                 <div class="form-group">
-                  <input id="email_modal" type="text" placeholder="ID" name="id" class="form-control">
+                  <input id="memberid" type="text" placeholder="ID" name="memberid" class="form-control">
                 </div>
                 <div class="form-group">
-                  <input id="password_modal" type="password" name="pwd" placeholder="password" class="form-control">
+                  <input id="pwd" type="password" name="pwd" placeholder="password" class="form-control">
                 </div>
                 <p class="text-center">
-                  <button class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Login</button>
+                  <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
                 </p>
               </form>
               
+              <a href="javascript:kakaoLogin()">
+				<img alt="" src="https://img.eduwill.net/Img2/Common/Join/new/btn-kakao-large.png">
+			  </a>
               
               <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
               <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
@@ -1435,7 +1472,52 @@ window.onscroll = function sticky() {
   ChannelIO('boot', {
     "pluginKey": "9ec9cb05-626c-49ad-9fcf-67ccef29c08f"
   });
-</script>
+
+  
+  <!-- 685fcbb766340d7c8812f4e0a29a6661 -->
+
+  <!-- 자바스크립트 key를 입력하여 초기화해줌 -->
+  window.Kakao.init("685fcbb766340d7c8812f4e0a29a6661");
+
+  function kakaoLogin() {
+  	window.Kakao.Auth.login({
+  		scope:'profile, account_email, gender, age_range, birthday',
+  		success: function(authObj) {
+  			alert('success');
+  			console.log(authObj);
+  			window.Kakao.API.request({
+  				url: '/v2/user/me', 
+  				success: res => {
+  					const kakao_account = res.kakao_account; 
+  					console.log(kakao_account);
+  					console.log("이름:"+kakao_account.profile.nickname);
+  					console.log("생일:"+kakao_account.birthday);
+  					console.log("이메일:"+kakao_account.email);
+  					console.log("성별:"+kakao_account.gender);
+  					console.log("나이대:"+kakao_account.age_range);
+  				}
+  				
+  			});
+  		}
+  	});
+  }
+  $("#_btnLogin").click(function () {
+
+		if($("#memberid").val().trim() == ""){
+			alert('id를 입력해 주십시오');
+			$("#memberid").focus();
+		}
+		else if($("#pwd").val().trim() == ""){
+			alert('패스워드를 입력해 주십시오');
+			$("#pwd").focus();
+		}
+		else{
+			$("#_frmFrom").submit();	
+		}	
+		
+	});
+  
+  </script>
 <!-- End Channel Plugin -->
 
 

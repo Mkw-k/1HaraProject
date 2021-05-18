@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.mybatis.logging.LoggerFactory;
@@ -17,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import bit.com.a.dto.MemberDto;
 import bit.com.a.service.MemberService;
@@ -57,7 +59,7 @@ public class MemberController {
 		int count = service.getId(mem);
 		String msg = "";
 		
-		if(count > 0) {
+		if(count == 0) {
 			msg = "YES";
 		}else {
 			msg = "NO";
@@ -83,8 +85,10 @@ public class MemberController {
 	}
 
 
-	@RequestMapping(value = "loginAf.do", method=RequestMethod.POST)
+	@RequestMapping(value = "loginAf.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String loginAf(MemberDto dto, HttpServletRequest req) {
+		
+		System.out.println("씨발 쫌 들어와라");
 		
 		MemberDto login = service.login(dto);
 		if(login != null && !login.getMemberid().equals("")) {
@@ -92,17 +96,18 @@ public class MemberController {
 			req.getSession().setAttribute("login", login);
 		//	req.getSession().setMaxInactiveInterval(60 * 60 * 24);
 			
-			return "redirect:/bbslist.do";			
+			return "redirect:/home.do";			
 		}
 		else {			
 			return "redirect:/login.do";
 		}		
 	}
-	@RequestMapping(value = "logout.do", method=RequestMethod.GET)
-	public String logout() {
-		return "logout.tiles";
-	}
-
+	 @RequestMapping("logout.do")
+	    public ModelAndView logout(HttpSession session) {
+	        session.invalidate();
+	        ModelAndView mv = new ModelAndView("redirect:home.do");
+	        return mv;
+	    }
 
 	@ResponseBody
 	@RequestMapping(value = "/sendSms.do", method = RequestMethod.POST)
