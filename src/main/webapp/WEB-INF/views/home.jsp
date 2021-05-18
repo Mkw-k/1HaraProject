@@ -616,7 +616,7 @@ margin-right : 450px;
 		    <a href="#">기업정보</a>
 		    <a href="#">취업톡톡</a>
 		    <a href="#">공채달력</a>
-		    <a href="#">자료실</a>
+		    <a href="pdslist.do">자료실</a>
 		    <a href="notice.do">공지사항</a>
 		  </div>
 		</div>
@@ -635,7 +635,7 @@ margin-right : 450px;
       <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
+      <a class="nav-link bgc" href="pdslist.do" style="color:#2186eb">자료실</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
@@ -838,7 +838,7 @@ margin-right : 450px;
 		                        </div>
 		                        <div>
 		                         <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>취업톡톡</a>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>자료실</a>
+		                          <a href="pdslist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>자료실</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>마이페이지</a>
 		                        </div>
 		                        <div>
