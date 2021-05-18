@@ -56,7 +56,7 @@
 
 <div class="container" style="text-align: center;">
     <h3>일반 회원</h3>
-    <form action="/ajax/signup" method="post" id="myForm">
+    <form action="" method="post" id="myForm">
         <div class="form-group has-feedback">
             <label class="control-label" for="id">아이디</label>
           	<div class="input-group">
@@ -79,24 +79,37 @@
             <span id="rePwdErr" class="help-block">비밀번호와 일치하지 않습니다. 다시 입력해 주세요.</span>
             <span class="glyphicon glyphicon-ok form-control-feedback"></span>
         </div>
-        <div class="form-group has-feedback">
+        <div class="form-group has-feedback"> 
+  			<label class="control-label" for="name">이름</label> 
+  				<input type="text" class="form-control" id="name" name="name" placeholder=""> 
+  			</div> 
+
+       <!--  <div class="form-group has-feedback">
         	<label class="control-label" for="registrationNum">주민등록번호</label><br>
         		<input class="form-control1" type="text" name="unum1" id="unum1">-</input>
         		<input class="form-control1" type="password" name="unum2" id="unum2"/><br>
         		<input type="button" value="검사" style="border-radius:5px; font-s" onclick="validate();" />
   				<input type="reset" value="다시입력" style="border-radius:5px;" />
   				<span class="glyphicon glyphicon-ok form-control-feedback"></span>
-        </div>
+        </div> -->
         <div class="form-group has-feedback">
         	<label class="control-label" for="registrationNum">주소</label>
         		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호">
 				<input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-				<input type="text" class="form-control" id="sample6_address" placeholder="주소">
-				<input type="text" class="form-control" id="sample6_detailAddress" placeholder="상세주소">
+				<input type="text" class="form-control" id="sample6_address" name="address" placeholder="주소">
+				<input type="text" class="form-control" id="sample6_detailAddress" name="detailaddress" placeholder="상세주소">
 				<input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목">
         </div>
+  		<div class="form-group has-feedback"> 
+  			<label class="control-label" for="mem_birth">생년월일</label> 
+  				<input type="tel" class="form-control" id="mem_birth" name="birth" placeholder="ex) 19990101"> 
+  			<div class="eheck_font" id="birth_check">
+  			</div> 
+  		</div>
+
+
         
-        <div class="form-group">
+       <!--  <div class="form-group">
 			<label for="phonenumer" class="cols-sm-2 control-label">전화번호 (필수)</label>
 			   <div class="cols-sm-10">
 			   		<div class="input-group">
@@ -104,13 +117,13 @@
 			             <input type="text" class="form-control" name="to" id="to" placeholder="전화번호를 입력해주세요.(-는 빼고 적어주세요) ex)01011112222 " />
 			             <p id="phoneCheck" style="font-size: 12px"></p>
 			             <input type="button" class="btn btn-secondary" id="send" name="phoneBtn" value="본인 인증">
-			             <input type="hidden" name="text" id="text">   <!-- 인증번호를 히든으로 저장해서 보낸다 -->
+			             <input type="hidden" name="text" id="text">   인증번호를 히든으로 저장해서 보낸다
 			        </div>
 			        <br>
 			   </div>
 		       <div class="cols-sm-6" id="phone_authNumber">
 		       </div>
-		 </div>
+		 </div> -->
         
         <div class="form-group">
 			<label for="email" class="cols-sm-2 control-label">이메일 (필수)</label>
@@ -126,11 +139,28 @@
 		      <!--  <div class="cols-sm-6" id="authNumber">
 		       </div> -->
 		 </div>
-        <button class="btn btn-success" type="submit">가입</button>
+        <button class="btn btn-success" id="_btnRegi" type="submit">가입</button>
     </form>
 </div>
 <!-- <script src="/js/jquery-3.2.1.js"></script> -->
 <script>
+
+	// 가입버튼 클릭시
+	$("#_btnRegi").click(function () {
+
+		if( $("#memberid").val().trim() == "" ){
+			alert("id를 입력해 주십시오");
+			$("#memberid").focus();
+		}
+		else if( $("#pwd").val().trim() == "" ){
+			alert("패스워드를 입력해 주십시오");
+			$("#pwd").focus();
+		}
+		else{	
+			$("#myForm").attr("action", "regiAf.do").submit();
+		}	
+	});
+
 
 	//주민번호 
 	function validate() {
@@ -189,6 +219,53 @@
         what.focus();
         //return false;
     }
+    
+    
+ 	// 생일 유효성 검사 
+	var birthJ = false; 
+ 	// 생년월일 birthJ 유효성 검사 
+ 	$('#mem_birth').blur(function(){ 
+ 		var dateStr = $(this).val(); 
+ 		var year = Number(dateStr.substr(0,4)); 
+ 	// 입력한 값의 0~4자리까지 (연) 
+ 	var month = Number(dateStr.substr(4,2)); 
+ 	// 입력한 값의 4번째 자리부터 2자리 숫자 (월) 
+ 	var day = Number(dateStr.substr(6,2)); 
+ 	// 입력한 값 6번째 자리부터 2자리 숫자 (일) 
+ 	var today = new Date(); 
+ 	// 날짜 변수 선언 
+ 	var yearNow = today.getFullYear(); 
+ 	// 올해 연도 가져옴 
+ 	if (dateStr.length <=8) { 
+ 		// 연도의 경우 1900 보다 작거나 yearNow 보다 크다면 false를 반환합니다. 
+ 		if (year > yearNow || year < 1900 ){ 
+ 			$('#birth_check').text('생년월일을 확인해주세요'); 
+ 			$('#birth_check').css('color', 'red'); 
+ 			} else if (month < 1 || month > 12) { 
+ 				$('#birth_check').text('생년월일을 확인해주세요 '); 
+ 				$('#birth_check').css('color', 'red'); 
+ 				}else if (day < 1 || day > 31) { 
+ 					$('#birth_check').text('생년월일을 확인해주세요 '); 
+ 					$('#birth_check').css('color', 'red'); 
+ 					}else if ((month==4 || month==6 || month==9 || month==11) && day==31) { 
+ 						$('#birth_check').text('생년월일을 확인해주세요 '); 
+ 						$('#birth_check').css('color', 'red'); 
+ 						}else if (month == 2) 
+ 						{ var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)); 
+ 						if (day>29 || (day==29 && !isleap)) 
+ 						{ $('#birth_check').text('생년월일을 확인해주세요 '); 
+ 						$('#birth_check').css('color', 'red'); }
+ 						else{ $('#birth_check').text(''); birthJ = true; 
+ 						} 
+ 						}else{ $('#birth_check').text(''); birthJ = true; 
+ 						}//end of if 
+ 						}else{ //1.입력된 생년월일이 8자 초과할때 : auth:false 
+ 							$('#birth_check').text('생년월일을 확인해주세요 '); 
+ 							$('#birth_check').css('color', 'red'); } 
+ 	}); //End of method /*
+
+   
+    
 
 
     /* 아이디 중복확인 버튼 클릭 */
@@ -207,9 +284,9 @@
     			url: "getId.do",
     			type: "post",
     			data: { memberid:memid },
-    			success:function( data ){
+    			success:function( msg ){
     			//	alert('chkIdBtn success');
-    				if(data.msg == "YES"){
+    				if(msg == "YES"){
     					$("#idCheck").css("color", "#0000ff");
     					$("#idCheck").html('사용 가능한 ID입니다.');
     					$('#memberid').attr('disabled', true);
@@ -243,7 +320,8 @@
         var rePwd=$(this).val();
         var pwd=$("#pwd").val();
         // 비밀번호 같은지 확인
-        if(rePwd==pwd){//비밀번호 같다면
+        if(rePwd==pwd){
+        	 //비밀번호 같다면
             $("#rePwdErr").hide();
             successState("#rePwd");
         }else{//비밀번호 다르다면
