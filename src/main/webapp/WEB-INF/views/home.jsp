@@ -623,7 +623,7 @@ margin-right : 450px;
       <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">취업톡톡</a>
+      <a class="nav-link bgc" href="jobtalk.do" style="color:#2186eb">취업톡톡</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
