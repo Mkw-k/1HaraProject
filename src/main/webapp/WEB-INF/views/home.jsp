@@ -31,8 +31,8 @@
 
 
   <!-- 검색 부트스트랩 -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
 
 
  <!-- 전체 css -->
@@ -41,8 +41,8 @@
 <script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
 
 <!-- 부트스트랩 -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 
 
 <link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
@@ -552,7 +552,7 @@ margin-right : 450px;
     <div class="container">
         <form action="#" method="post" novalidate="novalidate">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <select class="form-control search-slt" id="exampleFormControlSelect1" style="font-size: 12pt">
@@ -637,7 +637,7 @@ margin-right : 450px;
     </ul>
     
    
-   <ul class="navbar-nav navbar-nav2">
+   <ul class="navbar-nav navbar-nav2" style="margin-left: 50px;">
      <li class="nav-item">
      <!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
       <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
@@ -1174,7 +1174,7 @@ margin-right : 450px;
 
 <!-- FOOTER -->
 
-<div id="footer">
+<div id="footer" style="width: 1500px;">
       	<div class="top-area">
 		<div class="inner-wrap">
 			<div class="link">
