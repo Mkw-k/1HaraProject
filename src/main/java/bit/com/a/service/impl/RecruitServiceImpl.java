@@ -1,5 +1,7 @@
 package bit.com.a.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class RecruitServiceImpl implements RecruitService{
 	@Override
 	public boolean writeRecruit(RecruitDto dto) {
 		return dao.writeRecruit(dto);
+	}
+
+	@Override
+	public List<RecruitDto> getallRecruitlist() {
+		return dao.getallRecruitlist();
 	}
 	
 	

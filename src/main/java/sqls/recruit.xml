@@ -8,11 +8,16 @@
 <insert id="writerecru" parameterType="bit.com.a.dto.RecruitDto">
 	INSERT INTO JOB(JOBSEQ , COMPANYID , JOBTITLE , JOBCONTENT , AREA1NAME,
 					AREA2NAME, JOBVOLUMN, SALARY, JOBSTART, JOBEND, EMP_TYPE,
-					EDUCATION , CAREER_TYPE, CAREER_DESC, READCOUNT, REGDATE )
+					EDUCATION , CAREER_TYPE, CAREER_DESC, READCOUNT, REGDATE, BUSCODE, DEL)
 	VALUES(JOB_SEQ.NEXTVAL, #{companyId}, #{jobTitle}, #{jobContent},
-			 #{area1Name}, #{area2Name}, #{jobVolumn}, #{salary}, TO_DATE(#{jobStart}, 'YYYY-MM-DD HH:MI:SS'),
-			 TO_DATE(#{jobEnd}, 'YYYY-MM-DD HH:MI:SS'), #{empType}, #{education}, #{careerType}, #{careerDesc}, 
-			 0, SYSDATE)
+			 #{area1Name}, #{area2Name}, #{jobVolumn}, #{salary}, TO_DATE(#{jobStart}, 'YYYY-MM-DD HH24:MI:SS'),
+			 TO_DATE(#{jobEnd}, 'YYYY-MM-DD HH24:MI:SS'), #{empType}, #{education}, #{careerType}, #{careerDesc}, 
+			 0, SYSDATE, #{buscode}, 0)
 </insert>
+
+<select id="getallrecrulist" resultType="bit.com.a.dto.RecruitDto">
+	SELECT * FROM JOB
+
+</select>
 
 </mapper>
