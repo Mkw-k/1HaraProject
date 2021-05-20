@@ -27,12 +27,6 @@ public class NoticeDaoImpl implements NoticeDao {
 	public int getNoticeCount(NoticeParam notice) {
 		return session.selectOne(ns + "getNoticeCount", notice);
 	}
-	
-	@Override
-	public boolean uploadNotice(NoticeDto dto) {
-		int i = session.insert(ns + "uploadNotice", dto);
-		return i>0?true:false;
-	}
 
 	
 	
