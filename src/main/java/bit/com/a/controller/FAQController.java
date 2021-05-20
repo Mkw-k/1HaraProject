@@ -78,7 +78,7 @@ public class FAQController {
                         HttpServletRequest req){
      
 		System.out.println("fileload : " + fileload);
-		System.out.println("ㅎㅇㅎㅇ");
+		System.out.println(dto.toString());
         // filename 취득
         String filename = fileload.getOriginalFilename();
         dto.setFilename(filename);    // 원본 파일명을 설정
