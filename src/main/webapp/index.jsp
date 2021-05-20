@@ -8,7 +8,10 @@
 </head>
 <body>
 
-index.js-p
+
+index.jsp
+
+
 <br>
 
 <a href="home.do">home</a>
@@ -17,8 +20,10 @@ index.js-p
 
 <a href="FAQ.do">FAQ</a>
 
+
 <a href="resumeMain.do">FAQ</a>
 
+<a href="pdslist.do">짜료씰</a>
 
 
 

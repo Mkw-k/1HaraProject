@@ -8,5 +8,11 @@ public interface PdsDao {
 
 	List<PdsDto> getPdsList();
 
+	boolean uploadPds(PdsDto pdsdto);
+
+	void readcount(int seq);
+
+	PdsDto getPds(int seq);
+
 
 }

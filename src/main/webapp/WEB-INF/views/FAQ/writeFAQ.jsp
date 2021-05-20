@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,26 +29,14 @@
 <script src="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> 
 
-
-  <!-- 검색 부트스트랩 -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
-
  <!-- 전체 css -->
 <link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
 <script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
 <script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
 
-<!-- 부트스트랩 -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-
-<link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
-<!-- TO_BE CSS.. -->
-<link rel="stylesheet" href="static/css/import.css" media="all">
 <!-- footer -->
+<link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="static/css/import.css" media="all">
 
 <!-- 퀵메뉴 -->
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -62,485 +49,157 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="csss/ranking.css" rel="stylesheet" type="text/css">
 
+<link href="csss/header.css" rel="stylesheet" type="text/css">
 
 
 <style type="text/css">
   
-/* 네비바 배경색 */
-.bg-dark {
-    background-color: white!important;    
-}
-/* 네비바 글자색 */
-.navbar-dark .navbar-nav .nav-link {
-    color: black;
-}
-/* 네비바 hover색 */
-.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
-    color: #eee!important;
-}
-/* 네비바 가운데 정렬 */
-.navbar-expand-sm {
-    justify-content:center!important;
-}
-
-
-dl, ol, ul {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.navbar-nav2 dl, ol, ul {
-    margin-left: 200px;
-}
-
-.bg-dark {
-    background-color: #fff!important;
-}
-
-
-.dropdown-item {
-    display: block;
-    width: 100%;
-    padding: .25rem 1.5rem;
-    clear: both;
-    font-weight: 400;
-    color: #212529!important;
-    text-align: inherit;
-    white-space: nowrap;
-    background-color: transparent;
-    border: 0;
-}
-
-.fixed-top {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-}
-
-
-
-/* 메인css */
-
-nav { width:100%;height:100px; text-align:center;top:0;left:0;}
-header {height:auto; background:white; padding-top: 0;}
-main {flex: 1 1 100%;height:auto; background:white;}
-footer{flex: 1 1 100%;height:auto;text-align:center;background:white;}
-.all {
-    display: flex;
-    flex-flow: row wrap;
-    min-width: 100px;
-    flex-direction: column;
-}
-
-
-/* 제목아래 라인 */
-#homecontent h5 {
-    border-bottom: 2px solid #eee;
-    font-size: 14pt;
-    text-align: center;
-    padding: 5px 0 5px 0;
-    font-family: inherit;
-    background-color: #eee;
-}
-
-.readmore{
-	color: #747580
-}
-
-@media (min-width: 768px)
-.col-md-4 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 30%;
-    /* flex: 30%; */
-    max-width: 30%;
-}
-
-
-p{
-	font-size: 11pt;
-    padding-top: 15px;
-}
-
-#homecontent .fl_right {
-    display: contents;
-    float: right;
-    width: 500px;
-}
-
-#homecontent .fl_right img {
-    float: left;
-    width: 200px;
-    height: 100px;
-    margin: 0 10px 0 0;
-}
-
-#homecontent .fl_right li {
-    display: block;
-    width: 500px;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 10px;
-}
-
-#homecontent img {
-    padding: 0px;
-}
-
-/* 검색css */
-.form-control-borderless {
-        border: none;
-      }
-
- .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
-   border: none;
-   outline: none;
-   box-shadow: none;
- }
-
- .card-body1 {
-   padding-bottom: 12px;
-   padding-top: 12px;
-   padding-right: 12px;
-   padding-left: 12px;
-   background: #2186eb!important;
- }
-
- .src_fild {
-   border-radius: 0;
- }
-
- .src_btn {
-   line-height: 0.5;
-   height: 38px;
-   border-radius: 0;
- }
- 
- .btn-success {
-color: #fff;
-background-color: #2186eb;
-border-color: #2186eb;
-}
-
-.navbar-brand {
-    display: flex;
-}
-
-.container {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.logoarea {
-	clear: both;
-}
-
-.navbar-nav{
-	background-color: #fff;
-}
-
-.bgc{
- color: #2186eb;
- background-color: #fff;
- font-size: 12pt;
- 
-}
-
-/* 검색 top margin */
-form, fieldset, legend {
-    margin-top: 20px;
-    padding: 0;
-    border: none;
-}
-
-/* 부트스트랩css */
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-#team {
-    background: #fff !important;
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-    background-color: #fff!important;
-    border-color: #000;
-    box-shadow: none;
-    outline: none;
-}
-
-.btn-primary {
-    color: #000;
-    background-color: #eee;
-    border-color: #eee;
-}
-
-section {
-    padding: 60px 0;
-}
-
-section .section-title {
-    text-align: center;
-    color: #000;
-    margin-bottom: 50px;
-    text-transform: uppercase;
-}
-
-#team .card {
-    border: none;
-    background: #eee;
-}
-
-.image-flip:hover .backside,
-.image-flip.hover .backside {
-    -webkit-transform: rotateY(0deg);
-    -moz-transform: rotateY(0deg);
-    -o-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-    border-radius: .25rem;
-}
-
-.image-flip:hover .frontside,
-.image-flip.hover .frontside {
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-}
-
-.mainflip {
-    -webkit-transition: 1s;
-    -webkit-transform-style: preserve-3d;
-    -ms-transition: 1s;
-    -moz-transition: 1s;
-    -moz-transform: perspective(1000px);
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transition: 1s;
-    transform-style: preserve-3d;
-    position: relative;
-}
-
-.frontside {
-    position: relative;
-    -webkit-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    z-index: 2;
-    margin-bottom: 30px;
-}
-
-.backside {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: white;
-    -webkit-transform: rotateY(-180deg);
-    -moz-transform: rotateY(-180deg);
-    -o-transform: rotateY(-180deg);
-    -ms-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
-    -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-    -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-    box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-}
-
-.frontside,
-.backside {
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transition: 1s;
-    -webkit-transform-style: preserve-3d;
-    -moz-transition: 1s;
-    -moz-transform-style: preserve-3d;
-    -o-transition: 1s;
-    -o-transform-style: preserve-3d;
-    -ms-transition: 1s;
-    -ms-transform-style: preserve-3d;
-    transition: 1s;
-    transform-style: preserve-3d;
-}
-
-.frontside .card,
-.backside .card {
-    min-height: 312px;
-}
-
-.backside .card a {
-    font-size: 18px;
-    color: #000 !important;
-}
-
-.frontside .card .card-title,
-.backside .card .card-title {
-    color: #000 !important;
-}
-
-.frontside .card .card-body img {
-    width: 100%;
-    height: 120px;
-    
-}
-
-.card-body {
-    padding-bottom: 12px;
-    padding-top: 12px;
-    padding-right: 12px;
-    padding-left: 12px;
-    background: #eee;
-     color: #000 !important;
-}
-
-/* 드롭다운 추가 */
-.dropbtn {
-  background-color: #2186eb;
-  color: white;
-  padding: 8px; 
-  font-size: 16px;
-  border: none;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #2186eb;}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {background-color: #2186eb;}
-
-/* 퀵메뉴 */
-body { padding-top:20px; }
-.panel-body .btn:not(.btn-block) { width:120px;margin-bottom:10px; }
-
-.row {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-    justify-content: center;
-}
-
-.panel-primary>.panel-heading {
-    color: #fff;
-    background-color: #2186EB;
-    border-color: #2186EB;
-}
-
-#header, #topbar, #featured_slide, #homecontent, #breadcrumb, #container, #copyright {
-    display: flex;
-    position: relative;
-    margin: 0 auto;
-    align-items: flex-start;
-}
-
-.panel-primary {
-    border-color: #eee;
-}
-
-/* 랭킹css */
-.content {
-    width: 450px;
-    margin: 0px auto;
-}
-
-body{
-	padding-top: 100px;
-}
-
-.panel {
-    margin-bottom: 20px;
-    background-color: #eee;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
-    box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
-}
-
 /* 모달 */
-
 #login-modal {
 margin-right : 450px;
 }
 
-/* 검색 */
-/*search box css start here*/
-.search-sec{
-    padding: 2rem;
+/* 테이블 css */
+.pb-100 {
+	padding-bottom: 100px;
 }
-.search-slt{
-    display: block;
-    width: 100%;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    color: #55595c;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    height: calc(3rem + 2px) !important;
-    border-radius:0;
+.pt-100 {
+	padding-top: 100px;
 }
-.wrn-btn{
-    width: 100%;
-    font-size: 16px;
-    font-weight: 400;
-    text-transform: capitalize;
-    height: calc(3rem + 2px) !important;
-    border-radius:0;
+a{
+    text-decoration:none;
 }
-@media (min-width: 992px){
-    .search-sec{
-        position: relative;
-        top: -200px;
-        background: rgb(255 255 255 / 0%);
-    }
+.section-title h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #777;
+}
+.section-title h2 {
+	font-size: 32px;
+	text-transform: capitalize;
+	margin: 15px 0;
+	display: inline-block;
+	position: relative;
+	font-weight: 700;
+	padding-bottom: 15px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+.section-title p {
+	font-weight: 300;
+	font-size: 14px;
+}
+.black-bg .section-title h2, .black-bg .section-title h4, .black-bg .section-title p {
+  color:#fff
+}
+.section-title h2:before {
+  position: absolute;
+  content: "";
+  width: 150px;
+  height: 1px;
+  background-color: #777;
+  bottom: 0;
+  left: 50%;
+  margin-left: -75px;
+}
+.section-title h2:after {
+  position: absolute;
+  content: "";
+  width: 80px;
+  height: 3px;
+  background-color: #e16038;
+  border: darkblue;
+  bottom: -1px;
+  left: 50%;
+  margin-left: -40px;
+}
+.section-title {
+  margin-bottom: 70px;
+}
+.single-price {
+	text-align: center;
+	padding: 30px;
+	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+.price-title h4 {
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.price-tag {
+  margin: 30px 0;
+}
+.price-tag {
+	margin: 30px 0;
+	background-color: #fafafa;
+	color: #000;
+	padding: 10px 0;
+}
+.center.price-tag {
+	background-color: tomato;
+	color:#fff
+}
+.price-tag h2 {
+	font-size: 45px;
+	font-weight: 600;
+	font-family: poppins;
+}
+.price-tag h2 span {
+  font-weight: 300;
+  font-size: 16px;
+  font-style: italic;
+}
+.price-item ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.price-item ul li {
+  font-size: 14px;
+  padding: 5px 0;
+  border-bottom: 1px dashed #eee;
+  margin: 5px 0;
+}
+.price-item ul li:last-child {
+  border-bottom: 0;
+}
+.single-price a {
+  margin-top: 15px;
+}
+a.box-btn {
+	background-color: #2186eb;
+	padding: 5px 20px;
+	display: inline-block;
+	color: #fff;
+	text-transform: capitalize;
+	border-radius: 3px;
+	font-size: 15px;
+	transition: .3s;
+}
+a.box-btn:hover, a.border-btn:hover {
+	background-color: #2186eb;
 }
 
-@media (max-width: 992px){
-    .search-sec{
-        background: #1A4668;
-    }
+.faqtable{
+	border: 1px;
 }
-
-
 </style>
 </head>
+
 <body>
 <div class="all">
+<!-- 헤더가 있어야 위쪽을 가리지 않음 -->
 <header>
 
+</header>
+
+<!-- 네비바 -->
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-  <!-- Links -->
+
   
   <div>
-	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
+	 <a href="home.do"><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
 	</div>
   
   <ul class="navbar-nav">
@@ -553,7 +212,7 @@ margin-right : 450px;
 		    <a href="#">기업정보</a>
 		    <a href="#">취업톡톡</a>
 		    <a href="#">공채달력</a>
-		    <a href="pdslist.do">자료실</a>
+		    <a href="#">자료실</a>
 		    <a href="notice.do">공지사항</a>
 		  </div>
 		</div>
@@ -572,7 +231,7 @@ margin-right : 450px;
       <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="pdslist.do" style="color:#2186eb">자료실</a>
+      <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
@@ -580,7 +239,7 @@ margin-right : 450px;
     </ul>
     
    
-   <ul class="navbar-nav navbar-nav2">
+   <ul class="navbar-nav navbar-nav2" style="margin-left: 50px;">
      <li class="nav-item">
      <!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
       <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
@@ -605,7 +264,7 @@ margin-right : 450px;
             <div class="modal-body">
             
             <!-- memberController - loginAf.do로 이동 -->
-              <form action="member" method="post">
+              <form action="member" method="post" enctype="multipart/form-data">
                  <input type="hidden" name="param" value="loginAf.do">
                 <div class="form-group">
                   <input id="email_modal" type="text" placeholder="ID" name="id" class="form-control">
@@ -625,134 +284,102 @@ margin-right : 450px;
           </div>
         </div>
       </div>
-      </header>
-      </div>
-      </body>
-      
-      
 
 <!-- =======Login 클릭 시 Modal END =========-->
 
 
 
+<!-- ####################################################################################################### -->
+<!-- 본문 -->
+<main>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="list_table" style="width: 85%;margin-left: 180px";>
-	<colgroup >
-		<col width="50"><col width="300"><col width="50">
-		<col width="50"><col width="50">
-	</colgroup>
-	
-	<thead>
-		<tr>
-			<th>번호</th><th>제목</th><th>다운로드</th>
-			<th>조회수</th><th>다운수</th>
-		</tr>
-	</thead>
-
-<c:forEach var="pds" items="${pdslist }" >		
-
-	<tr>
-		<th>${pds.pdsseq }</th>
-		<td style="text-align: left;">
-		<a href="pdsdetail.do?seq=${pds.pdsseq }">
-			${pds.title }
-		</a>
-	</td>
-	<td>
-	 <button id="btnDown" class="btn btn-primary" type="button" style="width: 120px;height: 36px; background-color: #2186eb" onclick="filedown('${pds.newfilename}', '${pds.pdsseq }', '${pds.filename}')">
-	 														Download</button>
-		<%-- <input type="button" name="btnDown" value="다운로드" 
-			onclick="filedown('${pds.newfilename}', '${pds.pdsseq }', '${pds.filename}')">	 --%>	
-		
-	</td>
-		<td>${pds.readcount }</td>
-		<td>${pds.downcount }</td>
-	</tr>
-
-</c:forEach>
-	<tbody>
-	</tbody>
-</table>
-
-
-<!-- 자료추가 버튼 -->
-<div id="button.wrap" align="center">
-		<button type="button" id="_btnAdd">자료추가</button>	
-</div>
-
-
-
-
-<!-- 다운로드 버튼을 클릭시 -->
-<form name="file_Down" action="fileDownload.do" method="post">
-	<input type="hidden" name="newfilename">
-	<input type="hidden" name="filename">
-	<input type="hidden" name="seq">
-</form>
-
-
-
-<script>
-$("#_btnAdd").click(function () {
-	location.href = "pdswrite.do";
-});
-
-/* $("#btnDown").click(function (){
-	
-	alert(">>");
-	let doc = document.file_Down;
-	doc.newfilename.value = newfilename;
-	doc.filename.value = filename;
-	doc.seq.value = seq;
-	doc.submit();
-});
- */
-
- function filedown(newfilename, seq, filename) {
-	let doc = document.file_Down;
-	doc.newfilename.value = newfilename;
-	doc.filename.value = filename;
-	doc.seq.value = seq;
-	doc.submit();
- }
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,800,900%7cRaleway:300,400,500,600,700" rel="stylesheet">
+<section class="pricing-area pt-100 pb-100" id="pricing" style="padding-top: 0px;">
+		<div class="container">
+			<div class="row">
+               
+               <div class="col-xl-12">
+				<div class="single-price">
+				  <div class="price-item">
+					<form name="frmForm" id="_frmForm" action="writeAfFAQ.do" method="post" enctype="multipart/form-data">
  
+							<table class="faqtable" border="1">
+							 <colgroup><col width="200px"><col width="auto"></colgroup>
+							 <tr>
+							    <th>구분</th>
+							    <td style="text-align: left;">
+							        <select name="faqnum" onChange="getSelectValue(this.form);">
+							        	<option value="1">개발자</option>
+							        	<option value="2">기업</option>
+							        	<option value="3">일반</option>
+							        </select>
+							    </td>
+							</tr>
+							<tr>
+							    <th>질문</th>
+							    <td style="text-align: left;">
+							        <input type="text" name="question" size="100">
+							        <input type="hidden" name="memberid" value="admin">
+							    </td>
+							</tr>
+							 
+							<tr>
+							    <th>파일 업로드</th>
+							    <td style="text-align: left;">
+							       <input type="file" name="fileload" style="width: 400px" id="FAQimg">
+							        <%=request.getRealPath("/") %>
+							    </td>
+							</tr>
+							<tr>
+							    <th>파일 업로드</th>
+							    <td style="text-align: left;" class="select_img">
+							       <img alt="" src="">
+							    </td>
+							</tr> 
+							<tr>
+							    <th>답변</th>
+							    <td style="text-align: left;">
+							        <textarea rows="10" cols="100" name="faqanswer" class="content"></textarea>
+							    </td>
+							</tr>
+							 
+<!-- 							<tr>
+							    <td colspan="2" style="height: 50px; text-align: center;">
+							        <a href="#none" id="_btnPds" title="자료올리기">
+							            <img alt="" src="image/bwrite.png">
+							        </a>
+							    </td>
+							</tr> -->
+							<tr>
+							<td>
+								<input type="submit" value="글쓰기"> <!-- <a href="commonFAQ.do" class="box-btn">글쓰기</a> -->
+							</td>
+							</tr> 
+							</table>
+							</form>
+				  </div>
+				 	
+			   </div>
+			   </div>
+            </div>
+		</div>
+	  </section>
 
 
-</script>
 
 
 
 
 
-
-
-
-
+</main>
+<!-- ####################################################################################################### -->
 
 <!-- FOOTER -->
-<div id="footer" style="width: 1500px">
+
+<div id="footer" style="width: 1500px;">
       	<div class="top-area">
 		<div class="inner-wrap">
 			<div class="link">
@@ -869,12 +496,125 @@ $("#_btnAdd").click(function () {
 				<img src="./static/images/mainlogo.png" style="width: 130px;">
 				<div class="etc">
 					<a href="/images/useInfo/certification_kor2015.jpg" target="_blank" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; var remote = window.open('https://www.eprivacy.or.kr/front/certifiedSiteMark/certifiedSiteMarkPopup.do?certCmd=E&amp;certNum=2021-E-R001','EPRIVACY','width=527,height=720'); remote.focus(); return false;" title="새창"><img src="./static/images/brn-epriavcy.png" alt="개인정보보호우수사이트 인증서"></a>
-								<a href="/html/wauMark2020_worknet.html" onclick="try { latte.getEvent(event).stop(); } catch (ex) {};window.open(this.href,'mark2020','width=605,height=850,scrollbars=no');return false;" title="새창" target="_blank" style="margin-top:-3px"><img src="./static/images/brn-wa-2019.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)"></a>
+					<a href="/html/wauMark2020_worknet.html" onclick="try { latte.getEvent(event).stop(); } catch (ex) {};window.open(this.href,'mark2020','width=605,height=850,scrollbars=no');return false;" title="새창" target="_blank" style="margin-top:-3px"><img src="./static/images/brn-wa-2019.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)"></a>
 							
 				</div>
 			</div>
 		</div>
 	</div>	
-	</html>
+    
+      <!-- ==============FOOTER END================= -->
+</div>
+
+
+
+
+
+
+
+
+<!-- ==============FOOTER================= -->
+<script type="text/javascript" defer="defer">
+//<![CDATA[
+    $(window).load(function() {
+        try {
+            if (document != top.document) {
+                fnFrameResize();
+            }
+        } catch(e){
+            fnFrameResize();
+        }
+    });
+//]]>
+</script>
+
+ 
+<script type="text/javascript">
+
+/* $("#_btnRegi").click(function () {	
+	location.href = "regiclick.do";	
+}); */
+function login() {
 	
-	
+	//alert('c');
+    
+	$("#login-modal").modal();
+	$("#login-modal").removeClass("modal fade");
+	$("#login-modal").addClass("modal");
+   
+}
+
+</script>
+
+<!-- Channel Plugin Scripts  -->
+<script>
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+  ChannelIO('boot', {
+    "pluginKey": "9ec9cb05-626c-49ad-9fcf-67ccef29c08f"
+  });
+ 
+  
+</script>
+<!-- End Channel Plugin -->
+
+<!-- 이미지 볼수있게 해주는 스크립트 -->
+ <script>
+  $("#FAQimg").change(function(){
+   if(this.files && this.files[0]) {
+    var reader = new FileReader;
+    reader.onload = function(data) {
+     $(".select_img img").attr("src", data.target.result).width(500);        
+    }
+    reader.readAsDataURL(this.files[0]);
+   }
+  });
+ </script>
+ 
+ <script type="text/javascript">
+ function getSelectValue(frm)
+ {
+  frm.textValue.value = frm.selectBox.options[frm.selectBox.selectedIndex].text;
+  frm.optionValue.value = frm.selectBox.options[frm.selectBox.selectedIndex].value;
+  
+  alert(frm.textValue.value);
+  alert(frm.optionValue.value);
+ }
+ 
+ </script>
+
+</body>
+</html>
