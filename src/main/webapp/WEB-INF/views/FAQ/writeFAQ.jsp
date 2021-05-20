@@ -60,101 +60,6 @@
 margin-right : 450px;
 }
 
-.newsletter {
-padding: 80px 0;
-background: #2186eb;
-}
-
-.newsletter .content {
-max-width: 650px;
-margin: 0 auto;
-text-align: center;
-position: relative;
-z-index: 2; }
-.newsletter .content h2 {
-color: #243c4f;
-margin-bottom: 40px; }
-.newsletter .content .form-control {
-height: 50px;
-border-color: #ffffff;
-border-radius:0;
-}
-.newsletter .content.form-control:focus {
-box-shadow: none;
-border: 2px solid #243c4f;
-}
-.newsletter .content .btn {
-min-height: 50px; 
-border-radius:0;
-background: #243c4f;
-color: #fff;
-font-weight:600;
-}
-
-/* 3가지 FAQ링크 */
-
-
-:root {
-    font-size: 10px;
-}
-
-.faqnav ul {
-    padding: 0;
-    list-style-type: none;
-}
-
-.faqnav li {
-    width: 20rem;
-    height: 7rem;
-    font-size: 20px;
-    text-align: center;
-    line-height: 7rem;
-    font-family: sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-    transition: 0.3s;
-    margin: 8.5rem;
-    background-color: #eee;
-}
-
-.faqnav li::before,
-.faqnav li::after {
-    content: '';
-    position: absolute;
-    width: inherit;
-    height: inherit;
-    top: 0;
-    left: 0;
-    transition: 0.3s;
-}
-
-.faqnav li::before {
-    background-color: #eee;
-    z-index: -1;
-    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
-}
-
-.faqnav li::after {
-    background-color: #2186eb;
-    transform: translate(1.5rem, 1.5rem);
-    z-index: -2;
-}
-
-.faqnav li:hover {
-    transform: translate(1.5rem, 1.5rem);
-    color: black;
-}
-
-.faqnav li:hover::before {
-    background-color: #2186eb;
-}
-
-.faqnav li:hover::after {
-    background-color: #2186eb;
-    transform: translate(-1.5rem, -1.5rem);
-}
-
 /* 테이블 css */
 .pb-100 {
 	padding-bottom: 100px;
@@ -276,10 +181,9 @@ a.box-btn:hover, a.border-btn:hover {
 	background-color: #2186eb;
 }
 
-a {
-	text-decoration: none;
+.faqtable{
+	border: 1px;
 }
- 
 </style>
 </head>
 
@@ -360,7 +264,7 @@ a {
             <div class="modal-body">
             
             <!-- memberController - loginAf.do로 이동 -->
-              <form action="member" method="post">
+              <form action="member" method="post" enctype="multipart/form-data">
                  <input type="hidden" name="param" value="loginAf.do">
                 <div class="form-group">
                   <input id="email_modal" type="text" placeholder="ID" name="id" class="form-control">
@@ -389,62 +293,82 @@ a {
 <!-- 본문 -->
 <main>
 
-<!-- 검색창 -->
-<section class="newsletter">
-<div class="container">
-<div class="row">
-<div class="col-sm-12">
-	<div class="content">
-		<h2 style="color:#fff">FAQ</h2>
-	<div class="input-group">
-         <input type="email" class="form-control" placeholder="검색어 입력">
-         <span class="input-group-btn">
-         <button class="btn" type="submit">SEARCH</button>
-         </span>
-          </div>
-	</div>
-</div>
-</div>
-</div>
-</section>
 
-
-<nav class="faqnav" style="height: auto;">
-  <ul style="display: flex;margin-left: 300px;">
-    <li><a href="memberFAQ.do">개발자 FAQ</a></li>
-    <li><a href="companyFAQ.do">기업 FAQ</a></li>
-    <li style="background-color: #2186eb">일반 FAQ</li>
-  </ul>
-</nav>
 
 
 <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,800,900%7cRaleway:300,400,500,600,700" rel="stylesheet">
 <section class="pricing-area pt-100 pb-100" id="pricing" style="padding-top: 0px;">
 		<div class="container">
 			<div class="row">
+               
                <div class="col-xl-12">
 				<div class="single-price">
 				  <div class="price-item">
-					<ul>
-						<li>100GB Monthly Bandwidth</li>
-						<li>100 Google AdWords</li>
-						<li>100 Domain Hosting</li>
-						<li>SSL Shopping Cart</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-					</ul>
+					<form name="frmForm" id="_frmForm" action="writeAfFAQ.do" method="post" enctype="multipart/form-data">
+ 
+							<table class="faqtable" border="1">
+							 <colgroup><col width="200px"><col width="auto"></colgroup>
+							 <tr>
+							    <th>구분</th>
+							    <td style="text-align: left;">
+							        <select name="faqnum" onChange="getSelectValue(this.form);">
+							        	<option value="1">개발자</option>
+							        	<option value="2">기업</option>
+							        	<option value="3">일반</option>
+							        </select>
+							    </td>
+							</tr>
+							<tr>
+							    <th>질문</th>
+							    <td style="text-align: left;">
+							        <input type="text" name="question" size="100">
+							        <input type="hidden" name="memberid" value="admin">
+							    </td>
+							</tr>
+							 
+							<tr>
+							    <th>파일 업로드</th>
+							    <td style="text-align: left;">
+							       <input type="file" name="fileload" style="width: 400px" id="FAQimg">
+							        <%=request.getRealPath("/") %>
+							    </td>
+							</tr>
+							<tr>
+							    <th>파일 업로드</th>
+							    <td style="text-align: left;" class="select_img">
+							       <img alt="" src="">
+							    </td>
+							</tr> 
+							<tr>
+							    <th>답변</th>
+							    <td style="text-align: left;">
+							        <textarea rows="10" cols="100" name="faqanswer" class="content"></textarea>
+							    </td>
+							</tr>
+							 
+<!-- 							<tr>
+							    <td colspan="2" style="height: 50px; text-align: center;">
+							        <a href="#none" id="_btnPds" title="자료올리기">
+							            <img alt="" src="image/bwrite.png">
+							        </a>
+							    </td>
+							</tr> -->
+							<tr>
+							<td>
+								<input type="submit" value="글쓰기"> <!-- <a href="commonFAQ.do" class="box-btn">글쓰기</a> -->
+							</td>
+							</tr> 
+							</table>
+							</form>
 				  </div>
+				 	
 			   </div>
-			   </div>	   
-          </div>
-	</div>
-</section>
+			   </div>
+            </div>
+		</div>
+	  </section>
+
+
 
 
 
@@ -662,9 +586,35 @@ function login() {
   ChannelIO('boot', {
     "pluginKey": "9ec9cb05-626c-49ad-9fcf-67ccef29c08f"
   });
+ 
+  
 </script>
 <!-- End Channel Plugin -->
 
+<!-- 이미지 볼수있게 해주는 스크립트 -->
+ <script>
+  $("#FAQimg").change(function(){
+   if(this.files && this.files[0]) {
+    var reader = new FileReader;
+    reader.onload = function(data) {
+     $(".select_img img").attr("src", data.target.result).width(500);        
+    }
+    reader.readAsDataURL(this.files[0]);
+   }
+  });
+ </script>
+ 
+ <script type="text/javascript">
+ function getSelectValue(frm)
+ {
+  frm.textValue.value = frm.selectBox.options[frm.selectBox.selectedIndex].text;
+  frm.optionValue.value = frm.selectBox.options[frm.selectBox.selectedIndex].value;
+  
+  alert(frm.textValue.value);
+  alert(frm.optionValue.value);
+ }
+ 
+ </script>
 
 </body>
 </html>
