@@ -640,47 +640,50 @@ margin-right : 450px;
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
-    </ul>
     
-   
-   <ul class="navbar-nav navbar-nav2">
-     <li class="nav-item">
-     <!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
-      <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
-      <div style="width: 100%;height: 53px; border-bottom: 1px solid #5e5e5e">
-	<div style="width: 100%;height: 100%; clear: both; display: inline-block;">
-	
-	<div id="_title_image" style="width: 30%; float: left; display: inline;">
-		<img alt="" src="./image/bbslogo1.jpg" style="height: 53px">	
-	</div>
-	
-	<div id="_title_today" style="width: 70%; float: left; text-align: right;">
-		<div style="position: relative; top: 27px">
-			
-			<c:if test="${login.memberid != ''}">
-				<a href="logout.do" title="로그아웃">[로그아웃]</a>&nbsp;&nbsp;&nbsp;
-			</c:if>
-		
-			<c:if test="${login.name != '' }">
-				[${login.name }]님 환영합니다
-			</c:if>
-		
-			<fmt:formatDate value="${nows }" var="now" pattern="yyyy/MM/dd"/>
-			${now}
-		</div>
-	</div>
-	
-	</div>
-</div>
-      
-      
-      
+    <li class="nav-item">
+            <c:choose>
+            	<c:when test="${login.memberid ne null }">
+            		<c:choose>
+            			 <c:when test="${login.auth == 1}">
+             				 <p><b>${login.name }</b>님</p>
+             	 		 </c:when>	 
+             			<%-- <%-- <c:when test="${login ne null }">
+         				<p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>	
+         				</c:when> --%>
+             			<%-- <c:when test="${login.auth == 3}">
+             				<p><b>${login.name }</b>님</p>
+    					</c:when> --%>
+    					<c:otherwise>
+             				<p><b>${login.name }</b>님</p>
+    					</c:otherwise>
+    				</c:choose>			
+            	 </c:when> 
+         	 </c:choose>  
+        <div class="col-md-6">
+           <div class="">
+              <div class="login">
+              	<c:if test="${ empty login }">
+                       <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
+                    <!--    <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
+                </c:if>       
+              </div>
+			</div>
+		</div>	
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
+     	 <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
     </li>
-  
-
+    <li class="nav-item">
+    	<c:if test="${login.auth==3}">
+    		<a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a> 
+		</c:if>
+	</li>
+	<li class="nav-item">
+		<c:if test="${login.memberid ne null}">	
+			<a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
+		</c:if>	
+	</li>
   </ul>
 </nav>
 <br>
@@ -1137,7 +1140,7 @@ margin-right : 450px;
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="<%=request.getContextPath() %>/image/coupang.png" alt="card image"></p>
+                                    <p><img class=" img-fluid" src="<%= request.getContextPath() %>/image/coupang.png" alt="card image"></p>
                                     <h3 class="card-title">COUPANG</h3>
                                     <p class="card-text">데이터 분석가 (Data Scientist)</p>
                                     <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"></a>

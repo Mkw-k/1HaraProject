@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import bit.com.a.dto.PdsDto;
 import bit.com.a.service.PdsService;
-import bit.com.a.util.PdsUtil;
+import bit.com.a.util.NoticeUtil;
 
 @Controller
 public class PdsController {
