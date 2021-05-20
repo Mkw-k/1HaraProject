@@ -8,11 +8,19 @@
 <insert id="writerecru" parameterType="bit.com.a.dto.RecruitDto">
 	INSERT INTO JOB(JOBSEQ , COMPANYID , JOBTITLE , JOBCONTENT , AREA1NAME,
 					AREA2NAME, JOBVOLUMN, SALARY, JOBSTART, JOBEND, EMP_TYPE,
-					EDUCATION , CAREER_TYPE, CAREER_DESC, READCOUNT, REGDATE )
+					EDUCATION , CAREER_TYPE, CAREER_DESC, READCOUNT, REGDATE, BUSCODE, DEL)
 	VALUES(JOB_SEQ.NEXTVAL, #{companyId}, #{jobTitle}, #{jobContent},
-			 #{area1Name}, #{area2Name}, #{jobVolumn}, #{salary}, TO_DATE(#{jobStart}, 'YYYY-MM-DD HH:MI:SS'),
-			 TO_DATE(#{jobEnd}, 'YYYY-MM-DD HH:MI:SS'), #{empType}, #{education}, #{careerType}, #{careerDesc}, 
-			 0, SYSDATE)
+			 #{area1Name}, #{area2Name}, #{jobVolumn}, #{salary}, TO_DATE(#{jobStart}, 'YYYY-MM-DD HH24:MI:SS'),
+			 TO_DATE(#{jobEnd}, 'YYYY-MM-DD HH24:MI:SS'), #{emp_Type}, #{education}, #{career_Type}, #{career_Desc}, 
+			 0, SYSDATE, #{buscode}, 0)
 </insert>
+
+<select id="getallrecrulist" resultType="bit.com.a.dto.RecruitDto">
+	SELECT j.JOBSEQ , j.COMPANYID , j.JOBTITLE , j.JOBCONTENT , j.AREA1NAME,
+					j.AREA2NAME, j.JOBVOLUMN, j.SALARY, j.JOBSTART, j.JOBEND, j.EMP_TYPE,
+					j.EDUCATION , j.CAREER_TYPE, j.CAREER_DESC, j.READCOUNT, j.REGDATE, j.BUSCODE, j.DEL, c.companyname
+	FROM JOB j, company c
+	WHERE j.companyid = c.companyid
+</select>
 
 </mapper>
