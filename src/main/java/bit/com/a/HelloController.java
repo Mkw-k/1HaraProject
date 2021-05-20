@@ -28,9 +28,15 @@ public class HelloController {
 					
 			return "ad1";
 		}
-	
 		
-		
+	//찾아 오시는 길
+		@RequestMapping(value = "info.do", method = RequestMethod.GET)
+		public String info(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "info";
+		}
+					
 		
 }
 

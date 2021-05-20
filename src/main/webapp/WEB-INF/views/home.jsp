@@ -16,6 +16,12 @@
 <meta name="keywords" content="#">
 <meta name="selected-menu" content="0, 0, 0, 0">
 
+
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!-- 제이쿼리 -->
 <script src="//https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- 네비바 -->
@@ -63,6 +69,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="csss/ranking.css" rel="stylesheet" type="text/css">
 
+<!-- 로그인 css -->
+<link href="csss/logincss.css" rel="stylesheet" type="text/css">
 
 
 <style type="text/css">
@@ -541,7 +549,7 @@ margin-right : 450px;
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="<%=request.getContextPath() %>/image/work9.png" class="d-block w-100" height="300">
+                <img src="<%=request.getContextPath() %>/image/개발자메인로고.gif" class="d-block w-100" height="300">
             </div>
             
             <!--https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg-->
@@ -608,7 +616,7 @@ margin-right : 450px;
 		  <div class="dropdown-content">
 		    <a href="#">채용공고</a>
 		    <a href="#">기업정보</a>
-		    <a href="#">취업톡톡</a>
+		    <a href="jobtalk.do">취업톡톡</a>
 		    <a href="#">공채달력</a>
 		    <a href="#">자료실</a>
 		    <a href="notice.do">공지사항</a>
@@ -634,19 +642,50 @@ margin-right : 450px;
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
-    </ul>
     
-   
-   <ul class="navbar-nav navbar-nav2">
-     <li class="nav-item">
-     <!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
-      <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
+    <li class="nav-item">
+            <c:choose>
+            	<c:when test="${login.memberid ne null }">
+            		<c:choose>
+            			 <c:when test="${login.auth == 1}">
+             				 <p><b>${login.name }</b>님</p>
+             	 		 </c:when>	 
+             			<%-- <%-- <c:when test="${login ne null }">
+         				<p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>	
+         				</c:when> --%>
+             			<%-- <c:when test="${login.auth == 3}">
+             				<p><b>${login.name }</b>님</p>
+    					</c:when> --%>
+    					<c:otherwise>
+             				<p><b>${login.name }</b>님</p>
+    					</c:otherwise>
+    				</c:choose>			
+            	 </c:when> 
+         	 </c:choose>  
+        <div class="col-md-6">
+           <div class="">
+              <div class="login">
+              	<c:if test="${ empty login }">
+                       <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
+                    <!--    <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
+                </c:if>       
+              </div>
+			</div>
+		</div>	
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
+     	 <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
     </li>
-  
-
+    <li class="nav-item">
+    	<c:if test="${login.auth==3}">
+    		<a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a> 
+		</c:if>
+	</li>
+	<li class="nav-item">
+		<c:if test="${login.memberid ne null}">	
+			<a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
+		</c:if>	
+	</li>
   </ul>
 </nav>
 <br>
@@ -662,19 +701,22 @@ margin-right : 450px;
             <div class="modal-body">
             
             <!-- memberController - loginAf.do로 이동 -->
-              <form action="member" method="post">
-                 <input type="hidden" name="param" value="loginAf.do">
+              <form action="loginAf.do" method="post" id="_frmFrom">
+             <!--     <input type="hidden" name="param" value="loginAf.do"> -->
                 <div class="form-group">
-                  <input id="email_modal" type="text" placeholder="ID" name="id" class="form-control">
+                  <input id="memberid" type="text" placeholder="ID" name="memberid" class="form-control">
                 </div>
                 <div class="form-group">
-                  <input id="password_modal" type="password" name="pwd" placeholder="password" class="form-control">
+                  <input id="pwd" type="password" name="pwd" placeholder="password" class="form-control">
                 </div>
                 <p class="text-center">
-                  <button class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Login</button>
+                  <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
                 </p>
               </form>
               
+              <a href="javascript:kakaoLogin()">
+				<img alt="" src="https://img.eduwill.net/Img2/Common/Join/new/btn-kakao-large.png">
+			  </a>
               
               <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
               <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
@@ -688,8 +730,20 @@ margin-right : 450px;
 <!-- 본문 -->
 <main>
 
+
+
 <div class="wrapper col3" style="margin-top: -150px;">
-  <div id="homecontent">
+
+  <div id="homecontent" style="margin-left: 159px;">
+  
+  <!-- 좌측 광고판 -->
+   <img class="fit-picture" src="ma2.png" style="
+    width: 318px;
+    height: 318px;
+    border-left-width: 30px;
+    margin-left: 20px;">
+ 
+  
     <div class="fl_left">
        <div class="column2">
         <h5>최신공채</h5>
@@ -785,6 +839,49 @@ margin-right : 450px;
     
     <div class="column2" style="padding-left: 40pt;">
           <div class="container">
+          		<div>
+		            <div class="panel panel-primary">
+		                <div class="panel-heading">
+		                    <h3 class="panel-title">
+		                        <span class="glyphicon glyphicon-bookmark"></span> 일하라와 함께하고 싶다면? </h3>
+		                </div>
+		                
+		                <div class="panel-body"> <!-- 컨테이너 바디 -->
+		                   
+		                    <div class="main-login" style="width: 358px;">
+			<!-- 로그인 전 -->
+					<!-- 로그인 전 -->
+					
+					<div class="before">
+						<p class="txt">일하라를 더 안전하고 편리하게 이용하세요.</p>
+						<a href="/member/bodyLogin.do" class="login-worknet">일하라 로그인</a>
+						<div class="link">
+							<a href="/member/idPwdVw/retrieveCustIdPwdSrch.do" class="left">아이디/ 패스워드 찾기</a>
+							<a href="/member/custJoin/retrieveCustJoinTp.do" class="right">회원가입</a>
+						</div>
+						<div class="other-login">
+							<a href="javascript:f_snsLogin('naver');" id="naver_id_login" title="새창열림 : 네이버 아이디로 로그인" class="left"><i class="iconset ico-main-login-naver"></i>로그인</a>
+							<a href="javascript:f_snsLogin('kakao');" id="kakao_id_login" title="새창열림 : 카카오 아이디로 로그인" class="right"><i class="iconset ico-main-login-kakao"></i>로그인</a>
+						</div>
+						<ul class="menu-link">
+							<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">내게 딱! 맞는 일자리 찾기<br><strong>구직신청</strong></a></li>
+							<li><a href="/coMemberSrv/wantedInfoAdmin/wantedAdmin.do">우리 회사 맞춤인재 채용<br><strong>구인신청</strong></a></li>
+							<li><a href="/consltJobCarpa/jobPsyExamNew/jobPsyExamYouthList.do">로그인 없이 간편하게!<br><strong>청소년 심리검사</strong></a></li>
+						</ul>
+					</div>
+					<!-- //로그인 전 -->
+		</div>
+		<!-- 로그인 끝 -->
+		                   
+		                   
+		                </div>
+		            </div>
+		        </div>
+          
+          
+          
+         <!-- 구분선 -->
+          
 		    <div class="row" style="width: 450px;">
 		        <div>
 		            <div class="panel panel-primary">
@@ -843,6 +940,12 @@ margin-right : 450px;
     
    
     <br class="clear" />
+    
+   <!-- 메인 우측 광고 -->
+   <img class="fit-picture" src="main-ad.png" style="
+    width: 318px;
+    border-left-width: 30px;
+    margin-left: 20px;">
   </div>
 </div>
 
@@ -1100,7 +1203,7 @@ margin-right : 450px;
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="<%=request.getContextPath() %>/image/coupang.png" alt="card image"></p>
+                                    <p><img class=" img-fluid" src="<%= request.getContextPath() %>/image/coupang.png" alt="card image"></p>
                                     <h3 class="card-title">COUPANG</h3>
                                     <p class="card-text">데이터 분석가 (Data Scientist)</p>
                                     <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"></a>
@@ -1435,7 +1538,52 @@ window.onscroll = function sticky() {
   ChannelIO('boot', {
     "pluginKey": "9ec9cb05-626c-49ad-9fcf-67ccef29c08f"
   });
-</script>
+
+  
+  <!-- 685fcbb766340d7c8812f4e0a29a6661 -->
+
+  <!-- 자바스크립트 key를 입력하여 초기화해줌 -->
+  window.Kakao.init("685fcbb766340d7c8812f4e0a29a6661");
+
+  function kakaoLogin() {
+  	window.Kakao.Auth.login({
+  		scope:'profile, account_email, gender, age_range, birthday',
+  		success: function(authObj) {
+  			alert('success');
+  			console.log(authObj);
+  			window.Kakao.API.request({
+  				url: '/v2/user/me', 
+  				success: res => {
+  					const kakao_account = res.kakao_account; 
+  					console.log(kakao_account);
+  					console.log("이름:"+kakao_account.profile.nickname);
+  					console.log("생일:"+kakao_account.birthday);
+  					console.log("이메일:"+kakao_account.email);
+  					console.log("성별:"+kakao_account.gender);
+  					console.log("나이대:"+kakao_account.age_range);
+  				}
+  				
+  			});
+  		}
+  	});
+  }
+  $("#_btnLogin").click(function () {
+
+		if($("#memberid").val().trim() == ""){
+			alert('id를 입력해 주십시오');
+			$("#memberid").focus();
+		}
+		else if($("#pwd").val().trim() == ""){
+			alert('패스워드를 입력해 주십시오');
+			$("#pwd").focus();
+		}
+		else{
+			$("#_frmFrom").submit();	
+		}	
+		
+	});
+  
+  </script>
 <!-- End Channel Plugin -->
 
 
