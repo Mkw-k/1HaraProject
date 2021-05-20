@@ -18,9 +18,24 @@ public class PdsServiceImpl implements PdsService {
 	PdsDao dao;
 
 	@Override
-	public List<PdsDto> getPdsList() {
-		
+	public List<PdsDto> getPdsList() {	
 		return dao.getPdsList();
+	}
+
+	@Override
+	public boolean uploadPds(PdsDto pdsdto) {
+		return dao.uploadPds(pdsdto);
+	}
+
+	@Override
+	public void readcount(int seq) {
+		dao.readcount(seq);
+		
+	}
+
+	@Override
+	public PdsDto getPds(int seq) {
+		return dao.getPds(seq);
 	}
 
 	

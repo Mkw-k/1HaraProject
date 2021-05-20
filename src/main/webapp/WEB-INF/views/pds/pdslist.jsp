@@ -674,15 +674,18 @@ margin-right : 450px;
 <c:forEach var="pds" items="${pdslist }" >		
 
 	<tr>
-		<th>${pds.count }</th>
+		<th>${pds.pdsseq }</th>
 		<td style="text-align: left;">
-		<a href="pdsdetail.do?seq=${pds.seq }">
+		<a href="pdsdetail.do?seq=${pds.pdsseq }">
 			${pds.title }
 		</a>
 	</td>
 	<td>
-		<input type="button" name="btnDown" value="다운로드"
-			onclick="filedown('${pds.newfilename}', '${pds.seq }', '${pds.filename}')">		
+	 <button id="btnDown" class="btn btn-primary" type="button" style="width: 120px;height: 36px; background-color: #2186eb" onclick="filedown('${pds.newfilename}', '${pds.pdsseq }', '${pds.filename}')">
+	 														Download</button>
+		<%-- <input type="button" name="btnDown" value="다운로드" 
+			onclick="filedown('${pds.newfilename}', '${pds.pdsseq }', '${pds.filename}')">	 --%>	
+		
 	</td>
 		<td>${pds.readcount }</td>
 		<td>${pds.downcount }</td>
@@ -716,15 +719,25 @@ $("#_btnAdd").click(function () {
 	location.href = "pdswrite.do";
 });
 
-
-function filedown(newfilename, seq, filename) {
+/* $("#btnDown").click(function (){
+	
+	alert(">>");
 	let doc = document.file_Down;
 	doc.newfilename.value = newfilename;
 	doc.filename.value = filename;
 	doc.seq.value = seq;
 	doc.submit();
-}
+});
+ */
 
+ function filedown(newfilename, seq, filename) {
+	let doc = document.file_Down;
+	doc.newfilename.value = newfilename;
+	doc.filename.value = filename;
+	doc.seq.value = seq;
+	doc.submit();
+ }
+ 
 
 
 </script>
