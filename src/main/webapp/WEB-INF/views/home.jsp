@@ -37,8 +37,8 @@
 
 
   <!-- 검색 부트스트랩 -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
 
 
  <!-- 전체 css -->
@@ -47,8 +47,8 @@
 <script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
 
 <!-- 부트스트랩 -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 
 
 <link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
@@ -558,7 +558,7 @@ margin-right : 450px;
     <div class="container">
         <form action="#" method="post" novalidate="novalidate">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <select class="form-control search-slt" id="exampleFormControlSelect1" style="font-size: 12pt">
@@ -616,31 +616,32 @@ margin-right : 450px;
 		    <a href="#">기업정보</a>
 		    <a href="#">취업톡톡</a>
 		    <a href="#">공채달력</a>
-		    <a href="#">자료실</a>
+		    <a href="pdslist.do">자료실</a>
 		    <a href="notice.do">공지사항</a>
 		  </div>
 		</div>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
+      <a class="nav-link bgc" href="recuruitlist.do" style="color:#2186eb">채용공고</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">취업톡톡</a>
+      <a class="nav-link bgc" href="jobtalk.do" style="color:#2186eb">취업톡톡</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
+      <a class="nav-link bgc" href="pdslist.do" style="color:#2186eb">자료실</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
     
+
     <li class="nav-item">
             <c:choose>
             	<c:when test="${login.memberid ne null }">
@@ -841,7 +842,7 @@ margin-right : 450px;
 		                        </div>
 		                        <div>
 		                         <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>취업톡톡</a>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>자료실</a>
+		                          <a href="pdslist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>자료실</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>마이페이지</a>
 		                        </div>
 		                        <div>
@@ -1214,7 +1215,7 @@ margin-right : 450px;
 
 <!-- FOOTER -->
 
-<div id="footer">
+<div id="footer" style="width: 1500px;">
       	<div class="top-area">
 		<div class="inner-wrap">
 			<div class="link">

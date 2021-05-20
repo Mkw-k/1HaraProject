@@ -110,6 +110,11 @@ public class BbsController {
 		service.updateBbs(bbs);
 		return "redirect:/bbslist.do";
 	}
+	
+	@RequestMapping(value = "jobtalk.do", method = RequestMethod.GET)
+	public String jobtalk(Model model) {		
+		return "jobtalk";
+	}
 }
 
 

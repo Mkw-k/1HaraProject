@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Recruit">
+
+<insert id="writerecru" parameterType="bit.com.a.dto.RecruitDto">
+	INSERT INTO JOB(JOBSEQ , COMPANYID , JOBTITLE , JOBCONTENT , AREA1NAME,
+					AREA2NAME, JOBVOLUMN, SALARY, JOBSTART, JOBEND, EMP_TYPE,
+					EDUCATION , CAREER_TYPE, CAREER_DESC, READCOUNT, REGDATE )
+	VALUES(JOB_SEQ.NEXTVAL, #{companyId}, #{jobTitle}, #{jobContent},
+			 #{area1Name}, #{area2Name}, #{jobVolumn}, #{salary}, TO_DATE(#{jobStart}, 'YYYY-MM-DD HH:MI:SS'),
+			 TO_DATE(#{jobEnd}, 'YYYY-MM-DD HH:MI:SS'), #{empType}, #{education}, #{careerType}, #{careerDesc}, 
+			 0, SYSDATE)
+</insert>
+
+</mapper>
