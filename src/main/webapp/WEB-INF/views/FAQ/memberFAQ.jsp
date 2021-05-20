@@ -406,7 +406,7 @@ a.box-btn:hover, a.border-btn:hover {
 
 
 <nav class="faqnav" style="height: auto;">
-  <ul style="display: flex;margin-left: 400px;">
+  <ul style="display: flex;margin-left: 300px;">
     <li style="background-color: #2186eb">개발자 FAQ</li>
     <li><a href="companyFAQ.do">기업 FAQ</a></li>
     <li><a href="commonFAQ.do">일반 FAQ</a></li>

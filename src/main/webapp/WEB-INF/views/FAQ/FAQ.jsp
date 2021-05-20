@@ -407,7 +407,7 @@ a.box-btn:hover, a.border-btn:hover {
 
 
 <nav class="faqnav" style="height: auto;">
-  <ul style="display: flex;margin-left: 400px;">
+  <ul style="display: flex;margin-left: 300px;">
     <li><a href="memberFAQ.do">개발자 FAQ</a></li>
     <li><a href="companyFAQ.do">기업 FAQ</a></li>
     <li><a href="commonFAQ.do">일반 FAQ</a></li>
@@ -473,9 +473,9 @@ a.box-btn:hover, a.border-btn:hover {
 
 
 
-
-
-
+<div style="text-align: center;margin-bottom: 300px;margin-top: -100px;">
+<a href="writeFAQ.do" class="box-btn" >글쓰기</a>
+</div>
 
 
 
