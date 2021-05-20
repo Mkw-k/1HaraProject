@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.AbstractView;
 
 import bit.com.a.service.PdsService;
 
-public class DownloadView extends AbstractView {
+public class DownlaodView extends AbstractView {
 
 	@Autowired
 	PdsService service;

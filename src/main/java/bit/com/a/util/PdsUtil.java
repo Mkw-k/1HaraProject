@@ -2,7 +2,7 @@ package bit.com.a.util;
 
 import java.util.Date;
 
-public class NoticeUtil {
+public class PdsUtil {
 
 	// 파일명 -> 변경(time)
 	

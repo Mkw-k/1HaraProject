@@ -30,7 +30,7 @@ TABLESPACE "USERS" ;*/
 public class NoticeDto implements Serializable{
 
 	private int noticeseq;					// 번호
-	private String memberid;				// 작성자
+	private String MemberId;				// 작성자
 	private String notice_title;			// 제목
 	private String notice_content;			// 내용
 	private String notice_filename;			// 기존 업로드 파일이름
@@ -45,11 +45,13 @@ public class NoticeDto implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public NoticeDto(int noticeseq, String memberid, String notice_title, String notice_content, String notice_filename,
-			String notice_newfilename, int readcount, int downcount, String regdate, int notice_ref) {
+	
+	public NoticeDto(int noticeseq, String memberId, String notice_title, String notice_content,
+			String notice_filename, String notice_newfilename, int readcount, int downcount, String regdate,
+			int notice_ref) {
 		super();
 		this.noticeseq = noticeseq;
-		this.memberid = memberid;
+		MemberId = memberId;
 		this.notice_title = notice_title;
 		this.notice_content = notice_content;
 		this.notice_filename = notice_filename;
@@ -60,20 +62,21 @@ public class NoticeDto implements Serializable{
 		this.notice_ref = notice_ref;
 	}
 
-	public int getNoticeseq() {
+
+	public int getNotice_seq() {
 		return noticeseq;
 	}
 
-	public void setNoticeseq(int noticeseq) {
+	public void setNotice_seq(int noticeseq) {
 		this.noticeseq = noticeseq;
 	}
 
-	public String getMemberid() {
-		return memberid;
+	public String getMemberId() {
+		return MemberId;
 	}
 
-	public void setMemberid(String memberid) {
-		this.memberid = memberid;
+	public void setMemberId(String memberId) {
+		MemberId = memberId;
 	}
 
 	public String getNotice_title() {
@@ -143,15 +146,14 @@ public class NoticeDto implements Serializable{
 		this.notice_ref = notice_ref;
 	}
 
+
 	@Override
 	public String toString() {
-		return "NoticeDto [noticeseq=" + noticeseq + ", memberid=" + memberid + ", notice_title=" + notice_title
+		return "NoticeDto [notice_seq=" + noticeseq + ", MemberId=" + MemberId + ", notice_title=" + notice_title
 				+ ", notice_content=" + notice_content + ", notice_filename=" + notice_filename
 				+ ", notice_newfilename=" + notice_newfilename + ", readcount=" + readcount + ", downcount=" + downcount
 				+ ", regdate=" + regdate + ", notice_ref=" + notice_ref + "]";
-	}
-
-	
+	}		
 	
 	
 }
