@@ -410,7 +410,7 @@ a {
 
 
 <nav class="faqnav" style="height: auto;">
-  <ul style="display: flex;margin-left: 400px;">
+  <ul style="display: flex;margin-left: 300px;">
     <li><a href="memberFAQ.do">개발자 FAQ</a></li>
     <li><a href="companyFAQ.do">기업 FAQ</a></li>
     <li style="background-color: #2186eb">일반 FAQ</li>

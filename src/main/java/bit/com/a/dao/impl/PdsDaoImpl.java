@@ -22,10 +22,5 @@ public class PdsDaoImpl implements PdsDao {
 	public List<PdsDto> getPdsList() {
 		return session.selectList(ns+ "getPdsList");
 	}
-	@Override
-	public boolean uploadPds(PdsDto dto) {
-		int n = session.insert(ns + "uploadPds", dto);
-		return n>0?true:false;
-	}
 	
 }
