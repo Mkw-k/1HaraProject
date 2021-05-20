@@ -10,5 +10,6 @@ public interface NoticeService {
 
 	List<NoticeDto> getNoticelist(NoticeParam notice);
 	int getNoticeCount(NoticeParam notice);
+	boolean uploadNotice(NoticeDto dto);
 
 }

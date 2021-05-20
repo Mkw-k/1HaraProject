@@ -9,6 +9,7 @@ public interface NoticeDao {
 
 	List<NoticeDto> getNoticeList(NoticeParam notice);
 	int getNoticeCount(NoticeParam notice);
+	boolean uploadNotice(NoticeDto dto);
 	
 	
 }
