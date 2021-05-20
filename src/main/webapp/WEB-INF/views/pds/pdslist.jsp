@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -657,10 +658,6 @@ margin-right : 450px;
 
 
 
-
-
-
-
 <table class="list_table" style="width: 85%;margin-left: 180px";>
 	<colgroup >
 		<col width="50"><col width="300"><col width="50">
@@ -674,20 +671,36 @@ margin-right : 450px;
 		</tr>
 	</thead>
 
+<c:forEach var="pds" items="${pdslist }" >		
+
+	<tr>
+		<th>${pds.count }</th>
+		<td style="text-align: left;">
+		<a href="pdsdetail.do?seq=${pds.seq }">
+			${pds.title }
+		</a>
+	</td>
+	<td>
+		<input type="button" name="btnDown" value="다운로드"
+			onclick="filedown('${pds.newfilename}', '${pds.seq }', '${pds.filename}')">		
+	</td>
+		<td>${pds.readcount }</td>
+		<td>${pds.downcount }</td>
+	</tr>
+
+</c:forEach>
 	<tbody>
-	
-	
-	
 	</tbody>
-
-
-
-
-
-
-
-
 </table>
+
+
+<!-- 자료추가 버튼 -->
+<div id="button.wrap" align="center">
+		<button type="button" id="_btnAdd">자료추가</button>	
+</div>
+
+
+
 
 <!-- 다운로드 버튼을 클릭시 -->
 <form name="file_Down" action="fileDownload.do" method="post">
@@ -698,13 +711,23 @@ margin-right : 450px;
 
 
 
+<script>
+$("#_btnAdd").click(function () {
+	location.href = "pdswrite.do";
+});
+
+
+function filedown(newfilename, seq, filename) {
+	let doc = document.file_Down;
+	doc.newfilename.value = newfilename;
+	doc.filename.value = filename;
+	doc.seq.value = seq;
+	doc.submit();
+}
 
 
 
-
-
-
-
+</script>
 
 
 
