@@ -37,8 +37,8 @@
 
 
   <!-- 검색 부트스트랩 -->
-<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 
  <!-- 전체 css -->
@@ -47,8 +47,8 @@
 <script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
 
 <!-- 부트스트랩 -->
-<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 
 <link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
@@ -69,6 +69,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="csss/ranking.css" rel="stylesheet" type="text/css">
 
+<!-- 로그인 css -->
+<link href="csss/logincss.css" rel="stylesheet" type="text/css">
 
 
 <style type="text/css">
@@ -547,7 +549,7 @@ margin-right : 450px;
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="<%=request.getContextPath() %>/image/work9.png" class="d-block w-100" height="300">
+                <img src="<%=request.getContextPath() %>/image/개발자메인로고.gif" class="d-block w-100" height="300">
             </div>
             
             <!--https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg-->
@@ -558,7 +560,7 @@ margin-right : 450px;
     <div class="container">
         <form action="#" method="post" novalidate="novalidate">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-8">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <select class="form-control search-slt" id="exampleFormControlSelect1" style="font-size: 12pt">
@@ -614,16 +616,16 @@ margin-right : 450px;
 		  <div class="dropdown-content">
 		    <a href="#">채용공고</a>
 		    <a href="#">기업정보</a>
-		    <a href="#">취업톡톡</a>
+		    <a href="jobtalk.do">취업톡톡</a>
 		    <a href="#">공채달력</a>
-		    <a href="pdslist.do">자료실</a>
+		    <a href="#">자료실</a>
 		    <a href="notice.do">공지사항</a>
 		  </div>
 		</div>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link bgc" href="recuruitlist.do" style="color:#2186eb">채용공고</a>
+      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
@@ -635,52 +637,55 @@ margin-right : 450px;
       <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="pdslist.do" style="color:#2186eb">자료실</a>
+      <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
-    </ul>
     
-   
-   <ul class="navbar-nav navbar-nav2" style="margin-left: 50px;">
-     <li class="nav-item">
-     <!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
-      <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
-      <div style="width: 100%;height: 53px; border-bottom: 1px solid #5e5e5e">
-	<div style="width: 100%;height: 100%; clear: both; display: inline-block;">
-	
-	<div id="_title_image" style="width: 30%; float: left; display: inline;">
-		<img alt="" src="./image/bbslogo1.jpg" style="height: 53px">	
-	</div>
-	
-	<div id="_title_today" style="width: 70%; float: left; text-align: right;">
-		<div style="position: relative; top: 27px">
-			
-			<c:if test="${login.memberid != ''}">
-				<a href="logout.do" title="로그아웃">[로그아웃]</a>&nbsp;&nbsp;&nbsp;
-			</c:if>
-		
-			<c:if test="${login.name != '' }">
-				[${login.name }]님 환영합니다
-			</c:if>
-		
-			<fmt:formatDate value="${nows }" var="now" pattern="yyyy/MM/dd"/>
-			${now}
-		</div>
-	</div>
-	
-	</div>
-</div>
-      
-      
-      
+    <li class="nav-item">
+            <c:choose>
+            	<c:when test="${login.memberid ne null }">
+            		<c:choose>
+            			 <c:when test="${login.auth == 1}">
+             				 <p><b>${login.name }</b>님</p>
+             	 		 </c:when>	 
+             			<%-- <%-- <c:when test="${login ne null }">
+         				<p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>	
+         				</c:when> --%>
+             			<%-- <c:when test="${login.auth == 3}">
+             				<p><b>${login.name }</b>님</p>
+    					</c:when> --%>
+    					<c:otherwise>
+             				<p><b>${login.name }</b>님</p>
+    					</c:otherwise>
+    				</c:choose>			
+            	 </c:when> 
+         	 </c:choose>  
+        <div class="col-md-6">
+           <div class="">
+              <div class="login">
+              	<c:if test="${ empty login }">
+                       <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
+                    <!--    <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
+                </c:if>       
+              </div>
+			</div>
+		</div>	
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
+     	 <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
     </li>
-  
-
+    <li class="nav-item">
+    	<c:if test="${login.auth==3}">
+    		<a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a> 
+		</c:if>
+	</li>
+	<li class="nav-item">
+		<c:if test="${login.memberid ne null}">	
+			<a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
+		</c:if>	
+	</li>
   </ul>
 </nav>
 <br>
@@ -725,8 +730,20 @@ margin-right : 450px;
 <!-- 본문 -->
 <main>
 
+
+
 <div class="wrapper col3" style="margin-top: -150px;">
-  <div id="homecontent">
+
+  <div id="homecontent" style="margin-left: 159px;">
+  
+  <!-- 좌측 광고판 -->
+   <img class="fit-picture" src="ma2.png" style="
+    width: 318px;
+    height: 318px;
+    border-left-width: 30px;
+    margin-left: 20px;">
+ 
+  
     <div class="fl_left">
        <div class="column2">
         <h5>최신공채</h5>
@@ -822,6 +839,49 @@ margin-right : 450px;
     
     <div class="column2" style="padding-left: 40pt;">
           <div class="container">
+          		<div>
+		            <div class="panel panel-primary">
+		                <div class="panel-heading">
+		                    <h3 class="panel-title">
+		                        <span class="glyphicon glyphicon-bookmark"></span> 일하라와 함께하고 싶다면? </h3>
+		                </div>
+		                
+		                <div class="panel-body"> <!-- 컨테이너 바디 -->
+		                   
+		                    <div class="main-login" style="width: 358px;">
+			<!-- 로그인 전 -->
+					<!-- 로그인 전 -->
+					
+					<div class="before">
+						<p class="txt">일하라를 더 안전하고 편리하게 이용하세요.</p>
+						<a href="/member/bodyLogin.do" class="login-worknet">일하라 로그인</a>
+						<div class="link">
+							<a href="/member/idPwdVw/retrieveCustIdPwdSrch.do" class="left">아이디/ 패스워드 찾기</a>
+							<a href="/member/custJoin/retrieveCustJoinTp.do" class="right">회원가입</a>
+						</div>
+						<div class="other-login">
+							<a href="javascript:f_snsLogin('naver');" id="naver_id_login" title="새창열림 : 네이버 아이디로 로그인" class="left"><i class="iconset ico-main-login-naver"></i>로그인</a>
+							<a href="javascript:f_snsLogin('kakao');" id="kakao_id_login" title="새창열림 : 카카오 아이디로 로그인" class="right"><i class="iconset ico-main-login-kakao"></i>로그인</a>
+						</div>
+						<ul class="menu-link">
+							<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">내게 딱! 맞는 일자리 찾기<br><strong>구직신청</strong></a></li>
+							<li><a href="/coMemberSrv/wantedInfoAdmin/wantedAdmin.do">우리 회사 맞춤인재 채용<br><strong>구인신청</strong></a></li>
+							<li><a href="/consltJobCarpa/jobPsyExamNew/jobPsyExamYouthList.do">로그인 없이 간편하게!<br><strong>청소년 심리검사</strong></a></li>
+						</ul>
+					</div>
+					<!-- //로그인 전 -->
+		</div>
+		<!-- 로그인 끝 -->
+		                   
+		                   
+		                </div>
+		            </div>
+		        </div>
+          
+          
+          
+         <!-- 구분선 -->
+          
 		    <div class="row" style="width: 450px;">
 		        <div>
 		            <div class="panel panel-primary">
@@ -838,7 +898,7 @@ margin-right : 450px;
 		                        </div>
 		                        <div>
 		                         <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>취업톡톡</a>
-		                          <a href="pdslist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>자료실</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>자료실</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>마이페이지</a>
 		                        </div>
 		                        <div>
@@ -880,6 +940,12 @@ margin-right : 450px;
     
    
     <br class="clear" />
+    
+   <!-- 메인 우측 광고 -->
+   <img class="fit-picture" src="main-ad.png" style="
+    width: 318px;
+    border-left-width: 30px;
+    margin-left: 20px;">
   </div>
 </div>
 
@@ -1137,7 +1203,7 @@ margin-right : 450px;
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="<%=request.getContextPath() %>/image/coupang.png" alt="card image"></p>
+                                    <p><img class=" img-fluid" src="<%= request.getContextPath() %>/image/coupang.png" alt="card image"></p>
                                     <h3 class="card-title">COUPANG</h3>
                                     <p class="card-text">데이터 분석가 (Data Scientist)</p>
                                     <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"></a>
@@ -1211,7 +1277,7 @@ margin-right : 450px;
 
 <!-- FOOTER -->
 
-<div id="footer" style="width: 1500px;">
+<div id="footer">
       	<div class="top-area">
 		<div class="inner-wrap">
 			<div class="link">

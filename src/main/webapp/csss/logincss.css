@@ -1,0 +1,482 @@
+@charset "utf-8";
+
+.bg-main {background-color:#f1f4f6;}
+
+.main-row {width:1160px; margin:0 auto; padding:20px 0 0 0;}
+.main-row:before,
+.main-row:after {content:''; display:table;}
+.main-row:after {clear:both;}
+
+.main-cell {float:left; width:100%; min-height:240px; margin:0 0 0 20px; background-color:#fff;}
+.main-cell.no-bg {background-color:transparent;}
+.main-cell.cell-1 {width:275px;}
+.main-cell.cell-2 {width:570px;}
+.main-cell:first-child {margin-left:0;}
+.main-cell p {margin:0; padding:0;}
+.main-cell p.tit {padding:0 0 20px 0; font-size:1.4286em; color:#333; font-weight:700; line-height:1.1;}
+.main-cell .tit-combine {overflow:hidden;}
+.main-cell .tit-combine p.tit {float:left; vertical-align:bottom;}
+.main-cell .tit-combine span {float:left; padding:0 0 0 10px; vertical-align:bottom;}
+
+	/* 메인 slider 페이징 공통 디자인 */
+.main-bxslider .bx-pager {display:block; text-align:center;}
+.main-bxslider .bx-pager .bx-pager-item {display:inline-block; margin:0 5px}
+.main-bxslider .bx-pager .bx-pager-item a.bx-pager-link {overflow:hidden; display:block; width:10px; height:10px; margin:0; padding:0; text-indent:-9999px; border-radius:10px; background-color:#e1e1e1;}
+.main-bxslider .bx-pager .bx-pager-item a.bx-pager-link.active {width:20px; background-color:#009fdf;}
+.main-bxslider .bx-controls-direction {display:none;}
+
+/* 메인 아이콘 */
+/* 구인신청, 구직신청 */
+.ico-main-recruit01 {width:34px; height:36px; margin:0; background-image:url('../images/main/ico-main-recruit01.png');}
+.ico-main-recruit02 {width:34px; height:36px; margin:0; background-image:url('../images/main/ico-main-recruit02.png');}
+
+/* 네이버, 카카오 로그인 */
+.ico-main-login-naver {width:22px; height:22px; margin:0; background-image:url('../images/main/ico-main-login-naver.png');}
+.ico-main-login-kakao {width:22px; height:22px; margin:0; background-image:url('../images/main/ico-main-login-kakao.png');}
+
+/* 검색버튼 */
+.btn-main-cont-search {overflow:hidden; display:inline-block; width:20px; height:20px; margin:0; padding:0; border:0; text-indent:-9999px; background:url('../images/main/btn-main-cont-search.png') no-repeat 0 0;}
+.btn-main-email {overflow:hidden; display:inline-block; width:16px; height:13px; margin:0; padding:0; border:0; background:url('../images/main/btn-main-email.png') no-repeat 0 0;}
+
+/* 최신 목록 삭제 버튼 */
+.btn-newest-del {overflow:hidden; display:inline-block; width:16px; height:16px; text-indent:-9999px; border:0; background:url('../images/main/btn-newest-del.png') no-repeat 0 0;}
+
+/* 추천 */
+.recommend {overflow:hidden; display:inline-block; width:32px; height:32px; font-size:0.9286em; text-align:center; line-height:32px; color:#fff; background-color:rgba(255,127,0,0.8);}
+
+/* 더보기 */
+.main-btn-more {overflow:hidden; display:inline-block; width:24px; height:24px; margin:0; padding:0; text-indent:-999px; vertical-align:middle; border:1px solid #e0e0e0; background:#fff url('../images/main/btn-more.png') no-repeat center;}
+.main-btn-more:hover,
+.main-btn-more:focus {text-decoration:none;}
+
+/* =================================================================================================================================================
+	
+	메인 콘텐츠
+
+================================================================================================================================================= */
+/* 20201022 수정 start */
+/* 메인 게시판 */
+.main-board {position:relative; padding:24px; width:570px; height:277px; background:#fff}
+.main-board p.tab-board, .main-board nav.tab-board a {position:relative; display:inline-block; margin:0; padding:0 10px 13px; line-height:20px; font-size:16px; font-weight:bold; color:#333;}
+.main-board p.tab-board:after, .main-board nav.tab-board a.on:after {position:absolute; left:0; bottom:-1px; display:block; width:100%; height:2px; background:#2872af; content:""; z-index:1}
+.main-board nav.tab-board a:hover, .main-board nav.tab-board a:focus {text-decoration:none}
+.main-board .list {padding-top:11px; border-top:1px solid #e0e0e0}
+.main-board .list ul li {position:relative; margin-bottom:3px; height:25px}
+.main-board .list ul li a {display:inline-block; max-width:370px; font-size:14px; color:#666; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.main-board .list ul li a .label {display:inline-block; margin-right:5px; padding:0 3px; height:18px; line-height:18px; background:#f47920; font-size:13px; color:#fff; vertical-align:1px}
+.main-board .list ul li .source {position:absolute; right:0; top:0}
+.main-board .list ul li .source em + em {margin-left:15px}
+.main-board .list ul li.first {margin:9px 0 14px; padding:0 20px; line-height:50px; height:50px; background:#d1e9f8}
+.main-board .list ul li.first:before {display:none}
+.main-board .list ul li.first a {max-width:350px; font-size:16px; font-weight:bold; color:#333}
+.main-board .list ul li.first .source {right:20px; color:#333}
+.main-board .main-btn-more {position:absolute; right:24px; top:24px}
+.main-board.type2 {margin-top:20px; height:203px}
+
+/* 메인 나만의 맞춤 메뉴 */
+.main-my-custom-menu {padding:0 10px; width:275px; height:277px; background:#fff}
+.main-my-custom-menu ul {overflow:hidden; position:relative;}
+.main-my-custom-menu ul li {float:left; padding-top:15px; margin-bottom:15px; width:33.3%; border-top:1px solid #eee}
+.main-my-custom-menu ul li a {display:block; height:108px; text-align:center; text-align:center; line-height:0; border-right:1px solid #eee;}
+.main-my-custom-menu ul li a img {width:52px; height:52px; vertical-align:top;}
+.main-my-custom-menu ul li a span {display:block; margin-top:7px; padding:0; line-height:18px; letter-spacing:-1px;}
+.main-my-custom-menu ul li:nth-child(1) {border-top:0;}
+.main-my-custom-menu ul li:nth-child(2) {border-top:0;}
+.main-my-custom-menu ul li:nth-child(3) {border-top:0;}
+.main-my-custom-menu ul li:nth-child(3n) {width:33.4%;}
+.main-my-custom-menu ul li:nth-child(3n) a {border-right:0;}
+
+/* 마감 임백 공채 */
+.main-openEmp {position:relative; margin-top:20px; padding:24px 24px 0; width:275px; height:203px; background:#fff;}
+.main-openEmp ul {position:relative; height:83px; overflow:hidden}
+.main-openEmp ul li {position:absolute; left:0; top:0; margin:0}
+.main-openEmp ul li a {display:block}
+.main-openEmp ul li a:hover, .main-openEmp ul li a:focus {text-decoration:none}
+.main-openEmp .tit {display:block; padding-left:30px; margin-bottom:14px; line-height:22px; background:url('/static/images/main/ico-alarm.png') 0 0 no-repeat; font-size:16px; font-weight:bold; color:#333}
+.main-openEmp .link {display:block; margin-bottom:5px; line-height:24px}
+.main-openEmp .date .f-org {margin-left:5px; color:#f57e22}
+.main-openEmp .ctrl-wrp {position:relative; margin-top:16px}
+.main-openEmp .ctrl-wrp:after, .main-openEmp .ctrl-wrp .btn-ctrl:after {display:block; clear:both; content:""}
+.main-openEmp .ctrl-wrp .count {float:left; margin-top:2px; font-size:12px} /* 20201030 수정 */
+.main-openEmp .ctrl-wrp .count strong {color:#197a99}
+.main-openEmp .ctrl-wrp .btn-ctrl {float:right; margin-right:-4px; border:1px solid #ccc}
+.main-openEmp .ctrl-wrp .btn-ctrl a , .main-openEmp .ctrl-wrp .btn-ctrl button {float:left; display:block; padding:0; width:22px; height:22px; border:none; background:none}
+.main-openEmp .ctrl-wrp .btn-ctrl .btn-prev {background:url('/static/images/main/btn-relation-prev.png') 0 0 no-repeat}
+.main-openEmp .ctrl-wrp .btn-ctrl .btn-next {background:url('/static/images/main/btn-relation-next.png') 0 0 no-repeat}
+.main-openEmp .ctrl-wrp .btn-ctrl .btn-stop {border-left:1px solid #ccc; border-right:1px solid #ccc; background:url('/static/images/main/btn-relation-pause.png') 0 0 no-repeat}
+.main-openEmp .ctrl-wrp .btn-ctrl .btn-play {border-left:1px solid #ccc; border-right:1px solid #ccc; background:url('/static/images/main/btn-relation-play.png') 0 0 no-repeat}
+/*
+.main-openEmp .bx-controls {position:absolute; right:20px; bottom:20px; width:70px; height:24px; border:1px solid #ccc}
+.main-openEmp .bx-controls .bx-controls-direction, .main-openEmp .bx-controls .bx-controls-auto {font-size:0; line-height:0}
+.main-openEmp .bx-controls .bx-controls-direction .bx-prev {position:absolute; left:0; top:0; display:block; width:22px; height:22px; background:url('/static/images/main/btn-relation-prev.png') no-repeat 0 0}
+.main-openEmp .bx-controls .bx-controls-direction .bx-next {position:absolute; right:0; top:0; display:block; width:22px; height:22px; background:url('/static/images/main/btn-relation-next.png') no-repeat 0 0}
+.main-openEmp .bx-controls .bx-controls-auto .bx-controls-auto-item a {position:absolute; left:23px; top:0; display:block; width:24px; height:22px; border:1px solid #ccc; border-width:0 1px}
+.main-openEmp .bx-controls .bx-controls-auto .bx-controls-auto-item a.bx-start {background:url('/static/images/main/btn-relation-play.png') no-repeat 0 0}
+.main-openEmp .bx-controls .bx-controls-auto .bx-controls-auto-item a.bx-stop {background:url('/static/images/main/btn-relation-pause.png') no-repeat 0 0}
+.main-openEmp .count {display:block; position:absolute; left:24px; bottom:20px}
+.main-openEmp .count strong {color:#197a99}
+*/
+
+/* 메인 로그인 영역 */
+.main-login {float:left; padding:26px 24px 0; margin-left:20px; width:275px; height:500px; background:#fff; color:#666}
+.main-login .before {line-height:14px; font-size:13px}
+.main-login .before .txt {margin:0; text-align:center; letter-spacing:-1px}
+.main-login .before a.login-worknet {display:block; margin:25px 0 0; width:100%; height:46px; line-height:46px; color:#fff; background:#197a99; font-size:14px; font-weight:bold; text-align:center}
+.main-login .before a.login-worknet:hover, .main-login .before a.login-worknet:focus {text-decoration:none;}
+.main-login .before .link {overflow:hidden; padding:24px 0 30px 0;}
+.main-login .before .link a {display:block}
+.main-login .before .link a.left {float:left;}
+.main-login .before .link a.right {float:right;}
+.main-login .before .other-login {overflow:hidden;}
+.main-login .before .other-login a {display:block; width:107px; height:36px; margin:0; padding:0; color:#333; font-weight:700; line-height:34px; text-align:center; border:1px solid #ccc;}
+.main-login .before .other-login a:hover,
+.main-login .before .other-login a:focus {text-decoration:none;}
+.main-login .before .other-login a i {margin:-2px 6px 0 0;}
+.main-login .before .other-login a.left {float:left;}
+.main-login .before .other-login a.right {float:right;}
+.main-login .before .menu-link {margin-top:24px}
+.main-login .before .menu-link li {height:87px; border-top:1px solid #eee}
+.main-login .before .menu-link li:nth-child(1) {background:url('/static/images/main/login-menu-link01.png') right 11px no-repeat}
+.main-login .before .menu-link li:nth-child(2) {background:url('/static/images/main/login-menu-link02.png') right 11px no-repeat}
+.main-login .before .menu-link li:nth-child(3) {background:url('/static/images/main/login-menu-link03.png') right 11px no-repeat}
+.main-login .before .menu-link li a {display:block; padding:17px 0 0 10px; line-height:23px; color:#666}
+.main-login .before .menu-link li a:hover, .main-login .before .menu-link li a:focus {text-decoration:none}
+.main-login .before .menu-link li a strong {font-size:18px; color:#333}
+
+.main-login.after {position:relative; padding:20px 24px 0 24px; height:240px}
+.main-login .count {display:inline-block;  height:20px; margin:0; padding:0 10px; line-height:20px; font-size:12px; border-radius:10px; color:#fff; background-color:#ab6152; font-family:'Futura', 'Malgun Gothic', '맑은 고딕', Dotum, '돋움', sans-serif;}
+.main-login .after .top {background:url('/static/images/main/bg-main-login-person.png') no-repeat 0 2px;}
+.main-login .after .top.naver {background:url('/static/images/main/bg-main-login-naver.png') no-repeat 0 2px;} /* 20201028 추가 */
+.main-login .after .top.kakao {background:url('/static/images/main/bg-main-login-kakao.png') no-repeat 0 2px;} /* 20201028 추가 */
+.main-login .after .top .bg {padding:0 0 20px 90px}
+.main-login .after .top .bg .txt {margin:0; line-height:20px; font-size:14px; font-weight:bold; color:#666}
+.main-login .after .top .bg a {display:inline-block; vertical-align:middle;}
+.main-login .after .top .bg a:hover .name, .main-login .after .personal .bg .top .bg a:focus .name {text-decoration:underline}
+.main-login .after .top .bg .name {margin:0; font-size:16px; color:#333}
+.main-login .after .top .bg .name strong {display:inline-block;overflow:hidden;max-width:117px;white-space:nowrap;text-overflow:ellipsis;vertical-align:bottom; color:#236daa;}
+.main-login .after .top .bg a.mypge {display:inline-block; margin-top:2px; padding:0 11px; height:24px; line-height:22px; border:1px solid #ccc; border-radius:2px; font-size:13px; font-weight:bold; color:#333}
+.main-login .after .top .bg a.mypge:hover, .main-login .after.personal .top a.mypge:focus {text-decoration:none}
+.main-login .after .top .btn-grp {padding:0 20px; height:35px; border-top:1px solid #eee; border-bottom:1px solid #eee; overflow:hidden}
+.main-login .after .top .btn-grp a, .main-login .after .top .btn-grp button {display:block; padding:0; line-height:33px; background:none; border:none; font-size:14px; font-weight:bold; color:#666; vertical-align:middle}
+.main-login .after .top .btn-grp a:hover, .main-login .after .top .btn-grp a:focus {text-decoration:none}
+.main-login .after .btn-func a {display:block; margin-top:10px; width:100%; height:37px; line-height:37px; border:1px solid #e4e8ec; background:#f0f3f6; font-size:14px; font-weight:bold; color:#666; text-align:center}
+.main-login .after .btn-func a:hover, .main-login .after.personal .btn-func a:focus {text-decoration:none}
+.main-login .after .my-info {margin-top:8px; overflow:hidden}
+.main-login .after .my-info li {position:relative; float:left; margin-top:9px; width:50%; text-align:center}
+.main-login .after .my-info.col3 li {width:33.333%}
+.main-login .after .my-info li.bar:before {position:absolute; left:0; top:5px; display:block; width:1px; height:46px; background:#eee; content:""}
+.main-login .after .my-info li a {position:relative; display:block; padding-top:28px; line-height:28px; color:#666}
+.main-login .after .my-info li strong {position:absolute; left:0; top:0; display:block; width:100%; font-family:'Futura'; font-weight:700; font-size:28px; color:#41506e}
+.main-login .after .my-info li strong.blue {color:#197a99}
+.main-login .after .my-info li strong.gray {color:#999}
+.main-login .after .my-info.ty2 {margin:13px 0 28px}
+.main-login .after .my-info.ty2 li {margin-top:12px}
+.main-login .after .my-info.ty2 li.bar:before {height:60px}
+.main-login .after .my-info.ty2 li a {padding-top:39px}
+.main-login .after .my-info.ty2 li strong {top:12px}
+
+.main-login .after .my-info2 {margin-top:15px; border-top:1px solid #e0e0e0; border-right:1px solid #e0e0e0; overflow:hidden}
+.main-login .after .my-info2 li {float:left; width:50%; height:36px; border-left:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; text-align:center}
+.main-login .after .my-info2 li a {display:block; line-height:35px; font-weight:bold; color:#666}
+
+.main-login .after.company .bg {background:url('/static/images/main/bg-main-login-company.png') no-repeat 0 2px;}
+.main-login .after .my-status .tit {display:block; margin-top:14px; color:#333}
+.main-login .after .my-status .my-info li {margin-top:0}
+.main-login .after .my-status .status-wrp {overflow:hidden}
+.main-login .after .my-status .status-wrp .my-info {float:left; margin-top:12px; width:120px}
+.main-login .after .my-status .status-wrp .status {float:right; margin:4px 0 0; padding-right:10px}
+.main-login .after .my-status .status-wrp .status a {position:relative; display:block; padding-right:30px; line-height:24px; color:#666}
+.main-login .after .my-status .status-wrp .status a .num {position:absolute; right:0; top:0; display:inline-block; font-family:'Futura'; font-weight:700; font-size:18px; color:#999}
+
+/* 구직신청, 구인신청*/
+.main-recruit {height:110px; padding:15px; background-color:#fff;}
+.main-recruit a {display:block; float:left; width:50%; height:100%; padding:5px 0 0 0; text-align:center; border-left:1px solid #eee;}
+.main-recruit a:hover,
+.main-recruit a:focus {}
+.main-recruit a:first-child {border-left:0;}
+.main-recruit a i {display:block; margin:0 auto;}
+.main-recruit a strong {display:block; margin:15px 0 0 0;}
+/* 20201022 수정 end */
+
+/* 고용정보 - 개인회원이 로그인 했을 때만 */
+.main-recommend-info {position:relative; margin:0; padding:20px 24px; border:1px solid #aecee9; background-color:#fff;}
+.main-recommend-info p.tit {margin:0; padding:0; line-height:22px;}
+.main-recommend-info p.tit em {display:inline-block; margin:0; padding:0; vertical-align:middle; color:#2aa5cc; font-size:1.4286em; font-weight:700; font-family:'Futura', 'Malgun Gothic', '맑은 고딕', Dotum, '돋움', sans-serif;}
+.main-recommend-info p.tit strong {display:inline-block; margin:0 0 0 6px; padding:0; color:#333; font-size:1.4286em; vertical-align:middle;}
+.main-recommend-info p.tit span {display:inline-block; margin:0 0 0 10px; padding:0; vertical-align:bottom;}
+.main-recommend-info .txt-notice {position:absolute; right:24px; top:20px; display:inline-block; height:32px; margin:0; padding:0 16px; color:#a25c4e; line-height:30px; border:1px solid #ffa633; border-radius:16px;}
+.main-recommend-info .link {display:table; width:100%; table-layout:fixed; margin-top:30px;}
+.main-recommend-info .link p {display:table-cell; padding:0;}
+.main-recommend-info .link p span {display:inline-block; padding:0 15px 0 0; color:#333; line-height:1.1; vertical-align:baseline;}
+.main-recommend-info .link p a {display:inline-block; line-height:1.1; vertical-align:baseline; color:#00789e; text-decoration:underline; font-size:1.4286em; font-weight:700; font-family:'Futura', 'Malgun Gothic', '맑은 고딕', Dotum, '돋움', sans-serif;}
+
+/* 이동 가능 section 공통 */
+.main-move-section {}
+.main-move-section .section {margin-top:40px;}
+.main-move-section .section .main-row {padding:0;}
+.main-move-section .section .tit-area {overflow:hidden; width:1160px; margin:0 auto; padding:0 0 15px 0;}
+.main-move-section .section .tit-area:before,
+.main-move-section .section .tit-area:after {content:''; display:table;}
+.main-move-section .section .tit-area:after {clear:both;}
+.main-move-section .section .tit-area h2.tit {float:left; margin:0; padding:0 15px 0 0; font-size:1.714em; font-weight:700; line-height:36px;}
+.main-move-section .section .tit-area a.bg-sub-home-go {overflow:hidden; display:block; float:left; width:32px; height:32px; margin:3px 0 0 0; padding:0; vertical-align:middle; text-indent:-9999px; background:url('../images/main/btn-sub-home.png') no-repeat 0 0;}
+.main-move-section .section .tit-area .page-link {float:left; margin:0; padding:0 0 0 30px;}
+.main-move-section .section .tit-area .page-link a {display:block; position:relative; float:left; margin:0 0 0 14px; padding:0 0 0 15px; font-size:1.1429em; line-height:36px;}
+.main-move-section .section .tit-area .page-link a:hover,
+.main-move-section .section .tit-area .page-link a:focus {color:#1f64a0;}
+.main-move-section .section .tit-area .page-link a:before {content:''; display:block; position: absolute; left:0; top:50%; width:1px; height:15px; margin:-8px 0 0 0; background-color:#ccc;}
+.main-move-section .section .tit-area .page-link a:first-child {margin:0; padding:0;}
+.main-move-section .section .tit-area .page-link a:first-child:before {display:none;} 
+.main-move-section .section .tit-area .section-move-control {overflow:hidden; float:right; height:36px; margin:0; padding:0;}
+.main-move-section .section .tit-area .section-move-control button {overflow:hidden; display:block; float:left; width:36px; height:36px; margin:0; padding:0; text-indent:-9999px; border:1px solid #ccc; background-color:transparent; background-repeat:no-repeat; background-position:0 0;}
+.main-move-section .section .tit-area .section-move-control .btn-move-up {background-image:url('../images/main/btn-move-up.png');}
+.main-move-section .section .tit-area .section-move-control .btn-move-down {width:35px; border-left:0; background-image:url('../images/main/btn-move-down.png');}
+
+/* 채용 정보 section */
+.main-careers-cont {background-color:#fff;}
+.main-careers-cont p {margin:0; padding:0;}
+.main-careers-cont ul {overflow:hidden; border:1px solid #e6e6e6; border-width:1px 0 0 1px;}
+.main-careers-cont ul li {float:left; width:25%; border:1px solid #e6e6e6; border-width:0 1px 1px 0;}
+.main-careers-cont ul li a {display:block; width:100%; padding:7px 14px 0 14px;}
+.main-careers-cont ul li a .img {display:table; width:100%; table-layout:fixed;}
+.main-careers-cont ul li a .img span {display:table-cell; height:90px; padding:0; line-height:0; text-align:center; vertical-align:middle;}
+.main-careers-cont ul li a .img span img {max-width:100% !important; max-height:90px !important;}
+.main-careers-cont ul li a .info {padding:10px 0 0 0;}
+.main-careers-cont ul li a .info .name {overflow:hidden; width:100%; white-space:nowrap; text-overflow:ellipsis; color:#333; font-weight:700;}
+.main-careers-cont ul li a .info .cont {overflow:hidden; display:inline-block; height:50px; margin-top:10px; line-height:1.8; word-wrap:break-word; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;}
+.main-careers-cont ul li .etc {overflow:hidden; position:relative; margin-top:20px; padding:0 34px 17px 14px; }
+.main-careers-cont ul li .etc p {overflow:hidden; width:100%; white-space:nowrap; text-overflow:ellipsis;}
+.main-careers-cont ul li .etc .btn-bookmark {position:absolute; right:14px; top:6px; z-index:2;}
+
+/* 20201204 수정 start */
+/* 직업진로 section(20201221재수정) */
+.main-job-cont .main-cell {padding:20px 24px 0; height:235px; min-height:auto}
+.main-job-cont .main-cell .tit {display:block; padding:0; line-height:1.8rem; font-size:18px; color:#333}
+.main-job-cont .main-cell .tit.mt23 {margin-top:23px}
+.main-job-cont .box-link {margin-top:15px; overflow:hidden}
+.main-job-cont .box-link a {float:left; display:inline-block; width:110px; height:40px; line-height:40px; background:#e4eff2; text-align:center; color:#333; font-weight:bold} /* 20210202 수정 */
+.main-job-cont .box-link a + a {float:right}
+.main-job-cont .box-link a:hover, .main-job-cont .box-link a:focus {text-decoration:none}
+/* 20210202 수정 start(기존영역 제거하고 해당부분으로 교체) */
+.main-job-cont .career-conslt {background:#fff url('/static/images/main/main-job-imgCnslt.png') right 24px bottom no-repeat}
+.main-job-cont .career-conslt > p {line-height:22px}
+.main-job-cont .career-conslt .box-link {margin-top:13px}
+.main-job-cont .career-conslt .box-link > a {float:none; display:block; margin-bottom:15px}
+/* 20210202 수정 end */
+.main-job-cont .img-conslt {background:#fff url('/static/images/main/main-job-imgCnslt.png') right 24px bottom no-repeat}
+.main-job-cont .img-conslt .list {margin-top:20px}
+.main-job-cont .img-conslt .list > a {display:block}
+.main-job-cont .img-conslt .list > a:hover, .main-job-cont .img-conslt .list > a:focus {text-decoration:none}
+.main-job-cont .img-conslt .list span {position:relative; display:block; margin-top:14px; padding-left:14px; line-height:25px; color:#666; font-size:16px}
+.main-job-cont .img-conslt .list span:before {position:absolute; left:2px; top:10px; display:block; width:4px; height:4px; background:#cfd9dc; border-radius:50%; content:""}
+.main-job-cont .img-conslt .list span:after {position:absolute; left:0; top:8px; display:block; width:8px; height:8px; border:1px solid #cfd9dc; border-radius:50%; box-sizing:border-box; content:""}
+.main-job-cont .interview {float:left; margin-right:15px; width:270px;}
+.main-job-cont .interview ul, .main-job-cont .movie ul {margin-top:25px}
+.main-job-cont .interview ul li, .main-job-cont .movie ul li {padding-left:36px; line-height:21px; font-size:16px; background:url('/static/images/main/ico-main-job-interview.png') 0 0 no-repeat}
+.main-job-cont .interview ul li + li {margin-top:37px}
+.main-job-cont .interview ul li a, .main-job-cont .movie ul li a {display:block; max-width:100%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.main-job-cont .movie {float:left; width:237px}
+.main-job-cont .movie ul li {line-height:22px; background:url('/static/images/main/ico-main-job-movie.png') 0 0 no-repeat}
+.main-job-cont .movie ul li + li {margin-top:35px}
+.main-job-cont .emp-guide {height:237px; overflow:hidden}
+.main-job-cont .emp-guide > div {float:left}
+.main-job-cont .emp-guide ul {margin-top:11px}
+.main-job-cont .emp-guide ul li {position:relative; margin-top:15px; padding-left:15px; font-size:16px}
+.main-job-cont .emp-guide ul li:first-child {margin-top:9px}
+.main-job-cont .emp-guide ul li:before {position:absolute; left:2px; top:10px; display:block; width:4px; height:4px; background:#cfd9dc; border-radius:50%; content:""}
+.main-job-cont .emp-guide ul li:after {position:absolute; left:0; top:8px; display:block; width:8px; height:8px; border:1px solid #cfd9dc; border-radius:50%; box-sizing:border-box; content:""}
+.main-job-cont .emp-guide ul li a {color:#666}
+.main-job-cont .job-trend {height:237px}
+.main-job-cont .job-trend ul {margin-top:15px; overflow:hidden}
+.main-job-cont .job-trend ul li {float:left; width:160px}
+.main-job-cont .job-trend ul li + li {margin-left:21px}
+.main-job-cont .job-trend ul li a {display:block; color:#666}
+.main-job-cont .job-trend ul li a img {display:block; margin-bottom:8px; width:160px; height:120px}
+
+/* 20201204 제거 
+ 직업심리검사, 직업 진로찾기 링크
+.main-job-cont .main-cell {min-height:260px; padding:24px 24px 0 24px;}
+.main-job-cont .main-cell .img-link {overflow:hidden; padding-top:25px;}
+.main-job-cont .main-cell .img-link a {display:block; position:relative; float:left; width:50%; text-align:center; line-height:1.1;}
+.main-job-cont .main-cell .img-link a .recommend {position:absolute; left:0; top:0; z-index:2; width:36px; height:36px; line-height:36px; border-radius:36px;}
+.main-job-cont .main-cell .img-link a .txt {display:block; padding:10px 0 0 0;}
+.main-job-cont .main-cell .img-link.col4 a {width:25%}취업가이드 (20200414 추가)
+
+
+직업진로 - 직업인 인터뷰
+.main-job-cont .main-cell .officer-interview {position:relative; overflow:hidden; width:227px; height:155px;}
+.main-job-cont .main-cell .officer-interview .cont {display:block; position:relative; width:100%; text-align:center;}
+.main-job-cont .main-cell .officer-interview .cont .recommend {position:absolute; left:0; top:0; z-index:2;}
+.main-job-cont .main-cell .officer-interview .cont .img {width:100%; line-height:0;}
+.main-job-cont .main-cell .officer-interview .cont .img img {width:227px; height:95px;}
+.main-job-cont .main-cell .officer-interview .cont .name {overflow:hidden; display:block; width:100%; padding-top:10px; white-space:nowrap; text-overflow:ellipsis; color:#333; font-weight:700;}
+.main-job-cont .main-cell .officer-interview .cont .tit {overflow:hidden; display:block; width:100%; padding-top:5px; white-space:nowrap; text-overflow:ellipsis;}
+
+진로상담
+.main-job-counseling {position:relative; display:block; width:100%; height:170px;}
+.main-job-counseling .img {position:absolute; right:0; bottom:0; margin:0; padding:0; line-height:0;}
+
+고용뉴스, job 매거진, 공모전
+.board-type-horizontal {}
+.board-type-horizontal .tab-list {margin:0;}
+.board-type-horizontal .tab-list ul {height:36px;}
+.board-type-horizontal .tab-list ul li {min-width:0 !important; width:140px !important;}
+.board-type-horizontal .tab-list ul li.curr {}
+.board-type-horizontal .tab-cont {position:relative;}
+.board-type-horizontal .tab-cont .main-btn-more {position:absolute; right:0; top:-36px;}
+
+.board-type-horizontal .dot-list {padding-top:15px;}
+.board-type-horizontal .dot-list li {position:relative; margin-top:10px; padding-right:80px;}
+.board-type-horizontal .dot-list > li:before {top:7px;}
+.board-type-horizontal .dot-list li a {overflow:hidden; display:inline-block; max-width:100%; white-space:nowrap; text-overflow:ellipsis; line-height:1.1;}
+.board-type-horizontal .dot-list li strong {color:#236daa;}
+.board-type-horizontal .dot-list li .date {position:absolute; right:0; top:0; line-height:1.1;}
+.board-type-horizontal .dot-list li .d-day {position:absolute; right:0; top:0; line-height:1.1; color:#a25c4e; font-weight:700;}
+
+
+그림으로 보는 취업동향
+.main-job-trend {overflow:hidden; width:227px;}
+.main-job-trend li {position:relative; overflow:hidden; width:227px ; height:140px;}
+.main-job-trend a {display:block; position:relative;}
+.main-job-trend a .recommend {position:absolute; left:0; top:0; z-index:2;}
+.main-job-trend a .img {line-height:0;}
+.main-job-trend a .img img {width:227px; height:110px;}
+.main-job-trend a .tit {overflow:hidden; display:block; width:100%; padding:3px; white-space:nowrap; text-overflow:ellipsis;}
+.main-job-trend .bx-controls {padding-top:9px;}
+
+직업정보 동영상
+.main-job-move {}
+.main-job-move a {position:relative; display:block;}
+.main-job-move a .recommend {position:absolute; left:0; top:0; z-index:2;}
+.main-job-move a .img {position:relative; line-height:0;}
+.main-job-move a .img:before {content:''; display:block; position:absolute; left:50%; top:42px; width:36px; height:26px; margin:0 0 0 -18px; background:url('../images/main/bg-main-job-move-play.png') no-repeat 0 0; border-radius:4px; box-shadow:1px 1px 5px 0 rgba(0,0,0,0.7);}
+.main-job-move a .img img {width:227px; height:110px;}
+.main-job-move a .tit {overflow:hidden; display:block; width:100%; padding:3px; white-space:nowrap; text-overflow:ellipsis;}
+.main-job-move .bx-controls {padding-top:9px;}
+ */
+
+/* 고용,복지 정책 */
+.main-policy {height:354px}
+.main-policy.main-cell .tit {display:block; padding:0; font-size:18px; line-height:1.8rem; color:#333}
+.main-policy .policy {margin-top:25px; overflow:hidden}
+.main-policy .policy li {position:relative; float:left; width:130.5px; text-align:center}
+.main-policy .policy li a {display:block; padding-top:40px; font-size:14px; color:#666} /* 20201215 재수정 */
+.main-policy .main-emp-policy {margin:0; padding:20px 24px 12px; overflow:hidden}
+.main-policy .main-emp-policy .policy {float:left}
+.main-policy .main-emp-policy .policy li:nth-child(1) a {background:url('/static/images/main/ico-main-empPolicy01.png') center 0 no-repeat}
+.main-policy .main-emp-policy .policy li:nth-child(2) a {background:url('/static/images/main/ico-main-empPolicy02.png') center 0 no-repeat}
+.main-policy .main-emp-policy .emp-policy-slide {float:right; margin-top:-23px; width:250px; overflow:hidden}
+.main-policy .main-emp-policy .emp-policy-slide ul li {float:left}
+.main-policy .main-emp-policy .emp-policy-slide ul li a {display:block; width:250px; height:154px; background:#d7f1ff}
+.main-policy .main-emp-policy .bx-pager .bx-pager-item {margin:0 1px}
+.main-policy .emp-policy-slide .bx-pager .bx-pager-item a.bx-pager-link {background-color:#fff; border:1px solid #6d6d6d}
+.main-policy .emp-policy-slide .bx-pager .bx-pager-item a.bx-pager-link.active {background-color:#8890a0; border:none}
+.main-policy .main-welfare {padding:0 24px}
+.main-policy .main-welfare .policy li:nth-child(1) a {background:url('/static/images/main/ico-main-welfare01.png') center 0 no-repeat}
+.main-policy .main-welfare .policy li:nth-child(2) a {background:url('/static/images/main/ico-main-welfare01.png') center 0 no-repeat}
+.main-policy .main-welfare .policy li:nth-child(3) a {background:url('/static/images/main/ico-main-welfare07.png') center 0 no-repeat}
+.main-policy .main-welfare .policy li:nth-child(4) a {background:url('/static/images/main/ico-main-welfare08.png') center 0 no-repeat}
+
+/* 취업지원프로그램(20201215재수정) */
+.main-support-program {padding:20px 24px 0; height:354px}
+.main-support-program .program {margin-top:15px; height:265px}
+.main-support-program .program:after {display:block; clear:both; content:""}
+.main-support-program .program .scroll {float:left; width:199px; height:265px; border-top:1px solid #f1f4f6; border-bottom:1px solid #f1f4f6; overflow-y:scroll}
+.main-support-program .program .scroll li {position:relative; height:40px; border:1px solid #f1f4f6; border-top:none}
+.main-support-program .program .scroll li.on {background:#f3f6fb; border:1px solid #41506e; border-top:none}
+.main-support-program .program .scroll li.on:before {position:absolute; left:-1px; top:0; width:3px; height:40px; background:#41506e; content:""}
+.main-support-program .program .scroll li.on:after {position:absolute; left:0; top:0; display:block; width:100%; height:1px; background:#41506e; content:""}
+.main-support-program .program .scroll li a {display:block; padding-left:12px; max-width:100%; line-height:39px; color:#666; letter-spacing:-0.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.main-support-program .program .scroll li a:hover, .main-support-program .program .scroll li a:focus {text-decoration:none}
+.main-support-program .program .cont-wrp {float:left; width:323px; height:265px; border:1px solid #f1f4f6; border-left:none}
+.main-support-program .program .cont-wrp .dtl {position:relative; padding:13px 15px 0; line-height:20px; height:100%; font-size:13px; color:#666}
+.main-support-program .program .cont-wrp .dtl .tit {margin-bottom:8px; font-size:16px; color:#666}
+.main-support-program .program .cont-wrp .dtl img {position:absolute; right:20px; top:42px; width:65px; height:65px}
+.main-support-program .program .cont-wrp .dtl .list {margin-top:12px}
+.main-support-program .program .cont-wrp .dtl .list li {position:relative; padding-left:68px}
+.main-support-program .program .cont-wrp .dtl .list li:before {position:absolute; left:-4px; top:0; display:block; content:"•"}
+.main-support-program .program .cont-wrp .dtl .list li > strong {position:absolute; left:8px; top:0}
+.main-support-program .program .cont-wrp .dtl .link {margin-top:10px; text-align:center}
+.main-support-program .program .cont-wrp .dtl .link a {position:absolute; left:50%; bottom:19px; display:inline-block; margin-left:-33px; width:66px; height:20px; line-height:18px; border:1px solid #f1f4f6; border-radius:3px; color:#333; text-align:center}
+.main-support-program .program .cont-wrp .dtl .link a:hover, .main-support-program .program .cont-wrp .dtl .link a:focus {text-decoration:none}
+/* 20201204 수정 end */
+
+
+/* 20201204 제거
+고용정책
+.main-emp-policy {margin:0; padding:24px;}
+.main-emp-policy .bg {margin:0; padding:13px 0; text-align:center; background-color:#f7f7f7;}
+.main-emp-policy .bg .select-box {margin:0 2px;}
+.main-emp-policy .bg .btn-main-cont-search {margin-left:5px;}
+.main-emp-policy .btn-chk {margin:0; padding:20px 0 0 0; text-align:center;}
+.main-emp-policy .btn-chk .button {color:#236daa;}
+
+복지정책
+.main-welfare {margin:0 24px; padding:20px 0 24px 0; border-top:1px solid #e6e6e6;}
+.main-welfare ul {overflow:hidden;}
+.main-welfare ul li {float:left; width:25%; height:36px;}
+.main-welfare ul li a {display:block; padding:0; line-height:36px; color:#333; font-weight:700;}
+.main-welfare ul li a i {display:block; float:left; margin:0 9px 0 0;}
+.main-welfare ul li.line2 a {line-height:1.2;}
+.main-welfare ul li:nth-child(4n) ~ li {margin-top:5px;}
+.ico-main-welfare01 {width:36px; height:36px; background-image:url('../images/main/ico-main-welfare01.png');}
+.ico-main-welfare02 {width:36px; height:36px; background-image:url('../images/main/ico-main-welfare02.png');}
+.ico-main-welfare03 {width:36px; height:36px; background-image:url('../images/main/ico-main-welfare03.png');}
+.ico-main-welfare04 {width:36px; height:36px; background-image:url('../images/main/ico-main-welfare04.png');}
+.ico-main-welfare05 {width:36px; height:36px; background-image:url('../images/main/ico-main-welfare05.png');}
+.ico-main-welfare06 {width:36px; height:36px; background-image:url('../images/main/ico-main-welfare06.png');}
+.ico-main-welfare07 {width:36px; height:36px; background-image:url('../images/main/ico-main-welfare07.png');}
+.ico-main-welfare08 {width:36px; height:36px; background-image:url('../images/main/ico-main-welfare08.png');}
+
+취업지원프로그램
+.main-support-program {padding:24px;}
+.main-support-program .link {overflow:hidden; padding:10px; background-color:#f7f7f7;}
+.main-support-program .link a {display:block; position:relative; float:left; width:33.3%; text-align:center; line-height:36px;}
+.main-support-program .link a:before {content:''; display:block; position:absolute; left:0; top:0; width:1px; height:36px; background-color:#e6e6e6;}
+.main-support-program .link a:first-child:before {display:none;}
+.main-support-program .program-list {width:100%; margin-top:20px;}
+.main-support-program .program-list ul {overflow:hidden; border:1px solid #e6e6e6; border-width:1px 0 0 1px;}
+.main-support-program .program-list ul li {position:relative; float:left; width:33.3%; height:60px; padding:0; border:1px solid #e6e6e6; border-width:0 1px 1px 0; text-align:center;}
+.main-support-program .program-list ul li:nth-child(3n) {width:33.4%;}
+.main-support-program .program-list ul li a {display:block; width:100%; height:100%; padding:0 20px; padding-top:10px; line-height:1.5; color:#006486;}
+.main-support-program .program-list ul li.line1 a {padding-top:20px;}
+.main-support-program .program-list ul li .recommend {position:absolute; left:0; top:0; z-index:2;} 
+.main-support-program .program-list .bx-controls {padding-top:8px;}
+ */
+ 
+/* 훈련정보 */
+.main-training {}
+.main-training .main-cell {min-height:260px; padding:20px 24px;}
+.main-training .main-cell a {display:block; position:relative; width:100%; height:178px;}
+.main-training .main-cell .img {position:absolute; right:0; bottom:0;line-height:0;}
+
+/* 연관 배너 */
+.brn-main-relation { width:1160px; margin:60px auto 0 auto; padding:11px 0 11px 10px; background-color:#fff;}
+.brn-main-relation .relation-slider {position:relative;}
+.brn-main-relation .relation-slider .bx-viewport {}
+.brn-main-relation .relation-slider .bx-viewport a {display:table; table-layout:fixed; width:100%;}
+.brn-main-relation .relation-slider .bx-viewport a span {display:table-cell; height:48px; text-align:center; vertical-align:middle; line-height:0;}
+.brn-main-relation .relation-slider .bx-viewport a span img {max-width:140px !important; height:38px !important;}
+.brn-main-relation .relation-slider .bx-controls {position:absolute; right:-90px; top:0; width:70px; height:24px; border:1px solid #ccc;}
+.brn-main-relation .relation-slider .bx-controls .bx-controls-direction {font-size:0; line-height:0;}
+.brn-main-relation .relation-slider .bx-controls .bx-controls-direction .bx-prev {position:absolute; left:0; top:0; display:block; width:22px; height:22px; background:url('../images/main/btn-relation-prev.png') no-repeat 0 0;}
+.brn-main-relation .relation-slider .bx-controls .bx-controls-direction .bx-next {position:absolute; right:0; top:0; display:block; width:22px; height:22px; background:url('../images/main/btn-relation-next.png') no-repeat 0 0;}
+.brn-main-relation .relation-slider .bx-controls .bx-controls-auto {font-size:0; line-height:0;}
+.brn-main-relation .relation-slider .bx-controls .bx-controls-auto .bx-controls-auto-item a {position:absolute; left:23px; top:0; display:block; width:24px; height:22px; border:1px solid #ccc; border-width:0 1px;}
+.brn-main-relation .relation-slider .bx-controls .bx-controls-auto .bx-controls-auto-item a.bx-stop {background:url('../images/main/btn-relation-pause.png') no-repeat 0 0;}
+.brn-main-relation .relation-slider .bx-controls .bx-controls-auto .bx-controls-auto-item a.bx-start {background:url('../images/main/btn-relation-play.png') no-repeat 0 0;}
+.brn-main-relation .relation-slider .btn-relation-more {display:block; position:absolute; right:20px; top:24px; width:70px; height:24px; line-height:23px; margin:0; padding:0; text-align:center; border:1px solid #ccc; border-width:0 1px 1px 1px;}
+
+/* 20201124 수정 */
+.brn-main-relation .ctrl-wrp .btn-ctrl {position:absolute; right:20px; top:0; width:68px; border:1px solid #ccc}
+.brn-main-relation .ctrl-wrp .btn-ctrl a , .brn-main-relation .ctrl-wrp .btn-ctrl button {float:left; display:block; padding:0; width:22px; height:22px; border:none; background:none}
+.brn-main-relation .ctrl-wrp .btn-ctrl .btn-prev {background:url('/static/images/main/btn-relation-prev.png') 0 0 no-repeat}
+.brn-main-relation .ctrl-wrp .btn-ctrl .btn-next {background:url('/static/images/main/btn-relation-next.png') 0 0 no-repeat}
+.brn-main-relation .ctrl-wrp .btn-ctrl .btn-stop {border-left:1px solid #ccc; border-right:1px solid #ccc; background:url('/static/images/main/btn-relation-pause.png') 0 0 no-repeat}
+.brn-main-relation .ctrl-wrp .btn-ctrl .btn-play {border-left:1px solid #ccc; border-right:1px solid #ccc; background:url('/static/images/main/btn-relation-play.png') 0 0 no-repeat}
+.brn-main-relation .relation-slider .btn-relation-more {display:block; position:absolute; right:20px; top:24px; width:68px; height:24px; line-height:23px; margin:0; padding:0; text-align:center; border:1px solid #ccc; border-width:0 1px 1px 1px;}
+.ico-relation-more  {width:12px; height:12px; margin:-2px 0 0 0; background:url('../images/main/ico-relation-more.png') no-repeat 0 0;}
+.ico-relation-more  {width:12px; height:12px; margin:-2px 0 0 0; background:url('../images/main/ico-relation-more.png') no-repeat 0 0;}
+
+
+
