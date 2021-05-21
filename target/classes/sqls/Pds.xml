@@ -12,12 +12,26 @@
 	ORDER BY PDSSEQ DESC
 	</select>
 
+	<insert id="uploadPds" parameterType="bit.com.a.dto.PdsDto">
+	INSERT INTO PDS(PDSSEQ, MEMBERID, TITLE, CONTENT, FILENAME, NEWFILENAME, READCOUNT, DOWNCOUNT, REGDATE)
+	VALUES(PDS_SEQ.NEXTVAL, #{memberid}, #{title}, #{content}, #{filename}, #{newfilename}, 0, 0, SYSDATE)
+	</insert>
 
+ 	<!-- <select id="getPds" parameterType="java.lang.Integer"
+	resultType="bit.com.a.dto.PdsDto">
+	SELECT PDSSEQ, MEMBERID, TITLE, CONTENT, FILENAME, NEWFILENAME, 
+		READCOUNT, DOWNCOUNT, REGDATE
+	FROM PDS
+	WHERE PDSSEQ=#{pdsseq}
+	</select> -->
 
+<!-- 	<update id="readcount" parameterType="java.lang.Integer">
+	UPDATE PDS
+	SET READCOUNT=READCOUNT+1
+	WHERE PDSSEQ=#{pdsseq}
+	</update> -->
 
-
-
-
+	 
  
 
 

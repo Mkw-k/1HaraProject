@@ -21,7 +21,14 @@
   		<param-value>
   			/WEB-INF/spring/servlet-context.xml
   			/WEB-INF/spring/aop-context.xml
+<<<<<<< HEAD
   			 /WEB-INF/spring/file-context.xml
+=======
+
+  			 /WEB-INF/spring/file-context.xml
+  			
+
+>>>>>>> ce015500a61966ccfa38b750aea07fa7ba634d64
   		</param-value>  	
   	</init-param>
   	
