@@ -140,7 +140,7 @@ public class PdsController {
 								@RequestParam(value = "fileload", required = false)MultipartFile fileload) {
 		
 		System.out.println("fileload" + fileload);
-		
+		System.out.println(pdsdto.toString());
 		pdsdto.setFilename(fileload.getOriginalFilename());
 		
 		// 파일 경로

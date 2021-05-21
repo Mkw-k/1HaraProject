@@ -5,7 +5,7 @@
 
 <form name="frmForm" id="_frmForm" action="pdsupdateAf.do"
 	method="post" enctype="multipart/form-data">
-<input type="hidden" name="seq" value="${pds.pdsseq}">
+<input type="hidden" name="pdsseq" value="${pds.pdsseq}">
 
 <table class="list_table" style="width: 85%">
 <colgroup>
@@ -28,8 +28,8 @@
 	<th>파일 업로드</th>
 	<td style="text-align: left;">
 		<!-- 기존의 파일 -->
-		<input type="hidden" name="newnamefile" value="${pds.newfilename}">
-		<input type="text" name="namefile" value="${pds.filename}" size="50" readonly="readonly">
+		<input type="hidden" name="newfilename" value="${pds.newfilename}">
+		<input type="text" name="filename" value="${pds.filename}" size="50" readonly="readonly">
 		<!-- 수정할 파일 -->
 		<input type="file" name="fileload" id="_fileload" style="width: 400px">		
 	</td>
