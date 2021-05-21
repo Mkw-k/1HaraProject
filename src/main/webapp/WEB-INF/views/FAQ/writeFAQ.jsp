@@ -335,7 +335,7 @@ a.box-btn:hover, a.border-btn:hover {
 							    </td>
 							</tr>
 							<tr>
-							    <th>파일 업로드</th>
+							    <th>미리보기</th>
 							    <td style="text-align: left;" class="select_img">
 							       <img alt="" src="">
 							    </td>
@@ -355,7 +355,7 @@ a.box-btn:hover, a.border-btn:hover {
 							    </td>
 							</tr> -->
 							<tr>
-							<td>
+							<td colspan="2">
 								<input type="submit" value="글쓰기"> <!-- <a href="commonFAQ.do" class="box-btn">글쓰기</a> -->
 							</td>
 							</tr> 

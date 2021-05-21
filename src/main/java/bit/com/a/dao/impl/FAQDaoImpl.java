@@ -23,10 +23,35 @@ public class FAQDaoImpl implements FAQDao {
 		return session.selectList(ns + "getmemberFAQ");	
 	}
 	
+	@Override
+	public List<FAQDto> getcompanyFAQ() {
+		// TODO Auto-generated method stub
+		return session.selectList(ns + "getcompanyFAQ");	
+	}
+	
+	@Override
+	public List<FAQDto> getcommonFAQ() {
+		// TODO Auto-generated method stub
+		return session.selectList(ns + "getcommonFAQ");	
+	}
+	
    @Override
     public boolean writeFAQ(FAQDto dto) {
         int i = session.insert(ns + "writeFAQ", dto);
         return i>0?true:false;
     }
 
+	@Override
+	public FAQDto getFAQ(int seq) {
+		// TODO Auto-generated method stub
+		return session.selectOne(ns+ "getFAQ", seq);
+	}
+
+	@Override
+	public void updateFAQ(FAQDto dto) {
+		// TODO Auto-generated method stub
+		session.update(ns+"updateFAQ");
+	}
+
+   
 }
