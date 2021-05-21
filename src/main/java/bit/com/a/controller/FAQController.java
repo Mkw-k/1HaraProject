@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import bit.com.a.dto.FAQDto;
@@ -73,7 +72,7 @@ public class FAQController {
 	
 	@RequestMapping(value = "writeAfFAQ.do", method = {RequestMethod.GET, RequestMethod.POST})
     public String writeAfFAQ(FAQDto dto, 
-                        @RequestPart(value = "fileload", required = false)
+                        @RequestParam(value = "fileload", required = false)
                         MultipartFile fileload, 
                         HttpServletRequest req){
      

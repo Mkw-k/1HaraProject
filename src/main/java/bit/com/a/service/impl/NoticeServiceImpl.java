@@ -26,6 +26,11 @@ public class NoticeServiceImpl implements NoticeService {
 	public int getNoticeCount(NoticeParam notice) {
 		return dao.getNoticeCount(notice);
 	}
+	
+	@Override
+	public boolean uploadNotice(NoticeDto dto) {
+		return dao.uploadNotice(dto);
+	}
 
 	
 	
