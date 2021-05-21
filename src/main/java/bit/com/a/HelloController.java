@@ -36,6 +36,14 @@ public class HelloController {
 					
 			return "info";
 		}
+	
+		@RequestMapping(value = "infoyakgwan.do", method = RequestMethod.GET)
+		public String infoyakgwan(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "infoyakgwan";
+		}
+	
 					
 		
 }
