@@ -73,6 +73,16 @@ public class FAQDto {
 		Filename = filename;
 		NewFilename = newFilename;
 	}
+	
+	
+
+	public FAQDto(int faqseq, String question, String faqanswer, String filename) {
+		super();
+		this.faqseq = faqseq;
+		this.question = question;
+		this.faqanswer = faqanswer;
+		Filename = filename;
+	}
 
 	public int getFaqseq() {
 		return faqseq;
@@ -153,7 +163,10 @@ public class FAQDto {
 	@Override
 	public String toString() {
 		return "FAQDto [faqseq=" + faqseq + ", memberid=" + memberid + ", question=" + question + ", faqanswer="
-				+ faqanswer + ", readcount=" + readcount + ", regdate=" + regdate + ", faqnum=" + faqnum + "]";
+				+ faqanswer + ", readcount=" + readcount + ", regdate=" + regdate + ", faqnum=" + faqnum + ", Filename="
+				+ Filename + ", NewFilename=" + NewFilename + "]";
 	}
+
+	
 	
 }

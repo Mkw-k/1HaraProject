@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="bit.com.a.dto.FAQDto"%>
+<%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -408,9 +410,13 @@ a {
 </div>
 </section>
 
+<%
+List<FAQDto> commonlist =(List<FAQDto>) request.getAttribute("commonlist");
+%>
+
 
 <nav class="faqnav" style="height: auto;">
-  <ul style="display: flex;margin-left: 300px;">
+  <ul style="display: flex;margin-left: 400px;">
     <li><a href="memberFAQ.do">개발자 FAQ</a></li>
     <li><a href="companyFAQ.do">기업 FAQ</a></li>
     <li style="background-color: #2186eb">일반 FAQ</li>
@@ -426,18 +432,13 @@ a {
 				<div class="single-price">
 				  <div class="price-item">
 					<ul>
-						<li>100GB Monthly Bandwidth</li>
-						<li>100 Google AdWords</li>
-						<li>100 Domain Hosting</li>
-						<li>SSL Shopping Cart</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
+						<% 
+						for(FAQDto dto : commonlist){
+						%>
+							<li><a href="#"><%=dto.getQuestion() %></a></li>
+						<% 	
+						}
+						%>
 					</ul>
 				  </div>
 			   </div>

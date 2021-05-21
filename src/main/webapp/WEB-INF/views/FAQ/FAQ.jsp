@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="bit.com.a.dto.FAQDto"%>
+<%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -406,8 +408,16 @@ a.box-btn:hover, a.border-btn:hover {
 </section>
 
 
+<%
+List<FAQDto> memlist =(List<FAQDto>) request.getAttribute("memlist");
+List<FAQDto> companylist =(List<FAQDto>) request.getAttribute("companylist");
+List<FAQDto> commonlist =(List<FAQDto>) request.getAttribute("commonlist");
+System.out.println("memlist" +memlist);
+
+%>
+
 <nav class="faqnav" style="height: auto;">
-  <ul style="display: flex;margin-left: 300px;">
+  <ul style="display: flex;margin-left: 400px;">
     <li><a href="memberFAQ.do">개발자 FAQ</a></li>
     <li><a href="companyFAQ.do">기업 FAQ</a></li>
     <li><a href="commonFAQ.do">일반 FAQ</a></li>
@@ -423,11 +433,15 @@ a.box-btn:hover, a.border-btn:hover {
 				<div class="single-price">
 				  <div class="price-item">
 					<ul>
-						<li>100GB Monthly Bandwidth</li>
-						<li>100 Google AdWords</li>
-						<li>100 Domain Hosting</li>
-						<li>SSL Shopping Cart</li>
-						<li>24/7 Live Support</li>
+					
+					<%
+					for(int i=0; i<5; i++){
+						%>
+						<li><a href="FAQdetail.do?seq=<%=memlist.get(i).getFaqseq()%>"><%=memlist.get(i).getQuestion() %></a></li>
+					<% 	
+					}			
+					%>
+					
 					</ul>
 				  </div>
 				  <a href="memberFAQ.do" class="box-btn">더보기</a>
@@ -437,11 +451,13 @@ a.box-btn:hover, a.border-btn:hover {
 				<div class="single-price">
 				  <div class="price-item">
 					<ul>
-						<li>100GB Monthly Bandwidth</li>
-						<li>100 Google AdWords</li>
-						<li>100 Domain Hosting</li>
-						<li>SSL Shopping Cart</li>
-						<li>24/7 Live Support</li>
+							<%
+						for(int i=0; i<5; i++){
+							%>
+							<li><a href="FAQdetail.do?seq=<%=memlist.get(i).getFaqseq()%>"><%=companylist.get(i).getQuestion() %></a></li>
+						<% 	
+						}			
+						%>
 					</ul>
 				  </div>
 				  <a href="companyFAQ.do" class="box-btn">더보기</a>
@@ -451,11 +467,13 @@ a.box-btn:hover, a.border-btn:hover {
 				<div class="single-price">
 				  <div class="price-item">
 					<ul>
-						<li>100GB Monthly Bandwidth</li>
-						<li>100 Google AdWords</li>
-						<li>100 Domain Hosting</li>
-						<li>SSL Shopping Cart</li>
-						<li>24/7 Live Support</li>
+							<%
+						for(int i=0; i<5; i++){
+							%>
+							<li><a href="FAQdetail.do?seq=<%=memlist.get(i).getFaqseq()%>"><%=commonlist.get(i).getQuestion() %></a></li>
+						<% 	
+						}			
+						%>
 					</ul>
 				  </div>
 				  <a href="commonFAQ.do" class="box-btn">더보기</a>
