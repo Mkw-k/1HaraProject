@@ -191,15 +191,14 @@ margin-right : 450px;
     margin-left: 150px;
 ">
 
-web 웹
 
-<!-- 리스트 다이브 시작 -->  -->
+<!-- 리스트 다이브 시작 --> 
 <div class="company_review_qna">
 
 <div class="area_left">
             <div class="wrap_title">
                 <div class="hot_keywords">
-    <h2 class="tit_keyword"><span class="blind">요즘 구직자들의 HOT 키워드</span></h2>
+    <h2 class="tit_keyword"><span class="blind"></span></h2>
             <a href="/zf_user/company-review-qst-and-ans/sub?page=1&amp;keyword=%EC%A7%81%EB%AC%B4&amp;searchType=hashtag" onmousedown="SEARCH.Main.gaEvent('main_qst', 'hot_keyword')">#직무</a>
             <a href="/zf_user/company-review-qst-and-ans/sub?page=1&amp;keyword=%EC%B7%A8%EC%97%85%EC%A4%80%EB%B9%84&amp;searchType=hashtag" onmousedown="SEARCH.Main.gaEvent('main_qst', 'hot_keyword')">#취업준비</a>
             <a href="/zf_user/company-review-qst-and-ans/sub?page=1&amp;keyword=%EC%9D%B4%EC%A7%81&amp;searchType=hashtag" onmousedown="SEARCH.Main.gaEvent('main_qst', 'hot_keyword')">#이직</a>
@@ -523,7 +522,7 @@ web 웹
 				<a href="http://www.eps.go.kr" title="새창 열림" target="_blank">외국인고용</a>				
 				<a href="#4" title="새창 열림" onclick="f_moveUrl('CM')">사이버진로교육센터</a>
 			</li>
-			<li>
+			<li> 
 				<strong>정부기관</strong>
 				<a href="http://www.moel.go.kr" title="새창 열림" target="_blank">고용노동부</a>
 				<a href="http://www.moef.go.kr" title="새창 열림" target="_blank">기획재정부</a>
@@ -551,7 +550,7 @@ web 웹
 				<a href="http://www.acrc.go.kr" title="새창 열림" target="_blank">국민권익위원회</a>
 				<a href="http://www.kcc.go.kr" title="새창 열림" target="_blank">방송통신위원회</a>
 			</li>
-			<li>
+			<li> 
 				<strong>유관기관</strong>
 				<a href="http://www.kcomwel.or.kr" title="새창 열림" target="_blank">근로복지공단</a>
 				<a href="http://www.hrdkorea.or.kr" title="새창 열림" target="_blank">한국산업인력공단</a>
@@ -690,7 +689,7 @@ function login() {
       window.addEventListener('DOMContentLoaded', l, false);
       window.addEventListener('load', l, false);
     }
-  })();
+  })();4
   ChannelIO('boot', {
     "pluginKey": "9ec9cb05-626c-49ad-9fcf-67ccef29c08f"
   });
