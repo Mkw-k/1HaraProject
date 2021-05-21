@@ -14,5 +14,9 @@ public interface PdsService {
 
 	PdsDto getPds(int seq);
 	
-	
+	void downcount(int seq);
+
+	boolean updatePds(PdsDto pdsdto);
+
+	void deletePbs(int seq);
 }

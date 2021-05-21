@@ -3,6 +3,7 @@
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -582,8 +583,31 @@ margin-right : 450px;
    
    <ul class="navbar-nav navbar-nav2">
      <li class="nav-item">
-     <!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
-      <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
+      <li class="nav-item">
+            <c:choose>
+               <c:when test="${login.memberid ne null }">
+                  <c:choose>
+                      <c:when test="${login.auth == 1}">
+                          <p><b>${login.name }</b>님 반갑습니다</p>
+                        </c:when>    
+                   <c:otherwise>
+                         <p><b>${login.name }</b>님</p>
+                   </c:otherwise>
+                </c:choose>         
+                </c:when> 
+             </c:choose>  
+        <div class="col-md-6">
+           <div class="">
+              <div class="login">
+                 <c:if test="${ empty login }">
+                     <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: white;background-color: #2186eb;">로그인</a>
+                    <!--    <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
+                </c:if>       
+              </div>
+         </div>
+      </div>   
+    </li>
+    
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
@@ -635,27 +659,9 @@ margin-right : 450px;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div align="center">
+<h1>이력서 양식 </h1>
+</div>
 
 
 <table class="list_table" style="width: 85%;margin-left: 180px";>
@@ -698,8 +704,11 @@ margin-right : 450px;
 
 
 <!-- 자료추가 버튼 -->
+
 <div id="button.wrap" align="center">
+<c:if test="${login.auth == 3 }">
 		<button type="button" id="_btnAdd">자료추가</button>	
+</c:if>		
 </div>
 
 

@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.view.AbstractView;
 
-
 import bit.com.a.service.PdsService;
 
 public class DownloadView extends AbstractView {
@@ -24,13 +23,17 @@ public class DownloadView extends AbstractView {
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		System.out.println("DownlaodView renderMergedOutputModel");
+		System.out.println("DownloadView renderMergedOutputModel");
 		
-		File file = (File)model.get("downloadFile");		// getAttribute
+		File file = (File)model.get("downloadFile");	// == getAttribute
+		String originalFile = (String)model.get("originalFile");
+		int req = (Integer)model.get("seq");
+		
+		System.out.println("originalFile:" + originalFile);
 		
 		response.setContentType(this.getContentType());
 		response.setContentLength((int)file.length());
-		
+
 		// IE/chrome
 		String userAgent = request.getHeader("user-Agent");
 		boolean ie = userAgent.indexOf("MSIE") > -1;
@@ -40,27 +43,37 @@ public class DownloadView extends AbstractView {
 			filename = URLEncoder.encode(file.getName(), "utf-8");
 		}
 		else {
-			filename = new String( file.getName().getBytes("utf-8"), "iso-8850-1"); 
+			filename = new String( file.getName().getBytes("utf-8"), "iso-8859-1" );
 		}
 		
+		// 이 설정을 안해주면 한글명은 정상으로 나오지 않는다
+		originalFile = URLEncoder.encode(originalFile, "utf-8");
+		
 		// 다운로드 창
-		  response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\";");
-	      response.setHeader("Content-Transfer-Encoding", "binary;");
-	      response.setHeader("Content-Length", "" + file.length());
-	      response.setHeader("Pragma", "no-cache;"); 
-	      response.setHeader("Expires", "-1;");
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + originalFile + "\";");
+		response.setHeader("Content-Transfer-Encoding", "binary;");
+		response.setHeader("Content-Length", "" + file.length());
+		response.setHeader("Pragma", "no-cache;"); 
+		response.setHeader("Expires", "-1;");
 		
-	      OutputStream out = response.getOutputStream();
-	      FileInputStream fi = new FileInputStream(file);
+		OutputStream out = response.getOutputStream();
+		FileInputStream fi = new FileInputStream(file);
 		
-	      FileCopyUtils.copy(fi, out); 		// 실제 다운로드 되는 부분
-	      
-	      // download 횟수 증가
-	      if(fi != null) {
-	    	  fi.close();
-	      }
-	      
-	      
+		FileCopyUtils.copy(fi, out);
+		
+		// down load 회수 증가
+		service.downcount(req);
+		 
+		if(fi != null) {
+			fi.close();
+		}
 	}
-
 }
+
+
+
+
+
+
+
+
