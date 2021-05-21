@@ -33,7 +33,8 @@ public class MemberController {
 
 
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
-	public String login() {	
+	public String login(Model model, MemberDto mem) {	
+		model.addAttribute("mem", mem);
 		return "home";
 	}
 	
@@ -68,14 +69,15 @@ public class MemberController {
 		return msg;
 	}
 	
-	@RequestMapping(value = "regiAf.do", method=RequestMethod.POST)
+	@RequestMapping(value = "regiAf.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String regiAf(MemberDto dto) {		
 
+		System.out.println("addmember:" + dto.toString());
 
-
+		
 		 boolean b = service.addmember(dto); 
 		 if(b) { System.out.println("회원 가입되었습니다 " + new Date()); 
-		 return "login/home"; 
+		 return "home"; 
 		 } 
 		 System.out.println("가입되지 않았습니다 " + new Date());
 		 return "regi.tiles";
