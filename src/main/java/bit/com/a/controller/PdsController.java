@@ -19,8 +19,6 @@ import bit.com.a.dto.PdsDto;
 import bit.com.a.service.PdsService;
 import bit.com.a.util.PdsUtil;
 
-import bit.com.a.util.NoticeUtil;
-
 
 @Controller
 public class PdsController {
@@ -45,50 +43,7 @@ public class PdsController {
 		
 	}
 	
-	/*
-	@RequestMapping(value = "pdsupload.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String pdsupload(PdsDto pdsdto, 
-						@RequestParam(value = "fileload", required = false)
-						MultipartFile fileload, 
-						HttpServletRequest req) {
-		
-		
-		System.out.println("fileload:" + fileload);
-		
-		// filename 취득
-		String filename = fileload.getOriginalFilename();
-		pdsdto.setFilename(filename);	// 원본 파일명을 설정
-		
-		// upload 경로 설정
-		// server(tomcat)
-		String fupload = req.getServletContext().getRealPath("/upload");
-		
-		// 폴더
-		// String fupload = "d:\\tmp";
-		
-		System.out.println("fupload:" + fupload);
-		
-		// 파일명 변경 처리
-		String newfilename = PdsUtil.getNewFileName(pdsdto.getFilename());		
-		pdsdto.setNewfilename(newfilename);
-		
-		File file = new File(fupload + "/" + newfilename); 
-		
-		try {
-			// 실제로 업로드 되는 부분
-			FileUtils.writeByteArrayToFile(file, fileload.getBytes());
-			
-			// db에 저장
-			service.uploadPds(pdsdto);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return "redirect:/pdslist.do";
-	}
-	*/
+	
 	
 	
 	@RequestMapping(value = "pdsupload.do", method = {RequestMethod.GET, RequestMethod.POST})
@@ -148,4 +103,99 @@ public class PdsController {
 	}
 	
 	
+	@RequestMapping(value = "fileDownload.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String fileDownload(String newfilename, String filename, int seq, HttpServletRequest req, Model model) {
+		
+		//경로
+		String fupload = req.getServletContext().getRealPath("/upload");
+		
+		File downloadFile = new File(fupload + "/" + newfilename);
+		
+		model.addAttribute("downloadFile", downloadFile);
+		model.addAttribute("originalFile", filename);
+		model.addAttribute("seq", seq);
+		
+		return "downloadView";
+		
+	}
+	
+	
+	@RequestMapping(value = "pdsupdate.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public String pdsupdate(int seq, Model model) {
+		
+		// dto
+		PdsDto pdsdto = service.getPds(seq);
+		model.addAttribute("pds", pdsdto);
+		
+		
+		return "pds/pdsupdate";
+		
+		
+	}
+
+	@RequestMapping(value = "pdsupdateAf.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public String pdsupdateAf(	PdsDto pdsdto, 
+								String namefile,	// 기존의 파일 명,
+								HttpServletRequest req,
+								@RequestParam(value = "fileload", required = false)MultipartFile fileload) {
+		
+		System.out.println("fileload" + fileload);
+		
+		pdsdto.setFilename(fileload.getOriginalFilename());
+		
+		// 파일 경로
+		String fupload = req.getServletContext().getRealPath("/upload");
+		
+		// 수정할 파일이 있음
+		if(pdsdto.getFilename() != null && !pdsdto.getFilename().equals("")) {
+			
+			String f = pdsdto.getFilename();
+			String newfilename = PdsUtil.getNewFileName(f);
+			
+			pdsdto.setFilename(f);
+			pdsdto.setNewfilename(newfilename);
+			
+			File file = new File(fupload + "/" + newfilename);			
+			
+			try {
+				// 실제 업로드
+				FileUtils.writeByteArrayToFile(file, fileload.getBytes());
+				
+				// db 경신
+				service.updatePds(pdsdto);		
+				
+			} catch (IOException e) {				
+				e.printStackTrace();
+			}			
+		}
+		else {	// 수정할 파일 없음
+			
+			// 기존의 파일명으로 설정
+			pdsdto.setFilename(namefile);
+			
+			// DB
+			service.updatePds(pdsdto);	
+		}
+		
+		return "redirect:/pdslist.do";
+	}
+	
+	
+	@RequestMapping(value = "pdsdelete.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String deletePds(int seq, Model model) {		
+		service.deletePbs(seq);
+		return "redirect:/pdslist.do";		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
+	
+	
