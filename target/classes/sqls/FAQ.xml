@@ -12,8 +12,8 @@
 </select>
 
 <insert id="writeFAQ" parameterType="bit.com.a.dto.FAQDto">
-    INSERT INTO FAQ(FAQSEQ, MEMBERID, QUESTION, FAQANSWER, REGDATE, FILENAME, NEWFILENAME)
-    VALUES(SEQ_PDS.NEXTVAL, #{memberid}, #{question}, #{faqanswer}, SYSDATE, #{Filename}, #{NewFilename})
+    INSERT INTO FAQ(FAQSEQ, MEMBERID, QUESTION, FAQANSWER, READCOUNT, REGDATE, FAQNUM, FILENAME, NEWFILENAME)
+    VALUES(SEQ_PDS.NEXTVAL, #{memberid}, #{question}, #{faqanswer}, 0, SYSDATE, #{faqnum}, #{Filename}, #{NewFilename})
 </insert>
 
 </mapper>

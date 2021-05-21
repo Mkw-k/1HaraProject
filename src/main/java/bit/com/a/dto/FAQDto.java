@@ -57,6 +57,22 @@ public class FAQDto {
 		this.regdate = regdate;
 		this.faqnum = faqnum;
 	}
+	
+	
+
+	public FAQDto(int faqseq, String memberid, String question, String faqanswer, int readcount, String regdate,
+			int faqnum, String filename, String newFilename) {
+		super();
+		this.faqseq = faqseq;
+		this.memberid = memberid;
+		this.question = question;
+		this.faqanswer = faqanswer;
+		this.readcount = readcount;
+		this.regdate = regdate;
+		this.faqnum = faqnum;
+		Filename = filename;
+		NewFilename = newFilename;
+	}
 
 	public int getFaqseq() {
 		return faqseq;
