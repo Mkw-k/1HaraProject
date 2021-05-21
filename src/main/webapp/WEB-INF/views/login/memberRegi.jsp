@@ -102,7 +102,7 @@
         </div>
   		<div class="form-group has-feedback"> 
   			<label class="control-label" for="mem_birth">생년월일</label> 
-  				<input type="tel" class="form-control" id="mem_birth" name="birth" placeholder="ex) 19990101"> 
+  				<input type="tel" class="form-control" id="birth" name="birth" placeholder="ex) 19990101"> 
   			<div class="eheck_font" id="birth_check">
   			</div> 
   		</div>

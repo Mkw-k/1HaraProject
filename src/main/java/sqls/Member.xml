@@ -23,8 +23,8 @@
 </select>
 
 <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, ADDRESS, DETAILADDRESS, BIRTH, DEL, EMAIL, AUTH)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{address}, #{detailaddress}, #{birth}, 0, #{email}, 3)
+	INSERT INTO MEMBER(SEQ, MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH, DEL)
+	VALUES(SEQ_MEMBER.NEXTVAL, #{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, 0)
 </insert>
 
 <select id="login" parameterType="bit.com.a.dto.MemberDto"
