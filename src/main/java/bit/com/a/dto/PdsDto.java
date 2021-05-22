@@ -44,7 +44,7 @@ public class PdsDto implements Serializable {
 	}
 	
 	
-		
+/*		
 	public PdsDto(String memberid, String title, String content, String filename, String newfilename) {
 		super();
 		this.memberid = memberid;
@@ -54,7 +54,7 @@ public class PdsDto implements Serializable {
 		this.newfilename = newfilename;
 	}
 
-
+*/
 	public int getPdsseq() {
 		return pdsseq;
 	}

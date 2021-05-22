@@ -18,12 +18,36 @@ public class FAQServiceImpl implements FAQservice {
 	public List<FAQDto> getmemberFAQ() {
 		return dao.getmemberFAQ();
 	}
+	
+	@Override
+	public List<FAQDto> getcompanyFAQ() {
+		return dao.getcompanyFAQ();
+	}
+	
+	@Override
+	public List<FAQDto> getcommonFAQ() {
+		return dao.getcommonFAQ();
+	}
 
 	@Override
 	public boolean writeFAQ(FAQDto dto) {
 		// TODO Auto-generated method stub
 		return dao.writeFAQ(dto);
 	}
+
+	@Override
+	public FAQDto getFAQ(int seq) {
+		// TODO Auto-generated method stub
+		return dao.getFAQ(seq);
+	}
+
+	@Override
+	public void updateFAQ(FAQDto dto) {
+		// TODO Auto-generated method stub
+		dao.updateFAQ(dto);
+	}
+	
+	
 	
 	
 	

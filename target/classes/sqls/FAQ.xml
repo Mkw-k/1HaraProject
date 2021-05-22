@@ -6,14 +6,39 @@
 <mapper namespace="FAQ">
 
 <select id="getmemberFAQ" resultType="bit.com.a.dto.FAQDto">
-	SELECT FAQSEQ, QUESTION, FAQANSWER, REGDATE
+	SELECT FAQSEQ, QUESTION, FAQANSWER, REGDATE, FILENAME, NEWFILENAME
 	FROM FAQ
 	WHERE FAQNUM=1
 </select>
 
+<select id="getcompanyFAQ" resultType="bit.com.a.dto.FAQDto">
+	SELECT FAQSEQ, QUESTION, FAQANSWER, REGDATE, FILENAME, NEWFILENAME
+	FROM FAQ
+	WHERE FAQNUM=2
+</select>
+
+<select id="getcommonFAQ" resultType="bit.com.a.dto.FAQDto">
+	SELECT FAQSEQ, QUESTION, FAQANSWER, REGDATE, FILENAME, NEWFILENAME
+	FROM FAQ
+	WHERE FAQNUM=3
+</select>
+
+
 <insert id="writeFAQ" parameterType="bit.com.a.dto.FAQDto">
-    INSERT INTO FAQ(FAQSEQ, MEMBERID, QUESTION, FAQANSWER, REGDATE, FILENAME, NEWFILENAME)
-    VALUES(SEQ_PDS.NEXTVAL, #{memberid}, #{question}, #{faqanswer}, SYSDATE, #{Filename}, #{NewFilename})
+    INSERT INTO FAQ(FAQSEQ, MEMBERID, QUESTION, FAQANSWER, READCOUNT, REGDATE, FAQNUM, FILENAME, NEWFILENAME)
+    VALUES(SEQ_FAQ.NEXTVAL, #{memberid}, #{question}, #{faqanswer}, 0, SYSDATE, #{faqnum}, #{Filename}, #{NewFilename})
 </insert>
+
+<select id="getFAQ" parameterType="java.lang.Integer" resultType="bit.com.a.dto.FAQDto">
+	SELECT FAQSEQ, QUESTION, FAQANSWER, REGDATE, FILENAME, NEWFILENAME
+	FROM FAQ
+	WHERE FAQSEQ=#{seq}
+</select>
+
+<update id="updateFAQ" parameterType="bit.com.a.dto.FAQDto">
+	UPDATE FAQ
+    SET QUESTION=#{question}, FAQANSWER=#{faqanswer}, REGDATE=SYSDATE, FILENAME=#{filename}
+    WHERE FAQSEQ=#{faqseq}
+</update>
 
 </mapper>
