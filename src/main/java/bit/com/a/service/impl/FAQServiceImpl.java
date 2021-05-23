@@ -42,9 +42,15 @@ public class FAQServiceImpl implements FAQservice {
 	}
 
 	@Override
-	public void updateFAQ(FAQDto dto) {
+	public boolean updateFAQ(FAQDto dto) {
 		// TODO Auto-generated method stub
-		dao.updateFAQ(dto);
+		return dao.updateFAQ(dto);
+	}
+
+	@Override
+	public boolean deleteFAQ(int seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteFAQ(seq);
 	}
 	
 	

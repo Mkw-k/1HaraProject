@@ -10,5 +10,6 @@ public interface FAQDao {
 	List<FAQDto> getcommonFAQ();
 	boolean writeFAQ(FAQDto dto);
 	FAQDto getFAQ(int seq);
-	void updateFAQ(FAQDto dto);
+	boolean updateFAQ(FAQDto dto);
+	boolean deleteFAQ(int seq);
 }

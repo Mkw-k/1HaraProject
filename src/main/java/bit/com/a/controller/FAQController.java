@@ -91,9 +91,12 @@ public class FAQController {
                         @RequestParam(value = "fileload", required = false)
                         MultipartFile fileload, 
                         HttpServletRequest req, Model model){
-     
+		
 		System.out.println("fileload : " + fileload);
 		System.out.println(dto.toString());
+		
+		if(!fileload.isEmpty()) {
+			System.out.println("안비었다");
         // filename 취득
         String filename = fileload.getOriginalFilename();
         dto.setFilename(filename);    // 원본 파일명을 설정
@@ -124,6 +127,15 @@ public class FAQController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
+		}
+		
+		else {
+			dto.setFilename("");
+			dto.setNewFilename("");
+			System.out.println("비었다");
+			service.writeFAQ(dto);
+		}
         
         List<FAQDto> mem = service.getmemberFAQ();
 		List<FAQDto> company = service.getcompanyFAQ();
@@ -161,11 +173,12 @@ public class FAQController {
     public String updateAfFAQ(  FAQDto dto, 
                                 String namefile,    // 기존의 파일 명,
                                 HttpServletRequest req,
-                                @RequestParam(value = "fileload", required = false) MultipartFile fileload) {
+                                @RequestParam(value = "fileload", required = false) MultipartFile fileload, Model model) {
 		System.out.println("여기들어옴");
 		System.out.println(dto.toString());
         dto.setFilename(fileload.getOriginalFilename());
         
+        if(!fileload.isEmpty()) {
         // 파일 경로
         String fupload = req.getServletContext().getRealPath("/upload");
         
@@ -201,7 +214,43 @@ public class FAQController {
             service.updateFAQ(dto); 
             
         }
+        }
+        else {
+			dto.setFilename("");
+			dto.setNewFilename("");
+			System.out.println("비었다");
+			System.out.println("dto question"+dto.getQuestion());
+			service.updateFAQ(dto);
+		}
         
-        return "redirect:/pdslist.do";
+        List<FAQDto> mem = service.getmemberFAQ();
+		List<FAQDto> company = service.getcompanyFAQ();
+		List<FAQDto> common = service.getcommonFAQ();
+		
+		model.addAttribute("memlist", mem);
+		model.addAttribute("companylist", company);
+		model.addAttribute("commonlist", common);
+
+        
+        return "FAQ/FAQ";
     }
+	
+	@RequestMapping(value = "deleteFAQ.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String deleteFAQ(int seq, Model model) {	
+
+		boolean b = service.deleteFAQ(seq);
+		
+		System.out.println(b);
+		
+		List<FAQDto> mem = service.getmemberFAQ();
+		List<FAQDto> company = service.getcompanyFAQ();
+		List<FAQDto> common = service.getcommonFAQ();
+		
+		model.addAttribute("memlist", mem);
+		model.addAttribute("companylist", company);
+		model.addAttribute("commonlist", common);
+
+		
+		return "FAQ/FAQ";
+	}
 }
