@@ -21,14 +21,14 @@ public class PdsUtil {
 
 		if(f.indexOf('.') >= 0) {	// 확장자명이 있음
 			fpost = f.substring( f.indexOf('.') );		// .txt
-			filename = new Date().getTime() + fpost;	// 3423424234.txt		}
+			filename = new Date().getTime() + fpost;
+		}// 3423424234.txt		}
 		else {
 			filename = new Date().getTime() + ".back";
 		}
 
 		return filename;
 	}
-
 
 
 
