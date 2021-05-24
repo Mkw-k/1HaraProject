@@ -641,44 +641,50 @@ margin-right : 450px;
     </li>
     
     
+    
     <li class="nav-item">
             <c:choose>
-            	<c:when test="${login.memberid ne null }">
-            		<c:choose>
-            			 <c:when test="${login.auth == 1}">
-             				 <p><b>${login.name }</b>님</p>
-             	 		 </c:when>	 
-             			<%-- <%-- <c:when test="${login ne null }">
-         				<p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>	
-         				</c:when> --%>
-             			<%-- <c:when test="${login.auth == 3}">
-             				<p><b>${login.name }</b>님</p>
-    					</c:when> --%>
-    					<c:otherwise>
-             				<p><b>${login.name }</b>님</p>
-    					</c:otherwise>
-    				</c:choose>			
-            	 </c:when> 
-         	 </c:choose>  
+               <c:when test="${login.memberid ne null }">
+                  <c:choose>
+                      <c:when test="${login.auth == 1}">
+                          <p><b>${login.name }</b>님</p>
+                        </c:when>    
+                      <%-- <%-- <c:when test="${login ne null }">
+                     <p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>   
+                     </c:when> --%>
+                      <%-- <c:when test="${login.auth == 3}">
+                         <p><b>${login.name }</b>님</p>
+                   </c:when> --%>
+                   <c:otherwise>
+                         <p><b>${login.name }</b>님</p>
+                   </c:otherwise>
+                </c:choose>         
+                </c:when> 
+             </c:choose>  
         <div class="col-md-6">
            <div class="">
-          
-			</div>
-		</div>	
+              <div class="login">
+                 <c:if test="${ empty login }">
+                       <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
+                    <!--    <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
+                </c:if>       
+              </div>
+         </div>
+      </div>   
     </li>
     <li class="nav-item">
-     	 <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
+         <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
     </li>
     <li class="nav-item">
-    	<c:if test="${login.auth==3}">
-    		<a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a> 
-		</c:if>
-	</li>
-	<li class="nav-item">
-		<c:if test="${login.memberid ne null}">	
-			<a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
-		</c:if>	
-	</li>
+       <c:if test="${login.auth==3}">
+          <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a> 
+      </c:if>
+   </li>
+   <li class="nav-item">
+      <c:if test="${login.memberid ne null}">   
+         <a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
+      </c:if>   
+   </li>
   </ul>
 </nav>
 <br>

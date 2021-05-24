@@ -9,7 +9,7 @@
 <body>
 
 
-index.jsp
+
 <h1> i love Feel Dragon<h1>
 
 <br>
@@ -22,7 +22,7 @@ index.jsp
 
 <a href="pdslist.do">짜료씰</a>
 
-
+<a href="newslist.do">늬유스</a>
 
 </body>
 </html>
