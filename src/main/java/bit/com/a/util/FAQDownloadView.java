@@ -64,7 +64,7 @@ public class FAQDownloadView extends AbstractView {
 		FileCopyUtils.copy(fi, out);
 		
 		// down load 회수 증가
-		service.downcount(req);
+		//service.downcount(req);
 		 
 		if(fi != null) {
 			fi.close();

@@ -134,7 +134,7 @@
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <form action="recuruitcreateAf.do" method="get">
+                            <form action="recuruitcreateAf.do" id="_recruitcrefrm" method="post">
                                 <h3 class="register-heading">Apply as a Employee</h3>
                                 <div class="row register-form">
                                     <div class="col-md-6">
@@ -151,10 +151,13 @@
                                             <input type="text" name="area2Name" class="form-control"  placeholder="지역소분류 *"/>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="jobVolumn" class="form-control"  placeholder="채용인원 *"/>
+                                            <input type="number" min="0" max="99" name="jobVolumn" class="form-control"  placeholder="채용인원 *"/>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="salary" class="form-control"  placeholder="급여 *"/>
+                                            <input type="number" min="0" max="9999999" name="salary" class="form-control"  placeholder="급여(연봉입력/만원단위)*"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="buscode" class="form-control"  placeholder="직무분류코드 *"/>
                                         </div>
                                         
                                         <div class="form-group">
@@ -166,24 +169,41 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="datetime-local" name="jobStart" class="form-control" placeholder="공고시작일 *"/>
+                                            <input type="datetime-local" id="_jobStart" name="jobStart" class="form-control" placeholder="공고시작일 *"/>
                                         </div>
                                         <div class="form-group">
-                                            <input type="datetime-local" name="jobEnd" class="form-control" placeholder="공고마감일 *"/>
+                                            <input type="datetime-local" id="_jobEnd" name="jobEnd" class="form-control" placeholder="공고마감일 *"/>
                                         </div>
                                         <div class="form-group">
-                                            <select class="form-control" name="empType"> <!-- 고용타입 -->
+                                            <select class="form-control" name="emp_Type"> <!-- 고용타입 -->
                                                 <option class="hidden"  selected disabled>고용타입</option>
-                                                <option value="1">아르바이트</option>
-                                                <option value="2">계약직</option>
-                                                <option value="3">정규직</option>
+                                                <option value="아르바이트">아르바이트</option>
+                                                <option value="계약직">계약직</option>
+                                                <option value="정규직">정규직</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="education" class="form-control" placeholder="학력구분 *"/>
+
+                                            <select class="form-control" name="education"> <!-- 고용타입 -->
+                                                <option class="hidden"  selected disabled>학력구분 *</option>
+                                                <option value="무관">무관</option>
+                                                <option value="고졸">고졸</option>
+                                                <option value="전문대졸">전문대졸</option>
+                                                <option value="대졸">대졸</option>
+                                                <option value="대학원졸">대학원졸</option>
+                                                <option value="박사">박사</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="careerType" class="form-control" placeholder="경력구분 *"/>
+                                            <select class="form-control" name="careerType"> <!-- 고용타입 -->
+                                                <option class="hidden"  selected disabled>경력구분 *</option>
+                                                <option value="신입">신입</option>
+                                                <option value="1~2년">1~2년</option>
+                                                <option value="2~4년">2~4년</option>
+                                                <option value="4~6년">4~6년</option>
+                                                <option value="6~8년">6~8년</option>
+                                                <option value="8~10년">8~10년</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="careerDesc" class="form-control" placeholder="경력추가설명 *"/>
@@ -218,27 +238,61 @@
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
+
                                         </div>
                                         <div class="form-group">
-                                            <select class="form-control">
-                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
-                                                <option>What is your Birthdate?</option>
-                                                <option>What is Your old Phone Number</option>
-                                                <option>What is your Pet Name?</option>
+                                             <select class="form-control" name="career_Type"> <!-- 고용타입 -->
+                                                <option class="hidden"  selected disabled>경력구분</option>
+                                                <option value="경력 무관">무관</option>
+                                                <option value="신입">신입</option>
+                                                <option value="경력 1~2년">경력1~2</option>
+                                                <option value="경력 3~5년">경력3~5</option>
+                                                <option value="경력 5~7년">경력5~7</option>
+                                                <option value="경력 7~10년">경력7~10</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="`Answer *" value="" />
+                                            <input type="text" name="career_Desc" class="form-control" placeholder="경력추가설명 *"/>
                                         </div>
-                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                        <input type="submit" class="btnRegister" id="_btnRegister"  value="Register"/>
                                     </div>
                                 </div>
+                              </form>
                             </div>
+                          
                         </div>
                     </div>
                 </div>
 
             </div>
+
+
+
+<script type="text/javascript">
+$(".btnRegister").click(function(){
+	
+	/* var start = $("#_jobStart").val().replace('T', '');
+	var end = $("#_jobEnd").val().replace('T', '');
+	
+	alert("start:" + start);
+	alert("end:" + end);
+	
+	
+	document.getElementByID("_jobStart").value = start;
+	document.getElementByID("_jobEnd").value = end;
+	
+	start = $("#_jobStart").val(); 
+	end = $("#_jobEnd").val();
+	
+	alert("start:" + start);
+	alert("end:" + end); */
+	
+	//$("#_recruitcrefrm").submit();	
+
+});
+
+
+</script>
 
 </body>
 </html>
