@@ -19,7 +19,7 @@ index.jsp
 
 <a href="resumeMain.do">FAQ</a>
 
-
+<a href="createTest.do">createTest</a>
 
 </body>
 </html>

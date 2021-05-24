@@ -175,7 +175,7 @@
                                             <input type="datetime-local" id="_jobEnd" name="jobEnd" class="form-control" placeholder="공고마감일 *"/>
                                         </div>
                                         <div class="form-group">
-                                            <select class="form-control" name="empType"> <!-- 고용타입 -->
+                                            <select class="form-control" name="emp_Type"> <!-- 고용타입 -->
                                                 <option class="hidden"  selected disabled>고용타입</option>
                                                 <option value="아르바이트">아르바이트</option>
                                                 <option value="계약직">계약직</option>
@@ -194,18 +194,18 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                             <select class="form-control" name="careerType"> <!-- 고용타입 -->
+                                             <select class="form-control" name="career_Type"> <!-- 고용타입 -->
                                                 <option class="hidden"  selected disabled>경력구분</option>
-                                                <option value="무관">무관</option>
+                                                <option value="경력 무관">무관</option>
                                                 <option value="신입">신입</option>
-                                                <option value="경력1~2">경력1~2</option>
-                                                <option value="경력3~5">경력3~5</option>
-                                                <option value="경력5~7">경력5~7</option>
-                                                <option value="경력7~10">경력7~10</option>
+                                                <option value="경력 1~2년">경력1~2</option>
+                                                <option value="경력 3~5년">경력3~5</option>
+                                                <option value="경력 5~7년">경력5~7</option>
+                                                <option value="경력 7~10년">경력7~10</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="careerDesc" class="form-control" placeholder="경력추가설명 *"/>
+                                            <input type="text" name="career_Desc" class="form-control" placeholder="경력추가설명 *"/>
                                         </div>
                                         <input type="submit" class="btnRegister" id="_btnRegister"  value="Register"/>
                                     </div>

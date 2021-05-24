@@ -25,13 +25,20 @@ CRUD
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 <!-- https://github.com/josecebe/twbs-pagination -->
 <script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
+	
+
+
+
+
 
 <style type="text/css">
 .createRecruitBtn{
@@ -107,6 +114,37 @@ CRUD
 <br><br><br>
 
 
+<div class="box border" style="margin-top: 5px; margin-bottom: 10px">
+<form action="" id="_frmFormSearch" method="get">
+
+<table style="margin-left: auto; margin-right: auto; margin-top: 3px; margin-bottom: 3px;">
+<tr>
+	<td>검색</td>
+	<td style="padding-left: 5px;">
+		<select id="_choice" name="choice">
+	 		<option value="" selected="selected">선택</option> 
+			<option value="title" selected="selected">제목</option>
+			<!-- <option value="content">내용</option> -->
+			<option value="companyname">회사명</option>
+		</select>
+	</td>
+	
+	<td style="padding-left: 5px;">
+		<input type="text" id="_searchWord" name="searchWord">
+	</td>
+	<td style="padding-left: 5px;">
+		<span class="button blue">
+			<button type="button" id="btnSearch" onclick="javascript:getrecruListData(0)">검색</button>
+		</span>
+	</td>
+</tr>
+</table>
+</form>
+</div>
+
+
+<br><br><br>
+
 
 		<div class="row marketing"></div>
 
@@ -115,7 +153,7 @@ CRUD
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>회사ID(추후기업명으로변경)</th>
+							<th>회사명</th>
 							<th>공고제목</th>
 							<th>지원자격(학력·경력)</th>
 							<th>채용인원</th>
@@ -129,35 +167,40 @@ CRUD
 				<p></p>
 		</div>
 
-		<div class="container">
-			<nav aria-label="Page navigation">
-				<ul class="pagination" id="pagination"
-					style="justify-content: center;">
-				</ul>
-			</nav>
-		</div>
-
-		<footer class="footer">
 		
-			
-			<div class="container" style=""></div>
-			© 1hara Corp. 2021 
-			<p></p>
-		</footer>
+
+		
 
 	</div>
 	<!-- /container -->
+	
+	<div class="container">
+	<nav aria-label="Page navigation">
+		<ul class="pagination" id="pagination" style="justify-content:center;">
+		</ul>
+	</nav>
+	</div>
 
 
+<div class="container-fluid" style="">
+<footer class="footer">
+<p>© 1hara Corp. 2021 </p>
+</footer>
+</div>
 
+	
 
 <script type="text/javascript">
 getrecruListData();
+getRecruitListCount();
 
+//작성목록으로 이동
 function createRecruit() {
 	location.href = "recuruitcreate.do";
 }
 
+//댓글달때 화살표 만들어주는기능(댓글이 필요없으므로 삭제예정)
+/*
 function arrow(depth) {
 	let rs = "<img src='./image/arrow.png' width='20px' heiht='20px'/>";
 	let nbsp = "&nbsp;&nbsp;&nbsp;&nbsp;";	// 여백
@@ -170,13 +213,14 @@ function arrow(depth) {
 	
 	return depth==0 ? "":ts + rs;	
 }
+*/
 		
-		
+//조건에 맞는 채용공고 데이터 가져오는 함수(AJAX)
 function getrecruListData( pNumber, search ){
 	//alert('데이터취득');
 
 	$.ajax({
-		url : "./recuruitlistdata.do", 
+		url : "./recruitPagingListData.do", 
 		type : "get", 
 		data: {"page":pNumber, "choice":$("#_choice").val(), "search":$("#_searchWord").val()}, 
 		success:function(list){
@@ -186,22 +230,25 @@ function getrecruListData( pNumber, search ){
 			$(".list_col").remove();
 			
 			$.each(list, function(i, val){
-				alert(val.career_Type);
+				//alert(val.jobSeq);
 				let app = "<tr class= 'list_col'>"
-							+"<td>" + (i +1) +"</td>";
+							+"<td>" + val.rnum +"</td>";
 							
 							if(val.del==0){
+								
 								
 								/* let empT = "";
 								if(val.empType == 3){
 									empT = "정규직";
 								} */
-								app +="<td>" + val.companyId + "</td>"
+								
+								
+								app +="<td>" + val.companyname + "</td>"
 									+"<td style='text-align:left'>" 
 									//+ arrow(val.depth)
-									+"<a href='recruitdetail.do?seq=" + val.jobseq + "'>" + val.jobTitle+ "</a>"
+									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq + "'>" + val.jobTitle+ "</a>"
 									+"</td>"
-									+"<td>" + val.education +"<br>"+"경력"+val.career_Type + "</td>"
+									+"<td>" + val.education +"<br>"+val.career_Type + "</td>"
 									+"<td>" + val.jobVolumn + "</td>"
 									+"<td>" + val.emp_Type +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
 									+"<td>" + val.jobEnd +"<br>"+val.jobStart+ "&nbsp;&nbsp;"
@@ -209,7 +256,7 @@ function getrecruListData( pNumber, search ){
 							}
 							
 							else{
-								app += "<td style='text-align:left' colsapn='5'>"
+								app += "<td style='text-align:left' colsapn='6'>"
 										+"<font color='#ff0000'>********* 이 글은 작성자에 의해서 삭제되었습니다</font>"
 										+"</td>";
 							}
@@ -227,13 +274,13 @@ function getrecruListData( pNumber, search ){
 }
 
 //글의 총수를 취득 
-function getBbsListCount() {
+function getRecruitListCount() {
 	$.ajax({
-		url : "./bbslistCount.do", 
+		url : "./recruitlistCount.do", 
 		type: "get", 
 		data: {page:0, choice:$("#_choice").val(), search:$("#_searchWord").val()}, 
 		success: function( count ) {
-			//alert('success');
+			alert('success');
 			
 			loadPage(count);
 		}, 
@@ -248,7 +295,7 @@ function getBbsListCount() {
 function loadPage( totalCount ) {
 	
 	
-	let pageSize = 10; 
+	let pageSize = 5; 
 	let nowPage = 1; 
 	
 //	let totalCount = 51;		//글의 총수
@@ -263,9 +310,9 @@ function loadPage( totalCount ) {
 	//alert('몇개냐 :'+_totalPages);
 	
 	$("#pagination").twbsPagination({
-	//	startPage: 1, 
+		startPage: 1, 
 		totalPages : _totalPages, 
-		visiblePages : 10, 
+		visiblePages : 7, 
 		first: '<span aria-hidden = "true">«</span>', 
 		prev : "이전", 
 		next : "다음", 
@@ -274,7 +321,7 @@ function loadPage( totalCount ) {
 		onPageClick : function(event, page) {
 			nowPage = page;
 		//	alert('nowPage:'+ page);
-			getBbsListData(page -1);
+			getrecruListData(page -1);
 		}
 	});
 }
