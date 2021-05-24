@@ -16,6 +16,7 @@
 			 0, SYSDATE, #{buscode}, 0)
 </insert>
 
+
 <!-- 모든페이지 불러오기 -->
 <select id="getallrecrulist" resultType="bit.com.a.dto.RecruitDto">
 	SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
@@ -96,5 +97,6 @@ SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
 	SET DEL=1 
 	WHERE SEQ=#{jobseq}
 </update>
+
 
 </mapper>

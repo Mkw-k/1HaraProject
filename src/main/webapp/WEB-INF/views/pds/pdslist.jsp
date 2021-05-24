@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -581,8 +583,31 @@ margin-right : 450px;
    
    <ul class="navbar-nav navbar-nav2">
      <li class="nav-item">
-     <!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
-      <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
+      <li class="nav-item">
+            <c:choose>
+               <c:when test="${login.memberid ne null }">
+                  <c:choose>
+                      <c:when test="${login.auth == 1}">
+                          <p><b>${login.name }</b>님 반갑습니다</p>
+                        </c:when>    
+                   <c:otherwise>
+                         <p><b>${login.name }</b>님</p>
+                   </c:otherwise>
+                </c:choose>         
+                </c:when> 
+             </c:choose>  
+        <div class="col-md-6">
+           <div class="">
+              <div class="login">
+                 <c:if test="${ empty login }">
+                     <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: white;background-color: #2186eb;">로그인</a>
+                    <!--    <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
+                </c:if>       
+              </div>
+         </div>
+      </div>   
+    </li>
+    
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
@@ -634,31 +659,9 @@ margin-right : 450px;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div align="center">
+<h1>이력서 양식 </h1>
+</div>
 
 
 <table class="list_table" style="width: 85%;margin-left: 180px";>
@@ -674,20 +677,42 @@ margin-right : 450px;
 		</tr>
 	</thead>
 
+<c:forEach var="pds" items="${pdslist }" >		
+
+	<tr>
+		<th>${pds.pdsseq }</th>
+		<td style="text-align: left;">
+		<a href="pdsdetail.do?seq=${pds.pdsseq }">
+			${pds.title }
+		</a>
+	</td>
+	<td>
+	 <button id="btnDown" class="btn btn-primary" type="button" style="width: 120px;height: 36px; background-color: #2186eb" onclick="filedown('${pds.newfilename}', '${pds.pdsseq }', '${pds.filename}')">
+	 														Download</button>
+		<%-- <input type="button" name="btnDown" value="다운로드" 
+			onclick="filedown('${pds.newfilename}', '${pds.pdsseq }', '${pds.filename}')">	 --%>	
+		
+	</td>
+		<td>${pds.readcount }</td>
+		<td>${pds.downcount }</td>
+	</tr>
+
+</c:forEach>
 	<tbody>
-	
-	
-	
 	</tbody>
-
-
-
-
-
-
-
-
 </table>
+
+
+<!-- 자료추가 버튼 -->
+
+<div id="button.wrap" align="center">
+<c:if test="${login.auth == 3 }">
+		<button type="button" id="_btnAdd">자료추가</button>	
+</c:if>		
+</div>
+
+
+
 
 <!-- 다운로드 버튼을 클릭시 -->
 <form name="file_Down" action="fileDownload.do" method="post">
@@ -698,13 +723,33 @@ margin-right : 450px;
 
 
 
+<script>
+$("#_btnAdd").click(function () {
+	location.href = "pdswrite.do";
+});
+
+/* $("#btnDown").click(function (){
+	
+	alert(">>");
+	let doc = document.file_Down;
+	doc.newfilename.value = newfilename;
+	doc.filename.value = filename;
+	doc.seq.value = seq;
+	doc.submit();
+});
+ */
+
+ function filedown(newfilename, seq, filename) {
+	let doc = document.file_Down;
+	doc.newfilename.value = newfilename;
+	doc.filename.value = filename;
+	doc.seq.value = seq;
+	doc.submit();
+ }
+ 
 
 
-
-
-
-
-
+</script>
 
 
 

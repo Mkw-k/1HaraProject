@@ -28,6 +28,17 @@
 			WHERE RNUM BETWEEN ${start} AND ${end}
 	</select> 
 	
+	
+	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
+	
+	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
+	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
+	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
+	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
+	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
+	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
+	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
+	
 	<!-- 글의 총수 --> 
 	<select id="getNoticeCount" parameterType="bit.com.a.dto.NoticeParam"
 		resultType="java.lang.Integer">
@@ -46,6 +57,14 @@
 		 AND MEMBERID=#{search}  
 		 </if>	
 	  	</if>
-</select>
+	</select>
+	
+	<insert id="uploadNotice" parameterType="bit.com.a.dto.NoticeDto">
+		INSERT INTO NOTICE(NOTICESEQ, MEMBERID, TITLE, CONTENT, FILENAME, NEWFILENAME, READCOUNT, DOWNCOUNT, REGDATE, NOTICE_REF)
+		VALUES(SEQ_NOTICE.NEXTVAL, #{memberid}, #{notice_title}, #{notice_content}, #{notice_filename}, #{notice_newfilename}, 0, 0, SYSDATE, (SELECT NVL(MAX(NOTICE_REF)+1, 0) FROM NOTICE))	
+	</insert>
+	
+	
+	
 
 </mapper>

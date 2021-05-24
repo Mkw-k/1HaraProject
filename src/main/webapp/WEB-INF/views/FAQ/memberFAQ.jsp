@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="bit.com.a.dto.FAQDto"%>
+<%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -404,6 +406,10 @@ a.box-btn:hover, a.border-btn:hover {
 </div>
 </section>
 
+<%
+List<FAQDto> memlist =(List<FAQDto>) request.getAttribute("memlist");
+%>
+
 
 <nav class="faqnav" style="height: auto;">
   <ul style="display: flex;margin-left: 400px;">
@@ -422,18 +428,13 @@ a.box-btn:hover, a.border-btn:hover {
 				<div class="single-price">
 				  <div class="price-item">
 					<ul>
-						<li>100GB Monthly Bandwidth</li>
-						<li>100 Google AdWords</li>
-						<li>100 Domain Hosting</li>
-						<li>SSL Shopping Cart</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
+							<%
+					for(int i=0; i<5; i++){
+						%>
+						<li><a href="#"><%=memlist.get(i).getQuestion() %></a></li>
+					<% 	
+					}			
+					%>
 					</ul>
 				  </div>
 			   </div>

@@ -56,7 +56,7 @@
 
 <div class="container" style="text-align: center;">
     <h3>일반 회원</h3>
-    <form action="" method="post" id="myForm">
+    <form method="post" id="myForm">
         <div class="form-group has-feedback">
             <label class="control-label" for="id">아이디</label>
           	<div class="input-group">
@@ -157,8 +157,12 @@
 			$("#pwd").focus();
 		}
 		else{	
+			alert($("#memberid").val());
 			$("#myForm").attr("action", "regiAf.do").submit();
+			alert("회원가입이 성공적으로 완료되었습니다");
 		}	
+		
+		
 	});
 
 
@@ -287,9 +291,10 @@
     			success:function( msg ){
     			//	alert('chkIdBtn success');
     				if(msg == "YES"){
+    				
     					$("#idCheck").css("color", "#0000ff");
     					$("#idCheck").html('사용 가능한 ID입니다.');
-    					$('#memberid').attr('disabled', true);
+    					//$('#memberid').attr('disabled', true);
     					$('#idCheck').attr('disabled', true);
     				}else{
     					$("#idCheck").css("color", "#ff0000");
