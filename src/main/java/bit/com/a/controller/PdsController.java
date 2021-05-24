@@ -59,7 +59,7 @@ public class PdsController {
 			//upload 경로 설정 
 			//server(tomcat) 
 			String fupload = req.getServletContext().getRealPath("/upload");
-		
+			
 			
 			//폴더에 올리는 법 
 			//String fupload = "d:\\tmp";

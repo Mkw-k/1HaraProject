@@ -6,19 +6,19 @@
 <mapper namespace="Notice">
 	<select id="noticelist" parameterType="bit.com.a.dto.NoticeParam" 
 		resultType="bit.com.a.dto.NoticeDto">
-		SELECT NOTICESEQ, MEMBERID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_FILENAME, NOTICE_NEWFILENAME, READCOUNT, DOWNCOUNT, REGDATE,NOTICE_REF
+		SELECT NOTICESEQ, MEMBERID, TITLE,CONTENT, FILENAME, NEWFILENAME, READCOUNT, DOWNCOUNT, REGDATE,NOTICE_REF, DEL
 		FROM (SELECT ROW_NUMBER()OVER(ORDER BY NOTICE_REF DESC) AS RNUM,
-				NOTICESEQ, MEMBERID, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_FILENAME,NOTICE_NEWFILENAME, READCOUNT, DOWNCOUNT,REGDATE, NOTICE_REF	 
+				NOTICESEQ, MEMBERID, TITLE, CONTENT, FILENAME, NEWFILENAME, READCOUNT, DOWNCOUNT,REGDATE, NOTICE_REF, DEL	 
 			 FROM NOTICE
-			 WHERE 1=1
+			 WHERE DEL=0
 		 		 <if test="choice != null and choice != ''
 		  			and search != null and search != ''">
 		  			  <!-- AND DEL=0 -->		
 				  <if test="choice == ' title'">
-			  		AND NOTICE_TITLE LIKE '%'||#{search}||'%'		  
+			  		AND TITLE LIKE '%'||#{search}||'%'		  
 				  </if>
 			 	 <if test="choice == 'content'">
-			  		AND NOTICE_CONTENT LIKE '%'||#{search}||'%'			  
+			  		AND CONTENT LIKE '%'||#{search}||'%'			  
 				  </if>
 				  <if test="choice == 'writer'">
 				  	AND MEMBERID=#{search}  
@@ -28,30 +28,19 @@
 			WHERE RNUM BETWEEN ${start} AND ${end}
 	</select> 
 	
-	
-	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
-	
-	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
-	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
-	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
-	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
-	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
-	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
-	<!-- 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 아 -->
-	
 	<!-- 글의 총수 --> 
 	<select id="getNoticeCount" parameterType="bit.com.a.dto.NoticeParam"
 		resultType="java.lang.Integer">
 		SELECT NVL(COUNT(*), 0)
-		FROM BBS
+		FROM NOTICE
 		WHERE 1=1
 		<if test="choice != null and choice != ''
 	  		and search != null and search != ''">	  	  		
 		 <if test="choice == 'title'">
-		 AND NOTICE_TITLE LIKE '%'||#{search}||'%'		  
+		 AND TITLE LIKE '%'||#{search}||'%'		  
 		 </if>
 		 <if test="choice == 'content'">
-		 AND NOTICE_CONTENT LIKE '%'||#{search}||'%'			  
+		 AND CONTENT LIKE '%'||#{search}||'%'			  
 		 </if>
 		 <if test="choice == 'writer'">
 		 AND MEMBERID=#{search}  
@@ -60,9 +49,29 @@
 	</select>
 	
 	<insert id="uploadNotice" parameterType="bit.com.a.dto.NoticeDto">
-		INSERT INTO NOTICE(NOTICESEQ, MEMBERID, TITLE, CONTENT, FILENAME, NEWFILENAME, READCOUNT, DOWNCOUNT, REGDATE, NOTICE_REF)
-		VALUES(SEQ_NOTICE.NEXTVAL, #{memberid}, #{notice_title}, #{notice_content}, #{notice_filename}, #{notice_newfilename}, 0, 0, SYSDATE, (SELECT NVL(MAX(NOTICE_REF)+1, 0) FROM NOTICE))	
+		INSERT INTO NOTICE(NOTICESEQ, MEMBERID, TITLE, CONTENT, FILENAME, NEWFILENAME, READCOUNT, DOWNCOUNT, REGDATE, NOTICE_REF, DEL)
+		VALUES(SEQ_NOTICE.NEXTVAL, #{memberid}, #{title}, #{content}, #{filename}, #{newfilename}, 0, 0, SYSDATE, (SELECT NVL(MAX(NOTICE_REF)+1, 0) FROM NOTICE), 0)	
 	</insert>
+	
+	<update id="deleteNotice" parameterType="java.lang.Integer">
+		UPDATE NOTICE
+		SET DEL=1
+		WHERE NOTICESEQ=#{noticeseq}
+	</update>	
+	
+	<select id="getNotice" parameterType="java.lang.Integer"
+	resultType="bit.com.a.dto.NoticeDto">
+		SELECT NOTICESEQ, MEMBERID, TITLE, CONTENT, FILENAME, NEWFILENAME, READCOUNT, DOWNCOUNT, REGDATE, NOTICE_REF, DEL
+		FROM NOTICE
+		WHERE NOTICESEQ=#{noticeseq}
+	</select>
+	
+	<update id="readCount" parameterType="java.lang.Integer">
+		UPDATE NOTICE
+		SET READCOUNT=READCOUNT+1
+		WHERE NOTICESEQ=#{noticeseq}
+	</update>
+	
 	
 	
 	

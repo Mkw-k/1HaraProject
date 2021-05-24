@@ -48,10 +48,10 @@ public class FAQDownloadView extends AbstractView {
 			filename = new String( file.getName().getBytes("utf-8"), "iso-8859-1" );
 		}
 		
-		// 이 설정을 안해주면 한글명은 정상으로 나오지 않는다
+		// �씠 �꽕�젙�쓣 �븞�빐二쇰㈃ �븳湲�紐낆� �젙�긽�쑝濡� �굹�삤吏� �븡�뒗�떎
 		originalFile = URLEncoder.encode(originalFile, "utf-8");
 		
-		// 다운로드 창
+		// �떎�슫濡쒕뱶 李�
 		response.setHeader("Content-Disposition", "attachment; filename=\"" + originalFile + "\";");
 		response.setHeader("Content-Transfer-Encoding", "binary;");
 		response.setHeader("Content-Length", "" + file.length());
@@ -63,8 +63,8 @@ public class FAQDownloadView extends AbstractView {
 		
 		FileCopyUtils.copy(fi, out);
 		
-		// down load 회수 증가
-		service.downcount(req);
+		// down load �쉶�닔 利앷�
+		//service.downcount(req);
 		 
 		if(fi != null) {
 			fi.close();
