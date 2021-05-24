@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <%@page import="bit.com.a.dto.FAQDto"%>
-<%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -60,101 +59,6 @@
 /* 모달 */
 #login-modal {
 margin-right : 450px;
-}
-
-.newsletter {
-padding: 80px 0;
-background: #2186eb;
-}
-
-.newsletter .content {
-max-width: 650px;
-margin: 0 auto;
-text-align: center;
-position: relative;
-z-index: 2; }
-.newsletter .content h2 {
-color: #243c4f;
-margin-bottom: 40px; }
-.newsletter .content .form-control {
-height: 50px;
-border-color: #ffffff;
-border-radius:0;
-}
-.newsletter .content.form-control:focus {
-box-shadow: none;
-border: 2px solid #243c4f;
-}
-.newsletter .content .btn {
-min-height: 50px; 
-border-radius:0;
-background: #243c4f;
-color: #fff;
-font-weight:600;
-}
-
-/* 3가지 FAQ링크 */
-
-
-:root {
-    font-size: 10px;
-}
-
-.faqnav ul {
-    padding: 0;
-    list-style-type: none;
-}
-
-.faqnav li {
-    width: 20rem;
-    height: 7rem;
-    font-size: 20px;
-    text-align: center;
-    line-height: 7rem;
-    font-family: sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-    transition: 0.3s;
-    margin: 8.5rem;
-    background-color: #eee;
-}
-
-.faqnav li::before,
-.faqnav li::after {
-    content: '';
-    position: absolute;
-    width: inherit;
-    height: inherit;
-    top: 0;
-    left: 0;
-    transition: 0.3s;
-}
-
-.faqnav li::before {
-    background-color: #eee;
-    z-index: -1;
-    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
-}
-
-.faqnav li::after {
-    background-color: #2186eb;
-    transform: translate(1.5rem, 1.5rem);
-    z-index: -2;
-}
-
-.faqnav li:hover {
-    transform: translate(1.5rem, 1.5rem);
-    color: black;
-}
-
-.faqnav li:hover::before {
-    background-color: #2186eb;
-}
-
-.faqnav li:hover::after {
-    background-color: #2186eb;
-    transform: translate(-1.5rem, -1.5rem);
 }
 
 /* 테이블 css */
@@ -278,122 +182,9 @@ a.box-btn:hover, a.border-btn:hover {
 	background-color: #2186eb;
 }
 
-/* 네비바 반응형 */
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
+.faqtable{
+	border: 1px;
 }
-
-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  /* 요소의 최소 너비 지정, height 속성 무시
-    vh단위는 브라우저 안쪽 높이(window.innerHeight)을 기준으로
-    설정된다. 하지만 태블릿이나, 모바일의 경우에는 뷰 포트에 따라
-    맞춰짐*/
-  min-height: 8vh;
-  background-color: #fff;
-  font-family: "Poppins", sans-serif;
-}
-
-.logo {
-  color: rgb(226, 226, 226);
-  text-transform: uppercase;
-  /* 각 글자 2px씩 간격을 줌*/
-  letter-spacing: 2px;
-  font-size: 18px;
-}
-
-.nav-links {
-  width: 40%;
-  /* display: flex; */
-  justify-content: space-around;
-}
-
-.nav-links li {
-  list-style: none;
-}
-
-.nav-links a {
-  color: rgb(226, 226, 226);
-  text-decoration: none;
-  letter-spacing: 3px;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.burger {
-  display: none;
-  cursor: pointer;
-}
-
-.burger div {
-  width: 25px;
-  height: 3px;
-  background-color: rgb(226, 226, 226);
-  margin: 5px;
-  transition: all 0.3s ease;
-}
-
-@media screen and (max-width: 1024px) {
-  .nav-links {
-    width: 60%;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  body {
-    overflow-x: hidden;
-  }
-  .nav-links {
-    position: absolute;
-    top: 8vh;
-    right: 0;
-    height: 92vh;
-    background-color: #fff;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-    transform: translateX(100%);
-  }
-  .nav-links li {
-    opacity: 0;
-  }
-  .burger {
-    display: block;
-  }
-
-  .nav-active {
-    transform: translateX(0%);
-  }
-
-  @keyframes navLinkFade {
-    from {
-      opacity: 0;
-      transform: translateX(5px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-}
-
-.toggle .line1 {
-  transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.toggle .line2 {
-  opacity: 0;
-}
-
-.toggle .line3 {
-  transform: rotate(45deg) translate(-5px, -6px);
-}
- 
- 
 </style>
 </head>
 
@@ -474,7 +265,7 @@ nav {
             <div class="modal-body">
             
             <!-- memberController - loginAf.do로 이동 -->
-              <form action="member" method="post">
+              <form action="member" method="post" enctype="multipart/form-data">
                  <input type="hidden" name="param" value="loginAf.do">
                 <div class="form-group">
                   <input id="email_modal" type="text" placeholder="ID" name="id" class="form-control">
@@ -502,62 +293,76 @@ nav {
 <!-- ####################################################################################################### -->
 <!-- 본문 -->
 <main>
-
-<!-- 검색창 -->
-<section class="newsletter">
-<div class="container">
-<div class="row">
-<div class="col-sm-12">
-	<div class="content">
-		<h2 style="color:#fff">FAQ</h2>
-	<div class="input-group">
-         <input type="email" class="form-control" placeholder="검색어 입력"  id="_searchBtn">
-         <span class="input-group-btn">
-         <button class="btn" type="submit" id="searchBtn">SEARCH</button>
-         </span>
-          </div>
-	</div>
-</div>
-</div>
-</div>
-</section>
-
 <%
-List<FAQDto> memlist =(List<FAQDto>) request.getAttribute("memlist");
+FAQDto dto =(FAQDto) request.getAttribute("dto");
+System.out.println("dto" +dto);
 %>
-
-
-<nav class="faqnav" style="height: auto;">
-  <ul style="display: flex; margin-right: 180px;">
-    <li style="background-color: #2186eb" class="nav-links">개발자 FAQ</li>
-    <li><a href="companyFAQ.do" class="nav-links">기업 FAQ</a></li>
-    <li><a href="commonFAQ.do" class="nav-links">일반 FAQ</a></li>
-  </ul>
-</nav>
 
 
 <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,800,900%7cRaleway:300,400,500,600,700" rel="stylesheet">
 <section class="pricing-area pt-100 pb-100" id="pricing" style="padding-top: 0px;">
 		<div class="container">
 			<div class="row">
+               
                <div class="col-xl-12">
 				<div class="single-price">
 				  <div class="price-item">
-					<ul>
-				<% 
-						for(FAQDto dto : memlist){
-						%>
-							<li><a href="FAQdetail.do?seq=<%=dto.getFaqseq()%>"><%=dto.getQuestion() %></a></li>
-						<% 	
-						}
-						%>
-					</ul>
+						<form name="frmForm" id="_frmForm" action="pdsupdateAf.do"
+								method="post" enctype="multipart/form-data">
+							<input type="hidden" name="pdsseq" value="${pds.pdsseq}">
+							
+							<table class="faqtable" border="1">
+							<colgroup>
+								<col width="200"><col width="500">
+							</colgroup>
+							
+							<tr>
+								<th>아이디</th>
+								<td style="text-align: left;">${pds.memberid}</td>
+							</tr>
+							
+							<tr>
+								<th>제목</th>
+								<td style="text-align: left;">
+									<input type="text" name="title" size="50" value="${pds.title}">
+								</td>
+							</tr>
+							
+							<tr>
+								<th>파일 업로드</th>
+								<td style="text-align: left;">
+									<!-- 기존의 파일 -->
+									<input type="hidden" name="newfilename" value="${pds.newfilename}">
+									<input type="text" name="filename" value="${pds.filename}" size="50" readonly="readonly">
+									<!-- 수정할 파일 -->
+									<input type="file" name="fileload" id="_fileload" style="width: 400px">		
+								</td>
+							</tr>
+							
+							<tr>
+								<th>내용</th>
+								<td style="text-align: left;">
+									<textarea rows="10" cols="50" name="content" id="_content">${pds.content}</textarea>
+								</td>
+							</tr>
+							
+							<tr>
+								<td colspan="2" style="height: 50px; text-align: center;">
+										<a href="#" class="box-btn" id="btnupdate" title="수정완료">수정완료</a>	
+								</td>
+							</tr>
+							
+							</table>	
+							</form>
 				  </div>
+				 	
 			   </div>
-			   </div>	   
-          </div>
-	</div>
-</section>
+			   </div>
+            </div>
+		</div>
+	  </section>
+
+
 
 
 
@@ -775,20 +580,68 @@ function login() {
   ChannelIO('boot', {
     "pluginKey": "9ec9cb05-626c-49ad-9fcf-67ccef29c08f"
   });
+ 
+  
 </script>
 <!-- End Channel Plugin -->
 
-<!-- 검색 -->
-<script>
-$("#searchBtn").click(function () {
-    
-	alert("searchBtn click")
-	/* 검색어 */
-	let search = document.getElementById("_searchBtn").value;
-    
-    location.href = "searchFAQ.do?search=" + search;
+<!-- 이미지 볼수있게 해주는 스크립트 -->
+ <script>
+  $("#FAQimg").change(function(){
+   if(this.files && this.files[0]) {
+    var reader = new FileReader;
+    reader.onload = function(data) {
+     $(".select_img img").attr("src", data.target.result).width(500);        
+    }
+    reader.readAsDataURL(this.files[0]);
+   }
+  });
+ </script>
+ 
+ <script type="text/javascript">
+ function getSelectValue()
+ {
+		//  alert('getSelectValue');
+	 
+	    let selIndex = document.getElementById('fieldnum').selectedIndex;
+	//    alert(selIndex);
+	    
+	    let faqnum = document.getElementById('fieldnum').options[selIndex].value;
+	 //   alert(faqnum);
+	    document.getElementById('fieldnum').value = faqnum;
+	    alert(document.getElementById('fieldnum').value);
+		
+ }
+ 
+ 
+ function filedown(newfilename, faqseq, filename) {
+	alert("filedown")
+    let doc = document.file_Down;
+    doc.newfilename.value = newfilename;
+    doc.filename.value = filename;
+    doc.faqseq.value = faqseq;
+    doc.submit();
+}
+ 
+ </script>
+ 
+ <script>
+$("#btnupdate").click(function(){
+	
+	alert($("#_fileload").val());
+	$("#_frmForm").submit();
 });
+
 </script>
+ 
+ 
 
 </body>
 </html>
+
+
+
+
+
+
+

@@ -30,7 +30,7 @@
 </insert>
 
 <select id="getFAQ" parameterType="java.lang.Integer" resultType="bit.com.a.dto.FAQDto">
-	SELECT FAQSEQ, QUESTION, FAQANSWER, REGDATE, FILENAME, NEWFILENAME
+	SELECT FAQSEQ, MEMBERID, QUESTION, FAQANSWER, READCOUNT, REGDATE, FAQNUM, FILENAME, NEWFILENAME
 	FROM FAQ
 	WHERE FAQSEQ=#{seq}
 </select>
@@ -45,4 +45,17 @@
 	DELETE FROM FAQ
 	WHERE FAQSEQ=#{seq}
 </delete>
+
+<select id="getsearchFAQ" parameterType="java.lang.String" resultType="bit.com.a.dto.FAQDto">
+	SELECT FAQSEQ, QUESTION, FAQANSWER, REGDATE, FILENAME, NEWFILENAME	
+	
+	FROM FAQ
+	<if test="search != ''">
+	WHERE QUESTION LIKE '%' || #{search} || '%'
+	</if>
+
+</select>                     
+	
+
+
 </mapper>

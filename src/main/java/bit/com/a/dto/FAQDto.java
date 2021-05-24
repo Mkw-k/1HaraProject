@@ -37,52 +37,6 @@ public class FAQDto {
 	public FAQDto() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public FAQDto(String memberid, String question, String faqanswer, int faqnum) {
-		super();
-		this.memberid = memberid;
-		this.question = question;
-		this.faqanswer = faqanswer;
-		this.faqnum = faqnum;
-	}
-	
-	public FAQDto(int faqseq, String memberid, String question, String faqanswer, int readcount, String regdate,
-			int faqnum) {
-		super();
-		this.faqseq = faqseq;
-		this.memberid = memberid;
-		this.question = question;
-		this.faqanswer = faqanswer;
-		this.readcount = readcount;
-		this.regdate = regdate;
-		this.faqnum = faqnum;
-	}
-	
-	
-
-	public FAQDto(int faqseq, String memberid, String question, String faqanswer, int readcount, String regdate,
-			int faqnum, String filename, String newFilename) {
-		super();
-		this.faqseq = faqseq;
-		this.memberid = memberid;
-		this.question = question;
-		this.faqanswer = faqanswer;
-		this.readcount = readcount;
-		this.regdate = regdate;
-		this.faqnum = faqnum;
-		Filename = filename;
-		NewFilename = newFilename;
-	}
-	
-	
-
-	public FAQDto(int faqseq, String question, String faqanswer, String filename) {
-		super();
-		this.faqseq = faqseq;
-		this.question = question;
-		this.faqanswer = faqanswer;
-		Filename = filename;
-	}
 
 	public int getFaqseq() {
 		return faqseq;
@@ -140,8 +94,6 @@ public class FAQDto {
 		this.faqnum = faqnum;
 	}
 
-	
-
 	public String getFilename() {
 		return Filename;
 	}
@@ -149,8 +101,6 @@ public class FAQDto {
 	public void setFilename(String filename) {
 		Filename = filename;
 	}
-
-	
 
 	public String getNewFilename() {
 		return NewFilename;
@@ -160,12 +110,37 @@ public class FAQDto {
 		NewFilename = newFilename;
 	}
 
-	@Override
-	public String toString() {
-		return "FAQDto [faqseq=" + faqseq + ", memberid=" + memberid + ", question=" + question + ", faqanswer="
-				+ faqanswer + ", readcount=" + readcount + ", regdate=" + regdate + ", faqnum=" + faqnum + ", Filename="
-				+ Filename + ", NewFilename=" + NewFilename + "]";
+	public FAQDto(int faqseq, String memberid, String question, String faqanswer, int readcount, String regdate,
+			int faqnum, String filename, String newFilename) {
+		super();
+		this.faqseq = faqseq;
+		this.memberid = memberid;
+		this.question = question;
+		this.faqanswer = faqanswer;
+		this.readcount = readcount;
+		this.regdate = regdate;
+		this.faqnum = faqnum;
+		Filename = filename;
+		NewFilename = newFilename;
 	}
+
+	public FAQDto(String memberid, String question, String faqanswer, int faqnum, String filename) {
+		super();
+		this.memberid = memberid;
+		this.question = question;
+		this.faqanswer = faqanswer;
+		this.faqnum = faqnum;
+		Filename = filename;
+	}
+
+	
+	
+
+	
+
+
+	
+	
 
 	
 	

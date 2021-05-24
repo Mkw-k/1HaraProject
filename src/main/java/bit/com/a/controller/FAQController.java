@@ -109,7 +109,7 @@ public class FAQController {
         // String fupload = "d:\\tmp";
         
         System.out.println("fupload:" + fupload);
-        
+        System.out.println(dto.getFilename());
         // 파일명 변경 처리
         String newfilename = PdsUtil.getNewFileName(dto.getFilename());        
         dto.setNewFilename(newfilename);
@@ -253,4 +253,35 @@ public class FAQController {
 		
 		return "FAQ/FAQ";
 	}
+	
+	@RequestMapping(value = "searchFAQ.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String searchFAQ(Model model, String search) {	
+		System.out.println("써치에 들어옴");
+		System.out.println("search"+search);
+		
+		 List<FAQDto> searchlist = service.getsearchFAQ(search);
+		 
+		 model.addAttribute("searchlist", searchlist);
+		
+		return "FAQ/searchFAQ";
+	}
+	
+	 @RequestMapping(value = "FAQfileDownload.do", method = {RequestMethod.GET, RequestMethod.POST})
+	    public String fileDownload(String newfilename, String filename, int faqseq, HttpServletRequest req, Model model) {
+	        
+	        // 경로
+	        // server
+	        String fupload = req.getServletContext().getRealPath("/upload");
+	        
+	        // 폴더
+	    //    String fupload = "d:\\tmp";
+	        
+	        File downloadFile = new File(fupload + "/" + newfilename);
+	        
+	        model.addAttribute("downloadFile", downloadFile);
+	        model.addAttribute("originalFile", filename);
+	        model.addAttribute("faqseq", faqseq);
+	        
+	        return "FAQdownloadView";
+	    }
 }

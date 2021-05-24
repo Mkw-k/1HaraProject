@@ -12,4 +12,5 @@ public interface FAQservice {
 	FAQDto getFAQ(int seq);
 	boolean updateFAQ(FAQDto dto);
 	boolean deleteFAQ(int seq);
+	List<FAQDto> getsearchFAQ(String search);
 }

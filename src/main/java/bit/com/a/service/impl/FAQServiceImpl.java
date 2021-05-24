@@ -52,6 +52,13 @@ public class FAQServiceImpl implements FAQservice {
 		// TODO Auto-generated method stub
 		return dao.deleteFAQ(seq);
 	}
+
+	@Override
+	public List<FAQDto> getsearchFAQ(String search) {
+		// TODO Auto-generated method stub
+		return dao.getsearchFAQ(search);
+	}
+	
 	
 	
 	

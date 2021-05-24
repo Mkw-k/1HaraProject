@@ -61,6 +61,13 @@ public class FAQDaoImpl implements FAQDao {
         return i>0?true:false;
 	}
 
+	@Override
+	public List<FAQDto> getsearchFAQ(String search) {
+		// TODO Auto-generated method stub
+		return session.selectList(ns + "getsearchFAQ", search);	
+	}
+
+	
 	
    
 }

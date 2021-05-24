@@ -11,11 +11,11 @@
 		<property name="defaultEncoding" value="utf-8"/>
 		<property name="uploadTempDir" value="upload"/>
 	</bean>
-	
+
 	<!-- download -->
 	<bean id="downloadView" class="bit.com.a.util.DownloadView"/>
 	<bean id="FAQdownloadView" class="bit.com.a.util.FAQDownloadView"/>
-	
+
 	<bean id="downloadViewResolver"
 		class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order">

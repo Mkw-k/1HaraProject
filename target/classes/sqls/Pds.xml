@@ -17,22 +17,35 @@
 	VALUES(PDS_SEQ.NEXTVAL, #{memberid}, #{title}, #{content}, #{filename}, #{newfilename}, 0, 0, SYSDATE)
 	</insert>
 
- 	<!-- <select id="getPds" parameterType="java.lang.Integer"
+ 	 <select id="getPds" parameterType="java.lang.Integer"
 	resultType="bit.com.a.dto.PdsDto">
 	SELECT PDSSEQ, MEMBERID, TITLE, CONTENT, FILENAME, NEWFILENAME, 
 		READCOUNT, DOWNCOUNT, REGDATE
 	FROM PDS
 	WHERE PDSSEQ=#{pdsseq}
-	</select> -->
+	</select> 
 
-<!-- 	<update id="readcount" parameterType="java.lang.Integer">
+ 	<update id="readcount" parameterType="java.lang.Integer">
 	UPDATE PDS
 	SET READCOUNT=READCOUNT+1
 	WHERE PDSSEQ=#{pdsseq}
-	</update> -->
+	</update> 
 
-	 
- 
+	<update id="downcount" parameterType="java.lang.Integer">
+ 	UPDATE PDS
+ 	SET DOWNCOUNT=DOWNCOUNT+1
+ 	WHERE PDSSEQ=#{pdsseq}
+	</update>
 
+	<update id="updatePds" parameterType="bit.com.a.dto.PdsDto">
+	UPDATE PDS
+	SET TITLE=#{title}, CONTENT=#{content}, FILENAME=#{filename, jdbcType=VARCHAR}, REGDATE=SYSDATE
+	WHERE PDSSEQ=#{pdsseq}
+	</update>
+
+	<delete id="deletePds" parameterType="bit.com.a.dto.PdsDto">
+	DELETE FROM PDS
+	WHERE PDSSEQ=#{pdsseq}
+	</delete>
 
 </mapper>
