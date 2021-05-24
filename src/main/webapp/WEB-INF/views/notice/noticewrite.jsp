@@ -427,7 +427,7 @@ section .section-title {
 <tr>
 	<th>제목</th>
 	<td style="text-align: left;">
-		<input type="text" name="notice_title" size="50">
+		<input type="text" name="title" size="50">
 	</td>
 </tr>
 
@@ -441,7 +441,7 @@ section .section-title {
 <tr>
 	<th>내용</th>
 	<td style="text-align: left;">
-		<textarea rows="10" cols="50" name="notice_content"></textarea>
+		<textarea rows="10" cols="50" name="content"></textarea>
 	</td>
 </tr>
 
