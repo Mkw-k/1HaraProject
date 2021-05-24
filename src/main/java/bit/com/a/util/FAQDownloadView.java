@@ -29,7 +29,7 @@ public class FAQDownloadView extends AbstractView {
 		
 		File file = (File)model.get("downloadFile");	// == getAttribute
 		String originalFile = (String)model.get("originalFile");
-		int req = (Integer)model.get("seq");
+		int req = (Integer)model.get("faqseq");
 		
 		System.out.println("originalFile:" + originalFile);
 		
@@ -63,8 +63,9 @@ public class FAQDownloadView extends AbstractView {
 		
 		FileCopyUtils.copy(fi, out);
 		
-		// down load 회수 증가
-		service.downcount(req);
+		/*
+		 * // down load 회수 증가 service.downcount(req);
+		 */
 		 
 		if(fi != null) {
 			fi.close();

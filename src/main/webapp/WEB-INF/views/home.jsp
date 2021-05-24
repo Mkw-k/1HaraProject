@@ -16,6 +16,9 @@
 <meta name="keywords" content="#">
 <meta name="selected-menu" content="0, 0, 0, 0">
 
+
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -546,7 +549,7 @@ margin-right : 450px;
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="<%=request.getContextPath() %>/image/개발자23.gif" class="d-block w-100" height="300">
+                <img src="<%=request.getContextPath() %>/image/개발자메인로고.gif" class="d-block w-100" height="300">
             </div>
             
             <!--https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg-->
@@ -615,14 +618,14 @@ margin-right : 450px;
 		    <a href="#">기업정보</a>
 		    <a href="jobtalk.do">취업톡톡</a>
 		    <a href="#">공채달력</a>
-		    <a href="pdslist.do">자료실</a>
+		    <a href="#">자료실</a>
 		    <a href="notice.do">공지사항</a>
 		  </div>
 		</div>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
+      <a class="nav-link bgc" href="recuruitlist.do" style="color:#2186eb">채용공고</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
@@ -634,14 +637,17 @@ margin-right : 450px;
       <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="pdslist.do" style="color:#2186eb">자료실</a>
+      <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
     
+<<<<<<< HEAD
     
     
+=======
+>>>>>>> 7310fe75d98cfa39428b2324bae5fd8b1c5edf84
     <li class="nav-item">
             <c:choose>
                <c:when test="${login.memberid ne null }">
@@ -664,13 +670,19 @@ margin-right : 450px;
         <div class="col-md-6">
            <div class="">
               <div class="login">
-                 <c:if test="${ empty login }">
+
+              
+
+              	<c:if test="${ empty login }">
+
                        <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
                     <!--    <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
                 </c:if>       
               </div>
-         </div>
-      </div>   
+      
+			</div>
+		</div>	
+
     </li>
     <li class="nav-item">
          <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
@@ -853,7 +865,7 @@ margin-right : 450px;
 					
 					<div class="before">
 						<p class="txt">일하라를 더 안전하고 편리하게 이용하세요.</p>
-						<a href="/member/bodyLogin.do" class="login-worknet login-modal">일하라 로그인</a>
+						<a href="/member/bodyLogin.do" class="login-worknet">일하라 로그인</a>
 						<div class="link">
 							<a href="/member/idPwdVw/retrieveCustIdPwdSrch.do" class="left">아이디/ 패스워드 찾기</a>
 							<a href="/member/custJoin/retrieveCustJoinTp.do" class="right">회원가입</a>
@@ -897,7 +909,7 @@ margin-right : 450px;
 		                        </div>
 		                        <div>
 		                         <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>취업톡톡</a>
-		                          <a href="pdslist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>자료실</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>자료실</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>마이페이지</a>
 		                        </div>
 		                        <div>
@@ -945,11 +957,8 @@ margin-right : 450px;
     width: 318px;
     border-left-width: 30px;
     margin-left: 20px;">
-    
   </div>
 </div>
-
-
 
 <!-- 채용공고 부트스트랩 -->
 
@@ -1275,7 +1284,7 @@ margin-right : 450px;
 
 <!-- ####################################################################################################### -->
 
-
+</main>
 
 <!-- FOOTER -->
 
@@ -1363,7 +1372,7 @@ margin-right : 450px;
 				<div class="inner-wrap">
 					<div class="link-footer">
 						<a href="info.do">일하라 소개</a>
-						<a href="infoyakgwan.do">이용약관</a>
+						<a href="/useInvite/worknetHomepgInvite/useClause1.do">이용약관</a>
 						<a href="/useInvite/worknetHomepgInvite/indivInfoPrtecPolicy.do"><b>개인정보처리방침</b></a>
 						<a href="/useInvite/worknetHomepgInvite/emailAddrWonoticeGatherRefuse.do">이메일주소무단수집거부</a>
 						<a href="/useInvite/worknetHomepgInvite/webAccessPlcy.do">웹접근성정책</a>
