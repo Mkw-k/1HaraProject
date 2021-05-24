@@ -57,6 +57,32 @@ public class FAQDto {
 		this.regdate = regdate;
 		this.faqnum = faqnum;
 	}
+	
+	
+
+	public FAQDto(int faqseq, String memberid, String question, String faqanswer, int readcount, String regdate,
+			int faqnum, String filename, String newFilename) {
+		super();
+		this.faqseq = faqseq;
+		this.memberid = memberid;
+		this.question = question;
+		this.faqanswer = faqanswer;
+		this.readcount = readcount;
+		this.regdate = regdate;
+		this.faqnum = faqnum;
+		Filename = filename;
+		NewFilename = newFilename;
+	}
+	
+	
+
+	public FAQDto(int faqseq, String question, String faqanswer, String filename) {
+		super();
+		this.faqseq = faqseq;
+		this.question = question;
+		this.faqanswer = faqanswer;
+		Filename = filename;
+	}
 
 	public int getFaqseq() {
 		return faqseq;
@@ -137,7 +163,10 @@ public class FAQDto {
 	@Override
 	public String toString() {
 		return "FAQDto [faqseq=" + faqseq + ", memberid=" + memberid + ", question=" + question + ", faqanswer="
-				+ faqanswer + ", readcount=" + readcount + ", regdate=" + regdate + ", faqnum=" + faqnum + "]";
+				+ faqanswer + ", readcount=" + readcount + ", regdate=" + regdate + ", faqnum=" + faqnum + ", Filename="
+				+ Filename + ", NewFilename=" + NewFilename + "]";
 	}
+
+	
 	
 }

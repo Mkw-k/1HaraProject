@@ -14,5 +14,10 @@ public interface PdsDao {
 
 	PdsDto getPds(int seq);
 
+	void downcount(int seq);
+
+	boolean updatePds(PdsDto pdsdto);
+
+	void deletePds(int seq);
 
 }

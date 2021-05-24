@@ -311,7 +311,8 @@ a.box-btn:hover, a.border-btn:hover {
 							 <tr>
 							    <th>구분</th>
 							    <td style="text-align: left;">
-							        <select name="faqnum" onChange="getSelectValue(this.form);">
+							        <select name="faqnum" onChange="getSelectValue();" id="fieldnum">
+							        	<option value="0">선택</option>
 							        	<option value="1">개발자</option>
 							        	<option value="2">기업</option>
 							        	<option value="3">일반</option>
@@ -334,7 +335,7 @@ a.box-btn:hover, a.border-btn:hover {
 							    </td>
 							</tr>
 							<tr>
-							    <th>파일 업로드</th>
+							    <th>미리보기</th>
 							    <td style="text-align: left;" class="select_img">
 							       <img alt="" src="">
 							    </td>
@@ -354,7 +355,7 @@ a.box-btn:hover, a.border-btn:hover {
 							    </td>
 							</tr> -->
 							<tr>
-							<td>
+							<td colspan="2">
 								<input type="submit" value="글쓰기"> <!-- <a href="commonFAQ.do" class="box-btn">글쓰기</a> -->
 							</td>
 							</tr> 
@@ -605,13 +606,18 @@ function login() {
  </script>
  
  <script type="text/javascript">
- function getSelectValue(frm)
+ function getSelectValue()
  {
-  frm.textValue.value = frm.selectBox.options[frm.selectBox.selectedIndex].text;
-  frm.optionValue.value = frm.selectBox.options[frm.selectBox.selectedIndex].value;
-  
-  alert(frm.textValue.value);
-  alert(frm.optionValue.value);
+		//  alert('getSelectValue');
+	 
+	    let selIndex = document.getElementById('fieldnum').selectedIndex;
+	//    alert(selIndex);
+	    
+	    let faqnum = document.getElementById('fieldnum').options[selIndex].value;
+	 //   alert(faqnum);
+	    document.getElementById('fieldnum').value = faqnum;
+	    alert(document.getElementById('fieldnum').value);
+		
  }
  
  </script>

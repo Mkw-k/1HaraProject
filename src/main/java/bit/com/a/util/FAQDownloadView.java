@@ -13,12 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.view.AbstractView;
 
+import bit.com.a.service.FAQservice;
 import bit.com.a.service.PdsService;
 
-public class DownloadView extends AbstractView {
+public class FAQDownloadView extends AbstractView {
 
+	
 	@Autowired
-	PdsService service;
+	FAQservice service;
 	
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
@@ -62,7 +64,7 @@ public class DownloadView extends AbstractView {
 		FileCopyUtils.copy(fi, out);
 		
 		// down load 회수 증가
-		service.downcount(req);
+		//service.downcount(req);
 		 
 		if(fi != null) {
 			fi.close();
