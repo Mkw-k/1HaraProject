@@ -48,10 +48,26 @@ public class FAQDaoImpl implements FAQDao {
 	}
 
 	@Override
-	public void updateFAQ(FAQDto dto) {
+	public boolean updateFAQ(FAQDto dto) {
 		// TODO Auto-generated method stub
-		session.update(ns+"updateFAQ");
+		 int i = session.insert(ns + "updateFAQ", dto);
+	        return i>0?true:false;
 	}
 
+	@Override
+	public boolean deleteFAQ(int seq) {
+		// TODO Auto-generated method stub
+		int i = session.delete(ns + "deleteFAQ", seq);
+        return i>0?true:false;
+	}
+
+	@Override
+	public List<FAQDto> getsearchFAQ(String search) {
+		// TODO Auto-generated method stub
+		return session.selectList(ns + "getsearchFAQ", search);	
+	}
+
+	
+	
    
 }

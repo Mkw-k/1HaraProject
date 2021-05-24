@@ -36,6 +36,8 @@
 		<property name="mapperLocations" value="classpath:sqls/*.xml"/>
 	</bean>
 	
+	
+	
 	<!-- sqlSession 취득 -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory"/>

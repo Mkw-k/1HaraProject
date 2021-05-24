@@ -10,5 +10,7 @@ public interface FAQservice {
 	List<FAQDto> getcommonFAQ();	
 	boolean writeFAQ(FAQDto dto);
 	FAQDto getFAQ(int seq);
-	void updateFAQ(FAQDto dto);
+	boolean updateFAQ(FAQDto dto);
+	boolean deleteFAQ(int seq);
+	List<FAQDto> getsearchFAQ(String search);
 }

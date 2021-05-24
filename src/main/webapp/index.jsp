@@ -22,8 +22,7 @@ index.jsp
 
 <a href="pdslist.do">짜료씰</a>
 
-<a href="createTest.do">createTest</a>
+<a href="newslist.do">늬유스</a>
 
 </body>
 </html>
-
