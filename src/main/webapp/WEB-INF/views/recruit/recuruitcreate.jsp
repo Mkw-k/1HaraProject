@@ -180,10 +180,26 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="education" class="form-control" placeholder="학력구분 *"/>
+                                            <select class="form-control" name="education"> <!-- 고용타입 -->
+                                                <option class="hidden"  selected disabled>학력구분 *</option>
+                                                <option value="무관">무관</option>
+                                                <option value="고졸">고졸</option>
+                                                <option value="전문대졸">전문대졸</option>
+                                                <option value="대졸">대졸</option>
+                                                <option value="대학원졸">대학원졸</option>
+                                                <option value="박사">박사</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="careerType" class="form-control" placeholder="경력구분 *"/>
+                                            <select class="form-control" name="careerType"> <!-- 고용타입 -->
+                                                <option class="hidden"  selected disabled>경력구분 *</option>
+                                                <option value="신입">신입</option>
+                                                <option value="1~2년">1~2년</option>
+                                                <option value="2~4년">2~4년</option>
+                                                <option value="4~6년">4~6년</option>
+                                                <option value="6~8년">6~8년</option>
+                                                <option value="8~10년">8~10년</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="careerDesc" class="form-control" placeholder="경력추가설명 *"/>
