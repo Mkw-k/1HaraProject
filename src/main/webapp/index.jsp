@@ -21,8 +21,9 @@ index.js-p
 
 <a href="loginProcess.do">채팅</a>
 
+<a href="musicplayer.do">음악재생 (시범용)</a>
 
-
+ 
 
 </body>
 </html>

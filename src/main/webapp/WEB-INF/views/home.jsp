@@ -64,10 +64,17 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <link href="csss/ranking.css" rel="stylesheet" type="text/css">
 
 <!-- 로그인 css -->
 <link href="csss/logincss.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- 서치 css -->
+<link href="csss/search.css" rel="stylesheet" type="text/css">
+
 
 <style type="text/css">
   
@@ -540,58 +547,57 @@ margin-right : 450px;
 <header>
 		
  <!-- 검색html -->
-
-<section style="padding: 0">
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="<%=request.getContextPath() %>/image/개발자23.gif" class="d-block w-100" height="300">
-            </div>
-            
-            <!--https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg-->
+ 
+ <section style="padding: 0">
+ <form id="search_form_recruit" onsubmit="event.preventDefault()" style="height: 300px; background-image: url('개발자23.gif');">
+    <div class="main_search">
+        <div class="option option_keyword">
+            <label for="ipt_keyword_recruit" class="placeholder" style="color: rgb(72, 118, 239);">일하라 주식회사</label>
+            <input id="ipt_keyword_recruit" type="text" class="key" maxlength="30" placeholder="검색어를 입력해주세요" autocomplete="off">
         </div>
+        <div class="option option_area">
+            <label for="ipt_area_recruit" class="placeholder">지역을 선택해주세요</label>
+            <button id="ipt_area_recruit" type="button" class="key">
+                <span class="filter_selected"></span>
+            </button>
+        </div>
+        <div class="option option_category">
+            <label for="ipt_category_recruit" class="placeholder">직업을 선택해주세요</label>
+            <button id="ipt_category_recruit" type="button" class="key">
+                <span class="filter_selected"></span>
+            </button>
+        </div>
+        <button type="button" id="btn_search_recruit" class="btn_search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewbox="0 0 28 28" class="bg_search">
+                <g fill="none" fill-rule="evenodd">
+                    <path d="M0 0H28V28H0z"></path>
+                    <circle cx="12.778" cy="12.778" r="9.778" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+                    <path stroke="#FFF" stroke-width="2" d="M25 25L19.683 19.683"></path>
+                </g>
+            </svg>
+            <span class="txt">검색</span>
+        </button>
+        <button type="button" id="search_close_recruit" class="btn_close">
+            <span>닫기</span>
+        </button>
+        <button type="button" class="search_reset">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16" class="ic_reset">
+                <g fill="none" fill-rule="evenodd">
+                    <path fill-rule="nonzero" d="M0 0H16V16H0z"></path>
+                    <path stroke="#B5BACB" d="M12.828 3.003v3.024H9.804m2.943 3.815c-.845 2.21-3.114 3.534-5.454 3.183-2.34-.35-4.12-2.282-4.281-4.642-.16-2.36 1.342-4.515 3.613-5.18 2.27-.664 4.698.34 5.835 2.415"></path>
+                </g>
+            </svg>검색 초기화
+        </button>
     </div>
+</form>
 </section>
-<section class="search-sec">
-    <div class="container">
-        <form action="#" method="post" novalidate="novalidate">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" id="exampleFormControlSelect1" style="font-size: 12pt">
-                                <option>지역</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" id="exampleFormControlSelect1" style="font-size: 12pt">
-                                <option>분야</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <input type="text" class="form-control search-slt" placeholder="회사명" style="font-size: 12pt">
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <button type="button" class="btn btn-secondary wrn-btn">Search</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
+ <!--  -->
+ 
+ 
+
+
+
+
 
 </header>
 
@@ -642,7 +648,7 @@ margin-right : 450px;
     </li>
 
     <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
+      <a class="nav-link bgc" href="recuruitlist.do" style="color:#2186eb">채용공고</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
@@ -659,7 +665,7 @@ margin-right : 450px;
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
-    
+
 
 
 
