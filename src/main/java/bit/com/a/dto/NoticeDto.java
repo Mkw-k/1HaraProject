@@ -67,6 +67,7 @@ public class NoticeDto implements Serializable{
 	}
 
 
+	
 
 
 

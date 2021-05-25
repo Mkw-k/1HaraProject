@@ -134,7 +134,7 @@
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <form action="recuruitcreateAf.do" id="_recruitcrefrm" method="post">
+                            <form  id="_recruitcrefrm" method="post">
                                 <h3 class="register-heading">Apply as a Employee</h3>
                                 <div class="row register-form">
                                     <div class="col-md-6">
@@ -157,7 +157,10 @@
                                             <input type="number" min="0" max="9999999" name="salary" class="form-control"  placeholder="급여(연봉입력/만원단위)*"/>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="buscode" class="form-control"  placeholder="직무분류코드 *"/>
+                                            <input type="checkbox" name="buscode" value="11111" class="form-control">1번
+                                            <input type="checkbox" name="buscode" value="11112" class="form-control">2번
+                                            <input type="checkbox" name="buscode" value="11113" class="form-control">3번
+                                            <input type="checkbox" name="buscode" value="11114" class="form-control">4번
                                         </div>
                                         
                                         <div class="form-group">
@@ -177,21 +180,21 @@
                                         <div class="form-group">
                                             <select class="form-control" name="emp_Type"> <!-- 고용타입 -->
                                                 <option class="hidden"  selected disabled>고용타입</option>
-                                                <option value="아르바이트">아르바이트</option>
-                                                <option value="계약직">계약직</option>
-                                                <option value="정규직">정규직</option>
+                                                <option value="1">아르바이트</option>
+                                                <option value="2">계약직</option>
+                                                <option value="3">정규직</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
 
                                             <select class="form-control" name="education"> <!-- 고용타입 -->
                                                 <option class="hidden"  selected disabled>학력구분 *</option>
-                                                <option value="무관">무관</option>
-                                                <option value="고졸">고졸</option>
-                                                <option value="전문대졸">전문대졸</option>
-                                                <option value="대졸">대졸</option>
-                                                <option value="대학원졸">대학원졸</option>
-                                                <option value="박사">박사</option>
+                                                <option value="0">무관</option>
+                                                <option value="1">고졸</option>
+                                                <option value="2">전문대졸</option>
+                                                <option value="3">대졸</option>
+                                                <option value="4">석사</option>
+                                                <option value="5">박사</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -208,10 +211,16 @@
                                         <div class="form-group">
                                             <input type="text" name="careerDesc" class="form-control" placeholder="경력추가설명 *"/>
                                         </div>
-                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                        <input type="button" class="btnRegister" onclick="myFunction()"  value="Register"/>
                                     </div>
                                 </div>
                               </form>
+                              
+                              
+                              
+                              
+                              
+                              
                             </div>
                             <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <h3  class="register-heading">Apply as a Hirer</h3>
@@ -257,7 +266,7 @@
                                         <input type="submit" class="btnRegister" id="_btnRegister"  value="Register"/>
                                     </div>
                                 </div>
-                              </form>
+                             
                             </div>
                           
                         </div>
@@ -269,6 +278,29 @@
 
 
 <script type="text/javascript">
+
+
+
+function myFunction(x) {
+ 
+    var busValue = $("input[name='buscode']").length;
+    var busData = new Array(busValue);
+    
+    for(var i=0; i<busValue; i++){                          
+    	busData[i] = $("input[name='buscode']")[i].value;
+    }
+    
+   
+    
+    $("#_recruitcrefrm").attr("action", "recuruitcreateAf.do").submit();
+
+    
+}
+ 
+ 
+
+
+
 $(".btnRegister").click(function(){
 	
 	/* var start = $("#_jobStart").val().replace('T', '');

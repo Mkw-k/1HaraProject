@@ -42,6 +42,16 @@ public class NoticeServiceImpl implements NoticeService {
 		dao.readcount(seq);
 	}
 
+	@Override
+	public boolean updateNotice(NoticeDto noticedto) {
+		dao.updateNotice(noticedto);
+		return dao.updateNotice(noticedto);
+	}
+
+	@Override
+	public void deleteNotice(int seq) {
+		dao.deleteNotice(seq);
+	}
 	
 	
 }

@@ -145,7 +145,7 @@
 
 .main-login.after {position:relative; padding:20px 24px 0 24px; height:240px}
 .main-login .count {display:inline-block;  height:20px; margin:0; padding:0 10px; line-height:20px; font-size:12px; border-radius:10px; color:#fff; background-color:#ab6152; font-family:'Futura', 'Malgun Gothic', '맑은 고딕', Dotum, '돋움', sans-serif;}
-.main-login .after .top {background:url('/static/images/main/bg-main-login-person.png') no-repeat 0 2px;}
+.main-login .after .top {background:url('bg-main-login-person.png') no-repeat 0 2px;}
 .main-login .after .top.naver {background:url('/static/images/main/bg-main-login-naver.png') no-repeat 0 2px;} /* 20201028 추가 */
 .main-login .after .top.kakao {background:url('/static/images/main/bg-main-login-kakao.png') no-repeat 0 2px;} /* 20201028 추가 */
 .main-login .after .top .bg {padding:0 0 20px 90px}

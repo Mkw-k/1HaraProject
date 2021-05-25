@@ -153,7 +153,7 @@ public class FAQController {
 	public String FAQdetail(Model model, int seq) {	
 
 		FAQDto dto = service.getFAQ(seq);
-		
+		System.out.println(dto.toString());
 		model.addAttribute("dto", dto);
 		
 		return "FAQ/FAQdetail";

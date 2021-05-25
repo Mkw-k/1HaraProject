@@ -60,6 +60,13 @@ public class RecruitController {
 		
 		System.out.println("param tostring :" + param.toString());
 		
+		int i = 5;
+		
+		
+		
+		param.getBusc1();
+		param.getBusc2();
+		
 		//paging 처리 
 		int sn = param.getPage(); 
 		int start = sn * 5 + 1; 	//1  11
@@ -80,7 +87,8 @@ public class RecruitController {
 		return list;
 	}
 
-	
+
+
 	//Ajax로 리스트의 총수 불러오기
 	//parameter Dto는 동일해서 BbsParam가져다 썻음 
 	@ResponseBody
@@ -103,9 +111,9 @@ public class RecruitController {
 	public String recuruitcreateAf(RecruitDto dto, Model model) {		
 		model.addAttribute("doc_title", "채용공고");
 		
-		//System.out.println(dto.toString());
+		 System.out.println(dto.toString());
 		
-	
+			
 		  String start = dto.getJobStart(); String end = dto.getJobEnd();
 		  
 		  start = start.replace("T", " "); end = end.replace("T", " ");
@@ -150,7 +158,12 @@ public class RecruitController {
 			boolean b = service.deleteRecruit(jobseq);
 			
 			
+			
+			
 			return "redirect:/recuruitlist.do";
 		}
+		
+		
+		
 	
 }

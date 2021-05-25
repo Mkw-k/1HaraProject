@@ -133,6 +133,13 @@ public class FAQDto {
 		Filename = filename;
 	}
 
+	@Override
+	public String toString() {
+		return "FAQDto [faqseq=" + faqseq + ", memberid=" + memberid + ", question=" + question + ", faqanswer="
+				+ faqanswer + ", readcount=" + readcount + ", regdate=" + regdate + ", faqnum=" + faqnum + ", Filename="
+				+ Filename + ", NewFilename=" + NewFilename + "]";
+	}
+
 	
 	
 
