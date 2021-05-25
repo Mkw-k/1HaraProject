@@ -642,12 +642,7 @@ margin-right : 450px;
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
-    
-<<<<<<< HEAD
-    
-    
-=======
->>>>>>> 7310fe75d98cfa39428b2324bae5fd8b1c5edf84
+
     <li class="nav-item">
             <c:choose>
                <c:when test="${login.memberid ne null }">
