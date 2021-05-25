@@ -157,10 +157,10 @@
                                             <input type="number" min="0" max="9999999" name="salary" class="form-control"  placeholder="급여(연봉입력/만원단위)*"/>
                                         </div>
                                         <div class="form-group">
-                                            <input type="checkbox" name="buscode" value="11111" class="form-control">1번
-                                            <input type="checkbox" name="buscode" value="11112" class="form-control">2번
-                                            <input type="checkbox" name="buscode" value="11113" class="form-control">3번
-                                            <input type="checkbox" name="buscode" value="11114" class="form-control">4번
+                                            <input type="checkbox" name="buscode" value="11111" class="form-control">11111
+                                            <input type="checkbox" name="buscode" value="11112" class="form-control">11112
+                                            <input type="checkbox" name="buscode" value="11113" class="form-control">11113
+                                            <input type="checkbox" name="buscode" value="11114" class="form-control">11114
                                         </div>
                                         
                                         <div class="form-group">
@@ -198,8 +198,10 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <select class="form-control" name="careerType"> <!-- 고용타입 -->
-                                                <option class="hidden"  selected disabled>경력구분 *</option>
+
+                                             <select class="form-control" name="career_Type"> <!-- 고용타입 -->
+                                                <option class="hidden"  selected disabled>경력구분</option>
+                                                <option value="무관">무관</option>
                                                 <option value="신입">신입</option>
                                                 <option value="1~2년">1~2년</option>
                                                 <option value="2~4년">2~4년</option>
@@ -209,7 +211,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="careerDesc" class="form-control" placeholder="경력추가설명 *"/>
+                                            <input type="text" name="career_Desc" class="form-control" placeholder="경력추가설명 *"/>
                                         </div>
                                         <input type="button" class="btnRegister" onclick="myFunction()"  value="Register"/>
                                     </div>

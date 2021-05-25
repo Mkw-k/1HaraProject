@@ -295,7 +295,7 @@ a.box-btn:hover, a.border-btn:hover {
 <main>
 <%
 FAQDto dto =(FAQDto) request.getAttribute("dto");
-System.out.println("dto" +dto);
+System.out.println("dto" +dto.toString());
 %>
 
 
@@ -319,15 +319,21 @@ System.out.println("dto" +dto);
 							</tr>
 							 
 							<tr>
-							    <th>파일 업로드</th>
+							    <th>업로드된 파일</th>
 							    <td style="text-align: left;">
 							       ${dto.filename }
 							    </td>
 							</tr>
 							<tr>
-							    <th>미리보기</th>
-							    <td style="text-align: left;" class="select_img">
-							       <img alt="" src="">
+							    <th>파일 다운로드</th>
+							    <td style="text-align: left;">
+							    <% if(dto.getNewFilename()!=null && dto.getNewFilename()!="" ){
+							    	
+							    %>
+							       <input type="button" name="btnDown" value="다운로드" onclick="filedown('<%=dto.getNewFilename() %>', '<%=dto.getFaqseq() %>', '<%=dto.getFilename()%>')">
+							    <% 
+							    }
+							    %>
 							    </td>
 							</tr> 
 							<tr>
@@ -361,7 +367,12 @@ System.out.println("dto" +dto);
 		</div>
 	  </section>
 
-
+<!-- 다운로드 버튼을 클릭시 -->
+<form name="file_Down" action="FAQfileDownload.do" method="post">
+    <input type="hidden" name="newfilename">
+    <input type="hidden" name="filename">
+    <input type="hidden" name="faqseq">
+</form>
 
 
 
@@ -612,7 +623,18 @@ function login() {
 		
  }
  
+ 
+ function filedown(newfilename, faqseq, filename) {
+	alert("filedown")
+    let doc = document.file_Down;
+    doc.newfilename.value = newfilename;
+    doc.filename.value = filename;
+    doc.faqseq.value = faqseq;
+    doc.submit();
+}
+ 
  </script>
+ 
 
 </body>
 </html>

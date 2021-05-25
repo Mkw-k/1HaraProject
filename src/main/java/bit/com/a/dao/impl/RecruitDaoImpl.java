@@ -3,6 +3,7 @@ package bit.com.a.dao.impl;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ public class RecruitDaoImpl implements RecruitDao{
 	String ns = "Recruit.";
 
 	@Override
-	public boolean writeRecruit(RecruitDto dto) {
-		return session.insert(ns+"writerecru", dto) >0? true:false;
+	public boolean writeRecruit(Map<String, Object> param) {
+		return session.insert(ns+"writerecru", param) >0? true:false;
 	}
 
 	@Override

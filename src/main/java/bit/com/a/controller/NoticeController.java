@@ -10,6 +10,7 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -73,7 +74,7 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "noticeupload.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String noticewriteAf(NoticeDto dto, @RequestParam(value = "notice_fileload", required = false)
+	public String noticewriteAf(NoticeDto dto, @RequestParam(value = "fileload", required = false)
 											   MultipartFile fileload,
 											   HttpServletRequest req) {
 		
@@ -117,13 +118,99 @@ public class NoticeController {
 	public String noticedetail(int seq, Model model) {
 		System.out.println("씨발 쫌 들어와라");
 		System.out.println(seq);
-		NoticeDto dto = new NoticeDto();
-		System.out.println("값들어옴:" + dto.toString());
 		NoticeDto noticedto = service.getNotice(seq);
+		System.out.println("값들어옴:" + noticedto.toString());
 		model.addAttribute("notice", noticedto);
 		
 		return "notice/noticedetail";
 	}
+	
+	@RequestMapping(value = "noticeupdate.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String noticeupdate(int seq, Model model) {
+		NoticeDto  noticedto = service.getNotice(seq);
+		model.addAttribute("notice", noticedto);
+		
+		return "notice/noticeupdate";
+	
+	}
+	
+	@RequestMapping(value = "noticeupdateAf.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String noticeupdateAf ( NoticeDto noticedto, 
+									String namefile,
+									HttpServletRequest req,
+									@RequestParam(value = "fileload", required = false)MultipartFile fileload) {
+					
+					System.out.println("fileload =" + fileload);
+					System.out.println("af=" + noticedto.toString());
+					noticedto.setFilename(fileload.getOriginalFilename());
+					
+					// 파일 경로
+					String fupload = req.getServletContext().getRealPath("/upload");
+					System.out.println("경로:" +fupload);
+					
+					
+					// 수정할 파일이 있음
+					if(noticedto.getFilename() != null && !noticedto.getFilename().equals("")) {
+						
+						System.out.println("성공");
+						String f = noticedto.getFilename();
+						String newfilename = NoticeUtil.getNewFileName(f);
+						
+						File file = new File(fupload + "/" + newfilename);
+						
+						System.out.println("파일들어옴?:" + newfilename);
+						try {
+							// 실제 업로드
+							FileUtils.writeByteArrayToFile(file, fileload.getBytes());
+						
+							noticedto.setNewfilename(newfilename);
+							
+							// db 갱신
+							System.out.println("dto:"+noticedto.toString());
+							service.updateNotice(noticedto);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+					else {	// 수정할 파일 없음
+						System.out.println("실패");
+						
+						// 기존의 파일명으로 설정
+						noticedto.getFilename();
+						
+						// db 갱신
+						service.updateNotice(noticedto);
+					}
+				
+					return "redirect:/notice.do";
+				}
+	
+	
+	@RequestMapping(value = "noticefileDownload.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String fileDownload(String newfilename, String filename, int seq, HttpServletRequest req, Model model) {
+		
+		System.out.println("다운로드 = " + newfilename);
+		System.out.println(seq);
+		//경로
+		String fupload = req.getServletContext().getRealPath("/upload");
+		
+		File downloadFile = new File(fupload + "/" + newfilename);
+		
+		model.addAttribute("downloadFile", downloadFile);
+		model.addAttribute("originalFile", filename);
+		model.addAttribute("seq", seq);
+		
+		return "downloadView";
+		
+	}
+	@RequestMapping(value="noticedelete.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String noticedelete(int seq, Model model) {
+		System.out.println("번호=" + seq);
+		service.deleteNotice(seq);
+		return "redirect:/notice.do";
+	}
+	
+	
 	
 	
 	

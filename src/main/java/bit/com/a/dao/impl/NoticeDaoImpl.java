@@ -44,6 +44,17 @@ public class NoticeDaoImpl implements NoticeDao {
 		
 	}
 	
+	@Override
+	public boolean updateNotice(NoticeDto noticedto) {
+		int i = session.update(ns + "updateNotice", noticedto);
+		return i>0?true:false;
+	}
+	
+	@Override
+	public void deleteNotice(int seq) {
+		session.update(ns + "deleteNotice" , seq);
+	}
+	
 
 	
 	

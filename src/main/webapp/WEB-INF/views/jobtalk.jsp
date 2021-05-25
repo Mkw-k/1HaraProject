@@ -61,10 +61,9 @@
 
 <!-- 로그인 css -->
 <link href="csss/logincss.css" rel="stylesheet" type="text/css">
-
 <link href="csss/common.css" rel="stylesheet" type="text/css">
-
 <link href="csss/reset.css" rel="stylesheet" type="text/css">
+<link href="csss/layout.css" rel="stylesheet" type="text/css">
 
 <style type="text/css">
   

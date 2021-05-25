@@ -700,6 +700,7 @@ margin-right : 450px;
 
 	<div class="tit-util">
 		<h2 class="tit">공지사항</h2>
+		<input type="hidden" name="seq" value="${notice.noticeseq}"/>
 		<div class="page-util">
 			<span class="hide-location" id="navi_1">고객센터</span>
 		    <span class="hide-location" id="navi_2">고객센터 게시판</span>
@@ -724,7 +725,7 @@ margin-right : 450px;
 		<div class="info">
 			<p class="tit">첨부파일</p>
 			<p class="add-file">
-			<input type="button" name="btnDown"
+			<input type="button" name="btnDown" id="pdsss" value="다운로드"
 				onclick="filedown('${notice.newfilename}', '${notice.noticeseq }', '${notice.filename}')" title="파일 다운로드"><i class="iconset ico-file">첨부파일</i>다운로드<br>
 				
 					<!-- <a href="/vod/framework/filedownload/keisDownload.do?filePathName=IrnxWfjb6jn5yAxgZwEGz3pGVkp7lYmg4IILSv1A6rBfW6svgv7a8np%2F0hLipATY&amp;realFileNm=7Yyc7ZSM66CbXzIucG5n" title="파일 다운로드"><i class="iconset ico-file">첨부파일</i>팜플렛_2.png</a><br> -->
@@ -768,9 +769,29 @@ margin-right : 450px;
 			<a href="notice.do" class="button navy">
 				목록
 			</a>
-			<a href="noticeupdate.do" class="button navy">
-				수정
-			</a>
+			
+			
+			
+			<!-- 수정하기, 수정하기 -->
+			<c:if test="${login.memberid eq notice.memberid }">
+				<button type="button" id="_btnUpdate" class="button navy">수정하기</button>	
+				<button type="button" id="_btnDelete" class="button navy">삭제하기</button>
+			</c:if>
+			<form name="frmForm1" id="_frmForm1" action="noticedelete.do" method="post">
+			<!-- <a href="noticedelete.do" class="button navy">삭제</a> -->
+				<input type="hidden" name="seq" value="${notice.noticeseq }">
+			</form>
+		
+			<!-- seq만 필요하므로 -->
+			<form name="frmForm" id="_frmForm" action="noticeupdate.do" method="post">
+				<input type="hidden" name="seq" value="${notice.noticeseq }">
+			</form>
+			
+			<form name="file_Down" action="noticefileDownload.do" method="post">
+				<input type="hidden" name="newfilename">
+				<input type="hidden" name="filename">
+				<input type="hidden" name="seq">
+			</form>
 		
 	</div>
 
@@ -786,7 +807,7 @@ function filedown(newfilename, noticeseq, filename) {
 	let doc = document.file_Down;
 	doc.newfilename.value =newfilename;
 	doc.filename.value = filename;
-	doc.noticeseq.value = noticeseq;
+	doc.seq.value = noticeseq;
 	doc.submit();	
 	
 	myVar = setTimeout(_refrush, 10);
@@ -800,6 +821,11 @@ function _refrush() {
 $("#_btnUpdate").click(function () {
 	$("#_frmForm").submit();
 });
+
+$("#_btnDelete").click(function () {
+	$("#_frmForm1").submit();
+});
+
 
 </script> 
 

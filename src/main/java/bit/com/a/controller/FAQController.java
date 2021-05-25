@@ -91,9 +91,12 @@ public class FAQController {
                         @RequestParam(value = "fileload", required = false)
                         MultipartFile fileload, 
                         HttpServletRequest req, Model model){
-     
+		
 		System.out.println("fileload : " + fileload);
 		System.out.println(dto.toString());
+		
+		if(!fileload.isEmpty()) {
+			System.out.println("안비었다");
         // filename 취득
         String filename = fileload.getOriginalFilename();
         dto.setFilename(filename);    // 원본 파일명을 설정
@@ -106,7 +109,7 @@ public class FAQController {
         // String fupload = "d:\\tmp";
         
         System.out.println("fupload:" + fupload);
-        
+        System.out.println(dto.getFilename());
         // 파일명 변경 처리
         String newfilename = PdsUtil.getNewFileName(dto.getFilename());        
         dto.setNewFilename(newfilename);
@@ -125,6 +128,15 @@ public class FAQController {
             e.printStackTrace();
         }
         
+		}
+		
+		else {
+			dto.setFilename("");
+			dto.setNewFilename("");
+			System.out.println("비었다");
+			service.writeFAQ(dto);
+		}
+        
         List<FAQDto> mem = service.getmemberFAQ();
 		List<FAQDto> company = service.getcompanyFAQ();
 		List<FAQDto> common = service.getcommonFAQ();
@@ -141,7 +153,7 @@ public class FAQController {
 	public String FAQdetail(Model model, int seq) {	
 
 		FAQDto dto = service.getFAQ(seq);
-		
+		System.out.println(dto.toString());
 		model.addAttribute("dto", dto);
 		
 		return "FAQ/FAQdetail";
@@ -161,11 +173,12 @@ public class FAQController {
     public String updateAfFAQ(  FAQDto dto, 
                                 String namefile,    // 기존의 파일 명,
                                 HttpServletRequest req,
-                                @RequestParam(value = "fileload", required = false) MultipartFile fileload) {
+                                @RequestParam(value = "fileload", required = false) MultipartFile fileload, Model model) {
 		System.out.println("여기들어옴");
 		System.out.println(dto.toString());
         dto.setFilename(fileload.getOriginalFilename());
         
+        if(!fileload.isEmpty()) {
         // 파일 경로
         String fupload = req.getServletContext().getRealPath("/upload");
         
@@ -201,7 +214,74 @@ public class FAQController {
             service.updateFAQ(dto); 
             
         }
+        }
+        else {
+			dto.setFilename("");
+			dto.setNewFilename("");
+			System.out.println("비었다");
+			System.out.println("dto question"+dto.getQuestion());
+			service.updateFAQ(dto);
+		}
         
-        return "redirect:/pdslist.do";
+        List<FAQDto> mem = service.getmemberFAQ();
+		List<FAQDto> company = service.getcompanyFAQ();
+		List<FAQDto> common = service.getcommonFAQ();
+		
+		model.addAttribute("memlist", mem);
+		model.addAttribute("companylist", company);
+		model.addAttribute("commonlist", common);
+
+        
+        return "FAQ/FAQ";
     }
+	
+	@RequestMapping(value = "deleteFAQ.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String deleteFAQ(int seq, Model model) {	
+
+		boolean b = service.deleteFAQ(seq);
+		
+		System.out.println(b);
+		
+		List<FAQDto> mem = service.getmemberFAQ();
+		List<FAQDto> company = service.getcompanyFAQ();
+		List<FAQDto> common = service.getcommonFAQ();
+		
+		model.addAttribute("memlist", mem);
+		model.addAttribute("companylist", company);
+		model.addAttribute("commonlist", common);
+
+		
+		return "FAQ/FAQ";
+	}
+	
+	@RequestMapping(value = "searchFAQ.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String searchFAQ(Model model, String search) {	
+		System.out.println("써치에 들어옴");
+		System.out.println("search"+search);
+		
+		 List<FAQDto> searchlist = service.getsearchFAQ(search);
+		 
+		 model.addAttribute("searchlist", searchlist);
+		
+		return "FAQ/searchFAQ";
+	}
+	
+	 @RequestMapping(value = "FAQfileDownload.do", method = {RequestMethod.GET, RequestMethod.POST})
+	    public String fileDownload(String newfilename, String filename, int faqseq, HttpServletRequest req, Model model) {
+	        
+	        // 경로
+	        // server
+	        String fupload = req.getServletContext().getRealPath("/upload");
+	        
+	        // 폴더
+	    //    String fupload = "d:\\tmp";
+	        
+	        File downloadFile = new File(fupload + "/" + newfilename);
+	        
+	        model.addAttribute("downloadFile", downloadFile);
+	        model.addAttribute("originalFile", filename);
+	        model.addAttribute("faqseq", faqseq);
+	        
+	        return "FAQdownloadView";
+	    }
 }
