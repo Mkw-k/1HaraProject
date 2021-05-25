@@ -619,9 +619,9 @@ margin-right : 450px;
              			<%-- <%-- <c:when test="${login ne null }">
          				<p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>	
          				</c:when> --%>
-             			<%-- <c:when test="${login.auth == 3}">
-             				<p><b>${login.name }</b>님</p>
-    					</c:when> --%>
+             			<c:when test="${login.auth == 2}">
+             				<p><b>[사원]${login.name }</b>님</p>
+    					</c:when>
     					<c:otherwise>
              				<p><b>${login.name }</b>님</p>
     					</c:otherwise>

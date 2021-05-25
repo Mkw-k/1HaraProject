@@ -82,7 +82,7 @@
         <div class="form-group has-feedback"> 
   			<label class="control-label" for="name">이름</label> 
   				<input type="text" class="form-control" id="name" name="name" placeholder=""> 
-  			</div> 
+  		</div> 
 
        <!--  <div class="form-group has-feedback">
         	<label class="control-label" for="registrationNum">주민등록번호</label><br>
@@ -309,6 +309,7 @@
     		
     	});	
     });
+ 	
     $("#pwd").keyup(function(){
         var pwd=$(this).val();
         // 비밀번호 검증할 정규 표현식
