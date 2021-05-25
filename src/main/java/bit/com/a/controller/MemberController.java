@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -433,4 +434,15 @@ public class MemberController {
         return mv;
 	
     }*/
+	@RequestMapping(value = "loginProcess.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String loginProcess(@RequestParam String id, HttpServletRequest request) {
+		
+    	HttpSession session = request.getSession();
+    	session.setAttribute("id", id);
+		return "chat";
+	}
+
+
+	
+	
 }    
