@@ -43,9 +43,39 @@ public class HelloController {
 					
 			return "infoyakgwan";
 		}
-	
-					
 		
+	
+		@RequestMapping(value = "infomember.do", method = RequestMethod.GET)
+		public String infomember(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "infomember";
+		}
+		
+		
+		@RequestMapping(value = "infoemail.do", method = RequestMethod.GET)
+		public String infoemail(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "infoemail";
+		}
+		
+		@RequestMapping(value = "infowebaccess.do", method = RequestMethod.GET)
+		public String infowebaccess(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "infowebaccess";
+		}
+		
+		@RequestMapping(value = "infobanner.do", method = RequestMethod.GET)
+		public String infobanner(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "infobanner";
+		}
+		
+		
+
 }
 
 
