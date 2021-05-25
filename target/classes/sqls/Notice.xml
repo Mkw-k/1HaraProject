@@ -72,6 +72,12 @@
 		WHERE NOTICESEQ=#{noticeseq}
 	</update>
 	
+	<update id="updateNotice" parameterType="bit.com.a.dto.NoticeDto">
+		UPDATE NOTICE
+		SET TITLE=#{title}, CONTENT=#{content}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}, REGDATE=SYSDATE
+		WHERE NOTICESEQ=#{noticeseq}
+	</update>
+	
 	
 	
 	
