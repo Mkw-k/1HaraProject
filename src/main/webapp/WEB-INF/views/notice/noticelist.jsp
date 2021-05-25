@@ -1010,7 +1010,7 @@ margin-right : 450px;
   <!-- Links -->
   
   <div>
-	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
+	 <a href="home.do"><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
 	</div>
   
   <ul class="navbar-nav">
@@ -1431,12 +1431,12 @@ margin-right : 450px;
 
 <script>
 
-getNoticeListData(0);
+//getNoticeListData(0);
 getNoticeListCount();
 
 //검색
 $("#btnSearch").click(function(){
-	getNoticeListData(0);
+	//getNoticeListData(0);
 	getNoticeListCount();
 });
 
@@ -1527,7 +1527,7 @@ function loadPage( totalCount ) {
 		onPageClick:function(event, page){
 			nowPage = page;
 		//	alert('nowPage:' + page);
-			 getNoticeListData( page - 1 );
+		//	 getNoticeListData( page - 1 );
 		}
 	});	
 }

@@ -331,7 +331,7 @@ a.box-btn:hover, a.border-btn:hover {
 							    <th>파일 업로드</th>
 							    <td style="text-align: left;">
 							       <input type="file" name="fileload" style="width: 400px" id="FAQimg">
-							        <%=request.getRealPath("/") %>
+							       <%--  <%=request.getRealPath("/") %> --%>
 							    </td>
 							</tr>
 							<tr>
@@ -346,17 +346,11 @@ a.box-btn:hover, a.border-btn:hover {
 							        <textarea rows="10" cols="100" name="faqanswer" class="content"></textarea>
 							    </td>
 							</tr>
-							 
-<!-- 							<tr>
-							    <td colspan="2" style="height: 50px; text-align: center;">
-							        <a href="#none" id="_btnPds" title="자료올리기">
-							            <img alt="" src="image/bwrite.png">
-							        </a>
-							    </td>
-							</tr> -->
+							
 							<tr>
 							<td colspan="2">
-								<input type="submit" value="글쓰기"> <!-- <a href="commonFAQ.do" class="box-btn">글쓰기</a> -->
+								<input type="submit" value="글쓰기" class="box-btn">
+								<a href="#" class="box-btn" id="writeBtn" >글쓰기</a>
 							</td>
 							</tr> 
 							</table>
@@ -605,6 +599,7 @@ function login() {
   });
  </script>
  
+ <!-- 개발자,기업,일반 구분하는 스크립트 -->
  <script type="text/javascript">
  function getSelectValue()
  {
@@ -621,6 +616,15 @@ function login() {
  }
  
  </script>
+ 
+ <script>
+$("#writeBtn").click(function () {
+    
+    // 제목, 내용
+    
+    $("#_frmForm").submit();
+});
+</script>
 
 </body>
 </html>

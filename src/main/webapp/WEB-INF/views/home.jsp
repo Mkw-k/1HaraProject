@@ -16,9 +16,6 @@
 <meta name="keywords" content="#">
 <meta name="selected-menu" content="0, 0, 0, 0">
 
-
-
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -71,7 +68,6 @@
 
 <!-- 로그인 css -->
 <link href="csss/logincss.css" rel="stylesheet" type="text/css">
-
 
 <style type="text/css">
   
@@ -549,7 +545,7 @@ margin-right : 450px;
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="<%=request.getContextPath() %>/image/개발자메인로고.gif" class="d-block w-100" height="300">
+                <img src="<%=request.getContextPath() %>/image/개발자23.gif" class="d-block w-100" height="300">
             </div>
             
             <!--https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg-->
@@ -599,10 +595,9 @@ margin-right : 450px;
 
 </header>
 
-
-
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <!-- Links -->
+  
   
   <div>
 	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
@@ -610,6 +605,28 @@ margin-right : 450px;
   
   <ul class="navbar-nav">
 <!-- Dropdown -->
+
+	 <li class="nav-item">
+            <c:choose>
+            	<c:when test="${login.memberid ne null }">
+            		<c:choose>
+            			 <c:when test="${login.auth == 1}">
+             				 <p><b>[개인]${login.name }</b>님</p>
+             	 		 </c:when>	 
+             			<%-- <%-- <c:when test="${login ne null }">
+         				<p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>	
+         				</c:when> --%>
+             			<%-- <c:when test="${login.auth == 3}">
+             				<p><b>${login.name }</b>님</p>
+    					</c:when> --%>
+    					<c:otherwise>
+             				<p><b>${login.name }</b>님</p>
+    					</c:otherwise>
+    				</c:choose>			
+            	 </c:when> 
+         	 </c:choose>  
+    </li>
+
     <li class="nav-item dropdown" style="padding-top: 5px;">
      <div class="dropdown">
 		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
@@ -625,7 +642,7 @@ margin-right : 450px;
     </li>
 
     <li class="nav-item">
-      <a class="nav-link bgc" href="recuruitlist.do" style="color:#2186eb">채용공고</a>
+      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
@@ -643,38 +660,12 @@ margin-right : 450px;
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
     
-     <li class="nav-item">
-            <c:choose>
-               <c:when test="${login.memberid ne null }">
-                  <c:choose>
-                      <c:when test="${login.auth == 1}">
-                          <p><b>${login.name }</b>님</p>
-                        </c:when>    
-                      <%-- <%-- <c:when test="${login ne null }">
-                     <p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>   
-                     </c:when> --%>
-                      <%-- <c:when test="${login.auth == 3}">
-                         <p><b>${login.name }</b>님</p>
-                   </c:when> --%>
-                   <c:otherwise>
-                         <p><b>${login.name }</b>님</p>
-                   </c:otherwise>
-                </c:choose>         
-                </c:when> 
-             </c:choose>  
-        <div class="col-md-6">
-           <div class="">
-              <div class="login">
-                 <c:if test="${ empty login }">
-                       <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
-                    <!--    <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
-                </c:if>       
-              </div>
-         </div>
-      </div>   
-    </li>
+
+    
     <li class="nav-item">
-         <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
+
+     	 <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
+
     </li>
     <li class="nav-item">
        <c:if test="${login.auth==3}">
@@ -856,23 +847,73 @@ margin-right : 450px;
 					<!-- 로그인 전 -->
 					
 					<div class="before">
+						<c:if test="${ empty login }">
 						<p class="txt">일하라를 더 안전하고 편리하게 이용하세요.</p>
-						<a href="/member/bodyLogin.do" class="login-worknet">일하라 로그인</a>
+
+						<a href="javascript:login()" class="login-worknet">일하라 로그인</a>
+
 						<div class="link">
 							<a href="/member/idPwdVw/retrieveCustIdPwdSrch.do" class="left">아이디/ 패스워드 찾기</a>
-							<a href="/member/custJoin/retrieveCustJoinTp.do" class="right">회원가입</a>
+							<a href="regiclick.do" class="right">회원가입</a>
 						</div>
 						<div class="other-login">
 							<a href="javascript:f_snsLogin('naver');" id="naver_id_login" title="새창열림 : 네이버 아이디로 로그인" class="left"><i class="iconset ico-main-login-naver"></i>로그인</a>
 							<a href="javascript:f_snsLogin('kakao');" id="kakao_id_login" title="새창열림 : 카카오 아이디로 로그인" class="right"><i class="iconset ico-main-login-kakao"></i>로그인</a>
 						</div>
+						</c:if>
+						
+						
+					<!-- 로그인 후 -->
+					<div class="main-login">
+							<!-- 개인 로그인 후 -->
+							
+							<div class="after personal">
+								
+								
+							<c:if test="${login.memberid ne null}">		
+								
+								<div class="top">
+									<div class="bg" style="background-image: url('bg-main-login-person.png') no-repeat 0 2px;">
+										<p class="txt">개인회원</p>
+										
+										<p class="name"><strong>${login.name}</strong> 님</p>
+										<a href="/indivMemberSrv/main/indivMemberSrvMain.do" class="mypge">마이페이지</a>
+									</div>
+									<div class="btn-grp">
+										<button type="button" class="btn-logout float-l" onclick="f_logout();">로그아웃</button>
+										<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r">회원정보 관리</a>
+									</div>
+								</div>
+							</c:if>	
+							<!-- 	
+								<div class="btn-func">
+									
+										
+										
+									
+									<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">구직신청하기</a>
+									
+								</div>
+								
+								<ul class="my-info2">
+									<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeSelfIntroMng.do">내 이력서 관리</a></li>
+									<li><a href="/indivMemberSrv/intrstInfo/intrstCoMngList.do?thisMenuId=M201200157">관심스크랩</a></li>
+									<li><a href="/indivMemberSrv/aplentMng/seekActvHist/seekActvHistList.do">구직활동 내역</a></li>
+									<li><a href="/indivMemberSrv/myCustmadeSrvList.do">맞춤서비스</a></li>
+								</ul>
+							</div> -->
+							<!-- //개인 로그인 후 -->
+						
+						
 						<ul class="menu-link">
 							<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">내게 딱! 맞는 일자리 찾기<br><strong>구직신청</strong></a></li>
 							<li><a href="/coMemberSrv/wantedInfoAdmin/wantedAdmin.do">우리 회사 맞춤인재 채용<br><strong>구인신청</strong></a></li>
-							<li><a href="/consltJobCarpa/jobPsyExamNew/jobPsyExamYouthList.do">로그인 없이 간편하게!<br><strong>청소년 심리검사</strong></a></li>
+							<!-- <li><a href="/consltJobCarpa/jobPsyExamNew/jobPsyExamYouthList.do">로그인 없이 간편하게!<br><strong>청소년 심리검사</strong></a></li> -->
 						</ul>
 					</div>
 					<!-- //로그인 전 -->
+		<!-- 로그인영역 -->
+		</div>
 		</div>
 		<!-- 로그인 끝 -->
 		                   
@@ -949,8 +990,11 @@ margin-right : 450px;
     width: 318px;
     border-left-width: 30px;
     margin-left: 20px;">
+    
   </div>
 </div>
+
+
 
 <!-- 채용공고 부트스트랩 -->
 
@@ -1276,7 +1320,7 @@ margin-right : 450px;
 
 <!-- ####################################################################################################### -->
 
-</main>
+
 
 <!-- FOOTER -->
 
@@ -1364,13 +1408,13 @@ margin-right : 450px;
 				<div class="inner-wrap">
 					<div class="link-footer">
 						<a href="info.do">일하라 소개</a>
-						<a href="/useInvite/worknetHomepgInvite/useClause1.do">이용약관</a>
-						<a href="/useInvite/worknetHomepgInvite/indivInfoPrtecPolicy.do"><b>개인정보처리방침</b></a>
-						<a href="/useInvite/worknetHomepgInvite/emailAddrWonoticeGatherRefuse.do">이메일주소무단수집거부</a>
-						<a href="/useInvite/worknetHomepgInvite/webAccessPlcy.do">웹접근성정책</a>
+						<a href="infoyakgwan.do">이용약관</a>
+						<a href="infomember.do"><b>개인정보처리방침</b></a>
+						<a href="infoemail.do">이메일주소무단수집거부</a>
+						<a href="infowebaccess.do">웹접근성정책</a>
 						<a href="/useInvite/worknetHomepgInvite/cprgtPolicyAsAllianceInq.do">저작권정책 및 제휴문의</a>
 						<a href="http://openapi.work.go.kr" target="_blank">Open API</a>
-						<a href="/contents.do?relAddr=/useInvite/worknetHomepgInvite/workBanner&amp;titleId=UIFG000001">배너 가져가기</a>
+						<a href="infobanner.do">배너 가져가기</a>
 						<a href="/useInfo/lieJobadRpt/lieJobadRptList.do">거짓구인광고 신고</a>
 					</div>
 				</div>
@@ -1585,6 +1629,10 @@ window.onscroll = function sticky() {
 		}	
 		
 	});
+  
+  function f_logout() {
+	  location.href = "logout.do";
+  }
   
   </script>
 <!-- End Channel Plugin -->

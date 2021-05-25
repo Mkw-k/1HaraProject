@@ -434,7 +434,7 @@ section .section-title {
 <tr>
 	<th>파일 업로드</th>
 	<td style="text-align: left;">
-		<input type="file" id="_fileload" name="notice_fileload" style="width: 400px">
+		<input type="file" id="_fileload" name="fileload" style="width: 400px">
 	</td>
 </tr>
 

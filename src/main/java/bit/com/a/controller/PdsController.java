@@ -94,7 +94,9 @@ public class PdsController {
 	public String pdsdetail(int seq, Model model) {
 		
 		service.readcount(seq);
+		PdsDto dto = new PdsDto();
 		
+		System.out.println("디테일" + dto.toString());
 		//dto 
 		PdsDto pdsdto = service.getPds(seq);
 		model.addAttribute("pds" , pdsdto);
@@ -135,7 +137,7 @@ public class PdsController {
 
 	@RequestMapping(value = "pdsupdateAf.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public String pdsupdateAf(	PdsDto pdsdto, 
-								String namefile,	// 기존의 파일 명,
+								String filename,	// 기존의 파일 명,
 								HttpServletRequest req,
 								@RequestParam(value = "fileload", required = false)MultipartFile fileload) {
 		
@@ -148,7 +150,7 @@ public class PdsController {
 		
 		// 수정할 파일이 있음
 		if(pdsdto.getFilename() != null && !pdsdto.getFilename().equals("")) {
-			
+			System.out.println("성");
 			String f = pdsdto.getFilename();
 			String newfilename = PdsUtil.getNewFileName(f);
 			
@@ -156,7 +158,7 @@ public class PdsController {
 			pdsdto.setNewfilename(newfilename);
 			
 			File file = new File(fupload + "/" + newfilename);			
-			
+			System.out.println(newfilename);
 			try {
 				// 실제 업로드
 				FileUtils.writeByteArrayToFile(file, fileload.getBytes());
@@ -169,9 +171,9 @@ public class PdsController {
 			}			
 		}
 		else {	// 수정할 파일 없음
-			
+			System.out.println("fall");
 			// 기존의 파일명으로 설정
-			pdsdto.setFilename(namefile);
+			pdsdto.setFilename(filename);
 			
 			// DB
 			service.updatePds(pdsdto);	

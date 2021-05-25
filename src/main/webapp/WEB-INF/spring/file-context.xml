@@ -15,6 +15,7 @@
 	<!-- download -->
 	<bean id="downloadView" class="bit.com.a.util.DownloadView"/>
 	<bean id="FAQdownloadView" class="bit.com.a.util.FAQDownloadView"/>
+	<bean id="NoticedownloadView" class="bit.com.a.util.NoticeDownloadView"/>
 
 	<bean id="downloadViewResolver"
 		class="org.springframework.web.servlet.view.BeanNameViewResolver">
