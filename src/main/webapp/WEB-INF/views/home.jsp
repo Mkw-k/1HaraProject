@@ -660,24 +660,29 @@ margin-right : 450px;
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
     
+
     
     <li class="nav-item">
 
      	 <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
+
     </li>
     <li class="nav-item">
-    	<c:if test="${login.auth==3}">
-    		<a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a> 
-		</c:if>
-	</li>
-	<li class="nav-item">
-		<c:if test="${login.memberid ne null}">	
-			<a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
-		</c:if>	
-	</li>
+       <c:if test="${login.auth==3}">
+          <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a> 
+      </c:if>
+   </li>
+   <li class="nav-item">
+      <c:if test="${login.memberid ne null}">   
+         <a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
+      </c:if>   
+   </li>
   </ul>
 </nav>
 <br>
+
+  
+
 
  <!-- =========Login 클릭 시 Modal =========== -->
       <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" class="modal modal-center fade ">
