@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@page import="bit.com.a.dto.FAQDto"%>
+<%@page import="bit.com.a.dto.PdsDto"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -294,7 +295,7 @@ a.box-btn:hover, a.border-btn:hover {
 <!-- 본문 -->
 <main>
 <%
-FAQDto dto =(FAQDto) request.getAttribute("dto");
+PdsDto dto =(PdsDto) request.getAttribute("dto");
 System.out.println("dto" +dto);
 %>
 

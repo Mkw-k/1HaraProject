@@ -39,7 +39,7 @@
 
 	<update id="updatePds" parameterType="bit.com.a.dto.PdsDto">
 	UPDATE PDS
-	SET TITLE=#{title}, CONTENT=#{content}, FILENAME=#{filename, jdbcType=VARCHAR}, REGDATE=SYSDATE
+	SET TITLE=#{title}, CONTENT=#{content}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}, REGDATE=SYSDATE
 	WHERE PDSSEQ=#{pdsseq}
 	</update>
 
