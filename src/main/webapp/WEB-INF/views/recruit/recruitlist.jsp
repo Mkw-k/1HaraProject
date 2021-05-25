@@ -122,8 +122,8 @@ CRUD
 	<td>검색</td>
 	<td style="padding-left: 5px;">
 		<select id="_choice" name="choice">
-	 		<option value="" selected="selected">선택</option> 
-			<option value="title" selected="selected">제목</option>
+	 		<option value="" selected="selected" disabled="disabled">선택</option> 
+			<option value="title" >제목</option>
 			<!-- <option value="content">내용</option> -->
 			<option value="companyname">회사명</option>
 		</select>
@@ -251,9 +251,9 @@ function getrecruListData( pNumber, search ){
 									//+ arrow(val.depth)
 									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq + "'>" + val.jobTitle+ "</a>"
 									+"</td>"
-									+"<td>" + val.education +"<br>"+val.career_Type + "</td>"
+									+"<td>" + val.eduname +"<br>"+val.career_Type + "</td>"
 									+"<td>" + val.jobVolumn + "</td>"
-									+"<td>" + val.emp_Type +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
+									+"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
 									+"<td>" + val.jobEnd +"<br>"+val.jobStart+ "&nbsp;&nbsp;"
 									+"<input type='button' value='공고삭제'>"+ "</td>";
 							}
@@ -334,3 +334,13 @@ function loadPage( totalCount ) {
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+

@@ -1,9 +1,11 @@
 package bit.com.a.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
-import java.net.http.HttpRequest;
+
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import bit.com.a.dto.BbsDto;
+
 import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.service.RecruitService;
@@ -65,13 +67,6 @@ public class RecruitController {
 		
 		System.out.println("param tostring :" + param.toString());
 		
-		int i = 5;
-		
-		
-		
-		param.getBusc1();
-		param.getBusc2();
-		
 		//paging 처리 
 		int sn = param.getPage(); 
 		int start = sn * 5 + 1; 	//1  11
@@ -116,21 +111,16 @@ public class RecruitController {
 
 //채용공고 작성 After(DB에 입력)
 	@RequestMapping(value = "recuruitcreateAf.do", method = RequestMethod.POST)
-	public String recuruitcreateAf(RecruitDto dto, Model model) {		
+	public String recuruitcreateAf(RecruitDto dto, Model model, HttpServletRequest req) {		
 		model.addAttribute("doc_title", "채용공고");
-		
 
 		  System.out.println("디티오 데이터 :" +dto.toString());
 		
-	
 		  String start = dto.getJobStart(); 
 		  String end = dto.getJobEnd();
-
-
 		  
 		  start = start.replace("T", " "); 
 		  end = end.replace("T", " ");
-		  
 		 
 		  dto.setJobStart(start);
 		  dto.setJobEnd(end);
@@ -140,7 +130,16 @@ public class RecruitController {
 		System.out.println("시작일 :"+dto.getJobStart());
 		System.out.println("종료일 :"+dto.getJobEnd());
 		
-		boolean b = service.writeRecruit(dto);
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("dto", dto); //map에 dto를 넣는다.
+		
+		String[] arrayParam = req.getParameterValues("buscode");
+		for (int i = 0; i < arrayParam.length; i++) {
+		System.out.println("넘어온버스코드:"+arrayParam[i]);
+		}
+		param.put("arrayParam", arrayParam); //map에 배열을 넣는다
+		
+		boolean b = service.writeRecruit(param);
 		
 		if(b) {
 			System.out.println("공고등록성공");

@@ -157,10 +157,10 @@
                                             <input type="number" min="0" max="9999999" name="salary" class="form-control"  placeholder="급여(연봉입력/만원단위)*"/>
                                         </div>
                                         <div class="form-group">
-                                            <input type="checkbox" name="buscode" value="11111" class="form-control">1번
-                                            <input type="checkbox" name="buscode" value="11112" class="form-control">2번
-                                            <input type="checkbox" name="buscode" value="11113" class="form-control">3번
-                                            <input type="checkbox" name="buscode" value="11114" class="form-control">4번
+                                            <input type="checkbox" name="buscode" value="11111" class="form-control">11111
+                                            <input type="checkbox" name="buscode" value="11112" class="form-control">11112
+                                            <input type="checkbox" name="buscode" value="11113" class="form-control">11113
+                                            <input type="checkbox" name="buscode" value="11114" class="form-control">11114
                                         </div>
                                         
                                         <div class="form-group">

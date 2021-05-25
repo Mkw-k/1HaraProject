@@ -6,14 +6,26 @@
 <mapper namespace="Recruit">
 
 <!-- 공고작성 -->
-<insert id="writerecru" parameterType="bit.com.a.dto.RecruitDto">
-	INSERT INTO JOB(JOBSEQ , COMPANYID , JOBTITLE , JOBCONTENT , AREA1NAME,
+<insert id="writerecru" parameterType="java.util.HashMap">
+	INSERT ALL
+	INTO JOB (JOBSEQ , COMPANYID , JOBTITLE , JOBCONTENT , AREA1NAME,
 					AREA2NAME, JOBVOLUMN, SALARY, JOBSTART, JOBEND, EMP_TYPE,
-					EDUCATION , CAREER_TYPE, CAREER_DESC, READCOUNT, REGDATE, BUSCODE, DEL)
-	VALUES(JOB_SEQ.NEXTVAL, #{companyId}, #{jobTitle}, #{jobContent},
-			 #{area1Name}, #{area2Name}, #{jobVolumn}, #{salary}, TO_DATE(#{jobStart}, 'YYYY-MM-DD HH24:MI:SS'),
-			 TO_DATE(#{jobEnd}, 'YYYY-MM-DD HH24:MI:SS'), #{emp_Type}, #{education}, #{career_Type}, #{career_Desc}, 
-			 0, SYSDATE, #{buscode}, 0)
+					EDUCATION , CAREER_TYPE, CAREER_DESC, READCOUNT, REGDATE, DEL)
+	VALUES (JOB_SEQ.NEXTVAL, #{dto.companyId}, #{dto.jobTitle}, #{dto.jobContent},
+			 #{dto.area1Name}, #{dto.area2Name}, #{dto.jobVolumn}, #{dto.salary}, 
+			 TO_DATE(#{dto.jobStart}, 'YYYY-MM-DD HH24:MI:SS'),
+			 TO_DATE(#{dto.jobEnd}, 'YYYY-MM-DD HH24:MI:SS'), 
+			 #{dto.emp_Type}, #{dto.education}, #{dto.career_Type}, #{dto.career_Desc}, 
+			 0, SYSDATE, 0)
+	
+		<foreach collection="arrayParam" item="item" index="index" separator="" open="" close="">
+		INTO BSCODSTACK (BSCODSTACKSEQ, JOBSEQ, BUSCODE)
+		VALUES (BSCODSTACK_SEQ.nextval, JOB_SEQ.nextval, #{item})
+		</foreach>
+	SELECT 1
+	FROM DUAL
+			  
+	
 </insert>
 
 
@@ -53,7 +65,10 @@
 <select id="getRecruitPagingList" parameterType="bit.com.a.dto.BbsParam" resultType="bit.com.a.dto.RecruitDto">
 	SELECT J.RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
 					J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
-					J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME
+					J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, 
+		   C.COMPANYNAME, E.EDUNAME, T.EMP_NAME
+					
+					
 	FROM (SELECT ROW_NUMBER()OVER(ORDER BY JOBSEQ DESC)AS RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
 					J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
 					J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME
@@ -72,10 +87,16 @@
 				</if>
 			</if>
 		   )J
+	<!-- 회사이름가져오기 -->
 	JOIN COMPANY C 
 	ON J.COMPANYID = C.COMPANYID
+	<!-- 학력조건 가져오기 -->
 	JOIN EDUCATION E 
-    ON J.EDUCATION = E.EDUCODE 
+    ON E.EDUCODE = J.EDUCATION  
+	<!-- 고용타입가져오기 -->
+	JOIN EMPLOYEE_TYPE T
+	ON T.EMP_TYPE = J.EMP_TYPE
+	
 	WHERE RNUM BETWEEN ${start} AND ${end}
 </select>
 
