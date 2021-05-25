@@ -1358,12 +1358,12 @@ margin-right : 450px;
 					<div class="link-footer">
 						<a href="info.do">일하라 소개</a>
 						<a href="infoyakgwan.do">이용약관</a>
-						<a href="/useInvite/worknetHomepgInvite/indivInfoPrtecPolicy.do"><b>개인정보처리방침</b></a>
-						<a href="/useInvite/worknetHomepgInvite/emailAddrWonoticeGatherRefuse.do">이메일주소무단수집거부</a>
-						<a href="/useInvite/worknetHomepgInvite/webAccessPlcy.do">웹접근성정책</a>
+						<a href="infomember.do"><b>개인정보처리방침</b></a>
+						<a href="infoemail.do">이메일주소무단수집거부</a>
+						<a href="infowebaccess.do">웹접근성정책</a>
 						<a href="/useInvite/worknetHomepgInvite/cprgtPolicyAsAllianceInq.do">저작권정책 및 제휴문의</a>
 						<a href="http://openapi.work.go.kr" target="_blank">Open API</a>
-						<a href="/contents.do?relAddr=/useInvite/worknetHomepgInvite/workBanner&amp;titleId=UIFG000001">배너 가져가기</a>
+						<a href="infobanner.do">배너 가져가기</a>
 						<a href="/useInfo/lieJobadRpt/lieJobadRptList.do">거짓구인광고 신고</a>
 					</div>
 				</div>
