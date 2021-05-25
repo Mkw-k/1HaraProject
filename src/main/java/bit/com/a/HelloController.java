@@ -74,6 +74,13 @@ public class HelloController {
 			return "infobanner";
 		}
 		
+		@RequestMapping(value = "musicplayer.do", method = RequestMethod.GET)
+		public String musicplayer(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "musicplayer";
+		}
+		
 		
 
 }
