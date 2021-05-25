@@ -295,7 +295,7 @@ a.box-btn:hover, a.border-btn:hover {
 <main>
 <%
 FAQDto dto =(FAQDto) request.getAttribute("dto");
-System.out.println("dto" +dto);
+System.out.println("dto" +dto.toString());
 %>
 
 
