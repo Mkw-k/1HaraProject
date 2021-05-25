@@ -4,7 +4,6 @@ import java.util.List;
 
 import bit.com.a.dto.NoticeDto;
 import bit.com.a.dto.NoticeParam;
-import bit.com.a.dto.PdsDto;
 
 public interface NoticeDao {
 
@@ -13,6 +12,8 @@ public interface NoticeDao {
 	boolean uploadNotice(NoticeDto dto);
 	NoticeDto getNotice(int seq);
 	void readcount(int seq);
+	boolean updateNotice(NoticeDto noticedto);
+	void deleteNotice(int seq);
 	
 	
 }
