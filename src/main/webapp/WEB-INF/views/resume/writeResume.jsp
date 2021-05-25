@@ -77,9 +77,9 @@ position: relative;
 z-index: 2; }
 .newsletter .content h2 {
 color: #243c4f;
-margin-bottom: 40px; }
+/* margin-bottom: 40px; */ }
 .newsletter .content .form-control {
-height: 50px;
+/* height: 50px; */
 border-color: #ffffff;
 border-radius:0;
 }
@@ -95,321 +95,35 @@ color: #fff;
 font-weight:600;
 }
 
-/* 3가지 FAQ링크 */
+@import url(//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css);
+@import url(//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
 
-
-:root {
-    font-size: 10px;
+body {
+				  font-family: "Ubuntu", sans-serif;
+				  background-color: #3498db;
+			}
+.container {
+				  padding-top: 50px;
+			}
+article {
+  margin-bottom: 30px;
 }
-
-.faqnav ul {
-    padding: 0;
-    list-style-type: none;
-}
-
-.faqnav li {
-    width: 20rem;
-    height: 7rem;
-    font-size: 20px;
-    text-align: center;
-    line-height: 7rem;
-    font-family: sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-    transition: 0.3s;
-    margin: 8.5rem;
-    background-color: #eee;
-}
-
-.faqnav li::before,
-.faqnav li::after {
-    content: '';
-    position: absolute;
-    width: inherit;
-    height: inherit;
-    top: 0;
-    left: 0;
-    transition: 0.3s;
-}
-
-.faqnav li::before {
-    background-color: #eee;
-    z-index: -1;
-    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
-}
-
-.faqnav li::after {
-    background-color: #2186eb;
-    transform: translate(1.5rem, 1.5rem);
-    z-index: -2;
-}
-
-.faqnav li:hover {
-    transform: translate(1.5rem, 1.5rem);
-    color: black;
-    background-color: #2186eb;
-}
-
-.faqnav li:hover::before {
-    background-color: #2186eb;
-}
-
-.faqnav li:hover::after {
-    background-color: #eee;
-    transform: translate(-1.5rem, -1.5rem);
-}
-
-/* 테이블 css */
-.pb-100 {
-	padding-bottom: 100px;
-}
-.pt-100 {
-	padding-top: 100px;
-}
-a{
-    text-decoration:none;
-}
-.section-title h4 {
-  font-size: 14px;
-  font-weight: 500;
-  color: #777;
-}
-.section-title h2 {
-	font-size: 32px;
-	text-transform: capitalize;
-	margin: 15px 0;
-	display: inline-block;
-	position: relative;
-	font-weight: 700;
-	padding-bottom: 15px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-}
-.section-title p {
-	font-weight: 300;
-	font-size: 14px;
-}
-.black-bg .section-title h2, .black-bg .section-title h4, .black-bg .section-title p {
-  color:#fff
-}
-.section-title h2:before {
-  position: absolute;
-  content: "";
-  width: 150px;
-  height: 1px;
-  background-color: #777;
-  bottom: 0;
-  left: 50%;
-  margin-left: -75px;
-}
-.section-title h2:after {
-  position: absolute;
-  content: "";
-  width: 80px;
-  height: 3px;
-  background-color: #e16038;
-  border: darkblue;
-  bottom: -1px;
-  left: 50%;
-  margin-left: -40px;
-}
-.section-title {
-  margin-bottom: 70px;
-}
-.single-price {
-	text-align: center;
-	padding: 30px;
-	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
-}
-.price-title h4 {
-  font-size: 24px;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-.price-tag {
-  margin: 30px 0;
-}
-.price-tag {
-	margin: 30px 0;
-	background-color: #fafafa;
-	color: #000;
-	padding: 10px 0;
-}
-.center.price-tag {
-	background-color: tomato;
-	color:#fff
-}
-.price-tag h2 {
-	font-size: 45px;
-	font-weight: 600;
-	font-family: poppins;
-}
-.price-tag h2 span {
-  font-weight: 300;
-  font-size: 16px;
-  font-style: italic;
-}
-.price-item ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.price-item ul li {
-  font-size: 14px;
-  padding: 5px 0;
-  border-bottom: 1px dashed #eee;
-  margin: 5px 0;
-}
-.price-item ul li:last-child {
-  border-bottom: 0;
-}
-.single-price a {
-  margin-top: 15px;
-}
-a.box-btn {
-	background-color: #2186eb;
-	padding: 5px 20px;
-	display: inline-block;
-	color: #fff;
-	text-transform: capitalize;
-	border-radius: 3px;
-	font-size: 15px;
-	transition: .3s;
-}
-a.box-btn:hover, a.border-btn:hover {
-	background-color: #2186eb;
-}
-
-/* 네비바 반응형 */
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  /* 요소의 최소 너비 지정, height 속성 무시
-    vh단위는 브라우저 안쪽 높이(window.innerHeight)을 기준으로
-    설정된다. 하지만 태블릿이나, 모바일의 경우에는 뷰 포트에 따라
-    맞춰짐*/
-  min-height: 8vh;
-  background-color: #504954;
-  font-family: "Poppins", sans-serif;
-}
-
-.logo {
-  color: rgb(226, 226, 226);
-  text-transform: uppercase;
-  /* 각 글자 2px씩 간격을 줌*/
-  letter-spacing: 2px;
-  font-size: 18px;
-}
-
-.nav-links {
-  width: 40%;
-  /* display: flex; */
-  justify-content: space-around;
-}
-
-.nav-links li {
-  list-style: none;
-}
-
-.nav-links a {
-  color: rgb(226, 226, 226);
-  text-decoration: none;
-  letter-spacing: 3px;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.burger {
-  display: none;
-  cursor: pointer;
-}
-
-.burger div {
-  width: 25px;
-  height: 3px;
-  background-color: rgb(226, 226, 226);
-  margin: 5px;
-  transition: all 0.3s ease;
-}
-
-@media screen and (max-width: 1024px) {
-  .nav-links {
-    width: 60%;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  body {
-    overflow-x: hidden;
-  }
-  .nav-links {
-    position: absolute;
-    top: 8vh;
-    right: 0;
-    height: 92vh;
-    background-color: #504954;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-    transform: translateX(100%);
-  }
-  .nav-links li {
-    opacity: 0;
-  }
-  .burger {
-    display: block;
-  }
-
-  .nav-active {
-    transform: translateX(0%);
-  }
-
-  @keyframes navLinkFade {
-    from {
-      opacity: 0;
-      transform: translateX(5px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-}
-
-.toggle .line1 {
-  transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.toggle .line2 {
-  opacity: 0;
-}
-
-.toggle .line3 {
-  transform: rotate(45deg) translate(-5px, -6px);
-}
-
-/* 이력서 탭 */
-
-.list-group-item{
-    display: flex;
-    justify-content: space-between;
-}
-
-.pendiv{
-	display:flex;
-}
-
-.list-group{
-    margin-left: 400px;
-}
+			.img-responsive {
+				  width: 150px;
+				  height: 150px;
+			}
+			figcaption {
+				  margin-top: 20px;
+			}
+			
+			figcaption > h3 {
+				  font-weight: bolder;
+				  font-size: xx-large;
+			}
+			dt, dd {
+				  margin-bottom: 5px;
+			}
  
 </style>
 </head>
@@ -520,13 +234,15 @@ nav {
 <!-- 본문 -->
 <main>
 
+
 <!-- 검색창 -->
-<section class="newsletter" style="padding-bottom: 10px;">
+<section class="newsletter" style="margin-top: -150px;padding-bottom: 0px;padding-top: 100px;">
 <div class="container">
 <div class="row">
 <div class="col-sm-12">
 	<div class="content">
-		<h2 style="color:#fff">이력서 관리</h2>
+		<h2 style="color:#fff">FAQ</h2>
+	
 	</div>
 </div>
 </div>
@@ -534,179 +250,109 @@ nav {
 </section>
 
 
-			<div id="navbar-example" style="display: list-item;">
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs" role="tablist" style="margin-left: 400px;">
-					<li class="nav-item"><a class="nav-link active"
-						data-toggle="tab" href="#completed" role="tab">이력서</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#writing" role="tab">작성중</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#applied" role="tab">지원 현황</a></li>
-					<li class="nav-item" style="margin-left: 700px;">
-						<div style="text-align: center;">
-							<a href="writeResume.do" class="box-btn">이력서 추가</a>
-						</div>
-					</li>
-					
-				</ul>
-
-				<!-- Tab panes {Fade}  -->
-				<div class="tab-content" style="height: 700px;">
-					<div class="tab-pane fade in active" id="completed" name="completed" role="tabpanel" style="width: 1500px;">
-						<div class="bs-callout bs-callout-primary">
-							<ul class="list-group">
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;">
-								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="tab-pane fade" id="writing" role="tabpanel">
-						<div class="bs-callout bs-callout-primary" id="certifications"
-							name="certifications" style="width: 1500px;">
-							<ul class="list-group">
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 이정우
-									<div class="pendiv">
-										<progress class="progress progress-striped progress-success"
-											value="90" max="100">
-											<span class="sr-only">90%</span>
-										</progress>
-										<img alt="" src="<%=request.getContextPath()%>/image/pen.png"
-											height="30px" width="30px" style="margin-left: 30px;">
-									</div>
-
-								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 이정우
-									<div class="pendiv">
-										<progress class="progress progress-striped progress-warning"
-											value="40" max="100">
-											<span class="sr-only">40%</span>
-										</progress>
-										<img alt="" src="<%=request.getContextPath()%>/image/pen.png"
-											height="30px" width="30px" style="margin-left: 30px;">
-									</div>
-								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 이정우
-									<div class="pendiv">
-										<progress class="progress progress-striped progress-danger"
-											value="30" max="100">
-											<span class="sr-only">30%</span>
-										</progress>
-										<img alt="" src="<%=request.getContextPath()%>/image/pen.png"
-											height="30px" width="30px" style="margin-left: 30px;">
-									</div>
-								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 이정우
-									<div class="pendiv">
-										<progress class="progress progress-striped progress-warning"
-											value="60" max="100">
-											<span class="sr-only">60%</span>
-										</progress>
-										<img alt="" src="<%=request.getContextPath()%>/image/pen.png"
-											height="30px" width="30px" style="margin-left: 30px;">
-									</div>
-								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 이정우
-									<div class="pendiv">
-										<progress class="progress progress-striped progress-warning"
-											value="50" max="100">
-											<span class="sr-only">50%</span>
-										</progress>
-										<img alt="" src="<%=request.getContextPath()%>/image/pen.png"
-											height="30px" width="30px" style="margin-left: 30px;">
-									</div>
-								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 이정우
-									<div class="pendiv">
-										<progress class="progress progress-striped progress-success"
-											value="70" max="100">
-											<span class="sr-only">70%</span>
-										</progress>
-										<img alt="" src="<%=request.getContextPath()%>/image/pen.png"
-											height="30px" width="30px" style="margin-left: 30px;">
-									</div>
-								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 이정우
-									<div class="pendiv">
-										<progress class="progress progress-striped progress-success"
-											value="60" max="100">
-											<span class="sr-only">60%</span>
-										</progress>
-										<img alt="" src="<%=request.getContextPath()%>/image/pen.png"
-											height="30px" width="30px" style="margin-left: 30px;">
-									</div>
-								</li>
-							</ul>
-						</div>
-
-					</div>
-					<div class="tab-pane fade" id="applied" name="applied"
-						role="tabpanel">
-						<div class="bs-callout bs-callout-primary">
-							<table class="table" style="width: 1100px; text-align: center; margin-left: 400px;">
-							<colgroup>
-							<col width="350px"><col width="350px"><col width="200px"><col width="200px">
-							</colgroup>
-								<thead>
-									<tr>
-										<td>지원공고</td>
-										<td>지원이력서</td>
-										<td>지원일</td>
-										<td>열람여부</td>
-									</tr>
-								</thead>
-								<tbody
-									style="border-bottom: thin; border-color: #cccccc; border-bottom-style: solid;">
-									<tr>
-										<td>카카오</td>
-										<td>프로그래머의 자질을 갖춘 지원자 최은지</td>
-										<td>2021-01-01</td>
-										<td><img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;"></td>
-									</tr>
-									<tr>
-										<td>네이버</td>
-										<td>프로그래머의 자질을 갖춘 지원자 최은지</td>
-										<td>2021-03-23</td>
-										<td><img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;"></td>
-									</tr>
-									<tr>
-										<td>라인</td>
-										<td>프로그래머의 자질을 갖춘 지원자 최은지</td>
-										<td>2021-04-30</td>
-										<td><img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;"></td>
-									</tr>
-									<tr>
-										<td>쿠팡</td>
-										<td>프로그래머의 자질을 갖춘 지원자 최은지</td>
-										<td>2021-05-25</td>
-										<td><img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;"></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-
-				</div>
-			</div>
+<div class="container" style="margin-top: 0px;">
+  <div class="row">
+    <div class="col-lg-offset-2 col-lg-8">
+      <section class="panel panel-default">
+        <div class="panel-body">
+          <article class="panel-body">
+            <figure class="text-center">
+              <img src="https://d13yacurqjgara.cloudfront.net/users/42865/screenshots/614568/devilspiritjinx.jpg" class="img-thumbnail img-circle img-responsive" alt="me">
+              <figcaption>
+                <h3>Yutthana Siphuengchai</h3> 99/4 M.9 Saraburi-Loamsak Rd. Nachaliang Nongphai Phetchabun 67220
+                <br> Tel. 092-889-7790 E-mail: yutna1990@gmail.com
+              </figcaption>
+            </figure>
+          </article>
+          <br>
+          <article>
+            <h4>
+            									  <strong>Personal Details</strong>
+								            </h4>
+            <hr>
+            <dl class="dl-horizontal">
+              <dt>Date of Birth:</dt>
+              <dd>April 14, 1990</dd>
+              <dt>Age:</dt>
+              <dd>25</dd>
+              <dt>Marital Status:</dt>
+              <dd>Single</dd>
+              <dt>Military Status:</dt>
+              <dd>Exempted through Military Drawing Ballot</dd>
+              <dt>Interests:</dt>
+              <dd>HTML5, CSS3, JavaScript, jQuery, Underscore.js, Backbone.js, Web Design, Responsive Design, Node.js, Java and Linux.</dd>
+            </dl>
+          </article>
+          <article>
+            <h4>
+									              <strong>Edcucation</strong>
+								            </h4>
+            <hr>
+            <dl class="dl-horizontal">
+              <dt>2009-2013</dt>
+              <dd>Bachelor of Engineering (Computer Engineering) | Suranaree University of Technology</dd>
+            </dl>
+          </article>
+          <article>
+            <h4>
+									              <strong>Skills</strong>
+								            </h4>
+            <hr>
+            <dl class="dl-horizontal">
+              <dt>Languages:</dt>
+              <dd>HTML5, CSS3 and JavaScript</dd>
+              <dt>Framework:</dt>
+              <dd>jQuery, Bootstrap, NW.js</dd>
+            </dl>
+          </article>
+          <article>
+            <h4>
+									              <strong>Work Experiences</strong>
+								            </h4>
+            <hr>
+            <dl class="dl-horizontal">
+              <dt>2013-2014</dt>
+              <dd>Software Developer at SoftPlus Technology Co., Ltd. (Soft Square Group of Companies)</dd>
+              <dt>2014-Present</dt>
+              <dd>Web Programmer at Market Anyware Co., Ltd.</dd>
+            </dl>
+            <hr>
+          </article>
+          <article>
+            <h4>
+									         <strong>Projects</strong>
+								          </h4>
+            <dl class="dl-horizontal">
+              <dt>Market Anyware Desktop</dt>
+              <dd>Create Cross Platform Realtime Stock Application (Windows, Linux, Macs) by using Web Technology for investor <a href="http://marketanyware.com/th/index.html">Link</a></dd>
+              <dt>Fluent Forever Website</dt>
+              <dd>Create Fluent Forever Book Landing Page <a href="http://maxincube.com/fluent-forever">Link</a></dd>
+              <dt>Employee Self Service</dt>
+              <dd>Create the User Interface and Front-End Development</dd>
+              <dt>Project Management (Properties Management)</dt>
+              <dd>Customize Web UI in Spring roo Framework (Tagx Files) for generate Bootstrap components, Prototype, Drag and Drop Apps , and Front-End Development</dd>
+            </dl>
+            <hr>
+          </article>
+          <article>
+            <div class="pull-right">
+              <a href="https://www.facebook.com/yutthana.siphuengchai" title="Yutna's Facebook">
+                <img src="http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-circles/48/Facebook-icon.png" alt="facebook">
+              </a>
+              <a href="https://twitter.com/Yutna_Na" title="Yutna's Twitter">
+                <img src="http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-circles/48/Twitter-icon.png" alt="twitter">
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
 
 
 
-
-		</main>
+</main>
 <!-- ####################################################################################################### -->
 
 <!-- FOOTER -->
