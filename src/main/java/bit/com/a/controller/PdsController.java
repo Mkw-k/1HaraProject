@@ -94,13 +94,10 @@ public class PdsController {
 	public String pdsdetail(int seq, Model model) {
 		
 		service.readcount(seq);
-		PdsDto dto = new PdsDto();
-		
-		System.out.println("디테일" + dto.toString());
 		//dto 
 		PdsDto pdsdto = service.getPds(seq);
 		model.addAttribute("pds" , pdsdto);
-		
+		System.out.println("디테일" + pdsdto.toString());
 		return "pds/pdsdetail";
 	}
 	

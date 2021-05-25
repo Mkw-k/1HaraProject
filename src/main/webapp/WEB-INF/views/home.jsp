@@ -659,7 +659,7 @@ margin-right : 450px;
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
-    
+
 
 
 
