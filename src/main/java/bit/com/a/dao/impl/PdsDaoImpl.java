@@ -22,5 +22,40 @@ public class PdsDaoImpl implements PdsDao {
 	public List<PdsDto> getPdsList() {
 		return session.selectList(ns+ "getPdsList");
 	}
+
+	@Override
+	public boolean uploadPds(PdsDto pdsdto) {
+		int i = session.insert(ns + "uploadPds" , pdsdto);
+		return i>0?true:false;
+	}
+
+	@Override
+	public void readcount(int seq) {
+		session.update(ns + "readcount" , seq);
+		
+	}
+
+	@Override
+	public PdsDto getPds(int seq) {
+		return session.selectOne(ns + "getPds", seq);
+	}
+
+	@Override
+	public void downcount(int seq) {
+		session.update(ns + "downcount" , seq);
+		
+	}
+
+	@Override
+	public boolean updatePds(PdsDto pdsdto) {
+		int i = session.update(ns + "updatePds" , pdsdto);
+		return i>0?true:false;
+	}
+
+	@Override
+	public void deletePds(int seq) {
+		session.delete(ns + "deletePds" , seq);
+		
+	}
 	
 }
