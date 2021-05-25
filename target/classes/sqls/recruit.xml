@@ -5,6 +5,7 @@
   
 <mapper namespace="Recruit">
 
+<!-- 공고작성 -->
 <insert id="writerecru" parameterType="bit.com.a.dto.RecruitDto">
 	INSERT INTO JOB(JOBSEQ , COMPANYID , JOBTITLE , JOBCONTENT , AREA1NAME,
 					AREA2NAME, JOBVOLUMN, SALARY, JOBSTART, JOBEND, EMP_TYPE,
@@ -15,12 +16,92 @@
 			 0, SYSDATE, #{buscode}, 0)
 </insert>
 
+
+<!-- 모든페이지 불러오기 -->
 <select id="getallrecrulist" resultType="bit.com.a.dto.RecruitDto">
-	SELECT j.JOBSEQ , j.COMPANYID , j.JOBTITLE , j.JOBCONTENT , j.AREA1NAME,
-					j.AREA2NAME, j.JOBVOLUMN, j.SALARY, j.JOBSTART, j.JOBEND, j.EMP_TYPE,
-					j.EDUCATION , j.CAREER_TYPE, j.CAREER_DESC, j.READCOUNT, j.REGDATE, j.BUSCODE, j.DEL, c.companyname
-	FROM JOB j, company c
-	WHERE j.companyid = c.companyid
+	SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+					J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
+					J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME,E.EDUNAME
+	FROM JOB J, COMPANY C, EDUCATION E 
+	WHERE J.COMPANYID = C.COMPANYID AND 
+		  J.EDUCATION = E.EDUCODE AND 
+		  J.DEL = 0 
+	
+
 </select>
+
+<!-- 글의 총수 -->
+<select id="getRecruitCount" parameterType="bit.com.a.dto.BbsParam" resultType="java.lang.Integer">
+	SELECT NVL(COUNT(*), 0) AS CNT 
+    FROM JOB J, COMPANY C
+	WHERE J.COMPANYID = C.COMPANYID AND J.DEL =0
+	
+	<if test="choice != null and choice != ''
+		  		and search != null and search != ''">
+		<!-- AND DEL=0 -->
+		<if test="choice == 'title'">
+			AND J.JOBTITLE LIKE '%'||#{search}||'%'
+		</if>
+		<if test="choice == 'companyname'">
+			AND C.COMPANYNAME LIKE '%'||#{search}||'%'
+		</if>
+	</if>
+		  		
+</select>
+
+<!-- 페이징 검색 리스트 가져오기 -->
+<select id="getRecruitPagingList" parameterType="bit.com.a.dto.BbsParam" resultType="bit.com.a.dto.RecruitDto">
+	SELECT J.RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+					J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
+					J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY JOBSEQ DESC)AS RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+					J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
+					J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME
+			FROM JOB J, COMPANY C
+			WHERE J.COMPANYID = C.COMPANYID AND J.DEL =0
+			<if test="choice != null and choice != ''
+		  		and search != null and search != ''">
+				<!-- AND DEL=0 -->
+				
+				<if test="choice == 'title'">
+				AND J.JOBTITLE LIKE '%'||#{search}||'%'
+				</if>
+				
+				<if test="choice == 'companyname'">
+				AND C.COMPANYNAME LIKE '%'||#{search}||'%'
+				</if>
+			</if>
+		   )J
+	JOIN COMPANY C 
+	ON J.COMPANYID = C.COMPANYID
+	JOIN EDUCATION E 
+    ON J.EDUCATION = E.EDUCODE 
+	WHERE RNUM BETWEEN ${start} AND ${end}
+</select>
+
+<!-- 디테일페이지용 -->
+<select id="getRecruitListOne" parameterType="Integer" resultType="bit.com.a.dto.RecruitDto">
+SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+					J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
+					J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME
+	FROM JOB J, COMPANY C, EDUCATION E 
+	WHERE J.COMPANYID = C.COMPANYID AND 
+		  J.EDUCATION = E.EDUCODE AND
+		  J.JOBSEQ = ${jobseq}
+</select>
+
+<update id="RecuReadcount" parameterType="Integer">
+	UPDATE JOB
+	SET READCOUNT = READCOUNT +1 
+	WHERE JOBSEQ = #{jobseq}
+
+</update>
+
+<update id="deleteRecruit" parameterType="Integer">
+	UPDATE JOB 
+	SET DEL=1 
+	WHERE SEQ=#{jobseq}
+</update>
+
 
 </mapper>

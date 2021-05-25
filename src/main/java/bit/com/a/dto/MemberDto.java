@@ -30,6 +30,7 @@ TABLESPACE "USERS" ;
 
 public class MemberDto implements Serializable{
 
+	private int seq;
 	private String memberid;
 	private String pwd;
 	private String name;
@@ -48,12 +49,11 @@ public class MemberDto implements Serializable{
 	}
 
 
-	
 
-
-	public MemberDto(String memberid, String pwd, String name, String email, int auth, int del, String address,
+	public MemberDto(int seq, String memberid, String pwd, String name, String email, int auth, int del, String address,
 			String detailaddress, String birth) {
 		super();
+		this.seq = seq;
 		this.memberid = memberid;
 		this.pwd = pwd;
 		this.name = name;
@@ -66,6 +66,16 @@ public class MemberDto implements Serializable{
 	}
 
 
+
+	public int getSeq() {
+		return seq;
+	}
+
+
+
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
 
 
 
@@ -159,11 +169,12 @@ public class MemberDto implements Serializable{
 	}
 
 
+
 	@Override
 	public String toString() {
-		return "MemberDto [memberid=" + memberid + ", pwd=" + pwd + ", name=" + name + ", email=" + email
-			    + ", auth=" + auth + ", del=" + del + ", address=" + address
-				+ ", detailaddress=" + detailaddress + ", birth=" + birth + "]";
+		return "MemberDto [seq=" + seq + ", memberid=" + memberid + ", pwd=" + pwd + ", name=" + name + ", email="
+				+ email + ", auth=" + auth + ", del=" + del + ", address=" + address + ", detailaddress="
+				+ detailaddress + ", birth=" + birth + "]";
 	}
 	
 	

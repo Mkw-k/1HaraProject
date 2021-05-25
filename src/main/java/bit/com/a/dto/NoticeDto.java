@@ -30,15 +30,16 @@ TABLESPACE "USERS" ;*/
 public class NoticeDto implements Serializable{
 
 	private int noticeseq;					// 번호
-	private String MemberId;				// 작성자
-	private String notice_title;			// 제목
-	private String notice_content;			// 내용
-	private String notice_filename;			// 기존 업로드 파일이름
-	private String notice_newfilename;		// 년월일로 파일이름업로드
+	private String memberid;				// 작성자
+	private String title;			// 제목
+	private String content;			// 내용
+	private String filename;			// 기존 업로드 파일이름
+	private String newfilename;		// 년월일로 파일이름업로드
 	private int readcount;					// 조회수
 	private int downcount;					// 다운횟수
 	private String regdate;					// 등록일
 	private int notice_ref;
+	private int del;
 	
 	public NoticeDto() {
 		super();
@@ -46,69 +47,76 @@ public class NoticeDto implements Serializable{
 	}
 
 	
-	public NoticeDto(int noticeseq, String memberId, String notice_title, String notice_content,
-			String notice_filename, String notice_newfilename, int readcount, int downcount, String regdate,
-			int notice_ref) {
+
+
+
+	public NoticeDto(int noticeseq, String memberid, String title, String content, String filename, String newfilename,
+			int readcount, int downcount, String regdate, int notice_ref, int del) {
 		super();
 		this.noticeseq = noticeseq;
-		MemberId = memberId;
-		this.notice_title = notice_title;
-		this.notice_content = notice_content;
-		this.notice_filename = notice_filename;
-		this.notice_newfilename = notice_newfilename;
+		this.memberid = memberid;
+		this.title = title;
+		this.content = content;
+		this.filename = filename;
+		this.newfilename = newfilename;
 		this.readcount = readcount;
 		this.downcount = downcount;
 		this.regdate = regdate;
 		this.notice_ref = notice_ref;
+		this.del = del;
 	}
 
 
-	public int getNotice_seq() {
+	
+
+
+
+	public int getNoticeseq() {
 		return noticeseq;
 	}
 
-	public void setNotice_seq(int noticeseq) {
+	public void setNoticeseq(int noticeseq) {
 		this.noticeseq = noticeseq;
 	}
 
-	public String getMemberId() {
-		return MemberId;
+	public String getMemberid() {
+		return memberid;
 	}
 
-	public void setMemberId(String memberId) {
-		MemberId = memberId;
+	public void setMemberid(String memberid) {
+		this.memberid = memberid;
 	}
 
-	public String getNotice_title() {
-		return notice_title;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setNotice_title(String notice_title) {
-		this.notice_title = notice_title;
+	public void setTitle(String title) {
+		this.title = title;
+	}	
+
+	public String getContent() {
+		return content;
 	}
 
-	public String getNotice_content() {
-		return notice_content;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
-	public void setNotice_content(String notice_content) {
-		this.notice_content = notice_content;
+	public String getFilename() {
+		return filename;
 	}
 
-	public String getNotice_filename() {
-		return notice_filename;
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 
-	public void setNotice_filename(String notice_filename) {
-		this.notice_filename = notice_filename;
+	public String getNewfilename() {
+		return newfilename;
 	}
 
-	public String getNotice_newfilename() {
-		return notice_newfilename;
-	}
-
-	public void setNotice_newfilename(String notice_newfilename) {
-		this.notice_newfilename = notice_newfilename;
+	public void setNewfilename(String newfilename) {
+		this.newfilename = newfilename;
 	}
 
 	public int getReadcount() {
@@ -134,7 +142,6 @@ public class NoticeDto implements Serializable{
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
-
 	
 	
 	public int getNotice_ref() {
@@ -145,15 +152,29 @@ public class NoticeDto implements Serializable{
 	public void setNotice_ref(int notice_ref) {
 		this.notice_ref = notice_ref;
 	}
+	
+
+	public int getDel() {
+		return del;
+	}
+
+
+
+	public void setDel(int del) {
+		this.del = del;
+	}
+
+
+
 
 
 	@Override
 	public String toString() {
-		return "NoticeDto [notice_seq=" + noticeseq + ", MemberId=" + MemberId + ", notice_title=" + notice_title
-				+ ", notice_content=" + notice_content + ", notice_filename=" + notice_filename
-				+ ", notice_newfilename=" + notice_newfilename + ", readcount=" + readcount + ", downcount=" + downcount
-				+ ", regdate=" + regdate + ", notice_ref=" + notice_ref + "]";
-	}		
+		return "NoticeDto [noticeseq=" + noticeseq + ", memberid=" + memberid + ", title=" + title + ", content="
+				+ content + ", filename=" + filename + ", newfilename=" + newfilename + ", readcount=" + readcount
+				+ ", downcount=" + downcount + ", regdate=" + regdate + ", notice_ref=" + notice_ref + ", del=" + del
+				+ "]";
+	}
 	
 	
 }

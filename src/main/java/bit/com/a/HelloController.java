@@ -28,10 +28,54 @@ public class HelloController {
 					
 			return "ad1";
 		}
+		
+	//찾아 오시는 길
+		@RequestMapping(value = "info.do", method = RequestMethod.GET)
+		public String info(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "info";
+		}
 	
+		@RequestMapping(value = "infoyakgwan.do", method = RequestMethod.GET)
+		public String infoyakgwan(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "infoyakgwan";
+		}
+		
+	
+		@RequestMapping(value = "infomember.do", method = RequestMethod.GET)
+		public String infomember(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "infomember";
+		}
 		
 		
+		@RequestMapping(value = "infoemail.do", method = RequestMethod.GET)
+		public String infoemail(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "infoemail";
+		}
 		
+		@RequestMapping(value = "infowebaccess.do", method = RequestMethod.GET)
+		public String infowebaccess(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "infowebaccess";
+		}
+		
+		@RequestMapping(value = "infobanner.do", method = RequestMethod.GET)
+		public String infobanner(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "infobanner";
+		}
+		
+		
+
 }
 
 
