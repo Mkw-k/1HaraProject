@@ -60,7 +60,7 @@ public class WebSocketChat {
     }
     
     /*
-     * 내가 입력하는 메세지
+     *      * 내가 입력하는 메세지
      * @param message
      * @param session
      */
@@ -80,7 +80,6 @@ public class WebSocketChat {
         }
         sendAllSessionToMessage(session, sender, message);
     }
-    
     
     @OnError
     public void onError(Throwable e,Session session) {
