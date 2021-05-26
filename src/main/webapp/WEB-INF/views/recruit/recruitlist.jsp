@@ -55,7 +55,7 @@ CRUD
 
 <!-- 채용공고 작성 -->
 <h2 onclick="createRecruit()" class="createRecruitBtn">채용공고 작성</h2>
-
+<h2 onclick="createRecruitNew()" class="createRecruitBtn">채용공고 작성 New</h2>
 
 	<div class="container">
 		<div class="header clearfix">
@@ -201,6 +201,11 @@ function createRecruit() {
 	location.href = "recuruitcreate.do";
 }
 
+//작성목록으로 이동(New)
+function createRecruitNew() {
+	location.href = "createTest.do";
+}
+
 //댓글달때 화살표 만들어주는기능(댓글이 필요없으므로 삭제예정)
 /*
 function arrow(depth) {
@@ -251,10 +256,10 @@ function getrecruListData( pNumber, search ){
 									//+ arrow(val.depth)
 									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq + "'>" + val.jobTitle+ "</a>"
 									+"</td>"
-									+"<td>" + val.eduname +"<br>"+val.career_Type + "</td>"
+									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
 									+"<td>" + val.jobVolumn + "</td>"
 									+"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
-									+"<td>" + val.jobEnd +"<br>"+val.jobStart+ "&nbsp;&nbsp;"
+									+"<td>" + val.jobEnd +"<br>"+val.regdate+ "&nbsp;&nbsp;"
 									+"<input type='button' value='공고삭제'>"+ "</td>";
 							}
 							
@@ -283,7 +288,7 @@ function getRecruitListCount() {
 		type: "get", 
 		data: {page:0, choice:$("#_choice").val(), search:$("#_searchWord").val()}, 
 		success: function( count ) {
-			alert('success');
+			//alert('success');
 			
 			loadPage(count);
 		}, 

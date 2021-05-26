@@ -16,7 +16,9 @@
 			 TO_DATE(#{dto.jobStart}, 'YYYY-MM-DD HH24:MI:SS'),
 			 TO_DATE(#{dto.jobEnd}, 'YYYY-MM-DD HH24:MI:SS'), 
 			 #{dto.emp_Type}, #{dto.education}, #{dto.career_Type}, #{dto.career_Desc}, 
-			 0, SYSDATE, 0)
+			 0,
+			 TO_DATE(SYSDATE, 'YYYY-MM-DD'),
+			 0)
 	
 		<foreach collection="arrayParam" item="item" index="index" separator="" open="" close="">
 		INTO BSCODSTACK (BSCODSTACKSEQ, JOBSEQ, BUSCODE)
@@ -65,8 +67,8 @@
 <select id="getRecruitPagingList" parameterType="bit.com.a.dto.BbsParam" resultType="bit.com.a.dto.RecruitDto">
 	SELECT J.RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
 					J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
-					J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, 
-		   C.COMPANYNAME, E.EDUNAME, T.EMP_NAME
+					J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, 
+		   C.COMPANYNAME, E.EDUNAME, T.EMP_NAME, P.CAREER_DESC
 					
 					
 	FROM (SELECT ROW_NUMBER()OVER(ORDER BY JOBSEQ DESC)AS RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
@@ -96,8 +98,11 @@
 	<!-- 고용타입가져오기 -->
 	JOIN EMPLOYEE_TYPE T
 	ON T.EMP_TYPE = J.EMP_TYPE
-	
+	<!-- 경력타입가져오기 -->
+	JOIN JOB_CAREERTYPE P 
+	ON P.CAREER_TYPE = J.CAREER_TYPE
 	WHERE RNUM BETWEEN ${start} AND ${end}
+	ORDER BY J.JOBSEQ DESC
 </select>
 
 <!-- 디테일페이지용 -->
@@ -123,6 +128,27 @@ SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
 	SET DEL=1 
 	WHERE SEQ=#{jobseq}
 </update>
+
+<select id="buscodeListData" resultType="bit.com.a.dto.RecruitParam">
+	SELECT * 
+	FROM BUSCODE1
+</select>
+
+<select id="buscode2ListData" parameterType="Integer" resultType="bit.com.a.dto.RecruitParam">
+	SELECT * 
+	FROM BUSCODE2
+	WHERE BUSCODE2 LIKE ${buscode}||'%'
+
+</select>
+
+<!-- buscode3테이블에 데이터는 buscode와 busname임!! -->
+<select id="buscode3ListData" parameterType="Integer" resultType="bit.com.a.dto.RecruitParam">
+	SELECT * 
+	FROM BUSCODE3
+	WHERE BUSCODE LIKE ${buscode}||'%'
+
+</select>
+
 
 
 </mapper>

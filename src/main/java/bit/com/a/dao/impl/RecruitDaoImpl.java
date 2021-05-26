@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import bit.com.a.dao.RecruitDao;
 import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.RecruitDto;
+import bit.com.a.dto.RecruitParam;
 
 
 @Repository
@@ -50,6 +51,21 @@ public class RecruitDaoImpl implements RecruitDao{
 	@Override
 	public boolean deleteRecruit(int jobseq) {
 		return session.update(ns+"deleteRecruit", jobseq)>0? true:false;
+	}
+
+	@Override
+	public List<RecruitParam> buscodeListData() {
+		return session.selectList(ns+"buscodeListData");
+	}
+
+	@Override
+	public List<RecruitParam> buscode2ListData(int buscode) {
+		return session.selectList(ns+"buscode2ListData", buscode);
+	}
+
+	@Override
+	public List<RecruitParam> buscode3ListData(int buscode) {
+		return session.selectList(ns+"buscode3ListData", buscode);
 	}
 	
 	
