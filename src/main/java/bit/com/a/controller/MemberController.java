@@ -49,10 +49,6 @@ public class MemberController {
 	public String MemberRegi() {
 		return "login/memberRegi";
 	}
-	@RequestMapping(value = "businessRegi.do", method=RequestMethod.GET)
-	public String BusinessRegi() {
-		return "login/businessRegi";
-	}
 	
 	@ResponseBody
 	@RequestMapping(value = "getId.do", method = {RequestMethod.GET, RequestMethod.POST})
@@ -81,8 +77,7 @@ public class MemberController {
 		 return "home"; 
 		 } 
 		 System.out.println("가입되지 않았습니다 " + new Date());
-		 return "regi.tiles";
-
+		 return "login/memberRegi";
 
 
 	}

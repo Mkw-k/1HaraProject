@@ -65,7 +65,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"input1","qid":"1","text":"[한정�
         </div>
       </li>
       
-      <img src="ma.jpg">
+     
       
       <li class="form-line card-3col" data-type="control_paypalcomplete" id="id_19" data-payment="true">
         <label class="form-label form-label-top" id="label_19" for="input_19"> Products </label>
@@ -374,6 +374,8 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"input1","qid":"1","text":"[한정�
           </div>
         </div>
       </li>
+       <img src="ma.jpg">
+  
       <li class="form-line" data-type="control_fullname" id="id_2">
         <label class="form-label form-label-top" id="label_2" for="first_2"> Full Name </label>
         <div id="cid_2" class="form-input-wide" data-layout="full">

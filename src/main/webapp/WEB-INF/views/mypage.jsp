@@ -39,6 +39,9 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
  <!-- 전체 css -->
+ 
+ <link href="csss/tables.css" rel="stylesheet" type="text/css">
+ <link href="csss/hello.css" rel="stylesheet" type="text/css">
 
 <style type='text/css'>
 @import url("common.css");
@@ -416,6 +419,8 @@ margin-left : 700px;
 		
 <h1>마이페이지</h1>
 
+
+
 </header>
 
 
@@ -512,6 +517,48 @@ margin-left : 700px;
 <!-- 본문 -->
 
 <main style="background: #7200ff;">
+
+
+<form id="search_form_recruit" onsubmit="event.preventDefault()">
+<div class="main_search">
+<div class="option option_keyword">
+<label for="ipt_keyword_recruit" class="placeholder" style="color: rgb(72, 118, 239);">카카오</label>
+<input id="ipt_keyword_recruit" type="text" class="key" maxlength="30" placeholder="검색어를 입력해주세요" autocomplete="off">
+</div>
+<div class="option option_area">
+<label for="ipt_area_recruit" class="placeholder">지역을 선택해주세요</label>
+<button id="ipt_area_recruit" type="button" class="key">
+<span class="filter_selected"></span>
+</button>
+</div>
+<div class="option option_category">
+<label for="ipt_category_recruit" class="placeholder">직업을 선택해주세요</label>
+<button id="ipt_category_recruit" type="button" class="key">
+<span class="filter_selected"></span>
+</button>
+</div>
+<button type="button" id="btn_search_recruit" class="btn_search">
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" class="bg_search">
+<g fill="none" fill-rule="evenodd">
+<path d="M0 0H28V28H0z"></path>
+<circle cx="12.778" cy="12.778" r="9.778" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+<path stroke="#FFF" stroke-width="2" d="M25 25L19.683 19.683"></path>
+</g>
+</svg>
+<span class="txt">검색</span>
+</button>
+<button type="button" id="search_close_recruit" class="btn_close"><span>닫기</span></button>
+<button type="button" class="search_reset">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="ic_reset">
+<g fill="none" fill-rule="evenodd">
+<path fill-rule="nonzero" d="M0 0H16V16H0z"></path>
+<path stroke="#B5BACB" d="M12.828 3.003v3.024H9.804m2.943 3.815c-.845 2.21-3.114 3.534-5.454 3.183-2.34-.35-4.12-2.282-4.281-4.642-.16-2.36 1.342-4.515 3.613-5.18 2.27-.664 4.698.34 5.835 2.415"></path>
+</g>
+</svg>검색 초기화
+</button>
+</div>
+</form>
+
 
 
     <form action="member?param=memUpdateAf" method="post">
@@ -1278,12 +1325,9 @@ function f_empPgmList(resultObj){
 											<tr>
 												<th scope="row">연락처</th>
 												<td>
-													
-														
+
 															010-2106-****
-														
-														
-													
+
 												</td>
 												<th scope="row" class="un-str">문자메시지 수신</th>
 												<td>
@@ -1380,6 +1424,7 @@ function f_empPgmList(resultObj){
 													</div>
 												</td>
 											</tr>
+											
 										</tbody>
 									</table>
 								</div>
@@ -1400,7 +1445,7 @@ function f_empPgmList(resultObj){
 
 						<div class="idv-sec02">
 
-
+	
 	
 
 	
@@ -1672,7 +1717,7 @@ function f_empPgmList(resultObj){
 	$(document).ready(function(){
 		$('body').contextmenu(function(){
 			return false;
-		});
+		});   
 	});
 </script>				
 <form id="command" name="frm" action="empPgmSchdInviteDetail.do" method="post">
@@ -1839,7 +1884,6 @@ function f_empPgmList(resultObj){
 				<div class="etc">
 					<a href="/images/useInfo/certification_kor2015.jpg" target="_blank" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; var remote = window.open('https://www.eprivacy.or.kr/front/certifiedSiteMark/certifiedSiteMarkPopup.do?certCmd=E&amp;certNum=2021-E-R001','EPRIVACY','width=527,height=720'); remote.focus(); return false;" title="새창"><img src="./static/images/brn-epriavcy.png" alt="개인정보보호우수사이트 인증서"></a>
 								<a href="/html/wauMark2020_worknet.html" onclick="try { latte.getEvent(event).stop(); } catch (ex) {};window.open(this.href,'mark2020','width=605,height=850,scrollbars=no');return false;" title="새창" target="_blank" style="margin-top:-3px"><img src="./static/images/brn-wa-2019.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)"></a>
-							
 				</div>
 			</div>
 		</div>
