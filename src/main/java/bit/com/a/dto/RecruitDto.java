@@ -1,6 +1,8 @@
 package bit.com.a.dto;
 
 import java.io.Serializable;
+import java.util.Arrays;
+
 /*
  채용공고 Dto 
  
@@ -9,7 +11,7 @@ import java.io.Serializable;
 --EMPLOYEE_TYPE 테이블 생성후 실행 
 CREATE TABLE JOB(
 JOBSEQ NUMBER PRIMARY KEY,
-COMPANYID VARCHAR2(20) UNIQUE,        --회사ID
+COMPANYID VARCHAR2(20) UNIQUE,          --회사ID
 JOBTITLE VARCHAR2(100) NOT NULL,        --공고제목
 JOBCONTENT VARCHAR2(4000) NOT NULL,     --공고내용
 AREA1NAME VARCHAR2(100) NOT NULL,       --지역대분류
@@ -61,12 +63,28 @@ public class RecruitDto implements Serializable{
 	private int salary; 
 	private String jobStart; 
 	private String jobEnd; 
-	private int empType; 
+	private String emp_Type;      //1: 아르바이트, 2: 계약직, 3: 정규직
 	private String education; 
-	private String careerType; 
-	private String careerDesc; 
+	private String career_Type; 
+	private String career_Desc; 
 	private int readcount; 
 	private String regdate;
+    private String buscode;
+    private int del;
+    private String companyname;
+    private String eduname;
+    private String emp_name;
+    private int rnum;
+    
+    
+    
+    
+	public int getRnum() {
+		return rnum;
+	}
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
 	public int getJobSeq() {
 		return jobSeq;
 	}
@@ -127,11 +145,11 @@ public class RecruitDto implements Serializable{
 	public void setJobEnd(String jobEnd) {
 		this.jobEnd = jobEnd;
 	}
-	public int getEmpType() {
-		return empType;
+	public String getEmp_Type() {
+		return emp_Type;
 	}
-	public void setEmpType(int empType) {
-		this.empType = empType;
+	public void setEmp_Type(String emp_Type) {
+		this.emp_Type = emp_Type;
 	}
 	public String getEducation() {
 		return education;
@@ -139,17 +157,17 @@ public class RecruitDto implements Serializable{
 	public void setEducation(String education) {
 		this.education = education;
 	}
-	public String getCareerType() {
-		return careerType;
+	public String getCareer_Type() {
+		return career_Type;
 	}
-	public void setCareerType(String careerType) {
-		this.careerType = careerType;
+	public void setCareer_Type(String career_Type) {
+		this.career_Type = career_Type;
 	}
-	public String getCareerDesc() {
-		return careerDesc;
+	public String getCareer_Desc() {
+		return career_Desc;
 	}
-	public void setCareerDesc(String careerDesc) {
-		this.careerDesc = careerDesc;
+	public void setCareer_Desc(String career_Desc) {
+		this.career_Desc = career_Desc;
 	}
 	public int getReadcount() {
 		return readcount;
@@ -163,17 +181,49 @@ public class RecruitDto implements Serializable{
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+	public String getBuscode() {
+		return buscode;
+	}
+	public void setBuscode(String buscode) {
+		this.buscode = buscode;
+	}
+	public int getDel() {
+		return del;
+	}
+	public void setDel(int del) {
+		this.del = del;
+	}
+	public String getCompanyname() {
+		return companyname;
+	}
+	public void setCompanyname(String companyname) {
+		this.companyname = companyname;
+	}
+	public String getEduname() {
+		return eduname;
+	}
+	public void setEduname(String eduname) {
+		this.eduname = eduname;
+	}
+	public String getEmp_name() {
+		return emp_name;
+	}
+	public void setEmp_name(String emp_name) {
+		this.emp_name = emp_name;
+	}
 	@Override
 	public String toString() {
 		return "RecruitDto [jobSeq=" + jobSeq + ", companyId=" + companyId + ", jobTitle=" + jobTitle + ", jobContent="
 				+ jobContent + ", area1Name=" + area1Name + ", area2Name=" + area2Name + ", jobVolumn=" + jobVolumn
-				+ ", salary=" + salary + ", jobStart=" + jobStart + ", jobEnd=" + jobEnd + ", empType=" + empType
-				+ ", education=" + education + ", careerType=" + careerType + ", careerDesc=" + careerDesc
-				+ ", readcount=" + readcount + ", regdate=" + regdate + "]";
+				+ ", salary=" + salary + ", jobStart=" + jobStart + ", jobEnd=" + jobEnd + ", emp_Type=" + emp_Type
+				+ ", education=" + education + ", career_Type=" + career_Type + ", career_Desc=" + career_Desc
+				+ ", readcount=" + readcount + ", regdate=" + regdate + ", buscode=" + buscode + ", del=" + del
+				+ ", companyname=" + companyname + ", eduname=" + eduname + ", emp_name=" + emp_name + "]";
 	}
 	public RecruitDto(int jobSeq, String companyId, String jobTitle, String jobContent, String area1Name,
-			String area2Name, int jobVolumn, int salary, String jobStart, String jobEnd, int empType, String education,
-			String careerType, String careerDesc, int readcount, String regdate) {
+			String area2Name, int jobVolumn, int salary, String jobStart, String jobEnd, String emp_Type,
+			String education, String career_Type, String career_Desc, int readcount, String regdate, String buscode,
+			int del, String companyname, String eduname, String emp_name) {
 		super();
 		this.jobSeq = jobSeq;
 		this.companyId = companyId;
@@ -185,16 +235,22 @@ public class RecruitDto implements Serializable{
 		this.salary = salary;
 		this.jobStart = jobStart;
 		this.jobEnd = jobEnd;
-		this.empType = empType;
+		this.emp_Type = emp_Type;
 		this.education = education;
-		this.careerType = careerType;
-		this.careerDesc = careerDesc;
+		this.career_Type = career_Type;
+		this.career_Desc = career_Desc;
 		this.readcount = readcount;
 		this.regdate = regdate;
+		this.buscode = buscode;
+		this.del = del;
+		this.companyname = companyname;
+		this.eduname = eduname;
+		this.emp_name = emp_name;
 	}
 	public RecruitDto(String companyId, String jobTitle, String jobContent, String area1Name, String area2Name,
-			int jobVolumn, int salary, String jobStart, String jobEnd, int empType, String education, String careerType,
-			String careerDesc) {
+			int jobVolumn, int salary, String jobStart, String jobEnd, String emp_Type, String education,
+			String career_Type, String career_Desc, String buscode, String companyname, String eduname,
+			String emp_name) {
 		super();
 		this.companyId = companyId;
 		this.jobTitle = jobTitle;
@@ -205,16 +261,24 @@ public class RecruitDto implements Serializable{
 		this.salary = salary;
 		this.jobStart = jobStart;
 		this.jobEnd = jobEnd;
-		this.empType = empType;
+		this.emp_Type = emp_Type;
 		this.education = education;
-		this.careerType = careerType;
-		this.careerDesc = careerDesc;
+		this.career_Type = career_Type;
+		this.career_Desc = career_Desc;
+		this.buscode = buscode;
+		this.companyname = companyname;
+		this.eduname = eduname;
+		this.emp_name = emp_name;
 	}
-	
-	
+    
+    
 	public RecruitDto() {
 		// TODO Auto-generated constructor stub
 	}
+    
+   
+    
 	
-	
+    
+		
 }

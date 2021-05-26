@@ -71,9 +71,9 @@
 <link href="csss/logincss.css" rel="stylesheet" type="text/css">
 
 
+
 <!-- 서치 css -->
 <link href="csss/search.css" rel="stylesheet" type="text/css">
-
 
 
 <style type="text/css">
@@ -549,8 +549,10 @@ margin-right : 450px;
  <!-- 검색html -->
  
  <section style="padding: 0">
- <form id="search_form_recruit" onsubmit="event.preventDefault()" style="height: 300px; background-image: url('개발자23.gif');">
-    <div class="main_search">
+ <form id="search_form_recruit" onsubmit="event.preventDefault()" style="height: 400px; background-image: url('개발자23.gif');">
+    <div class="main_search" style="
+    top: 160px;
+">
         <div class="option option_keyword">
             <label for="ipt_keyword_recruit" class="placeholder" style="color: rgb(72, 118, 239);">일하라 주식회사</label>
             <input id="ipt_keyword_recruit" type="text" class="key" maxlength="30" placeholder="검색어를 입력해주세요" autocomplete="off">
@@ -601,10 +603,9 @@ margin-right : 450px;
 
 </header>
 
-
-
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <!-- Links -->
+  
   
   <div>
 	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
@@ -612,6 +613,28 @@ margin-right : 450px;
   
   <ul class="navbar-nav">
 <!-- Dropdown -->
+
+	 <li class="nav-item">
+            <c:choose>
+            	<c:when test="${login.memberid ne null }">
+            		<c:choose>
+            			 <c:when test="${login.auth == 1}">
+             				 <p><b>[개인]${login.name }</b>님</p>
+             	 		 </c:when>	 
+             			<%-- <%-- <c:when test="${login ne null }">
+         				<p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>	
+         				</c:when> --%>
+             			<c:when test="${login.auth == 2}">
+             				<p><b>[사원]${login.name }</b>님</p>
+    					</c:when>
+    					<c:otherwise>
+             				<p><b>${login.name }</b>님</p>
+    					</c:otherwise>
+    				</c:choose>			
+            	 </c:when> 
+         	 </c:choose>  
+    </li>
+
     <li class="nav-item dropdown" style="padding-top: 5px;">
      <div class="dropdown">
 		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
@@ -627,7 +650,7 @@ margin-right : 450px;
     </li>
 
     <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
+      <a class="nav-link bgc" href="recuruitlist.do" style="color:#2186eb">채용공고</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
@@ -644,49 +667,35 @@ margin-right : 450px;
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
-    
+
+
+
+
+
     
     <li class="nav-item">
-            <c:choose>
-            	<c:when test="${login.memberid ne null }">
-            		<c:choose>
-            			 <c:when test="${login.auth == 1}">
-             				 <p><b>${login.name }</b>님</p>
-             	 		 </c:when>	 
-             			<%-- <%-- <c:when test="${login ne null }">
-         				<p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>	
-         				</c:when> --%>
-             			<%-- <c:when test="${login.auth == 3}">
-             				<p><b>${login.name }</b>님</p>
-    					</c:when> --%>
-    					<c:otherwise>
-             				<p><b>${login.name }</b>님</p>
-    					</c:otherwise>
-    				</c:choose>			
-            	 </c:when> 
-         	 </c:choose>  
-        <div class="col-md-6">
-           <div class="">
-          
-			</div>
-		</div>	
+
+
+     	 <a class="nav-link bgc" href="resumeMain.do" style="color: #2186eb;background-color: #fff;">이력서관리</a>
+
     </li>
     <li class="nav-item">
-     	 <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
-    </li>
-    <li class="nav-item">
-    	<c:if test="${login.auth==3}">
-    		<a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a> 
-		</c:if>
-	</li>
-	<li class="nav-item">
-		<c:if test="${login.memberid ne null}">	
-			<a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
-		</c:if>	
-	</li>
+
+       <c:if test="${login.auth==3}">
+          <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a> 
+      </c:if>
+   </li>
+   <li class="nav-item">
+      <c:if test="${login.memberid ne null}">   
+         <a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
+      </c:if>   
+   </li>
   </ul>
 </nav>
 <br>
+
+  
+
 
  <!-- =========Login 클릭 시 Modal =========== -->
       <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" class="modal modal-center fade ">
@@ -745,6 +754,7 @@ margin-right : 450px;
     <div class="fl_left">
        <div class="column2">
         <h5>최신공채</h5>
+      
        		<div class="container">
  
 			<div id="carouselSample" class="carousel slide" data-ride="carousel">
@@ -851,23 +861,73 @@ margin-right : 450px;
 					<!-- 로그인 전 -->
 					
 					<div class="before">
+						<c:if test="${ empty login }">
 						<p class="txt">일하라를 더 안전하고 편리하게 이용하세요.</p>
-						<a href="/member/bodyLogin.do" class="login-worknet login-modal">일하라 로그인</a>
+
+						<a href="javascript:login()" class="login-worknet">일하라 로그인</a>
+
 						<div class="link">
 							<a href="/member/idPwdVw/retrieveCustIdPwdSrch.do" class="left">아이디/ 패스워드 찾기</a>
-							<a href="/member/custJoin/retrieveCustJoinTp.do" class="right">회원가입</a>
+							<a href="regiclick.do" class="right">회원가입</a>
 						</div>
 						<div class="other-login">
 							<a href="javascript:f_snsLogin('naver');" id="naver_id_login" title="새창열림 : 네이버 아이디로 로그인" class="left"><i class="iconset ico-main-login-naver"></i>로그인</a>
 							<a href="javascript:f_snsLogin('kakao');" id="kakao_id_login" title="새창열림 : 카카오 아이디로 로그인" class="right"><i class="iconset ico-main-login-kakao"></i>로그인</a>
 						</div>
+						</c:if>
+						
+						
+					<!-- 로그인 후 -->
+					<div class="main-login">
+							<!-- 개인 로그인 후 -->
+							
+							<div class="after personal">
+								
+								
+							<c:if test="${login.memberid ne null}">		
+								
+								<div class="top">
+									<div class="bg" style="background-image: url('bg-main-login-person.png') no-repeat 0 2px;">
+										<p class="txt">개인회원</p>
+										
+										<p class="name"><strong>${login.name}</strong> 님</p>
+										<a href="/indivMemberSrv/main/indivMemberSrvMain.do" class="mypge">마이페이지</a>
+									</div>
+									<div class="btn-grp">
+										<button type="button" class="btn-logout float-l" onclick="f_logout();">로그아웃</button>
+										<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r">회원정보 관리</a>
+									</div>
+								</div>
+							</c:if>	
+							<!-- 	
+								<div class="btn-func">
+									
+										
+										
+									
+									<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">구직신청하기</a>
+									
+								</div>
+								
+								<ul class="my-info2">
+									<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeSelfIntroMng.do">내 이력서 관리</a></li>
+									<li><a href="/indivMemberSrv/intrstInfo/intrstCoMngList.do?thisMenuId=M201200157">관심스크랩</a></li>
+									<li><a href="/indivMemberSrv/aplentMng/seekActvHist/seekActvHistList.do">구직활동 내역</a></li>
+									<li><a href="/indivMemberSrv/myCustmadeSrvList.do">맞춤서비스</a></li>
+								</ul>
+							</div> -->
+							<!-- //개인 로그인 후 -->
+						
+						
 						<ul class="menu-link">
 							<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">내게 딱! 맞는 일자리 찾기<br><strong>구직신청</strong></a></li>
 							<li><a href="/coMemberSrv/wantedInfoAdmin/wantedAdmin.do">우리 회사 맞춤인재 채용<br><strong>구인신청</strong></a></li>
-							<li><a href="/consltJobCarpa/jobPsyExamNew/jobPsyExamYouthList.do">로그인 없이 간편하게!<br><strong>청소년 심리검사</strong></a></li>
+							<!-- <li><a href="/consltJobCarpa/jobPsyExamNew/jobPsyExamYouthList.do">로그인 없이 간편하게!<br><strong>청소년 심리검사</strong></a></li> -->
 						</ul>
 					</div>
 					<!-- //로그인 전 -->
+		<!-- 로그인영역 -->
+		</div>
 		</div>
 		<!-- 로그인 끝 -->
 		                   
@@ -948,312 +1008,19 @@ margin-right : 450px;
   </div>
 </div>
 
-
-
-<!-- 채용공고 부트스트랩 -->
-
-<!-- Team -->
-<section id="team" class="pb-5">
-    <div class="container">
-        <h5 class="section-title h1"></h5>
-        <div class="row">
-            <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip" >
-                    <div class="mainflip flip-0">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="<%=request.getContextPath() %>/image/NAVER2.jpg" alt="card image"></p>
-                                    <h3 class="card-title">NAVER</h3>
-                                    <p class="card-text">백엔드 개발자 모집</p>
-                                    <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-skype"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ./Team member -->
-            <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="<%=request.getContextPath() %>/image/nexon.jpg" alt="card image"></p>
-                                    <h3 class="card-title">NEXON</h3>
-                                    <p class="card-text">Frontend Engineer 신입/경력 (React or Vue or Angular, Front)</p>
-                                    <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-skype"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ./Team member -->
-            <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="<%=request.getContextPath() %>/image/toss.png" alt="card image"></p>
-                                    <h3 class="card-title">TOSS</h3>
-                                    <p class="card-text">Mobile Engineer (Android / iOS / Flutter)</p>
-                                    <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-skype"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ./Team member -->
-            <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="<%=request.getContextPath() %>/image/kakao.jpg" alt="card image"></p>
-                                    <h3 class="card-title">KAKAO</h3>
-                                    <p class="card-text">Backend Engineer 신입/경력 (Java / Spring)</p>
-                                    <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-skype"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ./Team member -->
-            <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="<%=request.getContextPath() %>/image/line.jpg" alt="card image"></p>
-                                    <h3 class="card-title">LINE</h3>
-                                    <p class="card-text">모바일 앱 개발자</p>
-                                    <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-skype"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ./Team member -->
-            <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="<%= request.getContextPath() %>/image/coupang.png" alt="card image"></p>
-                                    <h3 class="card-title">COUPANG</h3>
-                                    <p class="card-text">데이터 분석가 (Data Scientist)</p>
-                                    <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-skype"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ./Team member -->
             
+<!--채용공고-->
+<h1>채용공고</h1> 
+</div><div class="cont_product cont_prime">
+<div class="inner_cont">
+<div class="top_poduct"><strong class="tit_cont">현재 채용중인 기업</strong><button class="btn_product" data-banner="prime"><span class="track_event" data-track_event="main|Ads_click_guide|prime|layer_click">상품안내</span></button></div>
+<ul class="list_product" id="_primePlus" style=""><li class="open" data-rec_idx="40317898"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40317898" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|1" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2017/03/on51mv_t60v-2rxeei_specialgold4812003.png" alt="(주)세화" class="img"></span> <strong class="poduct_tit">(주)세화</strong> <em class="product_desc">2021년 각 부문 신입/경력 채용공고</em> <em class="product_desc open"><span class="txt">2021년 각 부문</span><span class="txt">신입/경력 채용공고</span></em> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtnd37_mscv-2rxefd_.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-10</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40291797"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40291797" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|2" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2016/04/1459486638_specialgold6946614koinfra2.png" alt="한국인프라관리㈜" class="img"></span> <strong class="poduct_tit">한국인프라관리㈜</strong> <em class="product_desc">토목부문 신입사원 채용</em> <em class="product_desc open"><span class="txt">2021년 토목부문</span><span class="txt">신입사원 채용</span></em> <span class="wrap_desc"><span class="txt_desc">2010년 설립 (11년차)</span><span class="txt_desc">매출액 573억 8천만원 <span class="base_year">(2020년)</span></span><span class="txt_desc">사원수 68명 <span class="base_year">(2020년)</span></span></span> <span class="thumb_product"><img class="img" alt="" rel="nofollow" src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtn5cg_1c2h-2rxefi_2.png"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-8</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="39900344"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=39900344" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|3" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/05/qb19lz_97dr-2rxeff_specialgold7805082hancomacademylogo.jpg" alt="㈜한컴아카데미" class="img"></span> <strong class="poduct_tit">㈜한컴아카데미</strong> <em class="product_desc">취업연계 과정 교육생 모집</em> <em class="product_desc open"><span class="txt">인공지능 전문인력</span><span class="txt">임베디드 SW개발자</span></em> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtl4xy_t7f6-2rxefj_111.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-2</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('39900344','','t_category=main&amp;t_content=prime_plus_fix_expand', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime_plus_fix_expand|3">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40162888"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40162888" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|4" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/03/qqcwr4_p8uv-2rxefm_specialgold7423228logo.png" alt="㈜우아한청년들" class="img"></span> <strong class="poduct_tit">㈜우아한청년들</strong> <em class="product_desc">B마트 지점관리 매니저 모집</em> <em class="product_desc open"><span class="txt">B마트 서울/인천/경기</span><span class="txt">지점관리 매니저 모집</span></em> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtliqv_eoct-2rxefi_.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-4</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40269207"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40269207" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|5" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/05/qtfp20_kdl6-2rxefi_specialgold5575651logosg.png" alt="경북산업직업전문학교" class="img"></span> <strong class="poduct_tit">경북산업직업전문학교</strong> <em class="product_desc">[국비무료]취업연계 교육생모집</em> <em class="product_desc open"><span class="txt">[국비무료]100%취업연계 </span><span class="txt">직업훈련 교육생 모집</span></em> <span class="wrap_desc"><span class="txt_desc">매출액 51억 5천만원 <span class="base_year">(2019년)</span></span><span class="txt_desc">사원수 50명 <span class="base_year">(2005년)</span></span></span> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtac95_6der-2rxefe_1pl.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-23</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40233287"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40233287" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|6" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2017/01/ok2pdq_lhm0-2rxeef_specialgold6347540vvv.png" alt="정선하이캐슬리조트" class="img"></span> <strong class="poduct_tit">정선하이캐슬리조트</strong> <em class="product_desc">2021년도 새롭게 오픈하는 경력 및 신입[정규직] 사원 채용</em> <em class="product_desc open"><span class="txt">2021년도 새롭게 오픈하는</span><span class="txt">경력/신입[정규직] 채용</span></em> <span class="wrap_desc"><span class="txt_desc">2000년 설립 (21년차)</span><span class="txt_desc">매출액 36억 9천만원 <span class="base_year">(2019년)</span></span><span class="txt_desc">사원수 36명 <span class="base_year">(2020년)</span></span></span> <span class="thumb_product"><img class="img" alt="" rel="nofollow" src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qt0ucf_hqg7-2rxefi_.png"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-8</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40233287','','t_category=main&amp;t_content=prime_plus_fix_expand', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime_plus_fix_expand|6">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40236467"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40236467" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|7" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2016/03/1458868568_specialgold6372238nrf.png" alt="한국연구재단" class="img"></span> <strong class="poduct_tit">한국연구재단</strong> <em class="product_desc">체험형 청년인턴 채용 공고</em> <em class="product_desc open"><span class="txt">2021년도 체험형</span><span class="txt">청년인턴 채용 공고</span></em> <span class="wrap_desc"><span class="txt_desc">2009년 설립 (12년차)</span><span class="txt_desc">매출액 4조 3,581억 4천만원 <span class="base_year">(2016년)</span></span><span class="txt_desc">사원수 313명 <span class="base_year">(2016년)</span></span></span> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qt14ro_h7j3-2rxefd_qsq5rfdijb2rxefn35.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-1</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40110933"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40110933" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|8" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/01/qmg8bu_mwga-2rxic3_specialgold7874744tj210105logo.png" alt="주식회사 트리플제이엔터" class="img"></span> <strong class="poduct_tit">주식회사 트리플제이엔터</strong> <em class="product_desc">전국지점 증권/주식 TM영업채용</em> <em class="product_desc open"><span class="txt">전국지점 증권/주식 TM</span><span class="txt">영업인재 공개채용</span></em> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qso8j6_iue4-2rxefj_2.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40110933','','t_category=main&amp;t_content=prime_plus_fix_expand', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime_plus_fix_expand|8">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40237160"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40237160" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|9" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/05/qt1ai9_lowy-2rxeff_specialgold87945.png" alt="남서울대학교" class="img"></span> <strong class="poduct_tit">남서울대학교</strong> <em class="product_desc">등록금無 빅데이터인공지능 석사</em> <em class="product_desc open"><span class="txt">빅데이터인공지능 학과</span><span class="txt">석사과정 모집</span></em> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qt1aor_jy1q-2rxeff_.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-15</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40287428"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40287428" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|10" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/05/qtfklp_b4la-2rxefk_specialgold7858130.jpg" alt="(주)에스엘정보" class="img"></span> <strong class="poduct_tit">(주)에스엘정보</strong> <em class="product_desc">정보처리산업기사 교육생 모집</em> <em class="product_desc open"><span class="txt">정보처리산업기사 취득</span><span class="txt">교육생 모집(전액무료)</span></em> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtfksl_txgq-2rxefk_1.jpg" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-9</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40287428','','t_category=main&amp;t_content=prime_plus_fix_expand', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime_plus_fix_expand|10">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40155119"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40155119" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|11" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/06/qcay5u_8i51-2rxefj_specialgold7402689.png" alt="대한상공회의소 서울기술교육센터" class="img"></span> <strong class="poduct_tit">대한상공회의소 서울기술교육센터</strong> <em class="product_desc">[국비지원] 미래유망분야 전문기술 교육생 모집</em> <em class="product_desc open"><span class="txt">[국비지원] 미래유망분야</span><span class="txt">전문기술 교육생 모집</span></em> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qsibo6_h4ud-2rxefd_qs78qt1yqy2rxefc.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-8</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40282221"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40282221" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|12" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2017/04/oocayf_uu1l-2rxeeh_specialgold4984518.png" alt="두산매거진" class="img"></span> <strong class="poduct_tit">두산매거진</strong> <em class="product_desc">2021년 경력사원 채용</em> <em class="product_desc open"><span class="txt">2021년 </span><span class="txt">경력사원 채용</span></em> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtg55x_g2zj-2rxefb_1.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40255925"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40255925" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|13" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/08/qezwgm_7oq0-2rxefo_specialgold4969360logo.png" alt="롯데렌탈㈜" class="img"></span> <strong class="poduct_tit">롯데렌탈㈜</strong> <em class="product_desc">2021년 각 부문 신입/경력사원 채용</em> <em class="product_desc open"><span class="txt">2021년 각 부문</span><span class="txt">신입/경력사원 채용</span></em> <span class="wrap_desc"><span class="txt_desc">2005년 설립 (16년차)</span><span class="txt_desc">사원수 1,111명 <span class="base_year">(2021년)</span></span></span> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qt89sf_4e4z-2rxefc_qonsfzejjl2rxefl.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-2</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40290967"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40290967" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|14" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2017/01/ojhlsv_481y-2rxeeh_specialgold6950067gs.png" alt="㈜GS동해전력" class="img"></span> <strong class="poduct_tit">㈜GS동해전력</strong> <em class="product_desc">GS동해전력 경력사원 채용</em> <em class="product_desc open"><span class="txt">GS동해전력 경력사원 채용</span><span class="txt"></span></em> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtfqjq_z014-2rxefj_.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-8</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40274728"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40274728" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|15" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2018/09/pf6azs_df7h-2rxee5_specialgold7646953hdit.png" alt="현대IT&amp;E" class="img"></span> <strong class="poduct_tit">현대IT&amp;E</strong> <em class="product_desc">채용확정형 2기 교육생모집</em> <em class="product_desc open"><span class="txt">채용확정형 2기</span><span class="txt">교육생모집</span></em> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtlu1c_db8o-2rxefl_ITE.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-4</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40258375"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40258375" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|16" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2018/12/pjcxqj_h1vu-2rxgco_specialgold7661862.png" alt="에스케이트리켐(주)" class="img"></span> <strong class="poduct_tit">에스케이트리켐(주)</strong> <em class="product_desc">부문별 경력/신입 채용</em> <em class="product_desc open"><span class="txt">21년도 상반기</span><span class="txt">부문별 경력/신입 채용</span></em> <span class="wrap_desc"><span class="txt_desc">2016년 설립 (5년차)</span><span class="txt_desc">매출액 1,505억 2천만원 <span class="base_year">(2020년)</span></span><span class="txt_desc">사원수 131명 <span class="base_year">(2020년)</span></span></span> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qta20v_2hnh-2rxefe_17pl.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">상시</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40194234"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40194234" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|17" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2019/09/py9oxt_o3rr-2rxef8_specialgold7714474mul.png" alt="(주)멀티캠퍼스" class="img"></span> <strong class="poduct_tit">(주)멀티캠퍼스</strong> <em class="product_desc">100% 취업연계 AI 서비스 개발 양성과정</em> <em class="product_desc open"><span class="txt">100% 취업연계</span><span class="txt">AI 서비스 개발 양성과정</span></em> <span class="wrap_desc"><span class="txt_desc">2000년 설립 (21년차)</span><span class="txt_desc">사원수 847명 <span class="base_year">(2021년)</span></span></span> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qsq8zw_51yx-2rxefe_01.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-11</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40310845"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40310845" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|18" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/05/qtlrq1_pfry-2rxefn_specialgold7923675.png" alt="기술보증기금" class="img"></span> <strong class="poduct_tit">기술보증기금</strong> <em class="product_desc">지식재산공제파트너(모집인) 공모 안내</em> <em class="product_desc open"><span class="txt">지식재산공제파트너</span><span class="txt">(모집인) 공모 안내</span></em> <span class="wrap_desc"><span class="txt_desc">1989년 설립 (32년차)</span><span class="txt_desc">매출액 3,396억 8천만원 <span class="base_year">(2019년)</span></span><span class="txt_desc">사원수 1,355명 <span class="base_year">(2020년)</span></span></span> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtlrqr_x0s4-2rxefn_36.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-13</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40310845','','t_category=main&amp;t_content=prime_plus_fix_expand', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime_plus_fix_expand|18">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40263721"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40263721" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|19" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2014/10/1412120623_specialgold2671079.png" alt="한솔테크닉스㈜" class="img"></span> <strong class="poduct_tit">한솔테크닉스㈜</strong> <em class="product_desc">연구/개발부문 경력사원 모집</em> <em class="product_desc open"><span class="txt">연구/개발부문</span><span class="txt">경력사원 모집</span></em> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qt8seh_6isu-2rxefe_1.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40311040"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40311040" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|20" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2019/01/plb5sx_trch-2rxehi_specialgold7510537.png" alt="대한상공회의소 경기인력개발원" class="img"></span> <strong class="poduct_tit">대한상공회의소 경기인력개발원</strong> <em class="product_desc">[국비무료]4차산업 교육생</em> <em class="product_desc open"><span class="txt">[국비무료] 4차산업</span><span class="txt">취업연계 교육생모집</span></em> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtlrkz_kbx9-2rxefc_.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-12</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40273163"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40273163" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|21" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/05/qtajtv_vr9o-2rxefe_specialgold7867054logosp.png" alt="한화솔루션(주)" class="img"></span> <strong class="poduct_tit">한화솔루션(주)</strong> <em class="product_desc">[큐셀] 고려대 산학장학생 모집</em> <em class="product_desc open"><span class="txt">[한화큐셀] 고려대</span><span class="txt">산학장학생(석사) 모집</span></em> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtajv7_d9nn-2rxefe_15pl.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-7</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40282242"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40282242" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|22" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/01/q3vc7a_bw0i-2rxefe_specialgold29995kma.png" alt="㈔한국능률협회" class="img"></span> <strong class="poduct_tit">㈔한국능률협회</strong> <em class="product_desc">2021년 상반기(5월) 경력직 채용</em> <em class="product_desc open"><span class="txt">2021년 상반기(5월)</span><span class="txt">경력직 수시채용</span></em> <span class="wrap_desc"><span class="txt_desc">매출액 502억 7천만원 <span class="base_year">(2018년)</span></span><span class="txt_desc">사원수 200명 <span class="base_year">(2018년)</span></span></span> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qte22s_1wij-2rxefd_.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-4</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40305809"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40305809" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|23" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/05/qtlbg5_8c2r-2rxeff_specialgold5662249wooriat.png" alt="우리자산신탁㈜" class="img"></span> <strong class="poduct_tit">우리자산신탁㈜</strong> <em class="product_desc">2021년 인턴사원 모집 공고</em> <em class="product_desc open"><span class="txt">2021년</span><span class="txt">인턴사원 모집 공고</span></em> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtlbhx_fbqr-2rxeff_ddddd.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-4</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40163210"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40163210" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|24" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2019/02/pnlzqj_8154-2rxefe_specialgold6142271gepa.png" alt="(재)경상북도경제진흥원" class="img"></span> <strong class="poduct_tit">(재)경상북도경제진흥원</strong> <em class="product_desc">경북지역 기술 교육 훈련생 모집</em> <em class="product_desc open"><span class="txt">김천 • 구미 • 칠곡지역</span><span class="txt">기술 교육 훈련생 모집</span></em> <span class="wrap_desc"><span class="txt_desc">1997년 설립 (24년차)</span><span class="txt_desc">사원수 62명 <span class="base_year">(2019년)</span></span></span> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qsiyf7_zi3l-2rxefk_.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-10</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40282617"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40282617" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|25" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/09/qgs7pg_vtrh-2rxiby_specialgold7847993koreasg.png" alt="한국바이오연구조합" class="img"></span> <strong class="poduct_tit">한국바이오연구조합</strong> <em class="product_desc">바이오 데이터 엔지니어</em> <em class="product_desc open"><span class="txt">바이오 데이터 엔지니어</span><span class="txt">양성사업 청년 미취업자</span></em> <span class="wrap_desc"><span class="txt_desc">2000년 설립 (21년차)</span><span class="txt_desc">매출액 52억 1천만원 <span class="base_year">(2019년)</span></span><span class="txt_desc">사원수 16명 <span class="base_year">(2009년)</span></span></span> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qte2ib_8htt-2rxefg_qk19os8pk62rxefd1.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-35</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="32982567"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=32982567" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|26" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/06/qcawn8_a36a-2rxgco_specialgold39634huonsg200622spg2.png" alt="㈜휴온스글로벌" class="img"></span> <strong class="poduct_tit">㈜휴온스글로벌</strong> <em class="product_desc">휴온스 그룹 수시채용</em> <em class="product_desc open"><span class="txt">글로벌 헬스케어그룹</span><span class="txt">휴온스 그룹 수시채용</span></em> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2020/06/qc63qb_5my5-2rxefn_.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40229236"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40229236" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|27" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2015/10/1444894299_specialgold3030001safety1.png" alt="㈔대한산업안전협회" class="img"></span> <strong class="poduct_tit">㈔대한산업안전협회</strong> <em class="product_desc">2021년도 수시 공개채용 공고</em> <em class="product_desc open"><span class="txt">2021년도 수시</span><span class="txt">공개채용 공고</span></em> <span class="wrap_desc"><span class="txt_desc">1964년 설립 (57년차)</span><span class="txt_desc">매출액 1,278억 3천만원 <span class="base_year">(2019년)</span></span><span class="txt_desc">사원수 1,077명 <span class="base_year">(2020년)</span></span></span> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qszhxz_etro-2rxefd_1.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-6</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40140922"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40140922" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|28" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/10/qi4q6k_vy1w-2rxefg_specialgold7399668logo.png" alt="쿠팡풀필먼트서비스" class="img"></span> <strong class="poduct_tit">쿠팡풀필먼트서비스</strong> <em class="product_desc">물류,엔지니어,경영지원 경력모집</em> <em class="product_desc open"><span class="txt">물류,엔지니어,</span><span class="txt">경영지원 경력</span></em> <span class="wrap_desc"><span class="txt_desc">2016년 설립 (5년차)</span><span class="txt_desc">사원수 19,662명 <span class="base_year">(2020년)</span></span></span> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/04/qscsox_wvyz-2rxefe_.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40247727"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40247727" class="link_box track_event" data-track_event="main|Ads_click|prime_plus|29" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2017/11/ozhmpq_obka-2rxee8_specialgold303984514438.png" alt="㈜썬앳푸드" class="img"></span> <strong class="poduct_tit">㈜썬앳푸드</strong> <em class="product_desc">SERVICE 및 COOK 외식 인재 모집</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday"><span class="num_dday last">오늘마감</span></span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40247727','','t_category=main&amp;t_content=prime_plus', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime_plus|29">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40309838"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40309838" class="link_box track_event" data-track_event="main|Ads_click|prime_plus|30" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/01/q4y8gw_9zij-2rxefg_specialgold5198189.png" alt="대보건설㈜/대보실업㈜" class="img"></span> <strong class="poduct_tit">대보건설㈜/대보실업㈜</strong> <em class="product_desc">각 부문 경력직 수시채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40309838','','t_category=main&amp;t_content=prime_plus', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime_plus|30">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40311893"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40311893" class="link_box track_event" data-track_event="main|Ads_click|prime_plus|31" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2019/05/prmgj0_bxwi-2rxefd_specialgold7605436tmax.png" alt="티맥스그룹" class="img"></span> <strong class="poduct_tit">티맥스그룹</strong> <em class="product_desc">2021년 상반기 특별채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-11</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40284889"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40284889" class="link_box track_event" data-track_event="main|Ads_click|prime_plus|32" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/07/qdec1g_7vxk-2rxefc_specialgold15395logo.png" alt="㈜테스" class="img"></span> <strong class="poduct_tit">㈜테스</strong> <em class="product_desc">상반기 각 부문 신입/경력 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-1</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="38825093"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=38825093" class="link_box track_event" data-track_event="main|Ads_click|prime_plus|33" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/07/qd55se_j6ui-2rxefb_sourcetik.png" alt="TikTok" class="img"></span> <strong class="poduct_tit">TikTok</strong> <em class="product_desc">각 부문별 인턴 및 전문가 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40293649"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40293649" class="link_box track_event" data-track_event="main|Ads_click|prime_plus|34" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2019/07/puvr1c_upnm-2rxefj_specialgold5706578keic190719logo.jpg" alt="한국전자산업협동조합" class="img"></span> <strong class="poduct_tit">한국전자산업협동조합</strong> <em class="product_desc">[무료/인턴쉽연계] 반도체제어</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-15</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40093997"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40093997" class="link_box track_event" data-track_event="main|Ads_click|prime_plus|35" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/04/qs92jh_cj9g-2rxefl_specialgold77207582.png" alt="원전현장인력양성원" class="img"></span> <strong class="poduct_tit">원전현장인력양성원</strong> <em class="product_desc">[전액무료] 2021년 교육생 모집</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-25</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40286171"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40286171" class="link_box track_event" data-track_event="main|Ads_click|prime_plus|36" rel="sponsored, nofollow"></a> <span class="product_logo"><img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2018/10/ph76s3_ob8u-2rxeec_specialgold5696956.png" alt="JB 우리캐피탈(주)" class="img"></span> <strong class="poduct_tit">JB 우리캐피탈(주)</strong> <em class="product_desc">2021년 상반기 IT부문 정규직 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> </span> <span class="bg"></span> </div> </li></ul>
+<ul class="list_product basic" id="_prime" style="height: 1557px"><li class="open" data-rec_idx="40317312"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40317312" class="link_box track_event" data-track_event="main|Ads_click|prime_fix_expand|1" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/05/qsptdd_znvu-2rxefg_specialgold66171kbcsg.png">㈜KBC Company</span> <strong class="poduct_tit">㈜KBC Company</strong> <em class="product_desc">각 부문별 신입 및 경력 채용 공고</em> <em class="product_desc open"><span class="txt">각 부문별</span><span class="txt">신입/경력사원 채용</span></em> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtn6m0_yo8d-2rxefk_4.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-7</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40317312','','t_category=main&amp;t_content=prime_fix_expand', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime_fix_expand|1">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40292637"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40292637" class="link_box track_event" data-track_event="main|Ads_click|prime_fix_expand|2" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/05/qtl8wb_xcre-2rxefi_specialgold7452347logo.png">(주)새하컴즈</span> <strong class="poduct_tit">(주)새하컴즈</strong> <em class="product_desc">화상회의/교육 전문기업 인재채용</em> <em class="product_desc open"><span class="txt">android / java 웹개발자</span><span class="txt">고객관리 및 사업지원</span></em> <span class="wrap_desc"><span class="txt_desc">2009년 설립 (12년차)</span><span class="txt_desc">매출액 88억원 <span class="base_year">(2020년)</span></span><span class="txt_desc">사원수 29명 <span class="base_year">(2021년)</span></span></span> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtfxb8_p6u4-2rxefj_.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-11</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40292637','','t_category=main&amp;t_content=prime_fix_expand', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime_fix_expand|2">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40281844"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40281844" class="link_box track_event" data-track_event="main|Ads_click|prime_fix_expand|3" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/01/qmt3nm_tixe-2rxefk_specialgold7748476.png">㈜제이와이피엔터테인먼트</span> <strong class="poduct_tit">㈜제이와이피엔터테인먼트</strong> <em class="product_desc">2021년 2분기 경력사원 특별채용</em> <em class="product_desc open"><span class="txt">2021년 2분기</span><span class="txt">경력사원 특별 채용</span></em> <span class="wrap_desc"><span class="txt_desc">1997년 설립 (24년차)</span><span class="txt_desc">매출액 253억 5천만원 <span class="base_year">(2012년)</span></span></span> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtebjb_rldz-2rxefb_jj.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-11</span> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="40289652"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40289652" class="link_box track_event" data-track_event="main|Ads_click|prime_fix_expand|4" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2019/09/px8iey_st0n-2rxefj_specialgold42425logo.png">㈜케이엠더블유</span> <strong class="poduct_tit">㈜케이엠더블유</strong> <em class="product_desc">미국법인 부문별 채용안내</em> <em class="product_desc open"><span class="txt">미국법인</span><span class="txt">부문별 채용안내</span></em> <span class="wrap_desc"><span class="txt_desc">1994년 설립 (27년차)</span><span class="txt_desc">사원수 409명 <span class="base_year">(2021년)</span></span></span> <span class="thumb_product"><img data-src="https://www.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qtfnsa_af4q-2rxefe_.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-35</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40289652','','t_category=main&amp;t_content=prime_fix_expand', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime_fix_expand|4">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li class="open" data-rec_idx="39978218"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=39978218" class="link_box track_event" data-track_event="main|Ads_click|prime_fix_expand|5" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/05/qad16k_ly43-2rxefg_specialgold64568.png">대한상공회의소 충남인력개발원</span> <strong class="poduct_tit">대한상공회의소 충남인력개발원</strong> <em class="product_desc">[국비무료] CAD/CAM,스마트팩</em> <em class="product_desc open"><span class="txt">충남인력개발원</span><span class="txt">[국비무료] CAD/CAM,스마</span></em> <span class="thumb_product"><img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/04/qr6sq8_yp6j-2rxefk_cnd.png" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_fix_expand"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-11</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40234646"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40234646" class="link_box track_event" data-track_event="main|Ads_click|prime|6" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/03/qpfbvm_6ylx-2rxefn_specialgold3909032simpac.png">SIMPAC그룹</span> <strong class="poduct_tit">SIMPAC그룹</strong> <em class="product_desc">각 부문 신입/경력 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-1</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40279307"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40279307" class="link_box track_event" data-track_event="main|Ads_click|prime|7" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/01/q4flgc_y008-2rxef8_specialgold3944604hyoil.png">현대오일뱅크㈜</span> <strong class="poduct_tit">현대오일뱅크㈜</strong> <em class="product_desc">경영기획 분야 경력사원 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40281816"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40281816" class="link_box track_event" data-track_event="main|Ads_click|prime|8" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2015/11/1446444155_specialgold4439162dowls2015102681.jpg">더북컴퍼니</span> <strong class="poduct_tit">더북컴퍼니</strong> <em class="product_desc">2021년 상반기 신입 및 경력 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40281816','','t_category=main&amp;t_content=prime', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime|8">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40271159"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40271159" class="link_box track_event" data-track_event="main|Ads_click|prime|9" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/04/q99sv3_olbq-2rxeff_specialgold7757098KSA.png">한국표준협회</span> <strong class="poduct_tit">한국표준협회</strong> <em class="product_desc">[부산] 풀스택 개발자 교육생 모집</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-16</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40219850"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40219850" class="link_box track_event" data-track_event="main|Ads_click|prime|10" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/04/q9jk7n_ii18-2rxefm_specialgold7761815hyundaichemical.png">㈜현대케미칼</span> <strong class="poduct_tit">㈜현대케미칼</strong> <em class="product_desc">현대케미칼 엔지니어 경력</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-6</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40112082"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40112082" class="link_box track_event" data-track_event="main|Ads_click|prime|11" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/03/qq3nvn_7fyu-2rxefn_specialgold7738814fsdfasfd.png">포스탑</span> <strong class="poduct_tit">포스탑</strong> <em class="product_desc">각 부문별 신입/경력 모집</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-7</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40112082','','t_category=main&amp;t_content=prime', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime|11">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40285287"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40285287" class="link_box track_event" data-track_event="main|Ads_click|prime|12" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2017/11/ozr7pc_dygg-2rxgdg_specialgold73996681422.png">쿠팡풀필먼트서비스</span> <strong class="poduct_tit">쿠팡풀필먼트서비스</strong> <em class="product_desc">[목천센터] 상,하차 계약직 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-20</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40285287','','t_category=main&amp;t_content=prime', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime|12">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40295045"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40295045" class="link_box track_event" data-track_event="main|Ads_click|prime|13" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2017/11/oz4mjz_fbll-2rxgdd_specialgold7470378KFCKOREA.png">(주)KFC KOREA</span> <strong class="poduct_tit">(주)KFC KOREA</strong> <em class="product_desc">정규직 신입 매니저 모집</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-4</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40295045','','t_category=main&amp;t_content=prime', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime|13">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40289549"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40289549" class="link_box track_event" data-track_event="main|Ads_click|prime|14" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2019/12/q2saiy_gkb7-2rxefc_specialgold5968036lng.png">보령엘엔지터미널㈜</span> <strong class="poduct_tit">보령엘엔지터미널㈜</strong> <em class="product_desc">21년 하반기 공개채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-4</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40274411"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40274411" class="link_box track_event" data-track_event="main|Ads_click|prime|15" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2015/02/1424044448_specialgold4151474kicc.gif">한국정보통신㈜</span> <strong class="poduct_tit">한국정보통신㈜</strong> <em class="product_desc">일반관리/연구개발 각 부문 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-7</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40288871"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40288871" class="link_box track_event" data-track_event="main|Ads_click|prime|16" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2017/03/onmcqs_zagb-2rxeej_specialgold7381732mynavilogosg.png">(주)마이나비코리아</span> <strong class="poduct_tit">(주)마이나비코리아</strong> <em class="product_desc">[일본근무]기업별 신입/경력 모집</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-22</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40314628"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40314628" class="link_box track_event" data-track_event="main|Ads_click|prime|17" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/03/qpogzo_vfr0-2rxefl_specialgold3597217lblogo.jpg">LB그룹</span> <strong class="poduct_tit">LB그룹</strong> <em class="product_desc">대규모 수시채용 및 인턴채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-10</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40236668"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40236668" class="link_box track_event" data-track_event="main|Ads_click|prime|18" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2014/11/1417075138_specialgold5724649m2i01.jpg">㈜엠투아이코퍼레이션</span> <strong class="poduct_tit">㈜엠투아이코퍼레이션</strong> <em class="product_desc">개발 및 영업부문 신입/경력 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40236668','','t_category=main&amp;t_content=prime', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime|18">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40274864"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40274864" class="link_box track_event" data-track_event="main|Ads_click|prime|19" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2019/09/pxlp8s_q3wc-2rxefd_specialgold3927389katri.png">한국의류시험연구원</span> <strong class="poduct_tit">한국의류시험연구원</strong> <em class="product_desc">정규직 전환형 직원 채용공고</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-4</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40245899"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40245899" class="link_box track_event" data-track_event="main|Ads_click|prime|20" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2019/11/q0y1a9_7rgj-2rxefe_specialgold5694175dbcpt.png">DB캐피탈㈜</span> <strong class="poduct_tit">DB캐피탈㈜</strong> <em class="product_desc">DB캐피탈 경력직원 채용 공고</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-4</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40245899','','t_category=main&amp;t_content=prime', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime|20">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40293837"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40293837" class="link_box track_event" data-track_event="main|Ads_click|prime|21" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2018/11/pivtim_tgzh-2rxehp_specialgold5938553rock1128.png">로크웰오토메이션코리아(주)</span> <strong class="poduct_tit">로크웰오토메이션코리아(주)</strong> <em class="product_desc">각 부문 경력직원 모집</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-35</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40293837','','t_category=main&amp;t_content=prime', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime|21">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40319071"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40319071" class="link_box track_event" data-track_event="main|Ads_click|prime|22" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2018/02/p4e395_8o8v-2rxeec_specialgold4252354.png">㈜보나비</span> <strong class="poduct_tit">㈜보나비</strong> <em class="product_desc">아티지움 배송기사 모집</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40319071','','t_category=main&amp;t_content=prime', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime|22">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40309780"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40309780" class="link_box track_event" data-track_event="main|Ads_click|prime|23" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/09/qgtzag_z073-2rxefd_specialgold6247186dhlsg.png">DHL KOREA</span> <strong class="poduct_tit">DHL KOREA</strong> <em class="product_desc">Finance 회계팀 정규직 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40314427"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40314427" class="link_box track_event" data-track_event="main|Ads_click|prime|24" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2015/05/1432276417_specialgold3025586.png">대상㈜</span> <strong class="poduct_tit">대상㈜</strong> <em class="product_desc">경영지원부문 경력사원 모집</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40274705"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40274705" class="link_box track_event" data-track_event="main|Ads_click|prime|25" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/03/qpu1wk_ex0w-2rxefj_specialgold6746834.png">공팔리터</span> <strong class="poduct_tit">공팔리터</strong> <em class="product_desc">영업 신입/경력직 공개채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40274705','','t_category=main&amp;t_content=prime', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime|25">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40315799"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40315799" class="link_box track_event" data-track_event="main|Ads_click|prime|26" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/09/qgtzag_z073-2rxefd_specialgold6247186dhlsg.png">DHL KOREA</span> <strong class="poduct_tit">DHL KOREA</strong> <em class="product_desc">[수도권센터] 배송/물류/간선운송</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-7</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40296324"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40296324" class="link_box track_event" data-track_event="main|Ads_click|prime|27" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2021/01/qnmhno_uhxj-2rxefc_specialgold5473199.png">행복나래주식회사</span> <strong class="poduct_tit">행복나래주식회사</strong> <em class="product_desc">SCM/IT 신입/경력 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-7</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40238409"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40238409" class="link_box track_event" data-track_event="main|Ads_click|prime|28" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/09/qgmh01_v2w3-2rxefg_specialgold7471537jbcorporation.png">JB(주)</span> <strong class="poduct_tit">JB(주)</strong> <em class="product_desc">2021년 신입/경력직원 채용 </em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-2</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40137228"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40137228" class="link_box track_event" data-track_event="main|Ads_click|prime|29" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/07/qe7klg_9i24-2rxefh_specialgold5200096dhsgsglogo200729.png">대한상공회의소 부산인력개발원</span> <strong class="poduct_tit">대한상공회의소 부산인력개발원</strong> <em class="product_desc">2021년 상반기 취업교육생 모집</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-1</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40286472"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40286472" class="link_box track_event" data-track_event="main|Ads_click|prime|30" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2018/02/p4e395_8o8v-2rxeec_specialgold4252354.png">㈜보나비</span> <strong class="poduct_tit">㈜보나비</strong> <em class="product_desc">아티제 조리/베이커리/홀 파트</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40286472','','t_category=main&amp;t_content=prime', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime|30">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40246332"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40246332" class="link_box track_event" data-track_event="main|Ads_click|prime|31" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www2.saraminbanner.co.kr/banner_logo//company/logo_banner/2015/08/1438825324_specialgold4415119nexplus.png">(주)넥스플러스</span> <strong class="poduct_tit">(주)넥스플러스</strong> <em class="product_desc">[㈜넥스플러스] 2021년 상반기</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-1</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40246332','','t_category=main&amp;t_content=prime', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime|31">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40218217"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40218217" class="link_box track_event" data-track_event="main|Ads_click|prime|32" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/09/qgtzag_z073-2rxefd_specialgold6247186dhlsg.png">DHL KOREA</span> <strong class="poduct_tit">DHL KOREA</strong> <em class="product_desc">인천공항 공항업무팀 정규직 신입 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-15</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40160298"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40160298" class="link_box track_event" data-track_event="main|Ads_click|prime|33" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2017/02/ol2yrx_au85-2rxee9_specialgold4353538.png">대한상공회의소 광주인력개발원</span> <strong class="poduct_tit">대한상공회의소 광주인력개발원</strong> <em class="product_desc">AI/CAD·CAM/전기/자동화(PLC) 취업연계 전문기술교육과정 모집</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-40</span> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40274871"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40274871" class="link_box track_event" data-track_event="main|Ads_click|prime|34" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2018/02/p4e395_8o8v-2rxeec_specialgold4252354.png">㈜보나비</span> <strong class="poduct_tit">㈜보나비</strong> <em class="product_desc">쿠차라 정규직 오픈멤버 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-15</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40274871','','t_category=main&amp;t_content=prime', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime|34">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40279274"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40279274" class="link_box track_event" data-track_event="main|Ads_click|prime|35" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/10/qi6fzz_qbtx-2rxefl_specialgold7427870.png">㈜스카이랩스</span> <strong class="poduct_tit">㈜스카이랩스</strong> <em class="product_desc">각 부문별 신입 및 경력 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-8</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40279274','','t_category=main&amp;t_content=prime', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime|35">입사지원</span></button> </span> <span class="bg"></span> </div> </li> <li data-rec_idx="40244165"> <div class="box_product"> <a href="/zf_user/jobs/relay/pop-view?rec_idx=40244165" class="link_box track_event" data-track_event="main|Ads_click|prime|36" rel="sponsored, nofollow"></a> <span class="product_logo lazy" data-src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2018/05/p8ftz3_ktbj-2rxgdd_specialgold103799.png">㈜디티에스아이</span> <strong class="poduct_tit">㈜디티에스아이</strong> <em class="product_desc">디지털 퍼포먼스 마케터 채용</em> <span class="thumb_product"><img data-src="" class="img" alt="" rel="nofollow"></span> <button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime"><span class="blind">스크랩</span></button> <span class="recruit_func"> <span class="blind">공고 마감일</span> <span class="num_dday">D-5</span> <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다." onclick="try{quickApplyForm('40244165','','t_category=main&amp;t_content=prime', ''); return false;} catch (e) {}; return false;" onmousedown="try{n_trackEvent('apply','main','quick_apply','');}catch(e){}"><span class="sri_btn_immediately track_event" data-track_event="main|Ads_quick_apply|prime|36">입사지원</span></button> </span> <span class="bg"></span> </div> </li></ul>
+</div>
+</div>
+<!--  -->         
             
 
-        </div>
-    </div>
-</section>
-<!-- Team -->
-
-<!-- ####################################################################################################### -->
 
 </main>
 
@@ -1583,6 +1350,10 @@ window.onscroll = function sticky() {
 		}	
 		
 	});
+  
+  function f_logout() {
+	  location.href = "logout.do";
+  }
   
   </script>
 <!-- End Channel Plugin -->

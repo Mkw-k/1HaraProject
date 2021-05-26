@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="bit.com.a.dto.FAQDto"%>
+<%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -275,6 +277,122 @@ a.box-btn {
 a.box-btn:hover, a.border-btn:hover {
 	background-color: #2186eb;
 }
+
+/* 네비바 반응형 */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* 요소의 최소 너비 지정, height 속성 무시
+    vh단위는 브라우저 안쪽 높이(window.innerHeight)을 기준으로
+    설정된다. 하지만 태블릿이나, 모바일의 경우에는 뷰 포트에 따라
+    맞춰짐*/
+  min-height: 8vh;
+  background-color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+.logo {
+  color: rgb(226, 226, 226);
+  text-transform: uppercase;
+  /* 각 글자 2px씩 간격을 줌*/
+  letter-spacing: 2px;
+  font-size: 18px;
+}
+
+.nav-links {
+  width: 40%;
+  /* display: flex; */
+  justify-content: space-around;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgb(226, 226, 226);
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: rgb(226, 226, 226);
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-links {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  .nav-links {
+    position: absolute;
+    top: 8vh;
+    right: 0;
+    height: 92vh;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(100%);
+  }
+  .nav-links li {
+    opacity: 0;
+  }
+  .burger {
+    display: block;
+  }
+
+  .nav-active {
+    transform: translateX(0%);
+  }
+
+  @keyframes navLinkFade {
+    from {
+      opacity: 0;
+      transform: translateX(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+  opacity: 0;
+}
+
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+ 
  
 </style>
 </head>
@@ -393,9 +511,9 @@ a.box-btn:hover, a.border-btn:hover {
 	<div class="content">
 		<h2 style="color:#fff">FAQ</h2>
 	<div class="input-group">
-         <input type="email" class="form-control" placeholder="검색어 입력">
+         <input type="email" class="form-control" placeholder="검색어 입력"  id="_searchBtn">
          <span class="input-group-btn">
-         <button class="btn" type="submit">SEARCH</button>
+         <button class="btn" type="submit" id="searchBtn">SEARCH</button>
          </span>
           </div>
 	</div>
@@ -404,12 +522,16 @@ a.box-btn:hover, a.border-btn:hover {
 </div>
 </section>
 
+<%
+List<FAQDto> memlist =(List<FAQDto>) request.getAttribute("memlist");
+%>
+
 
 <nav class="faqnav" style="height: auto;">
-  <ul style="display: flex;margin-left: 400px;">
-    <li style="background-color: #2186eb">개발자 FAQ</li>
-    <li><a href="companyFAQ.do">기업 FAQ</a></li>
-    <li><a href="commonFAQ.do">일반 FAQ</a></li>
+  <ul style="display: flex; margin-right: 180px;">
+    <li style="background-color: #2186eb" class="nav-links">개발자 FAQ</li>
+    <li><a href="companyFAQ.do" class="nav-links">기업 FAQ</a></li>
+    <li><a href="commonFAQ.do" class="nav-links">일반 FAQ</a></li>
   </ul>
 </nav>
 
@@ -422,18 +544,13 @@ a.box-btn:hover, a.border-btn:hover {
 				<div class="single-price">
 				  <div class="price-item">
 					<ul>
-						<li>100GB Monthly Bandwidth</li>
-						<li>100 Google AdWords</li>
-						<li>100 Domain Hosting</li>
-						<li>SSL Shopping Cart</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
-						<li>24/7 Live Support</li>
+				<% 
+						for(FAQDto dto : memlist){
+						%>
+							<li><a href="FAQdetail.do?seq=<%=dto.getFaqseq()%>"><%=dto.getQuestion() %></a></li>
+						<% 	
+						}
+						%>
 					</ul>
 				  </div>
 			   </div>
@@ -661,6 +778,17 @@ function login() {
 </script>
 <!-- End Channel Plugin -->
 
+<!-- 검색 -->
+<script>
+$("#searchBtn").click(function () {
+    
+	alert("searchBtn click")
+	/* 검색어 */
+	let search = document.getElementById("_searchBtn").value;
+    
+    location.href = "searchFAQ.do?search=" + search;
+});
+</script>
 
 </body>
 </html>
