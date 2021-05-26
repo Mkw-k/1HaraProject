@@ -13,10 +13,6 @@ import bit.com.a.dto.NewsDto;
 
 @Controller
 public class NewsController {
-	/*
-	 @Autowired 
-	 NewsService service;
-	 */
 	
 	@RequestMapping(value = "newslist.do", method = RequestMethod.GET)
 	public String newslist(Model model) {
@@ -29,4 +25,5 @@ public class NewsController {
 		}
 		return "news/news";
 	}
+	
 }

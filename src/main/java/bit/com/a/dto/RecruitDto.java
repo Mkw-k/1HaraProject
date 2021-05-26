@@ -69,10 +69,22 @@ public class RecruitDto implements Serializable{
 	private String career_Desc; 
 	private int readcount; 
 	private String regdate;
-    private String buscode[];
+    private String buscode;
     private int del;
     private String companyname;
+    private String eduname;
+    private String emp_name;
     private int rnum;
+    
+    
+    
+    
+	public int getRnum() {
+		return rnum;
+	}
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
 	public int getJobSeq() {
 		return jobSeq;
 	}
@@ -169,10 +181,10 @@ public class RecruitDto implements Serializable{
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
-	public String[] getBuscode() {
+	public String getBuscode() {
 		return buscode;
 	}
-	public void setBuscode(String[] buscode) {
+	public void setBuscode(String buscode) {
 		this.buscode = buscode;
 	}
 	public int getDel() {
@@ -187,11 +199,17 @@ public class RecruitDto implements Serializable{
 	public void setCompanyname(String companyname) {
 		this.companyname = companyname;
 	}
-	public int getRnum() {
-		return rnum;
+	public String getEduname() {
+		return eduname;
 	}
-	public void setRnum(int rnum) {
-		this.rnum = rnum;
+	public void setEduname(String eduname) {
+		this.eduname = eduname;
+	}
+	public String getEmp_name() {
+		return emp_name;
+	}
+	public void setEmp_name(String emp_name) {
+		this.emp_name = emp_name;
 	}
 	@Override
 	public String toString() {
@@ -199,13 +217,13 @@ public class RecruitDto implements Serializable{
 				+ jobContent + ", area1Name=" + area1Name + ", area2Name=" + area2Name + ", jobVolumn=" + jobVolumn
 				+ ", salary=" + salary + ", jobStart=" + jobStart + ", jobEnd=" + jobEnd + ", emp_Type=" + emp_Type
 				+ ", education=" + education + ", career_Type=" + career_Type + ", career_Desc=" + career_Desc
-				+ ", readcount=" + readcount + ", regdate=" + regdate + ", buscode=" + Arrays.toString(buscode)
-				+ ", del=" + del + ", companyname=" + companyname + ", rnum=" + rnum + "]";
+				+ ", readcount=" + readcount + ", regdate=" + regdate + ", buscode=" + buscode + ", del=" + del
+				+ ", companyname=" + companyname + ", eduname=" + eduname + ", emp_name=" + emp_name + "]";
 	}
 	public RecruitDto(int jobSeq, String companyId, String jobTitle, String jobContent, String area1Name,
 			String area2Name, int jobVolumn, int salary, String jobStart, String jobEnd, String emp_Type,
-			String education, String career_Type, String career_Desc, int readcount, String regdate, String[] buscode,
-			int del, String companyname, int rnum) {
+			String education, String career_Type, String career_Desc, int readcount, String regdate, String buscode,
+			int del, String companyname, String eduname, String emp_name) {
 		super();
 		this.jobSeq = jobSeq;
 		this.companyId = companyId;
@@ -226,11 +244,13 @@ public class RecruitDto implements Serializable{
 		this.buscode = buscode;
 		this.del = del;
 		this.companyname = companyname;
-		this.rnum = rnum;
+		this.eduname = eduname;
+		this.emp_name = emp_name;
 	}
 	public RecruitDto(String companyId, String jobTitle, String jobContent, String area1Name, String area2Name,
 			int jobVolumn, int salary, String jobStart, String jobEnd, String emp_Type, String education,
-			String career_Type, String career_Desc, String[] buscode, String companyname) {
+			String career_Type, String career_Desc, String buscode, String companyname, String eduname,
+			String emp_name) {
 		super();
 		this.companyId = companyId;
 		this.jobTitle = jobTitle;
@@ -247,17 +267,14 @@ public class RecruitDto implements Serializable{
 		this.career_Desc = career_Desc;
 		this.buscode = buscode;
 		this.companyname = companyname;
+		this.eduname = eduname;
+		this.emp_name = emp_name;
 	}
     
     
-    
-    
-	
-    
-    
-    //private List<RecruitParam> buscodeparam;
-    
-    
+	public RecruitDto() {
+		// TODO Auto-generated constructor stub
+	}
     
    
     
