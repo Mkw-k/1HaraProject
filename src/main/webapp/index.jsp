@@ -8,7 +8,7 @@
 </head>
 <body>
 
-index.js-p
+index.jsp
 <br>
 
 <a href="home.do">home</a>
