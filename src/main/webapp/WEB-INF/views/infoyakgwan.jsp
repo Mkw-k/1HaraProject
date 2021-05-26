@@ -83,9 +83,7 @@ function choiceWantedList(tag){
 
 <nav id="lnb">
 
-<!-- S : 2018-09-28 추가 -->
 <p class="tit"><a href="/useInfo/worknetInfo/useWorknetGuide.do">이용안내</a></p>
-<!-- E : 2018-09-28 추가 -->
 
 
 
