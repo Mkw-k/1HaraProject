@@ -28,6 +28,9 @@ index.jsp
 
 <a href="jobsearch.do">직종서치</a>
 
+<a href="chatpractice.do">채팅(건설중)</a>
+
+
 
 
 </body>

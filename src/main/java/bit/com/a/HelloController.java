@@ -70,19 +70,19 @@ public class HelloController {
 					
 			return "infobanner";
 		}
-		
-		@RequestMapping(value = "musicplayer.do", method = RequestMethod.GET)
-		public String musicplayer(Model model) {
-			logger.info("HelloController home() " + new Date());
-					
-			return "musicplayer";
-		}
 	
 		@RequestMapping(value = "infomember.do", method = RequestMethod.GET)
 		public String infomember(Model model) {
 			logger.info("HelloController home() " + new Date());
 					
 			return "infomember";
+		}	
+		
+		@RequestMapping(value = "infocopyright.do", method = RequestMethod.GET)
+		public String infocopyright(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "infocopyright";
 		}	
 		
 		@RequestMapping(value = "jobtalk.do", method = RequestMethod.GET)
