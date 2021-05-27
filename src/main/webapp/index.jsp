@@ -23,7 +23,7 @@ index.jsp
 
 <a href="login1.do">로그인</a>
 
-
+<a href="newslist.do">끼업 뉴쓰</a>
 
 </body>
 </html>
