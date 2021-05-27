@@ -50,6 +50,7 @@ public class MemberController {
 		return "login/memberRegi";
 	}
 	
+	
 	@ResponseBody
 	@RequestMapping(value = "getId.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String getId(MemberDto mem) {	

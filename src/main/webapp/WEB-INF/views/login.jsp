@@ -19,33 +19,33 @@
 <script type="text/javascript">//<!--
 
 function check(form){
-	if(form.id.value==""){
+	if(form.memberid.value==""){
 		alert("아이디를 입력하세요");
 		form.id.focus();
 		return false;
 	}
-	if(form.id.value.indexOf(" ")>0){
+	if(form.memberid.value.indexOf(" ")>0){
 		alert("아이디에 공백에 있습니다. 공백을 제거해주세요");
 		form.id.focus();
 		return false;
 	}
-	if(form.id.value.length<4){
+	if(form.memberid.value.length<4){
 		alert("아이디는 4자이상이어야 합니다");
 		form.id.focus();
 		return false;
 	}
-	if(form.password.value==""){
+	if(form.pwd.value==""){
 		alert("비밀번호를 입력하세요");
-		form.password.focus();
+		form.pwd.focus();
 		return false;
 	}
-	if(form.password.value.length < 4 || form.password.value.length > 32){
+	if(form.pwd.value.length < 4 || form.pwd.value.length > 32){
 		alert("비밀번호는 영문,숫자,특수문자 조합 6~32자 입니다.");
-		form.password.focus();
+		form.pwd.focus();
 		return false;
 	}
 
-    var label = jQuery('#login_tab').val() === 'c' ? 'com_login': 'per_login';
+    var label = jQuery('#login_tab').val() == 'c' ? 'com_login': 'per_login';
     loggingEventAndTagManager(['login','pc_login_page',label,''],['ga_lead','login','pc_login_page',label]);
 
     
@@ -58,15 +58,15 @@ function check(form){
 //--></script>
 
 <div class="wrap_content">
-        <form id="login_frm" name="login_frm" method="post" action="https://www.saramin.co.kr/zf_user/auth/login" onsubmit="try {return check(this);} catch (e) {};">
-        	<input type="hidden" name="m_code" value="0">
+        <form id="login_frm" name="login_frm" method="post" action="">
+        	<!-- <input type="hidden" name="m_code" value="0"> -->
         	<input type="hidden" name="page_url" value="">
-        	<input type="hidden" name="url" value="/zf_user/">
         	<input type="hidden" name="FrameKey" value="">
-        	<input type="hidden" name="login_tab" value="p" id="login_tab">        
+        	<input type="hidden" name="login_tab" value="c" id="login_tab">        
         	<div class="login_message">
             	<h3>로그인이 필요한 서비스입니다.</h3>
-            	<p>사람인 회원이 아니면, 지금 <span><a href="regiclick.do">회원가입</a></span>을 해주세요.</p>        
+            	<p>사람인 회원이 아니면, 지금 <span>
+            	<a href="regiclick.do">회원가입</a></span>을 해주세요.</p>        
         	</div>
         	<div class="login_page_wrap">
         	    <div class="login_input_wrap">
@@ -103,7 +103,7 @@ function check(form){
               	<div class="login-form">
               	  <div class="id-input-box focus">
               	      <label id="id-label" for="id" style="display: block;">아이디</label>
-              	      <input type="text" id="id" name="id" class="txt_tool" value="">
+              	      <input type="text" id="id" name="memberid" class="txt_tool" value="">
               	  </div>
               	  <div class="pw-input-box">
               	     <label id="password-label" for="password" style="display: block;">비밀번호</label>
@@ -137,7 +137,7 @@ function check(form){
            </div>
          <div class="clear_both"></div>
        </div>
-   	 <input type="hidden" name="encid" value="" id="encid"><input type="hidden" name="encpw" value="" id="encpw"><input type="hidden" name="seq" value="" id="seq">    
+   	<!--  <input type="hidden" name="encid" value="" id="encid"><input type="hidden" name="encpw" value="" id="encpw"><input type="hidden" name="seq" value="" id="seq">     -->
     </form>
    </div>
 <script type="text/javascript">
@@ -150,7 +150,10 @@ function check(form){
            </div>
            <div id="div-gpt-ad-1550638948072-0-inner" style="">
             <div id="div-gpt-ad-1550638948072-0" data-google-query-id="CN-Qg_Gj5PACFZEEXAodAGcIog">
-               <div id="google_ads_iframe_/61280259/Login_728x90_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/61280259/Login_728x90_0" title="3rd party ad content" name="google_ads_iframe_/61280259/Login_728x90_0" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="conversion-measurement 'src'" srcdoc="" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe></div>
+               <div id="google_ads_iframe_/61280259/Login_728x90_0__container__" style="border: 0pt none;">
+               		 <iframe id="google_ads_iframe_/61280259/Login_728x90_0" title="3rd party ad content" name="google_ads_iframe_/61280259/Login_728x90_0" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="conversion-measurement 'src'" srcdoc="" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true">
+               		</iframe> 
+               </div>
             </div>
            </div>
         </div>
@@ -162,38 +165,152 @@ function check(form){
                     jQuery(function() {
                     var $ = jQuery;
                     $('.login_page_wrap')
-                        .on('click', '.t_per', function(e) {
+                        .on('click', '.t_per', function() {
                             if( !$(this).hasClass('t_on') ) {
-                                $(this).addClass('t_on').next().removeClass('t_on');
+                                $(this).addClass('t_on').next().removeClass('t_on'); 
                                 $('#lbl_autologin').show();
                                 $('.link_rater').hide();
                                 $('#login_tab').val('p');
+                                $('#login_frm').attr('action', 'loginAf.do');
                             }
                         })
                         .on('click', '.t_com', function() {
                             if( !$(this).hasClass('t_on') ) {
-                                $(this).addClass('t_on').prev().removeClass('t_on');
+                                $(this).addClass('t_on').prev().removeClass('t_on'); 
                                 $('#lbl_autologin').hide();
                                 $('.link_rater').show();
                                 $('#login_tab').val('c');
-                            }
+                                $('#login_frm').attr('action', 'businessloginAf.do');
+                           } 
                         })
-                       /*  .on('click', '.service_info_txt', function () {
-                            var url = '/zf_user/help/help-word/main';
+                      /*    .on('click', '.service_info_txt', function () { */
+                          /*   var url = '/zf_user/help/help-word/main';
                             if ($('#login_tab').val() === 'c') {
                                 url += '?memberCode=com';
                             }
-                            location.href = url;
-                        });
- */
-                    $('#login_frm')
+                            location.href = 'businessloginAf.do';
+                        }); */
+ 
+                     /* $('#login_frm')
+                   
                         .on('click', '#a_join', function (e) {
                             e.preventDefault();
                             location.href = this.href + '?ut=' + $('#login_tab').val();
                         })
-                    ;
-                });
+                    ; */
+                });   
                 //-->
+                
+                
+    //<!--
+    
+var $j = jQuery.noConflict();
+
+function checkLoginValue() {
+   $j('#memberid, #pwd').each(function (index, el) {
+       $j(el).siblings('label').hide();
+
+       if($j(el).val() == '') {
+           $j(el).siblings('label').show();
+       }
+
+       if ($j(el).css('background-color') == 'rgb(250, 255, 189)') {
+           $j('#id-label, #password-label').hide();
+       }
+   });
+}
+
+
+$j(document).ready(function () {
+
+
+
+    window.setTimeout(function () {
+	   checkLoginValue();
+
+	   $j('#memberid').focus();
+
+       if ('' != $j('#memberid').val()) {
+	       $j('#pwd').focus();
+	   }
+	}, 100);
+
+    $j('#memberid, #pwd').on('focus blur keyup change', function () {
+        checkLoginValue();
+    });
+
+    $j('#label_type').on('click',function () {
+    	$j('#label_type').toggleClass('on');
+    });
+	$j('span.frm_checkbox > input[type=checkbox]').on('change', function() {
+		var chkbox =$j(this);
+		chkbox.closest('span.frm_checkbox').toggleClass('checked');
+	})
+
+	var security_btn =  $j('#security_btn'),
+		ssl_login = $j('#ssl_login');
+	security_btn.on('click', function () {
+		var ssl_login_val = ssl_login[0].value;
+        if (ssl_login_val == 1) {
+			ssl_login[0].value = 0;
+			security_btn.text('OFF');
+			security_btn.addClass('off');
+        } else {
+			ssl_login[0].value = 1;
+			security_btn.text('ON');
+			security_btn.removeClass('off');
+        }
+    });
+	$j('#security_btn').off('dblclick');
+
+    $j('.tab_member_type')
+        .on('click', '.t_per', function () {
+            saraminEffect('person');
+        })
+        .on('click', '.t_com', function () {
+            saraminEffect('compnay');
+        });
+
+    $j('#wrap_social_login').on('click', 'a', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var link =  $j(e.currentTarget).attr('href'),
+            loginType = $j('.t_com').hasClass('t_on') === true ? 'c' : 'p' ,
+            provider = $j(e.currentTarget).data('provider'),
+            label = loginType === 'c' ? 'com_login_'+provider :  'per_login_'+provider;
+
+        var isIe10Check = false;
+        if((navigator.userAgent.toLowerCase().indexOf("msie") !== -1) && provider === 'apple'){
+            if(confirm('IE10이하 버전의 인터넷 익스플로러에서는 Apple 로그인이 정상 작동하지 않을 수 있습니다.\n' +
+                '인터넷 익스플로러를 최신 버전으로 업데이트 해주세요'))
+            {
+                loggingEventAndTagManager(['login','pc_login_page',label,''],['ga_lead','login','pc_login_page',label]);
+                window.open(link+'&login_type='+loginType, '_blank', 'width=480,height=640');
+            }
+            return;
+        }
+
+        loggingEventAndTagManager(['login','pc_login_page',label,''],['ga_lead','login','pc_login_page',label]);
+        window.open(link+'&login_type='+loginType, '_blank', (!$j(this).hasClass('sl_phone') ? 'width=480,height=640' : ''));
+    });
+
+    if ($j('.t_com').hasClass('t_on') === true) {
+        saraminEffect('compnay');
+    } else {
+        saraminEffect('person');
+    }
+
+    function saraminEffect(memberType) {
+        if (memberType === 'compnay') {
+            $j('.wrap_member_info').show();
+        } else {
+            $j('.wrap_member_info').hide();
+        }
+    }
+});
+
+    //-->
 </script>
 
 
