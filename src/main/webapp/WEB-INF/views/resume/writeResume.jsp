@@ -1631,7 +1631,13 @@ dt, dd {
 																		<option>서포터즈/기자단</option>
 																		<option>공모전</option>
 																		<option>동아리</option>
-												
+																		<option>교내활동</option>
+																		<option>자원봉사</option>
+																		<option>아르바이트</option>
+																		<option>사회활동</option>
+																		<option>수행과제</option>
+																		<option>해외연수</option>
+																		<option>교육이수내역</option>
 																	</select>
 															
 														</div>
@@ -1718,23 +1724,175 @@ dt, dd {
 													<div class="resume_row">
 														<div class="input_title">항목선택</div>
 														<div class="sri_select resume_select">
-															<label for="item_type_1621990781" class="bar_title">항목선택</label>
-															<button class="ico_arr selected" type="button">항목선택</button>
-															<input id="item_type_1621990781" name="item_type[]"
-																type="hidden" value="">
-															<ul class="list_opt">
-																<li class="on"><a class="link_opt" href="##"
-																	data-value="">항목선택</a></li>
-																<li><a class="link_opt" href="##"
-																	data-value="license">자격증/면허증</a></li>
-																<li><a class="link_opt" href="##"
-																	data-value="language_exam">어학시험</a></li>
-																<li><a class="link_opt" href="##"
-																	data-value="certification">수상내역/공모전</a></li>
-															</ul>
-															<p class="txt_error"></p>
+															<select class="selectpicker" onchange="licenseCheck(this.value);"  style="width: 107.22222px;height: 50.22222px;">
+																		<option value="case1">자격증/면허증</option>
+																		<option value="case2">어학시험</option>
+																		<option value="case3">수상내역/공모전</option>
+															</select>
 														</div>
 													</div>
+									<div id="licensechk" style="display: block">				
+													<div class="resume_row">
+														<div class="input_title">자격증명</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">발행처/기관</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+															
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">합격구분</div>
+														<div class="sri_select resume_select">
+															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>합격</option>
+																		<option>불합격</option>
+																	</select>
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">취득일</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+														</div>
+													</div>
+							</div>		
+							
+							
+							<div id="languagechk" style="display: none">				
+													<div class="resume_row">
+														<div class="input_title">언어</div>
+														<div class="sri_select resume_select">
+															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>영어</option>
+																		<option>일본어</option>
+																		<option>중국어</option>
+																		<option>독일어</option>
+																		<option>불어</option>
+																		<option>스페인어</option>
+																		<option>러시아어</option>
+																		<option>이탈리아어</option>
+																		<option>한국어</option>
+																		<option>기타</option>
+																	</select>
+														</div>
+													</div>
+													
+													
+													<div class="resume_row">
+														<div class="input_title">시험종류</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">점수</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+															
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">급수</div>
+														<div class="sri_select resume_select">
+															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>1</option>
+																		<option>2</option>
+																		<option>3</option>
+																		<option>4</option>
+																		<option>5</option>
+																		<option>A</option>
+																		<option>B</option>
+																		<option>C</option>
+																		<option>D</option>
+																		<option>A1</option>
+																		<option>A2</option>
+																		<option>B1</option>
+																		<option>B2</option>
+																		<option>N1</option>
+																		<option>N2</option>
+																		<option>N3</option>
+																		<option>AH</option>
+																		<option>AM</option>
+																		<option>AL</option>
+																		<option>IH</option>
+																		<option>IM</option>
+																		<option>IL</option>
+																	</select>
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">급수</div>
+														<div class="sri_select resume_select">
+															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>취득여부</option>
+																		<option>취득(PASS)</option>
+																	</select>
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">취득일</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+														</div>
+													</div>
+							</div>	
+							
+							
+							<div id="awardchk" style="display: none">		
+													
+													<div class="resume_row">
+														<div class="input_title">수상명</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">수여기관</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+															
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">취득일</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+														</div>
+													</div>
+							</div>		
+											
 												</div>
 
 												<div class="area_add_btn">
@@ -2488,17 +2646,33 @@ $(document).ready(function()
 
 
 
-
 <script type="text/javascript">
-$(function() {
-    $('#search').on('keyup', function() {
-        var pattern = $(this).val();
-        $('.searchable-container .items').hide();
-        $('.searchable-container .items').filter(function() {
-            return $(this).text().match(new RegExp(pattern, 'i'));
-        }).show();
-    });
-});
+function licenseCheck(value) {
+	
+	alert("licenseCheck");
+	alert(value);
+	 if(value=="case2"){
+		 alert("value case2")
+		 document.getElementById('licensechk').style.display='none';
+		 document.getElementById('languagechk').style.display='block';
+		 document.getElementById('awardchk').style.display='none';
+	}
+	 
+	 else if(value=="case3"){
+		 alert("value case3");
+		 document.getElementById('licensechk').style.display='none';
+		 document.getElementById('languagechk').style.display='none';
+		 document.getElementById('awardchk').style.display='block';
+	 }
+	 
+	 else if(value="case1"){
+		 document.getElementById('licensechk').style.display='block';
+		 document.getElementById('languagechk').style.display='none';
+		 document.getElementById('awardchk').style.display='none';
+	 }
+	
+	
+}
 
 </script>
 
