@@ -49,8 +49,62 @@ public class HelloController {
 			logger.info("HelloController login1() " + new Date());
 			return "login";
 		}
-	
+		
+		@RequestMapping(value = "infoemail.do", method = RequestMethod.GET)
+		public String infoemail(Model model) {
+			logger.info("HelloController home() " + new Date());
 					
+			return "infoemail";
+		}
+		
+		@RequestMapping(value = "infowebaccess.do", method = RequestMethod.GET)
+		public String infowebaccess(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "infowebaccess";
+		}
+		
+		@RequestMapping(value = "infobanner.do", method = RequestMethod.GET)
+		public String infobanner(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "infobanner";
+		}
+		
+		@RequestMapping(value = "musicplayer.do", method = RequestMethod.GET)
+		public String musicplayer(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "musicplayer";
+		}
+	
+		@RequestMapping(value = "infomember.do", method = RequestMethod.GET)
+		public String infomember(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "infomember";
+		}	
+		
+		@RequestMapping(value = "jobtalk.do", method = RequestMethod.GET)
+		public String jobtalk(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "jobtalk";
+		}	
+		
+		@RequestMapping(value = "jobdetail.do", method = RequestMethod.GET)
+		public String jobdetail(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "jobdetail";
+		}	
+		
+		@RequestMapping(value = "jobsearch.do", method = RequestMethod.GET)
+		public String jobsearch(Model model) {
+			logger.info("HelloController home() " + new Date());
+					
+			return "jobsearch";
+		}	
 		
 }
 
