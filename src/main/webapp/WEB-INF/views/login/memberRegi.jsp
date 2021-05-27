@@ -56,7 +56,7 @@
 
 <div class="container" style="text-align: center;">
     <h3>일반 회원</h3>
-    <form action="" method="post" id="myForm">
+    <form method="post" id="myForm">
         <div class="form-group has-feedback">
             <label class="control-label" for="id">아이디</label>
           	<div class="input-group">
@@ -82,7 +82,7 @@
         <div class="form-group has-feedback"> 
   			<label class="control-label" for="name">이름</label> 
   				<input type="text" class="form-control" id="name" name="name" placeholder=""> 
-  			</div> 
+  		</div> 
 
        <!--  <div class="form-group has-feedback">
         	<label class="control-label" for="registrationNum">주민등록번호</label><br>
@@ -95,7 +95,7 @@
         <div class="form-group has-feedback">
         	<label class="control-label" for="registrationNum">주소</label>
         		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호">
-				<input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+				<input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" readonly="readonly" value="우편번호 찾기"><br>
 				<input type="text" class="form-control" id="sample6_address" name="address" placeholder="주소">
 				<input type="text" class="form-control" id="sample6_detailAddress" name="detailaddress" placeholder="상세주소">
 				<input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목">
@@ -157,8 +157,12 @@
 			$("#pwd").focus();
 		}
 		else{	
+			alert($("#memberid").val());
 			$("#myForm").attr("action", "regiAf.do").submit();
+			alert("회원가입이 성공적으로 완료되었습니다");
 		}	
+		
+		
 	});
 
 
@@ -287,9 +291,10 @@
     			success:function( msg ){
     			//	alert('chkIdBtn success');
     				if(msg == "YES"){
+    				
     					$("#idCheck").css("color", "#0000ff");
     					$("#idCheck").html('사용 가능한 ID입니다.');
-    					$('#memberid').attr('disabled', true);
+    					//$('#memberid').attr('disabled', true);
     					$('#idCheck').attr('disabled', true);
     				}else{
     					$("#idCheck").css("color", "#ff0000");
@@ -304,6 +309,7 @@
     		
     	});	
     });
+ 	
     $("#pwd").keyup(function(){
         var pwd=$(this).val();
         // 비밀번호 검증할 정규 표현식

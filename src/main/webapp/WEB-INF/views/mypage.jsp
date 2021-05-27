@@ -17,10 +17,12 @@
   <meta name="selected-menu" content="0, 0, 0, 0">
   <link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
   <!-- TO_BE CSS.. -->
+  
   <link rel="stylesheet" href="static/css/import.css" media="all">
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- jQuery Modal -->
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
   <!-- footer -->
@@ -29,448 +31,132 @@
 <!-- 네비바 -->
 <!-- carousel -->
 <link rel="stylesheet" href="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
- 
 <script src="//https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <!-- 검색 부트스트랩 -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 
  <!-- 전체 css -->
-
-<style type='text/css'>
-@import url("common.css");
-</style>
-
-<link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
+ 
 <script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
 <script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
+<link href="csss/top.css" rel="stylesheet" type="text/css">
 
-<!-- 부트스트랩 -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    
-  <style type="text/css">
-/* 네비바 배경색 */
-.bg-dark {
-    background-color: white!important;    
-}
-/* 네비바 글자색 */
-.navbar-dark .navbar-nav .nav-link {
-    color: black;
-}
-/* 네비바 hover색 */
-.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
-    color: #eee!important;
-}
-/* 네비바 가운데 정렬 */
-.navbar-expand-sm {
-    justify-content:center!important;
-}
-
-
-dl, ol, ul {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.navbar-nav2 dl, ol, ul {
-    margin-left: 200px;
-}
-
-.bg-dark {
-    background-color: #2186eb!important;
-}
-
-
-.dropdown-item {
-    display: block;
-    width: 100%;
-    padding: .25rem 1.5rem;
-    clear: both;
-    font-weight: 400;
-    color: #212529!important;
-    text-align: inherit;
-    white-space: nowrap;
-    background-color: transparent;
-    border: 0;
-}
-
-
-/* 메인css */
-
-nav { width:100%;height:80px; text-align:center;top:0;left:0;}
-.all {display:flex; flex-flow: row wrap; min-width:100px;}
-header {flex:1 1 100%; height:120px; background:white; }
-main {flex: 1 1 100%;height:1500px; background:gray;}
-footer{flex: 1 1 100%;height:200px;text-align:center;background:white;}
-
-
-
-/* 제목아래 라인 */
-#homecontent h5 {
-    border-bottom: 2px solid #eee;
-    font-size: 14pt;
-    text-align: center;
-    padding: 5px 0 5px 0;
-    font-family: inherit;
-}
-
-#homecontent .fl_right p.readmore {
-
-}
-
-.readmore{
-	color: #747580
-}
-
-@media (min-width: 768px)
-.col-md-4 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 30%;
-    /* flex: 30%; */
-    max-width: 30%;
-}
-
-#homecontent h5 {
-    background-color: #eee;
-    border-bottom: 1px solid #eee;
-    text-align: center;
-}
-
-p{
-	font-size: 9pt;
-}
-
-body{
-	padding-top: 100px;
-}
-
-#homecontent .fl_right img {
-    float: left;
-    width: 150px;
-    height: 75px;
-    margin: 0 10px 0 0;
-}
-
-#homecontent img {
-    padding: 0px;
-}
-
-/* 검색css */
-.form-control-borderless {
-        border: none;
-      }
-
- .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
-   border: none;
-   outline: none;
-   box-shadow: none;
- }
-
- .card-body1 {
-   padding-bottom: 12px;
-   padding-top: 12px;
-   padding-right: 12px;
-   padding-left: 12px;
-   background: #2186eb!important;
- }
-
- .src_fild {
-   border-radius: 0;
- }
-
- .src_btn {
-   line-height: 0.5;
-   height: 38px;
-   border-radius: 0;
- }
- 
- .btn-success {
-color: #fff;
-background-color: #2186eb;
-border-color: #2186eb;
-}
-
-.navbar-brand {
-    display: flex;
-}
-
-.container {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    /* padding-top: 30px; */
-    margin-bottom: 10px;
-}
-
-.logoarea {
-	clear: both;
-}
-
-.navbar-nav{
-	background-color: #2186eb;
-}
-
-.bgc{
- color: white;
- background-color: #2186eb;
- 
-}
-
-/* 검색 top margin */
-form, fieldset, legend {
-    margin-top: 20px;
-    padding: 0;
-    border: none;
-}
-
-/* 부트스트랩css */
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-#team {
-    background: #fff !important;
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-    background-color: #fff!important;
-    border-color: #000;
-    box-shadow: none;
-    outline: none;
-}
-
-.btn-primary {
-    color: #000;
-    background-color: #eee;
-    border-color: #eee;
-}
-
-section {
-    padding: 60px 0;
-}
-
-section .section-title {
-    text-align: center;
-    color: #000;
-    margin-bottom: 50px;
-    text-transform: uppercase;
-}
-
-#team .card {
-    border: none;
-    background: #eee;
-}
-
-.image-flip:hover .backside,
-.image-flip.hover .backside {
-    -webkit-transform: rotateY(0deg);
-    -moz-transform: rotateY(0deg);
-    -o-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-    border-radius: .25rem;
-}
-
-.image-flip:hover .frontside,
-.image-flip.hover .frontside {
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-}
-
-.mainflip {
-    -webkit-transition: 1s;
-    -webkit-transform-style: preserve-3d;
-    -ms-transition: 1s;
-    -moz-transition: 1s;
-    -moz-transform: perspective(1000px);
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transition: 1s;
-    transform-style: preserve-3d;
-    position: relative;
-}
-
-.frontside {
-    position: relative;
-    -webkit-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    z-index: 2;
-    margin-bottom: 30px;
-}
-
-.backside {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: white;
-    -webkit-transform: rotateY(-180deg);
-    -moz-transform: rotateY(-180deg);
-    -o-transform: rotateY(-180deg);
-    -ms-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
-    -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-    -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-    box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-}
-
-.frontside,
-.backside {
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transition: 1s;
-    -webkit-transform-style: preserve-3d;
-    -moz-transition: 1s;
-    -moz-transform-style: preserve-3d;
-    -o-transition: 1s;
-    -o-transform-style: preserve-3d;
-    -ms-transition: 1s;
-    -ms-transform-style: preserve-3d;
-    transition: 1s;
-    transform-style: preserve-3d;
-}
-
-.frontside .card,
-.backside .card {
-    min-height: 312px;
-}
-
-.backside .card a {
-    font-size: 18px;
-    color: #000 !important;
-}
-
-.frontside .card .card-title,
-.backside .card .card-title {
-    color: #000 !important;
-}
-
-.frontside .card .card-body img {
-    width: 100%;
-    height: 120px;
-    
-}
-
-.card-body {
-    padding-bottom: 12px;
-    padding-top: 12px;
-    padding-right: 12px;
-    padding-left: 12px;
-    background: #eee;
-     color: #000 !important;
-}
-
-/* 드롭다운 추가 */
-.dropbtn {
-  background-color: #2186eb;
-  color: white;
-  padding: 8px; 
-  font-size: 16px;
-  border: none;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #2186eb;}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {background-color: #2186eb;}
-
-#login-modal{
-margin-left : 700px;
-}
-
-</style>
 </head>
+
+
+
+
+
 <body>
-<div class="all">
-<header style="height:70px; background:#28a745;">
-
-		
-<h1>마이페이지</h1>
-
-</header>
 
 
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-  <!-- Links -->
-  <ul class="navbar-nav">
-<!-- Dropdown -->
-    <li class="nav-item dropdown">
-     <div class="dropdown">
-		  <button class="dropbtn">전체보기</button>
-		  <div class="dropdown-content">
-		    <a href="#">채용공고</a>
-		    <a href="#">기업정보</a>
-		    <a href="#">취업톡톡</a>
-		    <a href="#">공채달력</a>
-		    <a href="#">자료실</a>
-		    <a href="/notice.do">공지사항</a>
-		  </div>
-		</div>
-    </li>
+<!--  -->
 
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:white">채용공고</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:white">기업정보</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:white">취업톡톡</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:white">공채달력</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:white">자료실</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="notice.do" style="color:white">공지사항</a>
-    </li>
-    </ul>
-    
-   
-   <ul class="navbar-nav navbar-nav2">
-     <li class="nav-item">
-      <!-- a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
-       <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: white;background-color: #2186eb;">로그인</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color: white;background-color: #2186eb;">이력서관리</a>
-    </li>
-  
-
-  </ul>
+<header id="header">
+<div class="inner">
+<h1 class="ci">
+<a href="/zf_user/" class="track_event" data-track_event="main|gnb|menu|ci" title="사람인" ondragstart="return false;" oncontextmenu="return false;">
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="24" viewBox="0 0 120 24" class="default">
+<title>사람인로고</title>
+<g fill="none" fill-rule="evenodd">
+<g fill="#4876EF">
+<path d="M21.442 18.766l-.037.023c-.275.17-1.112.69-2.634.69-1.578 0-2.483-.665-2.483-1.825 0-1.06.966-1.773 2.403-1.773 1.023 0 1.79.161 2.694.421l.057.016v2.448zm-7.56-8.492c0 .482.195.888.55 1.143.439.313 1.08.363 1.804.139.653-.204 1.632-.447 2.59-.447 1.833 0 2.616.631 2.616 2.112v.802L21.344 14c-.985-.228-1.773-.389-2.946-.389-5.034 0-5.425 3.195-5.425 4.174 0 2.181 1.46 4.513 5.558 4.513 3.199 0 5.09-1.088 5.592-1.422.46-.299.607-.581.607-1.162v-6.389c0-3.462-1.96-5.217-5.825-5.217-1.615 0-3.152.334-3.896.646-.748.3-1.127.812-1.127 1.52zM60.794 9.63l-.05-.051c-.963-1.003-2.176-1.47-3.817-1.47-1.766 0-3.553.552-4.781 1.478-.494.352-.659.66-.659 1.223v9.756c0 .939.778 1.732 1.699 1.732.969 0 1.7-.745 1.7-1.732v-8.514l.086-.054c.262-.167.956-.61 2.114-.61 1.479 0 2.229.82 2.229 2.438v6.74c0 .939.778 1.732 1.699 1.732.952 0 1.699-.761 1.699-1.732v-8.514l.088-.054c.26-.167.955-.61 2.114-.61 1.457 0 2.228.852 2.228 2.464v6.714c0 .939.766 1.732 1.672 1.732.968 0 1.726-.761 1.726-1.732v-6.792c0-3.812-1.78-5.666-5.441-5.666-1.543 0-3.012.512-4.25 1.478l-.056.044zM45.361 18.766l-.036.023c-.275.17-1.112.69-2.634.69-1.579 0-2.484-.665-2.484-1.825 0-1.06.966-1.773 2.404-1.773 1.023 0 1.789.161 2.693.421l.057.016v2.448zm-7.56-8.492c0 .482.196.888.55 1.143.44.313 1.08.363 1.804.139.653-.204 1.632-.447 2.59-.447 1.833 0 2.616.631 2.616 2.112v.802L45.264 14c-.985-.228-1.774-.389-2.947-.389-5.034 0-5.425 3.195-5.425 4.174 0 2.181 1.46 4.513 5.558 4.513 3.199 0 5.09-1.088 5.593-1.422.459-.298.606-.58.606-1.162v-6.389c0-3.462-1.96-5.217-5.825-5.217-1.616 0-3.152.334-3.896.646-.748.3-1.127.812-1.127 1.52zM34.481 8.316c-.522-.128-1.397-.208-2.282-.208-2.943 0-4.631 1.606-4.631 4.407v8.17c0 .889.739 1.613 1.647 1.613.015-.002.022-.004.031-.004l.029.002h.001c.968 0 1.72-.748 1.72-1.704V13.17c0-1.17.48-1.753 1.468-1.783.452-.016.83.059 1.194.13.282.054.549.106.817.106 1.096 0 1.606-.94 1.606-1.574 0-.847-.568-1.463-1.6-1.734M7.45 14.118l-2.102-.429c-1.177-.262-1.678-.647-1.678-1.29 0-.372.194-1.237 1.99-1.237.744 0 1.821.258 2.504.6.852.439 1.73.361 2.237-.197.283-.323.432-.778.397-1.214-.024-.293-.138-.714-.55-1.054C9.39 8.586 7.6 8.108 5.793 8.108c-3.296 0-5.426 1.727-5.426 4.399 0 2.504 2.115 3.572 3.89 4.026.608.155.912.21 1.264.273.252.046.514.093.918.182 1.122.267 1.622.682 1.622 1.343 0 .481-.271 1.287-2.09 1.287-1.26 0-2.623-.353-3.471-.9-.343-.219-.694-.326-1.024-.326-.466 0-.892.212-1.2.627-.469.617-.324 1.62.309 2.147.552.462 2.17 1.537 5.272 1.537 3.286 0 5.494-1.843 5.494-4.586 0-2.087-1.276-3.395-3.901-3.999M75 6.487c-.923 0-1.62.74-1.62 1.721v9.125c0 .933.742 1.721 1.62 1.721.91 0 1.622-.756 1.622-1.72V8.207c0-.965-.712-1.721-1.621-1.721M75 0c-1.386 0-2.432 1.031-2.432 2.398 0 1.384 1.069 2.467 2.433 2.467 1.318 0 2.432-1.13 2.432-2.467C77.433 1.053 76.365 0 75.001 0M85.644 8.108c-3.391 0-5.234 1.19-5.577 1.428-.454.315-.607.623-.607 1.222v9.807c0 .94.783 1.733 1.709 1.733.974 0 1.708-.745 1.708-1.733v-8.513l.037-.023c.498-.309 1.508-.641 2.624-.641 1.29 0 2.667.668 2.667 2.543v6.634c0 .94.783 1.733 1.709 1.733.974 0 1.709-.745 1.709-1.733v-6.792c0-3.706-2.068-5.665-5.979-5.665" transform="translate(27.485)"></path>
+</g>
+<g transform="translate(0 3.295)">
+<circle cx="4.257" cy="4.257" r="4.257" fill="#4876EF"></circle>
+<circle cx="15.608" cy="4.257" r="4.257" fill="#B4C0D3"></circle>
+<circle cx="4.257" cy="15.608" r="4.257" fill="#B4C0D3"></circle>
+<circle cx="15.608" cy="15.608" r="4.257" fill="#00D3AB"></circle>
+</g>
+</g>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="24" viewBox="0 0 120 24" class="default fixed">
+<title>사람인로고</title>
+<g fill="none" fill-rule="evenodd">
+<g fill="#FFF">
+<path d="M21.442 18.766l-.037.023c-.275.17-1.112.69-2.634.69-1.578 0-2.483-.665-2.483-1.825 0-1.06.966-1.773 2.403-1.773 1.023 0 1.79.161 2.694.421l.057.016v2.448zm-7.56-8.492c0 .482.195.888.55 1.143.439.313 1.08.363 1.804.139.653-.204 1.632-.447 2.59-.447 1.833 0 2.616.631 2.616 2.112v.802L21.344 14c-.985-.228-1.773-.389-2.946-.389-5.034 0-5.425 3.195-5.425 4.174 0 2.181 1.46 4.513 5.558 4.513 3.199 0 5.09-1.088 5.592-1.422.46-.299.607-.581.607-1.162v-6.389c0-3.462-1.96-5.217-5.825-5.217-1.615 0-3.152.334-3.896.646-.748.3-1.127.812-1.127 1.52zM60.794 9.63l-.05-.051c-.963-1.003-2.176-1.47-3.817-1.47-1.766 0-3.553.552-4.781 1.478-.494.352-.659.66-.659 1.223v9.756c0 .939.778 1.732 1.699 1.732.969 0 1.7-.745 1.7-1.732v-8.514l.086-.054c.262-.167.956-.61 2.114-.61 1.479 0 2.229.82 2.229 2.438v6.74c0 .939.778 1.732 1.699 1.732.952 0 1.699-.761 1.699-1.732v-8.514l.088-.054c.26-.167.955-.61 2.114-.61 1.457 0 2.228.852 2.228 2.464v6.714c0 .939.766 1.732 1.672 1.732.968 0 1.726-.761 1.726-1.732v-6.792c0-3.812-1.78-5.666-5.441-5.666-1.543 0-3.012.512-4.25 1.478l-.056.044zM45.361 18.766l-.036.023c-.275.17-1.112.69-2.634.69-1.579 0-2.484-.665-2.484-1.825 0-1.06.966-1.773 2.404-1.773 1.023 0 1.789.161 2.693.421l.057.016v2.448zm-7.56-8.492c0 .482.196.888.55 1.143.44.313 1.08.363 1.804.139.653-.204 1.632-.447 2.59-.447 1.833 0 2.616.631 2.616 2.112v.802L45.264 14c-.985-.228-1.774-.389-2.947-.389-5.034 0-5.425 3.195-5.425 4.174 0 2.181 1.46 4.513 5.558 4.513 3.199 0 5.09-1.088 5.593-1.422.459-.298.606-.58.606-1.162v-6.389c0-3.462-1.96-5.217-5.825-5.217-1.616 0-3.152.334-3.896.646-.748.3-1.127.812-1.127 1.52zM34.481 8.316c-.522-.128-1.397-.208-2.282-.208-2.943 0-4.631 1.606-4.631 4.407v8.17c0 .889.739 1.613 1.647 1.613.015-.002.022-.004.031-.004l.029.002h.001c.968 0 1.72-.748 1.72-1.704V13.17c0-1.17.48-1.753 1.468-1.783.452-.016.83.059 1.194.13.282.054.549.106.817.106 1.096 0 1.606-.94 1.606-1.574 0-.847-.568-1.463-1.6-1.734M7.45 14.118l-2.102-.429c-1.177-.262-1.678-.647-1.678-1.29 0-.372.194-1.237 1.99-1.237.744 0 1.821.258 2.504.6.852.439 1.73.361 2.237-.197.283-.323.432-.778.397-1.214-.024-.293-.138-.714-.55-1.054C9.39 8.586 7.6 8.108 5.793 8.108c-3.296 0-5.426 1.727-5.426 4.399 0 2.504 2.115 3.572 3.89 4.026.608.155.912.21 1.264.273.252.046.514.093.918.182 1.122.267 1.622.682 1.622 1.343 0 .481-.271 1.287-2.09 1.287-1.26 0-2.623-.353-3.471-.9-.343-.219-.694-.326-1.024-.326-.466 0-.892.212-1.2.627-.469.617-.324 1.62.309 2.147.552.462 2.17 1.537 5.272 1.537 3.286 0 5.494-1.843 5.494-4.586 0-2.087-1.276-3.395-3.901-3.999M75 6.487c-.923 0-1.62.74-1.62 1.721v9.125c0 .933.742 1.721 1.62 1.721.91 0 1.622-.756 1.622-1.72V8.207c0-.965-.712-1.721-1.621-1.721M75 0c-1.386 0-2.432 1.031-2.432 2.398 0 1.384 1.069 2.467 2.433 2.467 1.318 0 2.432-1.13 2.432-2.467C77.433 1.053 76.365 0 75.001 0M85.644 8.108c-3.391 0-5.234 1.19-5.577 1.428-.454.315-.607.623-.607 1.222v9.807c0 .94.783 1.733 1.709 1.733.974 0 1.708-.745 1.708-1.733v-8.513l.037-.023c.498-.309 1.508-.641 2.624-.641 1.29 0 2.667.668 2.667 2.543v6.634c0 .94.783 1.733 1.709 1.733.974 0 1.709-.745 1.709-1.733v-6.792c0-3.706-2.068-5.665-5.979-5.665" transform="translate(27.485)"></path>
+</g>
+<g transform="translate(0 3.295)">
+<circle cx="4.257" cy="4.257" r="4.257" fill="#114FF4"></circle>
+<circle cx="15.608" cy="4.257" r="4.257" fill="#B4C0D3"></circle>
+<circle cx="4.257" cy="15.608" r="4.257" fill="#B4C0D3"></circle>
+<circle cx="15.608" cy="15.608" r="4.257" fill="#00D3AB"></circle>
+</g>
+</g>
+</svg>
+</a>
+</h1>
+<nav id="gnb" class="gnb">
+<ul class="gnb_menu">
+<li data-gnb="1"><a href="/zf_user/jobs/list/domestic" class="track_event" data-track_event="main|gnb|menu|area">지역별</a></li>
+<li data-gnb="1"><a href="/zf_user/jobs/list/job-category" class="track_event" data-track_event="main|gnb|menu|job">직업별</a></li>
+<li data-gnb="2"><a href="/zf_user/jobs/list/headhunting" class="track_event" data-track_event="main|gnb|menu|headhunting">헤드헌팅</a></li>
+<li data-gnb="2"><a href="/zf_user/jobs/hot100" class="track_event" data-track_event="main|gnb|menu|hot100">HOT100<em class="ico_new">new</em></a></li>
+<li data-gnb="2"><a href="/zf_user/jobs/public/list" class="track_event" data-track_event="main|gnb|menu|public">공채</a></li>
+<li data-gnb="3"><a href="/zf_user/companylab" class="track_event" data-track_event="main|gnb|menu|companylab">기업연구소</a></li>
+<li data-gnb="3"><a href="/zf_user/company-review-qst-and-ans" class="track_event" data-track_event="main|gnb|menu|qst-and-ans">취준진담<em class="ico_badge_qna">고민해결</em></a></li>
+</ul>
+<div id="hidden_gnb" class="hidden_gnb">
+<span class="btn_more" title="메뉴 더보기"><span class="blind">더보기</span></span>
+<ul>
+<li data-gnb="1"><a href="/zf_user/jobs/list/domestic" class="track_event" data-track_event="main|gnb|hidden_menu|area">지역별</a></li>
+<li data-gnb="1"><a href="/zf_user/jobs/list/job-category" class="track_event" data-track_event="main|gnb|hidden_menu|job">직업별</a></li>
+<li data-gnb="2"><a href="/zf_user/jobs/hot100" class="track_event" data-track_event="main|gnb|hidden_menu|hot100">HOT100</a></li>
+<li data-gnb="2"><a href="/zf_user/curation" class="track_event" data-track_event="main|gnb|hidden_menu|curation">큐레이션</a></li>
+<li data-gnb="2"><a href="/zf_user/jobs/public/list" class="track_event" data-track_event="main|gnb|hidden_menu|public">공채</a></li>
+<li data-gnb="3"><a href="/zf_user/companylab" class="track_event" data-track_event="main|gnb|hidden_menu|companylab">기업연구소</a></li>
+<li data-gnb="3"><a href="/zf_user/memcom/talent-pool/main#/recommend" class="track_event" data-track_event="main|gnb|hidden_menu|talent-pool">인재Pool</a></li>
+</ul>
+</div>
 </nav>
+<ul class="utility">
+<li>
+<button type="button" id="search_open" class="btn_search">카카오</button>
+</li>
+<li id="member_menu" class="member_menu">
+<a href="/zf_user/auth?url=%2Fzf_user%2F" id="btn_member" class="btn_member track_event" data-track_event="main|gnb|layer_sign|signin">로그인</a>
+<div id="layer_member" class="wrap_member" style="display: none;">
+<div class="member">
+<ul class="list nologin">
+<li class="btn_link"><a href="/zf_user/auth?ut=p" class="track_event" data-track_event="main|gnb|layer_sign|signin01"><strong>개인회원</strong> 로그인<span class="sri_gnb_option ic_go_arrow"></span></a></li>
+<li><a href="/zf_user/resume/resume-manage" class="track_event" data-track_event="main|gnb|layer_sign|signin02">이력서 관리</a></li>
+<li><a href="/zf_user/member/avatar/list" class="track_event ico_recommend" data-track_event="main|gnb|layer_sign|signin03">추천</a></li>
+<li><a href="/zf_user/member/svq/list" class="track_event" data-track_event="main|gnb|layer_sign|signin_svq">인적성검사</a></li>
+<li><a href="/zf_user/member/suited-recruit-mail/list" class="track_event" data-track_event="main|gnb|layer_sign|signin04">맞춤채용 정보</a></li>
+</ul>
+<ul class="list nologin">
+<li class="btn_link"><a href="/zf_user/auth?ut=c" class="track_event" data-track_event="main|gnb|layer_sign|signin05"><strong>기업회원</strong> 로그인<span class="sri_gnb_option ic_go_arrow"></span></a></li>
+<li><a href="/zf_user/recruit-manage" class="track_event" data-track_event="main|gnb|layer_sign|signin06">공고 등록</a></li>
+<li><a href="/zf_user/company/recruit-manage" class="track_event" data-track_event="main|gnb|layer_sign|signin07">공고·지원자 관리</a></li>
+<li><a href="/zf_user/service/products" class="track_event" data-track_event="main|gnb|layer_sign|signin08">채용 상품 안내</a></li>
+<li><a href="/zf_user/service/products?part_id=talent_search" class="track_event" data-track_event="main|gnb|layer_sign|signin09">인재 상품 안내</a></li>
+<li class="com_member_link"><a href="/zf_user/curation?inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=main_top_login&amp;inner_term=curation" target="_blank" title="큐레이션 페이지로 이동합니다."><img src="//www.saraminimage.co.kr/banner/20210310/A_02.png" width="164" height="52" alt="다양하게 골라보는 큐레이션"></a></li>
+</ul>
+</div>
+</div>
+</li>
+<li><a href="/zf_user/resume/resume-manage" class="btn_link_menu ico_resume track_event" data-track_event="main|gnb|menu|resume_manage">이력서 관리</a></li>
+<li><a href="/zf_user/member/avatar/list" class="track_event" data-track_event="main|gnb|menu|avatar">추천</a></li>
+<li><a href="/zf_user/member/svq/list" class="track_event" data-track_event="main|gnb|hidden_menu|svq">인적성검사</a></li>
+<li><a href="/zf_user/memcom" class="btn_company_service track_event" title="기업서비스" data-track_event="main|gnb|menu|company"><span>기업 서비스</span></a></li>            </ul>
+</div>
+<div id="total_menu" class="wrap_total_menu">
+<a href="/zf_user/recruit" class="btn_menu" title="전체메뉴 보기">
+<span class="blind">전체메뉴</span>
+</a>
+<div id="layer_menu" class="total_menu"> <div class="inner"> <div class="title"> <span>전체 채용정보</span> <a href="/zf_user/curation" class="track_event" data-track_event="main|gnb|public|m900">채용정보 홈</a> </div> <ul class="recruits"> <li class="row1"> <a href="/zf_user/area-recruit" class="title track_event" data-track_event="main|gnb|menu|total">지역별</a> <ul class="col4"> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=101000" class="track_event" data-track_event="main|gnb|public|m021">서울</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=102000" class="track_event" data-track_event="main|gnb|public|m021">경기</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=108000" class="track_event" data-track_event="main|gnb|public|m021">인천</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=106000" class="track_event" data-track_event="main|gnb|public|m021">부산</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=104000" class="track_event" data-track_event="main|gnb|public|m021">대구</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=105000" class="track_event" data-track_event="main|gnb|public|m021">대전</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=103000" class="track_event" data-track_event="main|gnb|public|m021">광주</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=107000" class="track_event" data-track_event="main|gnb|public|m021">울산</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=118000" class="track_event" data-track_event="main|gnb|public|m021">세종</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=109000" class="track_event" data-track_event="main|gnb|public|m021">강원</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=110000" class="track_event" data-track_event="main|gnb|public|m021">경남</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=111000" class="track_event" data-track_event="main|gnb|public|m021">경북</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=112000" class="track_event" data-track_event="main|gnb|public|m021">전남</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=113000" class="track_event" data-track_event="main|gnb|public|m021">전북</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=115000" class="track_event" data-track_event="main|gnb|public|m021">충남</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=114000" class="track_event" data-track_event="main|gnb|public|m021">충북</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=116000" class="track_event" data-track_event="main|gnb|public|m021">제주</a></li> <li><a href="/zf_user/area-recruit/index-foreign-map" class="track_event" data-track_event="main|gnb|public|m022">해외</a></li> <li><a href="/zf_user/jobs/list/subway" class="track_event" data-track_event="main|gnb|public|m022">역세권별</a> <span class="img_main ico_new"><span class="blind">new</span></span></li> </ul> </li> <li class="row1 wide"> <a href="/zf_user/upjikjong-recruit/select-upjikjong/recruitform_type/classified" class="title track_event" data-track_event="main|gnb|menu|total">직업별(직종)</a> <ul class="col2"> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=1" class="track_event" data-track_event="main|gnb|public|m030">경영∙사무</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=2" class="track_event" data-track_event="main|gnb|public|m030">영업∙고객상담</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=4" class="track_event" data-track_event="main|gnb|public|m030">IT∙인터넷</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=12" class="track_event" data-track_event="main|gnb|public|m030">디자인</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=11" class="track_event" data-track_event="main|gnb|public|m030">서비스</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=5" class="track_event" data-track_event="main|gnb|public|m030">전문직</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=13" class="track_event" data-track_event="main|gnb|public|m030">의료</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=3" class="track_event" data-track_event="main|gnb|public|m030">생산∙제조</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=9" class="track_event" data-track_event="main|gnb|public|m030">건설</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=10" class="track_event" data-track_event="main|gnb|public|m030">유통∙무역</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=7" class="track_event" data-track_event="main|gnb|public|m030">미디어</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=6" class="track_event" data-track_event="main|gnb|public|m030">교육</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=8" class="track_event" data-track_event="main|gnb|public|m030">특수계층∙공공</a></li> </ul> </li> <li class="row1"> <a href="/zf_user/curation" class="title track_event" data-track_event="main|gnb|public|total">큐레이션</a> <ul class="col2"> <li> <a href="/zf_user/jobs/list/curation?category_seq=46" class="track_event" data-track_event="main|gnb|public|cu046">반짝오픈</a> </li> <li> <a href="/zf_user/jobs/list/curation?category_seq=44" class="track_event" data-track_event="main|gnb|public|cu044">인턴관</a> </li> <li> <a href="/zf_user/jobs/list/curation?category_seq=43" class="track_event" data-track_event="main|gnb|public|cu043">기업별</a> </li> <li> <a href="/zf_user/jobs/list/curation?category_seq=36" class="track_event" data-track_event="main|gnb|public|cu036">경력관 </a> </li> <li> <a href="/zf_user/jobs/list/curation?category_seq=40" class="track_event" data-track_event="main|gnb|public|cu040">고졸관</a> </li> <li> <a href="/zf_user/jobs/list/curation?category_seq=37" class="track_event" data-track_event="main|gnb|public|cu037">복지관</a> </li> <li> <a href="/zf_user/jobs/list/curation?category_seq=38" class="track_event" data-track_event="main|gnb|public|cu038">연봉관</a> </li> <li> <a href="/zf_user/jobs/list/curation?category_seq=33" class="track_event" data-track_event="main|gnb|public|cu033">HOT공고</a> </li> </ul> </li> <li class="row1"> <a href="/zf_user/jobs/public/list" class="title track_event" data-track_event="main|gnb|menu|total">공채의 명가</a> <ul> <li><a href="/zf_user/jobs/public/list" class="track_event" data-track_event="main|gnb|public|m012">1000대기업 채용</a></li> <li><a href="/zf_user/jobs/public/list?sort=ud&amp;quick_apply=&amp;search_day=&amp;keyword=&amp;company_scale%5B%5D=3#listTop" class="track_event" data-track_event="main|gnb|public|m017">중견기업 채용</a></li> <li><a href="/zf_user/calendar" class="track_event" data-track_event="main|gnb|public|m013">채용 달력</a></li> </ul> </li> <li> <a class="title">기업별</a> <ul> <li><a href="/zf_user/search?company_type=scale001&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m050">대기업 </a></li><li><a href="/zf_user/search?company_type=foreign&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m050">외국계 기업</a></li> <li><a href="/zf_user/search?company_type=public&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m050">공사∙공기업∙공공기관</a></li> <li><a href="/zf_user/search?company_type=kosdaq%2Ckospi%2Ckonex&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m050">상장기업</a></li> <li><a href="/zf_user/search?company_type=goodcompany%2Cmain-biz%2Cinnobiz%2Cventure%2Cw-small-giant&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m050">강소∙인증기업</a></li> </ul> </li> <li class="wide"> <a href="/zf_user/upjikjong-recruit/select-upjikjong/recruitform_type/industrial" class="title track_event" data-track_event="main|gnb|menu|total">산업별(업종)</a> <ul class="col2"> <li><a href="/zf_user/jobs/list/industry?ind_bcd=1" class="track_event" data-track_event="main|gnb|public|m040">서비스업</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=7" class="track_event" data-track_event="main|gnb|public|m040">의료∙제약∙복지</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=2" class="track_event" data-track_event="main|gnb|public|m040">제조∙화학</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=8" class="track_event" data-track_event="main|gnb|public|m040">판매∙유통</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=3" class="track_event" data-track_event="main|gnb|public|m040">IT∙웹∙통신</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=9" class="track_event" data-track_event="main|gnb|public|m040">건설업</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=6" class="track_event" data-track_event="main|gnb|public|m040">교육업</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=5" class="track_event" data-track_event="main|gnb|public|m040">미디어∙디자인</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=4" class="track_event" data-track_event="main|gnb|public|m040">은행∙금융업</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=10" class="track_event" data-track_event="main|gnb|public|m040">기관∙협회</a></li> </ul> </li> <li> <a class="title">전공별</a> <ul class="col2"> <li><a href="/zf_user/search?major_cd=maj021&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">기계공학</a></li> <li><a href="/zf_user/search?major_cd=maj014%2Cmaj055&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">전기공학</a></li> <li><a href="/zf_user/search?major_cd=maj015&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">컴퓨터공학</a></li> <li><a href="/zf_user/search?major_cd=maj018&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">건축∙토목</a></li> <li><a href="/zf_user/search?major_cd=maj016%2Cmaj022&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">재료∙금속</a></li> <li><a href="/zf_user/search?major_cd=maj017%2Cmaj049&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">화학공학</a></li> <li><a href="/zf_user/search?major_cd=maj054%2Cmaj050&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">생물∙생명</a></li> <li><a href="/zf_user/search?major_cd=maj020&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">산업공학</a></li> <li><a href="/zf_user/search?major_cd=maj003%2Cmaj004&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">인문∙사회</a></li> <li><a href="/zf_user/search?major_cd=maj008&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">상경</a></li> <li><a href="/zf_user/search?major_cd=maj002&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">어학</a></li> <li><a href="/zf_user/search?major_cd=maj009&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">법학</a></li> <li><a href="/zf_user/search?major_cd=maj010&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">사범</a></li> <li><a href="/zf_user/search?major_cd=maj006&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">예체능</a></li> </ul> </li> <li class="row_small row_top"> <a class="title">학력별</a> <ul> <li><a href="/zf_user/jobs/list/highschool" class="track_event" data-track_event="main|gnb|public|m060">고졸채용</a></li> <li><a href="/zf_user/search?edu_min=7&amp;edu_max=10&amp;preview_fl=y" class="track_event" data-track_event="main|gnb|public|m060">2,3년제 채용</a></li> <li><a href="/zf_user/search?edu_min=9&amp;edu_max=13&amp;preview_fl=y" class="track_event" data-track_event="main|gnb|public|m060">석박사 채용</a></li> </ul> </li> <li class="row_small"> <a class="title">HOT100</a> <ul> <li><a href="/zf_user/jobs/hot100" class="track_event" data-track_event="main|gnb|public|hot100">직업별</a></li> <li><a href="/zf_user/jobs/hot100?loc_mcd=0" class="track_event" data-track_event="main|gnb|public|hot100">지역별</a></li> <li><a href="/zf_user/jobs/hot100?edu_cd=0" class="track_event" data-track_event="main|gnb|public|hot100">학력별</a></li> <li><a href="/zf_user/jobs/hot100?company_type=0" class="track_event" data-track_event="main|gnb|public|hot100">기업규모</a></li> </ul> </li> </ul> <ul class="links"> <li> <a class="title">사람인서비스</a> <ul> <li><a href="/zf_user/companylab" class="track_event ico_salary" data-track_event="main|gnb|public|m180">기업연구소</a></li> <li><a href="/zf_user/talent/search" class="track_event ico_talent" data-track_event="main|gnb|public|m150">인재검색</a></li> <li class="sep"><a href="/zf_user/jobs/list/highschool" class="track_event" data-track_event="main|gnb|public|m090">고졸채용</a> <span class="img_main ico_renew"><span class="blind">renew</span></span></li> <li><a href="/zf_user/jobs/theme/main" class="track_event" data-track_event="main|gnb|public|m180">채용관</a> <span class="img_main ico_new"><span class="blind">new</span></span></li> <li><a href="/zf_user/jobs/list/headhunting" class="track_event" data-track_event="main|gnb|public|m110">헤드헌팅</a></li> <li><a href="/zf_user/jobs/list/dispatch" class="track_event" data-track_event="main|gnb|public|m120">파견/대행</a></li> <li class="sep"><a href="/zf_user/help" class="track_event" data-track_event="main|gnb|public|m170">고객센터</a></li> <li><a href="https://play.google.com/store/apps/details?id=kr.co.saramin.brandapp&amp;referer=utm_source%3Dsaramin%26utm_medium%3Dreferral%26utm_campaign%3Dsaramin-app%26utm_content%3Dmobile_layer" target="_blank" title="새창" class="track_event" data-track_event="main|gnb|public|m160">사람인 앱 설치</a></li> <li><a href="http://www.otwojob.com/" target="_blank" title="새창" class="track_event" data-track_event="main|gnb|public|m200">재능마켓 오투잡</a></li> <li class="outlink link_company_home"><a href="/zf_user/memcom" target="_blank" title="새창" class="track_event" data-track_event="main|gnb|public|m210">기업서비스 홈</a></li> </ul> </li> </ul> <div class="banner1"> <a href="/zf_user/companylab?inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=gnb_left&amp;inner_term=companylab" target="_blank" class="track_event" data-track_event="main|gnb|public|companylab"><img src="//www.saraminimage.co.kr/2020/storyry.png" alt="기업스토리. 복지부터 사내문화까지 총집합"></a> </div> </div> <div class="dimmed"></div>
+</div>
+</div>
+</header>
+<!--  -->
+
+
+
+<div class="all">
+
 <br>
 
  <!-- =========Login 클릭 시 Modal =========== -->
@@ -511,67 +197,6 @@ margin-left : 700px;
 
 <!-- 본문 -->
 
-<main style="background: #7200ff;">
-
-
-    <form action="member?param=memUpdateAf" method="post">
-    
-        <div style="width: 700px; margin-left : 400px;">
-
-
-            <h4>회원정보</h4>
-            
-            <br>
-
-            <h5 style="margin-left:20px">${mapage.id}님 반갑습니다.</h5>
-
-			<!-- 프로필 사진 들어가는곳 -->
-            <img src="./upload/${login.userPic}" style="margin-left: 20px; width:256px; height:256px;">
-
-            <br><br>
-            
-            <!-- 아이디 -->
-            <br>아이디 : <input name="userId" required="required" type="text" class="form-control" value="${mapage.id}" readonly="readonly">
-
-            <br>
-
-			<!-- 패스워드 -->
-            패스워드 : <input name="userPwd" required="required" type="text" class="form-control" placeholder="input your new password">
-
-            <br>
-
-			<!-- 현재 닉네임 -->
-            <div>
-                현재 닉네임 : ${mapage.name}<input name="userName" required="required" type="text" class="form-control" value="${mapage.name}">
-            </div>
-
-            <br>
-
-			<!-- 현재 이메일 -->
-            현재 이메일 : ${mapage.email}<input name="userEmail" required="required" type="email" class="form-control" value="${mapage.email}">
-
-
-            <br><br>
-            
-            현재 주소 : ${mapage.email}<input name="userEmail" required="required" type="email" class="form-control" value="${mapage.email}">
-
-
-            <br><br>
-
-            JOINDATE : <input type="text" readonly="readonly" value="${mapage.joinDate}">
-
-            <br><br>
-
-            <button name="submit" value="Submit" type="submit" class="btn">정보수정</button>
-            <button type="button" onclick="goDelete()" class="btn">회원탈퇴</button>
-
-        </div>
-        
-    </form>
-    
-    </div>
-
-</main>
 
 <div class="inner-wrap">
 
@@ -765,7 +390,8 @@ function f_responseOrgList(resultObj){
 			$("#orgCd").append("<option value='"+ resultObj.ajaxResult[i].orgCd+"'>"+ resultObj.ajaxResult[i].orgNm  +"</option>" );
 		}
 	}
-
+	
+	
 }
 
 
@@ -1226,28 +852,6 @@ function f_empPgmList(resultObj){
  <!-- 인증일자로부터 7일이 지나지 않았을때 보여줌 -->
  <!-- 인증일자로부터 7일이 지나지 않았을때 보여줌 -->
  <!-- 인증만료일이 다갈올대 보여줌-->
- <!-- 기본이력서 관리 영역-->
- <!-- 인증 이력서 관리 영역-->
- <!-- 이력서관리 영역의 정보제공동의여부 자동세팅-->
-
-
-	
-	
-	
-	
-	<!-- 구직신청한 건이 존재하지 않거나  구직신청한 내역이 존재하고 유효한 구직인증건이 존재하지 않을때 -->
-		<!-- 나의구직정보-->
-		
-		<!-- 인증 만료 -->
-		
-		<!-- 기본이력서관리 역영을 출력하기위한 설정 -->
-		
-	
-	
-	
-	
-
-
 				<!-- contents -->
 				<section id="contents" class="mypage">
 					<div class="tit-util">
@@ -1261,11 +865,8 @@ function f_empPgmList(resultObj){
 						<div class="idv-sec01">
 							<div class="con-top">
 								<div class="tit-area"><span>우정현</span> 님, 반갑습니다.
-	  						
-
-
 								<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustInfoView.do" class="button">회원정보수정</a></div>
-								<div class="con-resume">		<!-- 2018-10-16 이미지 영역 제거 -->
+								<div class="con-resume">
 									<table>
 										<caption>이력서 기본정보 </caption>
 										<colgroup>
@@ -1278,12 +879,7 @@ function f_empPgmList(resultObj){
 											<tr>
 												<th scope="row">연락처</th>
 												<td>
-													
-														
-															010-2106-****
-														
-														
-													
+															010-7143-****
 												</td>
 												<th scope="row" class="un-str">문자메시지 수신</th>
 												<td>
@@ -1363,7 +959,7 @@ function f_empPgmList(resultObj){
 												<td colspan="3">
 													<div>
 														
-															인천광역시 계양구 계양문화로
+															인천광역시 연수구 송도동 4-1 송도더샵퍼스트월드 64층-01 21997
 															
 														
 													</div>
@@ -1373,13 +969,14 @@ function f_empPgmList(resultObj){
 												<th scope="row">관할고용센터</th>
 												<td colspan="3">
 													<div>
-														인천북부고용센터
+														인천고용센터
 														
-														(032-540-5641)
+														(032-460-4701)
 														
 													</div>
 												</td>
 											</tr>
+											
 										</tbody>
 									</table>
 								</div>
@@ -1396,57 +993,17 @@ function f_empPgmList(resultObj){
 								</ul>
 							</div>
 						</div>
-
-
 						<div class="idv-sec02">
-
-
-	
-
-	
-
-	<!-- 인증거부  -->
-	
-
-	<!-- 인증대기  -->
-	
-
 	<!-- 인증이 만료되었습니다. -->
-	
 							<div class="con-left v3 on">
 								<h4>회원님은
 									<span>
-						
-						
 							2021년 04월 06일
-						
 									</span> 자로<br>구직활동 가능기간이 만료되었습니다.</h4>
 								<p>입사지원, 취업알선을 원하시면 구직신청을 하셔야 합니다.</p>
 								<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" class="button large">구직신청관리</a>
 							</div>
-	
-
-	<!-- 작성중인 이력서가 있습니다 -->
-	
-
-	<!-- 등록된 이력서가 없습니다. -->
-	
-
-	<!-- 장고단 인증완료  -->
-	
-
-	<!-- 인증일자로부터 7일이 지나지 않았을때 보여줌 -->
-	
-
-	<!-- 인증만료일이 다가 올때 보여줌 -->
-	
-
 					<!-- 그외의 인증 완료일경우 -->
-					
-
-
-						
-						
 							<div class="con-right v2 on">  <!-- v2 : 이력서있는경우 -->
 								<div class="con-top">
 									<h4 class="ellipsis">
@@ -1502,24 +1059,8 @@ function f_empPgmList(resultObj){
 									</ul>
 									<dl>
 										<dt>키워드</dt>
-										<dd>
-										
-										
-											
-												
-											
-												
-											
-												
-											
-												
-											
-												
-											
-										
-										
+										<dd>										
 										나의 이력서를 알리기 위한 핵심 키워드
-										
 										</dd>
 									</dl>
 								</div>
@@ -1612,21 +1153,11 @@ function f_empPgmList(resultObj){
 								</div>
 								<ul id="tabList1">
 
-								
-									
-									
-									
-									
-
 									<li><a href="/empSpt/empEvent/retrieveEmpEventDtl.do?eventMegaRegionCd=54&amp;newsDataSeqno=41414" class="ellipsis">■영림임업(주) 영업사원 채용■</a>
 										<span>04.24 ~ 04.24</span>
 									</li>
 								
 									
-									
-									
-									
-
 									<li><a href="/empSpt/empEvent/retrieveEmpEventDtl.do?eventMegaRegionCd=54&amp;newsDataSeqno=41417" class="ellipsis">[용인시일자리센터] 청년대상 현직자 온라인 직무박람회</a>
 										<span>04.22 ~ 04.29</span>
 									</li>
@@ -1651,8 +1182,6 @@ function f_empPgmList(resultObj){
 								<a href="/custCenter/faqBoard/faqList.do" class="btn-more">더보기</a>
 							</div>
 
-							
-							
 							<!-- v2 :  심리검사결과없을때 -->
 							<div class="con04 v2 on">
 								<h4>심리검사결과조회</h4>
@@ -1660,10 +1189,7 @@ function f_empPgmList(resultObj){
 									<li><a href="/consltJobCarpa/jobPsyExam/jobPsyExamIntro.do"><strong>직업심리검사</strong>나를 알아가는 또 하나의 방법</a>	</li>
 								</ul>
 							</div>
-							
-
 						</div>
-
 					</div>
 				</section>
 				<!--// contents -->
@@ -1672,7 +1198,7 @@ function f_empPgmList(resultObj){
 	$(document).ready(function(){
 		$('body').contextmenu(function(){
 			return false;
-		});
+		});   
 	});
 </script>				
 <form id="command" name="frm" action="empPgmSchdInviteDetail.do" method="post">
@@ -1701,23 +1227,11 @@ function f_empPgmList(resultObj){
 <div>
 <input type="hidden" name="_csrf" value="555ae33b-8fb2-4439-835b-c3901253e2e7">
 </div></form>
-
-
 </div>
 
 
-<!-- Team -->
-
-
-<!-- ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd -->
-
-
-
-<!-- 광고 팝업창 -->
-<body onload="window.open('ad.do','','width=400px, height=400px, left=400px, top=200px, toolbar=0, status=yes, menubars=0, scrollbars=0, resizable=0, location=0, directories=0')">
-
-
-
+<!-- 마동석 광고 팝업창 -->
+<body onload="window.open('ad.do','','width=400px, height=400px, left=400px, top=200px, toolbar=0, status=yes, menubars=0, scrollbars=0, resizable=0, location=0, directories=0')"></body>
 
 <!-- FOOTER -->
 
@@ -1741,8 +1255,6 @@ function f_empPgmList(resultObj){
 			</div>
 		</div>
 	</div>
-
-
 	<div class="familySite-area" style="display: block;">
 		<ul>
 			<li>
@@ -1839,7 +1351,6 @@ function f_empPgmList(resultObj){
 				<div class="etc">
 					<a href="/images/useInfo/certification_kor2015.jpg" target="_blank" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; var remote = window.open('https://www.eprivacy.or.kr/front/certifiedSiteMark/certifiedSiteMarkPopup.do?certCmd=E&amp;certNum=2021-E-R001','EPRIVACY','width=527,height=720'); remote.focus(); return false;" title="새창"><img src="./static/images/brn-epriavcy.png" alt="개인정보보호우수사이트 인증서"></a>
 								<a href="/html/wauMark2020_worknet.html" onclick="try { latte.getEvent(event).stop(); } catch (ex) {};window.open(this.href,'mark2020','width=605,height=850,scrollbars=no');return false;" title="새창" target="_blank" style="margin-top:-3px"><img src="./static/images/brn-wa-2019.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)"></a>
-							
 				</div>
 			</div>
 		</div>
@@ -1892,13 +1403,6 @@ function f_empPgmList(resultObj){
       <!-- ==============FOOTER END================= -->
 </div>
 
-
-
-
-
-
-
-
 <!-- ==============FOOTER================= -->
 <script type="text/javascript" defer="defer">
 //<![CDATA[
@@ -1913,7 +1417,6 @@ function f_empPgmList(resultObj){
     });
 //]]>
 </script>
-
  
 <script type="text/javascript">
 
@@ -1941,7 +1444,5 @@ window.onscroll = function sticky() {
   }
 }
 </script>
-
-
 </body>
 </html>

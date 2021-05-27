@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,7 +34,8 @@ public class MemberController {
 
 
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
-	public String login() {	
+	public String login(Model model, MemberDto mem) {	
+		model.addAttribute("mem", mem);
 		return "home";
 	}
 	
@@ -47,10 +49,7 @@ public class MemberController {
 	public String MemberRegi() {
 		return "login/memberRegi";
 	}
-	@RequestMapping(value = "businessRegi.do", method=RequestMethod.GET)
-	public String BusinessRegi() {
-		return "login/businessRegi";
-	}
+	
 	
 	@ResponseBody
 	@RequestMapping(value = "getId.do", method = {RequestMethod.GET, RequestMethod.POST})
@@ -68,18 +67,18 @@ public class MemberController {
 		return msg;
 	}
 	
-	@RequestMapping(value = "regiAf.do", method=RequestMethod.POST)
+	@RequestMapping(value = "regiAf.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String regiAf(MemberDto dto) {		
 
+		System.out.println("addmember:" + dto.toString());
 
-
+		
 		 boolean b = service.addmember(dto); 
 		 if(b) { System.out.println("회원 가입되었습니다 " + new Date()); 
-		 return "login/home"; 
+		 return "home"; 
 		 } 
 		 System.out.println("가입되지 않았습니다 " + new Date());
-		 return "regi.tiles";
-
+		 return "login/memberRegi";
 
 
 	}
@@ -431,4 +430,15 @@ public class MemberController {
         return mv;
 	
     }*/
+	@RequestMapping(value = "loginProcess.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String loginProcess(@RequestParam String id, HttpServletRequest request) {
+		
+    	HttpSession session = request.getSession();
+    	session.setAttribute("id", id);
+		return "chat";
+	}
+
+
+	
+	
 }    

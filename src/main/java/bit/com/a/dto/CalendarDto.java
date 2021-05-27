@@ -5,7 +5,8 @@ import java.io.Serializable;
 public class CalendarDto implements Serializable {
 	
 	private int seq;
-	private String id;
+	private int jobseq;
+	private String memberid;
 	private String title;
 	private String content;
 	private String rdate;	// 일정이 있는 날  20/08/03
@@ -14,23 +15,27 @@ public class CalendarDto implements Serializable {
 	public CalendarDto() {
 	}
 
-	public CalendarDto(int seq, String id, String title, String content, String rdate, String wdate) {
+	
+	public CalendarDto(int seq, int jobseq, String memberid, String title, String content, String rdate, String wdate) {
 		super();
 		this.seq = seq;
-		this.id = id;
+		this.jobseq = jobseq;
+		this.memberid = memberid;
 		this.title = title;
 		this.content = content;
 		this.rdate = rdate;
 		this.wdate = wdate;
 	}
 
-	public CalendarDto(String id, String title, String content, String rdate) {
+
+	public CalendarDto(String memberid, String title, String content, String rdate) {
 		super();
-		this.id = id;
+		this.memberid = memberid;
 		this.title = title;
 		this.content = content;
 		this.rdate = rdate;
 	}
+
 
 	public int getSeq() {
 		return seq;
@@ -40,13 +45,27 @@ public class CalendarDto implements Serializable {
 		this.seq = seq;
 	}
 
-	public String getId() {
-		return id;
+	
+
+	public int getJobseq() {
+		return jobseq;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+
+	public void setJobseq(int jobseq) {
+		this.jobseq = jobseq;
 	}
+
+
+	public String getMemberid() {
+		return memberid;
+	}
+
+
+	public void setMemberid(String memberid) {
+		this.memberid = memberid;
+	}
+
 
 	public String getTitle() {
 		return title;
@@ -80,12 +99,12 @@ public class CalendarDto implements Serializable {
 		this.wdate = wdate;
 	}
 
+
 	@Override
 	public String toString() {
-		return "CalendarDto [seq=" + seq + ", id=" + id + ", title=" + title + ", content=" + content + ", rdate="
-				+ rdate + ", wdate=" + wdate + "]";
+		return "CalendarDto [seq=" + seq + ", memberid=" + memberid + ", title=" + title + ", content=" + content
+				+ ", rdate=" + rdate + ", wdate=" + wdate + "]";
 	}
-	
 	
 
 }

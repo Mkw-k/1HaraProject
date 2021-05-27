@@ -1,6 +1,7 @@
 package bit.com.a.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class BbsParam implements Serializable{
 
@@ -12,8 +13,16 @@ public class BbsParam implements Serializable{
 	private int end;
 	private RecruitDto list;
 	
+	
+	
+	
+
+	
 	public BbsParam() {
 	}
+	
+	
+
 
 	public BbsParam(String choice, String search, int page, int start, int end) {
 		super();
@@ -64,10 +73,15 @@ public class BbsParam implements Serializable{
 		this.end = end;
 	}
 
+
+
+
 	@Override
 	public String toString() {
 		return "BbsParam [choice=" + choice + ", search=" + search + ", page=" + page + ", start=" + start + ", end="
 				+ end + "]";
 	}
+
+	
 	
 }
