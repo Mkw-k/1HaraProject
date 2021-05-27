@@ -58,7 +58,7 @@ function check(form){
 //--></script>
 
 <div class="wrap_content">
-        <form id="login_frm" name="login_frm" method="post" action="">
+        <form id="login_frm" name="login_frm" method="post" action="loginAf.do">
         	<!-- <input type="hidden" name="m_code" value="0"> -->
         	<input type="hidden" name="page_url" value="">
         	<input type="hidden" name="FrameKey" value="">

@@ -1,3 +1,4 @@
+<%@page import="bit.com.a.dto.BusinessDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -65,17 +66,17 @@
         <div class="col-md-12" style="	margin-bottom: 20px;">
           <div class="btn-group">
             <button class="btn btn-primary dropdown-toggle" contenteditable="true" data-toggle="dropdown"> 전체내역</button>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="#">입력내역1</a>
+            <div class="dropdown-menu"> <a class="dropdown-item" href="#_writeFrm1">입력내역1</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">입력내역2</a>
+              <a class="dropdown-item" href="#_writeFrm2">입력내역2</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">입력내역3</a>
+              <a class="dropdown-item" href="#_writeFrm3">입력내역3</a>
               <div class="dropdown-divider"></div>
             </div>
           </div>
-          <a class="btn btn-light" href="#">입력내역1</a>
-          <a class="btn btn-light" href="#">입력내역2</a>
-          <a class="btn btn-light" href="#" style="">입력내역3</a>
+          <a class="btn btn-light" href="#_writeFrm1">입력내역1</a>
+          <a class="btn btn-light" href="#_writeFrm2">입력내역2</a>
+          <a class="btn btn-light" href="#_writeFrm3" style="">입력내역3</a>
         </div>
       </div>
     </div>
@@ -86,80 +87,112 @@
         
           <div class="col-md-12 order-md-1">
             <form class="needs-validation" id="_recruitcrefrm" novalidate="" method="post">
-              <h1 class="">입력내역1(기본입력사항)</h1>
+              <h1 class="" id="_writeFrm1">입력내역1(기본입력사항)</h1>
               <div class="row">
                 <div class="col-md-6 mb-3"> 
                 <label for="firstName">회사이름</label>
-                  <input type="text" class="form-control" id="" placeholder="회사이름" value="" required="">
+                  <input type="text" class="form-control" id="" placeholder="회사이름" value="${login.companyname }" required="" readonly="readonly">
                   <div class="invalid-feedback"> Valid first name is required. </div>
                 </div>
                 <div class="col-md-6 mb-3"> 
                 <label for="lastName">회사ID *</label>
-                  <input type="text" name="companyId" class="form-control" id="_companyId" placeholder="회사ID *" value="" required="">
+                  <input type="text" name="companyId" class="form-control" id="_companyId" placeholder="회사ID *" value="${login.memberid }" readonly="readonly" required="">
                   <div class="invalid-feedback"> Valid last name is required. </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-4 mb-3"> 
                 <label for="country">고용형태</label> 
+                <select name="reqyyyy" id="year">
+                        <option value="">년도</option>
+                        <option value="2019"
+                            <c:if test="${check_y == 2019}">selected</c:if>>2019</option>
+                        <option value="2018"
+                            <c:if test="${check_y == 2018}">selected</c:if>>2018</option>
+                        <option value="2017"
+                            <c:if test="${check_y == 2017}">selected</c:if>>2017</option>
+                        <option value="2016"
+                            <c:if test="${check_y == 2016}">selected</c:if>>2016</option>
+						</select>
+                
+                
+                
+                
                 	<select class="custom-select d-block w-100" name="emp_Type">
                     	 <option class="hidden"  selected disabled>고용타입</option>
-                         <option value="1">아르바이트</option>
-                         <option value="2">계약직</option>
-                         <option value="3">정규직</option>
-                  	</select>
+                         <option value="1"
+                         <c:if test="${dto.emp_Type == 1}">selected</c:if>>아르바이트</option>
+                         <option value="2"
+                         <c:if test="${dto.emp_Type == 2}">selected</c:if>>계약직</option>
+                         <option value="3"
+                         <c:if test="${dto.emp_Type == 4}">selected</c:if>>정규직</option>
+                    </select>
                   <div class="invalid-feedback"> Please select a valid country. </div>
                 </div>
                 <div class="col-md-4 mb-3"> <label for="state">학력사항</label> 
                 	<select class="custom-select d-block w-100" name="education">
                     	<option class="hidden"  selected disabled>학력구분 *</option>
-                        <option value="0">무관</option>
-                        <option value="1">고졸</option>
-                        <option value="2">전문대졸</option>
-                        <option value="3">대졸</option>
-                        <option value="4">석사</option>
-                        <option value="5">박사</option>
+                        <option value="0"
+                        <c:if test="${dto.education == 0}">selected</c:if>>무관</option>
+                        <option value="1"
+                        <c:if test="${dto.education == 1}">selected</c:if>>고졸</option>
+                        <option value="2"
+                        <c:if test="${dto.education == 2}">selected</c:if>>전문대졸</option>
+                        <option value="3"
+                        <c:if test="${dto.education == 3}">selected</c:if>>대졸</option>
+                        <option value="4"
+                        <c:if test="${dto.education == 4}">selected</c:if>>석사</option>
+                        <option value="5"
+                        <c:if test="${dto.education == 5}">selected</c:if>>박사</option>
                   	</select>
                   <div class="invalid-feedback"> Please provide a valid state. </div>
                 </div>
                 <div class="col-md-4 mb-3"> <label for="state">경력사항</label> 
                 	<select class="custom-select d-block w-100" name="career_Type">
                     	<option class="hidden"  selected disabled>경력구분</option>
-                        <option value="0">무관</option>
-                        <option value="1">신입</option>
-                        <option value="2">1~2년</option>
-                        <option value="3">2~4년</option>
-                        <option value="4">4~6년</option>
-                        <option value="5">6~8년</option>
-                        <option value="6">8~10년</option>
+                        <option value="0"
+                        	<c:if test="${dto.career_Type == 0}">selected</c:if>>무관</option>
+                        <option value="1"
+                        <c:if test="${dto.career_Type == 1}">selected</c:if>>신입</option>
+                        <option value="2"
+                        <c:if test="${dto.career_Type == 2}">selected</c:if>>1~2년</option>
+                        <option value="3"
+                        <c:if test="${dto.career_Type == 3}">selected</c:if>>2~4년</option>
+                        <option value="4"
+                        <c:if test="${dto.career_Type == 4}">selected</c:if>>4~6년</option>
+                        <option value="5"
+                        <c:if test="${dto.career_Type == 5}">selected</c:if>>6~8년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 6}">selected</c:if>>8~10년</option>
+                      
                   	</select>
                   <div class="invalid-feedback"> Please provide a valid state. </div>
                 </div>
               </div>
-              <div class="mb-3"> <label for="address">경력상세</label>
+              <!-- <div class="mb-3"> <label for="address">경력상세</label>
                 <input type="text" name="career_Desc" class="form-control"placeholder="경력추가설명 *" >
                 <div class="invalid-feedback"> Please enter your shipping address. </div>
-              </div>
+              </div> -->
               <div class="row">
                 <div class="col-md-6 mb-3"> <label for="country">채용인원</label>
-                <input type="number" name="jobVolumn" id="_jobVolumn" placeholder="채용인원(숫자로 입력) *" min="0" max="99" class="form-control">
+                <input type="number" name="jobVolumn" value="${dto.jobVolumn }" id="_jobVolumn" placeholder="채용인원(숫자로 입력) *" min="0" max="99" class="form-control">
                   <div class="invalid-feedback"> Please select a valid country. </div>
                 </div>
                 <div class="col-md-6 mb-3"> <label for="zip">급여</label>
-                  <input type="number" min="0" max="9999999" name="salary" class="form-control" id="_jobVolumn" placeholder="급여입력(0은 회사내규, 1은 면접후결정)" required="">
+                  <input type="number" min="0" max="9999999" value="${dto.salary }" name="salary" class="form-control" id="_jobVolumn" placeholder="급여입력(0은 회사내규, 1은 면접후결정)" required="">
                   <div class="invalid-feedback"> Zip code required. </div>
                 </div>
                
                <br><br>
               
               <div class="col-md-6 mb-3"> <label for="address">공고제목</label>
-                <input type="text" name="jobTitle" class="form-control" id="_jobTitle" placeholder="공고제목입력" required="">
+                <input type="text" name="jobTitle" value="${dto.jobTitle }" class="form-control" id="_jobTitle" placeholder="공고제목입력" required="">
                 <div class="invalid-feedback"> Please enter your shipping address. </div>
               </div>
               
               <div class="row">
               <div class="col-md-10 mb-6"> <label for="address">공고상세내역</label>
-              	 <textarea rows="10" cols="100 px" name="jobContent">공고상세내역입력             
+              	 <textarea rows="10" cols="100 px" name="jobContent">${dto.jobContent }             
                  </textarea>
               </div>
               </div>
@@ -174,7 +207,7 @@
         <!-- <div class="container"> -->
         <div class="row">
           <div class="col-md-12">
-            <h1 class="">입력내역2(직업분류입력)</h1>
+            <h1 class="" id="_writeFrm2">입력내역2(직업분류입력)</h1>
           </div>
         </div>
         
@@ -183,48 +216,17 @@
             	<p>직무분류1</p>
             	<!-- 데이터들어오는자리 -->
           </span>
-            <!-- <div class="form-group"><label>직업대분류(category1)</label>
-              <div class="form-check"> <label class="form-check-label">
-                  <input class="form-check-input" name="category1" type="radio" value="1" id="inlineRadio1" name="inlineRadioOptions"> 컴퓨터.아이티 </label> </div>
-              <div class="form-check"> <label class="form-check-label">
-                  <input class="form-check-input" name="category1" type="radio" value="2" id="inlineRadio1" name="inlineRadioOptions"> 일반사무 </label> </div>
-              <div class="form-check"> <label class="form-check-label">
-                  <input class="form-check-input" name="category1" type="radio" value="3" id="inlineRadio1" name="inlineRadioOptions"> 서비스업 </label> </div>
-              <div class="form-check"> <label class="form-check-label">
-                  <input class="form-check-input" name="category1" type="radio" value="4" id="inlineRadio1" name="inlineRadioOptions"> 기타 </label> </div>
-            </div> -->
-          
           <span class="col-md-4" id="_buscodeList2">
             	<p>직무분류2</p>
                 <!-- 데이터들어오는자리 -->
 			</span>
-            <!-- <div class="form-group"><label>직업중분류(category2)</label>
-              <div class="form-check"> <label class="form-check-label">
-                  <input class="form-check-input" name="category2" type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions"> 1 </label> </div>
-              <div class="form-check"> <label class="form-check-label">
-                  <input class="form-check-input" name="category2" type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions"> 1 </label> </div>
-              <div class="form-check"> <label class="form-check-label">
-                  <input class="form-check-input" name="category2" type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions"> 1 </label> </div>
-              <div class="form-check"> <label class="form-check-label">
-                  <input class="form-check-input" name="category2" type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions"> 1 </label> </div>
-            </div> -->
-         
           <div class="col-md-4" style="" id="_buscodeList3">
            	<p>직무분류3</p>
                 <!-- 데이터들어오는자리 -->
 				</div>
-            <!-- <div class="form-group"><label>직업소분류(category3)</label>
-              <div class="form-check"> <label class="form-check-label">
-                  <input class="form-check-input" name="category3" type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions"> 1 </label> </div>
-              <div class="form-check"> <label class="form-check-label">
-                  <input class="form-check-input" name="category3" type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions"> 1 </label> </div>
-              <div class="form-check"> <label class="form-check-label">
-                  <input class="form-check-input" name="category3" type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions"> 1 </label> </div>
-              <div class="form-check"> <label class="form-check-label">
-                  <input class="form-check-input" name="category3" type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions"> 1 </label> </div>
-            </div> -->
-          </div>
-        <!-- /div> -->
+			</div>
+			<p id="selectResult"></p>
+     
         
         <div class="row">
           <div class="col-md-12">
@@ -232,30 +234,11 @@
               <div class="form-group">
                   	<input type="text" id="sample6_postcode" placeholder="우편번호">
 					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" name="area1Name" id="sample6_address" placeholder="주소"><br>
+					<input type="text" name="area1Name" id="sample6_address" placeholder="주소" value="${dto.area1Name +dto.area2Name }"><br>
 					<input type="text" name="area2Name" id="sample6_detailAddress" placeholder="상세주소">
 					<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 			</div>
-              <!-- <div class="col-md-3 mb-3"> <label for="country">지역분류1</label> 
-	               <select class="custom-select d-block w-100" name="area1Name" id="_area1Name" required="">
-	                  <option value="" selected disabled>Choose...</option>
-	                  <option value="서울특별시">서울시</option>
-	                </select>
-                <div class="invalid-feedback"> 도 또는 시 이름을 입려해주세요. </div>
-              </div>
-              <div class="col-md-3 mb-3"> <label for="state">지역분류2</label> 
-	                <select class="custom-select d-block w-100" name="area2Name" id="_area2Name" required="">
-	                  <option value="" selected disabled>Choose...</option>
-	                  <option value="구로구">구로구</option>
-	                </select>
-                <div class="invalid-feedback"> 구 군 이름을 입력해주세요. </div>
-              </div> -->
-            
-            
-            <!-- <div class="row">
-            <div class="mb-6"> <label for="address2">상세주소&nbsp;<span class="text-muted">(Optional)</span></label></div>
-              <input type="text" class="form-control" name="specadress" id="_specadress" placeholder="상세주소입력" style="margin-bottom:15px;"><iframe width="100%" height="400" src="https://maps.google.com/maps?q=New%20York&amp;z=14&amp;output=embed" scrolling="no" frameborder="0"></iframe> 
-          	</div> -->
+         
           	
           </div>
         </div>
@@ -264,15 +247,8 @@
         
         
         <div class="container">
-        <h4 class="mb-3">입력사항3</h4>
-        <!-- <div class="d-block my-3">
-          <div class="custom-control custom-radio">
-            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="" value="on"> <label class="custom-control-label" for="credit">Credit card</label> </div>
-          <div class="custom-control custom-radio">
-            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="" value="on"> <label for="debit" class="custom-control-label">Debit card</label> </div>
-          <div class="custom-control custom-radio">
-            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="" value="on"> <label class="custom-control-label" for="paypal">Paypal</label> </div>
-        </div> -->
+        <h4 class="mb-3" id="_writeFrm3">입력사항3</h4>
+    
        
         <div class="row">
           <div class="col-md-6 mb-3"> <label for="cc-name">담당자명</label>
@@ -296,11 +272,11 @@
         
         <div class="row">
           <div class="col-md-3 mb-3"> <label for="cc-expiration">공고시작일</label>
-            <input type="datetime-local" name="jobStart" class="form-control" id="_jobStart" placeholder="공고시작일" required="">
+            <input type="datetime-local" value="${dto.jobStart }" name="jobStart" class="form-control" id="_jobStart" placeholder="공고시작일" required="">
             <div class="invalid-feedback"> Expiration date required </div>
           </div>
           <div class="col-md-3 mb-3"> <label for="cc-expiration">공고종료일</label>
-            <input type="datetime-local" name="jobEnd" class="form-control" id="_jobEnd" placeholder="공고종료일" required="">
+            <input type="datetime-local" value="${dto.jobEnd }" name="jobEnd" class="form-control" id="_jobEnd" placeholder="공고종료일" required="">
             <div class="invalid-feedback"> Security code required </div>
           </div>
         </div>
@@ -309,6 +285,7 @@
         
         
         <div class="row">
+          
           <div class="col-md-12"><a class="btn btn-secondary" href="javascript:myFunction();">submit</a></div>
         </div>
         </form>
@@ -382,6 +359,10 @@ function myFunction() {
     $("#_recruitcrefrm").attr("action", "recuruitcreateAf.do").submit();
 
     
+}
+
+function update() {
+	
 }
  
  

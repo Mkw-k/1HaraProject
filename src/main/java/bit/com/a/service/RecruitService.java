@@ -27,4 +27,6 @@ public interface RecruitService {
 
 	List<RecruitParam> buscode3ListData(int buscode);
 	
+	List<String> getBsnameForDetail(int jobseq);
+	
 }
