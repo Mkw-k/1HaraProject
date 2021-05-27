@@ -76,9 +76,17 @@ public class RecruitDto implements Serializable{
     private String emp_name;
     private int rnum;
     
+    //직무이름 가져오기 위한 변수 생성 (RecruitController에 buscodeListData.do)
+    private String busname;
     
     
     
+	public String getBusname() {
+		return busname;
+	}
+	public void setBusname(String busname) {
+		this.busname = busname;
+	}
 	public int getRnum() {
 		return rnum;
 	}
