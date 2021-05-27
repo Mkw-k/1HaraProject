@@ -39,6 +39,12 @@ public class MemberController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "login1.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public String login1(Model model) {
+	
+		return "login/login";
+	}
+	
 	@RequestMapping(value = "regiclick.do", method=RequestMethod.GET)
 	public String regiclick(Model model, MemberDto mem) {
 		return "login/regiclick";

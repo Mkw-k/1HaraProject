@@ -31,7 +31,7 @@
 <!-- jQuery Modal -->
 <script src="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> 
-
+<script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/jquery-1.11.1.min.js"></script>
 
   <!-- 검색 부트스트랩 -->
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -605,7 +605,7 @@ margin-right : 450px;
   <!-- Links -->
   
   
-  <div>
+  	<div>
 	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
 	</div>
   
@@ -664,7 +664,7 @@ margin-right : 450px;
       <a class="nav-link bgc" href="jobtalk.do" style="color:#2186eb">취업톡톡</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
+      <a class="nav-link bgc" href="calendars.do" style="color:#2186eb">공채달력</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
@@ -691,12 +691,14 @@ margin-right : 450px;
       </c:if>
    </li>
    <li class="nav-item">
-   	  <c:if test="">
-   	  
-   	  </c:if>
-      <c:if test="${login.memberid ne null}">   
-         <a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
-      </c:if>   
+   	  <c:choose>
+   	  	<c:when test="${empty login}">
+   	 	 	<a class="nav-link bgc" href="javascript:login()" style="color: #2186eb;background-color: #fff;">로그인</a>
+   	 	 </c:when>
+     	 <c:otherwise>   
+     	    <a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
+     	 </c:otherwise>
+      </c:choose>
    </li>
   </ul>
 </nav>
@@ -716,22 +718,32 @@ margin-right : 450px;
             <div class="modal-body">
             
             <!-- memberController - loginAf.do로 이동 -->
-              <form action="loginAf.do" method="post" id="_frmFrom">
+           <!--    <form action="loginAf.do" method="post" id="_frmFrom"> -->
              <!--     <input type="hidden" name="param" value="loginAf.do"> -->
-                <div class="form-group">
-                  <input id="memberid" type="text" placeholder="ID" name="memberid" class="form-control">
-                </div>
-                <div class="form-group">
-                  <input id="pwd" type="password" name="pwd" placeholder="password" class="form-control">
-                </div>
-                <p class="text-center">
-                  <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
-                </p>
+              <form id="login_frm" name="login_frm" method="post" action="loginAf.do">  
+            		<input type="hidden" name="page_url" value="">
+        			<input type="hidden" name="FrameKey" value="">
+        			<input type="hidden" name="login_tab" value="p" id="login_tab">   
+        			
+        			<ul class="tab_member_type">
+                		    <li class="t_per t_on"><a href="##">개인회원</a></li>
+                		    <li class="t_com"><a href="##">기업회원</a></li>
+               	    </ul>
+        			
+              		<div class="form-group">
+              	    	<input id="memberid" type="text" placeholder="ID" name="memberid" class="form-control">
+              	  	</div>
+              	  	<div class="form-group">
+              	  	  <input id="pwd" type="password" name="pwd" placeholder="password" class="form-control">
+              	  	</div>
+              	  	<p class="text-center">
+              	  	  <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
+             	  	</p>
               </form>
               
-              <a href="javascript:kakaoLogin()">
-				<img alt="" src="https://img.eduwill.net/Img2/Common/Join/new/btn-kakao-large.png">
-			  </a>
+            	  <a href="javascript:kakaoLogin()">
+					<img alt="" src="https://img.eduwill.net/Img2/Common/Join/new/btn-kakao-large.png">
+				  </a>
               
               <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
               <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
@@ -871,7 +883,7 @@ margin-right : 450px;
 						<c:if test="${ empty login }">
 						<p class="txt">일하라를 더 안전하고 편리하게 이용하세요.</p>
 
-						<a href="javascript:login()" class="login-worknet">일하라 로그인</a>
+						<a href="login1.do" class="login-worknet">일하라 로그인</a>
 
 						<div class="link">
 							<a href="/member/idPwdVw/retrieveCustIdPwdSrch.do" class="left">아이디/ 패스워드 찾기</a>
@@ -992,7 +1004,7 @@ margin-right : 450px;
 		                    <div class="row">
 		                        <div>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br/>10대기업</a>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>공채달력</a>
+		                          <a href="calendars.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>공채달력</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>TOP10</a>
 		                        </div>
 		                        <div>
@@ -1669,7 +1681,7 @@ window.onscroll = function sticky() {
   		}
   	});
   }
-  $("#_btnLogin").click(function () {
+  /* $("#_btnLogin").click(function () {
 
 		if($("#memberid").val().trim() == ""){
 			alert('id를 입력해 주십시오');
@@ -1683,11 +1695,162 @@ window.onscroll = function sticky() {
 			$("#_frmFrom").submit();	
 		}	
 		
-	});
+	}); */
   
   function f_logout() {
 	  location.href = "logout.do";
   }
+	
+	  //<!--
+    jQuery(function() {
+    var $ = jQuery;
+    $('.login_page_wrap')
+        .on('click', '.t_per', function() {
+            if( !$(this).hasClass('t_on') ) {
+                $(this).addClass('t_on').next().removeClass('t_on'); 
+                $('#lbl_autologin').show();
+                $('.link_rater').hide();
+                $('#login_tab').val('p');
+               	alert('들어옴?');
+                $('#login_frm').attr('action', 'loginAf.do');
+            }
+        })
+        .on('click', '.t_com', function() {
+            if( !$(this).hasClass('t_on') ) {
+                $(this).addClass('t_on').prev().removeClass('t_on'); 
+                $('#lbl_autologin').hide();
+                $('.link_rater').show();
+                $('#login_tab').val('c');
+                $('#login_frm').attr('action', 'businessloginAf.do');
+           } 
+        })
+      /*    .on('click', '.service_info_txt', function () { */
+          /*   var url = '/zf_user/help/help-word/main';
+            if ($('#login_tab').val() === 'c') {
+                url += '?memberCode=com';
+            }
+            location.href = 'businessloginAf.do';
+        }); */
+
+     /* $('#login_frm')
+   
+        .on('click', '#a_join', function (e) {
+            e.preventDefault();
+            location.href = this.href + '?ut=' + $('#login_tab').val();
+        })
+    ; */
+});   
+//-->
+
+
+//<!--
+
+var $j = jQuery.noConflict();
+
+function checkLoginValue() {
+$j('#memberid, #pwd').each(function (index, el) {
+$j(el).siblings('label').hide();
+
+if($j(el).val() == '') {
+$j(el).siblings('label').show();
+}
+
+if ($j(el).css('background-color') == 'rgb(250, 255, 189)') {
+$j('#id-label, #password-label').hide();
+}
+});
+}
+
+
+$j(document).ready(function () {
+
+
+
+window.setTimeout(function () {
+checkLoginValue();
+
+$j('#memberid').focus();
+
+if ('' != $j('#memberid').val()) {
+$j('#pwd').focus();
+}
+}, 100);
+
+$j('#memberid, #pwd').on('focus blur keyup change', function () {
+checkLoginValue();
+});
+
+$j('#label_type').on('click',function () {
+$j('#label_type').toggleClass('on');
+});
+$j('span.frm_checkbox > input[type=checkbox]').on('change', function() {
+var chkbox =$j(this);
+chkbox.closest('span.frm_checkbox').toggleClass('checked');
+})
+
+var security_btn =  $j('#security_btn'),
+ssl_login = $j('#ssl_login');
+security_btn.on('click', function () {
+var ssl_login_val = ssl_login[0].value;
+if (ssl_login_val == 1) {
+ssl_login[0].value = 0;
+security_btn.text('OFF');
+security_btn.addClass('off');
+} else {
+ssl_login[0].value = 1;
+security_btn.text('ON');
+security_btn.removeClass('off');
+}
+});
+$j('#security_btn').off('dblclick');
+
+$j('.tab_member_type')
+.on('click', '.t_per', function () {
+saraminEffect('person');
+})
+.on('click', '.t_com', function () {
+saraminEffect('compnay');
+});
+
+$j('#wrap_social_login').on('click', 'a', function (e) {
+e.preventDefault();
+e.stopPropagation();
+
+var link =  $j(e.currentTarget).attr('href'),
+loginType = $j('.t_com').hasClass('t_on') === true ? 'c' : 'p' ,
+provider = $j(e.currentTarget).data('provider'),
+label = loginType === 'c' ? 'com_login_'+provider :  'per_login_'+provider;
+
+var isIe10Check = false;
+if((navigator.userAgent.toLowerCase().indexOf("msie") !== -1) && provider === 'apple'){
+if(confirm('IE10이하 버전의 인터넷 익스플로러에서는 Apple 로그인이 정상 작동하지 않을 수 있습니다.\n' +
+'인터넷 익스플로러를 최신 버전으로 업데이트 해주세요'))
+{
+loggingEventAndTagManager(['login','pc_login_page',label,''],['ga_lead','login','pc_login_page',label]);
+window.open(link+'&login_type='+loginType, '_blank', 'width=480,height=640');
+}
+return;
+}
+
+loggingEventAndTagManager(['login','pc_login_page',label,''],['ga_lead','login','pc_login_page',label]);
+window.open(link+'&login_type='+loginType, '_blank', (!$j(this).hasClass('sl_phone') ? 'width=480,height=640' : ''));
+});
+
+if ($j('.t_com').hasClass('t_on') === true) {
+saraminEffect('compnay');
+} else {
+saraminEffect('person');
+}
+
+function saraminEffect(memberType) {
+if (memberType === 'compnay') {
+$j('.wrap_member_info').show();
+} else {
+$j('.wrap_member_info').hide();
+}
+}
+});
+
   
   </script>
 <!-- End Channel Plugin -->

@@ -26,6 +26,10 @@ index.jsp
 
 <a href="regiclick1.do">회원유형선택</a>
 
+<a href="calendars.do">달력</a>
+
+
+
 </body>
 </html>
 

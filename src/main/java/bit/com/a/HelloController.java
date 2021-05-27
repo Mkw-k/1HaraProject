@@ -43,18 +43,17 @@ public class HelloController {
 					
 			return "infoyakgwan";
 		}
-		
-		@RequestMapping(value = "login1.do", method = {RequestMethod.GET,RequestMethod.POST})
-		public String login1(Model model) {
-			logger.info("HelloController login1() " + new Date());
-			return "login";
-		}
 	
 		@RequestMapping(value ="regiclick1.do", method = RequestMethod.GET)
 		public String regiclick1(Model model) {
 			logger.info("HelloController regiclcick1() " + new Date());
 			return "regiclick";
 		}
+		/*@RequestMapping(value ="calendars.do", method = RequestMethod.GET)
+		public String calendars(Model model) {
+			logger.info("HelloController caledars() " + new Date());
+			return "calendar";
+		}*/
 		
 }
 

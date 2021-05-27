@@ -4,6 +4,7 @@ package bit.com.a.util;
 import java.sql.Date;
 import java.util.List;
 import bit.com.a.dto.CalendarDto;
+import bit.com.a.dto.RecruitDto;
 
 public class UtilEx {
 
@@ -48,7 +49,7 @@ public class UtilEx {
 	}
 	
 	// 달력의 날짜 별로 설정할 테이블을 작성하는 함수
-	public static String makeTable(int year, int month, int day, List<CalendarDto> list) {
+	public static String makeTable(int year, int month, int day, List<RecruitDto> list) {
 		String str = "";
 		
 		// 2021 3 19	-> 20210319
@@ -56,12 +57,12 @@ public class UtilEx {
 		
 		str += "<ul>";		
 		
-		for(CalendarDto dto : list) {
-			if(dto.getRdate().substring(0, 8).equals(dates)) {
+		for(RecruitDto dto : list) {
+			if(dto.getJobStart().substring(0, 6).equals(dates)) {
 				str += "<li>";
-				str += "<a href='caldetail.do?seq=" + dto.getSeq() + "'>";
+				str += "<a href='caldetail.do?seq=" + dto.getJobSeq() + "'>";
 				str += "<font style='font-size:10px; color:blue'>";
-				str += dot3(dto.getTitle());
+				str += dot3(dto.getJobTitle());
 				str += "</font>";
 				str += "</a>";
 				str += "</li>";
