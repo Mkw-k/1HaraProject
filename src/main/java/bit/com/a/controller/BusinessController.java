@@ -62,7 +62,7 @@ public class BusinessController {
 	  System.out.println("씨발 쫌 들어와라");
 	 
 	  BusinessDto login = service.login(dto); 
-	  if(login != null && !login.getCompanyid().equals("")) {
+	  if(login != null && !login.getMemberid().equals("")) {
 		  req.getSession().setAttribute("login", login); 
 		  // req.getSession().setMaxInactiveInterval(60 * 60 * 24);
 	  
