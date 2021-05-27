@@ -39,6 +39,7 @@
     border-top-left-radius: 10% 50%;
     border-bottom-left-radius: 10% 50%;
 }
+
 .register-left img{
     margin-top: 15%;
     margin-bottom: 5%;

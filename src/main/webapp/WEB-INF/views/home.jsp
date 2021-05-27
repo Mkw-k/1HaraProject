@@ -619,18 +619,25 @@ margin-right : 450px;
             			 <c:when test="${login.auth == 1}">
              				 <p><b>[개인]${login.name }</b>님</p>
              	 		 </c:when>	 
-             			<%-- <%-- <c:when test="${login ne null }">
-         				<p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>	
-         				</c:when> --%>
-             			<c:when test="${login.auth == 2}">
-             				<p><b>[사원]${login.name }</b>님</p>
-    					</c:when>
+             			
+             			<c:when test="${login.auth == 3}">
+             				<p><b>[관리자]${login.name }</b>님</p>
+    		 			</c:when>  
+             			
     					<c:otherwise>
-             				<p><b>${login.name }</b>님</p>
+             				<p><b>[사원]${login.name }</b>님</p>
     					</c:otherwise>
+    					
     				</c:choose>			
             	 </c:when> 
-         	 </c:choose>  
+         	 </c:choose>
+         	<%--  <c:choose>
+         	 	<c:when test="${login1.memberid ne null }">
+         	 		<c:when test="${login1.auth == 2}">
+             			<p><b>[사원]${login1.name }</b>님</p>
+    		 		</c:when>  
+         	 	</c:when>
+    		 </c:choose> --%>
     </li>
 
     <li class="nav-item dropdown" style="padding-top: 5px;">
@@ -684,6 +691,9 @@ margin-right : 450px;
       </c:if>
    </li>
    <li class="nav-item">
+   	  <c:if test="">
+   	  
+   	  </c:if>
       <c:if test="${login.memberid ne null}">   
          <a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
       </c:if>   
@@ -880,22 +890,56 @@ margin-right : 450px;
 							
 							<div class="after personal">
 								
-								
-							<c:if test="${login.memberid ne null}">		
-								
-								<div class="top">
-									<div class="bg" style="background-image: url('bg-main-login-person.png') no-repeat 0 2px;">
-										<p class="txt">개인회원</p>
+							<c:choose>	
+								<c:when test="${login.memberid ne null}">	
+									<c:choose>	
+										<c:when test="${login.auth==1 }">
+											<div class="top">
+												<div class="bg" style="background-image: url('bg-main-login-person.png') no-repeat 0 2px;">
+													<p class="txt">개인회원</p>
+											
+													<p class="name"><strong>${login.name}</strong> 님</p>
+													<a href="/indivMemberSrv/main/indivMemberSrvMain.do" class="mypge">마이페이지</a>
+												</div>
+												<div class="btn-grp">
+													<button type="button" class="btn-logout float-l" onclick="f_logout();">로그아웃</button>
+													<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r">회원정보 관리</a>
+												</div>
+											</div>
+										</c:when>
+										<c:when test="${login.auth==2 }">
+										 <div class="top">
+												<div class="bg" style="background-image: url('bg-main-login-person.png') no-repeat 0 2px;">
+													<p class="txt">기업</p>
+											
+													<p class="name"><strong>${login.name}</strong> 님</p>
+													<a href="/indivMemberSrv/main/indivMemberSrvMain.do" class="mypge">마이페이지</a>
+												</div>
+												<div class="btn-grp">
+													<button type="button" class="btn-logout float-l" onclick="f_logout();">로그아웃</button>
+													<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r">기업 관리</a>
+												</div>
+											</div> 
+										</c:when>	
 										
-										<p class="name"><strong>${login.name}</strong> 님</p>
-										<a href="/indivMemberSrv/main/indivMemberSrvMain.do" class="mypge">마이페이지</a>
-									</div>
-									<div class="btn-grp">
-										<button type="button" class="btn-logout float-l" onclick="f_logout();">로그아웃</button>
-										<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r">회원정보 관리</a>
-									</div>
-								</div>
-							</c:if>	
+										<c:otherwise>
+										 <div class="top">
+												<div class="bg" style="background-image: url('bg-main-login-person.png') no-repeat 0 2px;">
+													<p class="txt">관리자</p>
+											
+													<p class="name"><strong>${login.name}</strong> 님</p>
+													<a href="/indivMemberSrv/main/indivMemberSrvMain.do" class="mypge">마이페이지</a>
+												</div>
+												<div class="btn-grp">
+													<button type="button" class="btn-logout float-l" onclick="f_logout();">로그아웃</button>
+													<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r">개인 관리</a>
+												</div>
+											</div>
+											
+										</c:otherwise>
+								</c:choose>	
+							</c:when>	
+						</c:choose>
 							<!-- 	
 								<div class="btn-func">
 									
