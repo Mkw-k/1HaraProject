@@ -10,6 +10,7 @@ public class BbsParam implements Serializable{
 	
 	private int start;
 	private int end;
+	private RecruitDto list;
 	
 	public BbsParam() {
 	}

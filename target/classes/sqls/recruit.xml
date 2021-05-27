@@ -95,6 +95,9 @@ SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
 	UPDATE JOB 
 	SET DEL=1 
 	WHERE SEQ=#{jobseq}
+	<foreach collection="">
+		
+	</foreach>
 </update>
 
 </mapper>
