@@ -31,6 +31,8 @@ index.jsp
 
 <a href="newslist.do">끼업 뉴쓰</a>
 
+<a href="test.do">은지카카오로그인</a>
+
 
 
 </body>
