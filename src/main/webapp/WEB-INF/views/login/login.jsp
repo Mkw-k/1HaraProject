@@ -11,7 +11,8 @@
 
 <link href="csss/layout.css" rel="stylesheet" type="text/css">
 <link href="csss/etc.css" rel="stylesheet" type="text/css">
-
+<!-- 제이쿼리 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/jquery-1.11.1.min.js"></script>
 <!-- 카카오 로그인 -->
 <!-- <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script> -->
@@ -312,55 +313,76 @@ $j(document).ready(function () {
 
 
 
+<a id="custom-login-btn" href="javascript:kakaoLogin()">
+  <img
+    src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+    width="222"
+  />
+</a>
+<p id="token-result"></p>
+
+
+<button class="api-btn" onclick="kakaoLogout()">로그아웃</button>
+
+<script type="text/javascript">
+  function kakaoLogout() {
+    if (!Kakao.Auth.getAccessToken()) {
+      alert('Not logged in.')
+      return
+    }
+    Kakao.Auth.logout(function() {
+      alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken())
+    })
+  }
+</script>
+ 
+<script type="text/javascript">
+<!-- d59485d594506fb0185f34b5e6b7b114 -->
 
 <!-- 자바스크립트 key를 입력하여 초기화해줌 -->
-<!--  window.Kakao.init("8a32aafcf70137a891ba6d0b02c48e38");
+$(document).ready(function(){   
+   Kakao.init('8a32aafcf70137a891ba6d0b02c48e38');
+   Kakao.isInitialized();
+});
 
 function kakaoLogin() {
-	window.Kakao.Auth.login({
-		scope:'profile, account_email, birthday',
-		success: function(authObj) {
-			alert('success');
-			console.log(authObj);
-			window.Kakao.API.request({
-				url: '/v2/user/me', 
-				success: res => {
-					const kakao_account = res.kakao_account; 
-					console.log(kakao_account);
-					console.log("이름:"+kakao_account.profile.nickname);
-					console.log("생일:"+kakao_account.birthday);
-					console.log("이메일:"+kakao_account.email);
-					
-					
- 					 console.log("성별:"+kakao_account.gender);
-					console.log("나이대:"+kakao_account.age_range);  
-				}
-				
-			});
-		}
-	});
-} 
- -->
-
-
- <script type='text/javascript'>
-        //<![CDATA[
-        // 사용할 앱의 JavaScript 키를 설정해 주세요.
-        Kakao.init('8a32aafcf70137a891ba6d0b02c48e38');
-        // 카카오 로그인 버튼을 생성합니다.
-        Kakao.Auth.createLoginButton({
-            container: '#kakao-login-btn',
-            success: function (authObj) {
-                alert(JSON.stringify(authObj));
-            },
-            fail: function (err) {
-                alert(JSON.stringify(err));
+   window.Kakao.Auth.login({
+      scope:'profile, account_email, birthday',
+      success: function(authObj) {
+     //    alert('success');
+         console.log(authObj);
+         window.Kakao.API.request({
+            url: '/v2/user/me', 
+            success: res => {
+               const kakao_account = res.kakao_account; 
+               console.log(kakao_account);
+               
+               let name = kakao_account.profile.nickname; 
+               let birth = kakao_account.birthday; 
+               let email = kakao_account.email
+               
+               $.ajax({
+           		type:"post",
+           		url:"kakalogAf.do",
+           		data: {memberid: email, name:name , birth:birth},
+           		dataType: "text",
+           		success: function (data) {	
+           				
+           		//	alert('카카오 씨발 로그인성공')
+           		},
+           		error: function(){
+           			alert("birth:" + birth);
+           			alert('ㅋㅋ썽공 구라징');
+           		}
+           	  })
+               
             }
-        });
-      //]]>
-    </script>
-
-
+            
+         });
+      }
+   });
+}
+</script> 
 
 </body>
 </html>
