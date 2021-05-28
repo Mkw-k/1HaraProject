@@ -60,7 +60,7 @@
 	</ul>
 
 	<div class="manager-info">
-		<div class="left"><b class="font-bold">담당부서</b> : 워크넷팀</div>
+		<div class="left"><b class="font-bold">담당부서</b> : 일하라팀</div>
 		<div class="right"><b class="font-bold">최종수정일</b> : 2019-12-18</div>
 		<div class="center"><b class="font-bold">문의</b> : 1577-7114</div>
 	</div>

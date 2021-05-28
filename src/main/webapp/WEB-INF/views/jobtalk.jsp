@@ -183,12 +183,12 @@ margin-right : 450px;
 <main>
 
 
-<h3>취업톡톡</h3>
-
 
 <img src="https://www.saraminbanner.co.kr/new/sub/2021/05/qsqan1_pvrh-2so1px_Pcmain1260272.png" style="
-    margin-left: 150px;
-">
+    margin-left: 150px;">
+
+
+<h1>채팅방</h1>
 
 
 <!-- 리스트 다이브 시작 --> 

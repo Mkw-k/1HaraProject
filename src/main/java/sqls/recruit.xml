@@ -21,8 +21,14 @@
 			 0)
 	
 		<foreach collection="arrayParam" item="item" index="index" separator="" open="" close="">
-		INTO BSCODSTACK (BSCODSTACKSEQ, JOBSEQ, BUSCODE)
-		VALUES (BSCODSTACK_SEQ.nextval, JOB_SEQ.nextval, #{item})
+			INTO BSCODSTACK (BSCODSTACKSEQ, JOBSEQ, BUSCODE, RBUSCODE) 
+			VALUES (BSCODSTACK_SEQ.nextval, JOB_SEQ.nextval, #{item},  
+	        (SELECT BUSCODE
+	        FROM BUSCODE3
+	        WHERE BUSNAME = #{item} )
+	        )
+			
+		
 		</foreach>
 	SELECT 1
 	FROM DUAL
@@ -114,7 +120,7 @@
 <select id="getRecruitListOne" parameterType="Integer" resultType="bit.com.a.dto.RecruitDto">
 SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
 					J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
-					J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME, P.CAREER_DESC, 
+					J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.DEL, C.COMPANYNAME, P.CAREER_DESC, 
 					E.EDUNAME, T.EMP_NAME
 FROM JOB J, BUSINESS C, EDUCATION E, JOB_CAREERTYPE P, EMPLOYEE_TYPE T
 WHERE J.COMPANYID = C.MEMBERID AND 

@@ -215,6 +215,35 @@ public class RecruitController {
 			dto.setBusname(list);
 			System.out.println("변경된 Dto :"+dto.toString());
 			
+			//날짜 재설정 중간에 'T'를 넣어줌으로써 datetime-local input형식에 맡도록 변경
+			//시작일 종료일 데이터 정비 
+			  String start = dto.getJobStart(); 
+			  String end = dto.getJobEnd();
+			  //T추가
+			  StringBuffer sb1 = new StringBuffer();
+			  StringBuffer sb2 = new StringBuffer();
+			  start = start.replace("T", " "); 
+			  end = end.replace("T", " ");
+			  
+			  sb1.append(start);
+			  sb1.insert(10, 'T');
+			  
+			  start = sb1.toString();
+			  
+			  sb2.append(end);
+			  sb2.insert(10, 'T');
+			  
+			  end = sb2.toString();
+			  
+			  start = start.replaceAll(" ", "");
+			  end = end.replaceAll(" ", "");
+			  
+			  dto.setJobStart(start);
+			  dto.setJobEnd(end);
+			  
+			  System.out.println("시작일 :"+dto.getJobStart());
+			  System.out.println("종료일 :"+dto.getJobEnd());
+			
 			model.addAttribute("dto", dto);
 			
 			return "recruit/createTest";

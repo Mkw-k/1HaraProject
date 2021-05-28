@@ -58,7 +58,8 @@
 <link href="csss/resume3.css" rel="stylesheet" type="text/css">
 <link href="csss/resume4.css" rel="stylesheet" type="text/css">
 
-
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
 
 <style type="text/css">
@@ -144,6 +145,11 @@ dt, dd {
 .searchable-container .btn.active span.glyphicon {
     opacity: 1;
 }
+
+/* 아래로 내리는 메뉴 */
+
+.menu a{cursor:pointer;}
+.menu .hide{display:none;}
 
 
 
@@ -1484,20 +1490,20 @@ dt, dd {
 																</div>
 
 																<div class="sri_select resume_select">
-																	<label for="career_currency_1621990779"
-																		class="bar_title">원화구분</label>
-																	<button class="ico_arr selected size_type2"
-																		type="button">만원</button>
-																	<input id="career_currency_1621990779"
-																		name="career_currency[]" type="hidden" value="KRW">
-																	<ul class="list_opt">
-																		<li class="on"><a class="link_opt" href="##"
-																			data-value="KRW">만원</a></li>
-																		<li class=""><a class="link_opt" href="##"
-																			data-value="USD">달러</a></li>
-																		<li class=""><a class="link_opt" href="##"
-																			data-value="JPY">엔</a></li>
-																	</ul>
+																	<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>회사 내규에 따름</option>
+																		<option>2000~2500만원</option>
+																		<option>2500~3000만원</option>
+																		<option>3000~3500만원</option>
+																		<option>3500~4000만원</option>
+																		<option>4000~4500만원</option>
+																		<option>4500~5000만원</option>
+																		<option>5500~6000만원</option>
+																		<option>6000~7000만원</option>
+																		<option>7000~8000만원</option>
+																		<option>8000~9000만원</option>
+																		<option>8000~</option>
+																	</select>
 																</div>
 
 																<p class="txt_number"></p>
@@ -1631,7 +1637,13 @@ dt, dd {
 																		<option>서포터즈/기자단</option>
 																		<option>공모전</option>
 																		<option>동아리</option>
-												
+																		<option>교내활동</option>
+																		<option>자원봉사</option>
+																		<option>아르바이트</option>
+																		<option>사회활동</option>
+																		<option>수행과제</option>
+																		<option>해외연수</option>
+																		<option>교육이수내역</option>
 																	</select>
 															
 														</div>
@@ -1718,23 +1730,175 @@ dt, dd {
 													<div class="resume_row">
 														<div class="input_title">항목선택</div>
 														<div class="sri_select resume_select">
-															<label for="item_type_1621990781" class="bar_title">항목선택</label>
-															<button class="ico_arr selected" type="button">항목선택</button>
-															<input id="item_type_1621990781" name="item_type[]"
-																type="hidden" value="">
-															<ul class="list_opt">
-																<li class="on"><a class="link_opt" href="##"
-																	data-value="">항목선택</a></li>
-																<li><a class="link_opt" href="##"
-																	data-value="license">자격증/면허증</a></li>
-																<li><a class="link_opt" href="##"
-																	data-value="language_exam">어학시험</a></li>
-																<li><a class="link_opt" href="##"
-																	data-value="certification">수상내역/공모전</a></li>
-															</ul>
-															<p class="txt_error"></p>
+															<select class="selectpicker" onchange="licenseCheck(this.value);"  style="width: 107.22222px;height: 50.22222px;">
+																		<option value="case1">자격증/면허증</option>
+																		<option value="case2">어학시험</option>
+																		<option value="case3">수상내역/공모전</option>
+															</select>
 														</div>
 													</div>
+									<div id="licensechk" style="display: block">				
+													<div class="resume_row">
+														<div class="input_title">자격증명</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">발행처/기관</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+															
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">합격구분</div>
+														<div class="sri_select resume_select">
+															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>합격</option>
+																		<option>불합격</option>
+																	</select>
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">취득일</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+														</div>
+													</div>
+							</div>		
+							
+							
+							<div id="languagechk" style="display: none">				
+													<div class="resume_row">
+														<div class="input_title">언어</div>
+														<div class="sri_select resume_select">
+															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>영어</option>
+																		<option>일본어</option>
+																		<option>중국어</option>
+																		<option>독일어</option>
+																		<option>불어</option>
+																		<option>스페인어</option>
+																		<option>러시아어</option>
+																		<option>이탈리아어</option>
+																		<option>한국어</option>
+																		<option>기타</option>
+																	</select>
+														</div>
+													</div>
+													
+													
+													<div class="resume_row">
+														<div class="input_title">시험종류</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">점수</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+															
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">급수</div>
+														<div class="sri_select resume_select">
+															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>1</option>
+																		<option>2</option>
+																		<option>3</option>
+																		<option>4</option>
+																		<option>5</option>
+																		<option>A</option>
+																		<option>B</option>
+																		<option>C</option>
+																		<option>D</option>
+																		<option>A1</option>
+																		<option>A2</option>
+																		<option>B1</option>
+																		<option>B2</option>
+																		<option>N1</option>
+																		<option>N2</option>
+																		<option>N3</option>
+																		<option>AH</option>
+																		<option>AM</option>
+																		<option>AL</option>
+																		<option>IH</option>
+																		<option>IM</option>
+																		<option>IL</option>
+																	</select>
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">급수</div>
+														<div class="sri_select resume_select">
+															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>취득여부</option>
+																		<option>취득(PASS)</option>
+																	</select>
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">취득일</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+														</div>
+													</div>
+							</div>	
+							
+							
+							<div id="awardchk" style="display: none">		
+													
+													<div class="resume_row">
+														<div class="input_title">수상명</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">수여기관</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+															
+														</div>
+													</div>
+													
+													<div class="resume_row">
+														<div class="input_title">취득일</div>
+														<div class="resume_input">
+															<input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+														</div>
+													</div>
+							</div>		
+											
 												</div>
 
 												<div class="area_add_btn">
@@ -1807,18 +1971,9 @@ dt, dd {
 														<button type="button" class="btn" data-api_type="layer"
 															data-api_id="item_import" data-item="introduce">저장된
 															정보 불러오기</button>
-														<!--                <button type="button" class="btn" data-api_type="layer" data-api_id="introduce_import">저장된 정보 불러오기</button>-->
 													</div>
 												</div>
 
-												<!--        <div class="resume_write area_self_title">-->
-												<!--            <div class="area_btn_self">-->
-												<!--                <button type="button" class="btn_self" data-api_type="layer" data-api_id="introduce_import"><strong>내 자소서 불러오기</strong></button>-->
-												<!--                <button type="button" class="btn_self" data-api_type="layer" data-api_id="introduce_save"><strong>자소서 관리에 저장하기</strong></button>-->
-												<!--                <button type="button" class="btn_self" data-api_type="layer" data-api_id="introduce_contents_items">자기소개서 항목 예시</button>-->
-												<!--                <p class="txt_noti">각 항목명은 변경할 수 있으며(최대 100자), 항목은 총 10개까지 작성 가능합니다.</p>-->
-												<!--            </div>-->
-												<!--        </div>-->
 
 												<div class="intro_item_wrap">
 													<div class="write_area">
@@ -1829,21 +1984,17 @@ dt, dd {
 																data-tpl_id="tpl_introduce_item">
 																<div class="item_title">
 																	<div class="input_wrap">
-																		<label for="intro_title_1621990782" class="txt">자소서
-																			제목</label> <input type="text" id="intro_title_1621990782"
-																			name="intro_title[]" class="input_type1" value=""
+																		<input type="text" id="intro_title_1621990782"
+																			name="intro_title[]" class="input_type1" placeholder="자소서 제목"
 																			maxlength="100">
-																		<p class="txt_error"></p>
 																	</div>
 																</div>
 
 																<div class="item_txt">
 																	<div class="textarea_wrap">
-																		<label for="intro_contents_1621990782" class="txt">자소서
-																			내용</label>
 																		<textarea id="intro_contents_1621990782"
 																			name="intro_contents[]" class="textarea_type1"
-																			rows="1" cols="100" data-char-count="true"></textarea>
+																			rows="1" cols="100" data-char-count="true" placeholder="자소서 내용"></textarea>
 																		<p class="txt_error"></p>
 																	</div>
 
@@ -1949,7 +2100,7 @@ dt, dd {
 													id="possible_work_day" value=",,">
 
 												<div>
-													<div class="resume_row">
+													<div class="resume_row" style="height: 125px;">
 														<div class="input_title">
 															근무형태 <span class="point">필수</span><span class="s_txt">최대
 																3개</span>
@@ -1958,17 +2109,32 @@ dt, dd {
 															<div id="desire_apply_work_stat"
 																class="area_task_input resume_input">
 																<input type="hidden" id="apply_work_stat"
-																	name="apply_work_stat" value=""> <label
-																	for="apply_work_stat" class="bar_title">근무형태<span
-																	class="valid_hidden"> (최대 3개)</span></label>
+																	name="apply_work_stat" value=""> 
 																<div>
 																	<ul class="list_task list_hope_local size_type5"></ul>
+																
+																<div>
+																	    <ul>
+																	        <li class="menu">
+																	            <a><img src="./image/plus.png" alt="추가하기" height="30" width="30"/></a>
+																	            <div class="hide">
+																	                <input type="checkbox">정규직
+																	                <input type="checkbox">계약직
+																	                <input type="checkbox">인턴직
+																	                <input type="checkbox">전임
+																	                <input type="checkbox">파견직
+																	                <input type="checkbox">프리랜서
+																	            </div>
+																	        </li>
+																	    </ul>
+																	</div>
+																
+																
+																
 																</div>
-																<button type="button" data-api_type="layer"
-																	data-api_id="desire_apply_work_stat" data-dim="n"
-																	data-position="unused" class="link_modifie">수정
-																	· 추가하기 &gt;</button>
-																<p class="txt_error"></p>
+																
+																
+																
 															</div>
 														</div>
 													</div>
@@ -1977,37 +2143,23 @@ dt, dd {
 														<div class="input_title">근무 가능 날짜</div>
 														<div class="area_period">
 															<div class="resume_input">
-																<label for="possible_work_day_start" class="bar_title"><span
-																	class="valid_hidden">YYYYMMDD</span><span class="blind">근무
-																		시작 날짜</span></label> <input type="text" id="possible_work_day_start"
+																<input type="text" id="possible_work_day_start"
 																	name="possible_work_day_start"
 																	class="expect_date box_input" value=""
 																	data-only-number="true" data-dateformat="yymmdd"
 																	autocomplete="off">
-																<button type="button" class="btn_calendar"></button>
-																<p class="txt_error"></p>
+																
 															</div>
 															<span class="txt_period">~</span>
 															<div class="resume_input">
-																<label for="possible_work_day_end"
-																	class="bar_title end_day"><span
-																	class="valid_hidden">YYYYMMDD</span><span class="blind">근무
-																		종료 날짜</span></label> <input type="text" id="possible_work_day_end"
+																<input type="text" id="possible_work_day_end"
 																	name="possible_work_day_end"
 																	class="expect_date box_input" value=""
 																	data-only-number="true" data-dateformat="yymmdd"
 																	autocomplete="off">
-																<button type="button" class="btn_calendar"></button>
-																<p class="txt_error"></p>
 															</div>
 															<div class="area_check">
-																<label for="possible_work_day_immediate"
-																	class="sri_check"> <input type="checkbox"
-																	id="possible_work_day_immediate"
-																	name="possible_work_day_immediate" class="inp_check"
-																	value="y"> <span class="txt_check">즉시
-																		근무 가능</span>
-																</label>
+																<input type="checkbox">즉시 근무 가능
 															</div>
 															<p class="txt_error"></p>
 														</div>
@@ -2019,65 +2171,24 @@ dt, dd {
 															연봉 <span class="point">필수</span>
 														</div>
 														<div class="sri_select resume_select">
-															<label for="hope_salary_cd" class="bar_title">연봉<span
-																class="valid_hidden"> 선택</span></label>
-															<button type="button" class="ico_arr selected">회사내규에
-																따름</button>
-															<input type="hidden" id="hope_salary_cd"
-																name="hope_salary_cd" value="">
-															<ul class="list_opt">
-																<li class="on"><a href="##" class="link_opt"
-																	data-value="0">회사내규에 따름</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="3">1,400 만원 이하</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="4">1,400~1,600만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="5">1,600~1,800만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="6">1,800~2,000만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="7">2,000~2,200만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="8">2,200~2,400만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="9">2,400~2,600만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="10">2,600~2,800만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="11">2,800~3,000만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="12">3,000~3,200만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="13">3,200~3,400만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="14">3,400~3,600만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="15">3,600~3,800만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="16">3,800~4,000만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="17">4,000~5,000만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="18">5,000~6,000만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="19">6,000~7,000만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="20">7,000~8,000만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="21">8,000~9,000만원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="22">9,000~1억원</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="23">1억원 이상</a></li>
-																<li class=""><a href="##" class="link_opt"
-																	data-value="99">면접 후 결정</a></li>
-															</ul>
-															<p class="txt_error"></p>
+															<select class="selectpicker" style="width: 207.22222px;height: 50.22222px;">
+																		<option>회사 내규에 따름</option>
+																		<option>2000~2500만원</option>
+																		<option>2500~3000만원</option>
+																		<option>3000~3500만원</option>
+																		<option>3500~4000만원</option>
+																		<option>4000~4500만원</option>
+																		<option>4500~5000만원</option>
+																		<option>5500~6000만원</option>
+																		<option>6000~7000만원</option>
+																		<option>7000~8000만원</option>
+																		<option>8000~9000만원</option>
+																		<option>8000~</option>
+																	</select>
 														</div>
 													</div>
 
-													<div class="resume_row">
+													<div class="resume_row" style="height: 125px;">
 														<div class="input_title">
 															근무 지역 <span class="point">필수</span><span class="s_txt">최대
 																3개</span>
@@ -2106,12 +2217,19 @@ dt, dd {
 
 																<div>
 																	<ul class="list_task list_hope_local size_type5"></ul>
+																	<div>
+																	    <ul>
+																	        <li class="menu">
+																	        <a><img src="./image/plus.png" alt="추가하기" height="30" width="30"/></a>
+																		        <div class="hide">
+																		             <select name="sido1" id="sido1"></select>
+																					 <select name="gugun1" id="gugun1"></select>
+																				 </div>
+																	        </li>
+																	    </ul>
+																	</div>
 																</div>
-																<button type="button" data-api_type="layer"
-																	data-api_id="desire_area" data-dim="n"
-																	data-position="unused" class="link_modifie">수정
-																	· 추가하기 &gt;</button>
-																<p class="txt_error"></p>
+																
 															</div>
 														</div>
 													</div>
@@ -2134,94 +2252,40 @@ dt, dd {
 
 																<div>
 																	<ul class="list_task list_hope_jobs size_type5"></ul>
+																	<div>
+																	    <ul>
+																	        <li class="menu">
+																	        <a><img src="./image/plus.png" alt="추가하기" height="30" width="30"/></a>
+																		        <div class="hide">
+											                                        <div class="form-group" id="_buscodeList1" style="border: 1px solid gold; float: left; width: 33%;">
+											                                          	<p>직무분류1</p>
+											                                          	 
+											                                            <!-- 데이터들어오는자리 -->
+											                                        </div>
+											                                        <div id="_buscodeList2" style="border: 1px solid red; float: left; width: 33%;">
+																						<p>직무분류2</p>
+											                                            <!-- 데이터들어오는자리 -->
+																					</div>
+																					<div id="_buscodeList3" style="border: 1px solid blue; float: left; width: 33%;">
+																						<p>직무분류3</p>
+											                                            <!-- 데이터들어오는자리 -->
+																					</div>
+										                                        </div>
+																	        </li>
+																	    </ul>
+																	</div>
 																</div>
 
-																<button type="button" id="jobs" name="jobs"
-																	data-api_type="layer" data-api_id="desire_job_category"
-																	data-dim="n" data-position="unused"
-																	class="link_modifie">수정 · 추가하기 &gt;</button>
-																<p class="txt_error"></p>
+																
 															</div>
 														</div>
 													</div>
 
-													<div class="resume_row">
-														<div class="input_title">
-															업종 <span class="point">필수</span><span class="s_txt">최대
-																1개</span>
-														</div>
-
-														<div class="option option_area">
-															<div id="desire_industry"
-																class="area_task_input resume_input">
-																<input type="hidden" id="industry_code"
-																	name="industry_code" value=""> <input
-																	type="hidden" id="industry_keyword"
-																	name="industry_keyword" value=""> <label
-																	for="industry_code" class="bar_title">업종<span
-																	class="valid_hidden"> (최대 1개)</span></label>
-
-																<div>
-																	<ul class="list_task size_type5"></ul>
-																</div>
-
-																<button type="button" id="industry" name="industry"
-																	data-api_type="layer" data-api_id="desire_industry"
-																	data-dim="n" data-position="unused"
-																	class="link_modifie">수정 · 추가하기 &gt;</button>
-																<p class="txt_error"></p>
-															</div>
-														</div>
-													</div>
+													
 												</div>
 											</div>
 										</div>
 
-										<div id="main_desire_work" class="resume_section">
-											<div class="area_title">
-												<h3 class="title">희망 조건 대표 선택</h3>
-											</div>
-
-											<div class="resume_write">
-												<div class="resume_row">
-													<div class="input_title">
-														관심 근무지역 <span class="point">필수</span>
-													</div>
-
-													<div class="sri_select resume_select"
-														id="main_hope_area_select">
-														<label for="main_area_code" class="bar_title">관심
-															근무지역<span class="valid_hidden"> 선택</span>
-														</label>
-														<button type="button" class="ico_arr selected">관심
-															근무지역 선택</button>
-														<input type="hidden" name="main_area_code"
-															id="main_area_code" value="">
-														<ul class="list_opt"></ul>
-														<p class="txt_error"></p>
-													</div>
-												</div>
-
-												<div class="resume_row">
-													<div class="input_title">
-														관심 직종 <span class="point">필수</span>
-													</div>
-
-													<div class="sri_select resume_select"
-														id="main_hope_job_select">
-														<label for="main_job_category_code" class="bar_title">관심
-															직종<span class="valid_hidden"> 선택</span>
-														</label>
-														<button type="button" class="ico_arr selected">관심
-															직종 선택</button>
-														<input type="hidden" name="main_job_category_code"
-															value="">
-														<ul class="list_opt"></ul>
-														<p class="txt_error"></p>
-													</div>
-												</div>
-											</div>
-										</div>
 													
 											</figcaption>
 										</figure>
@@ -2447,27 +2511,10 @@ function login() {
 </script>
 <!-- End Channel Plugin -->
 
-<!-- 검색 -->
-<script>
-$("#searchBtn").click(function () {
-    
-	alert("searchBtn click")
-	/* 검색어 */
-	let search = document.getElementById("_searchBtn").value;
-    
-    location.href = "searchFAQ.do?search=" + search;
-});
-</script>
-
-<script>
-$(document).ready(function()
-{
-    $("[rel='tooltip']").tooltip();
-});
-</script>
 
 
 
+<%-- 
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/resume.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/resume1.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/resume2.js"></script>
@@ -2482,32 +2529,257 @@ $(document).ready(function()
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/resume11.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/resume12.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/resume13.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume14.js"></script>
-
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume14.js"></script> --%>
 
 
 
 
 
 <script type="text/javascript">
-$(function() {
-    $('#search').on('keyup', function() {
-        var pattern = $(this).val();
-        $('.searchable-container .items').hide();
-        $('.searchable-container .items').filter(function() {
-            return $(this).text().match(new RegExp(pattern, 'i'));
-        }).show();
+function licenseCheck(value) {
+	
+	alert("licenseCheck");
+	alert(value);
+	 if(value=="case2"){
+		 alert("value case2")
+		 document.getElementById('licensechk').style.display='none';
+		 document.getElementById('languagechk').style.display='block';
+		 document.getElementById('awardchk').style.display='none';
+	}
+	 
+	 else if(value=="case3"){
+		 alert("value case3");
+		 document.getElementById('licensechk').style.display='none';
+		 document.getElementById('languagechk').style.display='none';
+		 document.getElementById('awardchk').style.display='block';
+	 }
+	 
+	 else if(value="case1"){
+		 document.getElementById('licensechk').style.display='block';
+		 document.getElementById('languagechk').style.display='none';
+		 document.getElementById('awardchk').style.display='none';
+	 }
+}
+</script>
+
+<script type="text/javascript">
+
+// html dom 이 다 로딩된 후 실행된다.
+$(document).ready(function(){
+    // memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
+    $(".menu>a").click(function(){
+        // 현재 클릭한 태그가 a 이기 때문에
+        // a 옆의 태그중 ul 태그에 hide 클래스 태그를 넣던지 빼던지 한다.
+        $(this).next("div").toggleClass("hide");
     });
 });
 
+
+</script>
+
+<!-- <script>
+    // html dom 이 다 로딩된 후 실행된다.
+    $(document).ready(function(){
+        // menu 클래스 바로 하위에 있는 a 태그를 클릭했을때
+        $(".menu>a").click(function(){
+            var submenu = $(this).next("ul");
+ 
+            // submenu 가 화면상에 보일때는 위로 보드랍게 접고 아니면 아래로 보드랍게 펼치기
+            if( submenu.is(":visible") ){
+                submenu.slideUp();
+            }else{
+                submenu.slideDown();
+            }
+        });
+    });
+</script> -->
+
+
+
+<script type="text/javascript">
+$('document').ready(function() {
+	 var area0 = ["시/도 선택","서울","인천","대전","광주","대구","울산","부산","경기","강원","충북","충남","전북","전남","경북","경남","제주특별자치도","세종특별자치시"];
+	  var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
+	   var area2 = ["계양구","남동구","부평구","연수구","미추홀구","강화군","옹진군"];
+	   var area3 = ["대덕구","유성구"];
+	   var area4 = ["광산구"];
+	   var area5 = ["달서구","수성구","달성군"];
+	   var area6 = ["울주군"];
+	   var area7 = ["금정구","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","해운대구","기장군"];
+	   var area8 = ["고양시","과천시","광명시","광주시","구리시","군포시","김포시","남양주시","동두천시","부천시","성남시","수원시","시흥시","안산시","안성시","안양시","양주시","오산시","용인시","의왕시","의정부시","이천시","파주시","평택시","포천시","하남시","화성시","가평군","양평군","여주군","연천군"];
+	   var area9 = ["강릉시","동해시","삼척시","속초시","원주시","춘천시","태백시","고성군","양구군","양양군","영월군","인제군","정선군","철원군","평창군","홍천군","화천군","횡성군"];
+	   var area10 = ["제천시","청주시","충주시","괴산군","단양군","보은군","영동군","옥천군","음성군","증평군","진천군","청원군"];
+	   var area11 = ["계룡시","공주시","논산시","보령시","서산시","아산시","천안시","금산군","당진군","부여군","서천군","연기군","예산군","청양군","태안군","홍성군"];
+	   var area12 = ["군산시","김제시","남원시","익산시","전주시","정읍시","고창군","무주군","부안군","순창군","완주군","임실군","장수군","진안군"];
+	   var area13 = ["광양시","나주시","목포시","순천시","여수시","강진군","고흥군","곡성군","구례군","담양군","무안군","보성군","신안군","영광군","영암군","완도군","장성군","장흥군","진도군","함평군","해남군","화순군"];
+	   var area14 = ["경산시","경주시","구미시","김천시","문경시","상주시","안동시","영주시","영천시","포항시","고령군","군위군","봉화군","성주군","영덕군","영양군","예천군","울릉군","울진군","의성군","청도군","청송군","칠곡군"];
+	   var area15 = ["거제시","김해시","마산시","밀양시","사천시","양산시","진주시","진해시","창원시","통영시","거창군","고성군","남해군","산청군","의령군","창녕군","하동군","함안군","함양군","합천군"];
+	   var area16 = ["서귀포시","제주시","남제주군","북제주군"];
+	   var area17 = ["세종특별자치시"];
+
+	 
+
+	 // 시/도 선택 박스 초기화
+
+	 $("select[name^=sido]").each(function() {
+	  $selsido = $(this);
+	  $.each(eval(area0), function() {
+	   $selsido.append("<option value='"+this+"'>"+this+"</option>");
+	  });
+	  $selsido.next().append("<option value=''>구/군 선택</option>");
+	 });
+
+	 
+
+	 // 시/도 선택시 구/군 설정
+
+	 $("select[name^=sido]").change(function() {
+	  var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
+	  var $gugun = $(this).next(); // 선택영역 군구 객체
+	  $("option",$gugun).remove(); // 구군 초기화
+
+	  if(area == "area0")
+	   $gugun.append("<option value=''>구/군 선택</option>");
+	  else {
+	   $.each(eval(area), function() {
+	    $gugun.append("<option value='"+this+"'>"+this+"</option>");
+	   });
+	  }
+	 });
+
+
+	});
 </script>
 
 
+<script>
+
+$(document).ready(function() {
+	
+	
+	
+$.ajax({
+	url : "./buscodeListData.do", 
+	type : "get", 
+	success:function(list){
+		alert('success');
+		alert(list);
+		
+		$(".list_col1").remove();
+		
+		$.each(list, function(i, val){
+
+			//alert(val.jobSeq);
+
+			//let app = "<input type='checkbox' class='list_col' name='buscode' value='"+val.buscode1+"' class='form-control'>"+val.buscodename1
+			let app = "<div>"+
+					"<input type='radio' class='list_col1' id='buscode1' name='buscode1' value='"+val.buscode1+"'><label for='huey'>"+val.buscodename1+"</label>"+
+					"</div>";
+				
+				$("#_buscodeList1").append(app);
+		});
+	}, 
+	error:function(){
+		alert('error');
+	}
+	
+ });
+ 
 
 
 
 
+$(document).on("change",".list_col1", function(){
+	
+	if($(this).is(":checked")){
+        alert("체크");
+        alert($(this).val());
+        let buscode = $(this).val();
+        
+        $.ajax({
+        	url : "./buscode2ListData.do", 
+        	type : "get", 
+        	data: {"buscode":buscode}, 
+        	success:function(list){
+        		alert('success');
+        		alert(list);
+        		
+        		$(".list_col2").remove();		
+        		
+        		$.each(list, function(i, val){
+							let app = "<div>"+
+        					"<input type='radio' class='list_col2' id='buscode2' name='buscode2' value='"+val.buscode2+"'><label class='list_col2' for='huey'>"+val.buscodename2+"</label>"+
+        					"</div>";
+        				
+        				$("#_buscodeList2").append(app);
+        		});
+        	}, 
+        	error:function(){
+        		alert('error');
+        	}
+        	
+         });
+   
+    }
+    /* else if($(this).is(":checked")==false){
+        alert("체크 해제");
+    } */
+	
+});
 
+
+$(document).on("change",".list_col2", function(){
+	
+	if($(this).is(":checked")){
+        alert("체크");
+        alert($(this).val());
+        let buscode = $(this).val();
+        
+        $.ajax({
+        	url : "./buscode2ListData.do", 
+        	type : "get", 
+        	data: {"buscode":buscode}, 
+        	success:function(list){
+        		alert('success');
+        		alert(list);
+        		
+        		$(".list_col3").remove();		
+        		
+        		$.each(list, function(i, val){
+        			
+							let app = "<span>"+
+									  "<input type='checkbox' class='list_col3' name='buscode' value='"+val.busname+"' class='form-control'>"+val.busname+
+									  "</span>";
+									  
+							if((i+1)%2==0){
+		        				app += "<br>";
+		        			}
+									  
+
+				$("#_buscodeList3").append(app);
+        		
+        		});
+        	}, 
+        	error:function(){
+        		alert('error');
+        	}
+        	
+         });
+   
+    }
+    /* else if($(this).is(":checked")==false){
+        alert("체크 해제");
+    } */
+	
+});
+
+
+
+});
+
+  
+</script>
+ 
 
 
 </body>

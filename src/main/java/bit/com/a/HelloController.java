@@ -44,11 +44,7 @@ public class HelloController {
 			return "infoyakgwan";
 		}
 
-		@RequestMapping(value = "login1.do", method = {RequestMethod.GET,RequestMethod.POST})
-		public String login1(Model model) {
-			logger.info("HelloController login1() " + new Date());
-			return "login";
-		}
+
 
 		@RequestMapping(value = "infoemail.do", method = RequestMethod.GET)
 		public String infoemail(Model model) {
@@ -64,12 +60,14 @@ public class HelloController {
 			return "infowebaccess";
 		}
 
+
 		@RequestMapping(value = "infobanner.do", method = RequestMethod.GET)
 		public String infobanner(Model model) {
 			logger.info("HelloController home() " + new Date());
 
 			return "infobanner";
 		}
+
 
 		@RequestMapping(value = "musicplayer.do", method = RequestMethod.GET)
 		public String musicplayer(Model model) {
@@ -79,11 +77,20 @@ public class HelloController {
 		}
 
 
+
 		@RequestMapping(value = "infomember.do", method = RequestMethod.GET)
 		public String infomember(Model model) {
 			logger.info("HelloController home() " + new Date());
 
 			return "infomember";
+
+		}
+
+		@RequestMapping(value = "infocopyright.do", method = RequestMethod.GET)
+		public String infocopyright(Model model) {
+			logger.info("HelloController home() " + new Date());
+
+			return "infocopyright";
 		}
 
 		@RequestMapping(value = "jobtalk.do", method = RequestMethod.GET)
@@ -91,7 +98,7 @@ public class HelloController {
 			logger.info("HelloController home() " + new Date());
 
 			return "jobtalk";
-		}	
+		}
 
 		@RequestMapping(value = "jobdetail.do", method = RequestMethod.GET)
 		public String jobdetail(Model model) {
