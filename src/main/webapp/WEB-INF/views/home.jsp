@@ -1181,10 +1181,8 @@ margin-right : 450px;
 						<a href="infomember.do"><b>개인정보처리방침</b></a>
 						<a href="infoemail.do">이메일주소무단수집거부</a>
 						<a href="infowebaccess.do">웹접근성정책</a>
-						<a href="/useInvite/worknetHomepgInvite/cprgtPolicyAsAllianceInq.do">저작권정책 및 제휴문의</a>
-						<a href="http://openapi.work.go.kr" target="_blank">Open API</a>
-						<a href="infobanner.do">배너 가져가기</a>
-						<a href="/useInfo/lieJobadRpt/lieJobadRptList.do">거짓구인광고 신고</a>
+						<a href="infocopyright.do">저작권정책 및 제휴문의</a>					
+						<a href="infobanner.do">배너 가져가기</a>	
 					</div>
 				</div>
 			</div>
