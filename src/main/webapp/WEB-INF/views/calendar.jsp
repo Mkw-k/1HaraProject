@@ -1,7 +1,7 @@
+<%@page import="bit.com.a.dto.RecruitDto"%>
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="bit.com.a.dto.CalendarParam"%>
-<%@page import="bit.com.a.dto.CalendarDto"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -58,10 +58,10 @@ table, td, th {
 </style>
 
 <%
- List<CalendarDto> list = new ArrayList<>();
+ List<RecruitDto> list = new ArrayList<>();
 Object objlist = request.getAttribute("flist");
 if(objlist != null){
-	list = (List<CalendarDto>)objlist;
+	list = (List<RecruitDto>)objlist;
 } 
 
 CalendarParam cal = (CalendarParam)request.getAttribute("cal");

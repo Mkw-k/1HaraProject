@@ -3,11 +3,13 @@ package bit.com.a.controller;
 
 
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,9 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import bit.com.a.dto.BbsParam;
+import bit.com.a.dto.CalendarParam;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 import bit.com.a.service.RecruitService;
+import bit.com.a.util.UtilEx;
 
 @Controller
 public class RecruitController {
@@ -246,6 +250,65 @@ public class RecruitController {
 			
 			return list;
 		}
+		
+		@RequestMapping(value = "calendarlist.do",  method = {RequestMethod.GET, RequestMethod.POST})
+		String calendarlist(Model model, CalendarParam param, HttpSession session) {		
+			model.addAttribute("doc_title", "일정목록");
+			
+			Calendar cal = Calendar.getInstance();
+			
+			int year = param.getYear();
+			int month = param.getMonth();
+			int day = param.getDay();
+			
+			if(month == 0) {
+				year--;
+				month = 12;
+			}
+			else if(month == 13) {
+				year++;
+				month = 1;
+			}
+			else if(month < 0) {	// 처음 들어온 경우 여기로 들어 와서 연월일을 현재 날짜로 셋팅한다 
+				year = cal.get(Calendar.YEAR);
+				month = cal.get(Calendar.MONTH) + 1;
+				if(day < 0) {
+					day = cal.get(Calendar.DATE);
+				}
+			}		 
+			cal.set(year, month - 1, 1);	// 요일을 구하기 위한 설정
+					
+			// 요일
+			int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+			// 마지막 날짜
+			int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+			
+			// 셋팅된 날짜를 다시 넘겨주기 위한 set
+			param.setYear(year);
+			param.setMonth(month);
+			param.setDay(day);
+			param.setDayOfWeek(dayOfWeek);
+			param.setLastDay(lastDay);
+					
+			// 로그인 정보
+			//String id = ((MemberDto)session.getAttribute("login")).getId();
+			// 날짜 취득
+			String yyyymm = UtilEx.yyyymm(param.getYear(), param.getMonth());
+			
+			// DB에서 그달의 일정을 모두 취득하기 위한 Dto
+			RecruitDto fcal = new RecruitDto();
+			fcal.setJobStart(yyyymm);
+			
+			// Db로부터 일정들을 취득한다
+			List<RecruitDto> list = service.getCalendarList(fcal);
+			
+			// 짐싸!
+			model.addAttribute("flist", list);	// 일정목록을 포장
+			model.addAttribute("cal", param);	// 설정된 날짜를 포장
+			
+			return "recruit/recruitcalendar";
+		}
+		
 
 	
 }

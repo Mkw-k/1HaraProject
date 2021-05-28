@@ -44,12 +44,11 @@ public class HelloController {
 			return "infoyakgwan";
 		}
 
-		@RequestMapping(value = "login1.do", method = {RequestMethod.GET,RequestMethod.POST})
-		public String login1(Model model) {
-			logger.info("HelloController login1() " + new Date());
-			return "login";
-		}
-
+		/*
+		 * @RequestMapping(value = "login1.do", method =
+		 * {RequestMethod.GET,RequestMethod.POST}) public String login1(Model model) {
+		 * logger.info("HelloController login1() " + new Date()); return "login"; }
+		 */
 		@RequestMapping(value = "infoemail.do", method = RequestMethod.GET)
 		public String infoemail(Model model) {
 			logger.info("HelloController home() " + new Date());

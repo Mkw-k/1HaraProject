@@ -328,13 +328,6 @@ $j(document).ready(function () {
 });
 
     //-->
-function login() {
-	//alert('c');
-	$("#login-modal").modal();
-	$("#login-modal").removeClass("modal fade");
-	$("#login-modal").addClass("modal");
-   
-}
     
     
 </script>

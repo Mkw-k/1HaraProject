@@ -149,6 +149,21 @@ SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
 
 </select>
 
+<select id="getCalendar" parameterType="bit.com.a.dto.RecruitDto"
+	resultType="bit.com.a.dto.RecruitDto">
+
+	SELECT JOBSEQ, JOBTITLE, JOBCONTENT, JOBSTART, JOBEND
+	FROM (SELECT ROW_NUMBER()OVER(PARTITION BY SUBSTR(JOBSTART, 1, 8)ORDER BY JOBSTART ASC) AS RNUM,  
+			JOBSEQ, JOBTITLE, JOBCONTENT, JOBSTART, JOBEND  
+		  FROM JOB  
+		  WHERE SUBSTR(JOBSTART, 1, 6)=#{jobStart} ) 
+	WHERE RNUM BETWEEN 1 AND 5
+</select>
+
+
+
+
+
 
 
 </mapper>

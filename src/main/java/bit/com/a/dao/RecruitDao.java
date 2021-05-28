@@ -26,5 +26,7 @@ public interface RecruitDao {
 	List<RecruitParam> buscode2ListData(int buscode);
 	
 	List<RecruitParam> buscode3ListData(int buscode);
+
+	List<RecruitDto> getCalendarList(RecruitDto rec);
 	
 }
