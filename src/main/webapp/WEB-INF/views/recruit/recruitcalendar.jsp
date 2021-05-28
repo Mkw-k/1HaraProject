@@ -67,8 +67,10 @@ table, td, th {
 Object objlist = request.getAttribute("flist");
 if(objlist != null){
 	list = (List<RecruitDto>)objlist;
+	
 } 
 
+/* System.out.println("list:" + list.get(0).getJobTitle()); */
 CalendarParam cal = (CalendarParam)request.getAttribute("cal");
 
 // 요일

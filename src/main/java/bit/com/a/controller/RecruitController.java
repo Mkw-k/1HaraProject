@@ -1,9 +1,6 @@
 package bit.com.a.controller;
-
-
-
-
 import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +29,7 @@ public class RecruitController {
 	@Autowired
 	RecruitService service;
 	
-//채용공고 리스트로 이동
+//TODO채용공고 리스트로 이동
 	@RequestMapping(value = "recuruitlist.do", method = RequestMethod.GET)
 	public String recuruitlist(Model model) {		
 		model.addAttribute("doc_title", "채용공고");
@@ -40,7 +37,7 @@ public class RecruitController {
 		return "recruit/recruitlist";
 	}
 
-	
+//TODO채용공고작성
 	@RequestMapping(value = "createTest.do", method = RequestMethod.GET)
 	public String createTest(Model model) {		
 		model.addAttribute("doc_title", "채용공고");
@@ -50,7 +47,6 @@ public class RecruitController {
 		
 	//Ajax로 모든 데이터 다 불러오기 
 	//초기 개발용 현재 사용안함 
-
 	@ResponseBody
 	@RequestMapping(value = "recuruitlistdata.do", method = RequestMethod.GET)
 	public List<RecruitDto> recuruitlistdata(Model model) {		
@@ -64,7 +60,7 @@ public class RecruitController {
 	}
 	
 	
-	//Ajax로 페이징 리스트 불러오기(검색, 페이지 추가)
+//TODO Ajax로 페이징 리스트 불러오기(검색, 페이지 추가)
 	//parameter Dto는 동일해서 BbsParam가져다 썻음 
 	@ResponseBody
 	@RequestMapping(value = "recruitPagingListData.do", method = RequestMethod.GET)
@@ -87,7 +83,7 @@ public class RecruitController {
 		
 		List<RecruitDto> list = service.getRecruitPagingList(param);
 		
-		System.out.println(list.toString());
+		//System.out.println(list.toString());
 		
 		return list;
 	}
@@ -95,7 +91,7 @@ public class RecruitController {
 
 
 
-	//Ajax로 리스트의 총수 불러오기
+//TODOAjax로 리스트의 총수 불러오기
 	//parameter Dto는 동일해서 BbsParam가져다 썻음 
 	@ResponseBody
 	@RequestMapping(value = "recruitlistCount.do", method = RequestMethod.GET)
@@ -107,14 +103,14 @@ public class RecruitController {
 		return count;
 	}	
 	
-
+//TODO공고작성페이지로이동(구형)
 	@RequestMapping(value = "recuruitcreate.do", method = RequestMethod.GET)
 	public String recuruitcreate(Model model) {		
 		model.addAttribute("doc_title", "채용공고");
 		return "recruit/recuruitcreate";
 	}
 
-//채용공고 작성 After(DB에 입력)
+//TODO 채용공고 작성 After(DB에 입력)
 	@RequestMapping(value = "recuruitcreateAf.do", method = RequestMethod.POST)
 	public String recuruitcreateAf(RecruitDto dto, Model model, HttpServletRequest req) {		
 		model.addAttribute("doc_title", "채용공고");
@@ -174,7 +170,7 @@ public class RecruitController {
 		return "redirect:/recuruitlist.do";
 	}
 
-//채용공고 디테일 창으로 이동 
+//TODO 채용공고 디테일 창으로 이동 (삭제)
 	@RequestMapping(value = "recruitdetail.do", method = RequestMethod.GET)
 	public String recuruitdetail(RecruitDto dto, String seq) {	
 		
@@ -183,33 +179,68 @@ public class RecruitController {
 		
 		return "recruit/recruitDetail";
 	}
-	
+
+//TODO 디테일 창으로 이동	
 	@RequestMapping(value = "RecruitDetail.do", method = RequestMethod.GET)
 	public String RecruitDetail(int jobseq, Model model) {		
 		model.addAttribute("doc_title", "채용공고");
 		
 		System.out.println("seq:"+jobseq);
-		
 		RecruitDto dto = service.getRecruitListOne(jobseq);
 		
-		model.addAttribute("dto", dto);
+		System.out.println(dto.toString());
 		
+		
+		List<String> list = service.getBsnameForDetail(jobseq);
+		System.out.println("직무이름 :"+ list.toString());
+		
+		dto.setBusname(list);
+		
+		System.out.println("변경된 Dto :"+dto.toString());
+		
+		model.addAttribute("dto", dto);
 		return "recruit/recruitDetail";
 	}
 	
-	//삭제 
-		@RequestMapping(value = "deleteRecruit.do", method = {RequestMethod.GET, RequestMethod.POST}) 
-		public String deleteRecruit(int jobseq, Model model) {
+//TODO 디테일 수정시 데이터 가져가기 Ajax
+		@RequestMapping(value = "RecruitUpdate.do", method = RequestMethod.GET)
+		public String getRecruitDetailUpdData(int jobseq, Model model) {		
 			
 			System.out.println("seq:"+jobseq);
+			RecruitDto dto = service.getRecruitListOne(jobseq);
+			System.out.println(dto.toString());
 			
-			boolean b = service.deleteRecruit(jobseq);
+			List<String> list = service.getBsnameForDetail(jobseq);
+			System.out.println("직무이름 :"+ list.toString());
+			dto.setBusname(list);
+			System.out.println("변경된 Dto :"+dto.toString());
 			
+			model.addAttribute("dto", dto);
 			
+			return "recruit/createTest";
+		}
+		
+	
+//TODO 삭제 
+		@RequestMapping(value = "deleteRecruit.do", method = {RequestMethod.GET, RequestMethod.POST}) 
+		public String deleteRecruit(int jobSeq, Model model) {
+			
+			System.out.println("seq:"+jobSeq);
+			
+		
+			boolean b = service.deleteRecruit(jobSeq);
+			
+			if(b) {
+				System.out.println("공고삭제성공");
+			}else {
+				System.out.println("공고삭제실패");
+			}
 			
 			
 			return "redirect:/recuruitlist.do";
 		}
+		
+//TODO 업데이트 
 		
 		
 		
@@ -253,9 +284,9 @@ public class RecruitController {
 		
 		@RequestMapping(value = "calendarlist.do",  method = {RequestMethod.GET, RequestMethod.POST})
 		String calendarlist(Model model, CalendarParam param, HttpSession session) {		
-			model.addAttribute("doc_title", "일정목록");
 			
 			Calendar cal = Calendar.getInstance();
+			
 			
 			int year = param.getYear();
 			int month = param.getMonth();
@@ -293,15 +324,17 @@ public class RecruitController {
 			// 로그인 정보
 			//String id = ((MemberDto)session.getAttribute("login")).getId();
 			// 날짜 취득
-			String yyyymm = UtilEx.yyyymm(param.getYear(), param.getMonth());
+			String yyyymmdd = UtilEx.yyyymmdd(param.getYear(), param.getMonth(), param.getDay());
 			
 			// DB에서 그달의 일정을 모두 취득하기 위한 Dto
 			RecruitDto fcal = new RecruitDto();
-			fcal.setJobStart(yyyymm);
+			fcal.setJobStart(yyyymmdd);
+			System.out.println(fcal.toString());
+			
 			
 			// Db로부터 일정들을 취득한다
 			List<RecruitDto> list = service.getCalendarList(fcal);
-			
+			System.out.println(fcal);
 			// 짐싸!
 			model.addAttribute("flist", list);	// 일정목록을 포장
 			model.addAttribute("cal", param);	// 설정된 날짜를 포장

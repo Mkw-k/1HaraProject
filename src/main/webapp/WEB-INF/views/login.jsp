@@ -48,7 +48,7 @@ function check(form){
     var label = jQuery('#login_tab').val() == 'c' ? 'com_login': 'per_login';
     loggingEventAndTagManager(['login','pc_login_page',label,''],['ga_lead','login','pc_login_page',label]);
 
-    
+
 	if (form['ssl_login'].checked) {
     	SecureLogin.encrypt(form);
     }
@@ -62,17 +62,17 @@ function check(form){
         	<!-- <input type="hidden" name="m_code" value="0"> -->
         	<input type="hidden" name="page_url" value="">
         	<input type="hidden" name="FrameKey" value="">
-        	<input type="hidden" name="login_tab" value="p" id="login_tab">        
+        	<input type="hidden" name="login_tab" value="p" id="login_tab">
         	<div class="login_message">
             	<h3>로그인이 필요한 서비스입니다.</h3>
             	<p>사람인 회원이 아니면, 지금 <span>
-            	<a href="regiclick.do">회원가입</a></span>을 해주세요.</p>        
+            	<a href="regiclick.do">회원가입</a></span>을 해주세요.</p>
         	</div>
         	<div class="login_page_wrap">
         	    <div class="login_input_wrap">
         	        <!-- text 알림 -->
 
-                	<script>	
+                	<script>
                 	</script>
 
                	 <ul class="tab_member_type">
@@ -133,7 +133,7 @@ function check(form){
                	<a href="http://www.saramin.co.kr/zf_user/event/iam-ground-app/app-intro" target="_blank">
                 	<img src="https://www.saraminimage.co.kr/w/pc_web_inventory/2019/10/pzef9p_tfxz-2rxibp_A6.png" alt="아이엠그라운드 모의면접 앱 OPEN" width="391" height="330">
                 </a>
-             </div>            
+             </div>
            </div>
          <div class="clear_both"></div>
        </div>
@@ -152,14 +152,14 @@ function check(form){
             <div id="div-gpt-ad-1550638948072-0" data-google-query-id="CN-Qg_Gj5PACFZEEXAodAGcIog">
                <div id="google_ads_iframe_/61280259/Login_728x90_0__container__" style="border: 0pt none;">
                		 <iframe id="google_ads_iframe_/61280259/Login_728x90_0" title="3rd party ad content" name="google_ads_iframe_/61280259/Login_728x90_0" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="conversion-measurement 'src'" srcdoc="" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true">
-               		</iframe> 
+               		</iframe>
                </div>
             </div>
            </div>
         </div>
 </div>
-                
-                
+
+
  <script type="text/javascript">
     //<!--
                     jQuery(function() {
@@ -167,7 +167,7 @@ function check(form){
                     $('.login_page_wrap')
                         .on('click', '.t_per', function() {
                             if( !$(this).hasClass('t_on') ) {
-                                $(this).addClass('t_on').next().removeClass('t_on'); 
+                                $(this).addClass('t_on').next().removeClass('t_on');
                                 $('#lbl_autologin').show();
                                 $('.link_rater').hide();
                                 $('#login_tab').val('p');
@@ -177,12 +177,12 @@ function check(form){
                         })
                         .on('click', '.t_com', function() {
                             if( !$(this).hasClass('t_on') ) {
-                                $(this).addClass('t_on').prev().removeClass('t_on'); 
+                                $(this).addClass('t_on').prev().removeClass('t_on');
                                 $('#lbl_autologin').hide();
                                 $('.link_rater').show();
                                 $('#login_tab').val('c');
                                 $('#login_frm').attr('action', 'businessloginAf.do');
-                           } 
+                           }
                         })
                       /*    .on('click', '.service_info_txt', function () { */
                           /*   var url = '/zf_user/help/help-word/main';
@@ -191,20 +191,20 @@ function check(form){
                             }
                             location.href = 'businessloginAf.do';
                         }); */
- 
+
                      /* $('#login_frm')
-                   
+
                         .on('click', '#a_join', function (e) {
                             e.preventDefault();
                             location.href = this.href + '?ut=' + $('#login_tab').val();
                         })
                     ; */
-                });   
+                });
                 //-->
-                
-                
+
+
     //<!--
-    
+
 var $j = jQuery.noConflict();
 
 function checkLoginValue() {
@@ -317,7 +317,3 @@ $j(document).ready(function () {
 
 </body>
 </html>
-
-
-
-

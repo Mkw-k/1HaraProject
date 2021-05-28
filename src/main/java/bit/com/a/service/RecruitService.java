@@ -29,4 +29,6 @@ public interface RecruitService {
 
 	List<RecruitDto> getCalendarList(RecruitDto rec);
 	
+	List<String> getBsnameForDetail(int jobseq);
+	
 }

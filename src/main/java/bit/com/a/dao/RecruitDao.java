@@ -29,4 +29,6 @@ public interface RecruitDao {
 
 	List<RecruitDto> getCalendarList(RecruitDto rec);
 	
+	List<String> getBsnameForDetail(int jobseq);
+	
 }

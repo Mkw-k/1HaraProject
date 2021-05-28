@@ -6,11 +6,14 @@ public class RecruitParam implements Serializable{
 
 	private String buscode1;
 	private String buscodename1;
+	
 	private String buscode2;
 	private String buscodename2;
+	
 	private String buscode;
 	//buscode3 테이블은 name 변수명이 busname임
 	private String busname;
+	
 	
 	public RecruitParam() {
 		// TODO Auto-generated constructor stub

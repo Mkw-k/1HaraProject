@@ -62,9 +62,15 @@ public class RecruitServiceImpl implements RecruitService{
 	public List<RecruitParam> buscode3ListData(int buscode) {
 		return dao.buscode3ListData(buscode);
 	}
+
+	@Override
+	public List<String> getBsnameForDetail(int jobseq) {
+		return dao.getBsnameForDetail(jobseq);
+	}
 	
 	@Override
 	public List<RecruitDto> getCalendarList(RecruitDto rec) {
+		
 		return dao.getCalendarList(rec);
 	}
 	
