@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.RecruitDto;
+import bit.com.a.dto.RecruitParam;
 import bit.com.a.service.RecruitService;
 
 @Controller
@@ -116,28 +117,47 @@ public class RecruitController {
 
 		  System.out.println("디티오 데이터 :" +dto.toString());
 		
+		  //시작일 종료일 데이터 정비 
 		  String start = dto.getJobStart(); 
 		  String end = dto.getJobEnd();
-		  
+		  //datetime-local 데이터는 중간에 T가 들어있어서 DB저장을 위해 잘라준다
 		  start = start.replace("T", " "); 
 		  end = end.replace("T", " ");
-		 
 		  dto.setJobStart(start);
 		  dto.setJobEnd(end);
-		 
+		  
+		  System.out.println("시작일 :"+dto.getJobStart());
+		  System.out.println("종료일 :"+dto.getJobEnd());
+		  
+		  //지역 데이터 재설정 해주기 
+		  String area1 = dto.getArea1Name();
+		  //상세 주소 현재 사용안함 (컴퍼니 테이블과 조인하면 상세주소를 가져올수 있을거라 생각됨 여기선 필요없)
+		  String area2 = dto.getArea2Name();
+		  //다음 주소 api를 통해 가져온 주소를 split메서드를 통해 띄어쓰기를 기준으로 잘라준다
+		  String[] area = area1.split("\\s+");
+		  //대분류 지역이름에서 특별시 광역시는 제거해준다 
+		  String area1Name = area[0]
+				  				.replace("특별시", "")
+				  				.replace("광역시", "");
+		  System.out.println(area1Name);
+		  dto.setArea1Name(area1Name);
+		  dto.setArea2Name(area[1]);
+		  
+				  
 		  System.out.println("변경된 데이터 :"+dto.toString());
 		
-		System.out.println("시작일 :"+dto.getJobStart());
-		System.out.println("종료일 :"+dto.getJobEnd());
+		
 		
 		Map<String, Object> param = new HashMap<String, Object>();
-		param.put("dto", dto); //map에 dto를 넣는다.
-		
+		//dto를 map에 넣는다.
+		param.put("dto", dto); 
+		//buscode 여러개를 넘겨받고 배열에 넣어준다 
 		String[] arrayParam = req.getParameterValues("buscode");
 		for (int i = 0; i < arrayParam.length; i++) {
 		System.out.println("넘어온버스코드:"+arrayParam[i]);
 		}
-		param.put("arrayParam", arrayParam); //map에 배열을 넣는다
+		//map에 배열을 넣는다
+		param.put("arrayParam", arrayParam); 
 		
 		boolean b = service.writeRecruit(param);
 		
@@ -189,5 +209,43 @@ public class RecruitController {
 		
 		
 		
+		
+			
+	//채용공고 등록창에 직무코드 채용공고를 태그 안에 append시켜주는 코드 (직업분류1 대분류)
+		@ResponseBody
+		@RequestMapping(value = "buscodeListData.do", method = {RequestMethod.GET, RequestMethod.POST}) 
+		public List<RecruitParam> buscodeListData(Model model) {
+			
+			List<RecruitParam> list = service.buscodeListData();
+			
+			System.out.println(list.toString());
+			
+			return list;
+		}
+		
+		//채용공고 등록창에 직무코드 채용공고를 태그 안에 append시켜주는 코드 (직업분류1 대분류)
+		@ResponseBody
+		@RequestMapping(value = "buscode2ListData.do", method = {RequestMethod.GET, RequestMethod.POST}) 
+		public List<RecruitParam> buscode2ListData(int buscode, Model model) {
+			
+			System.out.println("넘어온 버스코드 :"+ buscode);
+			
+			//int형 변수의 길이를 구하는 코드 
+			int length = (int)( Math.log10(buscode)+1 ); 
+			
+			List<RecruitParam> list = null;
+			
+			if(length == 1) {
+				list = service.buscode2ListData(buscode);
+			}
+			else if(length == 4 || length == 3) {
+				list = service.buscode3ListData(buscode);
+			}
+					
+			System.out.println(list.toString());
+			
+			return list;
+		}
+
 	
 }

@@ -29,6 +29,6 @@ public class BusinessDaoImpl implements BusinessDao{
 	@Override
 	public BusinessDto login(BusinessDto dto) {
 		BusinessDto bus = sqlsession.selectOne(namespace + "login", dto);
-		return dto;
+		return bus;
 	}
 }

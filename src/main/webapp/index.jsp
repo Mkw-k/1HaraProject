@@ -23,8 +23,17 @@ index.jsp
 
 <a href="login1.do">로그인</a>
 
+<a href="jobdetail.do">채용디테일</a>
+
+<a href="jobsearch.do">직종서치</a>
+
+<a href="regiclick1.do">회원유형선택</a>
+
+<a href="newslist.do">끼업 뉴쓰</a>
+
+<a href="test.do">은지카카오로그인</a>
+
 
 
 </body>
 </html>
-

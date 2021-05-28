@@ -3,7 +3,6 @@ package bit.com.a.controller;
 import java.io.IOException;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,13 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import bit.com.a.crawling.Newslist;
 import bit.com.a.dto.NewsDto;
-import bit.com.a.service.NewsService;
 
 @Controller
 public class NewsController {
-	/*
-	 * @Autowired NewsService service;
-	 */
 	
 	@RequestMapping(value = "newslist.do", method = RequestMethod.GET)
 	public String newslist(Model model) {
@@ -30,4 +25,5 @@ public class NewsController {
 		}
 		return "news/news";
 	}
+	
 }

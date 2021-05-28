@@ -25,13 +25,14 @@ public class BusinessDto implements Serializable{
 
 	*/
 
-		private String companyname; 	// 회사명
-		private String busi_name;		// 사원이름
-		private String companyid; 		// 사원id
+		private String memberid; 	// 회사명
+		private String companyname;
+		private String name;		// 사원이름
 		private String comaddress; 		// 회사 주소
 		private String pwd; 			// 사원일 경우 비밀번호
 		private String addressdetail; 	// 상세 주소
 		private int del;				// 삭제 번호(사원이 탈퇴할경우)
+		private int auth;
 		
 		
 		public BusinessDto() {
@@ -39,41 +40,36 @@ public class BusinessDto implements Serializable{
 			// TODO Auto-generated constructor stub
 		}
 
-		public BusinessDto(String companyname, String busi_name, String companyid, String comaddress, String pwd,
-				String addressdetail, int del) {
+
+		public BusinessDto(String memberid, String companyname, String name, String comaddress, String pwd,
+				String addressdetail, int del, int auth) {
 			super();
+			this.memberid = memberid;
 			this.companyname = companyname;
-			this.busi_name = busi_name;
-			this.companyid = companyid;
+			this.name = name;
 			this.comaddress = comaddress;
 			this.pwd = pwd;
 			this.addressdetail = addressdetail;
 			this.del = del;
+			this.auth = auth;
 		}
 
+		public String getMemberid() {
+			return memberid;
+		}
+
+		public void setMemberid(String memberid) {
+			this.memberid = memberid;
+		}
+
+		
+		
 		public String getCompanyname() {
 			return companyname;
 		}
 
-
 		public void setCompanyname(String companyname) {
 			this.companyname = companyname;
-		}
-		
-		public String getBusi_name() {
-			return busi_name;
-		}
-
-		public void setBusi_name(String busi_name) {
-			this.busi_name = busi_name;
-		}
-
-		public String getCompanyid() {
-			return companyid;
-		}
-
-		public void setCompanyid(String companyid) {
-			this.companyid = companyid;
 		}
 
 		public String getComaddress() {
@@ -96,6 +92,16 @@ public class BusinessDto implements Serializable{
 		}
 
 
+		public String getName() {
+			return name;
+		}
+
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+
 		public String getAddressdetail() {
 			return addressdetail;
 		}
@@ -115,13 +121,24 @@ public class BusinessDto implements Serializable{
 			this.del = del;
 		}
 
-		@Override
-		public String toString() {
-			return "BusinessDto [companyname=" + companyname + ", busi_name=" + busi_name + ", companyid=" + companyid
-					+ ", comaddress=" + comaddress + ", pwd=" + pwd + ", addressdetail=" + addressdetail + ", del="
-					+ del + "]";
+
+		public int getAuth() {
+			return auth;
 		}
 
+
+		public void setAuth(int auth) {
+			this.auth = auth;
+		}
+
+
+		@Override
+		public String toString() {
+			return "BusinessDto [memberid=" + memberid + ", companyname=" + companyname + ", name=" + name
+					+ ", comaddress=" + comaddress + ", pwd=" + pwd + ", addressdetail=" + addressdetail + ", del="
+					+ del + ", auth=" + auth + "]";
+		}
+
+
 		
-	
 }
