@@ -543,11 +543,10 @@ margin-right : 450px;
 </style>
 </head>
 <body>
+
 <div class="all">
-<header>
-		
- <!-- 검색html -->
- 
+<header>	
+ <!-- 메인 검색 창 -->
  <section style="padding: 0">
  <form id="search_form_recruit" onsubmit="event.preventDefault()" style="height: 400px; background-image: url('개발자23.gif');">
     <div class="main_search" style="
@@ -593,27 +592,16 @@ margin-right : 450px;
     </div>
 </form>
 </section>
- <!--  -->
- 
- 
-
-
-
-
-
+<!-- 메인검색창 끝 -->
 </header>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-  <!-- Links -->
-  
-  
+<!-- 상단 네비바 -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">  
   <div>
 	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
-	</div>
-  
-  <ul class="navbar-nav">
-<!-- Dropdown -->
+  </div>
 
+<ul class="navbar-nav">
 	 <li class="nav-item">
             <c:choose>
             	<c:when test="${login.memberid ne null }">
@@ -633,8 +621,9 @@ margin-right : 450px;
     				</c:choose>			
             	 </c:when> 
          	 </c:choose>  
-    </li>
+      </li>
 
+<!-- 전체보기 드롭다운 메뉴 -->
     <li class="nav-item dropdown" style="padding-top: 5px;">
      <div class="dropdown">
 		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
@@ -648,7 +637,7 @@ margin-right : 450px;
 		  </div>
 		</div>
     </li>
-
+<!-- 전체보기 드롭다운 메뉴 끝 -->
     <li class="nav-item">
       <a class="nav-link bgc" href="recuruitlist.do" style="color:#2186eb">채용공고</a>
     </li>
@@ -667,20 +656,10 @@ margin-right : 450px;
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
-
-
-
-
-
-    
     <li class="nav-item">
-
-
      	 <a class="nav-link bgc" href="resumeMain.do" style="color: #2186eb;background-color: #fff;">이력서관리</a>
-
-    </li>
+    </li>    
     <li class="nav-item">
-
        <c:if test="${login.auth==3}">
           <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a> 
       </c:if>
@@ -692,7 +671,7 @@ margin-right : 450px;
    </li>
   </ul>
 </nav>
-<br>
+
 
   
 
