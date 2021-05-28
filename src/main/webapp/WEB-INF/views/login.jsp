@@ -62,7 +62,7 @@ function check(form){
         	<!-- <input type="hidden" name="m_code" value="0"> -->
         	<input type="hidden" name="page_url" value="">
         	<input type="hidden" name="FrameKey" value="">
-        	<input type="hidden" name="login_tab" value="c" id="login_tab">
+        	<input type="hidden" name="login_tab" value="p" id="login_tab">
         	<div class="login_message">
             	<h3>로그인이 필요한 서비스입니다.</h3>
             	<p>사람인 회원이 아니면, 지금 <span>
@@ -171,6 +171,7 @@ function check(form){
                                 $('#lbl_autologin').show();
                                 $('.link_rater').hide();
                                 $('#login_tab').val('p');
+                               	alert('들어옴?');
                                 $('#login_frm').attr('action', 'loginAf.do');
                             }
                         })

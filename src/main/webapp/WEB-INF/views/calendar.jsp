@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="bit.com.a.dto.CalendarParam"%>
 <%@page import="bit.com.a.dto.CalendarDto"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -57,11 +58,11 @@ table, td, th {
 </style>
 
 <%
-List<CalendarDto> list = new ArrayList<>();
+ List<CalendarDto> list = new ArrayList<>();
 Object objlist = request.getAttribute("flist");
 if(objlist != null){
 	list = (List<CalendarDto>)objlist;
-}
+} 
 
 CalendarParam cal = (CalendarParam)request.getAttribute("cal");
 
@@ -70,6 +71,7 @@ int dayOfWeek = cal.getDayOfWeek();
 int lastDayOfMonth = cal.getLastDay();
 int year = cal.getYear();
 int month = cal.getMonth();
+
 
 //<< year--
 String pp = String.format("<a href='%s?year=%d&month=%d'>" + "<img src='./image/left.gif'></a>", 
@@ -93,7 +95,7 @@ String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, mont
 
 <div style="text-align: left;">
 	<a href="<%=url %>">
-		<font size="3em">월별 일정: <%=year + "년" + month + "월" %></font> 
+		<font size="3em">월별 일정:  ${cal.year}년  ${cal.month}월 </font> 
 	</a>
 </div>
 
@@ -133,7 +135,7 @@ String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, mont
 
 
 <tr height="100px">
-<% 
+<%
 for(int i = 1;i < dayOfWeek; i++){
 	out.println("<td class='nodays'>&nbsp;</td>");
 }
@@ -143,13 +145,13 @@ for(int i = 1;i <= lastDayOfMonth; i++){
 	if( (i + dayOfWeek - 1) % 7 == 1){	// 일요일
 		%>
 		<td class="sunday"><%=UtilEx.callist(year, month, i) %>&nbsp;<%=UtilEx.showPen(year, month, i) %>
-			<%=UtilEx.makeTable(year, month, i, list) %>		
+			 <%=UtilEx.makeTable(year, month, i, list) %>	 %>	
 		</td>		
 		<%
 	}else{	// 평일	
 		%>
 		<td class="otherday"><%=UtilEx.callist(year, month, i) %>&nbsp;<%=UtilEx.showPen(year, month, i) %>
-			<%=UtilEx.makeTable(year, month, i, list) %>		
+			 <%=UtilEx.makeTable(year, month, i, list) %>	 	
 		</td>
 		<%
 	}

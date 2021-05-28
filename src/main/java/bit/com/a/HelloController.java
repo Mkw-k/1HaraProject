@@ -60,6 +60,7 @@ public class HelloController {
 			return "infowebaccess";
 		}
 
+
 		@RequestMapping(value = "infobanner.do", method = RequestMethod.GET)
 		public String infobanner(Model model) {
 			logger.info("HelloController home() " + new Date());

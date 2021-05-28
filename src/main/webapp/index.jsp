@@ -30,6 +30,9 @@ index.jsp
 
 <a href="regiclick1.do">회원유형선택</a>
 
+
+<a href="calendars.do">달력</a>
+
 <a href="newslist.do">끼업 뉴쓰</a>
 
 
@@ -39,6 +42,7 @@ index.jsp
 <a href="kokolog.do">까까오 로꾸인</a>
 
 <a href="chatpractice.do">채팅(건설중)</a>
+
 
 
 
