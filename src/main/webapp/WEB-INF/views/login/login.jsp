@@ -1,185 +1,308 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<fmt:requestEncoding value="utf-8"/>      
-    
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css" />  
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
-<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<link href="csss/layout.css" rel="stylesheet" type="text/css">
+<link href="csss/etc.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/jquery-1.11.1.min.js"></script>
+ <!-- 전체 css -->
+<!-- <link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
+<script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="layout/scripts/featured_slide.js"></script> -->
+<!-- 네비바 -->
+<!-- 제이쿼리 -->
+<script src="//https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- carousel -->
+<script src="//https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- jQuery Modal -->
+<script src="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
-<!-- cookie -->
-<script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>
+<!-- 카카오 로그인 -->
+<!-- <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script> -->
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
-<style type="text/css">
-#login_wrap {
-	margin:10px;
-}
-#login_wrap th {
-	font-weight:bold;
-}
-#main_wrap { 
-	width:800px; 
-	margin-left:auto; 
-	margin-right:auto; padding:0px; 
-}			
-#content_wrap { 
-	width: 100%; 
-	height: 500px; 
-	background-image:url("image/backa.jpg"); 
-	background-repeat:no-repeat; 
-	background-position:top center;  
-}
-			
-.login_title_warp {
-	width:500px; 
-	color:#FFFFFF; 
-	text-align:center; 
-	background-color:#3e5fba; 
-	border:solid 1px #EFEFEF; 
-	font-weight:bold; 
-	height:60px;
-}
-
-/* table셋팅 */
-.content_table { width:98%; border-bottom:1px solid #EFEFEF; border-right:1px solid #EFEFEF; border-collapse:collapse; margin-left:auto; margin-right:auto;  clear:both; }
-.content_table td, .content_table th { text-align:center; border-top:1px solid #EFEFEF; border-left:1px solid #EFEFEF; padding:0.3em; }
-.content_table th { background-color:#4D6BB3; color:#FFFFFF; line-height: 1.7em; font-weight:normal;}
-.content_table td { padding-left:5px; text-align:left; line-height: 1.7em; }
-.content_table td.contents { width:100%; height:400px; overflow:auto; }
-.content_table th, .content_table td { vertical-align:middle; }
-
-.content_table select { height:19px; border:#CCCCCC solid 1px; vertical-align:middle; line-height: 1.8em; padding-left:0px; }
-.content_table select option { margin-right:10px; }
-
-</style>
 
 </head>
 <body>
 
-<div id="main_wrap">
-	<div id="middle_wrap">
-		<div id="content_wrap">
-			
-			<div style="width: 502px; height: 166px; margin-left: auto; margin-right: auto;
-						position: relative; top: 100px;">
-								
-			<div class="login_title_warp">
-				<div style="margin-top: 15px">
-					<h2>My Home Page</h2>
-				</div>			
-			</div>
-			
-			<div id="login_wrap">
-			
-				<form action="loginAf.do" name="frmFrom" id="_frmFrom" method="post">
-					
-					<table class="content_table" style="width: 75%">
-					<colgroup>
-						<col style="width:30%">     
-						<col style="width:70%">
-					</colgroup>	
-					
-					<tr>
-						<th style="background: #eeeeee; color: #3e5fba">아이디</th>
-						<td>&nbsp;<input type="text" id="_userid" name="id"
-									size="20px" style="border: 1px solid #dddddd" placeholder="ID">
-							<input type="checkbox" id="chk_save_id">ID 저장
-						</td>
-					</tr>
-					<tr>
-						<th style="background: #eeeeee; color: #3e5fba">패스워드</th>
-						<td>&nbsp;<input type="text" id="_pwd" name="pwd"
-									size="20px" style="border: 1px solid #dddddd" placeholder="Password">							
-						</td>
-					</tr>
-					
-					<tr>
-						<td colspan="2" style="height: 20px; text-align: center;">
-						<span>
-							<a href="#none" id="_btnLogin" title="로그인">
-								<img alt="" src="./image/login_btn.jpg">
-							</a>
-							
-							<a href="#none" id="_btnRegi" title="회원가입">
-								<img alt="" src="./image/regi.jpg">
-							</a>							
-							
-						</span>	
-						</td>
-					</tr>					
-					
-					</table>					
-					
-				</form>				
-						
-			</div>
-			</div>		
-		</div>	
-	</div>
-</div>
 
-<script type="text/javascript">
-$("#_btnRegi").click(function () {	
-	location.href = "regiclick.do";	
-});
+<div id="content">
+<script type="text/javascript">//<!--
 
-$("#_btnLogin").click(function () {
-
-	if($("#_userid").val().trim() == ""){
-		alert('id를 입력해 주십시오');
-		$("#_userid").focus();
+function check(form){
+	if(form.memberid.value==""){
+		alert("아이디를 입력하세요");
+		form.id.focus();
+		return false;
 	}
-	else if($("#_pwd").val().trim() == ""){
-		alert('패스워드를 입력해 주십시오');
-		$("#_pwd").focus();
+	if(form.memberid.value.indexOf(" ")>0){
+		alert("아이디에 공백에 있습니다. 공백을 제거해주세요");
+		form.id.focus();
+		return false;
 	}
-	else{
-		$("#_frmFrom").submit();	
-	}	
-	
-});
+	if(form.memberid.value.length<4){
+		alert("아이디는 4자이상이어야 합니다");
+		form.id.focus();
+		return false;
+	}
+	if(form.pwd.value==""){
+		alert("비밀번호를 입력하세요");
+		form.pwd.focus();
+		return false;
+	}
+	if(form.pwd.value.length < 4 || form.pwd.value.length > 32){
+		alert("비밀번호는 영문,숫자,특수문자 조합 6~32자 입니다.");
+		form.pwd.focus();
+		return false;
+	}
 
-let user_id = $.cookie("user_id");
-if(user_id != null){
-	//alert("쿠키 있음");
-	$("#_userid").val( user_id );
-	$("#chk_save_id").attr("checked", "checked");	
+    var label = jQuery('#login_tab').val() == 'c' ? 'com_login': 'per_login';
+    loggingEventAndTagManager(['login','pc_login_page',label,''],['ga_lead','login','pc_login_page',label]);
+
+
+	if (form['ssl_login'].checked) {
+    	SecureLogin.encrypt(form);
+    }
+
+	return true;
 }
-
-$("#chk_save_id").click(function(){
-
-	if( $("#chk_save_id").is(":checked") ){	// 첵크 되었을 때
-		if( $("#_userid").val().trim() == ""){
-			alert("id를 입력해 주십시오");
-			$("#chk_save_id").prop("checked", false);
-		}
-		else{
-			$.cookie("user_id", $("#_userid").val(), { expires:356, path:'/' });
-		}
-	}
-	else{
-		alert("쿠키 삭제");
-		$.removeCookie("user_id", {path:'/'});
-	}	
-});
+//-->
 
 </script>
+<div class="wrap_content">
+        <form id="login_frm" name="login_frm" method="post" action="loginAf.do">
+        	<!-- <input type="hidden" name="m_code" value="0"> -->
+        	<input type="hidden" name="page_url" value="">
+        	<input type="hidden" name="FrameKey" value="">
+        	<input type="hidden" name="login_tab" value="p" id="login_tab">
+        	<div class="login_message">
+            	<h3>로그인이 필요한 서비스입니다.</h3>
+            	<p>사람인 회원이 아니면, 지금 <span>
+            	<a href="regiclick.do">회원가입</a></span>을 해주세요.</p>
+        	</div>
+        	<div class="login_page_wrap">
+        	    <div class="login_input_wrap">
+        	        <!-- text 알림 -->
+
+                	<script>
+                	</script>
+
+               	 <ul class="tab_member_type">
+                    <li class="t_per t_on"><a href="##">개인회원</a></li>
+                    <li class="t_com"><a href="##">기업회원</a></li>
+                 </ul>
+
+            	 <!-- input box -->
+            	 <div class="setting">
+            	     <input id="autologin" name="autologin" type="checkbox" onclick="if (this.checked) { jQuery('#wrap_autologin').show() } else { jQuery('#wrap_autologin').hide() }" onmousedown="try{n_trackEvent('login', 'pc_login_page' , 'login_save', '');}catch(e){}">
+            	     <label for="autologin" onmousedown="try{n_trackEvent('login', 'pc_login_page' , 'login_save', '');}catch(e){}"> 로그인 유지 </label>
+            	     <div class="dsc_ly" id="wrap_autologin" style="display:none;">
+           	    	      <button class="btn_ly_close" type="button" onclick="jQuery('#wrap_autologin').hide()">닫기</button>
+                	      <span class="dsc_arr"></span>
+                     	 	<p class="dsc_txt">
+                        	    <strong>[개인회원 전용]</strong><br>
+                        	    개인정보 보호를 위해 개인 PC에서만 이용해 주세요.
+                        	</p>
+                 	 </div>
+                 	 <input id="id_save" name="id_save" type="checkbox" onmousedown="try{n_trackEvent('login', 'pc_login_page' , 'id_save', '');}catch(e){}">
+                     <label for="id_save" onmousedown="try{n_trackEvent('login', 'pc_login_page' , 'id_save', '');}catch(e){}">아이디 저장</label>
+                 	 <span class="ssl_login_box">
+                    	 보안
+                    	 <input type="checkbox" id="ssl_login" title="보안접속" class="ssl_login_hide" checked="checked">
+                    	 <label for="ssl_login" id="label_type" class="label_type on">보안접속</label>
+                 	</span>
+              	</div>
+              	<div class="login-form">
+              	  <div class="id-input-box focus">
+              	      <label id="id-label" for="id" style="display: block;">아이디</label>
+              	      <input type="text" id="id" name="memberid" class="txt_tool" value="">
+              	  </div>
+              	  <div class="pw-input-box">
+              	     <label id="password-label" for="password" style="display: block;">비밀번호</label>
+              	     <input type="password" id="password" name="pwd" class="txt_tool" value="" maxlength="32">
+              	  </div>
+              	  <button type="submit" class="btn-login">로그인</button>
+             	 </div>
+             	 <p class="signup-forgotten">
+                 <a id="a_join" href="regiclick.do" onclick="return false;" class="sign-up" onmousedown="try{n_trackEvent('login', 'pc_login_page' , 'join', '');}catch(e){}">회원가입</a>
+                 <span></span>
+                 <a href="/zf_user/helpdesk/idpw-find" class="forgotten" onmousedown="try{n_trackEvent('login', 'pc_login_page' , 'find', '');}catch(e){}">아이디/비밀번호 찾기</a>
+                 <a href="javascript:;" class="service_info_txt">서비스 안내<img src="//www.saraminimage.co.kr/ui/login_page/question_mark.png" alt=""></a>
+                 <a href="/zf_user/applicant/rater/login-form" target="_blank" class="link_rater" style="display: none;">협업자 로그인</a>
+              </p>
+
+              <ul class="social_login" id="wrap_social_login">
+                <li><a href="/zf_user/auth/sign-in-with?provider=naver.com&amp;display=popup&amp;url=%2Fzf_user%2F" class="sl_naver" data-provider="naver">네이버 로그인</a></li>
+                <li><a href="/zf_user/auth/sign-in-with?provider=facebook.com&amp;display=popup&amp;url=%2Fzf_user%2F" class="sl_facebook" data-provider="facebook">페이스북 로그인</a></li>
+                <li><a href="/zf_user/auth/sign-in-with?provider=kakao.com&amp;display=popup&amp;url=%2Fzf_user%2F" class="sl_kakao" data-provider="kakao">카카오 로그인</a></li>
+                <li><a href="/zf_user/auth/sign-in-with?provider=google.com&amp;display=popup&amp;url=%2Fzf_user%2F" class="sl_google" data-provider="google">구글 로그인</a></li>
+                <li><a href="/zf_user/auth/sign-in-with?provider=apple.com&amp;display=popup&amp;url=%2Fzf_user%2F" class="sl_apple" data-provider="apple">애플 로그인</a></li>
+                <li><a href="http://safelogin.kr/sauth/regist?site_code=LT&amp;sub_code=0" class="sl_phone sl_information" target="_blank">휴대폰번호로 로그인</a></li>
+              </ul>
+            </div>
+            <div class="login_banner_wrap">
+             <div id="login" class="promotion-banner-box promotion-login" style="">
+               	<a href="http://www.saramin.co.kr/zf_user/event/iam-ground-app/app-intro" target="_blank">
+                	<img src="https://www.saraminimage.co.kr/w/pc_web_inventory/2019/10/pzef9p_tfxz-2rxibp_A6.png" alt="아이엠그라운드 모의면접 앱 OPEN" width="391" height="330">
+                </a>
+             </div>
+           </div>
+         <div class="clear_both"></div>
+       </div>
+   	<!--  <input type="hidden" name="encid" value="" id="encid"><input type="hidden" name="encpw" value="" id="encpw"><input type="hidden" name="seq" value="" id="seq">     -->
+    </form>
+   </div>
+<script type="text/javascript">
+//<!--
+//-->
+</script>
+        <div id="div-gpt-ad-1550638948072-0-wrapper" class="google-adsense doctype">
+           <div class="google-standby-banner" style="display: none;">
+              <a href="http://www.saramin.co.kr/avatar-branding/?inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=Waiting_Main_BigBanner&amp;inner_term=avatar_introduce" target="_blank"><img src="https://www.saraminbanner.co.kr/adserver/default/2019/02/pn5wwi_xv5y-2rxiej_BIPC728x90.png" alt=""></a>
+           </div>
+           <div id="div-gpt-ad-1550638948072-0-inner" style="">
+            <div id="div-gpt-ad-1550638948072-0" data-google-query-id="CN-Qg_Gj5PACFZEEXAodAGcIog">
+               <div id="google_ads_iframe_/61280259/Login_728x90_0__container__" style="border: 0pt none;">
+               		 <iframe id="google_ads_iframe_/61280259/Login_728x90_0" title="3rd party ad content" name="google_ads_iframe_/61280259/Login_728x90_0" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="conversion-measurement 'src'" srcdoc="" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true">
+               		</iframe>
+               </div>
+            </div>
+           </div>
+        </div>
+</div>
+
+ <script type="text/javascript">
+    //<!--
+                    jQuery(function() {
+                    var $ = jQuery;
+                    $('.login_page_wrap')
+                        .on('click', '.t_per', function() {
+                            if( !$(this).hasClass('t_on') ) {
+                                $(this).addClass('t_on').next().removeClass('t_on');
+                                $('#lbl_autologin').show();
+                                $('.link_rater').hide();
+                                $('#login_tab').val('p');
+                               	alert('들어옴?');
+                                $('#login_frm').attr('action', 'loginAf.do');
+                            }
+                        })
+                        .on('click', '.t_com', function() {
+                            if( !$(this).hasClass('t_on') ) {
+                                $(this).addClass('t_on').prev().removeClass('t_on');
+                                $('#lbl_autologin').hide();
+                                $('.link_rater').show();
+                                $('#login_tab').val('c');
+                                $('#login_frm').attr('action', 'businessloginAf.do');
+                           }
+                        })
+                      /*    .on('click', '.service_info_txt', function () { */
+                          /*   var url = '/zf_user/help/help-word/main';
+                            if ($('#login_tab').val() === 'c') {
+                                url += '?memberCode=com';
+                            }
+                            location.href = 'businessloginAf.do';
+                        }); */
+
+                     /* $('#login_frm')
+
+                        .on('click', '#a_join', function (e) {
+                            e.preventDefault();
+                            location.href = this.href + '?ut=' + $('#login_tab').val();
+                        })
+                    ; */
+                });
+                //-->
+
+
+    //<!--
+
+var $j = jQuery.noConflict();
+
+function checkLoginValue() {
+   $j('#memberid, #pwd').each(function (index, el) {
+       $j(el).siblings('label').hide();
+
+       if($j(el).val() == '') {
+           $j(el).siblings('label').show();
+       }
+
+       if ($j(el).css('background-color') == 'rgb(250, 255, 189)') {
+           $j('#id-label, #password-label').hide();
+       }
+   });
+}
+
+
+<!-- 자바스크립트 key를 입력하여 초기화해줌 -->
+<!--  window.Kakao.init("8a32aafcf70137a891ba6d0b02c48e38");
+
+function kakaoLogin() {
+	window.Kakao.Auth.login({
+		scope:'profile, account_email, birthday',
+		success: function(authObj) {
+			alert('success');
+			console.log(authObj);
+			window.Kakao.API.request({
+				url: '/v2/user/me',
+				success: res => {
+					const kakao_account = res.kakao_account;
+					console.log(kakao_account);
+					console.log("이름:"+kakao_account.profile.nickname);
+					console.log("생일:"+kakao_account.birthday);
+					console.log("이메일:"+kakao_account.email);
+
+
+ 					 console.log("성별:"+kakao_account.gender);
+					console.log("나이대:"+kakao_account.age_range);
+				}
+
+			});
+		}
+	});
+}
+ -->
+
+
+ <script type='text/javascript'>
+        //<![CDATA[
+        // 사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('8a32aafcf70137a891ba6d0b02c48e38');
+        // 카카오 로그인 버튼을 생성합니다.
+        Kakao.Auth.createLoginButton({
+            container: '#kakao-login-btn',
+            success: function (authObj) {
+                alert(JSON.stringify(authObj));
+            },
+            fail: function (err) {
+                alert(JSON.stringify(err));
+            }
+        });
+      //]]>
+    </script>
+
+    function saraminEffect(memberType) {
+        if (memberType === 'compnay') {
+            $j('.wrap_member_info').show();
+        } else {
+            $j('.wrap_member_info').hide();
+        }
+    }
+});
 
 
 
 </body>
 </html>
-
-
-
-
-

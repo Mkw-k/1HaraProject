@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="Business">
+  	<select id="getId" parameterType="bit.com.a.dto.BusinessDto" resultType="java.lang.Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM BUSINESS
+		WHERE MEMBERID=#{memberid}
+	</select>
+	
+	<insert id="addmember" parameterType="bit.com.a.dto.BusinessDto">
+		INSERT INTO BUSINESS(MEMBERID, PWD, COMPANYNAME, NAME, COMADDRESS, ADDRESSDETAIL, AUTH, DEL)
+		VALUES(#{memberid}, #{pwd}, #{companyname}, #{name}, #{comaddress}, #{addressdetail}, 2, 0)
+	</insert>
+		
+	<select id="login" parameterType="bit.com.a.dto.BusinessDto" resultType="bit.com.a.dto.BusinessDto">
+		SELECT MEMBERID, COMPANYNAME, NAME, AUTH 
+		FROM BUSINESS
+		WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
+	</select>
+  </mapper>

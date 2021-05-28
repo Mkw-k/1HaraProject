@@ -1,6 +1,7 @@
 package bit.com.a.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import bit.com.a.dao.RecruitDao;
 import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.RecruitDto;
+import bit.com.a.dto.RecruitParam;
 import bit.com.a.service.RecruitService;
 
 @Service
@@ -17,8 +19,8 @@ public class RecruitServiceImpl implements RecruitService{
 	RecruitDao dao;
 
 	@Override
-	public boolean writeRecruit(RecruitDto dto) {
-		return dao.writeRecruit(dto);
+	public boolean writeRecruit(Map<String, Object> param) {
+		return dao.writeRecruit(param);
 	}
 
 	@Override
@@ -44,6 +46,26 @@ public class RecruitServiceImpl implements RecruitService{
 	@Override
 	public boolean deleteRecruit(int jobseq) {
 		return dao.deleteRecruit(jobseq);
+	}
+
+	@Override
+	public List<RecruitParam> buscodeListData() {
+		return dao.buscodeListData();
+	}
+
+	@Override
+	public List<RecruitParam> buscode2ListData(int buscode) {
+		return dao.buscode2ListData(buscode);
+	}
+
+	@Override
+	public List<RecruitParam> buscode3ListData(int buscode) {
+		return dao.buscode3ListData(buscode);
+	}
+
+	@Override
+	public List<String> getBsnameForDetail(int jobseq) {
+		return dao.getBsnameForDetail(jobseq);
 	}
 	
 	

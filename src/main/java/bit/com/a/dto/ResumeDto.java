@@ -6,11 +6,12 @@ public class ResumeDto {
 	private int careerseq;
 	private int educationseq;
 	private String desiredsalary;
-	private int buscode;
+	private String buscode1;
+	private String buscode2;
+	private String buscode;
 	private String workingtype;
 	private String area1name;
 	private String area2name;
-	private String desiredworking;
 	private int militaryservice;
 	private String resumeimage;
 	private String resumetitle;

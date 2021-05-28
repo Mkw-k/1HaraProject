@@ -349,7 +349,7 @@ a.box-btn:hover, a.border-btn:hover {
 							
 							<tr>
 							<td colspan="2">
-								<input type="submit" value="글쓰기" class="box-btn">
+								<!-- <input type="submit" value="글쓰기" class="box-btn"> -->
 								<a href="#" class="box-btn" id="writeBtn" >글쓰기</a>
 							</td>
 							</tr> 
