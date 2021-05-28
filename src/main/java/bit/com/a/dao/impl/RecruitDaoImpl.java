@@ -67,6 +67,11 @@ public class RecruitDaoImpl implements RecruitDao{
 	public List<RecruitParam> buscode3ListData(int buscode) {
 		return session.selectList(ns+"buscode3ListData", buscode);
 	}
+
+	@Override
+	public List<String> getBsnameForDetail(int jobseq) {
+		return session.selectList(ns+"getBsnameForDetail", jobseq);
+	}
 	
 	
 }

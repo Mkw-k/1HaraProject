@@ -260,11 +260,11 @@ function getrecruListData( pNumber, search ){
 									+"<td>" + val.jobVolumn + "</td>"
 									+"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
 									+"<td>" + val.jobEnd +"<br>"+val.regdate+ "&nbsp;&nbsp;"
-									+"<input type='button' value='공고삭제'>"+ "</td>";
+									+"<input type='button' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"+ "</td>";
 							}
 							
 							else{
-								app += "<td style='text-align:left' colsapn='6'>"
+								app += "<td style='text-align:left' colspan='6'>"
 										+"<font color='#ff0000'>********* 이 글은 작성자에 의해서 삭제되었습니다</font>"
 										+"</td>";
 							}
@@ -334,6 +334,10 @@ function loadPage( totalCount ) {
 	});
 }
 
+
+function deleteRecruit(jobSeq) {
+	location.href="deleteRecruit.do?jobSeq="+jobSeq;
+}
 
 </script>
 
