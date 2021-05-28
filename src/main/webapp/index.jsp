@@ -31,6 +31,7 @@ index.jsp
 
 <a href="newslist.do">끼업 뉴쓰</a>
 
+<a href="kokolog.do">까까오 로꾸인</a>
 
 
 </body>

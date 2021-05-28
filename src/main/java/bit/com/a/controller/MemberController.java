@@ -1,13 +1,16 @@
 package bit.com.a.controller;
 
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.mybatis.logging.LoggerFactory;
+import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +41,13 @@ public class MemberController {
 		model.addAttribute("mem", mem);
 		return "home";
 	}
+	
+	@RequestMapping(value = "kokolog.do", method = RequestMethod.GET)
+	public String kokolog(Model model, MemberDto mem) {	
+		model.addAttribute("mem", mem);
+		return "login/kokolog";
+	}
+	
 	
 	@RequestMapping(value = "regiclick.do", method=RequestMethod.GET)
 	public String regiclick(Model model, MemberDto mem) {
@@ -439,6 +449,39 @@ public class MemberController {
 	}
 
 
+	@RequestMapping(value = "login1.do", method = {RequestMethod.GET,RequestMethod.POST})
+	   public String login1(@RequestParam(value = "code", required = false) String code) throws Exception {
+	   
+		
+		
+	      return "login/login";
+	   }
+
+	
+	
+	@RequestMapping(value = "/", method = {RequestMethod.GET,RequestMethod.POST})
+		/**
+		 * Simply selects the home view to render by returning its name.
+		 */
+		public String home(Locale locale, Model model) {
+			System.out.println("카카오 들어옴");
+			
+			Date date = new Date();
+			DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+			
+			String formattedDate = dateFormat.format(date);
+			
+			model.addAttribute("serverTime", formattedDate );
+			
+			return "home";
+		
+	}
+	
+	@RequestMapping("/sample10")
+    public String loginkakao(@RequestParam(value = "code", required = false) String code) throws Exception{
+        System.out.println("loginkakao#########" + code);
+        return "login/login";
+    }
 	
 	
 }    
