@@ -62,7 +62,7 @@
     <form action="" method="post" id="myForm">
         <div class="form-group has-feedback">
             <label class="control-label" for="id">아이디</label>
-            <input class="form-control" type="text" name="companyid" id="companyid"/>
+            <input class="form-control" type="text" name="memberid" id="memberid"/>
             <input type="button" class="btn btn-secondary" name="chkIdBtn" id="chkIdBtn" value="중복확인"/>
          	<br>
          	<p id="idCheck" style="font-size: 12px"></p>
@@ -81,7 +81,7 @@
         </div>
         <div class="form-group has-feedback"> 
   			<label class="control-label" for="name">이름</label> 
-  			<input type="text" class="form-control" id="busi_name" name="busi_name" placeholder=""> 
+  			<input type="text" class="form-control" id="name" name="name" placeholder=""> 
   		</div> 
         <div class="form-group has-feedback">
             <label class="control-label" for="companyname">회사명</label>
@@ -89,7 +89,7 @@
         </div>
         <div class="form-group has-feedback">
         	<label class="control-label" for="registrationNum">회사주소</label>
-        		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호">
+        		<input type="text" class="form-control" id="sample6_postcode" readonly="readonly" placeholder="우편번호">
 				<input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 				<input type="text" class="form-control" id="sample6_address" name="comaddress" placeholder="주소">
 				<input type="text" class="form-control" id="sample6_detailAddress" name="addressdetail" placeholder="상세주소">
@@ -125,16 +125,16 @@
 	//가입버튼 클릭시
 	$("#_btnRegi").click(function () {
 
-		if( $("#companyid").val().trim() == "" ){
+		if( $("#memberid").val().trim() == "" ){
 			alert("id를 입력해 주십시오");
-			$("#companyid").focus();
+			$("#memberid").focus();
 		}
 		else if( $("#pwd").val().trim() == "" ){
 			alert("패스워드를 입력해 주십시오");
 			$("#pwd").focus();
 		}
 		else{	
-			alert($("#companyid").val());
+			alert($("#memberid").val());
 			$("#myForm").attr("action", "businessregiAf.do").submit();
 			alert("회원가입이 성공적으로 완료되었습니다");
 		}	
@@ -342,17 +342,17 @@
     	$("#chkIdBtn").click(function () {
     		
     		var userIdCheck = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);
-    		if(!userIdCheck.test($('#companyid').val())) {
+    		if(!userIdCheck.test($('#memberid').val())) {
     			alert("ID는 영문 대소문자, 숫자, _ , - 만 입력 가능하며 5~20 글자만 가능합니다. ");
     			return;
     		};
-    		let comid = $("#companyid").val();
+    		let comid = $("#memberid").val();
     		alert(comid);
     		
     		$.ajax({
     			url: "businessgetId.do",
     			type: "post",
-    			data: { companyid:comid },
+    			data: { memberid:comid },
     			success:function( msg ){
     				alert('chkIdBtn success');
     				if(msg == "YES"){
@@ -364,7 +364,7 @@
     				}else{
     					$("#idCheck").css("color", "#ff0000");
     					$("#idCheck").html('이미 존재하는 ID입니다.');
-    					$("#companyid").val("");
+    					$("#memberid").val("");
     				}
     			},
     			error:function(){

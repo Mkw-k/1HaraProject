@@ -5,6 +5,7 @@ import java.util.Map;
 
 import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.RecruitDto;
+import bit.com.a.dto.RecruitParam;
 
 public interface RecruitDao {
 
@@ -19,5 +20,13 @@ public interface RecruitDao {
 	RecruitDto getRecruitListOne(int jobseq);
 	
 	boolean deleteRecruit(int jobseq);
+	
+	List<RecruitParam> buscodeListData();
+	
+	List<RecruitParam> buscode2ListData(int buscode);
+	
+	List<RecruitParam> buscode3ListData(int buscode);
+	
+	List<String> getBsnameForDetail(int jobseq);
 	
 }

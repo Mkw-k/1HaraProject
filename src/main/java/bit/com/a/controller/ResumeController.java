@@ -26,4 +26,10 @@ public class ResumeController {
 	
 		return "resume/writeResume";
 	}
+	
+	@RequestMapping(value = "test.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String gotest() {	
+	
+		return "resume/test";
+	}
 }

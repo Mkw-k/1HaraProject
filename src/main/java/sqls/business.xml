@@ -7,17 +7,17 @@
   	<select id="getId" parameterType="bit.com.a.dto.BusinessDto" resultType="java.lang.Integer">
 		SELECT NVL(COUNT(*), 0)
 		FROM BUSINESS
-		WHERE COMPANYID=#{companyid}
+		WHERE MEMBERID=#{memberid}
 	</select>
 	
 	<insert id="addmember" parameterType="bit.com.a.dto.BusinessDto">
-		INSERT INTO BUSINESS(COMPANYID, PWD, COMPANYNAME, BUSI_NAME, COMADDRESS, ADDRESSDETAIL, AUTH, DEL)
-		VALUES(#{companyid}, #{pwd}, #{companyname}, #{busi_name}, #{comaddress}, #{addressdetail}, 2, 0)
+		INSERT INTO BUSINESS(MEMBERID, PWD, COMPANYNAME, NAME, COMADDRESS, ADDRESSDETAIL, AUTH, DEL)
+		VALUES(#{memberid}, #{pwd}, #{companyname}, #{name}, #{comaddress}, #{addressdetail}, 2, 0)
 	</insert>
 		
 	<select id="login" parameterType="bit.com.a.dto.BusinessDto" resultType="bit.com.a.dto.BusinessDto">
-		SELECT COMPANYID, COMPANYNAME 
+		SELECT MEMBERID, COMPANYNAME, NAME, AUTH 
 		FROM BUSINESS
-		WHERE MEMBERID=#{companyid} AND PWD=#{pwd}
+		WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 	</select>
   </mapper>
