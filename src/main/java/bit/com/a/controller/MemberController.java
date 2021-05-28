@@ -457,16 +457,6 @@ public class MemberController {
 	}
 
 
-	@RequestMapping(value = "login1.do", method = {RequestMethod.GET,RequestMethod.POST})
-	   public String login1(@RequestParam(value = "code", required = false) String code) throws Exception {
-
-
-
-	      return "login/login";
-	   }
-
-
-
 	@RequestMapping(value = "/", method = {RequestMethod.GET,RequestMethod.POST})
 		/**
 		 * Simply selects the home view to render by returning its name.
