@@ -17,6 +17,8 @@
 	</bean>
 
 
+ 
+
 	<!-- 
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.prefix = "/WEB-INF/views/";
