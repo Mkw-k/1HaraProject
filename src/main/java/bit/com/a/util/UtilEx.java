@@ -3,7 +3,6 @@ package bit.com.a.util;
 
 import java.sql.Date;
 import java.util.List;
-import bit.com.a.dto.CalendarDto;
 import bit.com.a.dto.RecruitDto;
 
 public class UtilEx {
@@ -54,32 +53,34 @@ public class UtilEx {
 		
 		// 2021 3 19	-> 20210319
 		String dates = (year + "") + two(month + "") + two(day + "");
+			str += "<ul>";		
+			for(RecruitDto dto : list) {
+				if(dto.getJobStart().substring(0, 8).equals(dates)) {
+					str += "<li>";
+					str += "<a href='recruitDetail.do?seq=" + dto.getJobSeq() + "'>";
+					//str += "<font style='font-size:10px; color:blue'>";
+					str += dot3(dto.getJobTitle());
+					//str += "</font>";
+					str += "</a>";
+					str += "</li>";
+				}
+				else if(dto.getJobEnd().substring(0, 8).equals(dates)) {
+					
+				}
+			}		
 		
-		str += "<ul>";		
-		
-		for(RecruitDto dto : list) {
-			if(dto.getJobStart().substring(0, 6).equals(dates)) {
-				str += "<li>";
-				str += "<a href='caldetail.do?seq=" + dto.getJobSeq() + "'>";
-				str += "<font style='font-size:10px; color:blue'>";
-				str += dot3(dto.getJobTitle());
-				str += "</font>";
-				str += "</a>";
-				str += "</li>";
-			}			
-		}		
-		
-		str += "</ul>";
+			str += "</ul>";
 		
 		return str;
 	}
+
 	
 	public static String yyyymm(int year, int month) {
 		return "" + year + two(month + "");
 	}
 	
 	public static String yyyymmdd(int year, int month, int day) {
-		return "" + year + two(month + "") + two(day + "");
+		return "" + year + "/" + two(month + "") + "/" + two(day + "");
 	}
 	
 	public static String yyyymmddhhmm(int year, int month, int day, int hour, int min) {		
@@ -119,14 +120,3 @@ public class UtilEx {
 		}
 	
 }
-
-
-
-
-
-
-
-
-
-
-

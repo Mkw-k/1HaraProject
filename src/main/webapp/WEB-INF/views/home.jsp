@@ -650,7 +650,7 @@ margin-right : 450px;
 		    <a href="#">채용공고</a>
 		    <a href="#">기업정보</a>
 		    <a href="jobtalk.do">취업톡톡</a>
-		    <a href="#">공채달력</a>
+		    <a href="calendarlist.do">공채달력</a>
 		    <a href="#">자료실</a>
 		    <a href="notice.do">공지사항</a>
 		  </div>
@@ -667,7 +667,7 @@ margin-right : 450px;
       <a class="nav-link bgc" href="jobtalk.do" style="color:#2186eb">취업톡톡</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="calendars.do" style="color:#2186eb">공채달력</a>
+      <a class="nav-link bgc" href="calendarlist.do" style="color:#2186eb">공채달력</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
@@ -1008,7 +1008,7 @@ margin-right : 450px;
 		                    <div class="row">
 		                        <div>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br/>10대기업</a>
-		                          <a href="calendars.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>공채달력</a>
+		                          <a href="calendarlist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>공채달력</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>TOP10</a>
 		                        </div>
 		                        <div>

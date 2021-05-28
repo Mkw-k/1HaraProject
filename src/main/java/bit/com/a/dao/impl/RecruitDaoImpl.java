@@ -73,5 +73,11 @@ public class RecruitDaoImpl implements RecruitDao{
 		return session.selectList(ns+"getBsnameForDetail", jobseq);
 	}
 	
+	@Override
+	public List<RecruitDto> getCalendarList(RecruitDto rec) {
+		return session.selectList(ns+"getCalendarList", rec);
+	}
+	
+	
 	
 }

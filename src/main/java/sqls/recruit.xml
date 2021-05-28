@@ -143,7 +143,7 @@ WHERE JOBSEQ = ${jobseq}
 <update id="deleteRecruit" parameterType="Integer">
 	UPDATE JOB 
 	SET DEL=1 
-	WHERE JOBSEQ=${jobseq}
+	WHERE JOBSEQ=#{jobseq}
 </update>
 
 <!-- 직무분류코드1(대분류) 불러오기 : 공고작성 페이지에 뿌려주기위함 -->
@@ -169,6 +169,15 @@ WHERE JOBSEQ = ${jobseq}
 
 </select>
 
+<select id="getCalendarList" parameterType="bit.com.a.dto.RecruitDto"
+	resultType="bit.com.a.dto.RecruitDto">
 
+	SELECT JOBSEQ, JOBTITLE, JOBCONTENT, JOBSTART, JOBEND
+	FROM (SELECT ROW_NUMBER()OVER(PARTITION BY SUBSTR(JOBSTART, 1, 8)ORDER BY JOBSTART ASC) AS RNUM,  
+			JOBSEQ, JOBTITLE, JOBCONTENT, JOBSTART, JOBEND  
+		  FROM JOB  
+		  WHERE SUBSTR(JOBSTART, 1, 7)= #{jobStart} )
+		  WHERE RNUM BETWEEN 1 AND 5 
+</select>
 
 </mapper>

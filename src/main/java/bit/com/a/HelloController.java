@@ -43,9 +43,6 @@ public class HelloController {
 
 			return "infoyakgwan";
 		}
-
-
-
 		@RequestMapping(value = "infoemail.do", method = RequestMethod.GET)
 		public String infoemail(Model model) {
 			logger.info("HelloController home() " + new Date());
