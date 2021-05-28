@@ -544,10 +544,16 @@ margin-right : 450px;
 </style>
 </head>
 <body>
+
 <div class="all">
+
+<header>	
+ <!-- 메인 검색 창 -->
+
 <header>
 
  <!-- 검색html -->
+
 
  <section style="padding: 0">
  <form id="search_form_recruit" onsubmit="event.preventDefault()" style="height: 400px; background-image: url('개발자23.gif');">
@@ -594,6 +600,16 @@ margin-right : 450px;
     </div>
 </form>
 </section>
+<<<<<<< HEAD
+<!-- 메인검색창 끝 -->
+</header>
+
+<!-- 상단 네비바 -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">  
+  <div>
+	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
+  </div>
+=======
  <!--  -->
 
 
@@ -612,9 +628,10 @@ margin-right : 450px;
 	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
 	</div>
 
-  <ul class="navbar-nav">
 <!-- Dropdown -->
 
+
+<ul class="navbar-nav">
 	 <li class="nav-item">
             <c:choose>
             	<c:when test="${login.memberid ne null }">
@@ -630,10 +647,10 @@ margin-right : 450px;
     					<c:otherwise>
              				<p><b>[사원]${login.name }</b>님</p>
     					</c:otherwise>
-
-    				</c:choose>
-            	 </c:when>
-         	 </c:choose>
+    				</c:choose>			
+            	 </c:when> 
+         	 </c:choose>  
+      </li>
          	<%--  <c:choose>
          	 	<c:when test="${login1.memberid ne null }">
          	 		<c:when test="${login1.auth == 2}">
@@ -643,6 +660,8 @@ margin-right : 450px;
     		 </c:choose> --%>
     </li>
 
+
+<!-- 전체보기 드롭다운 메뉴 -->
     <li class="nav-item dropdown" style="padding-top: 5px;">
      <div class="dropdown">
 		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
@@ -656,7 +675,7 @@ margin-right : 450px;
 		  </div>
 		</div>
     </li>
-
+<!-- 전체보기 드롭다운 메뉴 끝 -->
     <li class="nav-item">
       <a class="nav-link bgc" href="recuruitlist.do" style="color:#2186eb">채용공고</a>
     </li>
@@ -675,20 +694,10 @@ margin-right : 450px;
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
-
-
-
-
-
-
     <li class="nav-item">
-
-
      	 <a class="nav-link bgc" href="resumeMain.do" style="color: #2186eb;background-color: #fff;">이력서관리</a>
-
-    </li>
+    </li>    
     <li class="nav-item">
-
        <c:if test="${login.auth==3}">
           <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a>
       </c:if>
@@ -705,7 +714,7 @@ margin-right : 450px;
    </li>
   </ul>
 </nav>
-<br>
+
 
 
 
