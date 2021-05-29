@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
 <meta name="_csrf_parameter" content="_csrf"><meta name="_csrf_header" content="X-CSRF-TOKEN"><meta name="_csrf" content="5557377e-0013-402c-90e5-0dad4d61305f">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -105,11 +105,11 @@ font-weight:600;
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
 
 body {
-				  font-family: "Ubuntu", sans-serif;
-				  background-color: #3498db;
+	  font-family: "Ubuntu", sans-serif;
+	  background-color: #3498db;
 			}
 .container {
-				  padding-top: 50px;
+	  padding-top: 50px;
 			}
 article {
   margin-bottom: 30px;
@@ -135,7 +135,7 @@ dt, dd {
 
 /* 학력 선택 */
 .searchable-container{margin:20px 0 0 0}
-.searchable-container label.btn-default.active{background-color:#007ba7;color:#FFF}
+.searchable-container label.btn-default.active{background-color:#2186eb;color:#FFF}
 .searchable-container label.btn-default{width:90%;border:1px solid #efefef;margin:5px; box-shadow:5px 8px 8px 0 #ccc;}
 .searchable-container label .bizcontent{width:100%;}
 .searchable-container .btn-group{width:90%}
@@ -151,7 +151,20 @@ dt, dd {
 .menu a{cursor:pointer;}
 .menu .hide{display:none;}
 
+/* 네비바 고정 */
+.navbar {
+    position: absolute;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
 
+/* 이미지 크기 조정 */
+.profileimg{
+	width: 200px!important;
+	height: 200px
+
+}
 
  
 </style>
@@ -278,26 +291,21 @@ dt, dd {
 </div>
 </section>
 
-
-
-
-
-
 			<form action="writeAfResume.do">
 
 
-				
-
-
-				<div class="container" style="margin-top: 0px;">
+				<div class="container" style="margin-top: 0px;margin-right: 400px;">
 					<div class="row">
-						<div class="col-lg-offset-2 col-lg-12">
+						<div class="col-lg-offset-2 col-lg-12" style="margin-left: 0px;">
 							<section class="panel panel-default">
 								<div class="panel-body">
 									<article class="panel-body">
 										<figure class="text-center">
-											<img src="<%=request.getContextPath()%>/image/profile.jpg"
-												class="img-thumbnail img-circle img-responsive" alt="me">
+											<div class="select_img">
+											<img src="./image/profile.jpg"
+												class="img-thumbnail img-circle img-responsive profileimg" alt="" style="/* width: 510.222px; */width: 200px;height: 200px;">
+											</div>
+											<input type="file" name="fileload" style="width: 400px;margin-left: 500px;" id="resumeimg">
 											<figcaption style="height: 500px;">
 
 												
@@ -465,12 +473,6 @@ dt, dd {
 											<div class="area_title">
 												<h3 class="title">학력사항</h3>
 												<p class="txt_noti">최종학력 선택 후 학력사항을 입력하세요</p>
-
-												<div class="area_import_btn">
-													<button type="button" class="btn" data-api_type="layer"
-														data-api_id="item_import" data-item="school">저장된
-														정보 불러오기</button>
-												</div>
 											</div>
 
 
@@ -1066,12 +1068,6 @@ dt, dd {
 
 											<div class="area_title">
 												<h3 class="title">경력사항</h3>
-
-												<div class="area_import_btn">
-													<button type="button" class="btn" data-api_type="layer"
-														data-api_id="item_import" data-item="career">저장된
-														정보 불러오기</button>
-												</div>
 											</div>
 
 											<div class="resume_write resume_career">
@@ -1601,12 +1597,6 @@ dt, dd {
 											data-order_item="activity" data-except="y">
 											<div class="area_title">
 												<h3 class="title">대외활동</h3>
-
-												<div class="area_import_btn">
-													<button type="button" class="btn" data-api_type="layer"
-														data-api_id="item_import" data-item="activity">저장된
-														정보 불러오기</button>
-												</div>
 											</div>
 
 											<div class="resume_write resume_write_add">
@@ -1715,12 +1705,6 @@ dt, dd {
 											data-order_item="license" data-except="y">
 											<div class="area_title">
 												<h3 class="title">자격증/어학/수상 내역</h3>
-
-												<div class="area_import_btn">
-													<button type="button" class="btn" data-api_type="layer"
-														data-api_id="item_import" data-item="license">저장된
-														정보 불러오기</button>
-												</div>
 											</div>
 
 											<div class="resume_write resume_write_add">
@@ -1964,14 +1948,6 @@ dt, dd {
 
 													<p class="txt_noti">최대 4000자</p>
 
-													<div class="area_import_btn">
-														<button type="button" class="btn" data-api_type="layer"
-															data-api_id="introduce_contents_items">자기소개서 항목
-															예시</button>
-														<button type="button" class="btn" data-api_type="layer"
-															data-api_id="item_import" data-item="introduce">저장된
-															정보 불러오기</button>
-													</div>
 												</div>
 
 
@@ -1994,39 +1970,13 @@ dt, dd {
 																	<div class="textarea_wrap">
 																		<textarea id="intro_contents_1621990782"
 																			name="intro_contents[]" class="textarea_type1"
-																			rows="1" cols="100" data-char-count="true" placeholder="자소서 내용"></textarea>
+																			rows="1" cols="100" data-char-count="true" placeholder="자소서 내용" name="contents" onkeyup="viewDisplay(this)"></textarea>
 																		<p class="txt_error"></p>
 																	</div>
 
 																	<div class="spellcheck" style="display: none;">
 																		<div class="item_spellcheck">
-																			<p class="info_txt">
-																				<span class="title"><strong class="point">0개</strong>의
-																					오타가 있습니다.</span><br> <span class="point">붉은색
-																					단어</span>를 클릭하시면 수정하실 수 있습니다.
-																			</p>
-																			<div class="btn_wrap">
-
-																				<div class="btn_spellall_change_wrap">
-																					<button type="button"
-																						class="btn_type4 btn_spellall_change">
-																						맞춤법 일괄 수정</button>
-																					<a class="btn_tip" href="#none">
-																						<div class="toolTip">
-																							<span class="tail tail_bottom_center"></span>
-																							<div class="toolTipCont">
-																								<p class="tip_txt">클릭 시 모두 첫 번째 대체어로 수정됩니다.</p>
-																							</div>
-																						</div>
-																					</a>
-																				</div>
-
-																				<button type="button"
-																					class="btn_type4 btn_spellchek_layer"
-																					data-api_type="layer"
-																					data-api_id="introduce_spell_details">검사
-																					결과 상세보기</button>
-																			</div>
+																			<!-- 스펠링체크 -->
 																		</div>
 
 																		<div class="txt" style="white-space: pre-wrap"></div>
@@ -2036,14 +1986,7 @@ dt, dd {
 
 																<div class="item_edit">
 																	<div class="txt_length">
-																		<strong class="title_length">글자수 </strong> <span
-																			class="txt_byte">(공백포함) <strong
-																			class="input-char">0</strong> 자 / <strong
-																			class="input-byte">0</strong> byte
-																		</span> <i class="bar">|</i> <span class="txt_byte">(공백제외)
-																			<strong class="input-char">0</strong> 자 / <strong
-																			class="input-byte">0</strong> byte
-																		</span>
+																		
 																	</div>
 																	<div class="btn_wrap">
 																		<button type="button"
@@ -2060,10 +2003,7 @@ dt, dd {
 															</div>
 															<div class="txt_total_length">
 																<div class="txt_length">
-																	<strong class="title_length">총 글자수</strong> <span
-																		class="txt_byte"><strong
-																		class="input-char point">0</strong> 자 / <strong
-																		class="input-byte">0</strong> byte</span>
+																	<p><span class="viewByte red" style="color: red;"></span>/4000byte</p>
 																</div>
 															</div>
 															<div class="area_add_btn">
@@ -2117,6 +2057,7 @@ dt, dd {
 																	    <ul>
 																	        <li class="menu">
 																	            <a><img src="./image/plus.png" alt="추가하기" height="30" width="30"/></a>
+																	            
 																	            <div class="hide">
 																	                <input type="checkbox">정규직
 																	                <input type="checkbox">계약직
@@ -2124,6 +2065,7 @@ dt, dd {
 																	                <input type="checkbox">전임
 																	                <input type="checkbox">파견직
 																	                <input type="checkbox">프리랜서
+																					<a style="color: #2186eb;">추가하기</a>
 																	            </div>
 																	        </li>
 																	    </ul>
@@ -2224,6 +2166,7 @@ dt, dd {
 																		        <div class="hide">
 																		             <select name="sido1" id="sido1"></select>
 																					 <select name="gugun1" id="gugun1"></select>
+																					 <a style="color: #2186eb;">추가하기</a>
 																				 </div>
 																	        </li>
 																	    </ul>
@@ -2252,26 +2195,28 @@ dt, dd {
 
 																<div>
 																	<ul class="list_task list_hope_jobs size_type5"></ul>
-																	<div>
-																	    <ul>
-																	        <li class="menu">
-																	        <a><img src="./image/plus.png" alt="추가하기" height="30" width="30"/></a>
-																		        <div class="hide">
-											                                        <div class="form-group" id="_buscodeList1" style="border: 1px solid gold; float: left; width: 33%;">
-											                                          	<p>직무분류1</p>
-											                                          	 
-											                                            <!-- 데이터들어오는자리 -->
-											                                        </div>
-											                                        <div id="_buscodeList2" style="border: 1px solid red; float: left; width: 33%;">
-																						<p>직무분류2</p>
-											                                            <!-- 데이터들어오는자리 -->
-																					</div>
-																					<div id="_buscodeList3" style="border: 1px solid blue; float: left; width: 33%;">
-																						<p>직무분류3</p>
-											                                            <!-- 데이터들어오는자리 -->
-																					</div>
-										                                        </div>
-																	        </li>
+																				<div>
+																					<ul>
+																						<li class="menu"><a><img
+																								src="./image/plus.png" alt="추가하기" height="30"
+																								width="30" /></a>
+																							<div class="hide">
+																								<span class="col-md-3" id="_buscodeList1">
+																									<p>직무분류1</p> <!-- 데이터들어오는자리 -->
+																								</span> <span class="col-md-3" id="_buscodeList2">
+																									<p>직무분류2</p> <!-- 데이터들어오는자리 -->
+																								</span>
+																								<div class="col-md-3" style=""
+																									id="_buscodeList3">
+																									<p>직무분류3</p>
+																									<!-- 데이터들어오는자리 -->
+																								</div>
+																								<div class="col-md-3">
+																								<a style="color: #2186eb;display: flex;">추가하기</a>
+																								</div>
+																							</div>
+																				
+																				</li>
 																	    </ul>
 																	</div>
 																</div>
@@ -2606,15 +2551,15 @@ $('document').ready(function() {
 	   var area5 = ["달서구","수성구","달성군"];
 	   var area6 = ["울주군"];
 	   var area7 = ["금정구","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","해운대구","기장군"];
-	   var area8 = ["고양시","과천시","광명시","광주시","구리시","군포시","김포시","남양주시","동두천시","부천시","성남시","수원시","시흥시","안산시","안성시","안양시","양주시","오산시","용인시","의왕시","의정부시","이천시","파주시","평택시","포천시","하남시","화성시","가평군","양평군","여주군","연천군"];
+	   var area8 = ["고양시","과천시","광명시","광주시","구리시","군포시","김포시","남양주시","동두천시","부천시","성남시","수원시","시흥시","안산시","안성시","안양시","양주시","오산시","용인시","의왕시","의정부시","이천시","파주시","평택시","포천시","하남시","화성시","가평군","양평군","연천군","권선구","기흥구","단원구","덕양구","동안구","만안구","분당구","상록구","수정구","수지구","여주시","영통구","일산동구","일산서구","장안구","중원구","처인구","팔달구"];
 	   var area9 = ["강릉시","동해시","삼척시","속초시","원주시","춘천시","태백시","고성군","양구군","양양군","영월군","인제군","정선군","철원군","평창군","홍천군","화천군","횡성군"];
-	   var area10 = ["제천시","청주시","충주시","괴산군","단양군","보은군","영동군","옥천군","음성군","증평군","진천군","청원군"];
-	   var area11 = ["계룡시","공주시","논산시","보령시","서산시","아산시","천안시","금산군","당진군","부여군","서천군","연기군","예산군","청양군","태안군","홍성군"];
-	   var area12 = ["군산시","김제시","남원시","익산시","전주시","정읍시","고창군","무주군","부안군","순창군","완주군","임실군","장수군","진안군"];
+	   var area10 = ["제천시","청주시","충주시","괴산군","단양군","보은군","영동군","옥천군","음성군","증평군","진천군","상당구","서원구","흥덕구","청원구"];
+	   var area11 = ["계룡시","공주시","논산시","보령시","서산시","아산시","천안시","금산군","부여군","서천군","예산군","청양군","태안군","홍성군","당진시","동남구","서북구"];
+	   var area12 = ["군산시","김제시","남원시","익산시","전주시","정읍시","고창군","무주군","부안군","순창군","완주군","임실군","장수군","진안군","완산구","덕진구"];
 	   var area13 = ["광양시","나주시","목포시","순천시","여수시","강진군","고흥군","곡성군","구례군","담양군","무안군","보성군","신안군","영광군","영암군","완도군","장성군","장흥군","진도군","함평군","해남군","화순군"];
 	   var area14 = ["경산시","경주시","구미시","김천시","문경시","상주시","안동시","영주시","영천시","포항시","고령군","군위군","봉화군","성주군","영덕군","영양군","예천군","울릉군","울진군","의성군","청도군","청송군","칠곡군"];
-	   var area15 = ["거제시","김해시","마산시","밀양시","사천시","양산시","진주시","진해시","창원시","통영시","거창군","고성군","남해군","산청군","의령군","창녕군","하동군","함안군","함양군","합천군"];
-	   var area16 = ["서귀포시","제주시","남제주군","북제주군"];
+	   var area15 = ["거제시","김해시","밀양시","사천시","양산시","진주시","창원시","통영시","거창군","남해군","산청군","의령군","창녕군","하동군","함안군","함양군","합천군","의창구","성산구","마산합포구","마산회원구","진해구"];
+	   var area16 = ["서귀포시","제주시"];
 	   var area17 = ["세종특별자치시"];
 
 	 
@@ -2654,6 +2599,7 @@ $('document').ready(function() {
 
 <script>
 
+
 $(document).ready(function() {
 	
 	
@@ -2662,8 +2608,8 @@ $.ajax({
 	url : "./buscodeListData.do", 
 	type : "get", 
 	success:function(list){
-		alert('success');
-		alert(list);
+		//alert('success');
+		//alert(list);
 		
 		$(".list_col1").remove();
 		
@@ -2692,8 +2638,8 @@ $.ajax({
 $(document).on("change",".list_col1", function(){
 	
 	if($(this).is(":checked")){
-        alert("체크");
-        alert($(this).val());
+        //alert("체크");
+        //alert($(this).val());
         let buscode = $(this).val();
         
         $.ajax({
@@ -2701,8 +2647,8 @@ $(document).on("change",".list_col1", function(){
         	type : "get", 
         	data: {"buscode":buscode}, 
         	success:function(list){
-        		alert('success');
-        		alert(list);
+        		//alert('success');
+        		//alert(list);
         		
         		$(".list_col2").remove();		
         		
@@ -2731,8 +2677,8 @@ $(document).on("change",".list_col1", function(){
 $(document).on("change",".list_col2", function(){
 	
 	if($(this).is(":checked")){
-        alert("체크");
-        alert($(this).val());
+        //alert("체크");
+        //alert($(this).val());
         let buscode = $(this).val();
         
         $.ajax({
@@ -2740,21 +2686,40 @@ $(document).on("change",".list_col2", function(){
         	type : "get", 
         	data: {"buscode":buscode}, 
         	success:function(list){
-        		alert('success');
-        		alert(list);
+        		//alert('success');
+        		//alert(list);
         		
-        		$(".list_col3").remove();		
+        		$('#_buscodeList3 br').each(function () {
+        		    if ($(this).next().is('br')) {
+        		        $(this).next().remove();
+        		    }
+        		});
+        		
+        		
+        		
+        		//$("_buscodeList3 *").remove(); //내부 요소만 삭제 
+        		
+        		$(".list_col3").remove(); 
+        		
+        		var parent = document.getElementById('_buscodeList3');
+        		var var1   = parent.getElementsByTagName('br');
+
+        		for(var i = var1.length; i--;) {
+        		    var1[i].parentNode.removeChild(var1[i]);
+        		}
+        		
         		
         		$.each(list, function(i, val){
-        			
-							let app = "<span>"+
+		        	
+        					
+							let app = "<span class='list_col3'>"+
 									  "<input type='checkbox' class='list_col3' name='buscode' value='"+val.busname+"' class='form-control'>"+val.busname+
 									  "</span>";
 									  
-							if((i+1)%2==0){
-		        				app += "<br>";
+							 if((i+1)%2==0){
+		        				app += "</br>";
 		        			}
-									  
+								   
 
 				$("#_buscodeList3").append(app);
         		
@@ -2779,6 +2744,86 @@ $(document).on("change",".list_col2", function(){
 
   
 </script>
+
+<!-- 자소서 글자수 세기 -->
+<script type="text/javascript">
+
+var calByte = {
+		getByteLength : function(s) {
+
+			if (s == null || s.length == 0) {
+				return 0;
+			}
+			var size = 0;
+
+			for ( var i = 0; i < s.length; i++) {
+				size += this.charByteSize(s.charAt(i));
+			}
+
+			return size;
+		},
+			
+		cutByteLength : function(s, len) {
+
+			if (s == null || s.length == 0) {
+				return 0;
+			}
+			var size = 0;
+			var rIndex = s.length;
+
+			for ( var i = 0; i < s.length; i++) {
+				size += this.charByteSize(s.charAt(i));
+				if( size == len ) {
+					rIndex = i + 1;
+					break;
+				} else if( size > len ) {
+					rIndex = i;
+					break;
+				}
+			}
+
+			return s.substring(0, rIndex);
+		},
+
+		charByteSize : function(ch) {
+
+			if (ch == null || ch.length == 0) {
+				return 0;
+			}
+
+			var charCode = ch.charCodeAt(0);
+
+			if (charCode <= 0x00007F) {
+				return 1;
+			} else if (charCode <= 0x0007FF) {
+				return 2;
+			} else if (charCode <= 0x00FFFF) {
+				return 3;
+			} else {
+				return 4;
+			}
+		}
+	};
+
+	function viewDisplay(obj) {
+		$(".viewByte").html( calByte.getByteLength( obj.value ) );
+		$(".view20Byte").html( calByte.cutByteLength( obj.value, 20 ) );
+	}
+
+</script>
+
+<!-- 이미지 볼수있게 해주는 스크립트 -->
+ <script>
+  $("#resumeimg").change(function(){
+   if(this.files && this.files[0]) {
+    var reader = new FileReader;
+    reader.onload = function(data) {
+     $(".select_img img").attr("src", data.target.result).width(500);        
+    }
+    reader.readAsDataURL(this.files[0]);
+   }
+  });
+ </script>
  
 
 
