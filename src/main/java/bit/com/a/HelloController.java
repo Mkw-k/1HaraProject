@@ -9,15 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import bit.com.a.dto.MemberDto;
+
 @Controller
 public class HelloController {
 
 	private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 
 	@RequestMapping(value = "home.do", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String home() {
 		logger.info("HelloController home() " + new Date());
-
+		
 		return "home";
 	}
 
@@ -43,9 +45,6 @@ public class HelloController {
 
 			return "infoyakgwan";
 		}
-
-
-
 		@RequestMapping(value = "infoemail.do", method = RequestMethod.GET)
 		public String infoemail(Model model) {
 			logger.info("HelloController home() " + new Date());

@@ -141,14 +141,4 @@ public class FAQDto {
 	}
 
 	
-	
-
-	
-
-
-	
-	
-
-	
-	
 }

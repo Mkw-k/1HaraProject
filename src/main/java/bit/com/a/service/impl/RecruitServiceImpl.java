@@ -68,5 +68,11 @@ public class RecruitServiceImpl implements RecruitService{
 		return dao.getBsnameForDetail(jobseq);
 	}
 	
+	@Override
+	public List<RecruitDto> getCalendarList(RecruitDto rec) {
+		
+		return dao.getCalendarList(rec);
+	}
+	
 	
 }
