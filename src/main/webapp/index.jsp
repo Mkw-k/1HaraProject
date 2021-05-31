@@ -39,7 +39,7 @@ index.jsp
 
 <a href="chatpractice.do">채팅(건설중)</a>
 
-
+<a href="companylist.do">끼업 리스트</a>
 
 
 

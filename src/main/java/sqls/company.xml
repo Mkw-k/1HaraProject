@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Company">
+	
+	<select id="getCompany" resultType="bit.com.a.dto.CompanyDto">
+	SELECT COMPANYNAME, ADDRESS, COMPANYNUM, CEONAME, DEL, COMPANYTPYE, COMPANYSEQ, COMPANYID, BUSCODE, 
+	COMIMAGE, EMPCOUNT, SALARYAVG, SALARYSTART, COMPYEAR, RETIREE, JOINNER, WEBSITE, MAINSERVICE, TOTALSALE
+	FROM COMPANY
+	WHERE COMPANYID=#{companyid}
+	</select>
+
+		
+
+	
+</mapper>	

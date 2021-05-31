@@ -1,3 +1,4 @@
+/*
 package bit.com.a.controller;
 
 import java.util.List;
@@ -36,3 +37,4 @@ public class JobtalkController {
 	}
 	
 }
+*/
