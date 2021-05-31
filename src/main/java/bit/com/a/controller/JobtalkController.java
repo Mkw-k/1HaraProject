@@ -16,23 +16,20 @@ import bit.com.a.service.NoticeService;
 @Controller
 public class JobtalkController {
 	
-	@Autowired
-	JobtalkService service;
+	/*
+	 * @Autowired JobtalkService service;
+	 */
 
-	@RequestMapping(value = "notice.do", method = RequestMethod.GET)
-	public String notice(NoticeParam param, Model model) {
-		//System.out.println("제목 : " + dto.getTitle() );
-		// paging 처리
-		int sn = param.getPage();
-		int start = sn * 10 + 1;	// 1 	11
-		int end = (sn + 1) * 10; 	// 10   20
-		
-		param.setStart(start);
-		param.setEnd(end);
-		List<NoticeDto> list = service.getJobtalklist(param);		
-		model.addAttribute("noticelist", list);
-		
-		return "notice/noticelist";
-	}
+	/*
+	 * @RequestMapping(value = "notice.do", method = RequestMethod.GET) public
+	 * String notice(NoticeParam param, Model model) { //System.out.println("제목 : "
+	 * + dto.getTitle() ); // paging 처리 int sn = param.getPage(); int start = sn *
+	 * 10 + 1; // 1 11 int end = (sn + 1) * 10; // 10 20
+	 * 
+	 * param.setStart(start); param.setEnd(end); List<NoticeDto> list =
+	 * service.getJobtalklist(param); model.addAttribute("noticelist", list);
+	 * 
+	 * return "notice/noticelist"; }
+	 */
 	
 }

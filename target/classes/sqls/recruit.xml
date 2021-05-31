@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="Recruit">
 
 <!-- 공고작성 -->
@@ -12,28 +12,28 @@
 					AREA2NAME, JOBVOLUMN, SALARY, JOBSTART, JOBEND, EMP_TYPE,
 					EDUCATION , CAREER_TYPE, READCOUNT, REGDATE, DEL)
 	VALUES (JOB_SEQ.NEXTVAL, #{dto.companyId}, #{dto.jobTitle}, #{dto.jobContent},
-			 #{dto.area1Name}, #{dto.area2Name}, #{dto.jobVolumn}, #{dto.salary}, 
+			 #{dto.area1Name}, #{dto.area2Name}, #{dto.jobVolumn}, #{dto.salary},
 			 TO_DATE(#{dto.jobStart}, 'YYYY-MM-DD HH24:MI:SS'),
-			 TO_DATE(#{dto.jobEnd}, 'YYYY-MM-DD HH24:MI:SS'), 
-			 #{dto.emp_Type}, #{dto.education}, #{dto.career_Type}, 
+			 TO_DATE(#{dto.jobEnd}, 'YYYY-MM-DD HH24:MI:SS'),
+			 #{dto.emp_Type}, #{dto.education}, #{dto.career_Type},
 			 0,
 			 TO_DATE(SYSDATE, 'YYYY-MM-DD'),
 			 0)
-	
+
 		<foreach collection="arrayParam" item="item" index="index" separator="" open="" close="">
-			INTO BSCODSTACK (BSCODSTACKSEQ, JOBSEQ, BUSCODE, RBUSCODE) 
-			VALUES (BSCODSTACK_SEQ.nextval, JOB_SEQ.nextval, #{item},  
+			INTO BSCODSTACK (BSCODSTACKSEQ, JOBSEQ, BUSCODE, RBUSCODE)
+			VALUES (BSCODSTACK_SEQ.nextval, JOB_SEQ.nextval, #{item},
 	        (SELECT BUSCODE
 	        FROM BUSCODE3
 	        WHERE BUSNAME = #{item} )
 	        )
-			
-		
+
+
 		</foreach>
 	SELECT 1
 	FROM DUAL
-			  
-	
+
+
 </insert>
 
 
@@ -42,22 +42,22 @@
 	SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
 					J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
 					J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME,E.EDUNAME
-	FROM JOB J, BUSINESS C, EDUCATION E 
-	WHERE J.COMPANYID = C.MEMBERID AND 
-		  J.EDUCATION = E.EDUCODE 
-		  <!-- AND J.DEL = 0 --> 
-	
+	FROM JOB J, BUSINESS C, EDUCATION E
+	WHERE J.COMPANYID = C.MEMBERID AND
+		  J.EDUCATION = E.EDUCODE
+		  <!-- AND J.DEL = 0 -->
+
 
 </select>
 
 <!-- 글의 총수 -->
 <select id="getRecruitCount" parameterType="bit.com.a.dto.BbsParam" resultType="java.lang.Integer">
-	SELECT NVL(COUNT(*), 0) AS CNT 
+	SELECT NVL(COUNT(*), 0) AS CNT
     FROM JOB J, BUSINESS C
-	WHERE J.COMPANYID = C.MEMBERID 
-	
+	WHERE J.COMPANYID = C.MEMBERID
+
 	<!-- AND J.DEL =0 -->
-	
+
 	<if test="choice != null and choice != ''
 		  		and search != null and search != ''">
 		<!-- AND DEL=0 -->
@@ -68,49 +68,49 @@
 			AND C.COMPANYNAME LIKE '%'||#{search}||'%'
 		</if>
 	</if>
-		  		
+
 </select>
 
 <!-- 페이징 검색 리스트 가져오기 -->
 <select id="getRecruitPagingList" parameterType="bit.com.a.dto.BbsParam" resultType="bit.com.a.dto.RecruitDto">
 	SELECT J.RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
 					J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
-					J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, 
+					J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL,
 		   C.COMPANYNAME, E.EDUNAME, T.EMP_NAME, P.CAREER_DESC
-					
-					
+
+
 	FROM (SELECT ROW_NUMBER()OVER(ORDER BY JOBSEQ DESC)AS RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
 					J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
 					J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME
 			FROM JOB J, BUSINESS C
-			WHERE J.COMPANYID = C.MEMBERID 
-			
+			WHERE J.COMPANYID = C.MEMBERID
+
 			<!-- AND J.DEL =0 -->
-			
+
 			<if test="choice != null and choice != ''
 		  		and search != null and search != ''">
-			
-				
+
+
 				<if test="choice == 'title'">
 				AND J.JOBTITLE LIKE '%'||#{search}||'%'
 				</if>
-				
+
 				<if test="choice == 'companyname'">
 				AND C.COMPANYNAME LIKE '%'||#{search}||'%'
 				</if>
 			</if>
 		   )J
 	<!-- 회사이름가져오기 -->
-	JOIN BUSINESS C 
+	JOIN BUSINESS C
 	ON J.COMPANYID = C.MEMBERID
 	<!-- 학력조건 가져오기 -->
-	JOIN EDUCATION E 
-    ON E.EDUCODE = J.EDUCATION  
+	JOIN EDUCATION E
+    ON E.EDUCODE = J.EDUCATION
 	<!-- 고용타입가져오기 -->
 	JOIN EMPLOYEE_TYPE T
 	ON T.EMP_TYPE = J.EMP_TYPE
 	<!-- 경력타입가져오기 -->
-	JOIN JOB_CAREERTYPE P 
+	JOIN JOB_CAREERTYPE P
 	ON P.CAREER_TYPE = J.CAREER_TYPE
 	WHERE RNUM BETWEEN ${start} AND ${end}
 	ORDER BY J.JOBSEQ DESC
@@ -120,13 +120,13 @@
 <select id="getRecruitListOne" parameterType="Integer" resultType="bit.com.a.dto.RecruitDto">
 SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
 					J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
-					J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.DEL, C.COMPANYNAME, P.CAREER_DESC, 
+					J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.DEL, C.COMPANYNAME, P.CAREER_DESC,
 					E.EDUNAME, T.EMP_NAME
 FROM JOB J, BUSINESS C, EDUCATION E, JOB_CAREERTYPE P, EMPLOYEE_TYPE T
-WHERE J.COMPANYID = C.MEMBERID AND 
+WHERE J.COMPANYID = C.MEMBERID AND
 	  J.EDUCATION = E.EDUCODE AND
-	  P.CAREER_TYPE = J.CAREER_TYPE AND 
-	  T.EMP_TYPE = J.EMP_TYPE AND 
+	  P.CAREER_TYPE = J.CAREER_TYPE AND
+	  T.EMP_TYPE = J.EMP_TYPE AND
 	  J.JOBSEQ = ${jobseq}
 </select>
 
@@ -140,27 +140,27 @@ WHERE JOBSEQ = ${jobseq}
 <!-- 조회수 늘려주기 -->
 <update id="RecuReadcount" parameterType="Integer">
 	UPDATE JOB
-	SET READCOUNT = READCOUNT +1 
+	SET READCOUNT = READCOUNT +1
 	WHERE JOBSEQ = #{jobseq}
 
 </update>
 
 <!-- 삭제기능 -->
 <update id="deleteRecruit" parameterType="Integer">
-	UPDATE JOB 
-	SET DEL=1 
+	UPDATE JOB
+	SET DEL=1
 	WHERE JOBSEQ=#{jobseq}
 </update>
 
 <!-- 직무분류코드1(대분류) 불러오기 : 공고작성 페이지에 뿌려주기위함 -->
 <select id="buscodeListData" resultType="bit.com.a.dto.RecruitParam">
-	SELECT * 
+	SELECT *
 	FROM BUSCODE1
 </select>
 
 <!-- 직무분류코드2(중분류) 불러오기 : 공고작성 페이지에 뿌려주기위함 // 선택된 라디오버튼의 밸류값을 받아옴 -->
 <select id="buscode2ListData" parameterType="Integer" resultType="bit.com.a.dto.RecruitParam">
-	SELECT * 
+	SELECT *
 	FROM BUSCODE2
 	WHERE BUSCODE2 LIKE ${buscode}||'%'
 
@@ -169,7 +169,7 @@ WHERE JOBSEQ = ${jobseq}
 <!-- 직무분류코드3(소분류) 불러오기 : 공고작성 페이지에 뿌려주기위함 // 선택된 라디오버튼의 밸류값을 받아옴-->
 <!-- buscode3테이블에 데이터는 buscode와 busname임!! -->
 <select id="buscode3ListData" parameterType="Integer" resultType="bit.com.a.dto.RecruitParam">
-	SELECT * 
+	SELECT *
 	FROM BUSCODE3
 	WHERE BUSCODE LIKE ${buscode}||'%'
 
@@ -179,11 +179,11 @@ WHERE JOBSEQ = ${jobseq}
 	resultType="bit.com.a.dto.RecruitDto">
 
 	SELECT JOBSEQ, JOBTITLE, JOBCONTENT, JOBSTART, JOBEND
-	FROM (SELECT ROW_NUMBER()OVER(PARTITION BY SUBSTR(JOBSTART, 1, 8)ORDER BY JOBSTART ASC) AS RNUM,  
-			JOBSEQ, JOBTITLE, JOBCONTENT, JOBSTART, JOBEND  
-		  FROM JOB  
+	FROM (SELECT ROW_NUMBER()OVER(PARTITION BY SUBSTR(JOBSTART, 1, 8)ORDER BY JOBSTART ASC) AS RNUM,
+			JOBSEQ, JOBTITLE, JOBCONTENT, JOBSTART, JOBEND
+		  FROM JOB
 		  WHERE SUBSTR(JOBSTART, 1, 7)= #{jobStart} )
-		  WHERE RNUM BETWEEN 1 AND 5 
+		  WHERE RNUM BETWEEN 1 AND 5
 </select>
 
 </mapper>
