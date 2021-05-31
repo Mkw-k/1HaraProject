@@ -240,13 +240,13 @@ border-color: #2186eb;
     display: flex;
 }
 
-.container {
+ .container {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-}
+} 
 
 .logoarea {
 	clear: both;
@@ -446,7 +446,7 @@ section .section-title {
 
 /* 퀵메뉴 */
 body { padding-top:20px; }
-.panel-body .btn:not(.btn-block) { width:120px;margin-bottom:10px; }
+/* .panel-body .btn:not(.btn-block) { width:120px;margin-bottom:10px; } */
 
 .row {
     display: -webkit-box;
@@ -869,7 +869,8 @@ margin-right : 450px;
       <script type="text/javascript" src="js/ranking.js"></script>
 
     <div class="column2" style="padding-left: 40pt;">
-          <div class="container">
+    	<div class="container">
+         
           		<div>
 		            <div class="panel panel-primary">
 		                <div class="panel-heading">
@@ -992,6 +993,7 @@ margin-right : 450px;
 		                </div>
 		            </div>
 		        </div>
+		     </div>   
 
 
 
@@ -1049,7 +1051,7 @@ margin-right : 450px;
 				</div>
 			</div>
 
-      </div>	<!-- column2 end -->
+     	<!-- column2 end -->
 
 
 
