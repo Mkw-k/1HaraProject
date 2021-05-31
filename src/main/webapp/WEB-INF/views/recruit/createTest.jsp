@@ -1,6 +1,8 @@
 <%@page import="bit.com.a.dto.BusinessDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -22,6 +24,12 @@
 <!-- 외부css파일과 연결 -->
 <link rel="stylesheet" href="./css/wireframe.css">
 
+
+<style type="text/css">
+#selectResult{
+	color: red;
+}
+</style>
 
 </head>
 
@@ -103,47 +111,47 @@
               <div class="row">
                 <div class="col-md-4 mb-3"> 
                 <label for="country">고용형태</label> 
-                <select name="reqyyyy" id="year">
-                        <option value="">년도</option>
-                        <option value="2019"
-                            <c:if test="${check_y == 2019}">selected</c:if>>2019</option>
-                        <option value="2018"
-                            <c:if test="${check_y == 2018}">selected</c:if>>2018</option>
-                        <option value="2017"
-                            <c:if test="${check_y == 2017}">selected</c:if>>2017</option>
-                        <option value="2016"
-                            <c:if test="${check_y == 2016}">selected</c:if>>2016</option>
-						</select>
-                
-                
-                
-                
-                	<select class="custom-select d-block w-100" name="emp_Type">
+          			<select class="custom-select d-block w-100" name="emp_Type">
                     	 <option class="hidden"  selected disabled>고용타입</option>
-                         <option value="1"
-                         <c:if test="${dto.emp_Type == 1}">selected</c:if>>아르바이트</option>
-                         <option value="2"
-                         <c:if test="${dto.emp_Type == 2}">selected</c:if>>계약직</option>
-                         <option value="3"
-                         <c:if test="${dto.emp_Type == 4}">selected</c:if>>정규직</option>
-                    </select>
+                    	<option value=1 <c:if test='${dto.education == 1}'>selected="selected" </c:if>> 아르바이트 </option>
+                    	<option value=2 <c:if test='${dto.education == 2}'>selected="selected" </c:if>> 계약직 </option>
+                    	<option value=3 <c:if test='${dto.education == 3}'>selected="selected" </c:if>> 정규직 </option>
+                	</select>
                   <div class="invalid-feedback"> Please select a valid country. </div>
                 </div>
                 <div class="col-md-4 mb-3"> <label for="state">학력사항</label> 
                 	<select class="custom-select d-block w-100" name="education">
                     	<option class="hidden"  selected disabled>학력구분 *</option>
                         <option value="0"
-                        <c:if test="${dto.education == 0}">selected</c:if>>무관</option>
+                         <c:if test='${dto.education == 0}'>
+                         selected="selected" 
+                         </c:if>
+                         > 무관 </option>
                         <option value="1"
-                        <c:if test="${dto.education == 1}">selected</c:if>>고졸</option>
+                        <c:if test='${dto.education == 1}'>
+                        selected="selected"
+                        </c:if> 
+                        > 고졸 </option>
                         <option value="2"
-                        <c:if test="${dto.education == 2}">selected</c:if>>전문대졸</option>
+                        <c:if test='${dto.education == 2}'>
+                        selected="selected"
+                        </c:if> 
+                        > 전문대졸 </option>
                         <option value="3"
-                        <c:if test="${dto.education == 3}">selected</c:if>>대졸</option>
+                        <c:if test='${dto.education == 3}'>
+                        selected="selected"
+                        </c:if> 
+                        > 대졸 </option>
                         <option value="4"
-                        <c:if test="${dto.education == 4}">selected</c:if>>석사</option>
+                        <c:if test='${dto.education == 4}'>
+                        selected="selected"
+                        </c:if> 
+                        > 석사 </option>
                         <option value="5"
-                        <c:if test="${dto.education == 5}">selected</c:if>>박사</option>
+                        <c:if test='${dto.education == 5}'>
+                        selected="selected"
+                        </c:if> 
+                        > 박사 </option>
                   	</select>
                   <div class="invalid-feedback"> Please provide a valid state. </div>
                 </div>
@@ -151,7 +159,7 @@
                 	<select class="custom-select d-block w-100" name="career_Type">
                     	<option class="hidden"  selected disabled>경력구분</option>
                         <option value="0"
-                        	<c:if test="${dto.career_Type == 0}">selected</c:if>>무관</option>
+                        <c:if test="${dto.career_Type == 0}">selected</c:if>>무관</option>
                         <option value="1"
                         <c:if test="${dto.career_Type == 1}">selected</c:if>>신입</option>
                         <option value="2"
@@ -234,7 +242,7 @@
               <div class="form-group">
                   	<input type="text" id="sample6_postcode" placeholder="우편번호">
 					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" name="area1Name" id="sample6_address" placeholder="주소" value="${dto.area1Name +dto.area2Name }"><br>
+					<input type="text" name="area1Name" id="sample6_address" placeholder="주소" value="${dto.area1Name}&nbsp;${dto.area2Name}"><br>
 					<input type="text" name="area2Name" id="sample6_detailAddress" placeholder="상세주소">
 					<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 			</div>
@@ -280,6 +288,9 @@
             <div class="invalid-feedback"> Security code required </div>
           </div>
         </div>
+        
+        
+        
         
         
         
@@ -330,7 +341,8 @@
             </ul>
           </div>
         </div>
-      
+    
+    
     </div>
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -366,6 +378,9 @@ function update() {
 }
  
  
+
+	
+
 
 
 
@@ -443,8 +458,8 @@ function sample6_execDaumPostcode() {
 }
 
 
+//첫번째 BUSCODE1 DATA를 받아서 체크박스로 뿌려주는 코드 
 $(document).ready(function() {
-	
 	
 	
 $.ajax({
@@ -454,6 +469,9 @@ $.ajax({
 		//alert('success');
 		//alert(list);
 		
+		//JSTL로 받아온 지역 정보의 대분류 네임이 서울이면 (일단 자바스크립트 변수로 변경) selected 조건을 줌 
+		var area1Name = '<c:out value="${dto.area1Name}"/>';
+		
 		$(".list_col1").remove();
 		
 		$.each(list, function(i, val){
@@ -462,7 +480,9 @@ $.ajax({
 
 			//let app = "<input type='checkbox' class='list_col' name='buscode' value='"+val.buscode1+"' class='form-control'>"+val.buscodename1
 			let app = "<div>"+
-					"<input type='radio' class='list_col1' id='buscode1' name='buscode1' value='"+val.buscode1+"'><label for='huey'>"+val.buscodename1+"</label>"+
+					"<input type='radio' class='list_col1' id='buscode1'"+ 
+					
+					"name='buscode1' value='"+val.buscode1+"'><label for='huey'>"+val.buscodename1+"</label>"+
 					"</div>";
 				
 				$("#_buscodeList1").append(app);
@@ -477,7 +497,7 @@ $.ajax({
 
 
 
-
+//두번째 BUSCODE2 DATA를 받아서 체크박스로 뿌려주는 코드 
 $(document).on("change",".list_col1", function(){
 	
 	if($(this).is(":checked")){
@@ -494,6 +514,8 @@ $(document).on("change",".list_col1", function(){
         		//alert(list);
         		
         		$(".list_col2").remove();		
+        		
+        		
         		
         		$.each(list, function(i, val){
 							let app = "<div>"+
@@ -516,7 +538,10 @@ $(document).on("change",".list_col1", function(){
 	
 });
 
+//input Tag (BUSCODE3)에 동적 id를 주기 위한 인덱스용 넘버 
+let count = 1;
 
+//마지막 BUSCODE3 DATA를 받아서 체크박스로 뿌려주는 코드 
 $(document).on("change",".list_col2", function(){
 	
 	if($(this).is(":checked")){
@@ -532,14 +557,7 @@ $(document).on("change",".list_col2", function(){
         		//alert('success');
         		//alert(list);
         		
-        		$('#_buscodeList3 br').each(function () {
-        		    if ($(this).next().is('br')) {
-        		        $(this).next().remove();
-        		    }
-        		});
-        		
-        		
-        		
+        	
         		//$("_buscodeList3 *").remove(); //내부 요소만 삭제 
         		
         		$(".list_col3").remove(); 
@@ -552,19 +570,30 @@ $(document).on("change",".list_col2", function(){
         		}
         		
         		
+        		
         		$.each(list, function(i, val){
-		        	
+		        	let app = "";
+        			
+		        	//stackname = 밑에태그 아이디.val (elements) 배열로 해야될듯 
+        			
+        			if(val.busname == stackname){
+        				app = "<span class='list_col3'>"+
+						  "<input type='checkbox' class='list_col3' name="+count+" id='buscode3data"+count+"' value='"+val.busname+"' class='form-control' checked>"+val.busname+
+						  "</span>";
+					}else{
+        				app = "<span class='list_col3'>"+
+						  "<input type='checkbox' class='list_col3' name="+count+" id='buscode3data"+count+"' value='"+val.busname+"' class='form-control'>"+val.busname+
+						  "</span>";
+					}
         					
-							let app = "<span class='list_col3'>"+
-									  "<input type='checkbox' class='list_col3' name='buscode' value='"+val.busname+"' class='form-control'>"+val.busname+
-									  "</span>";
-									  
-							 if((i+1)%2==0){
-		        				app += "</br>";
-		        			}
-								   
+							   	  
+						 if((i+1)%2==0){
+	        				app += "</br>";
+	        			}
+						   
 
 				$("#_buscodeList3").append(app);
+				count+=1;
         		
         		});
         	}, 
@@ -585,9 +614,75 @@ $(document).on("change",".list_col2", function(){
 
 });
 
-  
- 
+//span Tag에 동적 id를 주기 위한 인덱스용 넘버 
+let cnt = 1;
 
+$(document).on("change",".list_col3", function(){
+	
+	let app ="";
+	
+	
+	if($(this).is(":checked")){
+		
+		let buscode = $(this).val();
+		var count = $(this).attr('name');
+		alert(buscode);
+		
+		app = "<span class=arrBusdata id=selectedBuscode"+cnt+">"+buscode+
+			  "<input name='buscode' type='hidden' value="+buscode+">"+
+			  "<a onclick='delSelBuscode("+cnt+","+count+")'>"+
+			  "<img alt='왜안뜨지' src='ma.jpg' style='width:30px; height:30px;'>"+
+			  "</a>"+"</span>"+"&nbsp;&nbsp;";
+			  
+
+	  	var id = $(this).attr("id");
+		//alert(id);
+		let input = document.getElementById(id);
+		//HTML data 속성 사용
+		input.dataset.code = 'selectedBuscode'+cnt;
+		
+		$("#selectResult").append(app);
+		cnt += 1;
+		
+	}
+	
+	
+	//체크박스에서 체크 해제 했을때 체크박스 해제가 될때 밑에 부분에 적재되있는 같은 데이터의 span태그도 삭제
+	
+	if($(this).is(":checked") == false){
+		
+		//alert($(this).data("code"));
+		//data 속성 가져오기 (data-code) 
+		var selectedBuscode = $(this).data("code");
+		//alert(selectedBuscode);
+		document.getElementById(selectedBuscode).remove();
+	}
+	
+	
+});
+
+
+//밑에 쌓여있는 span태그에서 X버튼을 눌렀을때 위에 체크박스도 같이 체크 해제가 되도록 해주는 코드  
+function delSelBuscode(cnt, count) {
+	//alert(count);
+	
+	var spanid = "selectedBuscode"+cnt;
+	//alert(spanid);
+	
+	var buscodeTag ="buscode3data"+count;
+	//alert(buscodeTag);
+	
+	const spantag = document.getElementById(spanid);
+	//alert(spantag);
+	
+	//스판태그 삭제
+	document.getElementById(spanid).remove();
+	
+	//체크박스 체크해제
+	document.getElementById(buscodeTag).checked = false;
+
+
+}
 
 
 </script>

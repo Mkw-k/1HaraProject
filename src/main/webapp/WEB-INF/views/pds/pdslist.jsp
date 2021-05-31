@@ -724,6 +724,19 @@ $("#_btnAdd").click(function () {
 			</div>
 		</div>
 	</div>	
+	
 	</html>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	

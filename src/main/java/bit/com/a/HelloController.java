@@ -9,15 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import bit.com.a.dto.MemberDto;
+
 @Controller
 public class HelloController {
 
 	private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 
 	@RequestMapping(value = "home.do", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String home() {
 		logger.info("HelloController home() " + new Date());
-
+		
 		return "home";
 	}
 
@@ -43,13 +45,6 @@ public class HelloController {
 
 			return "infoyakgwan";
 		}
-
-		@RequestMapping(value = "login1.do", method = {RequestMethod.GET,RequestMethod.POST})
-		public String login1(Model model) {
-			logger.info("HelloController login1() " + new Date());
-			return "login";
-		}
-
 		@RequestMapping(value = "infoemail.do", method = RequestMethod.GET)
 		public String infoemail(Model model) {
 			logger.info("HelloController home() " + new Date());
@@ -64,12 +59,14 @@ public class HelloController {
 			return "infowebaccess";
 		}
 
+
 		@RequestMapping(value = "infobanner.do", method = RequestMethod.GET)
 		public String infobanner(Model model) {
 			logger.info("HelloController home() " + new Date());
 
 			return "infobanner";
 		}
+
 
 		@RequestMapping(value = "musicplayer.do", method = RequestMethod.GET)
 		public String musicplayer(Model model) {
@@ -79,11 +76,20 @@ public class HelloController {
 		}
 
 
+
 		@RequestMapping(value = "infomember.do", method = RequestMethod.GET)
 		public String infomember(Model model) {
 			logger.info("HelloController home() " + new Date());
 
 			return "infomember";
+
+		}
+
+		@RequestMapping(value = "infocopyright.do", method = RequestMethod.GET)
+		public String infocopyright(Model model) {
+			logger.info("HelloController home() " + new Date());
+
+			return "infocopyright";
 		}
 
 		@RequestMapping(value = "jobtalk.do", method = RequestMethod.GET)
@@ -91,7 +97,7 @@ public class HelloController {
 			logger.info("HelloController home() " + new Date());
 
 			return "jobtalk";
-		}	
+		}
 
 		@RequestMapping(value = "jobdetail.do", method = RequestMethod.GET)
 		public String jobdetail(Model model) {
