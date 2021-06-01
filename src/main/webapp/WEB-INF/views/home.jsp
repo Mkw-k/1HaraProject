@@ -72,7 +72,6 @@
 <link href="csss/logincss.css" rel="stylesheet" type="text/css">
 
 
-
 <!-- 서치 css -->
 <link href="csss/search.css" rel="stylesheet" type="text/css">
 
@@ -240,13 +239,13 @@ border-color: #2186eb;
     display: flex;
 }
 
-.container {
+ .container {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-}
+} 
 
 .logoarea {
 	clear: both;
@@ -446,7 +445,7 @@ section .section-title {
 
 /* 퀵메뉴 */
 body { padding-top:20px; }
-.panel-body .btn:not(.btn-block) { width:120px;margin-bottom:10px; }
+/* .panel-body .btn:not(.btn-block) { width:120px;margin-bottom:10px; } */
 
 .row {
     display: -webkit-box;
@@ -709,6 +708,7 @@ margin-right : 450px;
    	 	 </c:when>
      	 <c:otherwise>
      	    <a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
+     	    <a href="memberDelete.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;">회원탈퇴</a>
      	 </c:otherwise>
       </c:choose>
    </li>
@@ -878,7 +878,8 @@ margin-right : 450px;
       <script type="text/javascript" src="js/ranking.js"></script>
 
     <div class="column2" style="padding-left: 40pt;">
-          <div class="container">
+    	<div class="container">
+         
           		<div>
 		            <div class="panel panel-primary">
 		                <div class="panel-heading">
@@ -891,26 +892,6 @@ margin-right : 450px;
 		                    <div class="main-login" style="width: 358px;">
 			<!-- 로그인 전 -->
 					<!-- 로그인 전 -->
-				
-					 <div class="before">
-                  <c:if test="${ empty login }">
-                  <p class="txt">일하라를 더 안전하고 편리하게 이용하세요.</p>
-
-                  <a href="login1.do" class="login-worknet">일하라 로그인</a>
-                  
-                  <a id="custom-login-btn" href="javascript:kakaoLogin()">
-					  <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="310px" height="55px"/>
-					</a>
-
-                  <div class="link">
-                     <a href="/member/idPwdVw/retrieveCustIdPwdSrch.do" class="left">아이디/ 패스워드 찾기</a>
-                     <a href="regiclick.do" class="right">회원가입</a>
-                  </div>
-                  <div class="other-login">
-                     <a href="javascript:f_snsLogin('naver');" id="naver_id_login" title="새창열림 : 네이버 아이디로 로그인" class="left"><i class="iconset ico-main-login-naver"></i>로그인</a>
-                     <a href="javascript:f_snsLogin('kakao');" id="kakao_id_login" title="새창열림 : 카카오 아이디로 로그인" class="right"><i class="iconset ico-main-login-kakao"></i>로그인</a>
-                  </div>
-                  </c:if>
 
 				<div class="before">
 						<c:if test="${ empty login }">
@@ -1021,6 +1002,7 @@ margin-right : 450px;
 		                </div>
 		            </div>
 		        </div>
+		     </div>   
 
 
 
@@ -1078,7 +1060,7 @@ margin-right : 450px;
 				</div>
 			</div>
 
-      </div>	<!-- column2 end -->
+     	<!-- column2 end -->
 
 
 

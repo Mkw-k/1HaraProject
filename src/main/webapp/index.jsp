@@ -27,9 +27,7 @@ index.jsp
 
 <a href="jobsearch.do">직종서치</a>
 
-
 <a href="regiclick1.do">회원유형선택</a>
-
 
 <a href="calendars.do">달력</a>
 
@@ -39,11 +37,14 @@ index.jsp
 
 <a href="chatpractice.do">채팅(건설중)</a>
 
+
 <a href="jobtalklist.do">취업톡톡게시판</a>
 
 
+<a href="idsearch.do">아이디 찾기</a>
 
 
+<a href="member_info.do">개인정보관리</a>
 
 </body>
 </html>

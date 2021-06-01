@@ -13,7 +13,8 @@
 					EDUCATION , CAREER_TYPE, READCOUNT, REGDATE, DEL)
 	VALUES (JOB_SEQ.NEXTVAL, #{dto.companyId}, #{dto.jobTitle}, #{dto.jobContent},
 			 #{dto.area1Name}, #{dto.area2Name}, #{dto.jobVolumn}, #{dto.salary},
-			 TO_DATE(#{dto.jobStart}, 'YYYY-MM-DD HH24:MI:SS'),
+			 SYSDATE,
+			<!--  TO_DATE(#{dto.jobStart}, 'YYYY-MM-DD HH24:MI:SS') -->
 			 TO_DATE(#{dto.jobEnd}, 'YYYY-MM-DD HH24:MI:SS'),
 			 #{dto.emp_Type}, #{dto.education}, #{dto.career_Type},
 			 0,
@@ -176,14 +177,15 @@ WHERE JOBSEQ = ${jobseq}
 </select>
 
 <select id="getCalendarList" parameterType="bit.com.a.dto.RecruitDto"
-	resultType="bit.com.a.dto.RecruitDto">
-
-	SELECT JOBSEQ, JOBTITLE, JOBCONTENT, JOBSTART, JOBEND
-	FROM (SELECT ROW_NUMBER()OVER(PARTITION BY SUBSTR(JOBSTART, 1, 8)ORDER BY JOBSTART ASC) AS RNUM,
-			JOBSEQ, JOBTITLE, JOBCONTENT, JOBSTART, JOBEND
-		  FROM JOB
-		  WHERE SUBSTR(JOBSTART, 1, 7)= #{jobStart} )
-		  WHERE RNUM BETWEEN 1 AND 5
+	resultType="bit.com.a.dto.RecruitDto">	          
+SELECT JOBSEQ, JOBTITLE, JOBCONTENT, 
+         JOBSTART
+        ,JOBEND
+	FROM (SELECT ROW_NUMBER()OVER(PARTITION BY SUBSTR(JOBSTART, 1, 7)ORDER BY JOBSTART ASC) AS RNUM,  
+			JOBSEQ, JOBTITLE, JOBCONTENT, JOBSTART, JOBEND  
+		  FROM JOB)  
+ WHERE RNUM BETWEEN 1 AND 5
+           
 </select>
 
 </mapper>

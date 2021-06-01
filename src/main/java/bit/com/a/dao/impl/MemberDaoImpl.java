@@ -32,6 +32,11 @@ public class MemberDaoImpl implements MemberDao {
 		return mem;
 	}
 
+	@Override
+	public void memberDelete(MemberDto dto) {
+		sqlSession.delete(namespace + "memberDelete", dto);		
+	}
+
 	//회원 인증 관련 메소드
     //버튼을 클릭한 회원의 정보를 회원 테이블에 저장해서 사용할 수 있게 함
 	/*@Override
@@ -48,6 +53,11 @@ public class MemberDaoImpl implements MemberDao {
 		
 	}*/
 	
+	/*
+	 ===============================================================================
+	  
+	 
+	 */
 }
 
 

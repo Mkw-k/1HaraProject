@@ -52,23 +52,34 @@ public class UtilEx {
 		String str = "";
 
 		// 2021 3 19	-> 20210319
-		String dates = (year + "") + two(month + "") + two(day + "");
+		String dates = (year + "")+ "-" + two(month + "")+ "-" + two(day + "");
 			str += "<ul>";
 			for(RecruitDto dto : list) {
-				if(dto.getJobStart().substring(0, 8).equals(dates)) {
+				if(dto.getJobStart().substring(0, 10).equals(dates)) {
 					str += "<li>";
-					str += "<a href='recruitDetail.do?seq=" + dto.getJobSeq() + "'>";
-					//str += "<font style='font-size:10px; color:blue'>";
+					str += "<a href='recruitdetail.do?seq=" + dto.getJobSeq() + "'>";
+					str += "<font style='font-size:15px; color:blue'>";
+					str += "[시작]"; 
 					str += dot3(dto.getJobTitle());
-					//str += "</font>";
+					str += "</font>";
 					str += "</a>";
 					str += "</li>";
 				}
-				else if(dto.getJobEnd().substring(0, 8).equals(dates)) {
-
+				else if(dto.getJobEnd().substring(0, 10).equals(dates)) {
+					str += "<li>";
+					str += "<a href='recruitdetail.do?seq=" + dto.getJobSeq() + "'>";
+					str += "<font style='font-size:15px; color:blue'>";
+					str += "[마감]"; 					
+					str += dot3(dto.getJobTitle());
+					str += "</font>";
+					str += "</a>";
+					str += "</li>";
 				}
+				System.out.println("날짜: " + dto.getJobStart());
+				System.out.println("=======================================================================");
+				System.out.println(dot3(dto.getJobTitle()));
+				System.out.println("=======================================================================");
 			}
-
 			str += "</ul>";
 
 		return str;
@@ -81,7 +92,7 @@ public class UtilEx {
 
 	public static String yyyymmdd(int year, int month, int day) {
 		return "" + year + "/" + two(month + "") + "/" + two(day + "");
-	}
+	}     
 
 	public static String yyyymmddhhmm(int year, int month, int day, int hour, int min) {
 		return yyyymmdd(year, month, day) + two(hour + "") + two(min + "");
@@ -99,6 +110,7 @@ public class UtilEx {
 		return str;
 	}
 
+	
 	// 2021-04-26 -> java.sql.Date로 변경
 	public static Date toDate(int year, int month, int day) {
 		String s = year + "-" + two(month + "") + "-" + two(day + "");
