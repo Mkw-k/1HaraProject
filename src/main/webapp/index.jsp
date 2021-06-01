@@ -43,6 +43,8 @@ index.jsp
 
 <a href="chatpractice.do">채팅(건설중)</a>
 
+<a href="jobtalklist.do">취업톡톡게시판</a>
+
 
 
 
