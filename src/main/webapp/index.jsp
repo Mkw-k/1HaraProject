@@ -35,10 +35,6 @@ index.jsp
 
 <a href="newslist.do">끼업 뉴쓰</a>
 
-
-<a href="test.do">은지카카오로그인</a>
-
-
 <a href="kokolog.do">까까오 로꾸인</a>
 
 <a href="chatpractice.do">채팅(건설중)</a>
