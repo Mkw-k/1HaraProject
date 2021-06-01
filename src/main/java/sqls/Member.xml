@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="Member">
 
 <!-- <select id="allMember" resultType="bit.com.a.dto.MemberDto">
@@ -29,7 +29,7 @@
 
 <select id="login" parameterType="bit.com.a.dto.MemberDto"
 	resultType="bit.com.a.dto.MemberDto">
-	SELECT MEMBERID,PWD, NAME, EMAIL, AUTH
+	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, BIRTH
 	FROM MEMBER
 	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 </select>
@@ -37,7 +37,7 @@
 <!-- 회원탈퇴 -->
 <delete id="memberDelete">
 	DELETE FROM MEMBER
-	WHERE MEMBERID = #{memberid} AND PWD = #{pwd} 
+	WHERE MEMBERID = #{memberid} AND PWD = #{pwd}
 </delete>
 
 </mapper>
