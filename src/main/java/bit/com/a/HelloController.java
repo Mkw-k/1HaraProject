@@ -125,5 +125,10 @@ public class HelloController {
 			return "idsearch";
 		}
 		
+		@RequestMapping(value ="member_info.do", method = RequestMethod.GET)
+		public String member_info(Model model) {
+			logger.info("HelloController member_info() " + new Date());
+			return "member_info";
+		}
 
 }

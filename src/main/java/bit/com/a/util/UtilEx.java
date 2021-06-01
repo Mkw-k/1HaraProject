@@ -52,21 +52,28 @@ public class UtilEx {
 		String str = "";
 
 		// 2021 3 19	-> 20210319
-		String dates = (year + "") + two(month + "") + two(day + "");
+		String dates = (year + "")+ "-" + two(month + "")+ "-" + two(day + "");
 			str += "<ul>";
 			for(RecruitDto dto : list) {
 				if(dto.getJobStart().substring(0, 10).equals(dates)) {
 					str += "<li>";
-					str += "<a href='recruitDetail.do?seq=" + dto.getJobSeq() + "'>";
-					//str += "<font style='font-size:10px; color:blue'>";
-					/* str += "[시작]"; */
+					str += "<a href='recruitdetail.do?seq=" + dto.getJobSeq() + "'>";
+					str += "<font style='font-size:15px; color:blue'>";
+					str += "[시작]"; 
 					str += dot3(dto.getJobTitle());
-					//str += "</font>";
+					str += "</font>";
 					str += "</a>";
 					str += "</li>";
 				}
-				else if(dto.getJobEnd().substring(0, 8).equals(dates)) {
-
+				else if(dto.getJobEnd().substring(0, 10).equals(dates)) {
+					str += "<li>";
+					str += "<a href='recruitdetail.do?seq=" + dto.getJobSeq() + "'>";
+					str += "<font style='font-size:15px; color:blue'>";
+					str += "[마감]"; 					
+					str += dot3(dto.getJobTitle());
+					str += "</font>";
+					str += "</a>";
+					str += "</li>";
 				}
 				System.out.println("날짜: " + dto.getJobStart());
 				System.out.println("=======================================================================");

@@ -6,6 +6,22 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="_csrf_parameter" content="_csrf"><meta name="_csrf_header" content="X-CSRF-TOKEN"><meta name="_csrf" content="5557377e-0013-402c-90e5-0dad4d61305f">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="p3p" content="CP=&quot;CAO DSP AND SO &quot; policyref=&quot;/w3c/p3p.xml&quot;">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="subject" content="#">
+<meta name="author" content="#">
+<meta name="keywords" content="#">
+<meta name="selected-menu" content="0, 0, 0, 0">
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <style>
 a {
@@ -60,6 +76,9 @@ table, td, th {
 .nodays{
 	background-color: #d7d7d7;
 }
+
+
+
 </style>
 
 <%
@@ -102,6 +121,7 @@ String nn = String.format("<a href='%s?year=%d&month=%d'>" + "<img src='./image/
 // 월별 일정
 String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, month);
 %>
+
 
 <div style="text-align: left;">
 	<a href="<%=url %>">

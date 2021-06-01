@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import bit.com.a.dto.MemberDto;
 import bit.com.a.service.MemberService;
@@ -90,8 +91,6 @@ public class MemberController {
 
 	@RequestMapping(value = "loginAf.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String loginAf(MemberDto dto, HttpServletRequest req) {
-
-		System.out.println("씨발 쫌 들어와라");
 
 		MemberDto login = service.login(dto);
 
@@ -208,6 +207,32 @@ public class MemberController {
 		model.addAttribute("mem", mem);
 		return "login/searchidpwd";
 	}
+	
+	@RequestMapping(value ="memberDelete.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String memberDelete(MemberDto dto, HttpSession session, RedirectAttributes rttr) throws Exception {
+		return "login/memberDelete";
+	}
+	
+	@RequestMapping(value="memberDeleteAf.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String memberDeleteAf(MemberDto dto, HttpSession session, RedirectAttributes rttr) throws Exception{
+		// member변수 가져옴
+		MemberDto mem = (MemberDto) session.getAttribute("login");
+		System.out.println("비번" + mem.getPwd());
+		// 세션에 있는 비밀번호
+		String sessionPass = mem.getPwd();
+		
+		// dto로 들어오는 비밀번호
+		String dtopass = dto.getPwd();
+	
+		if(!(sessionPass.equals(dtopass))) {
+			rttr.addFlashAttribute("msg", false);
+			return "redirect:memberDelete.do";
+		}
+		service.memberDelete(dto);
+		session.invalidate();
+		return "home";
+	}
+	
 	
 	
 }
