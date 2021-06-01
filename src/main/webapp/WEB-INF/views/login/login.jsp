@@ -87,7 +87,7 @@ function check(form){
            <input type="hidden" name="login_tab" value="p" id="login_tab">
            <div class="login_message">
                <h3>로그인이 필요한 서비스입니다.</h3>
-               <p>사람인 회원이 아니면, 지금 
+               <p>사람인 회원이 아니면, 지금
                	<span><a href="regiclick.do">회원가입</a></span>을 해주세요.
                </p>
            </div>
