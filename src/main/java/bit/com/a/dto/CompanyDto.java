@@ -16,7 +16,7 @@ public class CompanyDto {
 	private int empcount; 	    	// 직원수
 	private String salaryavg; 		// 평균 연봉
 	private String salarystart;		// 초봉
-	private int compyear;			// 회사 나이
+	private String comyear;			// 회사 나이
 	private int retiree;			// 퇴사자 수
 	private int joinner;			// 입사자 수
 	private String website;			// 웹사이트 주소
@@ -29,7 +29,7 @@ public class CompanyDto {
 
 	public CompanyDto(String companyname, String address, int companynum, String ceoname, int del, String companytype,
 			int companyseq, String companyid, String buscode, String comimage, int empcount, String salaryavg,
-			String salarystart, int compyear, int retiree, int joinner, String website, String mainservice,
+			String salarystart, String comyear, int retiree, int joinner, String website, String mainservice,
 			String totalsale) {
 		super();
 		this.companyname = companyname;
@@ -45,7 +45,7 @@ public class CompanyDto {
 		this.empcount = empcount;
 		this.salaryavg = salaryavg;
 		this.salarystart = salarystart;
-		this.compyear = compyear;
+		this.comyear = comyear;
 		this.retiree = retiree;
 		this.joinner = joinner;
 		this.website = website;
@@ -58,8 +58,8 @@ public class CompanyDto {
 		return "CompanyDto [companyname=" + companyname + ", address=" + address + ", companynum=" + companynum
 				+ ", ceoname=" + ceoname + ", del=" + del + ", companytype=" + companytype + ", companyseq="
 				+ companyseq + ", companyid=" + companyid + ", buscode=" + buscode + ", comimage=" + comimage
-				+ ", empcount=" + empcount + ", salaryavg=" + salaryavg + ", salarystart=" + salarystart + ", compyear="
-				+ compyear + ", retiree=" + retiree + ", joinner=" + joinner + ", website=" + website + ", mainservice="
+				+ ", empcount=" + empcount + ", salaryavg=" + salaryavg + ", salarystart=" + salarystart + ", comyear="
+				+ comyear + ", retiree=" + retiree + ", joinner=" + joinner + ", website=" + website + ", mainservice="
 				+ mainservice + ", totalsale=" + totalsale + "]";
 	}
 
@@ -167,12 +167,12 @@ public class CompanyDto {
 		this.salarystart = salarystart;
 	}
 
-	public int getCompyear() {
-		return compyear;
+	public String getComyear() {
+		return comyear;
 	}
 
-	public void setCompyear(int compyear) {
-		this.compyear = compyear;
+	public void setComyear(String comyear) {
+		this.comyear = comyear;
 	}
 
 	public int getRetiree() {
@@ -215,8 +215,6 @@ public class CompanyDto {
 		this.totalsale = totalsale;
 	}
 
-	
-	
 	
 	
 }

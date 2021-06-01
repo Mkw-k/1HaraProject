@@ -255,7 +255,7 @@ function getrecruListData( pNumber, search ){
 								} */
 
 								app +="<td>"
-									+ "<a href='companydetail.do?companyseq=" + val.companyseq  + "'>" + val.companyname +"</a>"
+									+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname +"</a>"
 								    + "</td>"
 									+"<td style='text-align:left'>" 
 									//+ arrow(val.depth)

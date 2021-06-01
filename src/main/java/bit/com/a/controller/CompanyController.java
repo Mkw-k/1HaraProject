@@ -16,14 +16,14 @@ public class CompanyController {
 	CompanyService service;
 	
 	@RequestMapping(value = "companydetail.do", method = RequestMethod.GET)
-	public String companydetail(Model model, CompanyDto dto, String companyid) {
+	public String companydetail(Model model, String companyid) {
 		
 		
-		dto = service.getCompany(companyid);
+		CompanyDto dto = service.getCompany(companyid);
+		model.addAttribute("company", dto);
 		
 		
-		
-		System.out.println("나는 디떼일~");
+		System.out.println(dto.toString());
 		
 		return "company/companydetail";
 	}

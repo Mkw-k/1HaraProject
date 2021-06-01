@@ -17,13 +17,9 @@ public class CompanyDaoImpl implements CompanyDao {
 	
 	String ns = "Company.";
 	
-/*
-	@Override
-	public CompanyDto getCompany(CompanyDto dto) {		
-		return session.selectOne(ns + "getCompany", dto);
-	}
-*/
 
+
+	
 	@Override
 	public CompanyDto getCompany(String companyid) {
 		
