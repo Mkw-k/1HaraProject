@@ -162,11 +162,14 @@ CRUD
 							<th>근무조건</th>
 							<th>마감일·등록일</th>
 						</tr>
+						
+					<%-- 	<tr>
+							<td>${company.companyid }<a href="companydetail.do?id=${companyid }"></a></td>	
+						</tr> --%>
 					</thead>
-					
-					
+						
 				</table>
-				<p></p>
+				<p>dsa</p>
 		</div>
 
 		
@@ -251,7 +254,9 @@ function getrecruListData( pNumber, search ){
 									empT = "정규직";
 								} */
 
-								app +="<td>" + val.companyname + "</td>"
+								app +="<td>"
+									+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname +"</a>"
+								    + "</td>"
 									+"<td style='text-align:left'>" 
 									//+ arrow(val.depth)
 									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq + "'>" + val.jobTitle+ "</a>"

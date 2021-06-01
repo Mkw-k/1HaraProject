@@ -83,7 +83,7 @@ public class RecruitController {
 		
 		List<RecruitDto> list = service.getRecruitPagingList(param);
 		
-		//System.out.println(list.toString());
+//		System.out.println(list.toString());
 		
 		return list;
 	}
