@@ -7,13 +7,24 @@ import bit.com.a.dto.JobtalkParam;
 
 public interface JobtalkDao {
 
-	List<JobtalkDto> getNoticeList(JobtalkParam notice);
-	int getNoticeCount(JobtalkParam notice);
-	boolean uploadNotice (JobtalkDto dto);
-	JobtalkDto getNotice(int seq);
-	void readcount(int seq);
-	boolean updateNotice(JobtalkDto noticedto);
-	void deleteNotice(int seq);
+	List<JobtalkDto> getJobtalklist(JobtalkParam job);	
+	
+	int getJobtalkCount(JobtalkParam job);
+	
+	boolean writeJobtalk(JobtalkDto dto);
+	
+	JobtalkDto getJobtalk(int seq);
+	
+	void readCount(int seq);
+	
+	// 답글
+	boolean replyJobtalkUpdate(JobtalkDto job);
+	
+	boolean replyJobtalkInsert(JobtalkDto job);
+	
+	void deleteJobtalk(int seq);
+	
+	void updateJobtalk(JobtalkDto job);
 	
 	
 }
