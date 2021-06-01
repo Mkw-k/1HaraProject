@@ -1,7 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +10,15 @@
 
 <link href="csss/layout.css" rel="stylesheet" type="text/css">
 <link href="csss/etc.css" rel="stylesheet" type="text/css">
+<!-- 카카오 로그인 -->
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<!-- 제이쿼리 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <link rel="stylesheet" href="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/jquery-1.11.1.min.js"></script>
  <!-- 전체 css -->
 <!-- <link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
@@ -25,7 +31,7 @@
 <script src="//https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <!-- jQuery Modal -->
 <script src="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> 
+<link rel="stylesheet" href="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 </head>
 <body>
@@ -64,14 +70,13 @@ function check(form){
     var label = jQuery('#login_tab').val() == 'c' ? 'com_login': 'per_login';
     loggingEventAndTagManager(['login','pc_login_page',label,''],['ga_lead','login','pc_login_page',label]);
 
-    
+
    if (form['ssl_login'].checked) {
        SecureLogin.encrypt(form);
     }
 
    return true;
 }
-//-->
 
 </script>
 <div class="wrap_content">
@@ -79,17 +84,17 @@ function check(form){
            <!-- <input type="hidden" name="m_code" value="0"> -->
            <input type="hidden" name="page_url" value="">
            <input type="hidden" name="FrameKey" value="">
-           <input type="hidden" name="login_tab" value="p" id="login_tab">        
+           <input type="hidden" name="login_tab" value="p" id="login_tab">
            <div class="login_message">
                <h3>로그인이 필요한 서비스입니다.</h3>
                <p>사람인 회원이 아니면, 지금 <span>
-               <a href="regiclick.do">회원가입</a></span>을 해주세요.</p>        
+               <a href="regiclick.do">회원가입</a></span>을 해주세요.</p>
            </div>
            <div class="login_page_wrap">
                <div class="login_input_wrap">
                    <!-- text 알림 -->
 
-                   <script>   
+                   <script>
                    </script>
 
                    <ul class="tab_member_type">
@@ -136,21 +141,25 @@ function check(form){
                  <a href="/zf_user/applicant/rater/login-form" target="_blank" class="link_rater" style="display: none;">협업자 로그인</a>
               </p>
 
-              <ul class="social_login" id="wrap_social_login">
-                <li><a href="/zf_user/auth/sign-in-with?provider=naver.com&amp;display=popup&amp;url=%2Fzf_user%2F" class="sl_naver" data-provider="naver">네이버 로그인</a></li>
+            <!--   <ul class="social_login" id="wrap_social_login"> -->
+
+					<a id="custom-login-btn" href="javascript:kakaoLogin()">
+					  <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"/>
+					</a>
+	           <!--  <li><a href="/zf_user/auth/sign-in-with?provider=naver.com&amp;display=popup&amp;url=%2Fzf_user%2F" class="sl_naver" data-provider="naver">네이버 로그인</a></li>
                 <li><a href="/zf_user/auth/sign-in-with?provider=facebook.com&amp;display=popup&amp;url=%2Fzf_user%2F" class="sl_facebook" data-provider="facebook">페이스북 로그인</a></li>
                 <li><a href="/zf_user/auth/sign-in-with?provider=kakao.com&amp;display=popup&amp;url=%2Fzf_user%2F" class="sl_kakao" data-provider="kakao">카카오 로그인</a></li>
                 <li><a href="/zf_user/auth/sign-in-with?provider=google.com&amp;display=popup&amp;url=%2Fzf_user%2F" class="sl_google" data-provider="google">구글 로그인</a></li>
                 <li><a href="/zf_user/auth/sign-in-with?provider=apple.com&amp;display=popup&amp;url=%2Fzf_user%2F" class="sl_apple" data-provider="apple">애플 로그인</a></li>
-                <li><a href="http://safelogin.kr/sauth/regist?site_code=LT&amp;sub_code=0" class="sl_phone sl_information" target="_blank">휴대폰번호로 로그인</a></li>
-              </ul>
+                <li><a href="http://safelogin.kr/sauth/regist?site_code=LT&amp;sub_code=0" class="sl_phone sl_information" target="_blank">휴대폰번호로 로그인</a></li> -->
+             <!--  </ul> -->
             </div>
-            <div class="login_banner_wrap">
+             <div class="login_banner_wrap">
              <div id="login" class="promotion-banner-box promotion-login" style="">
-                  <a href="http://www.saramin.co.kr/zf_user/event/iam-ground-app/app-intro" target="_blank">
-                   <img src="https://www.saraminimage.co.kr/w/pc_web_inventory/2019/10/pzef9p_tfxz-2rxibp_A6.png" alt="아이엠그라운드 모의면접 앱 OPEN" width="391" height="330">
+               	<a href="http://localhost:8090/sample10/ad.do" target="_blank">
+                	<img src="<%=request.getContextPath() %>/image/ma.jpg" alt="" >
                 </a>
-             </div>            
+             </div>
            </div>
          <div class="clear_both"></div>
        </div>
@@ -169,21 +178,21 @@ function check(form){
             <div id="div-gpt-ad-1550638948072-0" data-google-query-id="CN-Qg_Gj5PACFZEEXAodAGcIog">
                <div id="google_ads_iframe_/61280259/Login_728x90_0__container__" style="border: 0pt none;">
                       <iframe id="google_ads_iframe_/61280259/Login_728x90_0" title="3rd party ad content" name="google_ads_iframe_/61280259/Login_728x90_0" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="conversion-measurement 'src'" srcdoc="" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true">
-                     </iframe> 
+                     </iframe>
                </div>
             </div>
            </div>
         </div>
-</div>          
-                
+</div>
+
  <script type="text/javascript">
-    //<!--
+
                     jQuery(function() {
                     var $ = jQuery;
                     $('.login_page_wrap')
                         .on('click', '.t_per', function() {
                             if( !$(this).hasClass('t_on') ) {
-                                $(this).addClass('t_on').next().removeClass('t_on'); 
+                                $(this).addClass('t_on').next().removeClass('t_on');
                                 $('#lbl_autologin').show();
                                 $('.link_rater').hide();
                                 $('#login_tab').val('p');
@@ -193,34 +202,16 @@ function check(form){
                         })
                         .on('click', '.t_com', function() {
                             if( !$(this).hasClass('t_on') ) {
-                                $(this).addClass('t_on').prev().removeClass('t_on'); 
+                                $(this).addClass('t_on').prev().removeClass('t_on');
                                 $('#lbl_autologin').hide();
                                 $('.link_rater').show();
                                 $('#login_tab').val('c');
                                 $('#login_frm').attr('action', 'businessloginAf.do');
-                           } 
+                           }
                         })
-                      /*    .on('click', '.service_info_txt', function () { */
-                          /*   var url = '/zf_user/help/help-word/main';
-                            if ($('#login_tab').val() === 'c') {
-                                url += '?memberCode=com';
-                            }
-                            location.href = 'businessloginAf.do';
-                        }); */
- 
-                     /* $('#login_frm')
-                   
-                        .on('click', '#a_join', function (e) {
-                            e.preventDefault();
-                            location.href = this.href + '?ut=' + $('#login_tab').val();
-                        })
-                    ; */
-                });   
-                //-->
-                
-                
-    //<!--
-    
+
+                });
+
 var $j = jQuery.noConflict();
 
 function checkLoginValue() {
@@ -327,21 +318,69 @@ $j(document).ready(function () {
     }
 });
 
-    //-->
+
+
 function login() {
-   //alert('c');
+
    $("#login-modal").modal();
    $("#login-modal").removeClass("modal fade");
    $("#login-modal").addClass("modal");
-   
+
 }
-    
-    
+
+
 </script>
 
 
+<script type="text/javascript">
+<!-- d59485d594506fb0185f34b5e6b7b114 -->
+
+<!-- 자바스크립트 key를 입력하여 초기화해줌 -->
+$(document).ready(function(){
+   Kakao.init('8a32aafcf70137a891ba6d0b02c48e38');
+   Kakao.isInitialized();
+});
+
+function kakaoLogin() {
+
+   window.Kakao.Auth.login({
+      scope:'profile, account_email, birthday',
+      success: function(authObj) {
+     //    alert('success');
+         console.log(authObj);
+         window.Kakao.API.request({
+            url: '/v2/user/me',
+            success: res => {
+               const kakao_account = res.kakao_account;
+               console.log(kakao_account);
+
+               let name = kakao_account.profile.nickname;
+               let birth = kakao_account.birthday;
+               let email = kakao_account.email
+
+               $.ajax({
+           		type:"post",
+           		url:"kakalogAf.do",
+           		data: {memberid: email, name:name , birth:birth},
+           		dataType: "text",
+           		success: function (data) {
+
+           		//	alert('카카오 씨발 로그인성공')
+           		},
+           		error: function(){
+           			alert("birth:" + birth);
+           			alert('ㅋㅋ썽공 구라징');
+           		}
+           	  })
+
+            }
+
+         });
+      }
+   });
+}
+
+</script>
+
 </body>
 </html>
-
-
-

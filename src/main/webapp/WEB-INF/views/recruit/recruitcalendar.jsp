@@ -80,6 +80,9 @@ int year = cal.getYear();
 int month = cal.getMonth();
 
 
+
+
+
 //<< year--
 String pp = String.format("<a href='%s?year=%d&month=%d'>" + "<img src='./image/left.gif'></a>", 
 								"calendarlist.do", year-1, month);
@@ -147,7 +150,7 @@ String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, mont
 			for(int i = 1;i <= lastDayOfMonth; i++){
 				if( (i + dayOfWeek - 1) % 7 == 1){	// 일요일
 				%>
-					<td class="sunday"><%=UtilEx.callist(year, month, i) %>&nbsp;<%--=UtilEx.showPen(year, month, i) --%>
+					<td class="sunday"> <%=UtilEx.callist(year, month, i) %>&nbsp;<%--=UtilEx.showPen(year, month, i) --%>
 						 <%=UtilEx.makeTable(year, month, i, list) %>	
 					</td>		
 				<%
@@ -159,7 +162,7 @@ String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, mont
 					<%
 				}else{	// 평일	
 					%>
-					<td class="otherday"><%=UtilEx.callist(year, month, i) %>&nbsp;<%--=UtilEx.showPen(year, month, i) --%>
+					<td class="otherday"> <%=UtilEx.callist(year, month, i) %> &nbsp;<%--=UtilEx.showPen(year, month, i) --%>
 						 <%=UtilEx.makeTable(year, month, i, list) %>	 	
 					</td>
 					<%
@@ -180,3 +183,16 @@ String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, mont
 		</tr>
 	</table>
 </div>
+
+<script>
+function getTodate() {	
+	var date = nes Date ();
+	var year = date.getYear();
+		
+ 
+	
+}
+
+</script>
+
+
