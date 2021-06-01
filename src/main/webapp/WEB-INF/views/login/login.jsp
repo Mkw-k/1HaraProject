@@ -134,7 +134,7 @@ function check(form){
                    <button type="submit" class="btn-login">로그인</button>
                  </div>
                  <p class="signup-forgotten">
-                 <a id="a_join" href="regiclick.do" onclick="return false;" class="sign-up" onmousedown="try{n_trackEvent('login', 'pc_login_page' , 'join', '');}catch(e){}">회원가입</a>
+                 <a id="a_join" href="regiclick.do"  class="sign-up" onmousedown="try{n_trackEvent('login', 'pc_login_page' , 'join', '');}catch(e){}">회원가입</a>
                  <span></span>
                  <a href="/zf_user/helpdesk/idpw-find" class="forgotten" onmousedown="try{n_trackEvent('login', 'pc_login_page' , 'find', '');}catch(e){}">아이디/비밀번호 찾기</a>
                  <a href="javascript:;" class="service_info_txt">서비스 안내<img src="//www.saraminimage.co.kr/ui/login_page/question_mark.png" alt=""></a>

@@ -165,15 +165,25 @@
                         <option value="1"
                         <c:if test="${dto.career_Type == 1}">selected</c:if>>신입</option>
                         <option value="2"
-                        <c:if test="${dto.career_Type == 2}">selected</c:if>>1~2년</option>
+                        <c:if test="${dto.career_Type == 2}">selected</c:if>>1년</option>
                         <option value="3"
-                        <c:if test="${dto.career_Type == 3}">selected</c:if>>2~4년</option>
+                        <c:if test="${dto.career_Type == 3}">selected</c:if>>2년</option>
                         <option value="4"
-                        <c:if test="${dto.career_Type == 4}">selected</c:if>>4~6년</option>
+                        <c:if test="${dto.career_Type == 4}">selected</c:if>>3년</option>
                         <option value="5"
-                        <c:if test="${dto.career_Type == 5}">selected</c:if>>6~8년</option>
+                        <c:if test="${dto.career_Type == 5}">selected</c:if>>4년</option>
                         <option value="6"
-                        <c:if test="${dto.career_Type == 6}">selected</c:if>>8~10년</option>
+                        <c:if test="${dto.career_Type == 6}">selected</c:if>>5년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 7}">selected</c:if>>6년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 8}">selected</c:if>>7년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 9}">selected</c:if>>8년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 10}">selected</c:if>>9년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 11}">selected</c:if>>10년</option>
                       
                   	</select>
                   <div class="invalid-feedback"> Please provide a valid state. </div>

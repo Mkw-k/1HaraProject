@@ -15,7 +15,7 @@ public interface RecruitDao {
 	
 	int getRecruitCount(BbsParam param);
 	
-	List<RecruitDto> getRecruitPagingList(BbsParam param);
+	List<RecruitDto> getRecruitPagingList(RecruitParam param);
 	
 	RecruitDto getRecruitListOne(int jobseq);
 	
@@ -30,5 +30,13 @@ public interface RecruitDao {
 	List<RecruitDto> getCalendarList(RecruitDto rec);
 	
 	List<String> getBsnameForDetail(int jobseq);
+
+	List<RecruitParam> areacodeListData();
+
+	int getArea1code(String areaname);
+
+	List<RecruitParam> areacode2ListData(int areacode);
+	
+	List<RecruitDto> getRecruitSearchList(Map<String, Object> map);
 	
 }
