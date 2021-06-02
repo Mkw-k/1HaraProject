@@ -40,8 +40,10 @@
 	WHERE MEMBERID = #{memberid} AND PWD = #{pwd}
 </delete>
 
+
 <select id="MemberList" resultType="bit.com.a.dto.MemberDto">
 	SELECT * FROM MEMBER WHERE MEMBERID NOT IN('admin')
 </select>
+
 
 </mapper>
