@@ -72,9 +72,9 @@ public class ResumeController {
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	@RequestMapping(value = "writeAfResume.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String writeAfResume(ResumeDto dto,  Resume_EduVo edulist,  Resume_CareerVo careerlist,  Resume_licenseVo liclist, 
-			 Resume_ActivityVo actlist,
-			 Resume_AwardVo awardlist,  Resume_LanguageVo lanlist, 
+	public String writeAfResume(ResumeDto dto,  Resume_EduDto edulist,  Resume_CareerDto careerlist,  Resume_LicenseDto liclist, 
+			 Resume_ActivityDto actlist,
+			 Resume_AwardDto awardlist,  Resume_LanguageDto lanlist, 
 								@RequestParam(value = "fileload", required = false)
 							    MultipartFile fileload, 
 							    @RequestParam(value = "fileload2", required = false)
@@ -97,6 +97,9 @@ public class ResumeController {
 		System.out.println(actlist.toString());
 		System.out.println(awardlist.toString());
 		System.out.println(lanlist.toString());
+		
+		
+		System.out.println();
 		
 		if(!fileload.isEmpty() && !fileload2.isEmpty()) {
 			System.out.println("안비었다");
