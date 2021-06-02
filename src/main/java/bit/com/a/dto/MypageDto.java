@@ -28,7 +28,7 @@ TABLESPACE "USERS" ;
 
 
 
-public class MemberDto implements Serializable{
+public class MypageDto implements Serializable{
 
 	private int seq;
 	private String memberid;
@@ -41,28 +41,31 @@ public class MemberDto implements Serializable{
 	private String address;						// 집주소
 	private String detailaddress;				// 집상세주소
 	private String birth;						// 생년월일
+	private String residentregistrationnum;
 	
 	
-	public MemberDto() {
+	public MypageDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
 
-	public MemberDto(int seq, String memberid, String pwd, String name, String email, int auth, int del, String address,
-			String detailaddress, String birth) {
+	public MypageDto(int seq, String memberid, String pwd, String name, String email, String phonenumber, int auth, int del, String address,
+			String detailaddress, String birth, String residentregistrationnum) {
 		super();
 		this.seq = seq;
 		this.memberid = memberid;
 		this.pwd = pwd;
 		this.name = name;
 		this.email = email;
+		this.phonenumber = phonenumber;
 		this.auth = auth;
 		this.del = del;
 		this.address = address;
 		this.detailaddress = detailaddress;
 		this.birth = birth;
+		this.residentregistrationnum = residentregistrationnum;
 	}
 
 
@@ -167,17 +170,43 @@ public class MemberDto implements Serializable{
 	public void setBirth(String birth) {
 		this.birth = birth;
 	}
+	
+
+	public String getPhonenumber() {
+		return phonenumber;
+	}
+
+
+
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+
+
+
+	public String getResidentregistrationnum() {
+		return residentregistrationnum;
+	}
+
+
+
+	public void setResidentregistrationnum(String residentregistrationnum) {
+		this.residentregistrationnum = residentregistrationnum;
+	}
 
 
 
 	@Override
 	public String toString() {
 		return "MemberDto [seq=" + seq + ", memberid=" + memberid + ", pwd=" + pwd + ", name=" + name + ", email="
-				+ email + ", auth=" + auth + ", del=" + del + ", address=" + address + ", detailaddress="
-				+ detailaddress + ", birth=" + birth + "]";
+				+ email + ", phonenumber=" + phonenumber + ", auth=" + auth + ", del=" + del + ", address=" + address
+				+ ", detailaddress=" + detailaddress + ", birth=" + birth + ", residentregistrationnum="
+				+ residentregistrationnum + "]";
 	}
+
+
 	
-	
+
 	
 	
 	

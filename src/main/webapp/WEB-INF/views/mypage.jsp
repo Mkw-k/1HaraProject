@@ -1040,8 +1040,10 @@ function f_empPgmList(resultObj){
 											</tr>
 											<tr>
 												<th scope="row">이메일</th>
+
 												<td>
 														cors***@naver.com
+
 												</td>
 												<th scope="row" class="un-str">이메일 수신</th>
 												<td>

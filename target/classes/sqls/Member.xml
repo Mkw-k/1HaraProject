@@ -45,5 +45,4 @@
 	SELECT * FROM MEMBER WHERE MEMBERID NOT IN('admin')
 </select>
 
-
 </mapper>
