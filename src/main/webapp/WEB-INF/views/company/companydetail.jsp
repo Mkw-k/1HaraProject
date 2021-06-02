@@ -2,12 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<table>
-	<tr>
-		<th>회사명</th>
-		<td>${company.companyname }</td>
-	</tr>
 
+	<div>
+		<p>${company.companyname }</p>
+	</div>
+<table>
 	<tr>
 		<th>회사아아디</th>
 		<td>${company.companyid }</td>
@@ -75,7 +74,7 @@
 	
 	<tr>
 		<th>웹사이트 주소</th>
-		<td>${company.website }</td>
+		<td><a href="${company.website }">${company.website }</a></td>
 	</tr>
 	
 	<tr>
