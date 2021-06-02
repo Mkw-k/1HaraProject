@@ -220,11 +220,13 @@ public class RecruitController {
 		Map<String, Object> param = new HashMap<String, Object>();
 		//dto를 map에 넣는다.
 		param.put("dto", dto); 
+		
 		//buscode 여러개를 넘겨받고 배열에 넣어준다 
 		String[] arrayParam = req.getParameterValues("buscode");
 		for (int i = 0; i < arrayParam.length; i++) {
 		System.out.println("넘어온버스코드:"+arrayParam[i]);
 		}
+		
 		//map에 배열을 넣는다
 		param.put("arrayParam", arrayParam); 
 		

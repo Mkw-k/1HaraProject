@@ -56,11 +56,46 @@ height: 150px;
 
 </head>
 <body>
-<h1>채용공고게시판</h1>
 
-<!-- 채용공고 작성 -->
-<h2 onclick="createRecruit()" class="createRecruitBtn">채용공고 작성</h2>
-<h2 onclick="createRecruitNew()" class="createRecruitBtn">채용공고 작성 New</h2>
+
+<nav class="navbar navbar-expand-md sticky-top navbar-light" style="text-shadow: white 0px 0px 0.2px; box-shadow: black 0px 0px 10px;" id="nav-example"><a class="navbar-brand d-none d-md-block offset-1" href="#">
+      <i class="fa d-inline fa-lg fa-stop-circle-o" style="	background-image: url(./image/1hara.gif);	background-position: top left;	background-size: 100%;	background-repeat: repeat;"></i>
+      <b> BRAND</b>
+    </a>
+    <div class="container"> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar19" style="">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar19">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <div class="btn-group">
+              <button class="btn dropdown-toggle btn-link text-dark" data-toggle="dropdown"> 전체보기</button>
+              <div class="dropdown-menu" style=""> <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item"> <a class="nav-link active" href="#">채용공고</a> </li>
+          <li class="nav-item"> <a class="nav-link active" href="#">기업정보</a> </li>
+          <li class="nav-item"> <a class="nav-link active" href="#">취업톡톡</a> </li>
+          <li class="nav-item"> <a class="nav-link active" href="#">공채달력</a> </li>
+          <li class="nav-item"> <a class="nav-link active" href="#">자료실</a> </li>
+          <li class="nav-item"> <a class="nav-link active" href="#">이력서관리</a> </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item"> <a class="nav-link" href="#">
+              <i class="fa fa-twitter fa-fw text-secondary"></i>
+            </a> </li>
+          <li class="nav-item"> <a class="btn btn-secondary mr-1" href="#">로그인</a><a class="btn btn-secondary" href="#">회원가입</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  
+  
 
 <!-- 프론트 작업중 다중 셀렉트 박스  -->
 	<div class="container">
@@ -75,6 +110,14 @@ height: 150px;
 			<h3 class="text-muted">채용공고 게시판</h3>
 			<div class="m-5"></div>
 		</div>
+		
+		
+		
+<h1>채용공고게시판</h1>
+
+<!-- 채용공고 작성 -->
+<h2 onclick="createRecruit()" class="createRecruitBtn">채용공고 작성</h2>
+<h2 onclick="createRecruitNew()" class="createRecruitBtn">채용공고 작성 New</h2>
 
 <form action="#" id="_frmFormSearch" name="dataForm" method="post" novalidate="novalidate">
 		<div class="py-5">
