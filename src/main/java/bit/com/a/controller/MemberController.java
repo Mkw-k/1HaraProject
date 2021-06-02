@@ -233,6 +233,18 @@ public class MemberController {
 		return "home";
 	}
 	
-	
+	@RequestMapping(value="memberlist.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String listGET(HttpSession session, Model model) throws Exception{
+		
+		// 1. 관리자 세션 제어
+		MemberDto member = (MemberDto) session.getAttribute("login");
+		if(member.getAuth()==3) {
+			model.addAttribute("member", service.getMemberList());
+			return "admin/memberlist";
+		}
+		else {
+			return "redirect:home.do";
+		}
+	}
 	
 }
