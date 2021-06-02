@@ -15,7 +15,7 @@ public interface RecruitService {
 	
 	int getRecruitCount(BbsParam param);
 	
-	List<RecruitDto> getRecruitPagingList(BbsParam param);
+	List<RecruitDto> getRecruitPagingList(RecruitParam param);
 	
 	RecruitDto getRecruitListOne(int jobseq);
 	
@@ -30,5 +30,19 @@ public interface RecruitService {
 	List<RecruitDto> getCalendarList(RecruitDto rec);
 	
 	List<String> getBsnameForDetail(int jobseq);
+
+	List<RecruitParam> areacodeListData();
+
+	int getArea1Code(String areaname);
+
+	List<RecruitParam> areacode2ListData(int areacode);
+
+	List<RecruitDto> getRecruitSearchList(Map<String, Object> map);
+
+	boolean updateRecruit(Map<String, Object> param);
+
+	boolean deleteBuscode(int jobSeq);
+
+	boolean insertBuscode(Map<String, Object> param);
 	
 }

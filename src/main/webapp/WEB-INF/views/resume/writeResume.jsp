@@ -171,130 +171,131 @@ dt, dd {
 </head>
 
 <body>
-<div class="all">
-<!-- 헤더가 있어야 위쪽을 가리지 않음 -->
-<header>
+	<div class="all">
+		<!-- 헤더가 있어야 위쪽을 가리지 않음 -->
+		<header> </header>
 
-</header>
+		<!-- 네비바 -->
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 
-<!-- 네비바 -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 
-  
-  <div>
-	 <a href="home.do"><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
-	</div>
-  
-  <ul class="navbar-nav">
-<!-- Dropdown -->
-    <li class="nav-item dropdown" style="padding-top: 5px;">
-     <div class="dropdown">
-		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
-		  <div class="dropdown-content">
-		    <a href="#">채용공고</a>
-		    <a href="#">기업정보</a>
-		    <a href="#">취업톡톡</a>
-		    <a href="#">공채달력</a>
-		    <a href="#">자료실</a>
-		    <a href="notice.do">공지사항</a>
-		  </div>
+			<div>
+				<a href="home.do"><img alt=""
+					src="<%=request.getContextPath() %>/image/logo5.gif" height="80"
+					width="160" style="float: left; padding-right: 20px"></a>
+			</div>
+
+			<ul class="navbar-nav">
+				<!-- Dropdown -->
+				<li class="nav-item dropdown" style="padding-top: 5px;">
+					<div class="dropdown">
+						<button class="dropbtn"
+							style="color: #2186eb; background-color: #fff;">전체보기</button>
+						<div class="dropdown-content">
+							<a href="#">채용공고</a> <a href="#">기업정보</a> <a href="#">취업톡톡</a> <a
+								href="#">공채달력</a> <a href="#">자료실</a> <a href="notice.do">공지사항</a>
+						</div>
+					</div>
+				</li>
+
+				<li class="nav-item"><a class="nav-link bgc" href="#"
+					style="color: #2186eb">채용공고</a></li>
+				<li class="nav-item"><a class="nav-link bgc" href="#"
+					style="color: #2186eb">기업정보</a></li>
+				<li class="nav-item"><a class="nav-link bgc" href="#"
+					style="color: #2186eb">취업톡톡</a></li>
+				<li class="nav-item"><a class="nav-link bgc" href="#"
+					style="color: #2186eb">공채달력</a></li>
+				<li class="nav-item"><a class="nav-link bgc" href="#"
+					style="color: #2186eb">자료실</a></li>
+				<li class="nav-item"><a class="nav-link bgc" href="notice.do"
+					style="color: #2186eb">공지사항</a></li>
+			</ul>
+
+
+			<ul class="navbar-nav navbar-nav2" style="margin-left: 50px;">
+				<li class="nav-item">
+					<!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
+					<a href="javascript:login()" id="login-btn" class="nav-link bgc"
+					style="color: #2186eb; background-color: #fff;">로그인</a>
+				</li>
+				<li class="nav-item"><a class="nav-link bgc" href="#"
+					style="color: #2186eb; background-color: #fff;">이력서관리</a></li>
+
+
+			</ul>
+		</nav>
+		<br>
+
+		<!-- =========Login 클릭 시 Modal =========== -->
+		<div id="login-modal" tabindex="-1" role="dialog"
+			aria-labelledby="login-modalLabel" class="modal modal-center fade ">
+			<div role="document" class="modal-dialog" style="margin: 0;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 id="login-modalLabel" class="modal-title">1hara Login</h4>
+						<button type="button" data-dismiss="modal" aria-label="Close"
+							class="close">
+							<span aria-hidden="true"></span>x
+						</button>
+					</div>
+					<div class="modal-body">
+
+						<!-- memberController - loginAf.do로 이동 -->
+						<form action="member" method="post">
+							<input type="hidden" name="param" value="loginAf.do">
+							<div class="form-group">
+								<input id="email_modal" type="text" placeholder="ID" name="id"
+									class="form-control">
+							</div>
+							<div class="form-group">
+								<input id="password_modal" type="password" name="pwd"
+									placeholder="password" class="form-control">
+							</div>
+							<p class="text-center">
+								<button class="btn btn-template-outlined">
+									<i class="fa fa-sign-in"></i> Login
+								</button>
+							</p>
+						</form>
+
+
+						<p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
+						<p class="text-center text-muted">
+							<a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!
+						</p>
+					</div>
+				</div>
+			</div>
 		</div>
-    </li>
 
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">취업톡톡</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
-    </li>
-    </ul>
-    
-   
-   <ul class="navbar-nav navbar-nav2" style="margin-left: 50px;">
-     <li class="nav-item">
-     <!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
-      <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
-    </li>
-  
-
-  </ul>
-</nav>
-<br>
-
- <!-- =========Login 클릭 시 Modal =========== -->
-      <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" class="modal modal-center fade ">
-        <div role="document" class="modal-dialog" style="margin: 0;">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 id="login-modalLabel" class="modal-title">1hara Login</h4>
-              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"></span>x</button>
-            </div>
-            <div class="modal-body">
-            
-            <!-- memberController - loginAf.do로 이동 -->
-              <form action="member" method="post">
-                 <input type="hidden" name="param" value="loginAf.do">
-                <div class="form-group">
-                  <input id="email_modal" type="text" placeholder="ID" name="id" class="form-control">
-                </div>
-                <div class="form-group">
-                  <input id="password_modal" type="password" name="pwd" placeholder="password" class="form-control">
-                </div>
-                <p class="text-center">
-                  <button class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Login</button>
-                </p>
-              </form>
-              
-              
-              <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
-              <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-<!-- =======Login 클릭 시 Modal END =========-->
+		<!-- =======Login 클릭 시 Modal END =========-->
 
 
 
-<!-- ####################################################################################################### -->
-<!-- 본문 -->
-<main>
+		<!-- ####################################################################################################### -->
+		<!-- 본문 -->
+		<main>
 
 
-<!-- 검색창 -->
-<section class="newsletter" style="margin-top: -150px;padding-bottom: 0px;padding-top: 100px;">
-<div class="container">
-<div class="row">
-<div class="col-sm-12">
-	<div class="content">
-		<h2 style="color:#fff">FAQ</h2>
-	
-	</div>
-</div>
-</div>
-</div>
-</section>
+			<!-- 검색창 -->
+			<section class="newsletter"
+				style="margin-top: -150px; padding-bottom: 0px; padding-top: 100px;">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="content">
+								<h2 style="color: #fff">FAQ</h2>
 
-			<form action="writeAfResume.do">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
+			<form action="writeAfResume.do" method="post" name="resumewrite" enctype="multipart/form-data">
 
-				<div class="container" style="margin-top: 0px;margin-right: 400px;">
+				<div class="container" style="margin-top: 0px; margin-right: 400px;">
 					<div class="row">
 						<div class="col-lg-offset-2 col-lg-12" style="margin-left: 0px;">
 							<section class="panel panel-default">
@@ -302,44 +303,46 @@ dt, dd {
 									<article class="panel-body">
 										<figure class="text-center">
 											<div class="select_img">
-											<img src="./image/profile.jpg"
-												class="img-thumbnail img-circle img-responsive profileimg" alt="" style="/* width: 510.222px; */width: 200px;height: 200px;">
+												<img src="./image/profile.jpg"
+													class="img-thumbnail img-circle img-responsive profileimg"
+													alt="" style="width: 200px; height: 200px;">
 											</div>
-											<input type="file" name="fileload" style="width: 400px;margin-left: 500px;" id="resumeimg">
-											<figcaption style="height: 500px;">
+											<input type="file" name="fileload"
+												style="width: 400px; margin-left: 500px;" id="resumeimg">
+											<figcaption style="height: auto;">
 
-												
-													<h3 style="text-align: left">이력서 제목</h3>
-													<div class="resume_title" style="margin-top: 20px;">
-														<div class="resume_input">
-															<input
-																type="text" id="title" name="title"
-																class="resume_title_input" value="" maxlength="100"
-																data-placeholder_empty="이력서 제목<span class='valid_hidden'>을 입력하세요 (100자까지 입력가능)</span>"
-																data-placeholder_title="이력서 제목">
-														</div>
+
+												<h3 style="text-align: left">이력서 제목</h3>
+												<div class="resume_title" style="margin-top: 20px;">
+													<div class="resume_input">
+														<input type="text" id="title" name="resumetitle"
+															class="resume_title_input" value="" maxlength="100">
 													</div>
+												</div>
 
 
-												<div class="resume_write resume_basic" style="margin-top: 50px;">
+												<div class="resume_write resume_basic"
+													style="margin-top: 50px;">
 													<div class="resume_row">
 														<div class="input_title">
 															이름 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															 <input type="text"
-																id="user_nm" name="user_nm" class="box_input" value=""
-																maxlength="20" data-only-word="true">
+															<input type="text" id="user_nm" name="user_nm"
+																class="box_input" value="${login.name }" maxlength="20"
+																data-only-word="true">
+																<input type="hidden" name="memberid" value="${login.memberid }">
 														</div>
 
 														<div class="sri_select resume_select resume_right">
 
-																 <select class="selectpicker" style="width: 207.22222px;">
-																		<option>구직상태</option>
-																		<option class="special">구직중</option>
-																		<option>구직완료</option>
-																	</select>
-															
+															<select class="selectpicker" style="width: 207.22222px;"
+																name="recruit_status">
+																<option>구직상태</option>
+																<option value="구직중">구직중</option>
+																<option value="구직완료">구직완료</option>
+															</select>
+
 														</div>
 													</div>
 
@@ -348,23 +351,19 @@ dt, dd {
 															생년월일 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text" id="birth_dt" name="birth_dt" value=""
-																class="box_input expect_date" data-dateformat="yymmdd"
-																data-only-number="true" autocomplete="off"> <input
-																type="hidden" id="birth_year" name="birth_year"
-																value="1995"> <input type="hidden"
-																id="birth_month" name="birth_month" value="9"> <input
-																type="hidden" id="birth_day" name="birth_day" value="12">
-															<p class="txt_error"></p>
+															<input type="text" id="birth_dt" name="birth_dt"
+																value="${login.birth }" class="box_input expect_date"
+																data-dateformat="yymmdd" data-only-number="true"
+																autocomplete="off">
 														</div>
 
 														<div class="inpRdoSw sizeXL resume_right">
-															<span class="inOption"> <input name="sex"
-																id="male" type="radio" value="male"> <label
+															<span class="inOption"> <input name="gender"
+																id="male" type="radio" value="1"> <label
 																for="male" class="lbl">남</label>
-															</span> <span class="inOption"> <input name="sex"
-																id="female" type="radio" value="female">
-																<label for="female" class="lbl">여</label>
+															</span> <span class="inOption"> <input name="gender"
+																id="female" type="radio" value="2"> <label
+																for="female" class="lbl">여</label>
 															</span>
 															<p class="txt_error"></p>
 														</div>
@@ -375,10 +374,10 @@ dt, dd {
 															이메일 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text"
-																id="email" name="email" class="box_input max_length"
-																value="" readonly data-api_type="layer"
-																data-api_id="basic_confirm_email"> 
+															<input type="text" id="email" name="email"
+																class="box_input max_length" value="${login.email }"
+																readonly data-api_type="layer"
+																data-api_id="basic_confirm_email">
 														</div>
 													</div>
 
@@ -389,15 +388,15 @@ dt, dd {
 															휴대폰 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text"
-																id="user_cell" name="user_cell"
-																class="box_input max_length" value="" maxlength="11"
-																data-only-number="true" data-api_type="layer"
-																data-api_id="basic_confirm_cell" readonly> 
+															<input type="text" id="user_cell" name="user_cell"
+																class="box_input max_length" value="${login.name }"
+																maxlength="11" data-only-number="true"
+																data-api_type="layer" data-api_id="basic_confirm_cell"
+																readonly>
 														</div>
 													</div>
 
-													<div class="resume_row">
+													<!-- <div class="resume_row">
 														<div class="area_check_top"></div>
 														<div class="input_title">전화번호</div>
 														<div class="resume_input">
@@ -407,7 +406,7 @@ dt, dd {
 															<p class="txt_error"></p>
 														</div>
 													</div>
-
+ -->
 
 
 													<div class="resume_row"
@@ -416,1833 +415,1516 @@ dt, dd {
 														<div class="input_title">
 															주소 <span class="point">필수</span>
 														</div>
-														<input type="hidden" name="user_selected_type"
-															id="user_selected_type" value="R"> <input
-															type="hidden" id="sido" name="sido" value=""> <input
-															type="hidden" id="sigungu" name="sigungu" value="">
-														<input type="hidden" id="latitude" name="latitude"
-															value=""> <input type="hidden" id="longitude"
-															name="longitude" value=""> <input type="hidden"
-															id="old_zipcode" name="old_zipcode" value="121-800">
-														<input type="hidden" id="new_zipcode" name="new_zipcode"
-															value="04184">
+
 
 														<div class="resume_address">
 															<div class="resume_input" style="display:">
-																 <input type="text"
-																	id="new_address" name="new_address" value=""
-																	maxlength="40" readonly
+																<input type="text" id="new_address" name="new_address"
+																	value="${login.address }" maxlength="40" readonly
 																	class="box_input old_address _searchArea">
 																<p class="txt_error"></p>
 															</div>
 
-															<div class="resume_input" style="display: none;">
-																 <input type="text"
-																	id="old_address" name="old_address" value="서울 마포구 공덕동"
-																	maxlength="40" readonly
-																	class="box_input old_address _searchArea">
-																<p class="txt_error"></p>
-															</div>
 
 															<div class="resume_input resume_bottom" style="display:;">
-																 <input type="text"
-																	id="new_address_details" name="new_address_details"
-																	value="" maxlength="50"
+																<input type="text" id="new_address_details"
+																	name="new_address_details"
+																	value="${login.detailaddress }" maxlength="50"
 																	class="box_input size_type5 _newAddress"> <input
 																	type="hidden" id="new_address_extra"
-																	name="new_address_extra" value="">
+																	name="new_address_extra"
+																	value="${login.detailaddress }">
 																<p class="txt_error"></p>
 															</div>
-															<div
-																class="resume_input resume_bottom resume_input_type6"
-																style="display: none;">
-																<label for="old_address_details" class="bar_title"><span
-																	class="valid_hidden blind">지번</span>상세주소<span
-																	class="valid_hidden"> 입력</span></label> <input type="text"
-																	id="old_address_details" name="old_address_details"
-																	value="" maxlength="40"
-																	class="box_input size_type5 _oldAddress">
-																<p class="txt_error"></p>
-															</div>
+
 														</div>
 
 													</div>
-													
-													
+
+
 													<div id="school" class="resume_section blind_guide">
-											<div class="area_title">
-												<h3 class="title">학력사항</h3>
-												<p class="txt_noti">최종학력 선택 후 학력사항을 입력하세요</p>
-											</div>
+														<div class="area_title">
+															<h3 class="title">학력사항</h3>
+															<p class="txt_noti">최종학력 선택 후 학력사항을 입력하세요</p>
+														</div>
 
 
-											<div class="resume_write resume_edu">
-												<div class="select_title">
+														<div class="resume_write resume_edu">
+															<div class="select_title">
 
-															
-																	
-																	<div class="row">
-																		<div class="form-group">
-																			<div class="searchable-container">
-																				<div
-																					class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
-																					<div class="info-block block-info clearfix">
-																						<div class="square-box pull-left">
-																							<span
-																								class="glyphicon glyphicon-tags glyphicon-lg"></span>
-																						</div>
-																						<div data-toggle="buttons"
-																							class="btn-group bizmoduleselect" style="width: 200px;padding-right: 20px;">
-																							<label class="btn btn-default">
-																								<div class="bizcontent">
-																									<input type="checkbox" name="var_id[]"
-																										autocomplete="off" value=""> <span
-																										class="glyphicon glyphicon-ok glyphicon-lg"></span>
-																									<h5>중학교</h5>
-																								</div>
-																							</label>
-																						</div>
+
+																<div class="row">
+																	<div class="form-group">
+																		<div class="searchable-container">
+																			<div
+																				class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
+																				<div class="info-block block-info clearfix">
+																					<div class="square-box pull-left">
+																						<span
+																							class="glyphicon glyphicon-tags glyphicon-lg"></span>
+																					</div>
+																					<div data-toggle="buttons"
+																						class="btn-group bizmoduleselect"
+																						style="width: 200px; padding-right: 20px;">
+																						<label class="btn btn-default" id="middlesch">
+																							<div class="bizcontent">
+																								<input type="checkbox" name="var_id[]"
+																									autocomplete="off" value=""> <span
+																									class="glyphicon glyphicon-ok glyphicon-lg"></span>
+																								<h5>중학교</h5>
+																							</div>
+																						</label>
 																					</div>
 																				</div>
-																				<div
-																					class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
-																					<div class="info-block block-info clearfix">
-																						<div class="square-box pull-left">
-																							<span
-																								class="glyphicon glyphicon-tags glyphicon-lg"></span>
-																						</div>
-																						<div data-toggle="buttons"
-																							class="btn-group bizmoduleselect" style="width: 200px;padding-right: 20px;">
-																							<label class="btn btn-default">
-																								<div class="bizcontent">
-																									<input type="checkbox" name="var_id[]"
-																										autocomplete="off" value=""> <span
-																										class="glyphicon glyphicon-ok glyphicon-lg"></span>
-																									<h5>고등학교</h5>
-																								</div>
-																							</label>
-																						</div>
+																			</div>
+																			<div
+																				class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
+																				<div class="info-block block-info clearfix">
+																					<div class="square-box pull-left">
+																						<span
+																							class="glyphicon glyphicon-tags glyphicon-lg"></span>
+																					</div>
+																					<div data-toggle="buttons"
+																						class="btn-group bizmoduleselect"
+																						style="width: 200px; padding-right: 20px;">
+																						<label class="btn btn-default" id="highsch">
+																							<div class="bizcontent">
+																								<input type="checkbox" name="var_id[]"
+																									autocomplete="off" value=""> <span
+																									class="glyphicon glyphicon-ok glyphicon-lg"></span>
+																								<h5>고등학교</h5>
+																							</div>
+																						</label>
 																					</div>
 																				</div>
-																				<div
-																					class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
-																					<div class="info-block block-info clearfix">
-																						<div class="square-box pull-left">
-																							<span
-																								class="glyphicon glyphicon-tags glyphicon-lg"></span>
-																						</div>
-																						<div data-toggle="buttons"
-																							class="btn-group bizmoduleselect" style="width: 200px;padding-right: 20px;">
-																							<label class="btn btn-default">
-																								<div class="bizcontent">
-																									<input type="checkbox" name="var_id[]"
-																										autocomplete="off" value=""> <span
-																										class="glyphicon glyphicon-ok glyphicon-lg"></span>
-																									<h5>대학교</h5>
-																								</div>
-																							</label>
-																						</div>
+																			</div>
+																			<div
+																				class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
+																				<div class="info-block block-info clearfix">
+																					<div class="square-box pull-left">
+																						<span
+																							class="glyphicon glyphicon-tags glyphicon-lg"></span>
+																					</div>
+																					<div data-toggle="buttons"
+																						class="btn-group bizmoduleselect"
+																						style="width: 200px; padding-right: 20px;">
+																						<label class="btn btn-default" id="universities">
+																							<div class="bizcontent">
+																								<input type="checkbox" name="var_id[]"
+																									autocomplete="off" value=""> <span
+																									class="glyphicon glyphicon-ok glyphicon-lg"></span>
+																								<h5>대학교</h5>
+																							</div>
+																						</label>
 																					</div>
 																				</div>
-																				<div
-																					class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
-																					<div class="info-block block-info clearfix">
-																						<div class="square-box pull-left">
-																							<span
-																								class="glyphicon glyphicon-tags glyphicon-lg"></span>
-																						</div>
-																						<div data-toggle="buttons"
-																							class="btn-group bizmoduleselect" style="width: 200px;padding-right: 20px;">
-																							<label class="btn btn-default">
-																								<div class="bizcontent">
-																									<input type="checkbox" name="var_id[]"
-																										autocomplete="off" value=""> <span
-																										class="glyphicon glyphicon-ok glyphicon-lg"></span>
-																									<h5>대학원</h5>
-																								</div>
-																							</label>
-																						</div>
+																			</div>
+																			<div
+																				class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
+																				<div class="info-block block-info clearfix">
+																					<div class="square-box pull-left">
+																						<span
+																							class="glyphicon glyphicon-tags glyphicon-lg"></span>
+																					</div>
+																					<div data-toggle="buttons"
+																						class="btn-group bizmoduleselect"
+																						style="width: 200px; padding-right: 20px;">
+																						<label class="btn btn-default" id="graduatesch">
+																							<div class="bizcontent">
+																								<input type="checkbox" name="var_id[]"
+																									autocomplete="off" value=""> <span
+																									class="glyphicon glyphicon-ok glyphicon-lg"></span>
+																								<h5>대학원</h5>
+																							</div>
+																						</label>
 																					</div>
 																				</div>
 																			</div>
 																		</div>
 																	</div>
-																
+																</div>
+
 															</div>
-											</div>
+														</div>
 
-											<div id="education" class="resume_write resume_edu">
+														<div id="education" class="resume_write resume_edu">
 
-												<div id="tpl_row_1621990777" class="tpl_row fixedTop"
-													data-tpl_id="tpl_highschool">
-													<input type="hidden" id="school_gb_1621990777"
-														name="school_gb[]" value="high"> <input
-														type="hidden" id="school_cd_1621990777" name="school_cd[]"
-														value="19009"> <input type="hidden"
-														id="school_direct_1621990777" name="school_direct[]"
-														value="n"> <input type="hidden"
-														id="school_entrance_year_1621990777"
-														name="school_entrance_year[]" value="2011"> <input
-														type="hidden" id="school_entrance_month_1621990777"
-														name="school_entrance_month[]" value="03"> <input
-														type="hidden" id="school_graduation_year_1621990777"
-														name="school_graduation_year[]" value="2014"> <input
-														type="hidden" id="school_graduation_month_1621990777"
-														name="school_graduation_month[]" value="02"> <input
-														type="hidden" id="school_minor_check_value_1621990777"
-														name="school_minor_check_value[]" value="n"> <input
-														type="hidden" id="school_major_avg_1621990777"
-														name="school_major_avg[]"> <input type="hidden"
-														id="school_major_perfect_1621990777"
-														name="school_major_perfect[]"> <input
-														type="hidden" id="school_major_department_1621990777"
-														name="school_major_department[]"> <input
-														type="hidden" id="school_major_department_text_1621990777"
-														name="school_major_department_text[]"> <input
-														type="hidden" id="school_minor_1621990777"
-														name="school_minor[]"> <input type="hidden"
-														id="school_minor_cd_1621990777" name="school_minor_cd[]">
-													<input type="hidden"
-														id="school_minor_department_1621990777"
-														name="school_minor_department[]"> <input
-														type="hidden" id="school_minor_department_text_1621990777"
-														name="school_minor_department_text[]"> <input
-														type="hidden" id="stopout_reason_1621990777"
-														name="school_stopout_reason[]"> <input
-														type="hidden" id="school_thesis_category_1621990777"
-														name="school_thesis_category[]"> <input
-														type="hidden" id="school_thesis_title_1621990777"
-														name="school_thesis_title[]"> <input type="hidden"
-														id="school_day_night_1621990777" name="school_day_night[]">
+															<div id="tpl_row_1621990777" class="tpl_row fixedTop"
+																data-tpl_id="tpl_highschool">
+																<input type="hidden" id="school_gb_1621990777"
+																	name="school_gb[]" value="high"> <input
+																	type="hidden" id="school_cd_1621990777"
+																	name="school_cd[]" value="19009"> <input
+																	type="hidden" id="school_direct_1621990777"
+																	name="school_direct[]" value="n"> <input
+																	type="hidden" id="school_entrance_year_1621990777"
+																	name="school_entrance_year[]" value="2011"> <input
+																	type="hidden" id="school_entrance_month_1621990777"
+																	name="school_entrance_month[]" value="03"> <input
+																	type="hidden" id="school_graduation_year_1621990777"
+																	name="school_graduation_year[]" value="2014"> <input
+																	type="hidden" id="school_graduation_month_1621990777"
+																	name="school_graduation_month[]" value="02"> <input
+																	type="hidden" id="school_minor_check_value_1621990777"
+																	name="school_minor_check_value[]" value="n"> <input
+																	type="hidden" id="school_major_avg_1621990777"
+																	name="school_major_avg[]"> <input type="hidden"
+																	id="school_major_perfect_1621990777"
+																	name="school_major_perfect[]"> <input
+																	type="hidden" id="school_major_department_1621990777"
+																	name="school_major_department[]"> <input
+																	type="hidden"
+																	id="school_major_department_text_1621990777"
+																	name="school_major_department_text[]"> <input
+																	type="hidden" id="school_minor_1621990777"
+																	name="school_minor[]"> <input type="hidden"
+																	id="school_minor_cd_1621990777"
+																	name="school_minor_cd[]"> <input type="hidden"
+																	id="school_minor_department_1621990777"
+																	name="school_minor_department[]"> <input
+																	type="hidden"
+																	id="school_minor_department_text_1621990777"
+																	name="school_minor_department_text[]"> <input
+																	type="hidden" id="stopout_reason_1621990777"
+																	name="school_stopout_reason[]"> <input
+																	type="hidden" id="school_thesis_category_1621990777"
+																	name="school_thesis_category[]"> <input
+																	type="hidden" id="school_thesis_title_1621990777"
+																	name="school_thesis_title[]"> <input
+																	type="hidden" id="school_day_night_1621990777"
+																	name="school_day_night[]"> <input type="hidden"
+																	id="highschool_gb_1621990777" name="highschool_gb"
+																	value="high">
 
-													<input type="hidden" id="highschool_gb_1621990777"
-														name="highschool_gb" value="high">
+																<div class="area_title">
+																	<h4 class="title">고등학교 정보 입력</h4>
+																</div>
+
+
+
+																<div class="resume_row" style="display:">
+																	<div class="input_title">
+																		학교명 <span class="point">필수</span>
+																	</div>
+																	<div class="resume_input">
+																		<input type="text" id="highschool"
+																			name="highschool[]" value="" class="box_input"
+																			maxlength="100" data-api_type="auto"
+																			data-api_id="school_high" data-min_len="2"
+																			autocomplete="off">
+
+																	</div>
+																</div>
+
+
+																<div class="resume_row">
+																	<div class="input_title">
+																		재학기간 <span class="point">필수</span>
+																	</div>
+																	<div class="area_period">
+																		<div class="period_bundle">
+																			<div class="resume_input" style="display:">
+																				<input type="text"
+																					id="high_str"
+																					name="high_str[]" value=""
+																					class="expect_date box_input"
+																					data-dateformat="yymm" data-only-number="true"
+																					maxlength="" autocomplete="off">
+
+																			</div>
+																			<div class="sri_select resume_select period_select"
+																				style="display:">
+
+																				<select class="selectpicker" name="high_str_status[]" id="high_str_status"
+																					style="width: 107.22222px; height: 50.22222px;">
+																					<option value="입학">입학</option>
+																					<option value="편입">편입</option>
+																				</select>
+
+																			</div>
+																			<p class="txt_error"></p>
+																		</div>
+
+																		<span class="txt_period" style="display:">-</span>
+
+																		<div class="period_bundle">
+																			<div class="resume_input box_period">
+																				<input type="text"
+																					id="high_end"
+																					name="high_end[]" value=""
+																					class="expect_date box_input"
+																					data-dateformat="yymm" data-only-number="true"
+																					maxlength="" autocomplete="off">
+
+																			</div>
+
+																			<div class="sri_select resume_select period_select"
+																				style="display:">
+
+																				<select class="selectpicker" name="high_end_status[]" id="high_end_status"
+																					style="width: 107.22222px; height: 50.22222px;">
+																					<option value="졸업">졸업</option>
+																					<option value="재학중">재학중</option>
+																					<option value="휴학중">휴학중</option>
+																					<option value="수료">수료</option>
+																					<option value="중퇴">중퇴</option>
+																					<option value="자퇴">자퇴</option>
+																					<option value="졸업예정">졸업예정</option>
+																				</select>
+
+																			</div>
+																			<p class="txt_error"></p>
+																		</div>
+																		<p class="txt_error"></p>
+																	</div>
+																</div>
+
+																<div class="resume_row" style="display:">
+																	<div class="input_title">전공 계열</div>
+																	<div class="sri_select resume_select">
+
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;">
+																			<option>문과계열</option>
+																			<option>이과계열</option>
+																			<option>전문(실업계)</option>
+																			<option>예체능계</option>
+																			<option>특성화/마이스터고</option>
+																			<option>특수목적고</option>
+																		</select>
+																	</div>
+																</div>
+
+
+
+															</div>
+
+															<div id="tpl_row_1621990778" class="tpl_row"
+																data-tpl_id="tpl_university">
+																<input type="hidden" id="school_cd_1621990778"
+																	name="school_cd[]" value="11685"> <input
+																	type="hidden" id="school_open_fl_1621990778"
+																	name="school_open_fl[]" value="y"> <input
+																	type="hidden" id="school_direct_1621990778"
+																	name="school_direct[]" value="n"> <input
+																	type="hidden" id="school_major_cd_1621990778"
+																	name="school_major_cd[]" value=""> <input
+																	type="hidden" id="school_minor_check_value_1621990778"
+																	name="school_minor_check_value[]" value="n"> <input
+																	type="hidden" id="school_thesis_category_1621990778"
+																	name="school_thesis_category[]" value="both"> <input
+																	type="hidden" id="school_entrance_year_1621990778"
+																	name="school_entrance_year[]" value="2014"> <input
+																	type="hidden" id="school_entrance_month_1621990778"
+																	name="school_entrance_month[]" value="03"> <input
+																	type="hidden" id="school_graduation_year_1621990778"
+																	name="school_graduation_year[]" value="2019"> <input
+																	type="hidden" id="school_graduation_month_1621990778"
+																	name="school_graduation_month[]" value="08">
+
+																<div class="area_title">
+																	<h4 class="title">대학·대학원 정보 입력</h4>
+																</div>
+
+																<div class="resume_row">
+																	<div class="input_title">
+																		대학 <span class="point">필수</span>
+																	</div>
+																	<div class="sri_select resume_select">
+
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="univ_status[]" id="univ_status">
+																			<option value="대학교(4년)">대학교(4년)</option>
+																			<option value="대학(2,3년)">대학(2,3년)</option>
+																			<option value="대학원(석사)">대학원(석사)</option>
+																			<option value="대학원(박사)">대학원(박사)</option>
+																		</select>
+																	</div>
+																</div>
+
+																<div class="resume_row">
+																	<div class="input_title">
+																		학교명 <span class="point">필수</span>
+																	</div>
+																	<div class="resume_input">
+																		<input type="text" id="university"
+																			name="university[]" value="" class="box_input"
+																			maxlength="100" data-api_type="auto"
+																			data-api_id="school_univ" data-min_len="2"
+																			autocomplete="off">
+																	</div>
+																</div>
+
+
+																<div class="resume_row">
+																	<div class="input_title">
+																		재학기간 <span class="point">필수</span>
+																	</div>
+																	<div class="area_period">
+																		<div class="period_bundle">
+																			<div class="resume_input">
+																				<input type="text"
+																					id="univ_str"
+																					name="univ_str[]" value=""
+																					class="expect_date box_input"
+																					data-dateformat="yymm" data-only-number="true"
+																					maxlength="" autocomplete="off">
+
+																			</div>
+
+																			<div class="sri_select resume_select period_select"
+																				style="display:">
+
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="univ_str_status[]" id="univ_str_status">
+																					<option value="입학">입학</option>
+																					<option value="편입">편입</option>
+																				</select>
+
+																			</div>
+																			<p class="txt_error"></p>
+																		</div>
+
+																		<span class="txt_period">-</span>
+
+																		<div class="period_bundle">
+																			<div class="resume_input box_period">
+																				<input type="text"
+																					id="univ_end"
+																					name="univ_end[]" value=""
+																					class="expect_date box_input"
+																					data-dateformat="yymm" data-only-number="true"
+																					maxlength="" autocomplete="off">
+
+																			</div>
+
+																			<div class="sri_select resume_select period_select"
+																				style="display:">
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status[]" id="univ_end_status">
+																					<option value="졸업">졸업</option>
+																					<option value="재학중">재학중</option>
+																					<option value="휴학중">휴학중</option>
+																					<option value="수료">수료</option>
+																					<option value="중퇴">중퇴</option>
+																					<option value="자퇴">자퇴</option>
+																					<option value="졸업예정">졸업예정</option>
+																				</select>
+																			</div>
+																			<p class="txt_error"></p>
+																		</div>
+																		<p class="txt_error"></p>
+																	</div>
+																</div>
+																<div class="resume_row area_school_major"
+																	style="height: 125px;">
+																	<div class="input_title">
+																		전공 <span class="point">필수</span>
+																	</div>
+																	<div class="area_add">
+																		<div class="resume_input resume_select">
+																			<label class="bar_title"
+																				for="school_major_cd_1621990778">전공구분<span
+																				class="valid_hidden">선택</span></label>
+																			<div class="box_input size_type2">주전공</div>
+																		</div>
+
+																		<div class="area_direct">
+																			<div class="sri_select resume_select">
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="univ_major_field[]" id="univ_major_field">
+																					<option value="경제/경영">경제/경영</option>
+																					<option value="어문학">어문학</option>
+																					<option value="영어/영문">영어/영문</option>
+																					<option value="중어/중문">중어/중문</option>
+																					<option value="일어/일문">일어/일문</option>
+																					<option value="국어/국문">국어/국문</option>
+																					<option value="인문과학">인문과학</option>
+																					<option value="사회과학">사회과학</option>
+																					<option value="상경계열">상경계열</option>
+																					<option value="회계학">회계학</option>
+																					<option value="법학계열">법학계열</option>
+																					<option value="사범계열">사범계열</option>
+																					<option value="예/체능">예/체능</option>
+																					<option value="자연과학계열">자연과학계열</option>
+																					<option value="농수산/해양/축산">농수산/해양/축산</option>
+																					<option value="수학/통계학">수학/통계학</option>
+																					<option value="물리/천문/기상학">물리/천문/기상학</option>
+																					<option value="화학/생물">화학/생물</option>
+																					<option value="공학계열">공학계열</option>
+																					<option value="전기/전자/정보통신공학">전기/전자/정보통신공학</option>
+																					<option value="컴퓨터/시스템공학">컴퓨터/시스템공학</option>
+																					<option value="금속/비금속공학">금속/비금속공학</option>
+																					<option value="생명/화학/환경/바이오">생명/화학/환경/바이오</option>
+																					<option value="도시/토목/건축공학">도시/토목/건축공학</option>
+																					<option value="에너지/원자력공학">에너지/원자력공학</option>
+																					<option value="산업/자동차/우주공학">산업/자동차/우주공학</option>
+																					<option value="기계/조선/항공공학">기계/조선/항공공학</option>
+																					<option value="신소재/재료/섬유공학">신소재/재료/섬유공학</option>
+																					<option value="식품/유정/안전공학">식품/유정/안전공학</option>
+																					<option value="의학계열">의학계열</option>
+																				</select>
+
+
+
+																			</div>
+
+																			<div class="resume_input resume_bottom"
+																				style="display: none">
+																				<label for="school_major_department_text_1621990778"
+																					class="bar_title">전공계열<span
+																					class="valid_hidden"> 직접입력</span></label> <input
+																					type="text"
+																					id="univ_major"
+																					name="univ_major[]" value=""
+																					class="box_input" maxlength="50">
+																				<p class="txt_error"></p>
+																			</div>
+																		</div>
+
+																		<div class="resume_input resume_bottom">
+																			<input type="text" id="school_major_1621990778"
+																				name="school_major[]" value="" class="box_input"
+																				maxlength="50">
+																		</div>
+																		<button type="button" class="btn_edu_type btn_minor"
+																			style="display:">전공 추가하기</button>
+																	</div>
+																</div>
+
+																<div class="resume_row">
+																	<div class="input_title">주/야간</div>
+																	<div class="sri_select resume_select resume_input_type">
+
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="univ_night[]" id="univ_night">
+																			<option value="주간">주간</option>
+																			<option value="야간">야간</option>
+																		</select>
+
+																	</div>
+																</div>
+
+																<div class="resume_row">
+																	<div class="input_title">학점</div>
+																	<div class="area_grades">
+																		<div class="resume_input">
+																			<input type="text" id="univ_grade"
+																				name="univ_grade[]" value="3.59"
+																				class="box_input size_type3" maxlength="5"
+																				data-only-float="true">
+																		</div>
+																		<div class="sri_select resume_select">
+
+																			<select class="selectpicker"
+																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base[]" id="univ_grade_base">
+																				<option>4.5</option>
+																				<option>4.0</option>
+																				<option>4.3</option>
+																				<option>5.0</option>
+																				<option>7.0</option>
+																				<option>100</option>
+																			</select>
+
+																		</div>
+																		<p class="txt_error"></p>
+																	</div>
+																	<a href="/zf_user/tools/grade-converter-pop"
+																		target="_blank" class="link_converter">학점 변환기 보기</a>
+																</div>
+
+																<div class="resume_row area_school_thesis_title"
+																	style="display:">
+																	<div class="input_title">논문 &amp; 졸업작품</div>
+																	<div class="resume_textarea">
+																		<label for="school_thesis_title_1621990778"
+																			class="bar_title">학위논문 및 졸업작품<span
+																			class="valid_hidden"> 입력</span></label>
+																		<textarea id="univ_paper"
+																			name="univ_paper[]" class="box_textarea"></textarea>
+																	</div>
+																</div>
+
+																<div id="educationAdd"></div>
+
+
+																<div class="resume_row">
+																	<div class="area_add_btn">
+																		<button type="button" class="btn_resume_add"
+																			data-api_type="layer" data-api_id="attach_file"
+																			id="eduAdd">
+																			<span>대학대학원 추가</span>
+																		</button>
+																	</div>
+
+																</div>
+															</div>
+														</div>
+
+
+														<div id="academy" class="resume_write resume_edu"></div>
+
+
+													</div>
+												</div>
+												<div id="career" class="resume_section blind_guide">
+													<input type="hidden" id="career_contents_type"
+														name="career_contents_type" value="style"> <input
+														type="hidden" id="exchange_usd" name="exchange_usd"
+														value="1127.6"> <input type="hidden"
+														id="exchange_jpy" name="exchange_jpy" value="1036.25">
 
 													<div class="area_title">
-														<h4 class="title">고등학교 정보 입력</h4>
+														<h3 class="title">경력사항</h3>
 													</div>
 
-												
-
-													<div class="resume_row" style="display:">
-														<div class="input_title">
-															학교명 <span class="point">필수</span>
-														</div>
-														<div class="resume_input">
-															 <input type="text"
-																id="school_nm_1621990777" name="school_nm[]"
-																value="대일외국어고등학교" class="box_input" maxlength="100"
-																data-api_type="auto" data-api_id="school_high"
-																data-min_len="2" autocomplete="off">
-															
-														</div>
-													</div>
-
-													
-													<div class="resume_row">
-														<div class="input_title">
-															재학기간 <span class="point">필수</span>
-														</div>
-														<div class="area_period">
-															<div class="period_bundle">
-																<div class="resume_input" style="display:">
-																	 <input type="text"
-																		id="school_entrance_dt_1621990777"
-																		name="school_entrance_dt[]" value="201103"
-																		class="expect_date box_input" data-dateformat="yymm"
-																		data-only-number="true" maxlength="6"
-																		autocomplete="off">
-																	
-																</div>
-																<div class="sri_select resume_select period_select"
-																	style="display:">
-																	
-																	<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
-																		<option>입학</option>
-																		<option>편입</option>
-																	</select>
-																	
-																</div>
-																<p class="txt_error"></p>
-															</div>
-
-															<span class="txt_period" style="display:">-</span>
-
-															<div class="period_bundle">
-																<div class="resume_input box_period">
-																	 <input type="text"
-																		id="school_graduation_dt_1621990777"
-																		name="school_graduation_dt[]" value="201402"
-																		class="expect_date box_input" data-dateformat="yymm"
-																		data-only-number="true" maxlength="6"
-																		autocomplete="off">
-																	
-																</div>
-
-																<div class="sri_select resume_select period_select"
-																	style="display:">
-																	
-																	<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
-																		<option>졸업</option>
-																		<option>재학중</option>
-																		<option>휴학중</option>
-																		<option>수료</option>
-																		<option>중퇴</option>
-																		<option>자퇴</option>
-																		<option>졸업예정</option>
-																	</select>
-																	
-																</div>
-																<p class="txt_error"></p>
-															</div>
-															<p class="txt_error"></p>
-														</div>
-													</div>
-
-													<div class="resume_row" style="display:">
-														<div class="input_title">전공 계열</div>
-														<div class="sri_select resume_select">
-															<label for="school_major_cd_1621990777" class="bar_title">전공
-																계열<span class="valid_hidden"> 선택</span>
-															</label>
-															<button class="ico_arr selected" type="button">전공계열
-																선택</button>
-															<input type="hidden" id="school_major_cd_1621990777"
-																name="school_major_cd[]">
-															<ul class="list_opt">
-																<li><a class="link_opt" href="##" data-value="">전공계열
-																		<span class="valid_hidden"> 선택</span>
-																</a></li>
-																<li class="on"><a class="link_opt" href="##"
-																	data-value="1">문과계열</a></li>
-																<li class=""><a class="link_opt" href="##"
-																	data-value="3">이과계열</a></li>
-																<li class=""><a class="link_opt" href="##"
-																	data-value="2">전문(실업)계</a></li>
-																<li class=""><a class="link_opt" href="##"
-																	data-value="4">예체능계</a></li>
-																<li class=""><a class="link_opt" href="##"
-																	data-value="5">특성화/마이스터고</a></li>
-																<li class=""><a class="link_opt" href="##"
-																	data-value="6">특수목적고</a></li>
-															</ul>
-															<p class="txt_error"></p>
-														</div>
-													</div>
-
-													<div class="resume_row" style="display: none">
-														<div class="input_title">전공명</div>
-														<div class="resume_input" style="display: inline-block;">
-															<label for="school_major_1621990777" class="bar_title">전공명
-																<span class="valid_hidden"> 입력</span>
-															</label> <input type="text" id="school_major_1621990777"
-																name="school_major[]" value="" class="box_input"
-																maxlength="50">
-														</div>
-													</div>
-
-
-												</div>
-
-												<div id="tpl_row_1621990778" class="tpl_row"
-													data-tpl_id="tpl_university">
-													<input type="hidden" id="school_cd_1621990778"
-														name="school_cd[]" value="11685"> <input
-														type="hidden" id="school_open_fl_1621990778"
-														name="school_open_fl[]" value="y"> <input
-														type="hidden" id="school_direct_1621990778"
-														name="school_direct[]" value="n"> <input
-														type="hidden" id="school_major_cd_1621990778"
-														name="school_major_cd[]" value=""> <input
-														type="hidden" id="school_minor_check_value_1621990778"
-														name="school_minor_check_value[]" value="n"> <input
-														type="hidden" id="school_thesis_category_1621990778"
-														name="school_thesis_category[]" value="both"> <input
-														type="hidden" id="school_entrance_year_1621990778"
-														name="school_entrance_year[]" value="2014"> <input
-														type="hidden" id="school_entrance_month_1621990778"
-														name="school_entrance_month[]" value="03"> <input
-														type="hidden" id="school_graduation_year_1621990778"
-														name="school_graduation_year[]" value="2019"> <input
-														type="hidden" id="school_graduation_month_1621990778"
-														name="school_graduation_month[]" value="08">
-
-													<div class="area_title">
-														<h4 class="title">대학·대학원 정보 입력</h4>
-													</div>
-
-													<div class="resume_row">
-														<div class="input_title">
-															대학 <span class="point">필수</span>
-														</div>
-														<div class="sri_select resume_select">
-															<label for="school_gb_1621990778" class="bar_title"><span
-																class="valid_hidden">대학 선택</span><span class="blind">대학
-																	구분</span></label>
-															<button type="button" class="ico_arr selected">대학
-																선택</button>
-															<input type="hidden" id="school_gb_1621990778"
-																name="school_gb[]" value="university">
-															<ul class="list_opt">
-																<li class=""><a class="link_opt" href="##"
-																	data-value="college">대학(2,3년)</a></li>
-																<li class="on"><a class="link_opt" href="##"
-																	data-value="university">대학교(4년)</a></li>
-																<li class=""><a class="link_opt" href="##"
-																	data-value="master">대학원(석사)</a></li>
-																<li class=""><a class="link_opt" href="##"
-																	data-value="doctor">대학원(박사)</a></li>
-															</ul>
-															<p class="txt_error"></p>
-														</div>
-													</div>
-
-													<div class="resume_row">
-														<div class="input_title">
-															학교명 <span class="point">필수</span>
-														</div>
-														<div class="resume_input">
-															<label for="school_nm_1621990778" class="bar_title">대학교명<span
-																class="valid_hidden"> 입력</span></label> <input type="text"
-																id="school_nm_1621990778" name="school_nm[]"
-																value="숙명여자대학교" class="box_input" maxlength="100"
-																data-api_type="auto" data-api_id="school_univ"
-																data-min_len="2" autocomplete="off">
-															<p class="txt_error"></p>
-														</div>
-													</div>
-
-													
-													<div class="resume_row">
-														<div class="input_title">
-															재학기간 <span class="point">필수</span>
-														</div>
-														<div class="area_period">
-															<div class="period_bundle">
-																<div class="resume_input">
-																	<input type="text"
-																		id="school_entrance_dt_1621990778"
-																		name="school_entrance_dt[]" value="201403"
-																		class="expect_date box_input" data-dateformat="yymm"
-																		data-only-number="true" maxlength="6"
-																		autocomplete="off">
-																	
-																</div>
-
-																<div class="sri_select resume_select period_select"
-																	style="display:">
-																	
-																	<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
-																		<option>입학</option>
-																		<option>편입</option>
-																	</select>
-																	
-																</div>
-																<p class="txt_error"></p>
-															</div>
-
-															<span class="txt_period">-</span>
-
-															<div class="period_bundle">
-																<div class="resume_input box_period">
-																	<input type="text" id="school_graduation_dt_1621990778"
-																		name="school_graduation_dt[]" value="201908"
-																		class="expect_date box_input" data-dateformat="yymm"
-																		data-only-number="true" maxlength="6"
-																		autocomplete="off">
-																	
-																</div>
-
-																<div class="sri_select resume_select period_select"
-																	style="display:">
-																	<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
-																		<option>졸업</option>
-																		<option>재학중</option>
-																		<option>휴학중</option>
-																		<option>수료</option>
-																		<option>중퇴</option>
-																		<option>자퇴</option>
-																		<option>졸업예정</option>
-																	</select>
-																</div>
-																<p class="txt_error"></p>
-															</div>
-															<p class="txt_error"></p>
-														</div>
-													</div>
-													<div class="resume_row area_school_major" style="height: 125px;">
-														<div class="input_title">
-															전공 <span class="point">필수</span>
-														</div>
-														<div class="area_add">
-															<div class="resume_input resume_select">
-																<label class="bar_title"
-																	for="school_major_cd_1621990778">전공구분<span
-																	class="valid_hidden">선택</span></label>
-																<div class="box_input size_type2">주전공</div>
-															</div>
-
-															<div class="area_direct">
-																<div class="sri_select resume_select">
-																	<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
-																		<option>경제/경영</option>
-																		<option>어문학</option>
-																		<option>영어/영문</option>
-																		<option>중어/중문</option>
-																		<option>일어/일문</option>
-																		<option>국어/국문</option>
-																		<option>인문과학</option>
-																		<option>사회과학</option>
-																		<option>상경계열</option>
-																		<option>회계학</option>
-																		<option>법학계열</option>
-																		<option>사범계열</option>
-																		<option>예/체능</option>
-																		<option>자연과학계열</option>
-																		<option>농수산/해양/축산</option>
-																		<option>수학/통계학</option>
-																		<option>물리/천문/기상학</option>
-																		<option>화학/생물</option>
-																		<option>공학계열</option>
-																		<option>전기/전자/정보통신공학</option>
-																		<option>컴퓨터/시스템공학</option>
-																		<option>금속/비금속공학</option>
-																		<option>생명/화학/환경/바이오</option>
-																		<option>도시/토목/건축공학</option>
-																		<option>에어지/원자력공학</option>
-																		<option>산업/자동차/우주공학</option>
-																		<option>기계/조선/항공공학</option>
-																		<option>신소재/재료/섬유공학</option>
-																		<option>식품/유정/안전공학</option>
-																		<option>의학계열</option>
-																	</select>
-																	
-																	
-																	
-																</div>
-
-																<div class="resume_input resume_bottom"
-																	style="display: none">
-																	<label for="school_major_department_text_1621990778"
-																		class="bar_title">전공계열<span
-																		class="valid_hidden"> 직접입력</span></label> <input type="text"
-																		id="school_major_department_text_1621990778"
-																		name="school_major_department_text[]" value=""
-																		class="box_input" maxlength="50">
-																	<p class="txt_error"></p>
-																</div>
-															</div>
-
-															<div class="resume_input resume_bottom">
-																<input type="text"
-																	id="school_major_1621990778" name="school_major[]"
-																	value="" class="box_input" maxlength="50">
-															</div>
-															<button type="button" class="btn_edu_type btn_minor"
-																style="display:">전공 추가하기</button>
-														</div>
-													</div>
-
-												
-
-													<div class="resume_row">
-														<div class="input_title">주/야간</div>
-														<div class="sri_select resume_select resume_input_type">
-															
-															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
-																		<option>주간</option>
-																		<option>야간</option>
-																	</select>
-															
-															
-															
-														</div>
-													</div>
-
-													<div class="resume_row">
-														<div class="input_title">학점</div>
-														<div class="area_grades">
-															<div class="resume_input">
-																<input type="text" id="school_major_avg_1621990778"
-																	name="school_major_avg[]" value="3.59"
-																	class="box_input size_type3" maxlength="5"
-																	data-only-float="true">
-															</div>
-															<div class="sri_select resume_select">
-																
-																
-																<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
-																		<option>4.5</option>
-																		<option>4.0</option>
-																		<option>4.3</option>
-																		<option>5.0</option>
-																		<option>7.0</option>
-																		<option>100</option>
-																	</select>
-																
-																
-																
-																
-																
-																
-																
-																
-																
-																
-																
-																
-															</div>
-															<p class="txt_error"></p>
-														</div>
-														<a href="/zf_user/tools/grade-converter-pop"
-															target="_blank" class="link_converter">학점 변환기 보기</a>
-													</div>
-
-													<div class="resume_row area_school_thesis_title"
-														style="display:">
-														<div class="input_title">논문 &amp; 졸업작품</div>
-														<div class="resume_textarea">
-															<label for="school_thesis_title_1621990778"
-																class="bar_title">학위논문 및 졸업작품<span
-																class="valid_hidden"> 입력</span></label>
-															<textarea id="school_thesis_title_1621990778"
-																name="school_thesis_title[]" class="box_textarea"></textarea>
-														</div>
-													</div>
-
-													<div class="resume_row area_school_stopout_reason"
-														style="display: none">
-														<div class="input_title">휴학사유</div>
-														<div class="resume_textarea">
-															<label for="school_stopout_reason_1621990778"
-																class="bar_title">휴학사유<span class="valid_hidden">
-																	입력</span></label>
-															<textarea id="school_stopout_reason_1621990778"
-																name="school_stopout_reason[]" class="box_textarea"></textarea>
-														</div>
-													</div>
-												</div>
-											</div>
-											
-											
-											<div id="academy" class="resume_write resume_edu"></div>
-
-											<div id="lastschool" class="resume_write final_edu"
-												style="display: none;">
-												<input type="hidden" id="education_cd" name="education_cd"
-													value="3"> <input type="hidden"
-													id="education_status" name="education_status" value="1">
-												<input type="hidden" id="education_type"
-													name="education_type" value="school"> <input
-													type="hidden" id="education_seq" name="education_seq"
-													value="2"> <input type="hidden" id="lastschool_nm"
-													name="lastschool_nm" value="숙명여자대학교">
-
-												<div class="resume_row">
-													<div class="input_title">
-														최종학력 <span class="point">필수</span>
-													</div>
-
-													<div class="sri_select resume_select">
-														<label for="school_type" class="bar_title">최종학력<span
-															class="valid_hidden"> 선택</span></label>
-														<button type="button" data-guide="true" name="lastschool"
-															class="ico_arr selected size_type5">최종학력 선택</button>
-														<input type="hidden" id="lastschool_row"
-															name="lastschool_row">
-														<ul class="list_opt">
-															<li class="on"><a href="##" class="link_opt"
-																data-value=""><span class="valid_hidden"> 선택</span></a></li>
-														</ul>
-														<p class="txt_error"></p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div id="career" class="resume_section blind_guide">
-											<input type="hidden" id="career_contents_type"
-												name="career_contents_type" value="style"> <input
-												type="hidden" id="exchange_usd" name="exchange_usd"
-												value="1127.6"> <input type="hidden"
-												id="exchange_jpy" name="exchange_jpy" value="1036.25">
-
-											<div class="area_title">
-												<h3 class="title">경력사항</h3>
-											</div>
-
-											<div class="resume_write resume_career">
-												<div class="select_title">
-													<div class="row">
-																		<div class="row">
-																		<div class="form-group">
-																			<div class="searchable-container">
-																				<div
-																					class="items col-xs-5 col-sm-5 col-md-6 col-lg-6">
-																					<div class="info-block block-info clearfix">
-																						<div class="square-box pull-left">
-																							<span
-																								class="glyphicon glyphicon-tags glyphicon-lg"></span>
-																						</div>
-																						<div data-toggle="buttons"
-																							class="btn-group bizmoduleselect" style="width: 200px;padding-right: 20px;">
-																							<label class="btn btn-default">
-																								<div class="bizcontent">
-																									<input type="checkbox" name="var_id[]"
-																										autocomplete="off" value=""> <span
-																										class="glyphicon glyphicon-ok glyphicon-lg"></span>
-																									<h5>신입</h5>
-																								</div>
-																							</label>
-																						</div>
+													<div class="resume_write resume_career">
+														<div class="select_title">
+															<div class="row">
+																<div class="row">
+																	<div class="form-group">
+																		<div class="searchable-container">
+																			<div
+																				class="items col-xs-5 col-sm-5 col-md-6 col-lg-6">
+																				<div class="info-block block-info clearfix">
+																					<div class="square-box pull-left">
+																						<span
+																							class="glyphicon glyphicon-tags glyphicon-lg"></span>
+																					</div>
+																					<div data-toggle="buttons"
+																						class="btn-group bizmoduleselect"
+																						style="width: 200px; padding-right: 20px;">
+																						<label class="btn btn-default" id="careerno"
+																							onclick="careernoCheck()" for="careerno">
+																							<div class="bizcontent">
+																								<input type="checkbox" name="Nocareer"
+																									autocomplete="off" value="신입"> <span
+																									class="glyphicon glyphicon-ok glyphicon-lg careerno"
+																									id=""></span>
+																								<h5>신입</h5>
+																							</div>
+																						</label>
 																					</div>
 																				</div>
-																				<div
-																					class="items col-xs-5 col-sm-5 col-md-6 col-lg-6">
-																					<div class="info-block block-info clearfix">
-																						<div class="square-box pull-left">
-																							<span
-																								class="glyphicon glyphicon-tags glyphicon-lg"></span>
-																						</div>
-																						<div data-toggle="buttons"
-																							class="btn-group bizmoduleselect" style="width: 200px;padding-right: 20px;">
-																							<label class="btn btn-default">
-																								<div class="bizcontent">
-																									<input type="checkbox" name="var_id[]"
-																										autocomplete="off" value=""> <span
-																										class="glyphicon glyphicon-ok glyphicon-lg"></span>
-																									<h5>경력</h5>
-																								</div>
-																							</label>
-																						</div>
+																			</div>
+																			<div
+																				class="items col-xs-5 col-sm-5 col-md-6 col-lg-6">
+																				<div class="info-block block-info clearfix">
+																					<div class="square-box pull-left">
+																						<span
+																							class="glyphicon glyphicon-tags glyphicon-lg"></span>
+																					</div>
+																					<div data-toggle="buttons"
+																						class="btn-group bizmoduleselect"
+																						style="width: 200px; padding-right: 20px;">
+																						<label class="btn btn-default" id="careerok"
+																							onclick="careerokCheck()" for="careerok">
+																							<div class="bizcontent">
+																								<input type="checkbox" name="Okcareer"
+																									autocomplete="off" value=""> <span
+																									class="glyphicon glyphicon-ok glyphicon-lg careerok"
+																									id=""></span>
+																								<h5>경력</h5>
+																							</div>
+																						</label>
 																					</div>
 																				</div>
-																				
-																				
+																			</div>
+
+
+																		</div>
+																	</div>
+																</div>
+
+															</div>
+
+
+															<div id="career_template" style="display: none">
+
+																<div id="tpl_row_1621990779" class="tpl_row"
+																	data-tpl_id="tpl_career_item">
+																	<input type="hidden" id="career_mcom_id_1621990779"
+																		name="career_mcom_idx[]" value=""> <input
+																		type="hidden" id="career_com_idx_1621990779"
+																		name="career_com_idx[]" value=""> <input
+																		type="hidden" id="career_csn1_1621990779"
+																		name="career_csn1[]" value=""> <input
+																		type="hidden" id="career_csn2_1621990779"
+																		name="career_csn2[]" value=""> <input
+																		type="hidden" id="career_csn3_1621990779"
+																		name="career_csn3[]" value=""> <input
+																		type="hidden" id="career_job_category_cd_1621990779"
+																		name="career_job_category_cd[]" value=""> <input
+																		type="hidden" id="career_start_year_1621990779"
+																		name="career_start_year[]" value=""> <input
+																		type="hidden" id="career_start_month_1621990779"
+																		name="career_start_month[]" value=""> <input
+																		type="hidden" id="career_end_year_1621990779"
+																		name="career_end_year[]" value=""> <input
+																		type="hidden" id="career_end_month_1621990779"
+																		name="career_end_month[]" value=""> <input
+																		type="hidden" id="career_total_month_1621990779"
+																		name="career_total_month[]"> <input
+																		type="hidden" id="career_job_grade_1621990779"
+																		name="career_job_grade[]" value=""> <input
+																		type="hidden" id="career_job_duties_1621990779"
+																		name="career_job_duties[]" value=""> <input
+																		type="hidden" id="career_job_text_input_1621990779"
+																		name="career_job_text_input[]" value=""> <input
+																		type="hidden" id="career_comnm_open_fl_1621990779"
+																		name="career_comnm_open_fl[]" value=""> <input
+																		type="hidden" id="career_seq_1621990779"
+																		name="career_seq[]"> <input type="hidden"
+																		id="profilecareer_seq_1621990779"
+																		name="profilecareer_seq[]" value="">
+
+																	<div class="resume_row">
+																		<div class="input_title">
+																			회사명 <span class="point">필수</span>
+																		</div>
+																		<div class="resume_input">
+																			<input type="text" id="career_company_nm_1621990779"
+																				name="pre_comname[]" value=""
+																				class="box_input" maxlength="80"
+																				data-api_type="auto" data-api_id="career_company">
+
+																		</div>
+
+																	</div>
+
+																	<div class="resume_row">
+																		<div class="input_title">
+																			재직기간 <span class="point">필수</span>
+																		</div>
+																		<div class="area_period">
+																			<div class="resume_input">
+																				<input type="text" id="career_start_dt_1621990779"
+																					name="pre_startdate[]"
+																					class="expect_date box_input size_type2" value=""
+																					data-dateformat="yymm" data-only-number="true"
+																					autocomplete="off">
+
+																			</div>
+																			<span class="txt_period">~</span>
+																			<div class="resume_input">
+
+																				<input type="text" id="career_end_dt_1621990779"
+																					name="pre_enddate[]"
+																					class="expect_date box_input size_type2" value=""
+																					data-dateformat="yymm" data-only-number="true"
+																					autocomplete="off">
+
+																			</div>
+																			<div class="sri_select resume_select">
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_status[]">
+																					<option value="퇴사">퇴사</option>
+																					<option value="재직중">재직중</option>
+																				</select>
+
+
+																			</div>
+																			<p class="txt_error"></p>
+																		</div>
+																		<p class="info_period period_1621990779"></p>
+																	</div>
+
+																	<div class="resume_row">
+																		<div class="input_title">퇴사사유</div>
+																		<div class="resume_bundle">
+																			<div class="sri_select resume_select">
+
+
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;">
+																					<option>업직종 전환</option>
+																					<option>근무조건</option>
+																					<option>경영악화</option>
+																					<option>계약만료</option>
+																					<option>출산/육아</option>
+																					<option>학업</option>
+																					<option>유학</option>
+																					<option>개인사정</option>
+																					<option>기타</option>
+																				</select>
+
+
+
+
+
+
+																			</div>
+
+																		</div>
+																	</div>
+
+																	<div class="resume_row">
+																		<div class="input_title">
+																			직급/직책 <span class="point">필수</span>
+																		</div>
+																		<div class="resume_bundle">
+																			<div class="resume_input">
+																				<input type="text"
+																					id="career_job_grade_duties_1621990779"
+																					name="pre_position[]"
+																					class="box_input max_length" value="" readonly
+																					data-api_type="layer"
+																					data-api_id="career_job_grade_duties"
+																					maxlength="20">
+
+																			</div>
+
+
+																			<p class="txt_number"></p>
+																		</div>
+																	</div>
+
+																	<div class="resume_row">
+																		<div class="input_title">
+																			직종 <span class="point">필수</span>
+																		</div>
+																		<div class="resume_input">
+																			<div class="option option_area">
+																				<input type="text"
+																					id="career_job_category_text_1621990779"
+																					name="pre_buscode[]" value=""
+																					class="box_input" data-api_type="layer"
+																					data-api_id="career_job_category" data-dim="n"
+																					data-position="unused" readonly>
+
 																			</div>
 																		</div>
 																	</div>
-																				
-												</div>
 
+																	<div class="resume_row">
+																		<div class="input_title">근무지역</div>
+																		<div class="sri_select resume_select">
 
-												<div id="career_template" style="display: none">
+																			<select name="sido1" id="sido1"></select> 
+																			<select name="gugun1" name="pre_area[]" id="gugun1" onchange=""></select>
 
-													<div id="tpl_row_1621990779" class="tpl_row"
-														data-tpl_id="tpl_career_item">
-														<input type="hidden" id="career_mcom_id_1621990779"
-															name="career_mcom_idx[]" value=""> <input
-															type="hidden" id="career_com_idx_1621990779"
-															name="career_com_idx[]" value=""> <input
-															type="hidden" id="career_csn1_1621990779"
-															name="career_csn1[]" value=""> <input
-															type="hidden" id="career_csn2_1621990779"
-															name="career_csn2[]" value=""> <input
-															type="hidden" id="career_csn3_1621990779"
-															name="career_csn3[]" value=""> <input
-															type="hidden" id="career_job_category_cd_1621990779"
-															name="career_job_category_cd[]" value=""> <input
-															type="hidden" id="career_start_year_1621990779"
-															name="career_start_year[]" value=""> <input
-															type="hidden" id="career_start_month_1621990779"
-															name="career_start_month[]" value=""> <input
-															type="hidden" id="career_end_year_1621990779"
-															name="career_end_year[]" value=""> <input
-															type="hidden" id="career_end_month_1621990779"
-															name="career_end_month[]" value=""> <input
-															type="hidden" id="career_total_month_1621990779"
-															name="career_total_month[]"> <input type="hidden"
-															id="career_job_grade_1621990779"
-															name="career_job_grade[]" value=""> <input
-															type="hidden" id="career_job_duties_1621990779"
-															name="career_job_duties[]" value=""> <input
-															type="hidden" id="career_job_text_input_1621990779"
-															name="career_job_text_input[]" value=""> <input
-															type="hidden" id="career_comnm_open_fl_1621990779"
-															name="career_comnm_open_fl[]" value=""> <input
-															type="hidden" id="career_seq_1621990779"
-															name="career_seq[]"> <input type="hidden"
-															id="profilecareer_seq_1621990779"
-															name="profilecareer_seq[]" value="">
-
-														<div class="resume_row">
-															<div class="input_title">
-																회사명 <span class="point">필수</span>
-															</div>
-															<div class="resume_input">
-																<label for="career_company_nm_1621990779"
-																	class="bar_title">회사명<span class="valid_hidden">
-																		입력</span></label> <input type="text"
-																	id="career_company_nm_1621990779"
-																	name="career_company_nm[]" value="" class="box_input"
-																	maxlength="80" data-api_type="auto"
-																	data-api_id="career_company">
-																<p class="txt_error"></p>
-															</div>
-															<div class="area_check">
-																<label for="career_comnm_open_fl_chk_1621990779"
-																	class="sri_check"> <input type="checkbox"
-																	id="career_comnm_open_fl_chk_1621990779"
-																	name="career_comnm_open_fl_chk[]" class="inp_check"
-																	value="n"> <span class="txt_check">회사명
-																		없이 이력서 공개</span>
-																</label>
-																<div class="toolTipWrap">
-																	<button type="button" class="btn_guide">
-																		<span class="blind">회사명 없이 이력서 공개란?</span>
-																	</button>
-																	<div class="toolTip">
-																		<span class="tail tail_top_center"></span>
-																		<div class="toolTipCont txtLeft">
-																			<p>
-																				[안내] 이력서 공개 시에만 적용되는 기능<br> - 이력서 공개 시 : 회사명이
-																				비노출된 이력서를 보고 기업이 제안을 보냅니다.<br> - 입사지원 시 : 회사명이
-																				노출된 이력서로 입사지원 됩니다.
-																			</p>
 																		</div>
 																	</div>
-																</div>
-															</div>
-														</div>
 
-														<div class="resume_row">
-															<div class="input_title">
-																재직기간 <span class="point">필수</span>
+																	<div class="resume_row">
+																		<div class="input_title">근무부서</div>
+																		<div class="resume_input">
+																			<input type="text" id="career_dept_nm_1621990779"
+																				name="pre_dept[]" class="box_input" value=""
+																				maxlength="16">
+
+																		</div>
+																	</div>
+
+																	<div class="resume_row">
+																		<div class="input_title">연봉</div>
+																		<div class="area_salary">
+
+																			<div class="sri_select resume_select">
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_sal[]">
+																					<option>회사 내규에 따름</option>
+																					<option>2000~2500만원</option>
+																					<option>2500~3000만원</option>
+																					<option>3000~3500만원</option>
+																					<option>3500~4000만원</option>
+																					<option>4000~4500만원</option>
+																					<option>4500~5000만원</option>
+																					<option>5500~6000만원</option>
+																					<option>6000~7000만원</option>
+																					<option>7000~8000만원</option>
+																					<option>8000~9000만원</option>
+																					<option>8000~</option>
+																				</select>
+																			</div>
+
+																			<p class="txt_number"></p>
+																			<p class="txt_error"></p>
+																		</div>
+																	</div>
+
+																	<div class="resume_row">
+																		<div class="input_title">담당업무</div>
+																		<div class="resume_textarea">
+
+																			<textarea id="career_contents_1621990779"
+																				name="pre_jobdetail[]" class="box_textarea"
+																				style="width: 500px;"></textarea>
+																		</div>
+																	</div>
+
+																	<div class="resume_project">
+																		<div class="area_title">
+																			<h4 class="title">프로젝트 수행이력</h4>
+																			<p class="txt_noti">프로젝트 수행 이력이 있는 경우 수행 역할을 작성해
+																				보세요!</p>
+																			<button type="button" class="btn_add btn_resume_add"
+																				data-tpl_id="tpl_career_project">프로젝트 수행이력
+																				추가</button>
+																		</div>
+
+
+																	</div>
+																</div>
+
+																<div id="careerAdd"></div>
+
+																<div class="area_resume_btn">
+																	<button type="button" class="btn_resume_add"
+																		data-tpl_id="tpl_career_item" id="carAdd">경력
+																		추가</button>
+																</div>
 															</div>
-															<div class="area_period">
-																<div class="resume_input">
-																	<label for="career_start_dt_1621990779"
-																		class="bar_title"><span class="valid_hidden">YYYYMM</span><span
-																		class="blind">입사년월</span></label> <input type="text"
-																		id="career_start_dt_1621990779"
-																		name="career_start_dt[]"
-																		class="expect_date box_input size_type2" value=""
-																		data-dateformat="yymm" data-only-number="true"
-																		autocomplete="off">
-																	<button class="btn_calendar" type="button"></button>
-																	<p class="txt_error"></p>
-																</div>
-																<span class="txt_period">~</span>
-																<div class="resume_input">
-																	<label for="career_end_dt_1621990779"
-																		class="bar_title end_day"><span
-																		class="valid_hidden">YYYYMM</span><span class="blind">퇴사년월</span></label>
-																	<input type="text" id="career_end_dt_1621990779"
-																		name="career_end_dt[]"
-																		class="expect_date box_input size_type2" value=""
-																		data-dateformat="yymm" data-only-number="true"
-																		autocomplete="off">
-																	<button class="btn_calendar" type="button"></button>
-																	<p class="txt_error"></p>
-																</div>
+
+
+														</div>
+													</div>
+												</div>
+												<div id="activity" class="resume_section blind_guide"
+													data-order_item="activity" data-except="y">
+													<div class="area_title">
+														<h3 class="title">대외활동</h3>
+													</div>
+
+													<div class="resume_write resume_write_add">
+
+														<div id="tpl_row_1621990780" class="tpl_row"
+															data-tpl_id="tpl_activity_item">
+															<input type="hidden" id="activity_start_year_1621990780"
+																name="activity_start_year[]" value=""> <input
+																type="hidden" id="activity_start_month_1621990780"
+																name="activity_start_month[]" value=""> <input
+																type="hidden" id="activity_start_day_1621990780"
+																name="activity_start_day[]" value=""> <input
+																type="hidden" id="activity_end_year_1621990780"
+																name="activity_end_year[]" value=""> <input
+																type="hidden" id="activity_end_month_1621990780"
+																name="activity_end_month[]" value=""> <input
+																type="hidden" id="activity_end_day_1621990780"
+																name="activity_end_day[]" value=""> <input
+																type="hidden" id="profileactivity_seq_1621990780"
+																name="profileactivity_seq[]" value="">
+
+															<div class="resume_row">
+																<div class="input_title">활동구분</div>
 																<div class="sri_select resume_select">
-																	<label for="career_retire_fl_1621990779"
-																		class="bar_title">재직구분<span
-																		class="valid_hidden">선택</span></label>
-																	<button class="ico_arr selected" type="button">퇴사</button>
-																	<input id="career_retire_fl_1621990779"
-																		name="career_retire_fl[]" type="hidden" value="y">
-																	<ul class="list_opt">
-																		<li class="on"><a class="link_opt" href="##"
-																			data-value="y">퇴사</a></li>
-																		<li class=""><a class="link_opt" href="##"
-																			data-value="n">재직중</a></li>
-																	</ul>
-																</div>
-																<p class="txt_error"></p>
-															</div>
-															<p class="info_period period_1621990779"></p>
-														</div>
 
-														<div class="resume_row">
-															<div class="input_title">퇴사사유</div>
-															<div class="resume_bundle">
-																<div class="sri_select resume_select">
-																	<label for="career_retire_reason_sbox_1621990779"
-																		class="bar_title">퇴사사유<span
-																		class="valid_hidden"> 선택</span></label>
-																	<button class="ico_arr selected" type="button">퇴사사유
-																		선택</button>
-																	<input type="hidden"
-																		id="career_retire_reason_sbox_1621990779"
-																		name="career_retire_reason_sbox[]" value="">
-																	<ul class="list_opt">
-																		<li><a class="link_opt" href="##" data-value="">퇴사사유<span
-																				class="valid_hidden"> 선택</span></a></li>
-																		<li class=""><a class="link_opt" href="##"
-																			data-value="업직종 전환">업직종 전환</a></li>
-																		<li class=""><a class="link_opt" href="##"
-																			data-value="근무조건">근무조건</a></li>
-																		<li class=""><a class="link_opt" href="##"
-																			data-value="경영악화">경영악화</a></li>
-																		<li class=""><a class="link_opt" href="##"
-																			data-value="계약만료">계약만료</a></li>
-																		<li class=""><a class="link_opt" href="##"
-																			data-value="출산/육아">출산/육아</a></li>
-																		<li class=""><a class="link_opt" href="##"
-																			data-value="학업">학업</a></li>
-																		<li class=""><a class="link_opt" href="##"
-																			data-value="유학">유학</a></li>
-																		<li class=""><a class="link_opt" href="##"
-																			data-value="개인사정">개인사정</a></li>
-																		<li class=""><a class="link_opt" href="##"
-																			data-value="직접입력">직접입력</a></li>
-																	</ul>
-																	<p class="txt_error"></p>
-																</div>
-
-																<div class="resume_input" style="display: none">
-																	<label for="career_retire_reason_text_1621990779"
-																		class="bar_title">퇴사사유<span
-																		class="valid_hidden"> 직접입력</span></label> <input type="text"
-																		id="career_retire_reason_text_1621990779"
-																		name="career_retire_reason_text[]"
-																		class="box_input size_type4" value="" maxlength="20">
-																</div>
-															</div>
-														</div>
-
-														<div class="resume_row">
-															<div class="input_title">
-																직급/직책 <span class="point">필수</span>
-															</div>
-															<div class="resume_bundle">
-																<div class="resume_input">
-																	<label for="career_job_grade_duties_1621990779"
-																		class="bar_title">직급/직책</label> <input type="text"
-																		id="career_job_grade_duties_1621990779"
-																		name="career_job_grade_duties[]"
-																		class="box_input max_length" value="" readonly
-																		data-api_type="layer"
-																		data-api_id="career_job_grade_duties" maxlength="20">
-																	<a href="javascript:void(0)" onclick="return false;"
-																		class="link_modifie">선택하기</a>
-																	<p class="txt_error"></p>
-																</div>
-
-																<div class="resume_input">
-																	<label for="career_year_1621990779" class="bar_title">년차<span
-																		class="valid_hidden"> 입력</span></label> <input type="text"
-																		id="career_year_1621990779" name="career_year[]"
-																		value="" class="box_input size_type2" maxlength="2"
-																		data-only-number="true">
-																</div>
-																<p class="txt_number"></p>
-															</div>
-														</div>
-
-														<div class="resume_row">
-															<div class="input_title">
-																직종 <span class="point">필수</span>
-															</div>
-															<div class="resume_input">
-																<div class="option option_area">
-																	<label for="career_job_category_text_1621990779"
-																		class="bar_title">직종<span class="valid_hidden">
-																			선택</span></label> <input type="text"
-																		id="career_job_category_text_1621990779"
-																		name="career_job_category_text[]" value=""
-																		class="box_input" data-api_type="layer"
-																		data-api_id="career_job_category" data-dim="n"
-																		data-position="unused" readonly>
-																	<p class="txt_error"></p>
-																</div>
-															</div>
-														</div>
-
-														<div class="resume_row">
-															<div class="input_title">근무지역</div>
-															<div class="sri_select resume_select">
-																<label for="career_area_cd_1621990779" class="bar_title">근무지역<span
-																	class="valid_hidden"> 선택</span></label>
-																<button class="ico_arr selected" type="button">근무지역
-																	선택</button>
-																<input id="career_area_cd_1621990779"
-																	name="career_area_cd[]" type="hidden" value="">
-																<ul class="list_opt">
-																	<li class="on"><a class="link_opt" href="##"
-																		data-value="">근무지역<span class="valid_hidden">
-																				선택</span></a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="1">서울</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="2">강원</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="3">경기</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="4">경남</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="5">경북</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="6">광주</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="7">대구</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="8">대전</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="9">부산</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="10">울산</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="11">인천</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="12">전남</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="13">전북</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="14">제주</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="15">충남</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="16">충북</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="47">세종</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="17">전국</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="18">미국</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="19">일본</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="20">프랑스</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="21">인도네시아</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="22">중국</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="23">캐나다</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="24">해외</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="25">대만</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="26">러시아</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="27">말레이시아</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="28">방글라데시</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="29">싱가포르</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="30">인도</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="31">인도네시아</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="32">필리핀</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="33">홍콩</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="34">독일</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="35">영국</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="36">호주</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="37">베트남</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="38">스페인</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="39">브라질</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="40">이탈리아</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="41">스위스</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="42">네덜란드</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="43">필리핀</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="44">그리스</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="45">대만</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="46">멕시코</a></li>
-																	<li class=""><a class="link_opt" href="##"
-																		data-value="99">기타</a></li>
-																</ul>
-																<p class="txt_error"></p>
-															</div>
-														</div>
-
-														<div class="resume_row">
-															<div class="input_title">근무부서</div>
-															<div class="resume_input">
-																<label for="career_dept_nm_1621990779" class="bar_title">근무부서<span
-																	class="valid_hidden"> 입력</span></label> <input type="text"
-																	id="career_dept_nm_1621990779" name="career_dept_nm[]"
-																	class="box_input" value="" maxlength="16">
-																<p class="txt_error"></p>
-															</div>
-														</div>
-
-														<div class="resume_row">
-															<div class="input_title">연봉</div>
-															<div class="area_salary">
-																<div class="resume_input">
-																	<label for="career_salary_1621990779" class="bar_title">연봉<span
-																		class="valid_hidden"> 입력</span></label> <input type="text"
-																		id="career_salary_1621990779" name="career_salary[]"
-																		value="" class="box_input size_type3" maxlength="6"
-																		data-only-number="true">
-																</div>
-
-																<div class="sri_select resume_select">
-																	<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
-																		<option>회사 내규에 따름</option>
-																		<option>2000~2500만원</option>
-																		<option>2500~3000만원</option>
-																		<option>3000~3500만원</option>
-																		<option>3500~4000만원</option>
-																		<option>4000~4500만원</option>
-																		<option>4500~5000만원</option>
-																		<option>5500~6000만원</option>
-																		<option>6000~7000만원</option>
-																		<option>7000~8000만원</option>
-																		<option>8000~9000만원</option>
-																		<option>8000~</option>
+																	<select class="selectpicker"
+																		style="width: 107.22222px; height: 50.22222px;" name="act_field[]">
+																		<option value="인턴">인턴</option>
+																		<option value="서포터즈/기자단">서포터즈/기자단</option>
+																		<option value="공모전">공모전</option>
+																		<option value="동아리">동아리</option>
+																		<option value="교내활동">교내활동</option>
+																		<option value="자원봉사">자원봉사</option>
+																		<option value="아르바이트">아르바이트</option>
+																		<option value="사회활동">사회활동</option>
+																		<option value="수행과제">수행과제</option>
+																		<option value="해외연수">해외연수</option>
+																		<option value="교육이수내역">교육이수내역</option>
 																	</select>
+
 																</div>
-
-																<p class="txt_number"></p>
-																<p class="txt_error"></p>
-															</div>
-														</div>
-
-														<div class="resume_row">
-															<div class="input_title">담당업무</div>
-															<div class="resume_textarea">
-																<label for="career_contents_1621990779"
-																	class="bar_title">담당업무<span
-																	class="valid_hidden"> 입력</span></label>
-																<textarea id="career_contents_1621990779"
-																	name="career_contents[]" class="box_textarea"></textarea>
-															</div>
-														</div>
-
-														<div class="resume_project">
-															<div class="area_title">
-																<h4 class="title">프로젝트 수행이력</h4>
-																<p class="txt_noti">프로젝트 수행 이력이 있는 경우 수행 역할을 작성해
-																	보세요!</p>
-																<button type="button" class="btn_add btn_resume_add"
-																	data-tpl_id="tpl_career_project">프로젝트 수행이력 추가</button>
 															</div>
 
 
-														</div>
-													</div>
 
-													<div class="area_resume_btn">
-														<button type="button" class="btn_resume_add"
-															data-tpl_id="tpl_career_item">경력 추가</button>
-													</div>
-												</div>
-
-												<div id="career_total" style="display: none">
-													<div class="area_total_career">
-														<div class="resume_row">
-															<div class="input_title">
-																총 경력 <span class="point">필수</span>
-															</div>
-															<div class="area_period">
+															<div class="resume_row">
+																<div class="input_title">기관/장소</div>
 																<div class="resume_input">
-																	<label for="career_period_year" class="bar_title"><span
-																		class="valid_hidden">총경력 년수</span><span class="blind">총경력
-																			기간</span></label> <input type="text" id="career_period_year"
-																		name="career_period_year" class="box_input" value=""
-																		readonly maxlength="2" data-only-number="true">
+																	<label for="activity_org_1621990780" class="bar_title">기관/장소<span
+																		class="valid_hidden"> 입력</span></label> <input type="text"
+																		id="activity_org_1621990780" name="act_org[]"
+																		value="" maxlength="50" class="box_input">
+																	<p class="txt_error"></p>
 																</div>
-																<span class="txt_period">년</span>
+															</div>
 
-																<div class="resume_input">
-																	<label for="career_period_month" class="bar_title"><span
-																		class="valid_hidden">총경력 월수</span><span class="blind">총경력
-																			기간</span></label> <input type="text" id="career_period_month"
-																		name="career_period_month" class="box_input" value=""
-																		readonly maxlength="2" data-only-number="true">
+															<div class="resume_row">
+																<div class="input_title">활동기간</div>
+																<div class="area_period">
+																	<div class="sri_select resume_select"></div>
+																	<div class="resume_input">
+																		<input type="text" id="activity_start_1621990780"
+																			name="act_str[]" class="expect_date box_input"
+																			value="" maxlength="6" data-only-number="true"
+																			data-dateformat="yymm" autocomplete="off">
+
+																	</div>
+
+																	<span class="txt_period">~</span>
+
+																	<div class="resume_input">
+																		<input type="text" id="activity_end_1621990780"
+																			name="act_end[]" class="expect_date box_input"
+																			value="" maxlength="6" data-only-number="true"
+																			data-dateformat="yymm" autocomplete="off">
+
+																	</div>
+																	<p class="txt_error"></p>
 																</div>
-																<span class="txt_period">개월</span>
+															</div>
 
-																<div class="area_check">
-																	<label class="sri_check"
-																		for="career_repetition_removal"> <input
-																		type="checkbox" id="career_repetition_removal"
-																		name="career_repetition_removal" class="inp_check"
-																		value="y"> <span class="txt_check">중복
-																			기간 빼기</span>
-																	</label> <label class="sri_check" for="career_user_input">
-																		<input type="checkbox" id="career_user_input"
-																		name="career_user_input" class="inp_check" value="y">
-																		<span class="txt_check">직접입력</span>
-																	</label> <label class="sri_check" for="abroad_work_fl">
-																		<input type="checkbox" id="abroad_work_fl"
-																		name="abroad_work_fl" class="inp_check" value="y">
-																		<span class="txt_check">해외근무</span>
-																	</label>
+															<div class="resume_row">
+																<div class="input_title">활동내용</div>
+																<div class="resume_textarea">
+																	<label for="activity_contents_1621990780"
+																		class="bar_title">활동내용<span
+																		class="valid_hidden"> 입력</span></label>
+																	<textarea id="activity_contents_1621990780"
+																		name="act_detail[]" class="box_textarea"></textarea>
+																	<p class="txt_error"></p>
 																</div>
-																<p class="txt_error"></p>
 															</div>
 														</div>
 
-														
+														<div id="activityAdd"></div>
 
-															
-														</div>
-													</div>
-
-													
-												</div>
-											</div>
-										</div>
-										<div id="activity" class="resume_section blind_guide"
-											data-order_item="activity" data-except="y">
-											<div class="area_title">
-												<h3 class="title">대외활동</h3>
-											</div>
-
-											<div class="resume_write resume_write_add">
-
-												<div id="tpl_row_1621990780" class="tpl_row"
-													data-tpl_id="tpl_activity_item">
-													<input type="hidden" id="activity_start_year_1621990780"
-														name="activity_start_year[]" value=""> <input
-														type="hidden" id="activity_start_month_1621990780"
-														name="activity_start_month[]" value=""> <input
-														type="hidden" id="activity_start_day_1621990780"
-														name="activity_start_day[]" value=""> <input
-														type="hidden" id="activity_end_year_1621990780"
-														name="activity_end_year[]" value=""> <input
-														type="hidden" id="activity_end_month_1621990780"
-														name="activity_end_month[]" value=""> <input
-														type="hidden" id="activity_end_day_1621990780"
-														name="activity_end_day[]" value=""> <input
-														type="hidden" id="profileactivity_seq_1621990780"
-														name="profileactivity_seq[]" value="">
-
-													<div class="resume_row">
-														<div class="input_title">활동구분</div>
-														<div class="sri_select resume_select">
-															
-															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
-																		<option>인턴</option>
-																		<option>서포터즈/기자단</option>
-																		<option>공모전</option>
-																		<option>동아리</option>
-																		<option>교내활동</option>
-																		<option>자원봉사</option>
-																		<option>아르바이트</option>
-																		<option>사회활동</option>
-																		<option>수행과제</option>
-																		<option>해외연수</option>
-																		<option>교육이수내역</option>
-																	</select>
-															
-														</div>
-													</div>
-
-													
-
-													<div class="resume_row">
-														<div class="input_title">기관/장소</div>
-														<div class="resume_input">
-															<label for="activity_org_1621990780" class="bar_title">기관/장소<span
-																class="valid_hidden"> 입력</span></label> <input type="text"
-																id="activity_org_1621990780" name="activity_org[]"
-																value="" maxlength="50" class="box_input">
-															<p class="txt_error"></p>
-														</div>
-													</div>
-
-													<div class="resume_row">
-														<div class="input_title">활동기간</div>
-														<div class="area_period">
-															<div class="sri_select resume_select">
-																
-																
-															</div>
-															<div class="resume_input">
-																<input type="text" id="activity_start_1621990780"
-																	name="activity_start[]" class="expect_date box_input"
-																	value="" maxlength="6" data-only-number="true"
-																	data-dateformat="yymm" autocomplete="off">
-																
-															</div>
-
-															<span class="txt_period">~</span>
-
-															<div class="resume_input">
-																<input type="text" id="activity_end_1621990780"
-																	name="activity_end[]" class="expect_date box_input"
-																	value="" maxlength="6" data-only-number="true"
-																	data-dateformat="yymm" autocomplete="off">
-																
-															</div>
-															<p class="txt_error"></p>
-														</div>
-													</div>
-
-													<div class="resume_row">
-														<div class="input_title">활동내용</div>
-														<div class="resume_textarea">
-															<label for="activity_contents_1621990780"
-																class="bar_title">활동내용<span class="valid_hidden">
-																	입력</span></label>
-															<textarea id="activity_contents_1621990780"
-																name="activity_contents[]" class="box_textarea"></textarea>
-															<p class="txt_error"></p>
+														<div class="area_add_btn">
+															<button type="button" class="btn_resume_add"
+																data-tpl_id="tpl_activity_item" id="actAdd">
+																<span>대외활동 추가</span>
+															</button>
 														</div>
 													</div>
 												</div>
+												<div id="license" class="resume_section blind_guide"
+													data-order_item="license" data-except="y">
+													<div class="area_title">
+														<h3 class="title">자격증/어학/수상 내역</h3>
+													</div>
 
-												<div class="area_add_btn">
-													<button type="button" class="btn_resume_add"
-														data-tpl_id="tpl_activity_item">
-														<span>대외활동 추가</span>
-													</button>
-												</div>
-											</div>
-										</div>
-										<div id="license" class="resume_section blind_guide"
-											data-order_item="license" data-except="y">
-											<div class="area_title">
-												<h3 class="title">자격증/어학/수상 내역</h3>
-											</div>
+													<div class="resume_write resume_write_add">
 
-											<div class="resume_write resume_write_add">
-
-												<div id="tpl_row_1621990781" class="tpl_row"
-													data-tpl_id="tpl_license_default">
-													<div class="resume_row">
-														<div class="input_title">항목선택</div>
-														<div class="sri_select resume_select">
-															<select class="selectpicker" onchange="licenseCheck(this.value);"  style="width: 107.22222px;height: 50.22222px;">
+														<div id="tpl_row_1621990781" class="tpl_row"
+															data-tpl_id="tpl_license_default">
+															<div class="resume_row">
+																<div class="input_title">항목선택</div>
+																<div class="sri_select resume_select">
+																	<select class="selectpicker"
+																		onchange="licenseCheck(this.value);"
+																		style="width: 107.22222px; height: 50.22222px;">
 																		<option value="case1">자격증/면허증</option>
 																		<option value="case2">어학시험</option>
 																		<option value="case3">수상내역/공모전</option>
-															</select>
-														</div>
-													</div>
-									<div id="licensechk" style="display: block">				
-													<div class="resume_row">
-														<div class="input_title">자격증명</div>
-														<div class="resume_input">
-															<input type="text"
-																id="activity_org_1621990780" name="activity_org[]"
-																value="" maxlength="50" class="box_input">
-														</div>
-													</div>
-													
-													<div class="resume_row">
-														<div class="input_title">발행처/기관</div>
-														<div class="resume_input">
-															<input type="text"
-																id="activity_org_1621990780" name="activity_org[]"
-																value="" maxlength="50" class="box_input">
-															
-														</div>
-													</div>
-													
-													<div class="resume_row">
-														<div class="input_title">합격구분</div>
-														<div class="sri_select resume_select">
-															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
-																		<option>합격</option>
-																		<option>불합격</option>
 																	</select>
+																</div>
+															</div>
+															<div id="licensechk" style="display: block">
+																<div class="resume_row">
+																	<div class="input_title">자격증명</div>
+																	<div class="resume_input">
+																		<input type="text" id="activity_org_1621990780"
+																			name="lic_name[]" value="" maxlength="50"
+																			class="box_input">
+																	</div>
+																</div>
+
+																<div class="resume_row">
+																	<div class="input_title">발행처/기관</div>
+																	<div class="resume_input">
+																		<input type="text" id="activity_org_1621990780"
+																			name="lic_publisher[]" value="" maxlength="50"
+																			class="box_input">
+
+																	</div>
+																</div>
+
+																<div class="resume_row">
+																	<div class="input_title">합격구분</div>
+																	<div class="sri_select resume_select">
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="lic_pass[]">
+																			<option value="합격">합격</option>
+																			<option value="불합격">불합격</option>
+																		</select>
+																	</div>
+																</div>
+
+																<div class="resume_row">
+																	<div class="input_title">취득일</div>
+																	<div class="resume_input">
+																		<input type="text" id="activity_org_1621990780"
+																			name="lic_date[]" value="" maxlength="50"
+																			class="box_input">
+																	</div>
+																</div>
+															</div>
+
+
+															<div id="languagechk" style="display: none">
+																<div class="resume_row">
+																	<div class="input_title">언어</div>
+																	<div class="sri_select resume_select">
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="lan_kind[]">
+																			<option value="영어">영어</option>
+																			<option value="일본어">일본어</option>
+																			<option value="중국어">중국어</option>
+																			<option value="독일어">독일어</option>
+																			<option value="불어">불어</option>
+																			<option value="스페인어">스페인어</option>
+																			<option value="러시아어">러시아어</option>
+																			<option value="이탈리아어">이탈리아어</option>
+																			<option value="한국어">한국어</option>
+																			<option value="기타">기타</option>
+																		</select>
+																	</div>
+																</div>
+
+
+																<div class="resume_row">
+																	<div class="input_title">시험명</div>
+																	<div class="resume_input">
+																		<input type="text" id="activity_org_1621990780"
+																			name="lan_exam[]" value="" maxlength="50"
+																			class="box_input">
+																	</div>
+																</div>
+
+																<div class="resume_row">
+																	<div class="input_title">점수</div>
+																	<div class="resume_input">
+																		<input type="text" id="activity_org_1621990780"
+																			name="lan_score[]" value="" maxlength="50"
+																			class="box_input">
+
+																	</div>
+																</div>
+
+																<div class="resume_row">
+																	<div class="input_title">급수</div>
+																	<div class="sri_select resume_select">
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="lan_grade[]">
+																			<option value="1">1</option>
+																			<option value="2">2</option>
+																			<option value="3">3</option>
+																			<option value="4">4</option>
+																			<option value="5">5</option>
+																			<option value="A">A</option>
+																			<option value="B">B</option>
+																			<option value="C">C</option>
+																			<option value="D">D</option>
+																			<option value="A1">A1</option>
+																			<option value="A2">A2</option>
+																			<option value="B1">B1</option>
+																			<option value="B2">B2</option>
+																			<option value="N1">N1</option>
+																			<option value="N2">N2</option>
+																			<option value="N3">N3</option>
+																			<option value="AH">AH</option>
+																			<option value="AM">AM</option>
+																			<option value="AL">AL</option>
+																			<option value="IH">IH</option>
+																			<option value="IM">IM</option>
+																			<option value="IL">IL</option>
+																		</select>
+																	</div>
+																</div>
+
+																<div class="resume_row">
+																	<div class="input_title">급수</div>
+																	<div class="sri_select resume_select">
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="lan_pass[]">
+																			<option>취득여부</option>
+																			<option value="취득(PASS)">취득(PASS)</option>
+																		</select>
+																	</div>
+																</div>
+
+																<div class="resume_row">
+																	<div class="input_title">취득일</div>
+																	<div class="resume_input">
+																		<input type="text" id="activity_org_1621990780"
+																			name="lan_date[]" value="" maxlength="50"
+																			class="box_input">
+																	</div>
+																</div>
+															</div>
+
+
+															<div id="awardchk" style="display: none">
+
+																<div class="resume_row">
+																	<div class="input_title">수상명</div>
+																	<div class="resume_input">
+																		<input type="text" id="activity_org_1621990780"
+																			name="awd_name" value="" maxlength="50"
+																			class="box_input">
+																	</div>
+																</div>
+
+																<div class="resume_row">
+																	<div class="input_title">수여기관</div>
+																	<div class="resume_input">
+																		<input type="text" id="activity_org_1621990780"
+																			name="awd_date" value="" maxlength="50"
+																			class="box_input">
+
+																	</div>
+																</div>
+
+																<div class="resume_row">
+																	<div class="input_title">취득일</div>
+																	<div class="resume_input">
+																		<input type="text" id="activity_org_1621990780"
+																			name="awd_org" value="" maxlength="50"
+																			class="box_input">
+																	</div>
+																</div>
+															</div>
+
+														</div>
+
+														<div id="licenseAdd"></div>
+
+														<div class="area_add_btn">
+															<button type="button" class="btn_resume_add"
+																data-tpl_id="tpl_license_default" id="licAdd">
+																<span>자격증/어학/수상내역 추가</span>
+															</button>
 														</div>
 													</div>
-													
-													<div class="resume_row">
-														<div class="input_title">취득일</div>
-														<div class="resume_input">
-															<input type="text"
-																id="activity_org_1621990780" name="activity_org[]"
-																value="" maxlength="50" class="box_input">
-														</div>
-													</div>
-							</div>		
-							
-							
-							<div id="languagechk" style="display: none">				
-													<div class="resume_row">
-														<div class="input_title">언어</div>
-														<div class="sri_select resume_select">
-															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
-																		<option>영어</option>
-																		<option>일본어</option>
-																		<option>중국어</option>
-																		<option>독일어</option>
-																		<option>불어</option>
-																		<option>스페인어</option>
-																		<option>러시아어</option>
-																		<option>이탈리아어</option>
-																		<option>한국어</option>
-																		<option>기타</option>
-																	</select>
-														</div>
-													</div>
-													
-													
-													<div class="resume_row">
-														<div class="input_title">시험종류</div>
-														<div class="resume_input">
-															<input type="text"
-																id="activity_org_1621990780" name="activity_org[]"
-																value="" maxlength="50" class="box_input">
-														</div>
-													</div>
-													
-													<div class="resume_row">
-														<div class="input_title">점수</div>
-														<div class="resume_input">
-															<input type="text"
-																id="activity_org_1621990780" name="activity_org[]"
-																value="" maxlength="50" class="box_input">
-															
-														</div>
-													</div>
-													
-													<div class="resume_row">
-														<div class="input_title">급수</div>
-														<div class="sri_select resume_select">
-															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
-																		<option>1</option>
-																		<option>2</option>
-																		<option>3</option>
-																		<option>4</option>
-																		<option>5</option>
-																		<option>A</option>
-																		<option>B</option>
-																		<option>C</option>
-																		<option>D</option>
-																		<option>A1</option>
-																		<option>A2</option>
-																		<option>B1</option>
-																		<option>B2</option>
-																		<option>N1</option>
-																		<option>N2</option>
-																		<option>N3</option>
-																		<option>AH</option>
-																		<option>AM</option>
-																		<option>AL</option>
-																		<option>IH</option>
-																		<option>IM</option>
-																		<option>IL</option>
-																	</select>
-														</div>
-													</div>
-													
-													<div class="resume_row">
-														<div class="input_title">급수</div>
-														<div class="sri_select resume_select">
-															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
-																		<option>취득여부</option>
-																		<option>취득(PASS)</option>
-																	</select>
-														</div>
-													</div>
-													
-													<div class="resume_row">
-														<div class="input_title">취득일</div>
-														<div class="resume_input">
-															<input type="text"
-																id="activity_org_1621990780" name="activity_org[]"
-																value="" maxlength="50" class="box_input">
-														</div>
-													</div>
-							</div>	
-							
-							
-							<div id="awardchk" style="display: none">		
-													
-													<div class="resume_row">
-														<div class="input_title">수상명</div>
-														<div class="resume_input">
-															<input type="text"
-																id="activity_org_1621990780" name="activity_org[]"
-																value="" maxlength="50" class="box_input">
-														</div>
-													</div>
-													
-													<div class="resume_row">
-														<div class="input_title">수여기관</div>
-														<div class="resume_input">
-															<input type="text"
-																id="activity_org_1621990780" name="activity_org[]"
-																value="" maxlength="50" class="box_input">
-															
-														</div>
-													</div>
-													
-													<div class="resume_row">
-														<div class="input_title">취득일</div>
-														<div class="resume_input">
-															<input type="text"
-																id="activity_org_1621990780" name="activity_org[]"
-																value="" maxlength="50" class="box_input">
-														</div>
-													</div>
-							</div>		
-											
 												</div>
 
-												<div class="area_add_btn">
-													<button type="button" class="btn_resume_add"
-														data-tpl_id="tpl_license_default">
-														<span>자격증/어학/수상내역 추가</span>
-													</button>
+												<div id="personal" class="resume_section blind_guide"
+													data-order_item="personal" data-except="y">
+													<input type="hidden" id="military_start_year"
+														name="military_start_year" value=""> <input
+														type="hidden" id="military_start_month"
+														name="military_start_month" value=""> <input
+														type="hidden" id="military_end_year"
+														name="military_end_year" value=""> <input
+														type="hidden" id="military_end_month"
+														name="military_end_month" value="">
+
+
 												</div>
-											</div>
-										</div>
-										
-										<div id="personal" class="resume_section blind_guide"
-											data-order_item="personal" data-except="y">
-											<input type="hidden" id="military_start_year"
-												name="military_start_year" value=""> <input
-												type="hidden" id="military_start_month"
-												name="military_start_month" value=""> <input
-												type="hidden" id="military_end_year"
-												name="military_end_year" value=""> <input
-												type="hidden" id="military_end_month"
-												name="military_end_month" value="">
-
-											
-										</div>
-										<div id="attach_port_files" class="resume_section"
-											data-order_item="attach_port_files" data-except="y">
-											<div class="area_title">
-												<h3 class="title">포트폴리오 및 기타문서</h3>
-											</div>
+												<div id="attach_port_files" class="resume_section"
+													data-order_item="attach_port_files" data-except="y">
+													<div class="area_title">
+														<h3 class="title">포트폴리오 및 기타문서</h3>
+													</div>
 
 
 
-											<div class="resume_write">
-												<div class="resume_row" data-tpl_id="tpl_attach_files">
-													<p class="noti_portfolio">
-														직무와 연관되는 포트폴리오, 기획서, 자격증 사본 등을 업데이트 하세요<br> 입사 가능성이
-														더욱 높아집니다.
-													</p>
-												</div>
-												<div class="area_add_btn">
-													<button type="button" class="btn_resume_add"
+													<div class="resume_write">
+														<div class="resume_row" data-tpl_id="tpl_attach_files">
+															<p class="noti_portfolio">
+																직무와 연관되는 포트폴리오, 기획서, 자격증 사본 등을 업데이트 하세요<br> 입사 가능성이
+																더욱 높아집니다.
+															</p>
+															<br>
+														</div>
+														<div class="area_add_btn">
+															<input type="file" name="fileload2" style="width: 400px">
+															<!-- <button type="button" class="btn_resume_add"
 														data-api_type="layer" data-api_id="attach_file">
 														<span>포트폴리오 및 기타문서 추가</span>
-													</button>
-												</div>
-											</div>
-										</div>
-										
-										<div id="introduce" data-order_item="introduce"
-											data-except="y">
-											<input type="hidden" id="intro_template"
-												name="intro_template" value="standard"> <input
-												type="hidden" id="intro_spell_target_fl"
-												name="intro_spell_target_fl" value=""> <input
-												type="hidden" id="intro_spell_need_seq"
-												name="intro_spell_need_seq" value=""> <input
-												type="hidden" id="intro_typo_seq" name="intro_typo_seq"
-												value="">
-
-											<div class="resume_section" id="introduce_write">
-												<div class="area_title">
-													<h3 class="title">자기소개서</h3>
-
-													<p class="txt_noti">최대 4000자</p>
-
+													</button> -->
+														</div>
+													</div>
 												</div>
 
+												<div id="introduce" data-order_item="introduce"
+													data-except="y">
+													<input type="hidden" id="intro_template"
+														name="intro_template" value="standard"> <input
+														type="hidden" id="intro_spell_target_fl"
+														name="intro_spell_target_fl" value=""> <input
+														type="hidden" id="intro_spell_need_seq"
+														name="intro_spell_need_seq" value=""> <input
+														type="hidden" id="intro_typo_seq" name="intro_typo_seq"
+														value="">
 
-												<div class="intro_item_wrap">
-													<div class="write_area">
-														<div id="introduce_items" class="inner_wrap">
+													<div class="resume_section" id="introduce_write">
+														<div class="area_title">
+															<h3 class="title">자기소개서</h3>
 
-															<div id="tpl_row_1621990782"
-																class="tpl_row intro_item on"
-																data-tpl_id="tpl_introduce_item">
-																<div class="item_title">
-																	<div class="input_wrap">
-																		<input type="text" id="intro_title_1621990782"
-																			name="intro_title[]" class="input_type1" placeholder="자소서 제목"
-																			maxlength="100">
-																	</div>
-																</div>
+															<p class="txt_noti">최대 4000자</p>
 
-																<div class="item_txt">
-																	<div class="textarea_wrap">
-																		<textarea id="intro_contents_1621990782"
-																			name="intro_contents[]" class="textarea_type1"
-																			rows="1" cols="100" data-char-count="true" placeholder="자소서 내용" name="contents" onkeyup="viewDisplay(this)"></textarea>
-																		<p class="txt_error"></p>
-																	</div>
+														</div>
 
-																	<div class="spellcheck" style="display: none;">
-																		<div class="item_spellcheck">
-																			<!-- 스펠링체크 -->
+
+														<div class="intro_item_wrap">
+															<div class="write_area">
+																<div id="introduce_items" class="inner_wrap">
+
+																	<div id="tpl_row_1621990782"
+																		class="tpl_row intro_item on"
+																		data-tpl_id="tpl_introduce_item">
+																		<div class="item_title">
+																			<div class="input_wrap">
+																				<input type="text" id="intro_title_1621990782"
+																					name="resume_intro_title" class="input_type1"
+																					placeholder="자소서 제목" maxlength="100">
+																			</div>
 																		</div>
 
-																		<div class="txt" style="white-space: pre-wrap"></div>
+																		<div class="item_txt">
+																			<div class="textarea_wrap">
+																				<textarea id="intro_contents_1621990782"
+																					name="resume_intro_content" class="textarea_type1"
+																					rows="1" cols="100" data-char-count="true"
+																					placeholder="자소서 내용" name="contents"
+																					onkeyup="javascript:fnChkByte(this,'4000')"></textarea>
+																				<!-- <span id="byteInfo">0</span> 4000bytes -->
+																			</div>
 
-																	</div>
-																</div>
+																			<div class="spellcheck" style="display: none;">
+																				<div class="item_spellcheck">
+																					<!-- 스펠링체크 -->
+																				</div>
 
-																<div class="item_edit">
-																	<div class="txt_length">
-																		
-																	</div>
-																	<div class="btn_wrap">
-																		<button type="button"
-																			class="btn_type4 btn_spelling_check">맞춤법검사</button>
+																				<div class="txt" style="white-space: pre-wrap"></div>
 
-																		<button type="button"
-																			class="btn_type4 btn_spellcheck_done"
-																			style="display: none;">맞춤법 검사완료</button>
-																		<button type="button"
-																			class="btn_type4 btn_spellcheck_cancel"
-																			style="display: none;">취소</button>
+																			</div>
+																		</div>
+
+																		<div class="item_edit">
+																			<div class="txt_length"></div>
+																			<div class="btn_wrap">
+																				<button type="button"
+																					class="btn_type4 btn_spelling_check">맞춤법검사</button>
+
+																				<button type="button"
+																					class="btn_type4 btn_spellcheck_done"
+																					style="display: none;">맞춤법 검사완료</button>
+																				<button type="button"
+																					class="btn_type4 btn_spellcheck_cancel"
+																					style="display: none;">취소</button>
+																			</div>
+																		</div>
 																	</div>
+																	<div class="txt_total_length">
+																		<div class="txt_length">
+																			<span style="color: red;" id="byteInfo">0</span>
+																			4000bytes
+																		</div>
+																	</div>
+
 																</div>
-															</div>
-															<div class="txt_total_length">
-																<div class="txt_length">
-																	<p><span class="viewByte red" style="color: red;"></span>/4000byte</p>
-																</div>
-															</div>
-															<div class="area_add_btn">
-																<button type="button" class="btn_resume_add"
-																	data-tpl_id="tpl_introduce_item">자기소개서 항목 추가</button>
 															</div>
 														</div>
 													</div>
+
+
+													<div class="area_btn_order blind">
+														입력하신 자기소개서 항목의 순서를 변경하실 수 있습니다.
+														<button type="button" class="btn_order"
+															data-api_type="layer" data-api_id="change_order">자소서
+															항목 순서 변경</button>
+													</div>
+
 												</div>
-											</div>
 
 
-											<div class="area_btn_order blind">
-												입력하신 자기소개서 항목의 순서를 변경하실 수 있습니다.
-												<button type="button" class="btn_order"
-													data-api_type="layer" data-api_id="change_order">자소서
-													항목 순서 변경</button>
-											</div>
-
-										</div>
-										
-										
-										<div id="desire_work" class="resume_section">
-											<div class="area_title title_recommend">
-												<h3 class="title">희망 근무조건 선택</h3>
-											</div>
+												<div id="desire_work" class="resume_section">
+													<div class="area_title title_recommend">
+														<h3 class="title">희망 근무조건 선택</h3>
+													</div>
 
 
-											<div class="resume_write">
-												<input type="hidden" name="apply_dept" id="apply_dept"
-													value=""> <input type="hidden"
-													name="applycareer_gb" id="applycareer_gb" value="">
-												<input type="hidden" name="possible_work_day"
-													id="possible_work_day" value=",,">
+													<div class="resume_write">
+														<input type="hidden" name="apply_dept" id="apply_dept"
+															value=""> <input type="hidden"
+															name="applycareer_gb" id="applycareer_gb" value="">
+														<input type="hidden" name="possible_work_day"
+															id="possible_work_day" value=",,">
 
-												<div>
-													<div class="resume_row" style="height: 125px;">
-														<div class="input_title">
-															근무형태 <span class="point">필수</span><span class="s_txt">최대
-																3개</span>
-														</div>
-														<div class="option option_area">
-															<div id="desire_apply_work_stat"
-																class="area_task_input resume_input">
-																<input type="hidden" id="apply_work_stat"
-																	name="apply_work_stat" value=""> 
-																<div>
-																	<ul class="list_task list_hope_local size_type5"></ul>
-																
-																<div>
-																	    <ul>
-																	        <li class="menu">
-																	            <a><img src="./image/plus.png" alt="추가하기" height="30" width="30"/></a>
-																	            
-																	            <div class="hide">
-																	                <input type="checkbox">정규직
-																	                <input type="checkbox">계약직
-																	                <input type="checkbox">인턴직
-																	                <input type="checkbox">전임
-																	                <input type="checkbox">파견직
-																	                <input type="checkbox">프리랜서
-																					<a style="color: #2186eb;">추가하기</a>
-																	            </div>
-																	        </li>
-																	    </ul>
-																	</div>
-																
-																
-																
+														<div>
+															<div class="resume_row" style="height: 125px;">
+																<div class="input_title">
+																	근무형태 <span class="point">필수</span><span class="s_txt">최대
+																		3개</span>
 																</div>
-																
-																
-																
+																<div class="option option_area">
+																	<div id="desire_apply_work_stat"
+																		class="area_task_input resume_input">
+
+																		<input type="text" id="jobtypes" name="desiredjobtype"
+																			value="" maxlength="50" class="box_input">
+																		<div>
+																			<ul>
+																				<li class="menu"><a><img
+																						src="./image/plus.png" alt="추가하기" height="30"
+																						width="30" /></a>
+
+																					<div class="hide">
+																						<input type="checkbox" id="jobtype1" value="정규직"
+																							name="job_type" onclick="test(this.value)">정규직
+																						<input type="checkbox" id="jobtype2" value="계약직"
+																							name="job_type" onclick="test(this.value)">계약직
+																						<input type="checkbox" id="jobtype3" value="인턴직"
+																							name="job_type" onclick="test(this.value)">인턴직
+																						<input type="checkbox" id="jobtype4" value="전임"
+																							name="job_type" onclick="test(this.value)">전임
+																						<input type="checkbox" id="jobtype5" value="파견직"
+																							name="job_type" onclick="test(this.value)">파견직
+																						<input type="checkbox" id="jobtype6" value="프리랜서"
+																							name="job_type" onclick="test(this.value)">프리랜서
+																						<a style="color: #2186eb;" onclick="test1()">추가하기</a>
+																					</div></li>
+																			</ul>
+																		</div>
+
+
+
+																	</div>
+
+
+
+																</div>
 															</div>
 														</div>
-													</div>
 
-													<div class="resume_row">
-														<div class="input_title">근무 가능 날짜</div>
-														<div class="area_period">
-															<div class="resume_input">
-																<input type="text" id="possible_work_day_start"
-																	name="possible_work_day_start"
-																	class="expect_date box_input" value=""
-																	data-only-number="true" data-dateformat="yymmdd"
-																	autocomplete="off">
-																
+														<div class="resume_row">
+															<div class="input_title">근무 가능 날짜</div>
+															<div class="area_period">
+																<div class="resume_input">
+																	<input type="text" id="possible_work_day_start"
+																		name="desired_str"
+																		class="expect_date box_input" value=""
+																		data-only-number="true" data-dateformat="yymmdd"
+																		autocomplete="off">
+
+																</div>
+																<span class="txt_period">~</span>
+																<div class="resume_input">
+																	<input type="text" id="possible_work_day_end"
+																		name="desired_end"
+																		class="expect_date box_input" value=""
+																		data-only-number="true" data-dateformat="yymmdd"
+																		autocomplete="off">
+																</div>
+																<div class="area_check">
+																	<input type="checkbox">즉시 근무 가능
+																</div>
+																<p class="txt_error"></p>
 															</div>
-															<span class="txt_period">~</span>
-															<div class="resume_input">
-																<input type="text" id="possible_work_day_end"
-																	name="possible_work_day_end"
-																	class="expect_date box_input" value=""
-																	data-only-number="true" data-dateformat="yymmdd"
-																	autocomplete="off">
+														</div>
+
+
+														<div class="resume_row">
+															<div class="input_title">
+																연봉 <span class="point">필수</span>
 															</div>
-															<div class="area_check">
-																<input type="checkbox">즉시 근무 가능
+															<div class="sri_select resume_select">
+																<select class="selectpicker"
+																	style="width: 207.22222px; height: 50.22222px;" name="desiredsalary">
+																	<option>회사 내규에 따름</option>
+																	<option value="2000~2500만원">2000~2500만원</option>
+																	<option value="2500~3000만원">2500~3000만원</option>
+																	<option value="3000~3500만원">3000~3500만원</option>
+																	<option value="3500~4000만원">3500~4000만원</option>
+																	<option value="4000~4500만원">4000~4500만원</option>
+																	<option value="4500~5000만원">4500~5000만원</option>
+																	<option value="5500~6000만원">5500~6000만원</option>
+																	<option value="6000~7000만원">6000~7000만원</option>
+																	<option value="7000~8000만원">7000~8000만원</option>
+																	<option value="8000~9000만원">8000~9000만원</option>
+																	<option value="1억원 이상">1억원 이상</option>
+																</select>
 															</div>
-															<p class="txt_error"></p>
-														</div>
-													</div>
-
-
-													<div class="resume_row">
-														<div class="input_title">
-															연봉 <span class="point">필수</span>
-														</div>
-														<div class="sri_select resume_select">
-															<select class="selectpicker" style="width: 207.22222px;height: 50.22222px;">
-																		<option>회사 내규에 따름</option>
-																		<option>2000~2500만원</option>
-																		<option>2500~3000만원</option>
-																		<option>3000~3500만원</option>
-																		<option>3500~4000만원</option>
-																		<option>4000~4500만원</option>
-																		<option>4500~5000만원</option>
-																		<option>5500~6000만원</option>
-																		<option>6000~7000만원</option>
-																		<option>7000~8000만원</option>
-																		<option>8000~9000만원</option>
-																		<option>8000~</option>
-																	</select>
-														</div>
-													</div>
-
-													<div class="resume_row" style="height: 125px;">
-														<div class="input_title">
-															근무 지역 <span class="point">필수</span><span class="s_txt">최대
-																3개</span>
 														</div>
 
-														<div class="option option_area">
-															<div id="desire_area"
-																class="area_task_input resume_input">
-																<input type="hidden" id="work_area1_1"
-																	name="work_area1_1" value=""> <input
-																	type="hidden" id="work_area1_2" name="work_area1_2"
-																	value=""> <input type="hidden"
-																	id="work_area1_3" name="work_area1_3" value="">
-																<input type="hidden" id="work_area2_1"
-																	name="work_area2_1" value=""> <input
-																	type="hidden" id="work_area2_2" name="work_area2_2"
-																	value=""> <input type="hidden"
-																	id="work_area2_3" name="work_area2_3" value="">
-																<input type="hidden" id="work_area3_1"
-																	name="work_area3_1" value=""> <input
-																	type="hidden" id="work_area3_2" name="work_area3_2"
-																	value=""> <input type="hidden"
-																	id="work_area3_3" name="work_area3_3" value="">
-																<label for="work_area1_1" class="bar_title">근무지역<span
-																	class="valid_hidden"> (최대 3개)</span></label>
+														<div class="resume_row" style="height: 175px;">
+															<div class="input_title">
+																근무 지역 <span class="point">필수</span><span class="s_txt">최대
+																	3개</span>
+															</div>
 
-																<div>
-																	<ul class="list_task list_hope_local size_type5"></ul>
+															<div class="option option_area">
+																<div id="desire_area"
+																	class="area_task_input resume_input">
+																	<input type="text" id="Areas" name="desiredarea1"
+																		value="" maxlength="50" class="box_input">
+
 																	<div>
-																	    <ul>
-																	        <li class="menu">
-																	        <a><img src="./image/plus.png" alt="추가하기" height="30" width="30"/></a>
-																		        <div class="hide">
-																		             <select name="sido1" id="sido1"></select>
-																					 <select name="gugun1" id="gugun1"></select>
-																					 <a style="color: #2186eb;">추가하기</a>
-																				 </div>
-																	        </li>
-																	    </ul>
+
+																		<div>
+																			<ul>
+																				<li class="menu"><a><img
+																						src="./image/plus.png" alt="추가하기" height="30"
+																						width="30" /></a>
+																					<div class="hide">
+																						<select name="sido1" id="sido1"></select> <select
+																							name="gugun1" id="gugun1"
+																							onchange="selectArea(this.value)"></select> <a
+																							style="color: #2186eb;" onclick="addArea()">추가하기</a>
+																					</div></li>
+																			</ul>
+																		</div>
 																	</div>
+
 																</div>
-																
 															</div>
 														</div>
-													</div>
 
-													<div class="resume_row">
-														<div class="input_title">
-															직종 <span class="point">필수</span><span class="s_txt">최대
-																5개</span>
-														</div>
+														<div class="resume_row">
+															<div class="input_title">
+																직종 <span class="point">필수</span><span class="s_txt">최대
+																	5개</span>
+															</div>
 
-														<div class="option option_area">
-															<div id="desire_job_category"
-																class="area_task_input resume_input">
-																<input type="hidden" id="job_category_code"
-																	name="job_category_code" value=""> <input
-																	type="hidden" id="job_category_keyword"
-																	name="job_category_keyword" value=""> <label
-																	for="job_category_code" class="bar_title">직종<span
-																	class="valid_hidden"> (최대 5개)</span></label>
+															<div class="option option_area">
+																<div id="desire_job_category"
+																	class="area_task_input resume_input">
+																	<input type="text" id="Buses" name="desiredjob1"
+																		value="" maxlength="50" class="box_input">
 
-																<div>
-																	<ul class="list_task list_hope_jobs size_type5"></ul>
-																				<div>
-																					<ul>
-																						<li class="menu"><a><img
-																								src="./image/plus.png" alt="추가하기" height="30"
-																								width="30" /></a>
-																							<div class="hide">
-																								<span class="col-md-3" id="_buscodeList1">
-																									<p>직무분류1</p> <!-- 데이터들어오는자리 -->
-																								</span> <span class="col-md-3" id="_buscodeList2">
-																									<p>직무분류2</p> <!-- 데이터들어오는자리 -->
-																								</span>
-																								<div class="col-md-3" style=""
-																									id="_buscodeList3">
-																									<p>직무분류3</p>
-																									<!-- 데이터들어오는자리 -->
-																								</div>
-																								<div class="col-md-3">
-																								<a style="color: #2186eb;display: flex;">추가하기</a>
-																								</div>
-																							</div>
-																				
-																				</li>
-																	    </ul>
+																	<div>
+
+																		<div>
+																			<ul>
+																				<li class="menu"><a><img
+																						src="./image/plus.png" alt="추가하기" height="30"
+																						width="30" /></a>
+																					<div class="hide" style="width: 600px;">
+																						<span class="col-md-3" id="_buscodeList1">
+																							<p>직무분류1</p> <!-- 데이터들어오는자리 -->
+																						</span> <span class="col-md-3" id="_buscodeList2">
+																							<p>직무분류2</p> <!-- 데이터들어오는자리 -->
+																						</span>
+																						<div class="col-md-3" style="" id="_buscodeList3">
+																							<p>직무분류3</p>
+																							<!-- 데이터들어오는자리 -->
+																						</div>
+																						<div class="col-md-3">
+																							<a style="color: #2186eb; display: flex;"
+																								onclick="addBus()">추가하기</a>
+																						</div>
+																					</div></li>
+																			</ul>
+																		</div>
 																	</div>
-																</div>
 
-																
+
+																</div>
 															</div>
 														</div>
-													</div>
 
-													
+
+													</div>
 												</div>
-											</div>
-										</div>
+						
 
-													
-											</figcaption>
-										</figure>
-									</article>
-								</div>
-							</section>
+
+								</figcaption>
+								</figure>
+								</article>
 						</div>
+						</section>
+						
+						<input type="submit" value="작성완료" id="save">
 					</div>
 				</div>
-			</form>
-		</main>
-<!-- ####################################################################################################### -->
+	</div>
+	</form>
+	</main>
+	<!-- ####################################################################################################### -->
 
 <!-- FOOTER -->
 
@@ -2459,27 +2141,7 @@ function login() {
 
 
 
-<%-- 
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume1.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume2.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume3.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume4.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume5.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume6.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume7.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume_edu.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume9.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume10.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume11.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume12.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume13.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/resume14.js"></script> --%>
-
-
-
-
-
+<!-- 자격증 선택 input값 변환 -->
 <script type="text/javascript">
 function licenseCheck(value) {
 	
@@ -2506,6 +2168,8 @@ function licenseCheck(value) {
 	 }
 }
 </script>
+
+
 
 <script type="text/javascript">
 
@@ -2599,218 +2263,325 @@ $('document').ready(function() {
 
 <script>
 
-
+//첫번째 BUSCODE1 DATA를 받아서 체크박스로 뿌려주는 코드 
 $(document).ready(function() {
-	
-	
-	
+   
+   
 $.ajax({
-	url : "./buscodeListData.do", 
-	type : "get", 
-	success:function(list){
-		//alert('success');
-		//alert(list);
-		
-		$(".list_col1").remove();
-		
-		$.each(list, function(i, val){
+   url : "./buscodeListData.do", 
+   type : "get", 
+   success:function(list){
+      //alert('success');
+      //alert(list);
+      
+      //JSTL로 받아온 지역 정보의 대분류 네임이 서울이면 (일단 자바스크립트 변수로 변경) selected 조건을 줌 
+      var area1Name = '<c:out value="${dto.area1Name}"/>';
+      
+      $(".list_col1").remove();
+      
+      $.each(list, function(i, val){
 
-			//alert(val.jobSeq);
+         //alert(val.jobSeq);
 
-			//let app = "<input type='checkbox' class='list_col' name='buscode' value='"+val.buscode1+"' class='form-control'>"+val.buscodename1
-			let app = "<div>"+
-					"<input type='radio' class='list_col1' id='buscode1' name='buscode1' value='"+val.buscode1+"'><label for='huey'>"+val.buscodename1+"</label>"+
-					"</div>";
-				
-				$("#_buscodeList1").append(app);
-		});
-	}, 
-	error:function(){
-		alert('error');
-	}
-	
- });
+         //let app = "<input type='checkbox' class='list_col' name='buscode' value='"+val.buscode1+"' class='form-control'>"+val.buscodename1
+         let app = "<div>"+
+               "<input type='radio' class='list_col1' id='buscode1'"+ 
+               
+               "name='buscode1' value='"+val.buscode1+"'><label for='huey'>"+val.buscodename1+"</label>"+
+               "</div>";
+            
+            $("#_buscodeList1").append(app);
+      });
+   }, 
+   error:function(){
+      alert('error');
+   }
+   
+ }); // ajax
  
+}); // document ready 
 
 
-
-
+//두번째 BUSCODE2 DATA를 받아서 체크박스로 뿌려주는 코드 
 $(document).on("change",".list_col1", function(){
-	
-	if($(this).is(":checked")){
+   
+   if($(this).is(":checked")){
         //alert("체크");
         //alert($(this).val());
         let buscode = $(this).val();
         
         $.ajax({
-        	url : "./buscode2ListData.do", 
-        	type : "get", 
-        	data: {"buscode":buscode}, 
-        	success:function(list){
-        		//alert('success');
-        		//alert(list);
-        		
-        		$(".list_col2").remove();		
-        		
-        		$.each(list, function(i, val){
-							let app = "<div>"+
-        					"<input type='radio' class='list_col2' id='buscode2' name='buscode2' value='"+val.buscode2+"'><label class='list_col2' for='huey'>"+val.buscodename2+"</label>"+
-        					"</div>";
-        				
-        				$("#_buscodeList2").append(app);
-        		});
-        	}, 
-        	error:function(){
-        		alert('error');
-        	}
-        	
+           url : "./buscode2ListData.do", 
+           type : "get", 
+           data: {"buscode":buscode}, 
+           success:function(list){
+              //alert('success');
+              //alert(list);
+              
+              $(".list_col2").remove();      
+              
+              
+              
+              $.each(list, function(i, val){
+                     let app = "<div>"+
+                       "<input type='radio' class='list_col2' id='buscode2' name='buscode2' value='"+val.buscode2+"'><label class='list_col2' for='huey'>"+val.buscodename2+"</label>"+
+                       "</div>";
+                    
+                    $("#_buscodeList2").append(app);
+              });
+           }, 
+           error:function(){
+              alert('error');
+           }
+           
          });
    
     }
     /* else if($(this).is(":checked")==false){
         alert("체크 해제");
     } */
-	
+   
 });
 
 
+let count = 1;
+//마지막 BUSCODE3 DATA를 받아서 체크박스로 뿌려주는 코드 
 $(document).on("change",".list_col2", function(){
-	
-	if($(this).is(":checked")){
+   
+   if($(this).is(":checked")){
         //alert("체크");
         //alert($(this).val());
         let buscode = $(this).val();
         
         $.ajax({
-        	url : "./buscode2ListData.do", 
-        	type : "get", 
-        	data: {"buscode":buscode}, 
-        	success:function(list){
-        		//alert('success');
-        		//alert(list);
-        		
-        		$('#_buscodeList3 br').each(function () {
-        		    if ($(this).next().is('br')) {
-        		        $(this).next().remove();
-        		    }
-        		});
-        		
-        		
-        		
-        		//$("_buscodeList3 *").remove(); //내부 요소만 삭제 
-        		
-        		$(".list_col3").remove(); 
-        		
-        		var parent = document.getElementById('_buscodeList3');
-        		var var1   = parent.getElementsByTagName('br');
+           url : "./buscode2ListData.do", 
+           type : "get", 
+           data: {"buscode":buscode}, 
+           success:function(list){
+              //alert('success');
+              //alert(list);
+              
+           
+              //$("_buscodeList3 *").remove(); //내부 요소만 삭제 
+              
+              $(".list_col3").remove(); 
+              
+              var parent = document.getElementById('_buscodeList3');
+              var var1   = parent.getElementsByTagName('br');
 
-        		for(var i = var1.length; i--;) {
-        		    var1[i].parentNode.removeChild(var1[i]);
-        		}
-        		
-        		
-        		$.each(list, function(i, val){
-		        	
-        					
-							let app = "<span class='list_col3'>"+
-									  "<input type='checkbox' class='list_col3' name='buscode' value='"+val.busname+"' class='form-control'>"+val.busname+
-									  "</span>";
-									  
-							 if((i+1)%2==0){
-		        				app += "</br>";
-		        			}
-								   
-
-				$("#_buscodeList3").append(app);
-        		
-        		});
-        	}, 
-        	error:function(){
-        		alert('error');
-        	}
-        	
+              for(var i = var1.length; i--;) {
+                  var1[i].parentNode.removeChild(var1[i]);
+              }
+              
+              
+              
+              //기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 초기셋팅 
+              var stackValue = $("input[name='buscode']").length;
+             var stackData = new Array(stackValue);
+              //alert(stackValue);
+              
+              for(var i=0; i<stackValue; i++){                          
+                 stackData[i] = $("input[name='buscode']")[i].value;
+              }
+              //alert("길이"+stackData.length);
+              
+              $.each(stackData, function(i, data){
+                 //alert("이게 값임"+data);
+              });
+              
+              
+              
+              $.each(list, function(i, val){
+                 let app = "";
+                 
+                 //stackname = 밑에태그 아이디.val (elements) 배열로 해야될듯 
+                 
+                    app += "<span class='list_col3'>"+
+                    "<input type='checkbox' class='list_col3' name="+count+" id='buscode3data"+count+"' value='"+val.busname+"' class='form-control' onclick='selectbus(this.value)'>"+val.busname+
+                    "</span>"; 
+                             
+                   if((i+1)%2==0){
+                       app += "</br>";
+                    }
+                   
+            $("#_buscodeList3").append(app);
+            
+              
+            //기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 최종진행
+            var buscodeTag ="buscode3data"+count;
+            
+            for(var i=0; i<stackValue; i++){                          
+                if(stackData[i] == val.busname){
+                   document.getElementById(buscodeTag).checked = true;
+                }
+              }
+            
+            
+            
+            count+=1;
+            
+              });
+              
+              
+              
+           }, 
+           error:function(){
+              alert('error');
+           }
+           
          });
    
     }
     /* else if($(this).is(":checked")==false){
         alert("체크 해제");
     } */
-	
+   
 });
 
 
 
+
+
+//span Tag에 동적 id를 주기 위한 인덱스용 넘버 
+let cnt = 1;
+
+var selectedBuscode = "";
+
+//소분류 체크박스가 변경될때 실행 
+$(document).on("change", ".list_col3" , function(){
+   //$(".list_col3").change(function(){
+   
+
+   let app ="";
+   
+   
+   
+      //if($("input:checkbox['.list_col3']").is(":checked") == true){ 
+      //if($(this).is(":checked") == true){
+      if($(this).is(":checked") == true){
+      
+      let buscode = $(this).val();
+      var count = $(this).attr('name');
+      //alert(buscode);
+      
+      app = "<span class=arrBusdata id=selectedBuscode"+cnt+">"+buscode+
+           "<input name='buscode' type='hidden' value='"+buscode+"'>"+
+           "<a onclick='delSelBuscode("+cnt+","+count+")'>"+
+           "<img alt='왜안뜨지' src='ma.jpg' style='width:30px; height:30px;'>"+
+           "</a>"+"</span>"+"&nbsp;&nbsp;";
+           
+
+        var id = $(this).attr("id");
+      //alert(id);
+      let input = document.getElementById(id);
+      
+      $(this).removeData('code');
+      
+       //HTML data 속성 사용
+      input.dataset.code = 'selectedBuscode'+cnt;
+      
+      alert('datacode 생성: '+'selectedBuscode'+cnt);
+      
+      alert('datacode 리얼: ' + $(this).data("code"));
+      
+      $("#selectResult").append(app);
+      cnt += 1;
+      
+   }
+   
+   
+   //체크박스에서 체크 해제 했을때 
+   //체크박스 해제가 될때 밑에 부분에 적재되있는 같은 데이터의 span태그도 삭제
+   //else{   
+   else if($(this).is(":checked") == false){
+      alert("위에 셀렉코드 : "+$(this).data("code"));
+      //data 속성 가져오기 (data-code) 
+      selectedBuscode = $(this).data("code");
+      alert('위에 셀렉코드 :'+ selectedBuscode);
+      
+      document.getElementById(selectedBuscode).remove();
+   }
+   
+   
 });
+
+
+//밑에 쌓여있는 span태그에서 X버튼을 눌렀을때 위에 체크박스도 같이 체크 해제가 되도록 해주는 코드  
+function delSelBuscode(cnt, count) {
+   //alert(count);
+   
+   var spanid = "selectedBuscode"+cnt;
+   alert('밑에셀렉코드 :'+spanid);
+   
+   var buscodeTag ="buscode3data"+count;
+   //alert(buscodeTag);
+   
+   const spantag = document.getElementById(spanid);
+   //alert(spantag);
+   
+   //스판태그 삭제
+   document.getElementById(spanid).remove();
+   
+   //체크박스 체크해제
+   document.getElementById(buscodeTag).checked = false;
+
+
+}
 
   
 </script>
 
 <!-- 자소서 글자수 세기 -->
-<script type="text/javascript">
+<script>
+function fnChkByte(obj, maxByte)
+{
+    var str = obj.value;
+    var str_len = str.length;
 
-var calByte = {
-		getByteLength : function(s) {
 
-			if (s == null || s.length == 0) {
-				return 0;
-			}
-			var size = 0;
+    var rbyte = 0;
+    var rlen = 0;
+    var one_char = "";
+    var str2 = "";
 
-			for ( var i = 0; i < s.length; i++) {
-				size += this.charByteSize(s.charAt(i));
-			}
 
-			return size;
-		},
-			
-		cutByteLength : function(s, len) {
+    for(var i=0; i<str_len; i++)
+    {
+        one_char = str.charAt(i);
+        if(escape(one_char).length > 4)
+        {
+            rbyte += 2;                                         //한글2Byte
+        }
+        else
+        {
+            rbyte++;                                            //영문 등 나머지 1Byte
+        }
 
-			if (s == null || s.length == 0) {
-				return 0;
-			}
-			var size = 0;
-			var rIndex = s.length;
 
-			for ( var i = 0; i < s.length; i++) {
-				size += this.charByteSize(s.charAt(i));
-				if( size == len ) {
-					rIndex = i + 1;
-					break;
-				} else if( size > len ) {
-					rIndex = i;
-					break;
-				}
-			}
+        if(rbyte <= maxByte)
+        {
+            rlen = i+1;                                          //return할 문자열 갯수
+        }
+     }
 
-			return s.substring(0, rIndex);
-		},
 
-		charByteSize : function(ch) {
-
-			if (ch == null || ch.length == 0) {
-				return 0;
-			}
-
-			var charCode = ch.charCodeAt(0);
-
-			if (charCode <= 0x00007F) {
-				return 1;
-			} else if (charCode <= 0x0007FF) {
-				return 2;
-			} else if (charCode <= 0x00FFFF) {
-				return 3;
-			} else {
-				return 4;
-			}
-		}
-	};
-
-	function viewDisplay(obj) {
-		$(".viewByte").html( calByte.getByteLength( obj.value ) );
-		$(".view20Byte").html( calByte.cutByteLength( obj.value, 20 ) );
-	}
-
+     if(rbyte > maxByte)
+     {
+	  // alert("한글 "+(maxByte/2)+"자 / 영문 "+maxByte+"자를 초과 입력할 수 없습니다.");
+	  alert("메세지는 최대 " + maxByte + "byte를 초과할 수 없습니다.");
+	  str2 = str.substr(0,rlen);                                  //문자열 자르기
+	  obj.value = str2;
+	  fnChkByte(obj, maxByte);
+     }
+     else
+     {
+        document.getElementById('byteInfo').innerText = rbyte;
+     }
+}
 </script>
+
+
+
 
 <!-- 이미지 볼수있게 해주는 스크립트 -->
  <script>
@@ -2825,6 +2596,976 @@ var calByte = {
   });
  </script>
  
+ <!-- 신입 체크됐을때 -->
+ <script type="text/javascript">
+function careernoCheck() {
+	
+	
+	alert("careernoCheck");
+
+	document.getElementById('career_template').style.display='none';
+	document.getElementById('careerok').classList.remove("active");
+	
+	
+}
+</script>
+
+<!-- 경력 체크됐을때 -->
+ <script type="text/javascript">
+function careerokCheck() {
+	
+	alert("careerokCheck");
+
+	document.getElementById('career_template').style.display='block';
+	document.getElementById('careerno').classList.remove("active");
+	
+}
+</script>
+
+<script type="text/template" id="tpl_university">
+													<div id="tpl_row_1621990778" class="tpl_row"
+													data-tpl_id="tpl_university">
+													<input type="hidden" id="school_cd_1621990778"
+														name="school_cd[]" value="11685"> <input
+														type="hidden" id="school_open_fl_1621990778"
+														name="school_open_fl[]" value="y"> <input
+														type="hidden" id="school_direct_1621990778"
+														name="school_direct[]" value="n"> <input
+														type="hidden" id="school_major_cd_1621990778"
+														name="school_major_cd[]" value=""> <input
+														type="hidden" id="school_minor_check_value_1621990778"
+														name="school_minor_check_value[]" value="n"> <input
+														type="hidden" id="school_thesis_category_1621990778"
+														name="school_thesis_category[]" value="both"> <input
+														type="hidden" id="school_entrance_year_1621990778"
+														name="school_entrance_year[]" value="2014"> <input
+														type="hidden" id="school_entrance_month_1621990778"
+														name="school_entrance_month[]" value="03"> <input
+														type="hidden" id="school_graduation_year_1621990778"
+														name="school_graduation_year[]" value="2019"> <input
+														type="hidden" id="school_graduation_month_1621990778"
+														name="school_graduation_month[]" value="08">
+
+													<div class="area_title">
+														<h4 class="title">대학·대학원 정보 입력</h4>
+													</div>
+
+													<div class="resume_row">
+														<div class="input_title">
+															대학 <span class="point">필수</span>
+														</div>
+														<div class="sri_select resume_select">
+														
+														<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>대학교(4년)</option>
+																		<option>대학(2,3년)</option>
+																		<option>대학원(석사)</option>
+																		<option>대학원(박사)</option>
+																	</select>
+														</div>
+													</div>
+
+													<div class="resume_row">
+														<div class="input_title">
+															학교명 <span class="point">필수</span>
+														</div>
+														<div class="resume_input">
+															<input type="text"
+																id="school_nm_1621990778" name="school_nm[]"
+																value="" class="box_input" maxlength="100"
+																data-api_type="auto" data-api_id="school_univ"
+																data-min_len="2" autocomplete="off">
+														</div>
+													</div>
+
+													
+													<div class="resume_row">
+														<div class="input_title">
+															재학기간 <span class="point">필수</span>
+														</div>
+														<div class="area_period">
+															<div class="period_bundle">
+																<div class="resume_input">
+																	<input type="text"
+																		id="school_entrance_dt_1621990778"
+																		name="school_entrance_dt[]" value=""
+																		class="expect_date box_input" data-dateformat="yymm"
+																		data-only-number="true" maxlength=""
+																		autocomplete="off">
+																	
+																</div>
+
+																<div class="sri_select resume_select period_select"
+																	style="display:">
+																	
+																	<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>입학</option>
+																		<option>편입</option>
+																	</select>
+																	
+																</div>
+																<p class="txt_error"></p>
+															</div>
+
+															<span class="txt_period">-</span>
+
+															<div class="period_bundle">
+																<div class="resume_input box_period">
+																	<input type="text" id="school_graduation_dt_1621990778"
+																		name="school_graduation_dt[]" value=""
+																		class="expect_date box_input" data-dateformat="yymm"
+																		data-only-number="true" maxlength=""
+																		autocomplete="off">
+																	
+																</div>
+
+																<div class="sri_select resume_select period_select"
+																	style="display:">
+																	<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>졸업</option>
+																		<option>재학중</option>
+																		<option>휴학중</option>
+																		<option>수료</option>
+																		<option>중퇴</option>
+																		<option>자퇴</option>
+																		<option>졸업예정</option>
+																	</select>
+																</div>
+																<p class="txt_error"></p>
+															</div>
+															<p class="txt_error"></p>
+														</div>
+													</div>
+													<div class="resume_row area_school_major" style="height: 125px;">
+														<div class="input_title">
+															전공 <span class="point">필수</span>
+														</div>
+														<div class="area_add">
+															<div class="resume_input resume_select">
+																<label class="bar_title"
+																	for="school_major_cd_1621990778">전공구분<span
+																	class="valid_hidden">선택</span></label>
+																<div class="box_input size_type2">주전공</div>
+															</div>
+
+															<div class="area_direct">
+																<div class="sri_select resume_select">
+																	<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>경제/경영</option>
+																		<option>어문학</option>
+																		<option>영어/영문</option>
+																		<option>중어/중문</option>
+																		<option>일어/일문</option>
+																		<option>국어/국문</option>
+																		<option>인문과학</option>
+																		<option>사회과학</option>
+																		<option>상경계열</option>
+																		<option>회계학</option>
+																		<option>법학계열</option>
+																		<option>사범계열</option>
+																		<option>예/체능</option>
+																		<option>자연과학계열</option>
+																		<option>농수산/해양/축산</option>
+																		<option>수학/통계학</option>
+																		<option>물리/천문/기상학</option>
+																		<option>화학/생물</option>
+																		<option>공학계열</option>
+																		<option>전기/전자/정보통신공학</option>
+																		<option>컴퓨터/시스템공학</option>
+																		<option>금속/비금속공학</option>
+																		<option>생명/화학/환경/바이오</option>
+																		<option>도시/토목/건축공학</option>
+																		<option>에어지/원자력공학</option>
+																		<option>산업/자동차/우주공학</option>
+																		<option>기계/조선/항공공학</option>
+																		<option>신소재/재료/섬유공학</option>
+																		<option>식품/유정/안전공학</option>
+																		<option>의학계열</option>
+																	</select>
+																	
+																	
+																	
+																</div>
+
+																<div class="resume_input resume_bottom"
+																	style="display: none">
+																	<label for="school_major_department_text_1621990778"
+																		class="bar_title">전공계열<span
+																		class="valid_hidden"> 직접입력</span></label> <input type="text"
+																		id="school_major_department_text_1621990778"
+																		name="school_major_department_text[]" value=""
+																		class="box_input" maxlength="50">
+																	<p class="txt_error"></p>
+																</div>
+															</div>
+
+															<div class="resume_input resume_bottom">
+																<input type="text"
+																	id="school_major_1621990778" name="school_major[]"
+																	value="" class="box_input" maxlength="50">
+															</div>
+															<button type="button" class="btn_edu_type btn_minor"
+																style="display:">전공 추가하기</button>
+														</div>
+													</div>
+
+													<div class="resume_row">
+														<div class="input_title">주/야간</div>
+														<div class="sri_select resume_select resume_input_type">
+															
+															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																<option>주간</option>
+																<option>야간</option>
+															</select>
+															
+														</div>
+													</div>
+
+													<div class="resume_row">
+														<div class="input_title">학점</div>
+														<div class="area_grades">
+															<div class="resume_input">
+																<input type="text" id="school_major_avg_1621990778"
+																	name="school_major_avg[]" value="3.59"
+																	class="box_input size_type3" maxlength="5"
+																	data-only-float="true">
+															</div>
+															<div class="sri_select resume_select">
+																
+																<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>4.5</option>
+																		<option>4.0</option>
+																		<option>4.3</option>
+																		<option>5.0</option>
+																		<option>7.0</option>
+																		<option>100</option>
+																	</select>
+																
+															</div>
+															<p class="txt_error"></p>
+														</div>
+														<a href="/zf_user/tools/grade-converter-pop"
+															target="_blank" class="link_converter">학점 변환기 보기</a>
+													</div>
+
+													<div class="resume_row area_school_thesis_title"
+														style="display:">
+														<div class="input_title">논문 &amp; 졸업작품</div>
+														<div class="resume_textarea">
+															<label for="school_thesis_title_1621990778"
+																class="bar_title">학위논문 및 졸업작품<span
+																class="valid_hidden"> 입력</span></label>
+															<textarea id="school_thesis_title_1621990778"
+																name="school_thesis_title[]" class="box_textarea"></textarea>
+														</div>
+													</div>
+													
+												</div>
+
+
+</script>
+
+<script type="text/template" id="tpl_career">
+														<div id="tpl_row_1621990779" class="tpl_row"
+														data-tpl_id="tpl_career_item">
+														<input type="hidden" id="career_mcom_id_1621990779"
+															name="career_mcom_idx[]" value=""> <input
+															type="hidden" id="career_com_idx_1621990779"
+															name="career_com_idx[]" value=""> <input
+															type="hidden" id="career_csn1_1621990779"
+															name="career_csn1[]" value=""> <input
+															type="hidden" id="career_csn2_1621990779"
+															name="career_csn2[]" value=""> <input
+															type="hidden" id="career_csn3_1621990779"
+															name="career_csn3[]" value=""> <input
+															type="hidden" id="career_job_category_cd_1621990779"
+															name="career_job_category_cd[]" value=""> <input
+															type="hidden" id="career_start_year_1621990779"
+															name="career_start_year[]" value=""> <input
+															type="hidden" id="career_start_month_1621990779"
+															name="career_start_month[]" value=""> <input
+															type="hidden" id="career_end_year_1621990779"
+															name="career_end_year[]" value=""> <input
+															type="hidden" id="career_end_month_1621990779"
+															name="career_end_month[]" value=""> <input
+															type="hidden" id="career_total_month_1621990779"
+															name="career_total_month[]"> <input type="hidden"
+															id="career_job_grade_1621990779"
+															name="career_job_grade[]" value=""> <input
+															type="hidden" id="career_job_duties_1621990779"
+															name="career_job_duties[]" value=""> <input
+															type="hidden" id="career_job_text_input_1621990779"
+															name="career_job_text_input[]" value=""> <input
+															type="hidden" id="career_comnm_open_fl_1621990779"
+															name="career_comnm_open_fl[]" value=""> <input
+															type="hidden" id="career_seq_1621990779"
+															name="career_seq[]"> <input type="hidden"
+															id="profilecareer_seq_1621990779"
+															name="profilecareer_seq[]" value="">
+
+														<div class="resume_row">
+															<div class="input_title">
+																회사명 <span class="point">필수</span>
+															</div>
+															<div class="resume_input">
+																<input type="text"
+																	id="career_company_nm_1621990779"
+																	name="career_company_nm[]" value="" class="box_input"
+																	maxlength="80" data-api_type="auto"
+																	data-api_id="career_company">
+																
+															</div>
+															
+														</div>
+
+														<div class="resume_row">
+															<div class="input_title">
+																재직기간 <span class="point">필수</span>
+															</div>
+															<div class="area_period">
+																<div class="resume_input">
+																	<input type="text"
+																		id="career_start_dt_1621990779"
+																		name="career_start_dt[]"
+																		class="expect_date box_input size_type2" value=""
+																		data-dateformat="yymm" data-only-number="true"
+																		autocomplete="off">
+																	
+																</div>
+																<span class="txt_period">~</span>
+																<div class="resume_input">
+																	
+																	<input type="text" id="career_end_dt_1621990779"
+																		name="career_end_dt[]"
+																		class="expect_date box_input size_type2" value=""
+																		data-dateformat="yymm" data-only-number="true"
+																		autocomplete="off">
+																	
+																</div>
+																<div class="sri_select resume_select">
+																	<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>퇴사</option>
+																		<option>재직중</option>
+																	</select>
+																	
+																	
+																</div>
+																<p class="txt_error"></p>
+															</div>
+															<p class="info_period period_1621990779"></p>
+														</div>
+
+														<div class="resume_row">
+															<div class="input_title">퇴사사유</div>
+															<div class="resume_bundle">
+																<div class="sri_select resume_select">
+																	
+																
+																<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>업직종 전환</option>
+																		<option>근무조건</option>
+																		<option>경영악화</option>
+																		<option>계약만료</option>
+																		<option>출산/육아</option>
+																		<option>학업</option>
+																		<option>유학</option>
+																		<option>개인사정</option>
+																		<option>기타</option>
+																	</select>
+																
+																
+																
+																
+																
+																
+																</div>
+
+															</div>
+														</div>
+
+														<div class="resume_row">
+															<div class="input_title">
+																직급/직책 <span class="point">필수</span>
+															</div>
+															<div class="resume_bundle">
+																<div class="resume_input">
+																	<input type="text"
+																		id="career_job_grade_duties_1621990779"
+																		name="career_job_grade_duties[]"
+																		class="box_input max_length" value="" readonly
+																		data-api_type="layer"
+																		data-api_id="career_job_grade_duties" maxlength="20">
+																	
+																</div>
+
+																
+																<p class="txt_number"></p>
+															</div>
+														</div>
+
+														<div class="resume_row">
+															<div class="input_title">
+																직종 <span class="point">필수</span>
+															</div>
+															<div class="resume_input">
+																<div class="option option_area">
+																	<input type="text"
+																		id="career_job_category_text_1621990779"
+																		name="career_job_category_text[]" value=""
+																		class="box_input" data-api_type="layer"
+																		data-api_id="career_job_category" data-dim="n"
+																		data-position="unused" readonly>
+																	
+																</div>
+															</div>
+														</div>
+
+														<div class="resume_row">
+															<div class="input_title">근무지역</div>
+															<div class="sri_select resume_select">
+																
+																 <select name="sido1" id="sido1"></select>
+																 <select name="gugun1" id="gugun1"></select>
+																
+															</div>
+														</div>
+
+														<div class="resume_row">
+															<div class="input_title">근무부서</div>
+															<div class="resume_input">
+																<input type="text"
+																	id="career_dept_nm_1621990779" name="career_dept_nm[]"
+																	class="box_input" value="" maxlength="16">
+																
+															</div>
+														</div>
+
+														<div class="resume_row">
+															<div class="input_title">연봉</div>
+															<div class="area_salary">
+
+																<div class="sri_select resume_select">
+																	<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>회사 내규에 따름</option>
+																		<option>2000~2500만원</option>
+																		<option>2500~3000만원</option>
+																		<option>3000~3500만원</option>
+																		<option>3500~4000만원</option>
+																		<option>4000~4500만원</option>
+																		<option>4500~5000만원</option>
+																		<option>5500~6000만원</option>
+																		<option>6000~7000만원</option>
+																		<option>7000~8000만원</option>
+																		<option>8000~9000만원</option>
+																		<option>8000~</option>
+																	</select>
+																</div>
+
+																<p class="txt_number"></p>
+																<p class="txt_error"></p>
+															</div>
+														</div>
+
+														<div class="resume_row">
+															<div class="input_title">담당업무</div>
+															<div class="resume_textarea">
+																
+																<textarea id="career_contents_1621990779"
+																	name="career_contents[]" class="box_textarea" style="width: 500px;"></textarea>
+															</div>
+														</div>
+
+														<div class="resume_project">
+															<div class="area_title">
+																<h4 class="title">프로젝트 수행이력</h4>
+																<p class="txt_noti">프로젝트 수행 이력이 있는 경우 수행 역할을 작성해
+																	보세요!</p>
+																<button type="button" class="btn_add btn_resume_add"
+																	data-tpl_id="tpl_career_project">프로젝트 수행이력 추가</button>
+															</div>
+
+
+														</div>
+													</div>
+</script>
+
+<script type="text/template" id="tpl_activity">
+													<div id="tpl_row_1621990780" class="tpl_row"
+													data-tpl_id="tpl_activity_item">
+													<input type="hidden" id="activity_start_year_1621990780"
+														name="activity_start_year[]" value=""> <input
+														type="hidden" id="activity_start_month_1621990780"
+														name="activity_start_month[]" value=""> <input
+														type="hidden" id="activity_start_day_1621990780"
+														name="activity_start_day[]" value=""> <input
+														type="hidden" id="activity_end_year_1621990780"
+														name="activity_end_year[]" value=""> <input
+														type="hidden" id="activity_end_month_1621990780"
+														name="activity_end_month[]" value=""> <input
+														type="hidden" id="activity_end_day_1621990780"
+														name="activity_end_day[]" value=""> <input
+														type="hidden" id="profileactivity_seq_1621990780"
+														name="profileactivity_seq[]" value="">
+
+													<div class="resume_row">
+														<div class="input_title">활동구분</div>
+														<div class="sri_select resume_select">
+															
+															<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+																		<option>인턴</option>
+																		<option>서포터즈/기자단</option>
+																		<option>공모전</option>
+																		<option>동아리</option>
+																		<option>교내활동</option>
+																		<option>자원봉사</option>
+																		<option>아르바이트</option>
+																		<option>사회활동</option>
+																		<option>수행과제</option>
+																		<option>해외연수</option>
+																		<option>교육이수내역</option>
+																	</select>
+														</div>
+													</div>
+
+													
+
+													<div class="resume_row">
+														<div class="input_title">기관/장소</div>
+														<div class="resume_input">
+															<label for="activity_org_1621990780" class="bar_title">기관/장소<span
+																class="valid_hidden"> 입력</span></label> <input type="text"
+																id="activity_org_1621990780" name="activity_org[]"
+																value="" maxlength="50" class="box_input">
+															<p class="txt_error"></p>
+														</div>
+													</div>
+
+													<div class="resume_row">
+														<div class="input_title">활동기간</div>
+														<div class="area_period">
+															<div class="sri_select resume_select">
+																
+																
+															</div>
+															<div class="resume_input">
+																<input type="text" id="activity_start_1621990780"
+																	name="activity_start[]" class="expect_date box_input"
+																	value="" maxlength="6" data-only-number="true"
+																	data-dateformat="yymm" autocomplete="off">
+																
+															</div>
+
+															<span class="txt_period">~</span>
+
+															<div class="resume_input">
+																<input type="text" id="activity_end_1621990780"
+																	name="activity_end[]" class="expect_date box_input"
+																	value="" maxlength="6" data-only-number="true"
+																	data-dateformat="yymm" autocomplete="off">
+																
+															</div>
+															<p class="txt_error"></p>
+														</div>
+													</div>
+
+													<div class="resume_row">
+														<div class="input_title">활동내용</div>
+														<div class="resume_textarea">
+															<label for="activity_contents_1621990780"
+																class="bar_title">활동내용<span class="valid_hidden">
+																	입력</span></label>
+															<textarea id="activity_contents_1621990780"
+																name="activity_contents[]" class="box_textarea"></textarea>
+															<p class="txt_error"></p>
+														</div>
+													</div>
+												</div>
+
+</script>
+
+<script type="text/template" id="tpl_license">
+<div id="tpl_row_1621990781" class="tpl_row"
+	data-tpl_id="tpl_license_default">
+	<div class="resume_row">
+		<div class="input_title">항목선택</div>
+		<div class="sri_select resume_select">
+			<select class="selectpicker" onchange="licenseCheck2(this.value);"  style="width: 107.22222px;height: 50.22222px;">
+						<option value="case1">자격증/면허증</option>
+						<option value="case2">어학시험</option>
+						<option value="case3">수상내역/공모전</option>
+			</select>
+			<p id="numberchk"></p>
+		</div>
+	</div>
+<div id="licensechk2" style="display: block">				
+	<div class="resume_row">
+		<div class="input_title">자격증명</div>
+		<div class="resume_input">
+			<input type="text"
+				id="activity_org_1621990780" name="activity_org[]"
+				value="" maxlength="50" class="box_input">
+		</div>
+	</div>
+	
+	<div class="resume_row">
+		<div class="input_title">발행처/기관</div>
+		<div class="resume_input">
+			<input type="text"
+				id="activity_org_1621990780" name="activity_org[]"
+				value="" maxlength="50" class="box_input">
+			
+		</div>
+	</div>
+	
+	<div class="resume_row">
+		<div class="input_title">합격구분</div>
+		<div class="sri_select resume_select">
+			<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+						<option>합격</option>
+						<option>불합격</option>
+					</select>
+		</div>
+	</div>
+	
+	<div class="resume_row">
+		<div class="input_title">취득일</div>
+		<div class="resume_input">
+			<input type="text"
+				id="activity_org_1621990780" name="activity_org[]"
+				value="" maxlength="50" class="box_input">
+		</div>
+	</div>
+</div>		
+
+
+<div id="languagechk2" style="display: none">				
+	<div class="resume_row">
+		<div class="input_title">언어</div>
+		<div class="sri_select resume_select">
+			<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+						<option>영어</option>
+						<option>일본어</option>
+						<option>중국어</option>
+						<option>독일어</option>
+						<option>불어</option>
+						<option>스페인어</option>
+						<option>러시아어</option>
+						<option>이탈리아어</option>
+						<option>한국어</option>
+						<option>기타</option>
+					</select>
+		</div>
+	</div>
+	
+	
+	<div class="resume_row">
+		<div class="input_title">시험종류</div>
+		<div class="resume_input">
+			<input type="text"
+				id="activity_org_1621990780" name="activity_org[]"
+				value="" maxlength="50" class="box_input">
+		</div>
+	</div>
+	
+	<div class="resume_row">
+		<div class="input_title">점수</div>
+		<div class="resume_input">
+			<input type="text"
+				id="activity_org_1621990780" name="activity_org[]"
+				value="" maxlength="50" class="box_input">
+			
+		</div>
+	</div>
+	
+	<div class="resume_row">
+		<div class="input_title">급수</div>
+		<div class="sri_select resume_select">
+			<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>A</option>
+						<option>B</option>
+						<option>C</option>
+						<option>D</option>
+						<option>A1</option>
+						<option>A2</option>
+						<option>B1</option>
+						<option>B2</option>
+						<option>N1</option>
+						<option>N2</option>
+						<option>N3</option>
+						<option>AH</option>
+						<option>AM</option>
+						<option>AL</option>
+						<option>IH</option>
+						<option>IM</option>
+						<option>IL</option>
+					</select>
+		</div>
+	</div>
+	
+	<div class="resume_row">
+		<div class="input_title">급수</div>
+		<div class="sri_select resume_select">
+			<select class="selectpicker" style="width: 107.22222px;height: 50.22222px;">
+						<option>취득여부</option>
+						<option>취득(PASS)</option>
+					</select>
+		</div>
+	</div>
+	
+	<div class="resume_row">
+		<div class="input_title">취득일</div>
+		<div class="resume_input">
+			<input type="text"
+				id="activity_org_1621990780" name="activity_org[]"
+				value="" maxlength="50" class="box_input">
+		</div>
+	</div>
+</div>	
+
+
+<div id="awardchk2" style="display: none">		
+	
+	<div class="resume_row">
+		<div class="input_title">수상명</div>
+		<div class="resume_input">
+			<input type="text"
+				id="activity_org_1621990780" name="awd_name"
+				value="" maxlength="50" class="box_input">
+		</div>
+	</div>
+	
+	<div class="resume_row">
+		<div class="input_title">수여기관</div>
+		<div class="resume_input">
+			<input type="text"
+				id="activity_org_1621990780" name="awd_date"
+				value="" maxlength="50" class="box_input">
+			
+		</div>
+	</div>
+	
+	<div class="resume_row">
+		<div class="input_title">취득일</div>
+		<div class="resume_input">
+			<input type="text"
+				id="activity_org_1621990780" name="awd_org"
+				value="" maxlength="50" class="box_input">
+		</div>
+	</div>
+</div>		
+
+</div>
+
+</script>
+
+<script> 
+$('#eduAdd').click(function(){ 
+	$('#educationAdd').append($('#tpl_university').html()); 
+}); 
+
+</script>
+
+
+<script> 
+$('#carAdd').click(function(){ 
+	$('#careerAdd').append($('#tpl_career').html()); 
+}); 
+
+</script>
+
+
+<script> 
+$('#actAdd').click(function(){ 
+	$('#activityAdd').append($('#tpl_activity').html()); 
+}); 
+
+</script>
+
+
+<script> 
+let num = 3;
+
+$('#licAdd').click(function(){ 
+	$('#licenseAdd').append($('#tpl_license').html());
+	var div1 = document.getElementById('licensechk2');
+	div1.id = 'licensechk' + num;
+	//alert(div1.id);
+	
+	var div2 = document.getElementById('languagechk2');
+	div2.id = 'languagechk' + num;
+	//alert(div2.id);
+	
+	var div3 = document.getElementById('awardchk2');
+	div3.id = 'awardchk' + num;
+	//alert(div3.id);
+
+	
+	 num += 1;
+	
+}); 
+
+
+function licenseCheck2(value) {
+	
+	
+	let num2 = num -1 ;
+	//alert(num2);
+	//alert("licenseCheck2");
+	//alert(value);
+	 if(value=="case2"){
+		 alert("value case2")
+		 document.getElementById('licensechk'+num2).style.display='none';
+		 document.getElementById('languagechk'+num2).style.display='block';
+		 document.getElementById('awardchk'+num2).style.display='none';
+	}
+	 
+	 else if(value=="case3"){
+		 alert("value case3");
+		 document.getElementById('licensechk'+num2).style.display='none';
+		 document.getElementById('languagechk'+num2).style.display='none';
+		 document.getElementById('awardchk'+num2).style.display='block';
+	 }
+	 
+	 else if(value="case1"){
+		 document.getElementById('licensechk'+num2).style.display='block';
+		 document.getElementById('languagechk'+num2).style.display='none';
+		 document.getElementById('awardchk'+num2).style.display='none';
+	 }
+}
+</script>
+
+<script type="text/javascript">
+
+$("input:checkbox[name=jobtypes]:checked").each(function() {
+    var checkVal = $(this).val(); // 체크된 값의 value값 가져오기
+    console.log(checkVal);
+});
+
+</script>
+
+<!-- 근무형태 선택시 input 값에 넣어주기 -->
+<script type="text/javascript">
+let str = '';
+function test(val) {
+	
+	alert(val);
+	str += val + ",";
+}
+
+
+
+function test1() {
+	
+	alert(str);
+	document.getElementById('jobtypes').value = str;
+
+}
+</script>
+
+<!-- 희망근무지역 선택시 input값에 넣어줌 -->
+<script type="text/javascript">
+let areas = '';
+function selectArea(val) {
+	alert(val);
+	areas += val + ","
+}
+
+function addArea() {
+	
+}
+	
+	alert(areas);
+	document.getElementById('Areas').value = areas;
+
+}
+
+</script>
+
+<!-- 희망직종 선택시 input 값에 넣어줌 -->
+<script type="text/javascript">
+let bus = '';
+function selectbus(val) {
+	alert(val);
+	bus += val + ","
+}
+
+function addBus() {
+	
+	alert(bus);
+	document.getElementById('Buses').value = bus;
+
+}
+
+</script>
+
+
+<script type="text/javascript">
+ let param = [{
+	  highschool : document.getElementById('highschool').value
+	  high_str : document.getElementById('high_str').value
+	  high_str_status : document.getElementById('high_str_status').value
+	  high_end : document.getElementById('high_end').value
+ 	  high_end_status : document.getElementById('high_end_status').value
+	  university : document.getElementById('university').value
+	  univ_status : document.getElementById('univ_status').value
+	  univ_str :  document.getElementById('univ_str').value
+	  univ_str_status : document.getElementById('univ_str_status').value
+	  univ_end : document.getElementById('univ_end').value
+	  univ_end_status : document.getElementById('univ_end_status').value
+	  univ_major_field : document.getElementById('univ_major_field').value
+	  univ_major : document.getElementById('univ_major').value
+	  univ_night : document.getElementById('univ_night').value
+	  univ_grade : document.getElementById('univ_grade').value
+	  univ_grade_base : document.getElementById('univ_grade_base').value
+	  univ_paper : document.getElementById('univ_paper').value
+	 
+}];
+
+
+	 
+$("#save").click(function() {
+
+		//1331232
+	    var resumewrite = $("form[name=resumewrite]").serialize() ;
+	    
+
+	
+ $.ajax({
+     url:"./writeAfResume.do",
+     type:"post",
+     data:resumewrite,
+     success:function(  ){
+         alert('success');
+     //    alert(list);
+     
+       
+                
+     },
+     error:function(){
+         alert('error');
+     }
+     
+      });
+
+   });   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+
+
+
+
+</script>
+
 
 
 </body>
