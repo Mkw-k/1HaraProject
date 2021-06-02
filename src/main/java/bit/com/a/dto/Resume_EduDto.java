@@ -1,4 +1,8 @@
 package bit.com.a.dto;
+
+import java.io.Serializable;
+import java.util.List;
+
 /*
 CREATE TABLE RESUME_EDU( 
 EDUCATIONSEQ NUMBER PRIMARY KEY,	--SEQ
@@ -26,7 +30,7 @@ CONSTRAINT "EDUCATION_FK1" FOREIGN KEY (RESUMESEQ)
 REFERENCES RESUME (RESUMESEQ)
 );
  */
-public class Resume_EduDto {
+public class Resume_EduDto implements Serializable {
 	private int educationseq;
 	private int resumeseq;
 	private String highschool;
@@ -46,10 +50,39 @@ public class Resume_EduDto {
 	private String univ_grade;
 	private String univ_grade_base;
 	private String univ_paper;
+	private List<Resume_EduDto> list;
 	
 	public Resume_EduDto() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public Resume_EduDto(String highschool, String high_str, String high_str_status, String high_end,
+			String high_end_status, String university, String univ_status, String univ_str, String univ_str_status,
+			String univ_end, String univ_end_status, String univ_major_field, String univ_major, String univ_night,
+			String univ_grade, String univ_grade_base, String univ_paper) {
+		super();
+		this.highschool = highschool;
+		this.high_str = high_str;
+		this.high_str_status = high_str_status;
+		this.high_end = high_end;
+		this.high_end_status = high_end_status;
+		this.university = university;
+		this.univ_status = univ_status;
+		this.univ_str = univ_str;
+		this.univ_str_status = univ_str_status;
+		this.univ_end = univ_end;
+		this.univ_end_status = univ_end_status;
+		this.univ_major_field = univ_major_field;
+		this.univ_major = univ_major;
+		this.univ_night = univ_night;
+		this.univ_grade = univ_grade;
+		this.univ_grade_base = univ_grade_base;
+		this.univ_paper = univ_paper;
+	}
+
+
+
+
 
 	public Resume_EduDto(int educationseq, int resumeseq, String highschool, String high_str, String high_str_status,
 			String high_end, String high_end_status, String university, String univ_status, String univ_str,
@@ -227,6 +260,16 @@ public class Resume_EduDto {
 
 	public void setUniv_paper(String univ_paper) {
 		this.univ_paper = univ_paper;
+	}
+	
+	
+
+	public List<Resume_EduDto> getList() {
+		return list;
+	}
+
+	public void setList(List<Resume_EduDto> list) {
+		this.list = list;
 	}
 
 	@Override
