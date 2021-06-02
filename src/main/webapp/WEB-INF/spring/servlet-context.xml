@@ -18,7 +18,9 @@
 		<property name="suffix" value=".jsp"></property>			<!-- 확장자 명 -->	
 	</bean>
 	
-	<beans:bean id="echoHandler" class="bit.com.a.EchoHandler"/>
+	
+	<!-- 채팅 에코 핸들러 06 02 -->
+	<!-- <beans:bean id="echoHandler" class="bit.com.a.EchoHandler"/>
 
 	<websocket:handlers>
 
@@ -27,7 +29,7 @@
     <websocket:sockjs />
 
 	</websocket:handlers>
-	
+	 -->
 
 
  

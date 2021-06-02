@@ -9,5 +9,6 @@ public interface MemberDao {
 	
 	MemberDto login(MemberDto dto);
 	//void authentication(MemberDto dto);
+	void memberDelete(MemberDto dto);
 	
 }

@@ -34,7 +34,7 @@ public class RecruitServiceImpl implements RecruitService{
 	}
 
 	@Override
-	public List<RecruitDto> getRecruitPagingList(BbsParam param) {
+	public List<RecruitDto> getRecruitPagingList(RecruitParam param) {
 		return dao.getRecruitPagingList(param);
 	}
 
@@ -72,6 +72,26 @@ public class RecruitServiceImpl implements RecruitService{
 	public List<RecruitDto> getCalendarList(RecruitDto rec) {
 		
 		return dao.getCalendarList(rec);
+	}
+
+	@Override
+	public List<RecruitParam> areacodeListData() {
+		return dao.areacodeListData();
+	}
+
+	@Override
+	public int getArea1Code(String areaname) {
+		return dao.getArea1code(areaname);
+	}
+
+	@Override
+	public List<RecruitParam> areacode2ListData(int areacode) {
+		return dao.areacode2ListData(areacode);
+	}
+
+	@Override
+	public List<RecruitDto> getRecruitSearchList(Map<String, Object> map) {
+		return dao.getRecruitSearchList(map);
 	}
 	
 	
