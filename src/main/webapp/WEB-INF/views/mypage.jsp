@@ -19,7 +19,6 @@
   <!-- TO_BE CSS.. -->
   
   <link rel="stylesheet" href="static/css/import.css" media="all">
-  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- jQuery Modal -->
   
@@ -45,18 +44,147 @@
 
 </head>
 
-
-
-
-
 <body>
-
-
-
 <!--  -->
-
 <header id="header">
 <div class="inner">
+	<nav id="lnb">
+	<!-- S : 2018-09-28 추가 -->
+	<p class="tit"><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지</a></p>
+	<!-- E : 2018-09-28 추가 -->
+	<ul>
+		<li>
+			<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">이력서관리·구직신청</a>
+			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>				
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveResumeRegTp.do" target="_self">이력서 등록</a>						
+					</li>		
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveSelfIntroRegIntro.do" target="_self">자기소개서 등록</a>						
+					</li>				
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeSelfIntroMng.do" target="_self">이력서·자기소개서 관리</a>						
+					</li>					
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeAtchFileMngList.do" target="_self">첨부파일 관리</a>						
+					</li>				
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">워크넷 구직신청 </a>						
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">입사지원 관리</a>
+			<button class="btn-show">입사지원 관리 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>				
+					<li>
+						<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">알선/입사지원 내역</a>						
+					</li>				
+					<li>
+						<a href="/indivMemberSrv/aplentMng/seekActvHist/seekActvHistList.do" target="_self">구직활동내역</a>						
+					</li>				
+					<li>
+						<a href="/indivMemberSrv/aplentMng/offerCo/offerCoList.do" target="_self">입사제안/스크랩한 기업</a>						
+					</li>			
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeReadList.do" target="_self">이력서 열람기업</a>								
+					</li>				
+					<li>
+						<a href="/indivMemberSrv/intrstInfo/mailToEmpList.do" target="_self">채용담당자와 한마디</a>						
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">나의 맞춤정보</a>
+			<button class="btn-show">나의 맞춤정보 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>		
+					<li>
+						<a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">맞춤채용 관리</a>						
+					</li>				
+					<li>
+						<a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do" target="_self">The Work AI추천</a>						
+					</li>			
+					<li>
+					<a href="#openPopup" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; keis.window.newWindow('/empInfo/customWorkSupportSrv/custSupportMain.do?loginAction=Y', 'pop', 1010, 780, 'yes'); return false;" target="_blank" title="새창">취업나침반</a>
+						<script type="text/javascript">
+							window.name = "mdmOpener";
+						</script>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">나의 관심정보</a>
+			<button class="btn-show">나의 관심정보 메뉴 닫기</button>
+			<div class="depth3"><ul>				
+					<li>
+						<a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">관심스크랩(찜)</a>						
+					</li>				
+					<li>
+						<a href="/indivMemberSrv/intrstInfo/seekEmpInfoSrchHist.do?srchType=3" target="_self">최근 본 채용공고</a>						
+					</li>			
+					<li>
+						<a href="/empInfo/empInfoSrch/calendar/myCalendarMonth.do" target="_blank">마이캘린더</a>						
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">e-채용마당 서비스</a>
+			<button class="btn-show">e-채용마당 서비스 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>
+					<li>
+						<a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">지원서관리</a>
+					</li>						
+					<li>
+						<a href="/eas/indivMemberSrv/employNotice/wNoInterest.do" target="_self">관심정보관리</a>						
+					</li>				
+					<li>
+						<a href="/eas/indivMemberSrv/employJudge/employJudgeList.do" target="_self">심사평가관리</a>						
+					</li>				
+					<li>
+						<a href="/empAgencySvc/empBoard/wBuBoardList.do" target="_self">채용게시판</a>						
+					</li>
+				</ul>
+			</div>
+		</li>		
+		<li>
+			<a href="/indivMemberSrv/intrstInfo/joinResult.do" target="_self">온라인 신청관리</a>
+		</li>	
+		<li>
+			<a href="/indivMemberSrv/myCustmadeSrvList.do" target="_self">
+				고용복지 맞춤서비스					
+			</a>
+		</li>
+		<li>
+			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 관리</a>
+			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>				
+					<li class="curr">
+						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
+					</li>				
+					<li>
+						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustInfoView.do" target="_self">회원정보 수정(성명변경)</a>						
+					</li>				
+					<li>
+						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a>											
+					</li>						
+					<li>
+						<a href="/indivMemberSrv/custInfoAdmin/deleteIndivCustView.do" target="_self">회원탈퇴</a>		
+					</li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</nav>
 <h1 class="ci">
 <a href="/zf_user/" class="track_event" data-track_event="main|gnb|menu|ci" title="사람인" ondragstart="return false;" oncontextmenu="return false;">
 <svg xmlns="http://www.w3.org/2000/svg" width="120" height="24" viewBox="0 0 120 24" class="default">
@@ -913,10 +1041,7 @@ function f_empPgmList(resultObj){
 											<tr>
 												<th scope="row">이메일</th>
 												<td>
-													
 														cors***@naver.com
-														
-													
 												</td>
 												<th scope="row" class="un-str">이메일 수신</th>
 												<td>
@@ -1021,38 +1146,6 @@ function f_empPgmList(resultObj){
 										 	 / 강원 
 										 </li>
 										<li>
-									
-										
-									
-										
-									
-										
-									
-										
-									
-										
-									
-										
-									
-										
-									
-										
-									
-									
-										
-									
-										
-									
-										
-									
-										
-									
-										
-									
-										
-									
-										
-									
 										대학교(4년제) 졸업
 										</li>
 										<li>경력 0년 0개월</li>
@@ -1156,21 +1249,14 @@ function f_empPgmList(resultObj){
 									<li><a href="/empSpt/empEvent/retrieveEmpEventDtl.do?eventMegaRegionCd=54&amp;newsDataSeqno=41414" class="ellipsis">■영림임업(주) 영업사원 채용■</a>
 										<span>04.24 ~ 04.24</span>
 									</li>
-								
-									
-									<li><a href="/empSpt/empEvent/retrieveEmpEventDtl.do?eventMegaRegionCd=54&amp;newsDataSeqno=41417" class="ellipsis">[용인시일자리센터] 청년대상 현직자 온라인 직무박람회</a>
+									<li>
+										<a href="/empSpt/empEvent/retrieveEmpEventDtl.do?eventMegaRegionCd=54&amp;newsDataSeqno=41417" class="ellipsis">[용인시일자리센터] 청년대상 현직자 온라인 직무박람회</a>
 										<span>04.22 ~ 04.29</span>
 									</li>
-								
-									
-									
-									
-									
-
-									<li><a href="/empSpt/empEvent/retrieveEmpEventDtl.do?eventMegaRegionCd=54&amp;newsDataSeqno=41412" class="ellipsis">2021년 4월 온ㆍ오프라인 구인ㆍ구직자 만남의날</a>
+									<li>
+										<a href="/empSpt/empEvent/retrieveEmpEventDtl.do?eventMegaRegionCd=54&amp;newsDataSeqno=41412" class="ellipsis">2021년 4월 온ㆍ오프라인 구인ㆍ구직자 만남의날</a>
 										<span>04.13 ~ 04.15</span>
 									</li>
-								
 								</ul>
 								<a id="tabUrl1" href="/empSpt/empEvent/retrieveEmpEventList.do?selectAreaList=54" class="btn-more">더보기</a>
 							</div>
@@ -1178,7 +1264,16 @@ function f_empPgmList(resultObj){
 							<div class="con03" id="faxDiv">
 								<h4>자주 묻는 질문</h4>
 								<ul>
-								<li><a href="/custCenter/faqBoard/faqDetail.do?seq=881&amp;faqType=ind" class="ellipsis">채용정보 검색에서 사람인, 커리어 공고가 검색됩니다. 입사지원은 가능한가요?</a></li><li><a href="/custCenter/faqBoard/faqDetail.do?seq=880&amp;faqType=ind" class="ellipsis">취업했습니다. 구직신청취소는 어떻게 해야하나요?</a></li><li><a href="/custCenter/faqBoard/faqDetail.do?seq=879&amp;faqType=ind" class="ellipsis">일자리를 메일로 받고 있는데 더 이상 받고 싶지 않아요. 혹은 받아보고 싶어요</a></li></ul>
+									<li>
+										<a href="/custCenter/faqBoard/faqDetail.do?seq=881&amp;faqType=ind" class="ellipsis">채용정보 검색에서 사람인, 커리어 공고가 검색됩니다. 입사지원은 가능한가요?</a>
+									</li>
+									<li>
+										<a href="/custCenter/faqBoard/faqDetail.do?seq=880&amp;faqType=ind" class="ellipsis">취업했습니다. 구직신청취소는 어떻게 해야하나요?</a>
+									</li>
+									<li>
+										<a href="/custCenter/faqBoard/faqDetail.do?seq=879&amp;faqType=ind" class="ellipsis">일자리를 메일로 받고 있는데 더 이상 받고 싶지 않아요. 혹은 받아보고 싶어요</a>
+									</li>
+								</ul>
 								<a href="/custCenter/faqBoard/faqList.do" class="btn-more">더보기</a>
 							</div>
 
@@ -1355,52 +1450,6 @@ function f_empPgmList(resultObj){
 			</div>
 		</div>
 	</div>	
-       <!--  <div class="container">
-          <div class="row">
-            <div class="col-lg-3">
-              <h4 class="h6">About Us</h4>
-              
-              <p class="text-uppercase"><strong>1hara</strong><br>In line with the current situation of not being able to go to the gym The house is enough and comfortable to use The best home training community site in Korea.</p>
-              <hr class="d-block d-lg-none">
-            </div>
-            <div class="col-lg-3">
-              <h4 class="h6">고객센터</h4>
-              <p><strong>bit210324@gmail.com</strong></p>
-              <p>문의사항은 위 이메일 주소로 연락주시면 빠른 시일 내에 회신드리겠습니다. <br>If you have any inquiries, please contact us at the above email address and we will reply as soon as possible.</p>
-              <hr class="d-block d-lg-none">
-            </div>
-            <div class="col-lg-3">
-              <h4 class="h6">Contact</h4>
-              <p class="text-uppercase"><strong>Universal Ltd.</strong><br>TEL : 070-1234-5678<br>Newtown upon River <br>CONTACT FOR MORE INFOMATION<br>COMPANY: our job <br>BUSINESS LICENSE: 123-45-12345</p>
-              <hr class="d-block d-lg-none">
-            </div>
-            <div class="col-lg-3">
-            <h4 class="h6">제휴업체</h4>
-            <br>
-              <ul class="list-inline photo-stream">
-                <li class="list-inline-item"><a href="http://www.bansuksports.com/" target="_blank"><img src="images/bansuk_logo.jpg" alt="..." class="img-fluid"></a></li>
-                <li class="list-inline-item"><a href="http://melkinsports.com/" target="_blank"><img src="images/melkin_logo.png" alt="..." class="img-fluid"></a></li>
-                <li class="list-inline-item"><a href="http://www.myprotein.co.kr" target="_blank"><img src="images/myprotein_logo.jpg" alt="..." class="img-fluid"></a></li>
-                <li class="list-inline-item"><a href="https://www.rankingdak.com/" target="_blank"><img src="images/ranking_logo.png" alt="..." class="img-fluid"></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        <div class="copyrights">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-4 text-center-md">
-                <p>&copy; 2021. 1hara / Personal job</p>
-              </div>
-              <div class="col-lg-8 text-right text-center-md">
-                <p> Contect TEL : <a href="https://bootstrapious.com/snippets">070-1234-5678 </a> & FAX :  <a href="#">050-5678-1234</a></p>
-                Please do not remove the backlink to us unless you purchase the Attribution-free License at https://bootstrapious.com/donate. Thank you.
-              </div>
-            </div>
-          </div>
-        </div> -->
-      <!-- ==============FOOTER END================= -->
 </div>
 
 <!-- ==============FOOTER================= -->

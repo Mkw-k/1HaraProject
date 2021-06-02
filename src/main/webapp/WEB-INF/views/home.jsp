@@ -556,9 +556,7 @@ margin-right : 450px;
 
  <section style="padding: 0">
  <form id="search_form_recruit" onsubmit="event.preventDefault()" style="height: 400px; background-image: url('개발자23.gif');">
-    <div class="main_search" style="
-    top: 160px;
-">
+    <div class="main_search" style="top: 160px;">
         <div class="option option_keyword">
             <label for="ipt_keyword_recruit" class="placeholder" style="color: rgb(72, 118, 239);">일하라 주식회사</label>
             <input id="ipt_keyword_recruit" type="text" class="key" maxlength="30" placeholder="검색어를 입력해주세요" autocomplete="off">
@@ -608,14 +606,8 @@ margin-right : 450px;
   <div>
 	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
   </div>
-
+=======
  <!--  -->
-
-
-
-
-
-
 
 </header>
 
@@ -639,12 +631,12 @@ margin-right : 450px;
              				 <p><b>[개인]${login.name }</b>님</p>
              	 		 </c:when>
 
-             			<c:when test="${login.auth == 3}">
-             				<p><b>[관리자]${login.name }</b>님</p>
+             			<c:when test="${login.auth == 2}">
+             				<p><b>[사원]${login.name }</b>님</p>
     		 			</c:when>
 
     					<c:otherwise>
-             				<p><b>[사원]${login.name }</b>님</p>
+             				<p><b>[관리자]]${login.name }</b>님</p>
     					</c:otherwise>
     				</c:choose>			
             	 </c:when> 
@@ -657,9 +649,6 @@ margin-right : 450px;
     		 		</c:when>
          	 	</c:when>
     		 </c:choose> --%>
-    </li>
-
-
 <!-- 전체보기 드롭다운 메뉴 -->
     <li class="nav-item dropdown" style="padding-top: 5px;">
      <div class="dropdown">
@@ -698,7 +687,7 @@ margin-right : 450px;
     </li>    
     <li class="nav-item">
        <c:if test="${login.auth==3}">
-          <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a>
+          <a class="nav-link bgc" href="memberlist.do" style="color: #2186eb;background-color: #fff;">회원관리</a>
       </c:if>
    </li>
    <li class="nav-item">
@@ -707,17 +696,21 @@ margin-right : 450px;
    	 	 	<a class="nav-link bgc" href="javascript:login()" style="color: #2186eb;background-color: #fff;">로그인</a>
    	 	 </c:when>
      	 <c:otherwise>
-     	    <a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
-     	    <a href="memberDelete.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;">회원탈퇴</a>
+     	 	<c:choose>
+     	 		<c:when test="${login.auth==1 || login.auth==3}">
+     	 			<a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
+     	    		<a href="memberDelete.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;">회원탈퇴</a>    	 		
+     	 		</c:when>
+     	 		<c:otherwise>
+     	 			<a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
+     	 			<a href="businessDelete.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;">회원탈퇴</a>
+     	 		</c:otherwise>
+     	 	</c:choose>
      	 </c:otherwise>
       </c:choose>
    </li>
   </ul>
 </nav>
-
-
-
-
 
  <!-- =========Login 클릭 시 Modal =========== -->
       <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" class="modal modal-center fade ">
@@ -844,11 +837,7 @@ margin-right : 450px;
 			</div>
 
 			</div>
-
-
-
-
-
+			
         <div class="fl_right">
 	      <h5>취업뉴스</h5>
 	      <ul>
@@ -944,6 +933,9 @@ margin-right : 450px;
 												<div class="btn-grp">
 													<button type="button" class="btn-logout float-l" onclick="f_logout();">로그아웃</button>
 													<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r">기업 관리</a>
+													
+												
+	
 												</div>
 											</div>
 										</c:when>
@@ -966,23 +958,6 @@ margin-right : 450px;
 								</c:choose>
 							</c:when>
 						</c:choose>
-							<!--
-								<div class="btn-func">
-
-
-
-
-									<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">구직신청하기</a>
-
-								</div>
-
-								<ul class="my-info2">
-									<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeSelfIntroMng.do">내 이력서 관리</a></li>
-									<li><a href="/indivMemberSrv/intrstInfo/intrstCoMngList.do?thisMenuId=M201200157">관심스크랩</a></li>
-									<li><a href="/indivMemberSrv/aplentMng/seekActvHist/seekActvHistList.do">구직활동 내역</a></li>
-									<li><a href="/indivMemberSrv/myCustmadeSrvList.do">맞춤서비스</a></li>
-								</ul>
-							</div> -->
 							<!-- //개인 로그인 후 -->
 
 
@@ -1003,8 +978,6 @@ margin-right : 450px;
 		            </div>
 		        </div>
 		     </div>   
-
-
 
          <!-- 구분선 -->
 
@@ -1092,20 +1065,8 @@ margin-right : 450px;
 
 </main>
 
-
-
-
-
-
 <!-- 광고 팝업창 -->
 <body onload="window.open('ad.do','','width=400px, height=400px, left=400px, top=200px, toolbar=0, status=yes, menubars=0, scrollbars=0, resizable=0, location=0, directories=0')">
-
-
-
-
-
-
-
 
 <!-- ####################################################################################################### -->
 
@@ -1234,61 +1195,8 @@ margin-right : 450px;
 			</div>
 		</div>
 	</div>
-       <!--  <div class="container">
-          <div class="row">
-            <div class="col-lg-3">
-              <h4 class="h6">About Us</h4>
-
-              <p class="text-uppercase"><strong>1hara</strong><br>In line with the current situation of not being able to go to the gym The house is enough and comfortable to use The best home training community site in Korea.</p>
-              <hr class="d-block d-lg-none">
-            </div>
-            <div class="col-lg-3">
-              <h4 class="h6">고객센터</h4>
-              <p><strong>bit210324@gmail.com</strong></p>
-              <p>문의사항은 위 이메일 주소로 연락주시면 빠른 시일 내에 회신드리겠습니다. <br>If you have any inquiries, please contact us at the above email address and we will reply as soon as possible.</p>
-              <hr class="d-block d-lg-none">
-            </div>
-            <div class="col-lg-3">
-              <h4 class="h6">Contact</h4>
-              <p class="text-uppercase"><strong>Universal Ltd.</strong><br>TEL : 070-1234-5678<br>Newtown upon River <br>CONTACT FOR MORE INFOMATION<br>COMPANY: our job <br>BUSINESS LICENSE: 123-45-12345</p>
-              <hr class="d-block d-lg-none">
-            </div>
-            <div class="col-lg-3">
-            <h4 class="h6">제휴업체</h4>
-            <br>
-              <ul class="list-inline photo-stream">
-                <li class="list-inline-item"><a href="http://www.bansuksports.com/" target="_blank"><img src="images/bansuk_logo.jpg" alt="..." class="img-fluid"></a></li>
-                <li class="list-inline-item"><a href="http://melkinsports.com/" target="_blank"><img src="images/melkin_logo.png" alt="..." class="img-fluid"></a></li>
-                <li class="list-inline-item"><a href="http://www.myprotein.co.kr" target="_blank"><img src="images/myprotein_logo.jpg" alt="..." class="img-fluid"></a></li>
-                <li class="list-inline-item"><a href="https://www.rankingdak.com/" target="_blank"><img src="images/ranking_logo.png" alt="..." class="img-fluid"></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="copyrights">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-4 text-center-md">
-                <p>&copy; 2021. 1hara / Personal job</p>
-              </div>
-              <div class="col-lg-8 text-right text-center-md">
-                <p> Contect TEL : <a href="https://bootstrapious.com/snippets">070-1234-5678 </a> & FAX :  <a href="#">050-5678-1234</a></p>
-                Please do not remove the backlink to us unless you purchase the Attribution-free License at https://bootstrapious.com/donate. Thank you.
-              </div>
-            </div>
-          </div>
-        </div> -->
-      <!-- ==============FOOTER END================= -->
+     
 </div>
-
-
-
-
-
-
-
-
 <!-- ==============FOOTER================= -->
 <script type="text/javascript" defer="defer">
 //<![CDATA[
@@ -1330,10 +1238,6 @@ window.onscroll = function sticky() {
     nav[0].classList.remove("nav");
   }
 }
-
-
-
-
 
 </script>
 
@@ -1409,21 +1313,6 @@ window.onscroll = function sticky() {
   		}
   	});
   }
-  /* $("#_btnLogin").click(function () {
-
-		if($("#memberid").val().trim() == ""){
-			alert('id를 입력해 주십시오');
-			$("#memberid").focus();
-		}
-		else if($("#pwd").val().trim() == ""){
-			alert('패스워드를 입력해 주십시오');
-			$("#pwd").focus();
-		}
-		else{
-			$("#_frmFrom").submit();
-		}
-
-	}); */
 
   function f_logout() {
 	  location.href = "logout.do";
@@ -1452,21 +1341,7 @@ window.onscroll = function sticky() {
                 $('#login_frm').attr('action', 'businessloginAf.do');
            }
         })
-      /*    .on('click', '.service_info_txt', function () { */
-          /*   var url = '/zf_user/help/help-word/main';
-            if ($('#login_tab').val() === 'c') {
-                url += '?memberCode=com';
-            }
-            location.href = 'businessloginAf.do';
-        }); */
-
-     /* $('#login_frm')
-
-        .on('click', '#a_join', function (e) {
-            e.preventDefault();
-            location.href = this.href + '?ut=' + $('#login_tab').val();
-        })
-    ; */
+      
 });
 //-->
 
@@ -1578,32 +1453,6 @@ $j('.wrap_member_info').hide();
 }
 }
 });
-
-
-
- /*  $('#kakao_id_login').click(function () {
-
-	  var memberid = $('#memberid').val();
-
-	  var pwd = $('#pwd').val();
-
-	  $.ajax({
-		type:"post",
-		url:"loginAf.do",
-		data: {memberid:memberid, pwd:pwd},
-		dataType: "text",
-		success: function (data) {
-				alert('로그인에 실패하였습니다')
-		},
-		error: function(){
-			alert('ㅋㅋ썽공');
-		}
-	  })
-
-  }); */
-
-
-
 
   </script>
 <!-- End Channel Plugin -->

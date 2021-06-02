@@ -1,6 +1,8 @@
 package bit.com.a.controller;
 
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +39,7 @@ public class ResumeController {
 	@RequestMapping(value = "writeAfResume.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String writeAfResume(ResumeDto dto, Resume_EduDto edudto, Resume_CareerDto careerdto, Resume_LicenseDto licdto, Resume_ActivityDto actdto,
 								Resume_AwardDto awarddto, Resume_LanguageDto landto, Model model) {	
-	
+		
 		System.out.println("777777777777777777777 start");
 		System.out.println("컨트롤  넘어온 주소 =" + edudto.getHighschool());
 		System.out.println("777777777777777777777 end");
