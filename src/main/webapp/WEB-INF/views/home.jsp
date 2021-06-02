@@ -606,7 +606,7 @@ margin-right : 450px;
   <div>
 	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
   </div>
-=======
+
  <!--  -->
 
 </header>

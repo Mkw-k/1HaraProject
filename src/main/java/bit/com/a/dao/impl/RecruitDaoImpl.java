@@ -39,7 +39,7 @@ public class RecruitDaoImpl implements RecruitDao{
 	}
 
 	@Override
-	public List<RecruitDto> getRecruitPagingList(BbsParam param) {
+	public List<RecruitDto> getRecruitPagingList(RecruitParam param) {
 		return session.selectList(ns+"getRecruitPagingList", param);
 	}
 
@@ -77,6 +77,29 @@ public class RecruitDaoImpl implements RecruitDao{
 	public List<RecruitDto> getCalendarList(RecruitDto rec) {
 		return session.selectList(ns+"getCalendarList", rec);
 	}
+
+	@Override
+	public List<RecruitParam> areacodeListData() {
+		return session.selectList(ns+"areacodeListData");
+	}
+
+	@Override
+	public int getArea1code(String areaname) {
+		return session.selectOne(ns+"getArea1Code", areaname);
+	}
+
+	@Override
+	public List<RecruitParam> areacode2ListData(int areacode) {
+		return session.selectList(ns+"areacode2ListData", areacode);
+	}
+
+	@Override
+	public List<RecruitDto> getRecruitSearchList(Map<String, Object> map) {
+		return session.selectList(ns+"getRecruitSearchList",map);
+	}
+	
+	
+
 	
 	
 	
