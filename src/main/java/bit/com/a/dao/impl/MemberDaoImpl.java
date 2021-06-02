@@ -1,5 +1,7 @@
 package bit.com.a.dao.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -37,6 +39,14 @@ public class MemberDaoImpl implements MemberDao {
 		sqlSession.delete(namespace + "memberDelete", dto);		
 	}
 
+	@Override
+	public List<MemberDto> getMemberList() {
+		
+		List<MemberDto> memberlist = sqlSession.selectList(namespace + "MemberList");
+		System.out.println("getMemberlist값 : " + memberlist);
+		return memberlist;
+	}
+	
 	//회원 인증 관련 메소드
     //버튼을 클릭한 회원의 정보를 회원 테이블에 저장해서 사용할 수 있게 함
 	/*@Override

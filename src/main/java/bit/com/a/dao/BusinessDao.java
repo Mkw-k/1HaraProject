@@ -10,4 +10,6 @@ public interface BusinessDao {
 
 	BusinessDto login(BusinessDto dto);
 
+	void businessDelete(BusinessDto dto);
+
 }
