@@ -75,4 +75,32 @@ public class BusinessController {
 	  	} 
 	}
 	
+	@RequestMapping(value = "businessDelete.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public String businessDelete(BusinessDto bus, HttpSession session, RedirectAttributes rttr) throws Exception {
+		return "business/businessDelete";
+	}
+	
+	@RequestMapping(value = "businessDeleteAf.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public String businessDeleteAf(BusinessDto dto, HttpSession session, RedirectAttributes rttr) throws Exception{
+		//business변수 가져옴
+		BusinessDto bus = (BusinessDto) session.getAttribute("login");
+		System.out.println("비번: " + bus.getPwd());
+		// 세션에 있는 비밀번호
+		String sessionPass = bus.getPwd();
+		
+		// dto로 들어오는 비밀번호 
+		String dtopass = dto.getPwd();
+		
+		if(!(sessionPass.equals(dtopass))) {
+			rttr.addFlashAttribute("msg", false);
+			return "redirect:businessDelete.do";
+		}
+		service.businessDelete(dto);
+		session.invalidate();
+		return "home";
+		
+		
+		
+	}
+	
 }

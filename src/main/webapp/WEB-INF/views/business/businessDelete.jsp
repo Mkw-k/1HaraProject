@@ -39,7 +39,7 @@
 
 
 <h3 class="tit font-black">비밀번호 재확인</h3>
-<form id="command" name="chkForm" action="memberDeleteAf.do" method="post">
+<form id="command" name="chkForm" action="businessDeleteAf.do" method="post">
 	<input type="hidden" name="rtnType" value="indivCustDelete">
 
 	<div class="box-bluegray v2 myinfo-change">

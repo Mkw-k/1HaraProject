@@ -10,5 +10,7 @@ public interface BusinessService {
 
 	BusinessDto login(BusinessDto dto);
 
+	void businessDelete(BusinessDto dto);
+
 
 }

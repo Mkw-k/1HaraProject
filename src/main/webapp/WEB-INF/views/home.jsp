@@ -606,7 +606,7 @@ margin-right : 450px;
   <div>
 	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
   </div>
-
+=======
  <!--  -->
 
 </header>
@@ -631,12 +631,12 @@ margin-right : 450px;
              				 <p><b>[개인]${login.name }</b>님</p>
              	 		 </c:when>
 
-             			<c:when test="${login.auth == 3}">
-             				<p><b>[관리자]${login.name }</b>님</p>
+             			<c:when test="${login.auth == 2}">
+             				<p><b>[사원]${login.name }</b>님</p>
     		 			</c:when>
 
     					<c:otherwise>
-             				<p><b>[사원]${login.name }</b>님</p>
+             				<p><b>[관리자]]${login.name }</b>님</p>
     					</c:otherwise>
     				</c:choose>			
             	 </c:when> 
@@ -687,7 +687,7 @@ margin-right : 450px;
     </li>    
     <li class="nav-item">
        <c:if test="${login.auth==3}">
-          <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a>
+          <a class="nav-link bgc" href="memberlist.do" style="color: #2186eb;background-color: #fff;">회원관리</a>
       </c:if>
    </li>
    <li class="nav-item">
@@ -696,8 +696,16 @@ margin-right : 450px;
    	 	 	<a class="nav-link bgc" href="javascript:login()" style="color: #2186eb;background-color: #fff;">로그인</a>
    	 	 </c:when>
      	 <c:otherwise>
-     	    <a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
-     	    <a href="memberDelete.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;">회원탈퇴</a>
+     	 	<c:choose>
+     	 		<c:when test="${login.auth==1 || login.auth==3}">
+     	 			<a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
+     	    		<a href="memberDelete.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;">회원탈퇴</a>    	 		
+     	 		</c:when>
+     	 		<c:otherwise>
+     	 			<a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
+     	 			<a href="businessDelete.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;">회원탈퇴</a>
+     	 		</c:otherwise>
+     	 	</c:choose>
      	 </c:otherwise>
       </c:choose>
    </li>
@@ -925,7 +933,9 @@ margin-right : 450px;
 												<div class="btn-grp">
 													<button type="button" class="btn-logout float-l" onclick="f_logout();">로그아웃</button>
 													<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r">기업 관리</a>
-													<a href="businessDelete.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;">회원탈퇴</a>	
+													
+												
+	
 												</div>
 											</div>
 										</c:when>
@@ -1228,10 +1238,6 @@ window.onscroll = function sticky() {
     nav[0].classList.remove("nav");
   }
 }
-
-
-
-
 
 </script>
 

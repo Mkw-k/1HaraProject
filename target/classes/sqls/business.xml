@@ -11,14 +11,20 @@
 	</select>
 	
 	<insert id="addmember" parameterType="bit.com.a.dto.BusinessDto">
-		INSERT INTO BUSINESS(MEMBERID, PWD, COMPANYNAME, NAME, COMADDRESS, ADDRESSDETAIL, AUTH, DEL)
-		VALUES(#{memberid}, #{pwd}, #{companyname}, #{name}, #{comaddress}, #{addressdetail}, 2, 0)
+		INSERT INTO BUSINESS(MEMBERID, PWD, COMPANYNAME, NAME, COMADDRESS, ADDRESSDETAIL, AUTH)
+		VALUES(#{memberid}, #{pwd}, #{companyname}, #{name}, #{comaddress}, #{addressdetail}, 2)
 	</insert>
 		
 	<select id="login" parameterType="bit.com.a.dto.BusinessDto" resultType="bit.com.a.dto.BusinessDto">
-		SELECT MEMBERID, COMPANYNAME, NAME, AUTH 
+		SELECT MEMBERID, PWD, COMPANYNAME, NAME, AUTH 
 		FROM BUSINESS
 		WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 	</select>
+
+	<!-- 회원탈퇴 -->
+	<delete id="businessDelete">
+		DELETE FROM BUSINESS
+		WHERE MEMBERID = #{memberid} AND PWD = #{pwd}
+	</delete>
 
   </mapper>

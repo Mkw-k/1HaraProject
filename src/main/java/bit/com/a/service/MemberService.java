@@ -1,5 +1,7 @@
 package bit.com.a.service;
 
+import java.util.List;
+
 import bit.com.a.dto.MemberDto;
 
 public interface MemberService {
@@ -12,5 +14,6 @@ public interface MemberService {
 	MemberDto login(MemberDto dto);
 	//public void authentication(MemberDto dto);        //회원 인증관련 메소드
 	void memberDelete(MemberDto dto);
+	List<MemberDto> getMemberList();
 	
 }

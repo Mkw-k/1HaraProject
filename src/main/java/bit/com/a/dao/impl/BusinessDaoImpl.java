@@ -33,4 +33,9 @@ public class BusinessDaoImpl implements BusinessDao{
 		return bus;
 	}
 	
+	@Override
+	public void businessDelete(BusinessDto dto) {
+		sqlsession.delete(namespace + "businessDelete", dto);
+	}
+	
 }
