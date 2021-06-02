@@ -44,6 +44,7 @@
       </div>
     </div>
   </div>
+ 
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -68,6 +69,7 @@
       </div>
     </div>
   </div>
+  
   <div class="py-5" >
     <div class="container">
       <div class="row">
@@ -492,9 +494,9 @@ $.ajax({
 		alert('error');
 	}
 	
- });
+ }); // ajax
  
-
+}); // document ready 
 
 
 //두번째 BUSCODE2 DATA를 받아서 체크박스로 뿌려주는 코드 
@@ -541,6 +543,7 @@ $(document).on("change",".list_col1", function(){
 //input Tag (BUSCODE3)에 동적 id를 주기 위한 인덱스용 넘버 
 let count = 1;
 
+let count = 1;
 //마지막 BUSCODE3 DATA를 받아서 체크박스로 뿌려주는 코드 
 $(document).on("change",".list_col2", function(){
 	
@@ -571,10 +574,29 @@ $(document).on("change",".list_col2", function(){
         		
         		
         		
+
+        		//기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 초기셋팅 
+        		var stackValue = $("input[name='buscode']").length;
+			    var stackData = new Array(stackValue);
+			     //alert(stackValue);
+			     
+			     for(var i=0; i<stackValue; i++){                          
+			    	 stackData[i] = $("input[name='buscode']")[i].value;
+			     }
+			     //alert("길이"+stackData.length);
+			     
+			     $.each(stackData, function(i, data){
+			    	 //alert("이게 값임"+data);
+			     });
+        		
+        		
+        		
+
         		$.each(list, function(i, val){
 		        	let app = "";
         			
 		        	//stackname = 밑에태그 아이디.val (elements) 배열로 해야될듯 
+
         			
         			if(val.busname == stackname){
         				app = "<span class='list_col3'>"+
@@ -586,16 +608,35 @@ $(document).on("change",".list_col2", function(){
 						  "</span>";
 					}
         					
+
 							   	  
 						 if((i+1)%2==0){
 	        				app += "</br>";
 	        			}
+
 						   
 
 				$("#_buscodeList3").append(app);
 				count+=1;
+
         		
+				//기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 최종진행
+				var buscodeTag ="buscode3data"+count;
+				
+				for(var i=0; i<stackValue; i++){                          
+			    	if(stackData[i] == val.busname){
+			    		document.getElementById(buscodeTag).checked = true;
+			    	}
+			     }
+				
+				
+				
+				count+=1;
+				
         		});
+        		
+        		
+        		
         	}, 
         	error:function(){
         		alert('error');
@@ -612,24 +653,35 @@ $(document).on("change",".list_col2", function(){
 
 
 
-});
+
+
 
 //span Tag에 동적 id를 주기 위한 인덱스용 넘버 
 let cnt = 1;
 
-$(document).on("change",".list_col3", function(){
-	
+var selectedBuscode = "";
+
+//소분류 체크박스가 변경될때 실행 
+$(document).on("change", ".list_col3" , function(){
+	//$(".list_col3").change(function(){
+
+
 	let app ="";
 	
 	
-	if($(this).is(":checked")){
+
+	
+		//if($("input:checkbox['.list_col3']").is(":checked") == true){ 
+		//if($(this).is(":checked") == true){
+		if($(this).is(":checked") == true){
 		
 		let buscode = $(this).val();
 		var count = $(this).attr('name');
-		alert(buscode);
+		//alert(buscode);
 		
 		app = "<span class=arrBusdata id=selectedBuscode"+cnt+">"+buscode+
-			  "<input name='buscode' type='hidden' value="+buscode+">"+
+			  "<input name='buscode' type='hidden' value='"+buscode+"'>"+
+
 			  "<a onclick='delSelBuscode("+cnt+","+count+")'>"+
 			  "<img alt='왜안뜨지' src='ma.jpg' style='width:30px; height:30px;'>"+
 			  "</a>"+"</span>"+"&nbsp;&nbsp;";
@@ -638,8 +690,17 @@ $(document).on("change",".list_col3", function(){
 	  	var id = $(this).attr("id");
 		//alert(id);
 		let input = document.getElementById(id);
-		//HTML data 속성 사용
+
+		
+		$(this).removeData('code');
+		
+		 //HTML data 속성 사용
 		input.dataset.code = 'selectedBuscode'+cnt;
+		
+		//alert('datacode 생성: '+'selectedBuscode'+cnt);
+		
+		//alert('datacode 리얼: ' + $(this).data("code"));
+
 		
 		$("#selectResult").append(app);
 		cnt += 1;
@@ -647,14 +708,17 @@ $(document).on("change",".list_col3", function(){
 	}
 	
 	
-	//체크박스에서 체크 해제 했을때 체크박스 해제가 될때 밑에 부분에 적재되있는 같은 데이터의 span태그도 삭제
-	
-	if($(this).is(":checked") == false){
-		
-		//alert($(this).data("code"));
+
+	//체크박스에서 체크 해제 했을때 
+	//체크박스 해제가 될때 밑에 부분에 적재되있는 같은 데이터의 span태그도 삭제
+	//else{	
+	else if($(this).is(":checked") == false){
+		//alert("위에 셀렉코드 : "+$(this).data("code"));
 		//data 속성 가져오기 (data-code) 
-		var selectedBuscode = $(this).data("code");
-		//alert(selectedBuscode);
+		selectedBuscode = $(this).data("code");
+		//alert('위에 셀렉코드 :'+ selectedBuscode);
+		
+
 		document.getElementById(selectedBuscode).remove();
 	}
 	
@@ -665,9 +729,10 @@ $(document).on("change",".list_col3", function(){
 //밑에 쌓여있는 span태그에서 X버튼을 눌렀을때 위에 체크박스도 같이 체크 해제가 되도록 해주는 코드  
 function delSelBuscode(cnt, count) {
 	//alert(count);
+
 	
 	var spanid = "selectedBuscode"+cnt;
-	//alert(spanid);
+	alert('밑에셀렉코드 :'+spanid);
 	
 	var buscodeTag ="buscode3data"+count;
 	//alert(buscodeTag);
@@ -683,6 +748,8 @@ function delSelBuscode(cnt, count) {
 
 
 }
+
+
 
 
 </script>

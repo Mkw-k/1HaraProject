@@ -112,6 +112,7 @@
 	<!-- 경력타입가져오기 -->
 	JOIN JOB_CAREERTYPE P
 	ON P.CAREER_TYPE = J.CAREER_TYPE
+	
 	WHERE RNUM BETWEEN ${start} AND ${end}
 	ORDER BY J.JOBSEQ DESC
 </select>
