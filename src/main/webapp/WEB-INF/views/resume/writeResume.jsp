@@ -293,10 +293,9 @@ dt, dd {
 				</div>
 			</section>
 
-			<form action="writeAfResume.do">
+			<form action="writeAfResume.do" method="post" enctype="multipart/form-data">
 
-
-				<div class="container" style="margin-top: 0px; margin-right: 600px;">
+				<div class="container" style="margin-top: 0px; margin-right: 400px;">
 					<div class="row">
 						<div class="col-lg-offset-2 col-lg-12" style="margin-left: 0px;">
 							<section class="panel panel-default">
@@ -1919,7 +1918,7 @@ dt, dd {
 						</div>
 						</section>
 						
-						<input type="submit" value="작성완료">
+						<input type="submit" value="작성완료" id="save">
 					</div>
 				</div>
 	</div>
@@ -3501,6 +3500,12 @@ function addBus() {
 	document.getElementById('Buses').value = bus;
 
 }
+
+</script>
+
+
+<script type="text/javascript">
+
 
 </script>
 

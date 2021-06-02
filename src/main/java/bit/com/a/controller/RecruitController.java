@@ -64,7 +64,7 @@ public class RecruitController {
 	//parameter Dto는 동일해서 BbsParam가져다 썻음 
 	@ResponseBody
 	@RequestMapping(value = "recruitPagingListData.do", method = RequestMethod.GET)
-	public List<RecruitDto> recruitPagingListData(BbsParam param) {	
+	public List<RecruitDto> recruitPagingListData(RecruitParam param, HttpServletRequest req) {	
 		
 		System.out.println("param tostring :" + param.toString());
 		
@@ -83,7 +83,76 @@ public class RecruitController {
 		
 		List<RecruitDto> list = service.getRecruitPagingList(param);
 		
-		//System.out.println(list.toString());
+//		System.out.println(list.toString());
+		
+		return list;
+	}
+	
+	
+	//모든 검색조건 추가하여 검색한 결과를 리스트로 반환하여 Ajax로 전송 
+	@ResponseBody
+	@RequestMapping(value = "recruitTest.do", method = RequestMethod.POST)
+	public List<RecruitDto> test(RecruitParam param, HttpServletRequest req) {	
+		//넘어온값 확인 
+		System.out.println("넘어온값 : "+param.toString());
+		System.out.println(param.getBuscode().toString() );
+		
+		//paging 처리 
+		int sn = param.getPage(); 
+		int start = sn * 5 + 1; 	//1  11
+		int end = (sn + 1) * 5; 	//10 20 
+		
+		System.out.println("start ="+start);
+		System.out.println("end ="+end);
+		param.setStart(start);
+		param.setEnd(end);
+				
+		//직무코드 받아오기 
+		String buscode = param.getBuscode();
+		System.out.println("이게버스코드:"+buscode);
+		
+		//배열에 ,기준으로 잘라서 담기 (직무네임 -> 변수는 code 라고 되있으나 실제론 네임임 참고!!)
+		String arrBuscode[] = buscode.split(",");
+		
+		//확인
+		for (String item : arrBuscode) {
+			System.out.println(item.toString());
+		}
+		
+		//지역코드 받아오기 
+		String areaname = param.getArea2name();
+		System.out.println("이게지역이름:"+areaname);
+		
+		//배열에 ,기준으로 잘라서 담기 (지역네임)
+		String arrAreacode[] = areaname.split(",");
+		
+		//확인
+		for (String item : arrAreacode) {
+			System.out.println(item.toString());
+		}
+		
+		String search = param.getSearch();
+		String choice = param.getChoice();
+		
+		System.out.println("서치 + 초이스 : " +search+", " + choice);
+		System.out.println("결과값 : "+param.toString());
+		//해시맵 생성 
+		Map<String, Object> map = new HashMap<String, Object>();
+		//디티오 넣기 
+		map.put("param", param);
+		//직무코드 넣기 
+		map.put("arrArea", arrAreacode);
+		//지역코드 넣기 
+		map.put("arrBusi", arrBuscode);
+		//choice 넣기(검색범주선택)
+		map.put("choice", choice);
+		//search 넣기(검색어)
+		map.put("search", search);
+		
+		//최종결과 리스트로 받기 
+		List<RecruitDto> list = service.getRecruitSearchList(map);
+		
+		System.out.println("결과:"+list.toString());
 		
 		return list;
 	}
@@ -371,6 +440,31 @@ public class RecruitController {
 			return "recruit/recruitcalendar";
 		}
 		
-
-	
+		
+		//채용공고 리스트에 지역코드를 뿌려주는 코드 (지역1) 
+			@ResponseBody
+			@RequestMapping(value = "areacodeListData.do", method = {RequestMethod.GET, RequestMethod.POST}) 
+			public List<RecruitParam> areacodeListData(Model model) {
+				
+				List<RecruitParam> list = service.areacodeListData();
+				
+				System.out.println(list.toString());
+				
+				return list;
+			}
+				
+			//채용공고 리스트에 지역코드를 뿌려주는 코드 (지역2) 
+			@ResponseBody
+			@RequestMapping(value = "areacode2ListData.do", method = {RequestMethod.GET, RequestMethod.POST}) 
+			public List<RecruitParam> areacode2ListData(int areacode, Model model) {
+				
+				//int areacode = service.getArea1Code(areaname);
+				
+				List<RecruitParam> list = service.areacode2ListData(areacode);
+				
+				System.out.println(list.toString());
+				
+				return list;
+			}
+				
 }

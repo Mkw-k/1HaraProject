@@ -11,5 +11,6 @@ public interface MemberService {
 	
 	MemberDto login(MemberDto dto);
 	//public void authentication(MemberDto dto);        //회원 인증관련 메소드
+	void memberDelete(MemberDto dto);
 	
 }

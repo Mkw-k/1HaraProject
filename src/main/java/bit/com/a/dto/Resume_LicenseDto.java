@@ -17,7 +17,9 @@ REFERENCES RESUME (RESUMESEQ)
  );
  */
 
-public class Resume_LicenseDto {
+import java.io.Serializable;
+
+public class Resume_LicenseDto implements Serializable {
 	private int licseq;
 	private int resumeseq;
 	private String lic_type;
@@ -29,6 +31,19 @@ public class Resume_LicenseDto {
 	public Resume_LicenseDto() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public Resume_LicenseDto(String lic_type, String lic_date, String lic_name, String lic_publisher, String lic_pass) {
+		super();
+		this.lic_type = lic_type;
+		this.lic_date = lic_date;
+		this.lic_name = lic_name;
+		this.lic_publisher = lic_publisher;
+		this.lic_pass = lic_pass;
+	}
+
+
 
 	public Resume_LicenseDto(int licseq, int resumeseq, String lic_type, String lic_date, String lic_name,
 			String lic_publisher, String lic_pass) {
@@ -97,6 +112,16 @@ public class Resume_LicenseDto {
 	public void setLic_pass(String lic_pass) {
 		this.lic_pass = lic_pass;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Resume_LicenseDto [licseq=" + licseq + ", resumeseq=" + resumeseq + ", lic_type=" + lic_type
+				+ ", lic_date=" + lic_date + ", lic_name=" + lic_name + ", lic_publisher=" + lic_publisher
+				+ ", lic_pass=" + lic_pass + "]";
+	}
+	
 	
 	
 }

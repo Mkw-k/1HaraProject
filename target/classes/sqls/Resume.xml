@@ -5,14 +5,62 @@
   
 <mapper namespace="Resume">
 
-<insert id="writeFAQ" parameterType="java.util.HashMap">
+<insert id="writeResume" parameterType="java.util.HashMap">
     INSERT ALL 
     INTO RESUME (RESUMESEQ, MEMBERID,RESUMETITLE, RECRUIT_STATUS, RESUMEIMAGE, NEWRESUMEIMAGE,
     			RESUME_INTRO_TITLE, RESUME_INTRO_CONTENT, PORTFOLIO, NEWPORTFOLIO, DESIREDSALARY, DESIREDJOBTYPE, DESIRED_STR, DESIRED_END, DESIREDAREA1, DESIREDJOB1, GENDER)
     VALUES (RESUME_SEQ.NEXTVAL, #{dto.memberid}, #{dto.resumetitle}, #{dto.recruit_status}, #{dto.resumeimage}, #{dto.newresumeimage}, 
     		#{dto.resume_intro_title}, #{dto.resume_intro_content}, #{dto.portfolio}, #{dto.newportfolio}, #{dto.desiredsalary}, #{dto.desiredjobtype}, 
     		#{dto.desired_str}, #{dto.desired_end}, #{dto.desiredarea1}, #{dto.desiredjob1}, #{dto.gender} ) 
-    		
+    
+	    <foreach collection="edulist" item="edudto" index="index" separator="" open="" close="">
+			INTO RESUME_EDU (EDUCATIONSEQ, RESUMESEQ, HIGHSCHOOL, HIGH_STR, HIGH_STR_STATUS, HIGH_END, HIGH_END_STATUS, UNIVERSITY, UNIV_STATUS, UNIV_STR, UNIV_STR_STATUS,
+							UNIV_END, UNIV_END_STATUS, UNIV_MAJOR_FIELD, UNIV_MAJOR, UNIV_NIGHT, UNIV_GRADE, UNIV_GRADE_BASE, UNIV_PAPER  )
+			VALUES (RESUME_EDU_SEQ.NEXTVAL, RESUME_SEQ.NEXTVAL, #{edudto.highschool}, #{edudto.high_str}, #{edudto.high_str_status}, #{edudto.high_end}, #{edudto.high_end_status},
+					#{edudto.university}, #{edudto.univ_status}, #{edudto.univ_str}, #{edudto.univ_str_status}, #{edudto.univ_end}, #{edudto.univ_end_status}, #{edudto.univ_major_field}, 
+					#{edudto.univ_major}, #{edudto.univ_night}, #{edudto.univ_grade}, #{edudto.univ_grade_base}, #{edudto.univ_paper} )
+		        
+	
+	
+		</foreach>
+	
+		<foreach collection="careerlist" item="careerdto" index="index" separator="" open="" close="">
+			INTO CAREER (CAREERSEQ, RESUMESEQ, PRE_COMNAME, PRE_STARTDATE, PRE_ENDDATE, PRE_STATUS, PRE_POSITION, PRE_BUSCODE, PRE_AREA, PRE_DEPT, PRE_SAL, 
+							PRE_JOBDETAIL)
+			VALUES (CAREER_SEQ.NEXTVAL, RESUME_SEQ.NEXTVAL, #{careerdto.pre_comname}, #{careerdto.pre_startdate}, #{careerdto.pre_enddate}, #{careerdto.pre_status},
+					#{careerdto.pre_position}, #{careerdto.pre_buscode}, #{careerdto.pre_area}, #{careerdto.pre_dept}, #{careerdto.pre_sal}, #{careerdto.pre_jobdetail})
+
+		</foreach>
+		
+		<foreach collection="liclist" item="licdto" index="index" separator="" open="" close="">
+			INTO LICENSE (LICSEQ, RESUMESEQ, LIC_TYPE, LIC_DATE, LIC_NAME, LIC_PUBLISHER, LIC_PASS )
+			VALUES (LICENSE_SEQ.NEXTVAL, RESUME_SEQ.NEXTVAL, #{licdto.lic_type}, #{licdto.lic_date}, #{licdto.lic_name}, #{licdto.lic_publisher}, #{licdto.lic_pass}  )
+
+			
+		</foreach>
+		
+		<foreach collection="actlist" item="actdto" index="index" separator="" open="" close="">
+			INTO ACTIVITY (ACTIVITYSEQ, RESUMESEQ, ACT_FIELD, ACT_ORG, ACT_STR, ACT_END, ACT_DETAIL )
+			VALUES (ACTIVITY_SEQ.NEXTVAL, RESUME_SEQ.NEXTVAL, #{actdto.act_field}, #{actdto.act_org}, #{actdto.act_str}, #{actdto.act_end}, #{actdto.act_detail} )
+	        
+
+
+		</foreach>
+		
+		<foreach collection="awardlist" item="awarddto" index="index" separator="" open="" close="">
+			INTO AWARD (AWDSEQ, RESUMESEQ, AWD_NAME, AWD_DATE, AWD_ORG)
+			VALUES (AWARD_SEQ.NEXTVAL, RESUME_SEQ.NEXTVAL, #{awarddto.awd_name}, #{awarddto.awd_date}, #{awarddto.awd_org} )
+	        
+
+
+		</foreach>
+		
+		<foreach collection="lanlist" item="landto" index="index" separator="" open="" close="">
+			INTO LANGUAGE_AWARD (LANSEQ, RESUMESEQ, LAN_KIND, LAN_EXAM, LAN_SCORE, LAN_GRADE, LAN_PASS, LAN_GDATE)
+			VALUES (LANGUAGE_SEQ.NEXTVAL, RESUME_SEQ.NEXTVAL, #{landto.lan_kind}, #{landto.lan_exam}, #{landto.lan_score}, #{landto.lan_grade}, #{landto.lan_pass}, #{landto.lan_grade})
+
+
+		</foreach>		
     
 </insert>
 

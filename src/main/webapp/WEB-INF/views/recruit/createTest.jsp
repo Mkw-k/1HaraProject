@@ -44,6 +44,7 @@
       </div>
     </div>
   </div>
+ 
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -68,6 +69,7 @@
       </div>
     </div>
   </div>
+  
   <div class="py-5" >
     <div class="container">
       <div class="row">
@@ -163,15 +165,25 @@
                         <option value="1"
                         <c:if test="${dto.career_Type == 1}">selected</c:if>>신입</option>
                         <option value="2"
-                        <c:if test="${dto.career_Type == 2}">selected</c:if>>1~2년</option>
+                        <c:if test="${dto.career_Type == 2}">selected</c:if>>1년</option>
                         <option value="3"
-                        <c:if test="${dto.career_Type == 3}">selected</c:if>>2~4년</option>
+                        <c:if test="${dto.career_Type == 3}">selected</c:if>>2년</option>
                         <option value="4"
-                        <c:if test="${dto.career_Type == 4}">selected</c:if>>4~6년</option>
+                        <c:if test="${dto.career_Type == 4}">selected</c:if>>3년</option>
                         <option value="5"
-                        <c:if test="${dto.career_Type == 5}">selected</c:if>>6~8년</option>
+                        <c:if test="${dto.career_Type == 5}">selected</c:if>>4년</option>
                         <option value="6"
-                        <c:if test="${dto.career_Type == 6}">selected</c:if>>8~10년</option>
+                        <c:if test="${dto.career_Type == 6}">selected</c:if>>5년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 7}">selected</c:if>>6년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 8}">selected</c:if>>7년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 9}">selected</c:if>>8년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 10}">selected</c:if>>9년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 11}">selected</c:if>>10년</option>
                       
                   	</select>
                   <div class="invalid-feedback"> Please provide a valid state. </div>
@@ -492,9 +504,9 @@ $.ajax({
 		alert('error');
 	}
 	
- });
+ }); // ajax
  
-
+}); // document ready 
 
 
 //두번째 BUSCODE2 DATA를 받아서 체크박스로 뿌려주는 코드 
@@ -539,6 +551,7 @@ $(document).on("change",".list_col1", function(){
 });
 
 
+let count = 1;
 //마지막 BUSCODE3 DATA를 받아서 체크박스로 뿌려주는 코드 
 $(document).on("change",".list_col2", function(){
 	
@@ -555,14 +568,7 @@ $(document).on("change",".list_col2", function(){
         		//alert('success');
         		//alert(list);
         		
-        		$('#_buscodeList3 br').each(function () {
-        		    if ($(this).next().is('br')) {
-        		        $(this).next().remove();
-        		    }
-        		});
-        		
-        		
-        		
+        	
         		//$("_buscodeList3 *").remove(); //내부 요소만 삭제 
         		
         		$(".list_col3").remove(); 
@@ -575,21 +581,56 @@ $(document).on("change",".list_col2", function(){
         		}
         		
         		
-        		$.each(list, function(i, val){
-		        	
-        					
-							let app = "<span class='list_col3'>"+
-									  "<input type='checkbox' class='list_col3' id='buscode3data' name='buscode' value='"+val.busname+"' class='form-control'>"+val.busname+
-									  "</span>";
-									  
-							 if((i+1)%2==0){
-		        				app += "</br>";
-		        			}
-								   
-
-				$("#_buscodeList3").append(app);
         		
+        		//기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 초기셋팅 
+        		var stackValue = $("input[name='buscode']").length;
+			    var stackData = new Array(stackValue);
+			     //alert(stackValue);
+			     
+			     for(var i=0; i<stackValue; i++){                          
+			    	 stackData[i] = $("input[name='buscode']")[i].value;
+			     }
+			     //alert("길이"+stackData.length);
+			     
+			     $.each(stackData, function(i, data){
+			    	 //alert("이게 값임"+data);
+			     });
+        		
+        		
+        		
+        		$.each(list, function(i, val){
+		        	let app = "";
+        			
+		        	//stackname = 밑에태그 아이디.val (elements) 배열로 해야될듯 
+		        	
+		        		app += "<span class='list_col3'>"+
+					  	"<input type='checkbox' class='list_col3' name="+count+" id='buscode3data"+count+"' value='"+val.busname+"' class='form-control'>"+val.busname+
+					  	"</span>"; 
+							   	  
+						 if((i+1)%2==0){
+	        				app += "</br>";
+	        			}
+						 
+				$("#_buscodeList3").append(app);
+				
+        		
+				//기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 최종진행
+				var buscodeTag ="buscode3data"+count;
+				
+				for(var i=0; i<stackValue; i++){                          
+			    	if(stackData[i] == val.busname){
+			    		document.getElementById(buscodeTag).checked = true;
+			    	}
+			     }
+				
+				
+				
+				count+=1;
+				
         		});
+        		
+        		
+        		
         	}, 
         	error:function(){
         		alert('error');
@@ -606,27 +647,49 @@ $(document).on("change",".list_col2", function(){
 
 
 
-});
 
+
+//span Tag에 동적 id를 주기 위한 인덱스용 넘버 
 let cnt = 1;
-  
-$(document).on("change",".list_col3", function(){
+
+var selectedBuscode = "";
+
+//소분류 체크박스가 변경될때 실행 
+$(document).on("change", ".list_col3" , function(){
+	//$(".list_col3").change(function(){
 	
+
 	let app ="";
 	
-	if($(this).is(":checked")){
+	
+	
+		//if($("input:checkbox['.list_col3']").is(":checked") == true){ 
+		//if($(this).is(":checked") == true){
+		if($(this).is(":checked") == true){
 		
 		let buscode = $(this).val();
+		var count = $(this).attr('name');
+		//alert(buscode);
 		
-		
-		app = "<span id=selectedBuscode"+cnt+">"+buscode+
-			  "<a onclick='delSelBuscode(selectedBuscode"+cnt+")'>"+
+		app = "<span class=arrBusdata id=selectedBuscode"+cnt+">"+buscode+
+			  "<input name='buscode' type='hidden' value='"+buscode+"'>"+
+			  "<a onclick='delSelBuscode("+cnt+","+count+")'>"+
 			  "<img alt='왜안뜨지' src='ma.jpg' style='width:30px; height:30px;'>"+
 			  "</a>"+"</span>"+"&nbsp;&nbsp;";
 			  
 
-		      	
-		      	
+	  	var id = $(this).attr("id");
+		//alert(id);
+		let input = document.getElementById(id);
+		
+		$(this).removeData('code');
+		
+		 //HTML data 속성 사용
+		input.dataset.code = 'selectedBuscode'+cnt;
+		
+		//alert('datacode 생성: '+'selectedBuscode'+cnt);
+		
+		//alert('datacode 리얼: ' + $(this).data("code"));
 		
 		$("#selectResult").append(app);
 		cnt += 1;
@@ -634,16 +697,45 @@ $(document).on("change",".list_col3", function(){
 	}
 	
 	
+	//체크박스에서 체크 해제 했을때 
+	//체크박스 해제가 될때 밑에 부분에 적재되있는 같은 데이터의 span태그도 삭제
+	//else{	
+	else if($(this).is(":checked") == false){
+		//alert("위에 셀렉코드 : "+$(this).data("code"));
+		//data 속성 가져오기 (data-code) 
+		selectedBuscode = $(this).data("code");
+		//alert('위에 셀렉코드 :'+ selectedBuscode);
+		
+		document.getElementById(selectedBuscode).remove();
+	}
+	
+	
 });
 
 
-function delSelBuscode(id) {
-	var data = document.getElementById(id);
+//밑에 쌓여있는 span태그에서 X버튼을 눌렀을때 위에 체크박스도 같이 체크 해제가 되도록 해주는 코드  
+function delSelBuscode(cnt, count) {
+	//alert(count);
 	
-	alert(data);
+	var spanid = "selectedBuscode"+cnt;
+	alert('밑에셀렉코드 :'+spanid);
 	
+	var buscodeTag ="buscode3data"+count;
+	//alert(buscodeTag);
 	
+	const spantag = document.getElementById(spanid);
+	//alert(spantag);
+	
+	//스판태그 삭제
+	document.getElementById(spanid).remove();
+	
+	//체크박스 체크해제
+	document.getElementById(buscodeTag).checked = false;
+
+
 }
+
+
 
 
 </script>
