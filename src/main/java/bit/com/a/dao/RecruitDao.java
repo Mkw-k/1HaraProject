@@ -38,5 +38,11 @@ public interface RecruitDao {
 	List<RecruitParam> areacode2ListData(int areacode);
 	
 	List<RecruitDto> getRecruitSearchList(Map<String, Object> map);
+
+	boolean updateRecruit(Map<String, Object> param);
+
+	boolean deleteBuscode(int jobSeq);
+
+	boolean insertBuscode(Map<String, Object> param);
 	
 }

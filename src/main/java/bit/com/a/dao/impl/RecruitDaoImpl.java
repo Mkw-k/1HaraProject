@@ -97,6 +97,21 @@ public class RecruitDaoImpl implements RecruitDao{
 	public List<RecruitDto> getRecruitSearchList(Map<String, Object> map) {
 		return session.selectList(ns+"getRecruitSearchList",map);
 	}
+
+	@Override
+	public boolean updateRecruit(Map<String, Object> param) {
+		return session.update(ns+"updateRecruit", param)>0? true:false;
+	}
+
+	@Override
+	public boolean deleteBuscode(int jobSeq) {
+		return session.delete(ns+"deleteBuscode", jobSeq)>0?true:false;
+	}
+
+	@Override
+	public boolean insertBuscode(Map<String, Object> param) {
+		return session.insert(ns+"insertBuscode", param)>0?true:false;
+	}
 	
 	
 
