@@ -87,8 +87,9 @@ function check(form){
            <input type="hidden" name="login_tab" value="p" id="login_tab">
            <div class="login_message">
                <h3>로그인이 필요한 서비스입니다.</h3>
-               <p>사람인 회원이 아니면, 지금 <span>
-               <a href="regiclick.do">회원가입</a></span>을 해주세요.</p>
+               <p>사람인 회원이 아니면, 지금
+               	<span><a href="regiclick.do">회원가입</a></span>을 해주세요.
+               </p>
            </div>
            <div class="login_page_wrap">
                <div class="login_input_wrap">
@@ -134,9 +135,12 @@ function check(form){
                    <button type="submit" class="btn-login">로그인</button>
                  </div>
                  <p class="signup-forgotten">
-                 <a id="a_join" href="regiclick.do"  class="sign-up" onmousedown="try{n_trackEvent('login', 'pc_login_page' , 'join', '');}catch(e){}">회원가입</a>
+                 <a href="regiclick.do" class="sign-up">회원가입</a>
+                 <!-- onmousedown="try{n_trackEvent('login', 'pc_login_page' , 'join', '');}catch(e){}" -->
+                 <!--  onclick="return false;" -->
                  <span></span>
-                 <a href="/zf_user/helpdesk/idpw-find" class="forgotten" onmousedown="try{n_trackEvent('login', 'pc_login_page' , 'find', '');}catch(e){}">아이디/비밀번호 찾기</a>
+                 <a href="/zf_user/helpdesk/idpw-find" class="forgotten">아이디/비밀번호 찾기</a>
+				 <!-- onmousedown="try{n_trackEvent('login', 'pc_login_page' , 'find', '');}catch(e){}" -->
                  <a href="javascript:;" class="service_info_txt">서비스 안내<img src="//www.saraminimage.co.kr/ui/login_page/question_mark.png" alt=""></a>
                  <a href="/zf_user/applicant/rater/login-form" target="_blank" class="link_rater" style="display: none;">협업자 로그인</a>
               </p>
@@ -340,6 +344,8 @@ $(document).ready(function(){
    Kakao.init('8a32aafcf70137a891ba6d0b02c48e38');
    Kakao.isInitialized();
 });
+
+
 
 function kakaoLogin() {
 

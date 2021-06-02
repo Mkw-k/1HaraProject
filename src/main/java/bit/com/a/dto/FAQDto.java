@@ -1,4 +1,7 @@
 package bit.com.a.dto;
+
+import java.io.Serializable;
+
 /*
  * DROP TABLE FAQ
 CASCADE CONSTRAINTS;
@@ -23,7 +26,7 @@ CONSTRAINT FAQ_FK1 FOREIGN KEY (MEMBERID)
 REFERENCES MEMBER(MEMBERID)
 )
  */
-public class FAQDto {
+public class FAQDto implements Serializable{
 	private int faqseq;
 	private String memberid;
 	private String question;
