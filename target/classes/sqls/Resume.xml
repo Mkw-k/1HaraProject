@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Resume">
+
+<insert id="writeFAQ" parameterType="java.util.HashMap">
+    INSERT ALL 
+    INTO RESUME (RESUMESEQ, MEMBERID,RESUMETITLE, RECRUIT_STATUS, RESUMEIMAGE, NEWRESUMEIMAGE,
+    			RESUME_INTRO_TITLE, RESUME_INTRO_CONTENT, PORTFOLIO, NEWPORTFOLIO, DESIREDSALARY, DESIREDJOBTYPE, DESIRED_STR, DESIRED_END, DESIREDAREA1, DESIREDJOB1, GENDER)
+    VALUES (RESUME_SEQ.NEXTVAL, #{dto.memberid}, #{dto.resumetitle}, #{dto.recruit_status}, #{dto.resumeimage}, #{dto.newresumeimage}, 
+    		#{dto.resume_intro_title}, #{dto.resume_intro_content}, #{dto.portfolio}, #{dto.newportfolio}, #{dto.desiredsalary}, #{dto.desiredjobtype}, 
+    		#{dto.desired_str}, #{dto.desired_end}, #{dto.desiredarea1}, #{dto.desiredjob1}, #{dto.gender} ) 
+    		
+    
+</insert>
+
+
+
+</mapper>

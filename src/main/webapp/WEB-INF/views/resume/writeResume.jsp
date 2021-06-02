@@ -332,6 +332,7 @@ dt, dd {
 															<input type="text" id="user_nm" name="user_nm"
 																class="box_input" value="${login.name }" maxlength="20"
 																data-only-word="true">
+																<input type="hidden" name="memberid" value="${login.memberid }">
 														</div>
 
 														<div class="sri_select resume_select resume_right">
@@ -1497,28 +1498,28 @@ dt, dd {
 																	<div class="sri_select resume_select">
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lan_grade[]">
-																			<option>1</option>
-																			<option>2</option>
-																			<option>3</option>
-																			<option>4</option>
-																			<option>5</option>
-																			<option>A</option>
-																			<option>B</option>
-																			<option>C</option>
-																			<option>D</option>
-																			<option>A1</option>
-																			<option>A2</option>
-																			<option>B1</option>
-																			<option>B2</option>
-																			<option>N1</option>
-																			<option>N2</option>
-																			<option>N3</option>
-																			<option>AH</option>
-																			<option>AM</option>
-																			<option>AL</option>
-																			<option>IH</option>
-																			<option>IM</option>
-																			<option>IL</option>
+																			<option value="1">1</option>
+																			<option value="2">2</option>
+																			<option value="3">3</option>
+																			<option value="4">4</option>
+																			<option value="5">5</option>
+																			<option value="A">A</option>
+																			<option value="B">B</option>
+																			<option value="C">C</option>
+																			<option value="D">D</option>
+																			<option value="A1">A1</option>
+																			<option value="A2">A2</option>
+																			<option value="B1">B1</option>
+																			<option value="B2">B2</option>
+																			<option value="N1">N1</option>
+																			<option value="N2">N2</option>
+																			<option value="N3">N3</option>
+																			<option value="AH">AH</option>
+																			<option value="AM">AM</option>
+																			<option value="AL">AL</option>
+																			<option value="IH">IH</option>
+																			<option value="IM">IM</option>
+																			<option value="IL">IL</option>
 																		</select>
 																	</div>
 																</div>
@@ -1529,7 +1530,7 @@ dt, dd {
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lan_pass[]">
 																			<option>취득여부</option>
-																			<option>취득(PASS)</option>
+																			<option value="취득(PASS)">취득(PASS)</option>
 																		</select>
 																	</div>
 																</div>
@@ -1551,7 +1552,7 @@ dt, dd {
 																	<div class="input_title">수상명</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="activity_org[]" value="" maxlength="50"
+																			name="awd_name[]" value="" maxlength="50"
 																			class="box_input">
 																	</div>
 																</div>
@@ -1560,7 +1561,7 @@ dt, dd {
 																	<div class="input_title">수여기관</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="activity_org[]" value="" maxlength="50"
+																			name="awd_date[]" value="" maxlength="50"
 																			class="box_input">
 
 																	</div>
@@ -1570,7 +1571,7 @@ dt, dd {
 																	<div class="input_title">취득일</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="activity_org[]" value="" maxlength="50"
+																			name="awd_org[]" value="" maxlength="50"
 																			class="box_input">
 																	</div>
 																</div>
@@ -1917,6 +1918,8 @@ dt, dd {
 								</article>
 						</div>
 						</section>
+						
+						<input type="submit" value="작성완료">
 					</div>
 				</div>
 	</div>
