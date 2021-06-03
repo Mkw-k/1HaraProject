@@ -1,4 +1,7 @@
 package bit.com.a.dto;
+
+import java.io.Serializable;
+
 /*
 CREATE TABLE CAREER (
 CAREERSEQ NUMBER PRIMARY KEY,	--SEQ
@@ -19,7 +22,7 @@ CONSTRAINT "CAREER_FK1" FOREIGN KEY (RESUMESEQ)
 REFERENCES RESUME (RESUMESEQ)
 );
  */
-public class Resume_CareerDto {
+public class Resume_CareerDto implements Serializable {
 	private int careerseq;
 	private int resumeseq;
 	private String pre_comname;
@@ -36,6 +39,24 @@ public class Resume_CareerDto {
 	public Resume_CareerDto() {
 		// TODO Auto-generated constructor stub
 	}
+
+	
+	public Resume_CareerDto(String pre_comname, String pre_startdate, String pre_enddate, String pre_status,
+			String pre_position, String pre_buscode, String pre_area, String pre_dept, String pre_sal,
+			String pre_jobdetail) {
+		super();
+		this.pre_comname = pre_comname;
+		this.pre_startdate = pre_startdate;
+		this.pre_enddate = pre_enddate;
+		this.pre_status = pre_status;
+		this.pre_position = pre_position;
+		this.pre_buscode = pre_buscode;
+		this.pre_area = pre_area;
+		this.pre_dept = pre_dept;
+		this.pre_sal = pre_sal;
+		this.pre_jobdetail = pre_jobdetail;
+	}
+
 
 	public Resume_CareerDto(int careerseq, int resumeseq, String pre_comname, String pre_startdate, String pre_enddate,
 			String pre_status, String pre_position, String pre_buscode, String pre_area, String pre_dept,
@@ -150,6 +171,17 @@ public class Resume_CareerDto {
 	public void setPre_jobdetail(String pre_jobdetail) {
 		this.pre_jobdetail = pre_jobdetail;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Resume_CareerDto [careerseq=" + careerseq + ", resumeseq=" + resumeseq + ", pre_comname=" + pre_comname
+				+ ", pre_startdate=" + pre_startdate + ", pre_enddate=" + pre_enddate + ", pre_status=" + pre_status
+				+ ", pre_position=" + pre_position + ", pre_buscode=" + pre_buscode + ", pre_area=" + pre_area
+				+ ", pre_dept=" + pre_dept + ", pre_sal=" + pre_sal + ", pre_jobdetail=" + pre_jobdetail + "]";
+	}
+	
+	
 	
 	
 }

@@ -3,12 +3,14 @@ package bit.com.a.controller;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import bit.com.a.dto.BusinessDto;
 import bit.com.a.dto.MemberDto;
@@ -72,4 +74,33 @@ public class BusinessController {
 		  return "redirect:/login.do"; 
 	  	} 
 	}
+	
+	@RequestMapping(value = "businessDelete.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public String businessDelete(BusinessDto bus, HttpSession session, RedirectAttributes rttr) throws Exception {
+		return "business/businessDelete";
+	}
+	
+	@RequestMapping(value = "businessDeleteAf.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public String businessDeleteAf(BusinessDto dto, HttpSession session, RedirectAttributes rttr) throws Exception{
+		//business변수 가져옴
+		BusinessDto bus = (BusinessDto) session.getAttribute("login");
+		System.out.println("비번: " + bus.getPwd());
+		// 세션에 있는 비밀번호
+		String sessionPass = bus.getPwd();
+		
+		// dto로 들어오는 비밀번호 
+		String dtopass = dto.getPwd();
+		
+		if(!(sessionPass.equals(dtopass))) {
+			rttr.addFlashAttribute("msg", false);
+			return "redirect:businessDelete.do";
+		}
+		service.businessDelete(dto);
+		session.invalidate();
+		return "home";
+		
+		
+		
+	}
+	
 }

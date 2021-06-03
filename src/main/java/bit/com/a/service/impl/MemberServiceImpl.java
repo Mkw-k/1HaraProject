@@ -1,5 +1,7 @@
 package bit.com.a.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +43,10 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.memberDelete(dto);
 	}
 
+	@Override
+	public List<MemberDto> getMemberList() {
+		return memberDao.getMemberList();
+	}
 	/*
 	 * @Override public void authentication(MemberDto dto) {
 	 * memberDao.authentication(dto);

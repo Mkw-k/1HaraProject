@@ -23,8 +23,8 @@
 </select>
 
 <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH, DEL)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, 0)
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1)
 </insert>
 
 <select id="login" parameterType="bit.com.a.dto.MemberDto"
@@ -39,5 +39,9 @@
 	DELETE FROM MEMBER
 	WHERE MEMBERID = #{memberid} AND PWD = #{pwd}
 </delete>
+
+<select id="MemberList" resultType="bit.com.a.dto.MemberDto">
+	SELECT * FROM MEMBER WHERE MEMBERID NOT IN('admin')
+</select>
 
 </mapper>

@@ -1,4 +1,7 @@
 package bit.com.a.dto;
+
+import java.io.Serializable;
+
 /*
 CREATE TABLE LANGUAGE(   
 LANSEQ NUMBER PRIMARY KEY, 
@@ -14,7 +17,7 @@ LAN_PASS VARCHAR2(10),							 --취득여부
 CONSTRAINT LANGUAGE_AWARD_FK1 FOREIGN KEY (RESUMESEQ)
 REFERENCES RESUME (RESUMESEQ)
 ); */
-public class Resume_LanguageDto {
+public class Resume_LanguageDto implements Serializable {
 	private int lanseq;
 	private int resumeseq;
 	private String lan_kind;
@@ -27,6 +30,21 @@ public class Resume_LanguageDto {
 	public Resume_LanguageDto() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public Resume_LanguageDto(String lan_kind, String lan_exam, String lan_score, int lan_grade, String lan_date,
+			String lan_pass) {
+		super();
+		this.lan_kind = lan_kind;
+		this.lan_exam = lan_exam;
+		this.lan_score = lan_score;
+		this.lan_grade = lan_grade;
+		this.lan_date = lan_date;
+		this.lan_pass = lan_pass;
+	}
+
+
 
 	public Resume_LanguageDto(int lanseq, int resumeseq, String lan_kind, String lan_exam, String lan_score,
 			int lan_grade, String lan_date, String lan_pass) {

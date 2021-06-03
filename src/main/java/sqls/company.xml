@@ -11,8 +11,5 @@
 	FROM COMPANY
 	WHERE COMPANYID=#{companyid}
 	</select>
-
-		
-
 	
 </mapper>	

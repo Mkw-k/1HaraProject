@@ -1,4 +1,7 @@
 package bit.com.a.dto;
+
+import java.io.Serializable;
+
 /*
  
 CREATE TABLE RESUME(   
@@ -52,7 +55,7 @@ CONSTRAINT "RESUME_FK9" FOREIGN KEY (DESIREDAREA3)
 REFERENCES JOBAREA2(AREA2NAME)
 )
  */
-public class ResumeDto {
+public class ResumeDto implements Serializable {
 	private int resumeseq;
 	private String memberid;
 	private int careerseq;

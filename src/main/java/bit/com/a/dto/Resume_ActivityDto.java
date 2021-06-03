@@ -1,4 +1,7 @@
 package bit.com.a.dto;
+
+import java.io.Serializable;
+
 /*
 ----RESUME 테이블 작성후 실행 
 CREATE TABLE ACTIVITY (   
@@ -15,7 +18,7 @@ CONSTRAINT LANGUAGE_ACTIVITY_FK1 FOREIGN KEY (RESUMESEQ)
 REFERENCES RESUME (RESUMESEQ)
 );
  */
-public class Resume_ActivityDto {
+public class Resume_ActivityDto implements Serializable{
 	private int activityseq;
 	private int resumeseq;
 	private String act_field;
@@ -27,6 +30,19 @@ public class Resume_ActivityDto {
 	public Resume_ActivityDto() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public Resume_ActivityDto(String act_field, String act_org, String act_str, String act_end, String act_detail) {
+		super();
+		this.act_field = act_field;
+		this.act_org = act_org;
+		this.act_str = act_str;
+		this.act_end = act_end;
+		this.act_detail = act_detail;
+	}
+
+
 
 	public Resume_ActivityDto(int activityseq, int resumeseq, String act_field, String act_org, String act_str,
 			String act_end, String act_detail) {
