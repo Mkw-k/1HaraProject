@@ -35,6 +35,8 @@ index.jsp
 
 <a href="kokolog.do">까까오 로꾸인</a>
 
+
+
 <a href="chatpractice.do">채팅(건설중)</a>
 
 
