@@ -868,14 +868,13 @@ margin-right : 450px;
 
     <div class="column2" style="padding-left: 40pt;">
     	<div class="container">
-         
           		<div>
 		            <div class="panel panel-primary">
 		                <div class="panel-heading">
 		                    <h3 class="panel-title">
-		                        <span class="glyphicon glyphicon-bookmark"></span> 일하라와 함께하고 싶다면? </h3>
+		                        <span class="glyphicon glyphicon-bookmark"></span> 일하라와 함께하고 싶다면? 
+		                    </h3>
 		                </div>
-
 		                <div class="panel-body"> <!-- 컨테이너 바디 -->
 
 		                    <div class="main-login" style="width: 358px;">
@@ -912,7 +911,6 @@ margin-right : 450px;
 											<div class="top">
 												<div class="bg" style="background-image: url('bg-main-login-person.png') no-repeat 0 2px;">
 													<p class="txt">개인회원</p>
-
 													<p class="name"><strong>${login.name}</strong> 님</p>
 													<a href="/indivMemberSrv/main/indivMemberSrvMain.do" class="mypge">마이페이지</a>
 												</div>
@@ -933,9 +931,6 @@ margin-right : 450px;
 												<div class="btn-grp">
 													<button type="button" class="btn-logout float-l" onclick="f_logout();">로그아웃</button>
 													<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r">기업 관리</a>
-													
-												
-	
 												</div>
 											</div>
 										</c:when>
