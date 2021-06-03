@@ -60,13 +60,13 @@ public class BusinessController {
 	public String loginAf(BusinessDto dto, HttpServletRequest req) {
 	  
 	  System.out.println("씨발 쫌 들어와라");
-	 
+
 	  BusinessDto login = service.login(dto); 
 	  if(login != null && !login.getMemberid().equals("")) {
 		  req.getSession().setAttribute("login", login); 
 		  // req.getSession().setMaxInactiveInterval(60 * 60 * 24);
 	  
-		  return "redirect:/home.do"; 
+		  return "redirect:/home.do";
 	  
 	  }else { 
 		  return "redirect:/login.do"; 

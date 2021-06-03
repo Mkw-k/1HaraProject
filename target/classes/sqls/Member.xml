@@ -23,8 +23,8 @@
 </select>
 
 <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH, DEL)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, 0)
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH, DEL, USERPIC)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, 0, #{userpic})
 </insert>
 
 <select id="login" parameterType="bit.com.a.dto.MemberDto"
@@ -39,5 +39,19 @@
 	DELETE FROM MEMBER
 	WHERE MEMBERID = #{memberid} AND PWD = #{pwd}
 </delete>
+
+	<!--  뿌려주는것 -->
+	<select id="getMypage" parameterType="java.lang.String" resultType="bit.com.a.dto.MemberDto">
+	SELECT NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH
+	FROM MEMBER
+	WHERE MEMBERID=#{memberid}
+	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="updateMypage">
+	UPDATE MEMBER 
+	SET NAME=#{name}, EMAIL=#{email}, ADDRESS=#{address}, DETAILADDRESs=#{detailaddress}, BIRTH=#{birth}
+	WHERE MEMBERID=#{memberid}
+	</update>
 
 </mapper>

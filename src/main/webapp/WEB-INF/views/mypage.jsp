@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,6 +43,7 @@
 <script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
 <script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
 <link href="csss/top.css" rel="stylesheet" type="text/css">
+
 
 </head>
 
@@ -864,8 +866,11 @@ function f_empPgmList(resultObj){
 					<div class="mypage-idv-wrap">
 						<div class="idv-sec01">
 							<div class="con-top">
-								<div class="tit-area"><span>우정현</span> 님, 반갑습니다.
-								<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustInfoView.do" class="button">회원정보수정</a></div>
+								<div class="tit-area"><span>${login.name}</span> 님, 반갑습니다.
+								
+								<a href = "mypageUpdate.do" class="button">회원정보수정</a></div>
+								
+								
 								<div class="con-resume">
 									<table>
 										<caption>이력서 기본정보 </caption>
@@ -913,7 +918,7 @@ function f_empPgmList(resultObj){
 											<tr>
 												<th scope="row">이메일</th>
 												<td>					
-														cors***@naver.com													
+														${login.email}													
 												</td>
 												<th scope="row" class="un-str">이메일 수신</th>
 												<td>
@@ -956,20 +961,18 @@ function f_empPgmList(resultObj){
 												<td colspan="3">
 													<div>
 														
-															인천광역시 연수구 송도동 4-1 송도더샵퍼스트월드 64층-01 21997
+															${login.address}<br>
+															${login.detailaddress}
 															
 														
 													</div>
 												</td>
 											</tr>
 											<tr>
-												<th scope="row">관할고용센터</th>
+												<th scope="row">생년월일</th>
 												<td colspan="3">
 													<div>
-														인천고용센터
-														
-														(032-460-4701)
-														
+														${login.birth}
 													</div>
 												</td>
 											</tr>
