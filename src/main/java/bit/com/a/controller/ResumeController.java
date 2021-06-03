@@ -39,20 +39,26 @@ import bit.com.a.util.PdsUtil;
 @Controller
 public class ResumeController {
 
+
 	@Autowired
 	ResumeService service;
 
-	@RequestMapping(value = "resumeMain.do", method = { RequestMethod.GET, RequestMethod.POST })
+
+	@RequestMapping(value = "resumeMain.do", method = {RequestMethod.GET, RequestMethod.POST})
+
 	public String goResumeMain() {
 
 		return "resume/resumeMain";
 	}
 
-	@RequestMapping(value = "writeResume.do", method = { RequestMethod.GET, RequestMethod.POST })
+
+	@RequestMapping(value = "writeResume.do", method = {RequestMethod.GET, RequestMethod.POST})
+
 	public String writeResume() {
 
 		return "resume/writeResume";
 	}
+
 
 
 	@RequestMapping(value = "writeAfResume.do", method = { RequestMethod.GET, RequestMethod.POST })
@@ -62,6 +68,7 @@ public class ResumeController {
 			@RequestParam(value = "fileload2", required = false) MultipartFile fileload2, HttpServletRequest req,
 			Model model) throws Exception {
 
+
 		System.out.println("7777777777777777777777777777777777 start");
 		System.out.println("컨트롤 넘어온 자소서제목 =" + dto.getResume_intro_title());
 		System.out.println("컨트롤 넘어온 주소 =" + dto.getDesiredjob1());
@@ -69,6 +76,7 @@ public class ResumeController {
 
 		System.out.println("fileload : " + fileload);
 		System.out.println("fileload2 : " + fileload2);
+
 		
 
 		/* Map<String, Resume_EduVo> eduvolist = new HashMap<String, Resume_EduVo>(); */
@@ -116,6 +124,10 @@ public class ResumeController {
 				e.printStackTrace();
 			}
 
+		System.out.println(dto.toString());
+
+
+		
 		}
 
 		else {
@@ -125,7 +137,7 @@ public class ResumeController {
 			dto.setNewresumeimage("");
 			dto.setNewportfolio("");
 
-			
+
 			System.out.println("비었다");
 			service.writeResume(dto);
 		}
@@ -225,8 +237,11 @@ public class ResumeController {
 			boolean b = service.writeAct(actvo);
 			System.out.println(b);
 		}
-		
+
 		return "resume/resumeMain";
 	}
 
+
 }
+	
+
