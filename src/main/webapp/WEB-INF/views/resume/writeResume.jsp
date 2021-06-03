@@ -293,10 +293,9 @@ dt, dd {
 				</div>
 			</section>
 
-			<form action="writeAfResume.do">
+			<form action="writeAfResume.do" method="post" name="resumewrite" enctype="multipart/form-data">
 
-
-				<div class="container" style="margin-top: 0px; margin-right: 600px;">
+				<div class="container" style="margin-top: 0px; margin-right: 400px;">
 					<div class="row">
 						<div class="col-lg-offset-2 col-lg-12" style="margin-left: 0px;">
 							<section class="panel panel-default">
@@ -332,6 +331,7 @@ dt, dd {
 															<input type="text" id="user_nm" name="user_nm"
 																class="box_input" value="${login.name }" maxlength="20"
 																data-only-word="true">
+																<input type="hidden" name="memberid" value="${login.memberid }">
 														</div>
 
 														<div class="sri_select resume_select resume_right">
@@ -607,7 +607,7 @@ dt, dd {
 																		학교명 <span class="point">필수</span>
 																	</div>
 																	<div class="resume_input">
-																		<input type="text" id="school_nm_1621990777"
+																		<input type="text" id="highschool"
 																			name="highschool[]" value="" class="box_input"
 																			maxlength="100" data-api_type="auto"
 																			data-api_id="school_high" data-min_len="2"
@@ -625,7 +625,7 @@ dt, dd {
 																		<div class="period_bundle">
 																			<div class="resume_input" style="display:">
 																				<input type="text"
-																					id="school_entrance_dt_1621990777"
+																					id="high_str"
 																					name="high_str[]" value=""
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
@@ -635,7 +635,7 @@ dt, dd {
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
 
-																				<select class="selectpicker" name="high_str_status[]"
+																				<select class="selectpicker" name="high_str_status[]" id="high_str_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="입학">입학</option>
 																					<option value="편입">편입</option>
@@ -650,7 +650,7 @@ dt, dd {
 																		<div class="period_bundle">
 																			<div class="resume_input box_period">
 																				<input type="text"
-																					id="school_graduation_dt_1621990777"
+																					id="high_end"
 																					name="high_end[]" value=""
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
@@ -661,7 +661,7 @@ dt, dd {
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
 
-																				<select class="selectpicker" name="high_end_status[]"
+																				<select class="selectpicker" name="high_end_status[]" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업">졸업</option>
 																					<option value="재학중">재학중</option>
@@ -733,7 +733,7 @@ dt, dd {
 																	<div class="sri_select resume_select">
 
 																		<select class="selectpicker"
-																			style="width: 107.22222px; height: 50.22222px;" name="univ_status[]">
+																			style="width: 107.22222px; height: 50.22222px;" name="univ_status[]" id="univ_status">
 																			<option value="대학교(4년)">대학교(4년)</option>
 																			<option value="대학(2,3년)">대학(2,3년)</option>
 																			<option value="대학원(석사)">대학원(석사)</option>
@@ -747,7 +747,7 @@ dt, dd {
 																		학교명 <span class="point">필수</span>
 																	</div>
 																	<div class="resume_input">
-																		<input type="text" id="school_nm_1621990778"
+																		<input type="text" id="university"
 																			name="university[]" value="" class="box_input"
 																			maxlength="100" data-api_type="auto"
 																			data-api_id="school_univ" data-min_len="2"
@@ -764,7 +764,7 @@ dt, dd {
 																		<div class="period_bundle">
 																			<div class="resume_input">
 																				<input type="text"
-																					id="school_entrance_dt_1621990778"
+																					id="univ_str"
 																					name="univ_str[]" value=""
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
@@ -776,7 +776,7 @@ dt, dd {
 																				style="display:">
 
 																				<select class="selectpicker"
-																					style="width: 107.22222px; height: 50.22222px;" name="univ_str_status[]">
+																					style="width: 107.22222px; height: 50.22222px;" name="univ_str_status[]" id="univ_str_status">
 																					<option value="입학">입학</option>
 																					<option value="편입">편입</option>
 																				</select>
@@ -790,7 +790,7 @@ dt, dd {
 																		<div class="period_bundle">
 																			<div class="resume_input box_period">
 																				<input type="text"
-																					id="school_graduation_dt_1621990778"
+																					id="univ_end"
 																					name="univ_end[]" value=""
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
@@ -801,7 +801,7 @@ dt, dd {
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
 																				<select class="selectpicker"
-																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status[]">
+																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status[]" id="univ_end_status">
 																					<option value="졸업">졸업</option>
 																					<option value="재학중">재학중</option>
 																					<option value="휴학중">휴학중</option>
@@ -832,7 +832,7 @@ dt, dd {
 																		<div class="area_direct">
 																			<div class="sri_select resume_select">
 																				<select class="selectpicker"
-																					style="width: 107.22222px; height: 50.22222px;" name="univ_major_field[]">
+																					style="width: 107.22222px; height: 50.22222px;" name="univ_major_field[]" id="univ_major_field">
 																					<option value="경제/경영">경제/경영</option>
 																					<option value="어문학">어문학</option>
 																					<option value="영어/영문">영어/영문</option>
@@ -875,7 +875,7 @@ dt, dd {
 																					class="bar_title">전공계열<span
 																					class="valid_hidden"> 직접입력</span></label> <input
 																					type="text"
-																					id="school_major_department_text_1621990778"
+																					id="univ_major"
 																					name="univ_major[]" value=""
 																					class="box_input" maxlength="50">
 																				<p class="txt_error"></p>
@@ -897,7 +897,7 @@ dt, dd {
 																	<div class="sri_select resume_select resume_input_type">
 
 																		<select class="selectpicker"
-																			style="width: 107.22222px; height: 50.22222px;" name="univ_night[]">
+																			style="width: 107.22222px; height: 50.22222px;" name="univ_night[]" id="univ_night">
 																			<option value="주간">주간</option>
 																			<option value="야간">야간</option>
 																		</select>
@@ -909,7 +909,7 @@ dt, dd {
 																	<div class="input_title">학점</div>
 																	<div class="area_grades">
 																		<div class="resume_input">
-																			<input type="text" id="school_major_avg_1621990778"
+																			<input type="text" id="univ_grade"
 																				name="univ_grade[]" value="3.59"
 																				class="box_input size_type3" maxlength="5"
 																				data-only-float="true">
@@ -917,7 +917,7 @@ dt, dd {
 																		<div class="sri_select resume_select">
 
 																			<select class="selectpicker"
-																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base[]">
+																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base[]" id="univ_grade_base">
 																				<option>4.5</option>
 																				<option>4.0</option>
 																				<option>4.3</option>
@@ -940,7 +940,7 @@ dt, dd {
 																		<label for="school_thesis_title_1621990778"
 																			class="bar_title">학위논문 및 졸업작품<span
 																			class="valid_hidden"> 입력</span></label>
-																		<textarea id="school_thesis_title_1621990778"
+																		<textarea id="univ_paper"
 																			name="univ_paper[]" class="box_textarea"></textarea>
 																	</div>
 																</div>
@@ -1497,28 +1497,28 @@ dt, dd {
 																	<div class="sri_select resume_select">
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lan_grade[]">
-																			<option>1</option>
-																			<option>2</option>
-																			<option>3</option>
-																			<option>4</option>
-																			<option>5</option>
-																			<option>A</option>
-																			<option>B</option>
-																			<option>C</option>
-																			<option>D</option>
-																			<option>A1</option>
-																			<option>A2</option>
-																			<option>B1</option>
-																			<option>B2</option>
-																			<option>N1</option>
-																			<option>N2</option>
-																			<option>N3</option>
-																			<option>AH</option>
-																			<option>AM</option>
-																			<option>AL</option>
-																			<option>IH</option>
-																			<option>IM</option>
-																			<option>IL</option>
+																			<option value="1">1</option>
+																			<option value="2">2</option>
+																			<option value="3">3</option>
+																			<option value="4">4</option>
+																			<option value="5">5</option>
+																			<option value="A">A</option>
+																			<option value="B">B</option>
+																			<option value="C">C</option>
+																			<option value="D">D</option>
+																			<option value="A1">A1</option>
+																			<option value="A2">A2</option>
+																			<option value="B1">B1</option>
+																			<option value="B2">B2</option>
+																			<option value="N1">N1</option>
+																			<option value="N2">N2</option>
+																			<option value="N3">N3</option>
+																			<option value="AH">AH</option>
+																			<option value="AM">AM</option>
+																			<option value="AL">AL</option>
+																			<option value="IH">IH</option>
+																			<option value="IM">IM</option>
+																			<option value="IL">IL</option>
 																		</select>
 																	</div>
 																</div>
@@ -1529,7 +1529,7 @@ dt, dd {
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lan_pass[]">
 																			<option>취득여부</option>
-																			<option>취득(PASS)</option>
+																			<option value="취득(PASS)">취득(PASS)</option>
 																		</select>
 																	</div>
 																</div>
@@ -1551,7 +1551,7 @@ dt, dd {
 																	<div class="input_title">수상명</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="activity_org[]" value="" maxlength="50"
+																			name="awd_name" value="" maxlength="50"
 																			class="box_input">
 																	</div>
 																</div>
@@ -1560,7 +1560,7 @@ dt, dd {
 																	<div class="input_title">수여기관</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="activity_org[]" value="" maxlength="50"
+																			name="awd_date" value="" maxlength="50"
 																			class="box_input">
 
 																	</div>
@@ -1570,7 +1570,7 @@ dt, dd {
 																	<div class="input_title">취득일</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="activity_org[]" value="" maxlength="50"
+																			name="awd_org" value="" maxlength="50"
 																			class="box_input">
 																	</div>
 																</div>
@@ -1917,6 +1917,8 @@ dt, dd {
 								</article>
 						</div>
 						</section>
+						
+						<input type="submit" value="작성완료" id="save">
 					</div>
 				</div>
 	</div>
@@ -3332,7 +3334,7 @@ function careerokCheck() {
 		<div class="input_title">수상명</div>
 		<div class="resume_input">
 			<input type="text"
-				id="activity_org_1621990780" name="activity_org[]"
+				id="activity_org_1621990780" name="awd_name"
 				value="" maxlength="50" class="box_input">
 		</div>
 	</div>
@@ -3341,7 +3343,7 @@ function careerokCheck() {
 		<div class="input_title">수여기관</div>
 		<div class="resume_input">
 			<input type="text"
-				id="activity_org_1621990780" name="activity_org[]"
+				id="activity_org_1621990780" name="awd_date"
 				value="" maxlength="50" class="box_input">
 			
 		</div>
@@ -3351,7 +3353,7 @@ function careerokCheck() {
 		<div class="input_title">취득일</div>
 		<div class="resume_input">
 			<input type="text"
-				id="activity_org_1621990780" name="activity_org[]"
+				id="activity_org_1621990780" name="awd_org"
 				value="" maxlength="50" class="box_input">
 		</div>
 	</div>
@@ -3498,6 +3500,69 @@ function addBus() {
 	document.getElementById('Buses').value = bus;
 
 }
+
+</script>
+
+
+<script type="text/javascript">
+ let param = [{
+	  highschool : document.getElementById('highschool').value
+	  high_str : document.getElementById('high_str').value
+	  high_str_status : document.getElementById('high_str_status').value
+	  high_end : document.getElementById('high_end').value
+ 	  high_end_status : document.getElementById('high_end_status').value
+	  university : document.getElementById('university').value
+	  univ_status : document.getElementById('univ_status').value
+	  univ_str :  document.getElementById('univ_str').value
+	  univ_str_status : document.getElementById('univ_str_status').value
+	  univ_end : document.getElementById('univ_end').value
+	  univ_end_status : document.getElementById('univ_end_status').value
+	  univ_major_field : document.getElementById('univ_major_field').value
+	  univ_major : document.getElementById('univ_major').value
+	  univ_night : document.getElementById('univ_night').value
+	  univ_grade : document.getElementById('univ_grade').value
+	  univ_grade_base : document.getElementById('univ_grade_base').value
+	  univ_paper : document.getElementById('univ_paper').value
+	 
+}];
+
+
+	 
+$("#save").click(function() {
+
+		//1331232
+	    var resumewrite = $("form[name=resumewrite]").serialize() ;
+	    
+
+	
+ $.ajax({
+     url:"./writeAfResume.do",
+     type:"post",
+     data:resumewrite,
+     success:function(  ){
+         alert('success');
+     //    alert(list);
+     
+       
+                
+     },
+     error:function(){
+         alert('error');
+     }
+     
+      });
+
+   });   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+
+
+
 
 </script>
 

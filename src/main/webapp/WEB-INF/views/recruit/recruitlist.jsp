@@ -56,11 +56,46 @@ height: 150px;
 
 </head>
 <body>
-<h1>채용공고게시판</h1>
 
-<!-- 채용공고 작성 -->
-<h2 onclick="createRecruit()" class="createRecruitBtn">채용공고 작성</h2>
-<h2 onclick="createRecruitNew()" class="createRecruitBtn">채용공고 작성 New</h2>
+
+<nav class="navbar navbar-expand-md sticky-top navbar-light" style="text-shadow: white 0px 0px 0.2px; box-shadow: black 0px 0px 10px;" id="nav-example"><a class="navbar-brand d-none d-md-block offset-1" href="#">
+      <i class="fa d-inline fa-lg fa-stop-circle-o" style="	background-image: url(./image/1hara.gif);	background-position: top left;	background-size: 100%;	background-repeat: repeat;"></i>
+      <b> BRAND</b>
+    </a>
+    <div class="container"> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar19" style="">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar19">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <div class="btn-group">
+              <button class="btn dropdown-toggle btn-link text-dark" data-toggle="dropdown"> 전체보기</button>
+              <div class="dropdown-menu" style=""> <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item"> <a class="nav-link active" href="#">채용공고</a> </li>
+          <li class="nav-item"> <a class="nav-link active" href="#">기업정보</a> </li>
+          <li class="nav-item"> <a class="nav-link active" href="#">취업톡톡</a> </li>
+          <li class="nav-item"> <a class="nav-link active" href="#">공채달력</a> </li>
+          <li class="nav-item"> <a class="nav-link active" href="#">자료실</a> </li>
+          <li class="nav-item"> <a class="nav-link active" href="#">이력서관리</a> </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item"> <a class="nav-link" href="#">
+              <i class="fa fa-twitter fa-fw text-secondary"></i>
+            </a> </li>
+          <li class="nav-item"> <a class="btn btn-secondary mr-1" href="#">로그인</a><a class="btn btn-secondary" href="#">회원가입</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  
+  
 
 <!-- 프론트 작업중 다중 셀렉트 박스  -->
 	<div class="container">
@@ -75,8 +110,17 @@ height: 150px;
 			<h3 class="text-muted">채용공고 게시판</h3>
 			<div class="m-5"></div>
 		</div>
+		
+		
+		
+<h1>채용공고게시판</h1>
+
+<!-- 채용공고 작성 -->
+<h2 onclick="createRecruit()" class="createRecruitBtn">채용공고 작성</h2>
+<h2 onclick="createRecruitNew()" class="createRecruitBtn">채용공고 작성 New</h2>
 
 <form action="#" id="_frmFormSearch" name="dataForm" method="post" novalidate="novalidate">
+	<input type="hidden" value="" id="_page">
 		<div class="py-5">
 			<div class="container">
 
@@ -390,10 +434,12 @@ function arrow(depth) {
 }
 */
 
+//5단 검색바 사용 검색할 경우 
 function getrecruitSearchList(pnum) {
 	 var pnum = pnum;
 	 var queryString = $("form[name=dataForm]").serialize()+ "&page="+pnum ;
-
+	 
+	 $("#_page").val(pnum);
 
 
      $.ajax({
@@ -715,7 +761,7 @@ $(document).on("change","#_buscodeList2", function(){
 		        	//stackname = 밑에태그 아이디.val (elements) 배열로 해야될듯
 
 		        		app += 	"<div class='form-check mt-2 form-check-inline' id='buscodeList3'>"+
-		        	    "<input class='form-check-input list_col3' name="+count+" id='buscode3data"+count+"' value='"+val.busname+"' type='checkbox'>"+
+		        	    "<input class='form-check-input list_col3' name="+count+" id='buscode3data"+count+"' value='"+val.buscode+"' data-value='"+val.busname+"' type='checkbox'>"+
 		        	    "<label class='form-check-label' for='exampleCheck1'>"+val.busname+
 		        	    "</label></div>";
 
@@ -730,7 +776,7 @@ $(document).on("change","#_buscodeList2", function(){
 				var buscodeTag ="buscode3data"+count;
 
 				for(var i=0; i<stackValue; i++){
-			    	if(stackData[i] == val.busname){
+			    	if(stackData[i] == val.buscode){
 			    		document.getElementById(buscodeTag).checked = true;
 			    	}
 			     }
@@ -780,9 +826,13 @@ $(document).on("change", ".list_col3" , function(){
 
 		let buscode = $(this).val();
 		var count = $(this).attr('name');
+		
+		//데이터 밸류 값으로 busname값을 받아옴 
+		let busname = $(this).data("value");
+		//alert("버스네임(데이터밸류네임):"+busname);
 		//alert(buscode);
 
-		app = "<span class=arrBusdata id=selectedBuscode"+cnt+">"+buscode+
+		app = "<span class=arrBusdata id=selectedBuscode"+cnt+">"+busname+
 			  "<input name='buscode' type='hidden' value='"+buscode+"'>"+
 			  "<a onclick='delSelBuscode("+cnt+","+count+")'>"+
 			  "<img alt='왜안뜨지' src='ma.jpg' style='width:30px; height:30px;'>"+

@@ -1,4 +1,7 @@
 package bit.com.a.dto;
+
+import java.io.Serializable;
+
 /*
 --14. 수상내역 테이블 
 ----RESUME 테이블 작성후 실행 
@@ -13,7 +16,7 @@ CONSTRAINT AWARD_FK1 FOREIGN KEY (RESUMESEQ)
 REFERENCES RESUME (RESUMESEQ)
 );
  */
-public class Resume_AwardDto {
+public class Resume_AwardDto implements Serializable {
 	private int awdseq;
 	private int resumeseq;
 	private String awd_name;
@@ -23,6 +26,17 @@ public class Resume_AwardDto {
 	public Resume_AwardDto() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public Resume_AwardDto(String awd_name, String awd_date, String awd_org) {
+		super();
+		this.awd_name = awd_name;
+		this.awd_date = awd_date;
+		this.awd_org = awd_org;
+	}
+
+
 
 	public Resume_AwardDto(int awdseq, int resumeseq, String awd_name, String awd_date, String awd_org) {
 		super();
