@@ -1,6 +1,7 @@
 package bit.com.a.controller;
 import java.util.Calendar;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,13 +61,48 @@ public class RecruitController {
 	}
 	
 	
-//TODO Ajax로 페이징 리스트 불러오기(검색, 페이지 추가)
+//TODOAjax로 페이징 리스트 불러오기(검색, 페이지 추가)
 	//parameter Dto는 동일해서 BbsParam가져다 썻음 
 	@ResponseBody
 	@RequestMapping(value = "recruitPagingListData.do", method = RequestMethod.GET)
-	public List<RecruitDto> recruitPagingListData(BbsParam param) {	
+	public List<RecruitDto> recruitPagingListData(RecruitParam param, HttpServletRequest req) {	
 		
 		System.out.println("param tostring :" + param.toString());
+		
+		//paging 처리 
+		if(param.getPage() == 0) {
+			
+			int sn = param.getPage(); 
+			int start = sn * 5 + 1; 	//1  11
+			int end = (sn + 1) * 5; 	//10 20 
+			
+			System.out.println("start ="+start);
+			System.out.println("end ="+end);
+			param.setStart(start);
+			param.setEnd(end);
+//		List<BbsDto> list = service.getBbsList(param);
+			
+		}
+//		model.addAttribute("bbslist", list);
+		
+		List<RecruitDto> list = service.getRecruitPagingList(param);
+		
+//		System.out.println(list.toString());
+		
+		return list;
+	}
+	
+	
+	//TODO 모든 검색조건 추가하여 검색한 결과를 리스트로 반환하여 Ajax로 전송 
+	//getRecruitSearchList
+	@ResponseBody
+	@RequestMapping(value = "recruitTest.do", method = RequestMethod.POST)
+	public List<RecruitDto> test(RecruitParam param, HttpServletRequest req) {	
+		//넘어온값 확인 
+		System.out.println("넘어온값 : "+param.toString());
+		
+		//해시맵 생성 
+		Map<String, Object> map = new HashMap<String, Object>();
 		
 		//paging 처리 
 		int sn = param.getPage(); 
@@ -77,13 +113,78 @@ public class RecruitController {
 		System.out.println("end ="+end);
 		param.setStart(start);
 		param.setEnd(end);
-//		List<BbsDto> list = service.getBbsList(param);
+				
+		//1. 직무코드 받아오기 
+		String arrBuscode[] = null;
+				
+		if(param.getBuscode() != null) {
+			System.out.println(param.getBuscode().toString() );
+			String buscode = param.getBuscode();
+			System.out.println("이게버스코드:"+buscode);
+			
+			//띄어쓰기 기준으로 잘랐음 buscode도 실제 buscode임 
+			arrBuscode = buscode.split(",");
+			
+			//확인
+			for (String item : arrBuscode) {
+				System.out.println(item.toString());
+			}
+			//직무코드 넣기 
+		}
+		map.put("arrBusi", arrBuscode);
 		
-//		model.addAttribute("bbslist", list);
+		//2. 지역코드 받아오기
+		String arrAreacode[] = null;
+				
+		if(param.getArea2name() != null) {
+			String areaname = param.getArea2name();
+			System.out.println("이게지역이름:"+areaname);
+			
+			//배열에 ,기준으로 잘라서 담기 (지역네임)
+			 arrAreacode = areaname.split(",");
+			
+			//확인
+			for (String item : arrAreacode) {
+				System.out.println(item.toString());
+			}
+			//지역코드 넣기 
+		}
+		map.put("arrAreacode", arrAreacode);
 		
-		List<RecruitDto> list = service.getRecruitPagingList(param);
+		String search = param.getSearch();
+		String choice = param.getChoice();
 		
-		//System.out.println(list.toString());
+		System.out.println("서치 + 초이스 : " +search+", " + choice);
+		System.out.println("결과값 : "+param.toString());
+		//디티오 넣기 
+		map.put("param", param);
+		//choice 넣기(검색범주선택)
+		map.put("choice", choice);
+		//search 넣기(검색어)
+		map.put("search", search);
+		
+		String education = "0";
+		if(param.getEducation() != null && !param.getEducation().equals("")) {
+			 education = param.getEducation();
+		}
+		map.put("education", education);
+		
+		String CareerStart = "0";
+		if(param.getCareerStart() != null && !param.getCareerStart().equals("")) {
+			 CareerStart = param.getCareerStart();
+		}
+		map.put("CareerStart", CareerStart);
+		
+		String CareerEnd = "0"; 
+		if(param.getCareerEnd() != null && !param.getCareerEnd().equals("")) {
+			CareerEnd = param.getCareerEnd();
+		}
+		map.put("CareerEnd", CareerEnd);
+		
+		//최종결과 리스트로 받기 
+		List<RecruitDto> list = service.getRecruitSearchList(map);
+		
+		System.out.println("결과:"+list.toString());
 		
 		return list;
 	}
@@ -91,17 +192,120 @@ public class RecruitController {
 
 
 
-//TODOAjax로 리스트의 총수 불러오기
+//TODO Ajax로 리스트의 총수 불러오기
 	//parameter Dto는 동일해서 BbsParam가져다 썻음 
 	@ResponseBody
 	@RequestMapping(value = "recruitlistCount.do", method = RequestMethod.GET)
 	public int recruitListCount(Model model, BbsParam param) {		
-		model.addAttribute("doc_title", "채용공고");
-		
-		int count = service.getRecruitCount(param);
-		
-		return count;
+		//넘어온값 확인 
+				System.out.println("넘어온값 : "+param.toString());
+				
+				//해시맵 생성 
+				Map<String, Object> map = new HashMap<String, Object>();
+				
+				//paging 처리 
+				int sn = param.getPage(); 
+				int start = sn * 5 + 1; 	//1  11
+				int end = (sn + 1) * 5; 	//10 20 
+				
+				System.out.println("start ="+start);
+				System.out.println("end ="+end);
+				param.setStart(start);
+				param.setEnd(end);
+						
+				//1. 직무코드 받아오기 
+				String arrBuscode[] = null;
+						
+				if(param.getBuscode() != null) {
+					System.out.println(param.getBuscode().toString() );
+					String buscode = param.getBuscode();
+					System.out.println("이게버스코드:"+buscode);
+					
+					//띄어쓰기 기준으로 잘랐음 buscode도 실제 buscode임 
+					arrBuscode = buscode.split(",");
+					
+					//확인
+					for (String item : arrBuscode) {
+						System.out.println(item.toString());
+					}
+					//직무코드 넣기 
+				}
+				map.put("arrBusi", arrBuscode);
+				
+				//2. 지역코드 받아오기
+				String arrAreacode[] = null;
+						
+				if(param.getArea2name() != null) {
+					String areaname = param.getArea2name();
+					System.out.println("이게지역이름:"+areaname);
+					
+					//배열에 ,기준으로 잘라서 담기 (지역네임)
+					 arrAreacode = areaname.split(",");
+					
+					//확인
+					for (String item : arrAreacode) {
+						System.out.println(item.toString());
+					}
+					//지역코드 넣기 
+				}
+				map.put("arrAreacode", arrAreacode);
+				
+				String search = param.getSearch();
+				String choice = param.getChoice();
+				
+				System.out.println("서치 + 초이스 : " +search+", " + choice);
+				System.out.println("결과값 : "+param.toString());
+				//디티오 넣기 
+				map.put("param", param);
+				//choice 넣기(검색범주선택)
+				map.put("choice", choice);
+				//search 넣기(검색어)
+				map.put("search", search);
+				
+				String education = "0";
+				if(param.getEducation() != null && !param.getEducation().equals("")) {
+					 education = param.getEducation();
+				}
+				map.put("education", education);
+				
+				String CareerStart = "0";
+				if(param.getCareerStart() != null && !param.getCareerStart().equals("")) {
+					 CareerStart = param.getCareerStart();
+				}
+				map.put("CareerStart", CareerStart);
+				
+				String CareerEnd = "0"; 
+				if(param.getCareerEnd() != null && !param.getCareerEnd().equals("")) {
+					CareerEnd = param.getCareerEnd();
+				}
+				map.put("CareerEnd", CareerEnd);
+				
+				//최종결과 리스트로 받기 
+				int count = service.getRecruitCount(map);
+				
+				System.out.println("결과 :"+count);
+				
+				return count;
 	}	
+	
+	
+	
+	
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value = "recruitlistCount.do", method = RequestMethod.GET)
+	 * public int recruitListCount(Model model, BbsParam param) {
+	 * model.addAttribute("doc_title", "채용공고");
+	 * 
+	 * int count = service.getRecruitCount(param);
+	 * 
+	 * return count; }
+	 */
+	
+	
+	
+	
 	
 //TODO공고작성페이지로이동(구형)
 	@RequestMapping(value = "recuruitcreate.do", method = RequestMethod.GET)
@@ -110,7 +314,7 @@ public class RecruitController {
 		return "recruit/recuruitcreate";
 	}
 
-//TODO 채용공고 작성 After(DB에 입력)
+//TODO채용공고 작성 After(DB에 입력)
 	@RequestMapping(value = "recuruitcreateAf.do", method = RequestMethod.POST)
 	public String recuruitcreateAf(RecruitDto dto, Model model, HttpServletRequest req) {		
 		model.addAttribute("doc_title", "채용공고");
@@ -134,7 +338,7 @@ public class RecruitController {
 		  //상세 주소 현재 사용안함 (컴퍼니 테이블과 조인하면 상세주소를 가져올수 있을거라 생각됨 여기선 필요없)
 		  String area2 = dto.getArea2Name();
 		  //다음 주소 api를 통해 가져온 주소를 split메서드를 통해 띄어쓰기를 기준으로 잘라준다
-		  String[] area = area1.split("\\s+");
+		  String[] area = area1.split("\\s");
 		  //대분류 지역이름에서 특별시 광역시는 제거해준다 
 		  String area1Name = area[0]
 				  				.replace("특별시", "")
@@ -151,11 +355,13 @@ public class RecruitController {
 		Map<String, Object> param = new HashMap<String, Object>();
 		//dto를 map에 넣는다.
 		param.put("dto", dto); 
+		
 		//buscode 여러개를 넘겨받고 배열에 넣어준다 
 		String[] arrayParam = req.getParameterValues("buscode");
 		for (int i = 0; i < arrayParam.length; i++) {
 		System.out.println("넘어온버스코드:"+arrayParam[i]);
 		}
+		
 		//map에 배열을 넣는다
 		param.put("arrayParam", arrayParam); 
 		
@@ -170,7 +376,7 @@ public class RecruitController {
 		return "redirect:/recuruitlist.do";
 	}
 
-//TODO 채용공고 디테일 창으로 이동 (삭제)
+//TODO채용공고 디테일 창으로 이동 (삭제)
 	@RequestMapping(value = "recruitdetail.do", method = RequestMethod.GET)
 	public String recuruitdetail(RecruitDto dto, String seq) {	
 		
@@ -180,7 +386,7 @@ public class RecruitController {
 		return "recruit/recruitDetail";
 	}
 
-//TODO 디테일 창으로 이동	
+//TODO디테일 창으로 이동	
 	@RequestMapping(value = "RecruitDetail.do", method = RequestMethod.GET)
 	public String RecruitDetail(int jobseq, Model model) {		
 		model.addAttribute("doc_title", "채용공고");
@@ -202,7 +408,7 @@ public class RecruitController {
 		return "recruit/recruitDetail";
 	}
 	
-//TODO 디테일 수정시 데이터 가져가기 Ajax
+//TODO디테일 수정시 데이터 가져가기 Ajax(컨트롤러에서 상세공고 데이터를 취득하여 업데이트 페이지로 이동)
 		@RequestMapping(value = "RecruitUpdate.do", method = RequestMethod.GET)
 		public String getRecruitDetailUpdData(int jobseq, Model model) {		
 			
@@ -243,14 +449,96 @@ public class RecruitController {
 			  
 			  System.out.println("시작일 :"+dto.getJobStart());
 			  System.out.println("종료일 :"+dto.getJobEnd());
+			  
+			  dto.setCertifyUpdate("YES");
+			  System.out.println("업뎃셋팅 :" + dto.getCertifyUpdate());
 			
 			model.addAttribute("dto", dto);
 			
 			return "recruit/createTest";
 		}
 		
+		
+		//TODO채용공고 작성 After(DB에 입력)
+		@RequestMapping(value = "recuruitupdateAf.do", method = RequestMethod.POST)
+		public String RecruitUpdate(RecruitDto dto, Model model, HttpServletRequest req) {		
+			model.addAttribute("doc_title", "채용공고");
+
+			  System.out.println("디티오 데이터 :" +dto.toString());
+			
+			  //시작일 종료일 데이터 정비 
+			  String start = dto.getJobStart(); 
+			  String end = dto.getJobEnd();
+			  //datetime-local 데이터는 중간에 T가 들어있어서 DB저장을 위해 잘라준다
+			  start = start.replace("T", " "); 
+			  end = end.replace("T", " ");
+			  dto.setJobStart(start);
+			  dto.setJobEnd(end);
+			  
+			  System.out.println("시작일 :"+dto.getJobStart());
+			  System.out.println("종료일 :"+dto.getJobEnd());
+			  
+			  //지역 데이터 재설정 해주기 
+			  String area1 = dto.getArea1Name();
+			  //상세 주소 현재 사용안함 (컴퍼니 테이블과 조인하면 상세주소를 가져올수 있을거라 생각됨 여기선 필요없)
+			  String area2 = dto.getArea2Name();
+			  //다음 주소 api를 통해 가져온 주소를 split메서드를 통해 띄어쓰기를 기준으로 잘라준다
+			  String[] area = area1.split(",");
+			  
+			  System.out.println("지역배열 출력:"+ Arrays.toString(area));
+			  
+			  //대분류 지역이름에서 특별시 광역시는 제거해준다 
+			  String area1Name = area[0]
+					  				.replace("특별시", "")
+					  				.replace("광역시", "");
+			  System.out.println(area1Name);
+			  dto.setArea1Name(area1Name);
+			  dto.setArea2Name(area[1]);
+			  
+					  
+			  System.out.println("변경된 데이터 :"+dto.toString());
+			
+			  
+			
+			Map<String, Object> param = new HashMap<String, Object>();
+			//dto를 map에 넣는다.
+			param.put("dto", dto); 
+			
+			//buscode 여러개를 넘겨받고 배열에 넣어준다 
+			String[] arrayParam = req.getParameterValues("buscode");
+			for (int i = 0; i < arrayParam.length; i++) {
+			System.out.println("넘어온버스코드:"+arrayParam[i]);
+			}
+			
+			//map에 배열을 넣는다
+			param.put("arrayParam", arrayParam); 
+			
+			
+			boolean delB = service.deleteBuscode(dto.getJobSeq());
+			
+			if(delB) {
+				System.out.println("버스코드삭제성공");
+			}
+			
+			boolean codeUpB = service.insertBuscode(param);
+			
+			if(codeUpB) {
+				System.out.println("버스코드 등록성공");
+			}
+			
+			boolean b = service.updateRecruit(param);
+			
+			if(b) {
+				System.out.println("공고등록성공");
+			}else {
+				System.out.println("공고등록실패");
+			}
+			
+			return "redirect:/recuruitlist.do";
+		}
+		
 	
-//TODO 삭제 
+//TODO삭제 
 		@RequestMapping(value = "deleteRecruit.do", method = {RequestMethod.GET, RequestMethod.POST}) 
 		public String deleteRecruit(int jobSeq, Model model) {
 			
@@ -258,7 +546,7 @@ public class RecruitController {
 			
 		
 			boolean b = service.deleteRecruit(jobSeq);
-			
+		
 			if(b) {
 				System.out.println("공고삭제성공");
 			}else {
@@ -269,7 +557,7 @@ public class RecruitController {
 			return "redirect:/recuruitlist.do";
 		}
 		
-//TODO 업데이트 
+//TODO업데이트 
 		
 		
 		
@@ -299,7 +587,7 @@ public class RecruitController {
 			
 			List<RecruitParam> list = null;
 			
-			if(length == 1) {
+			if(length == 1 || length ==2) {
 				list = service.buscode2ListData(buscode);
 			}
 			else if(length == 4 || length == 3) {
@@ -371,6 +659,31 @@ public class RecruitController {
 			return "recruit/recruitcalendar";
 		}
 		
-
-	
+		
+		//채용공고 리스트에 지역코드를 뿌려주는 코드 (지역1) 
+			@ResponseBody
+			@RequestMapping(value = "areacodeListData.do", method = {RequestMethod.GET, RequestMethod.POST}) 
+			public List<RecruitParam> areacodeListData(Model model) {
+				
+				List<RecruitParam> list = service.areacodeListData();
+				
+				System.out.println(list.toString());
+				
+				return list;
+			}
+				
+			//채용공고 리스트에 지역코드를 뿌려주는 코드 (지역2) 
+			@ResponseBody
+			@RequestMapping(value = "areacode2ListData.do", method = {RequestMethod.GET, RequestMethod.POST}) 
+			public List<RecruitParam> areacode2ListData(int areacode, Model model) {
+				
+				//int areacode = service.getArea1Code(areaname);
+				
+				List<RecruitParam> list = service.areacode2ListData(areacode);
+				
+				System.out.println(list.toString());
+				
+				return list;
+			}
+				
 }

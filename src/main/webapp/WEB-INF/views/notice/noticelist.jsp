@@ -1195,7 +1195,7 @@ margin-right : 450px;
 					<th scope="col">번호</th>
 					<th scope="col">제목</th>
 					<th scope="col">작성자</th>
-					<th scope="col">자료출처</th>
+					<!-- <th scope="col">자료출처</th> -->
 					<th scope="col">등록일</th>
 					<th scope="col">조회</th>
 				</tr>
@@ -1211,7 +1211,7 @@ margin-right : 450px;
 						</a>
 					</td>
 					<td>${notice.memberid }</td>
-					<td>${login.name }</td>
+					<%-- <td>${login.name }</td> --%>
 					<td>${notice.regdate.substring(0,10)}</td>
 					<td>${notice.readcount}</td>
 				</tr>	

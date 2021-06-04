@@ -12,16 +12,8 @@ public class JobtalkParam implements Serializable{
 	private int start;
 	private int end;
 	
-	
-	
-	
-
-	
 	public JobtalkParam() {
 	}
-	
-	
-
 
 	public JobtalkParam(String choice, String search, int page, int start, int end) {
 		super();

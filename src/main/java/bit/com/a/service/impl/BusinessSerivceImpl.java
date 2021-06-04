@@ -26,10 +26,17 @@ public class BusinessSerivceImpl implements BusinessService{
 	
 	@Override
 	public BusinessDto login(BusinessDto dto) {
+		
+		
+		
+		
 		return dao.login(dto);
 	}
 
-	
+	@Override
+	public void businessDelete(BusinessDto dto) {
+		dao.businessDelete(dto);
+	}
 	
 	
 }

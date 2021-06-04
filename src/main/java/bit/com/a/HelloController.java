@@ -119,5 +119,16 @@ public class HelloController {
 			return "regiclick";
 		}
 
+		@RequestMapping(value ="idsearch.do", method = RequestMethod.GET)
+		public String idsearch(Model model) {
+			logger.info("HelloController idsearch() " + new Date());
+			return "idsearch";
+		}
+		
+		@RequestMapping(value ="member_info.do", method = RequestMethod.GET)
+		public String member_info(Model model) {
+			logger.info("HelloController member_info() " + new Date());
+			return "member_info";
+		}
 
 }

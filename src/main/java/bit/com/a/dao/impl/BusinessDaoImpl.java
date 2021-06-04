@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import bit.com.a.dao.BusinessDao;
 import bit.com.a.dto.BusinessDto;
+import bit.com.a.dto.MemberDto;
 
 @Repository
 public class BusinessDaoImpl implements BusinessDao{
@@ -31,4 +32,10 @@ public class BusinessDaoImpl implements BusinessDao{
 		BusinessDto bus = sqlsession.selectOne(namespace + "login", dto);
 		return bus;
 	}
+	
+	@Override
+	public void businessDelete(BusinessDto dto) {
+		sqlsession.delete(namespace + "businessDelete", dto);
+	}
+	
 }
