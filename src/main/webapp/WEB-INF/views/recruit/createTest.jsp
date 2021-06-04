@@ -25,6 +25,12 @@
 <!-- 외부css파일과 연결 -->
 <link rel="stylesheet" href="./css/wireframe.css">
 
+<!-- CK-editor -->
+<link rel="stylesheet" href="ckeditor5/sample/styles.css">
+<script src="ckeditor5/build/ckeditor.js"></script>
+
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/WEB-INF/lib/ckeditor5/sample/styles.css"> --%>
+<%-- <script src="${contextPath }/WEB-INF/lib/ckeditor5/build/ckeditor.js"></script> --%>
 
 <style type="text/css">
 /* buscode selected 된거 쌓는곳 */
@@ -212,13 +218,21 @@
                 <div class="invalid-feedback"> Please enter your shipping address. </div>
               </div>
               
-              <div class="row">
-              <div class="col-md-10 mb-6"> <label for="address">공고상세내역</label>
-              	 <textarea rows="10" cols="100 px" name="jobContent">${dto.jobContent }             
-                 </textarea>
-              </div>
-              </div>
+             
               
+              </div>
+               <div class="row">
+              <div class="col-md-12 mb-12">
+	               <p><label for="address">공고상세내역</label></p>
+	              	<div class="editor" ><h1>여기다가 쓰면 들어옴 </h1>
+	              							<span>띄어쓰기는 안댐</span><span>띄어쓰기는 안댐</span><span>띄어쓰기는 안댐</span>      
+											<img alt="" src="">       	
+	              	${dto.jobContent }  </div>
+	              	
+	              	
+	              	<input type="hidden" name="jobContent" id="_jobContent">              	 
+	              
+              </div>
               </div>
               <hr class="mb-4">
               
@@ -316,7 +330,7 @@
           			<input type="hidden" value="${dto.jobSeq }" id="_jobSeq" name="jobSeq">          		
           		</c:when> 
         	    <c:otherwise>
-          			<div class="col-md-12"><a class="btn btn-secondary" href="javascript:jobRegi();">작성하기</a></div>
+          			<div class="col-md-12"><a class="btn btn-secondary" id="submit" href="javascript:jobRegi();">작성하기</a></div>
           		</c:otherwise> 
           	</c:choose> 
           	
@@ -389,6 +403,15 @@ function jobRegi() {
     for(var i=0; i<busValue; i++){                          
     	busData[i] = $("input[name='buscode']")[i].value;
     }
+    
+    /* var data = CKEDITOR.instances.editor.getData();
+    $("#_jobContent").val(data);
+    alert($("#_jobContent").val(data)); */
+    
+    alert($(".editor").html());
+    $("#_jobContent").val($(".editor").html());
+    
+    
     
    
     
@@ -781,7 +804,86 @@ function delSelBuscode(cnt, count) {
 </script>
   
   
+  <script>BalloonEditor
+	.create( document.querySelector( '.editor' ), {
+		
+		toolbar: {
+			items: [
+				'heading',
+				'|',
+				'bold',
+				'italic',
+				'link',
+				'bulletedList',
+				'numberedList',
+				'|',
+				'outdent',
+				'indent',
+				'|',
+				'imageUpload',
+				'blockQuote',
+				'insertTable',
+				'fontColor',
+				'fontSize',
+				'fontBackgroundColor',
+				'fontFamily',
+				'highlight',
+				'imageInsert',
+				'mediaEmbed',
+				'undo',
+				'redo'
+			]
+		},
+		language: 'ko',
+		image: {
+			toolbar: [
+				'imageTextAlternative',
+				'imageStyle:full',
+				'imageStyle:side',
+				'linkImage'
+			]
+		},
+		table: {
+			contentToolbar: [
+				'tableColumn',
+				'tableRow',
+				'mergeTableCells'
+			]
+		},
+		licenseKey: '',
+		
+		
+	} )
+	.then( editor => {
+		window.editor = editor;
+
+		
+		
+		
+
+		
+		
+		
+	} )
+	.catch( error => {
+		console.error( 'Oops, something went wrong!' );
+		console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+		console.warn( 'Build id: x1h6xk4rd95i-65gjhojljtvk' );
+		console.error( error );
+	} );
   
+	//Assuming there is a <button id="submit">Submit</button> in your application.
+  document.querySelector( '#submit' ).addEventListener( 'click', () => {
+      /* const editorData = editor.getData();
+      
+      alert(editorData);
+      $("#_jobContent").val(editorData); */
+
+      // ...
+  } );
+  
+  
+	</script>
   
   
   

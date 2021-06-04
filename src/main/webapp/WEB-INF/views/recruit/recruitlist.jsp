@@ -93,9 +93,9 @@ height: 150px;
       </div>
     </div>
   </nav>
-  
-  
-  
+
+
+
 
 <!-- 프론트 작업중 다중 셀렉트 박스  -->
 	<div class="container">
@@ -110,9 +110,9 @@ height: 150px;
 			<h3 class="text-muted">채용공고 게시판</h3>
 			<div class="m-5"></div>
 		</div>
-		
-		
-		
+
+
+
 <h1>채용공고게시판</h1>
 
 <!-- 채용공고 작성 -->
@@ -120,7 +120,7 @@ height: 150px;
 <h2 onclick="createRecruitNew()" class="createRecruitBtn">채용공고 작성 New</h2>
 
 <form action="#" id="_frmFormSearch" name="dataForm" method="post" novalidate="novalidate">
-	<input type="hidden"  id="_page" name="page">
+	<input type="hidden"  id="_page" >
 		<div class="py-5">
 			<div class="container">
 
@@ -434,13 +434,14 @@ function arrow(depth) {
 }
 */
 
-//5단 검색바 사용 검색할 경우 
+//5단 검색바 사용 검색할 경우
 function getrecruitSearchList(pnum) {
 	 var pnum = pnum;
 	 $("#_page").val(pnum);
 	 var queryString = $("form[name=dataForm]").serialize()+ "&page="+pnum;
-	 
 
+	 var selectSearchData1 = $("form[name=dataForm]").serialize();
+	 getRecruitListCount(selectSearchData1);
 
      $.ajax({
          type : 'post',
@@ -450,7 +451,7 @@ function getrecruitSearchList(pnum) {
              alert("에러발생");
          },
          success:function(list){
- 			alert('success');
+ 			//alert('success');
  			//alert(list);
 
  			$(".list_col").remove();
@@ -559,13 +560,14 @@ function getrecruListData( pNumber, search ){
 
 
 //글의 총수를 취득
-function getRecruitListCount(pnum) {
-	
-	 var pnum = pnum;
+function getRecruitListCount(selectSearchData1) {
+
+	/*  var pnum = pnum;
 	 $("#_page").val(pnum);
-	 alert("페이지넘버:"+$("#_page").val(pnum))
-	 var selectSearchData = $("form[name=dataForm]").serialize()+ "&page="+pnum;
-	 
+	 alert("페이지넘버:"+$("#_page").val(pnum)) */
+	 var selectSearchData = $("form[name=dataForm]").serialize();
+	 //var selectSearchData = selectSearchData1;
+
 
 
      $.ajax({
@@ -575,16 +577,16 @@ function getRecruitListCount(pnum) {
          success: function( count ) {
  			//alert('success');
 			//alert(count);
-			
+
  			loadPage(count);
  		},
          error: function(xhr, status, error){
              alert("글의 총수 불러오기 에러발생");
          }
      });
-	
-	
-	
+
+
+
 }
 
 
@@ -607,9 +609,9 @@ function getRecruitListCount(pnum) {
 
 //paging 처리
 function loadPage( totalCount ) {
-	
-	 alert("토탈카운트"+totalCount);
-	
+
+	 //alert("토탈카운트"+totalCount);
+
 	let pageSize = 5;
 	let nowPage = 1;
 
@@ -635,7 +637,7 @@ function loadPage( totalCount ) {
 		initiateStartPageClick:false,				//onPageClick 자동 실행되지 않도록 한다
 		onPageClick : function(event, page) {
 			nowPage = page;
-			alert('nowPage:'+ page);
+			//alert('nowPage:'+ page);
 			//getrecruListData(page -1);
 			getrecruitSearchList(page -1);
 		}
@@ -855,8 +857,8 @@ $(document).on("change", ".list_col3" , function(){
 
 		let buscode = $(this).val();
 		var count = $(this).attr('name');
-		
-		//데이터 밸류 값으로 busname값을 받아옴 
+
+		//데이터 밸류 값으로 busname값을 받아옴
 		let busname = $(this).data("value");
 		//alert("버스네임(데이터밸류네임):"+busname);
 		//alert(buscode);
