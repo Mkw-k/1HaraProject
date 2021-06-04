@@ -1,9 +1,11 @@
 package bit.com.a.controller;
 
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,21 +91,58 @@ public class MemberController {
 
 	}
 
-	@RequestMapping(value = "loginAf.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String loginAf(MemberDto dto, HttpServletRequest req) {
+	/*@RequestMapping(value = "loginAf.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String loginAf(MemberDto dto, HttpServletRequest req, HttpServletResponse response,
+			@RequestParam(value="memberid", required=true) String userId, 
+			@RequestParam(value="pwd",required=true) String password ) throws Exception {
 
 		MemberDto login = service.login(dto);
 
+		
+		
 		if (login != null && !login.getMemberid().equals("")) {
 
 			req.getSession().setAttribute("login", login);
 			// req.getSession().setMaxInactiveInterval(60 * 60 * 24);
 
 			return "redirect:/home.do";
+			
 		} else {
-			return "redirect:/login.do";
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
+			
+			return "redirect:/login1.do";
+		
+		}
+	}*/
+	
+	@RequestMapping(value = "loginAf.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String loginAf(MemberDto dto, HttpServletRequest req, HttpServletResponse response,
+			@RequestParam(value="memberid", required=true) String userId, 
+			@RequestParam(value="pwd",required=true) String password ) throws Exception {
+
+		MemberDto login = service.login(dto);
+		if (login == null) {
+
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인 정보를 확인해주세요.');</script>");
+			
+			return "redirect:/login1.do";
+			
+		} else {
+			req.getSession().setAttribute("login", login);
+			// req.getSession().setMaxInactiveInterval(60 * 60 * 24);
+
+			return "redirect:/home.do";
+		
 		}
 	}
+	
+	
+	
+	
 	@RequestMapping("logout.do")
     public ModelAndView logout(HttpSession session) {
         session.invalidate();
@@ -178,7 +217,6 @@ public class MemberController {
 			dto.setPwd("0000");
 			dto.setAuth(1);
 			dto.setEmail("0000");
-			dto.setDel(0);
 			dto.setDetailaddress("0000");
 			dto.setAddress("0000");
 
@@ -246,5 +284,36 @@ public class MemberController {
 			return "redirect:home.do";
 		}
 	}
+	
+	@RequestMapping(value="memberdeletemerong.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView admin_member_forced_eviction(String memberid) throws Exception {
+        System.out.println("들어오냐?");
+        //유저의 아이디를 삭제 (강제탈퇴) 시키기위해서 dto에 담는다.
+        MemberDto dto = new MemberDto();
+        dto.setMemberid(memberid);
+        
+        //회원탈퇴 체크를 하기위한 메소드, 탈퇴 시키려는 회원의 아이디가 있는지 검사한후에 result 변수에 저장한다.
+        
+        service.admin_member_foced_evictionCheck(dto);
+ 
+        ModelAndView mav = new ModelAndView();
+        
+        if(dto.getMemberid() != null) {    //회원 강제탈퇴가 성공했을시 출력되는 뷰
+            
+            mav.setViewName("home");
+            
+            mav.addObject("message", "회원이 정상적으로 강제탈퇴 처리 되었습니다.");
+            
+        }else {
+            
+            mav.setViewName("admin/memberlist");
+            
+            mav.addObject("message", "회원 목록에 없는 회원입니다. 다시 확인해주세요.");
+        }
+        
+        
+        return mav;
+                
+    }
 	
 }

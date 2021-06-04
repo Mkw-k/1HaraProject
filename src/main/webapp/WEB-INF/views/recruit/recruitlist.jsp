@@ -120,7 +120,7 @@ height: 150px;
 <h2 onclick="createRecruitNew()" class="createRecruitBtn">채용공고 작성 New</h2>
 
 <form action="#" id="_frmFormSearch" name="dataForm" method="post" novalidate="novalidate">
-	<input type="hidden" value="" id="_page">
+	<input type="hidden"  id="_page" name="page">
 		<div class="py-5">
 			<div class="container">
 
@@ -405,7 +405,7 @@ height: 150px;
 
 
 <script type="text/javascript">
-getrecruListData();
+getrecruitSearchList(0);
 getRecruitListCount();
 
 //작성목록으로 이동
@@ -437,9 +437,9 @@ function arrow(depth) {
 //5단 검색바 사용 검색할 경우 
 function getrecruitSearchList(pnum) {
 	 var pnum = pnum;
-	 var queryString = $("form[name=dataForm]").serialize()+ "&page="+pnum ;
-	 
 	 $("#_page").val(pnum);
+	 var queryString = $("form[name=dataForm]").serialize()+ "&page="+pnum;
+	 
 
 
      $.ajax({
@@ -561,7 +561,36 @@ function getrecruListData( pNumber, search ){
 
 
 //글의 총수를 취득
-function getRecruitListCount() {
+function getRecruitListCount(pnum) {
+	
+	 var pnum = pnum;
+	 $("#_page").val(pnum);
+	 alert("페이지넘버:"+$("#_page").val(pnum))
+	 var selectSearchData = $("form[name=dataForm]").serialize()+ "&page="+pnum;
+	 
+
+
+     $.ajax({
+         type : 'get',
+         url : './recruitlistCount.do',
+         data : selectSearchData,
+         success: function( count ) {
+ 			//alert('success');
+			//alert(count);
+			
+ 			loadPage(count);
+ 		},
+         error: function(xhr, status, error){
+             alert("글의 총수 불러오기 에러발생");
+         }
+     });
+	
+	
+	
+}
+
+
+/* function getRecruitListCount() {
 	$.ajax({
 		url : "./recruitlistCount.do",
 		type: "get",
@@ -576,12 +605,13 @@ function getRecruitListCount() {
 		}
 	});
 }
-
+ */
 
 //paging 처리
 function loadPage( totalCount ) {
-
-
+	
+	 alert("토탈카운트"+totalCount);
+	
 	let pageSize = 5;
 	let nowPage = 1;
 
@@ -607,8 +637,9 @@ function loadPage( totalCount ) {
 		initiateStartPageClick:false,				//onPageClick 자동 실행되지 않도록 한다
 		onPageClick : function(event, page) {
 			nowPage = page;
-		//	alert('nowPage:'+ page);
-			getrecruListData(page -1);
+			alert('nowPage:'+ page);
+			//getrecruListData(page -1);
+			getrecruitSearchList(page -1);
 		}
 	});
 }
@@ -733,7 +764,7 @@ $(document).on("change","#_buscodeList2", function(){
 
         		//$("_buscodeList3 *").remove(); //내부 요소만 삭제
 
-        		$("#buscodeList3").remove();
+        		$(".list_col3").remove();
 
         		var parent = document.getElementById('_buscodeList3');
         		var var1   = parent.getElementsByTagName('br');
@@ -760,7 +791,7 @@ $(document).on("change","#_buscodeList2", function(){
 
 		        	//stackname = 밑에태그 아이디.val (elements) 배열로 해야될듯
 
-		        		app += 	"<div class='form-check mt-2 form-check-inline' id='buscodeList3'>"+
+		        		app += 	"<div class='form-check mt-2 form-check-inline list_col3' id='buscodeList3'>"+
 		        	    "<input class='form-check-input list_col3' name="+count+" id='buscode3data"+count+"' value='"+val.buscode+"' data-value='"+val.busname+"' type='checkbox'>"+
 		        	    "<label class='form-check-label' for='exampleCheck1'>"+val.busname+
 		        	    "</label></div>";
@@ -879,7 +910,7 @@ function delSelBuscode(cnt, count) {
 	//alert(count);
 
 	var spanid = "selectedBuscode"+cnt;
-	alert('밑에셀렉코드 :'+spanid);
+	//alert('밑에셀렉코드 :'+spanid);
 
 	var buscodeTag ="buscode3data"+count;
 	//alert(buscodeTag);

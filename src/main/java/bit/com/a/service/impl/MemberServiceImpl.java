@@ -34,7 +34,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberDto login(MemberDto dto) {		
+	public MemberDto login(MemberDto dto) {	
 		return memberDao.login(dto);		
 	}
 
@@ -53,6 +53,12 @@ public class MemberServiceImpl implements MemberService {
 	 * 
 	 * }
 	 */
+
+	@Override
+	public void admin_member_foced_evictionCheck(MemberDto dto) throws Exception {
+		memberDao.admin_member_forced_evictionCheck(dto);
+		
+	}
 	
 }
 

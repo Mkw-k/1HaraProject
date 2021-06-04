@@ -23,8 +23,8 @@
 </select>
 
 <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1)
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH, USERPIC)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, #{userpic})
 </insert>
 
 <select id="login" parameterType="bit.com.a.dto.MemberDto"
@@ -44,5 +44,27 @@
 <select id="MemberList" resultType="bit.com.a.dto.MemberDto">
 	SELECT * FROM MEMBER WHERE MEMBERID NOT IN('admin')
 </select>
+
+<delete id="admin_member_forced_evictionCheck">
+    DELETE FROM MEMBER
+    WHERE MEMBERID=#{memberid}
+</delete>
+
+
+
+	<!--  뿌려주는것 -->
+	<select id="getMypage" parameterType="java.lang.String" resultType="bit.com.a.dto.MemberDto">
+	SELECT NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH
+	FROM MEMBER
+	WHERE MEMBERID=#{memberid}
+	</select>
+
+	<!-- 회원정보 수정 -->
+	<update id="updateMypage">
+	UPDATE MEMBER
+	SET NAME=#{name}, EMAIL=#{email}, ADDRESS=#{address}, DETAILADDRESs=#{detailaddress}, BIRTH=#{birth}
+	WHERE MEMBERID=#{memberid}
+	</update>
+
 
 </mapper>

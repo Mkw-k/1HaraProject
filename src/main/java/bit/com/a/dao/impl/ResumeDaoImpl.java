@@ -1,5 +1,6 @@
 package bit.com.a.dao.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,6 +12,7 @@ import bit.com.a.dto.Resume_ActivityVo;
 import bit.com.a.dto.Resume_AwardVo;
 import bit.com.a.dto.Resume_CareerVo;
 import bit.com.a.dto.Resume_EduVo;
+import bit.com.a.dto.Resume_LanguageVo;
 import bit.com.a.dto.Resume_licenseVo;
 
 
@@ -49,8 +51,8 @@ public class ResumeDaoImpl implements ResumeDao {
 		
         return i>0?true:false;	
 	}
-
-
+	
+	
 
 	@Override
 	public boolean writeCareer(Resume_CareerVo carvo) {
@@ -89,12 +91,93 @@ public class ResumeDaoImpl implements ResumeDao {
 		
         return i>0?true:false;	
 	}
-	
-	
-	
-	
-	
-	
 
+
+
+	@Override
+	public boolean writeLan(Resume_LanguageVo lanvo) {
+		// TODO Auto-generated method stub
+		int i = session.insert(ns + "writeLan", lanvo);
+		
+        return i>0?true:false;	
+	}
+
+
+
+	@Override
+	public List<ResumeDto> getresume() {
+		// TODO Auto-generated method stub
+		return session.selectList(ns + "getresume");	
+	}
+
+
+
+	@Override
+	public int getTotalPage() {
+		// TODO Auto-generated method stub
+		return session.selectOne(ns+"getTotalPage");
+	}
+
+
+
+	@Override
+	public ResumeDto getResumeDetail(int seq) {
+		// TODO Auto-generated method stub
+		return session.selectOne(ns+"getResumeDetail", seq);
+	}
+
+
+
+	@Override
+	public List<Resume_EduVo> getEduDetail(int seq) {
+		// TODO Auto-generated method stub
+		return session.selectList(ns+"getEduDetail", seq);
+	}
+
+
+
+	@Override
+	public List<Resume_CareerVo> getCareerDetail(int seq) {
+		// TODO Auto-generated method stub
+		return session.selectList(ns+"getCareerDetail", seq);
+	}
+
+
+
+	@Override
+	public List<Resume_licenseVo> getLicDetail(int seq) {
+		// TODO Auto-generated method stub
+		return session.selectList(ns+"getLicDetail", seq);
+	}
+
+
+
+	@Override
+	public List<Resume_ActivityVo> getActDetail(int seq) {
+		// TODO Auto-generated method stub
+		return session.selectList(ns+"getActDetail", seq);
+	}
+
+
+
+	@Override
+	public List<Resume_AwardVo> getAwdDetail(int seq) {
+		// TODO Auto-generated method stub
+		return session.selectList(ns+"getAwdDetail", seq);
+	}
+
+
+
+	@Override
+	public List<Resume_LanguageVo> getlanDetail(int seq) {
+		// TODO Auto-generated method stub
+		return session.selectList(ns+"getlanDetail", seq);
+	}
+	
+	
+	
+	
+	
+	
 	
 }

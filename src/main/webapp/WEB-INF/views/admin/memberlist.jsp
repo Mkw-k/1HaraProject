@@ -27,7 +27,28 @@
 		</tr>
 	</c:forEach>
 </table>
-<input type="button" value="메인으로" class="btn" onclick="location.href='/test/member/main'">
+<br>
+
+<form action ="memberdeletemerong.do" method = "post">
+-회원 아이디- <input type = "text" name="memberid" placeholder="  탈퇴시킬 회원의 아이디를 입력하세요. "><br><br>
+<button type = "submit" name = "submit" > 회원 강제 탈퇴</button>
+</form>
+<br>
+<br>
+<input type="button" value="메인으로" class="btn" onclick="location.href='home.do'">
 	
+
 </body>
+
+
+<!-- 로그인 실패나 성공시 메시지를 받아서 출력하는 자바스크립트 구문 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    $(function(){
+        var responseMessage = "<c:out value="${message}" />";
+        if (responseMessage != ""){
+            alert(responseMessage)
+        }
+    })
+</script>
 </html>

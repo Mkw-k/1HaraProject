@@ -13,7 +13,7 @@ public interface RecruitDao {
 	
 	List<RecruitDto> getallRecruitlist();
 	
-	int getRecruitCount(BbsParam param);
+	//int getRecruitCount(BbsParam param);
 	
 	List<RecruitDto> getRecruitPagingList(RecruitParam param);
 	
@@ -44,5 +44,7 @@ public interface RecruitDao {
 	boolean deleteBuscode(int jobSeq);
 
 	boolean insertBuscode(Map<String, Object> param);
+
+	int getRecruitCount(Map<String, Object> param);
 	
 }
