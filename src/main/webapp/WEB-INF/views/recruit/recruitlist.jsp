@@ -462,12 +462,16 @@ function getrecruitSearchList(pnum) {
 
  							if(val.del==0){
 
-
+ 								"<td>"
+								+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname+"</a>"
+							    + "</td>"
  								/* let empT = "";
  								if(val.empType == 3){
  									empT = "정규직";
  								} */
- 								app +="<td>" + val.companyname + "</td>"
+ 								app +="<td>"
+ 									+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname + "</a>"
+ 									+ "</td>"
  									+"<td style='text-align:left'>"
  									//+ arrow(val.depth)
  									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq + "'>" + val.jobTitle+ "</a>"
@@ -518,14 +522,8 @@ function getrecruListData( pNumber, search ){
 
 							if(val.del==0){
 
-
-								/* let empT = "";
-								if(val.empType == 3){
-									empT = "정규직";
-								} */
-
 								app +="<td>"
-									+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname +"</a>"
+									+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname+"</a>"
 								    + "</td>"
 									+"<td style='text-align:left'>"
 									//+ arrow(val.depth)
