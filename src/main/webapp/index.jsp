@@ -45,5 +45,8 @@ index.jsp
 
 <a href="member_info.do">개인정보관리</a>
 
+<a href="companywrite.do">기업 디테일 쓰깅</a>
+
+
 </body>
 </html>
