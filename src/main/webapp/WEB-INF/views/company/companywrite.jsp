@@ -18,7 +18,7 @@
 <form name="comform" id="_comform" action="companywriteAf.do" method="get">    
     <table border="1">
      	<tr>
-    		<th>회사이름:<p class="fontscolor2">* 변경할수없습니다</p></th>
+    		<th>회사이름:<h1 class="fontscolor2">* 변경할수없습니다</h1></th>
     		<td><input type="text" name="companyname" value="${login.companyname }" readonly="readonly"></td>
     	</tr>
      
