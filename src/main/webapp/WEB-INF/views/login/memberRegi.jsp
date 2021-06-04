@@ -56,8 +56,44 @@
 
 <div class="container" style="text-align: center;">
     <h3>일반 회원</h3>
-    <form method="post" id="myForm">
+    <form method="post" id="myForm" enctype=multipart/form-data>
         <div class="form-group has-feedback">
+        
+        <!-- 프로필 사진 -->
+                          <ul>
+ 						   <li class="img" style="list-style: none; margin-left : 200px">
+                                <div id="image_preview">
+                                    <img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 160px;" src="unnamed.png" alt="프로필사진"  style="width:126px; height:165px;">
+                                </div>
+                                <h4 style="margin-left: 35px;">프로필 사진을 등록해주세요</h4>
+                                <div class="f_box">
+                                        <label for="img"></label>
+                                        <input type="file" name="userpic" id="img"  name="bf_file[]">
+                                </div>
+                            </li>
+						</ul>
+                       <script>
+                            // 이미지 업로드  
+                            $('#img').on('change', function() {
+                            ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+                            //배열에 추출한 확장자가 존재하는지 체크
+                            if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                                resetFormElement($(this)); //폼 초기화
+                                window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+                            } else {
+                                file = $('#img').prop("files")[0];
+                                blobURL = window.URL.createObjectURL(file);
+                                $('#image_preview img').attr('src', blobURL);
+                                $('#image_preview').slideDown(); //업로드한 이미지 미리보기 
+                                $(this).slideUp(); //파일 양식 감춤
+                            }
+                            });
+                 
+ 						</script>
+                    	<br><br>
+                    	
+        <!-- 프로필사진 등록 끝나는 구간  -->
+        
             <label class="control-label" for="id">아이디</label>
           	<div class="input-group">
 			  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -94,7 +130,7 @@
         </div> -->
         <div class="form-group has-feedback">
         	<label class="control-label" for="registrationNum">주소</label>
-        		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호">
+        		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
 				<input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" readonly="readonly" value="우편번호 찾기"><br>
 				<input type="text" class="form-control" id="sample6_address" name="address" placeholder="주소">
 				<input type="text" class="form-control" id="sample6_detailAddress" name="detailaddress" placeholder="상세주소">

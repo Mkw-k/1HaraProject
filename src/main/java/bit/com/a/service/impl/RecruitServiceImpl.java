@@ -28,13 +28,13 @@ public class RecruitServiceImpl implements RecruitService{
 		return dao.getallRecruitlist();
 	}
 
-	@Override
-	public int getRecruitCount(BbsParam param) {
-		return dao.getRecruitCount(param);
-	}
+	/*
+	 * @Override public int getRecruitCount(BbsParam param) { return
+	 * dao.getRecruitCount(param); }
+	 */
 
 	@Override
-	public List<RecruitDto> getRecruitPagingList(BbsParam param) {
+	public List<RecruitDto> getRecruitPagingList(RecruitParam param) {
 		return dao.getRecruitPagingList(param);
 	}
 
@@ -72,6 +72,46 @@ public class RecruitServiceImpl implements RecruitService{
 	public List<RecruitDto> getCalendarList(RecruitDto rec) {
 		
 		return dao.getCalendarList(rec);
+	}
+
+	@Override
+	public List<RecruitParam> areacodeListData() {
+		return dao.areacodeListData();
+	}
+
+	@Override
+	public int getArea1Code(String areaname) {
+		return dao.getArea1code(areaname);
+	}
+
+	@Override
+	public List<RecruitParam> areacode2ListData(int areacode) {
+		return dao.areacode2ListData(areacode);
+	}
+
+	@Override
+	public List<RecruitDto> getRecruitSearchList(Map<String, Object> map) {
+		return dao.getRecruitSearchList(map);
+	}
+
+	@Override
+	public boolean updateRecruit(Map<String, Object> param) {
+		return dao.updateRecruit(param);
+	}
+
+	@Override
+	public boolean deleteBuscode(int jobSeq) {
+		return dao.deleteBuscode(jobSeq);
+	}
+
+	@Override
+	public boolean insertBuscode(Map<String, Object> param) {
+		return dao.insertBuscode(param);
+	}
+
+	@Override
+	public int getRecruitCount(Map<String, Object> param) {
+		return dao.getRecruitCount(param);
 	}
 	
 	

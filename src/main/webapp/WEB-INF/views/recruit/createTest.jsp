@@ -13,9 +13,10 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- PAGE settings -->
+<!-- PAGE settings 페이지네이션-->
 <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
 <title>Checkout</title>
+<!-- 핀젠도 프론트 ui  -->
 <meta name="description" content="Wireframe design of a checkout form by Pingendo">
 <meta name="keywords" content="Pingendo bootstrap example template wireframe checkout form">
 <meta name="author" content="Pingendo">
@@ -26,6 +27,7 @@
 
 
 <style type="text/css">
+/* buscode selected 된거 쌓는곳 */
 #selectResult{
 	color: red;
 }
@@ -44,6 +46,7 @@
       </div>
     </div>
   </div>
+ 
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -68,6 +71,7 @@
       </div>
     </div>
   </div>
+  
   <div class="py-5" >
     <div class="container">
       <div class="row">
@@ -163,15 +167,25 @@
                         <option value="1"
                         <c:if test="${dto.career_Type == 1}">selected</c:if>>신입</option>
                         <option value="2"
-                        <c:if test="${dto.career_Type == 2}">selected</c:if>>1~2년</option>
+                        <c:if test="${dto.career_Type == 2}">selected</c:if>>1년</option>
                         <option value="3"
-                        <c:if test="${dto.career_Type == 3}">selected</c:if>>2~4년</option>
+                        <c:if test="${dto.career_Type == 3}">selected</c:if>>2년</option>
                         <option value="4"
-                        <c:if test="${dto.career_Type == 4}">selected</c:if>>4~6년</option>
+                        <c:if test="${dto.career_Type == 4}">selected</c:if>>3년</option>
                         <option value="5"
-                        <c:if test="${dto.career_Type == 5}">selected</c:if>>6~8년</option>
+                        <c:if test="${dto.career_Type == 5}">selected</c:if>>4년</option>
                         <option value="6"
-                        <c:if test="${dto.career_Type == 6}">selected</c:if>>8~10년</option>
+                        <c:if test="${dto.career_Type == 6}">selected</c:if>>5년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 7}">selected</c:if>>6년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 8}">selected</c:if>>7년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 9}">selected</c:if>>8년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 10}">selected</c:if>>9년</option>
+                        <option value="6"
+                        <c:if test="${dto.career_Type == 11}">selected</c:if>>10년</option>
                       
                   	</select>
                   <div class="invalid-feedback"> Please provide a valid state. </div>
@@ -242,7 +256,7 @@
               <div class="form-group">
                   	<input type="text" id="sample6_postcode" placeholder="우편번호">
 					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" name="area1Name" id="sample6_address" placeholder="주소" value="${dto.area1Name}&nbsp;${dto.area2Name}"><br>
+					<input type="text" name="area1Name" id="sample6_address" placeholder="주소" value="${dto.area1Name } ${dto.area2Name}"><br>
 					<input type="text" name="area2Name" id="sample6_detailAddress" placeholder="상세주소">
 					<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 			</div>
@@ -293,16 +307,26 @@
         
         
         
-        
-        
+        <!-- 채용공고 수정일경우 : 수정일경우엔 jobSeq가 히든 태그로 존재함 and 버튼이 수정하기 버튼  --> 
+        <!-- 작성하기 일경우 : jobSeq 존재안함  -->
         <div class="row">
-          
-          <div class="col-md-12"><a class="btn btn-secondary" href="javascript:myFunction();">submit</a></div>
+         	<c:choose> 
+          		<c:when test="${dto.certifyUpdate == 'YES'}">
+          			<div class="col-md-12"><a class="btn btn-secondary" href="javascript:jobUpdate();">수정하기</a></div>
+          			<input type="hidden" value="${dto.jobSeq }" id="_jobSeq" name="jobSeq">          		
+          		</c:when> 
+        	    <c:otherwise>
+          			<div class="col-md-12"><a class="btn btn-secondary" href="javascript:jobRegi();">작성하기</a></div>
+          		</c:otherwise> 
+          	</c:choose> 
+          	
         </div>
-        </form>
+      </form>
+       
+       
         <hr class="mb-4">
-        </div>
-       </div>
+      </div>
+    </div>
         
       
     
@@ -357,7 +381,7 @@
 
 
 
-function myFunction() {
+function jobRegi() {
  
     var busValue = $("input[name='buscode']").length;
     var busData = new Array(busValue);
@@ -373,8 +397,21 @@ function myFunction() {
     
 }
 
-function update() {
+function jobUpdate() {
+	alert($("#_jobSeq").val());
 	
+	//alert("변경시작");
+	var areaname = $("#sample6_address").val();
+	
+	areaname = areaname.split(" ");
+	
+	alert(areaname);
+	//Area1Name쪽 변경된 데이터 변경 (자바쪽에서 nbsp split이 어려워서 nbsp를 ,로 변경)
+	$("#sample6_address").val(areaname);
+	
+	//alert($("#_areaName").val());
+
+	$("#_recruitcrefrm").attr("action", "recuruitupdateAf.do").submit();
 }
  
  
@@ -492,9 +529,9 @@ $.ajax({
 		alert('error');
 	}
 	
- });
+ }); // ajax
  
-
+}); // document ready 
 
 
 //두번째 BUSCODE2 DATA를 받아서 체크박스로 뿌려주는 코드 
@@ -539,6 +576,7 @@ $(document).on("change",".list_col1", function(){
 });
 
 
+let count = 1;
 //마지막 BUSCODE3 DATA를 받아서 체크박스로 뿌려주는 코드 
 $(document).on("change",".list_col2", function(){
 	
@@ -555,41 +593,76 @@ $(document).on("change",".list_col2", function(){
         		//alert('success');
         		//alert(list);
         		
-        		$('#_buscodeList3 br').each(function () {
-        		    if ($(this).next().is('br')) {
-        		        $(this).next().remove();
-        		    }
-        		});
-        		
-        		
-        		
+        	
         		//$("_buscodeList3 *").remove(); //내부 요소만 삭제 
         		
         		$(".list_col3").remove(); 
         		
+        		//부모요소(id:_buscodeList3) 받아서 변수에 넣기 // 부모요소들 안에 있는 br태그들 변수에 넣기(var1) 
         		var parent = document.getElementById('_buscodeList3');
         		var var1   = parent.getElementsByTagName('br');
-
+				
+        		//br요소들 삭제 
         		for(var i = var1.length; i--;) {
         		    var1[i].parentNode.removeChild(var1[i]);
         		}
         		
         		
-        		$.each(list, function(i, val){
-		        	
-        					
-							let app = "<span class='list_col3'>"+
-									  "<input type='checkbox' class='list_col3' id='buscode3data' name='buscode' value='"+val.busname+"' class='form-control'>"+val.busname+
-									  "</span>";
-									  
-							 if((i+1)%2==0){
-		        				app += "</br>";
-		        			}
-								   
-
-				$("#_buscodeList3").append(app);
         		
+        		//기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 초기셋팅 
+        		var stackValue = $("input[name='buscode']").length;
+			    var stackData = new Array(stackValue);
+			     //alert(stackValue);
+			     
+				//stackData 배열에 name값이 buscode인 input태그의 value값을 반복문을 통해 모두 stackData배열에 넣어줌 (들어가는 값은 실제 buscode값)
+			     for(var i=0; i<stackValue; i++){                          
+			    	 stackData[i] = $("input[name='buscode']")[i].value;
+			     }
+			     //alert("길이"+stackData.length);
+			     
+			     
+			     /* $.each(stackData, function(i, data){
+			    	 alert("이게 값임"+data);
+			     }); */
+        		
+        		
+        		
+        		$.each(list, function(i, val){
+		        	let app = "";
+        			
+		        
+		        	
+				//value값 buscode로 바꿧음 (busname에서)
+		        		app += "<span class='list_col3'>"+
+					  	"<input type='checkbox' class='list_col3' name="+count+" id='buscode3data"+count+"' value='"+val.buscode+"' data-value='"+val.busname+"' class='form-control'>"+val.busname+
+					  	"</span>"; 
+							   	  
+						 if((i+1)%2==0){
+	        				app += "</br>";
+	        			}
+						 
+				$("#_buscodeList3").append(app);
+				
+        		
+				//기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 최종진행
+				//each반복문을 통해 현재 생성되는 list_col3의 아이디값을 buscodeTag 변수에 저장  
+				var buscodeTag ="buscode3data"+count;
+				
+				//stackData 배열에 들어가 있는값 (buscode)와 each문을 통해 들어와서 생성되는 input태그의 val.buscode의 값이 같으면 그 아이디의 속성조건을 checked로 변경
+				for(var i=0; i<stackValue; i++){                          
+			    	if(stackData[i] == val.buscode){
+			    		document.getElementById(buscodeTag).checked = true;
+			    	}
+			     }
+				
+				
+				
+				count+=1;
+				
         		});
+        		
+        		
+        		
         	}, 
         	error:function(){
         		alert('error');
@@ -606,27 +679,55 @@ $(document).on("change",".list_col2", function(){
 
 
 
-});
 
+
+//span Tag에 동적 id를 주기 위한 인덱스용 넘버 
 let cnt = 1;
-  
-$(document).on("change",".list_col3", function(){
+
+var selectedBuscode = "";
+
+//소분류 체크박스가 변경될때 실행 
+$(document).on("change", ".list_col3" , function(){
+	//$(".list_col3").change(function(){
 	
+
 	let app ="";
 	
-	if($(this).is(":checked")){
+	
+	
+		//if($("input:checkbox['.list_col3']").is(":checked") == true){ 
+		//if($(this).is(":checked") == true){
+		if($(this).is(":checked") == true){
 		
+		//실제로 buscode가 들어옴 
 		let buscode = $(this).val();
+		var count = $(this).attr('name');
+
+		//데이터 밸류 값으로 busname값을 받아옴 
+		let busname = $(this).data("value");
+		alert("버스네임(데이터밸류네임):"+busname);
+		//alert(buscode);
 		
-		
-		app = "<span id=selectedBuscode"+cnt+">"+buscode+
-			  "<a onclick='delSelBuscode(selectedBuscode"+cnt+")'>"+
+		//밑에 stack에 만들어지는 input태그의 value 값은 buscode이다 
+		app = "<span class=arrBusdata id=selectedBuscode"+cnt+">"+busname+
+			  "<input name='buscode' type='hidden' value='"+buscode+"'>"+
+			  "<a onclick='delSelBuscode("+cnt+","+count+")'>"+
 			  "<img alt='왜안뜨지' src='ma.jpg' style='width:30px; height:30px;'>"+
 			  "</a>"+"</span>"+"&nbsp;&nbsp;";
 			  
 
-		      	
-		      	
+	  	var id = $(this).attr("id");
+		//alert(id);
+		let input = document.getElementById(id);
+		
+		$(this).removeData('code');
+		
+		 //HTML data 속성 사용
+		input.dataset.code = 'selectedBuscode'+cnt;
+		
+		//alert('datacode 생성: '+'selectedBuscode'+cnt);
+		
+		//alert('datacode 리얼: ' + $(this).data("code"));
 		
 		$("#selectResult").append(app);
 		cnt += 1;
@@ -634,16 +735,47 @@ $(document).on("change",".list_col3", function(){
 	}
 	
 	
+	
+	//체크박스 해제가 될때 밑에 부분에 적재되있는 같은 데이터의 span태그도 삭제
+	else if($(this).is(":checked") == false){
+		//alert("위에 셀렉코드 : "+$(this).data("code"));
+		
+		//밑에 선택(스택)된 span Tag의 아이디 가져오기 
+		//->input tag의 data 속성 가져오기 (data-code) : data코드는 밑에 stack되는 span tag의 아이디 값과 동일함 
+		
+		selectedBuscode = $(this).data("code");
+		//alert('위에 셀렉코드 :'+ selectedBuscode);
+		
+		document.getElementById(selectedBuscode).remove();
+	}
+	
+	
 });
 
 
-function delSelBuscode(id) {
-	var data = document.getElementById(id);
+//밑에 쌓여있는 span태그에서 X버튼을 눌렀을때 위에 체크박스도 같이 체크 해제가 되도록 해주는 코드  
+function delSelBuscode(cnt, count) {
+	//alert(count);
 	
-	alert(data);
+	var spanid = "selectedBuscode"+cnt;
+	alert('밑에셀렉코드 :'+spanid);
 	
+	var buscodeTag ="buscode3data"+count;
+	//alert(buscodeTag);
 	
+	const spantag = document.getElementById(spanid);
+	//alert(spantag);
+	
+	//스판태그 삭제
+	document.getElementById(spanid).remove();
+	
+	//체크박스 체크해제
+	document.getElementById(buscodeTag).checked = false;
+
+
 }
+
+
 
 
 </script>

@@ -1,5 +1,7 @@
 package bit.com.a.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,16 +34,31 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberDto login(MemberDto dto) {		
+	public MemberDto login(MemberDto dto) {	
 		return memberDao.login(dto);		
 	}
 
+	@Override
+	public void memberDelete(MemberDto dto) {
+		memberDao.memberDelete(dto);
+	}
+
+	@Override
+	public List<MemberDto> getMemberList() {
+		return memberDao.getMemberList();
+	}
 	/*
 	 * @Override public void authentication(MemberDto dto) {
 	 * memberDao.authentication(dto);
 	 * 
 	 * }
 	 */
+
+	@Override
+	public void admin_member_foced_evictionCheck(MemberDto dto) throws Exception {
+		memberDao.admin_member_forced_evictionCheck(dto);
+		
+	}
 	
 }
 
