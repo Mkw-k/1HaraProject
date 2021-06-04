@@ -3,12 +3,15 @@ package bit.com.a.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import bit.com.a.dao.JobtalkDao;
 import bit.com.a.dto.JobtalkDto;
 import bit.com.a.dto.JobtalkParam;
 import bit.com.a.service.JobtalkService;
 
+
+@Service
 public class JobtalkServiceImpl implements JobtalkService {
 
 	@Autowired

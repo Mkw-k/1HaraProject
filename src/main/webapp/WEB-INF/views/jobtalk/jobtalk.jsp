@@ -412,49 +412,53 @@ section .section-title {
 </style>
 </head>    
 
-<form name="frmForm" id="_frmForm" action="noticeupload.do" method="post"
-	enctype="multipart/form-data">
+<div id="qst_and_ans_list">
 
-<table class="list_table">
+	<div class="list_qna">
 
-<tr>
-	<th>아이디</th>
-	<td style="text-align: left;">
-		<input type="text" name="memberid" readonly="readonly" value="${login.memberid }" size="50">
-	</td>
-</tr>
+		<form name="frmForm" id="_frmForm" action="noticeupload.do" method="post"
+			enctype="multipart/form-data">
 
-<tr>
-	<th>제목</th>
-	<td style="text-align: left;">
-		<input type="text" name="title" size="50">
-	</td>
-</tr>
+			<table class="list_table">
+				<tr>
+					<th>아이디</th>
+					<td style="text-align: left;">
+						<input type="text" name="memberid" readonly="readonly" value="${login.memberid }" size="50">
+					</td>
+				</tr>
 
-<tr>
-	<th>파일 업로드</th>
-	<td style="text-align: left;">
-		<input type="file" id="_fileload" name="fileload" style="width: 400px">
-	</td>
-</tr>
+				<tr>
+					<th>제목</th>
+					<td style="text-align: left;">
+						<input type="text" name="title" size="50">
+					</td>
+				</tr>
 
-<tr>
-	<th>내용</th>
-	<td style="text-align: left;">
-		<textarea rows="10" cols="50" name="content"></textarea>
-	</td>
-</tr>
+				<tr>
+					<th>파일 업로드</th>
+					<td style="text-align: left;">
+						<input type="file" id="_fileload" name="fileload" style="width: 400px">
+					</td>
+				</tr>
 
-<tr>
-	<td colspan="2" style="height: 50px; text-align: center;">
-		<a href="#none" id="_btnNotice" title="자료올리기">
-			글쓰기
-		</a>
-	</td>
-</tr>
+				<tr>
+					<th>내용</th>
+					<td style="text-align: left;">
+						<textarea rows="10" cols="50" name="content"></textarea>
+					</td>
+				</tr>
 
-</table>
-</form>
+				<tr>
+					<td colspan="2" style="height: 50px; text-align: center;">
+						<a href="#none" id="_btnNotice" title="자료올리기">
+							글쓰기
+						</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
 
 <div id="footer">
       	<div class="top-area">
