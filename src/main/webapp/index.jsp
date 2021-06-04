@@ -20,7 +20,7 @@ index.jsp
 <a href="FAQ.do">FAQ</a>
 
 <a href="pdslist.do">짜료씰</a>
--
+--
 <a href="login1.do">로그인</a>
 
 <a href="jobdetail.do">채용디테일</a>
@@ -32,7 +32,7 @@ index.jsp
 <a href="calendars.do">달력</a>
 
 <a href="newslist.do">끼업 뉴쓰</a>
-
+-
 <a href="kokolog.do">까까오 로꾸인</a>
 
 <a href="chatpractice.do">채팅(건설중)</a>

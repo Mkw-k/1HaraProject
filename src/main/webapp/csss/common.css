@@ -788,6 +788,13 @@ p.reset {margin:0; padding:0;}
 .button.blue:hover,
 .button.blue:focus {color:#fff; background-color:#3683c3 !important;}
 
+.button.red {
+    color: #fff;
+    border-color: #ffffff !important;
+    background-color: #ef737363 !important;
+}
+
+
 /* 20200514 추가 */
 .button.dblue {color:#fff; border-color:#2872af !important; background-color:#2872af !important;}
 .button.dblue:hover,
@@ -4105,6 +4112,7 @@ a.txtView-tog.on {background-image:url("../images/common/ico/ico-white-minus.png
 #event_wrp .foot .event_guide li {margin-left:18px; list-style:decimal}
 #event_wrp .foot .event_guide li strong {color:#333}
 #event_wrp .foot .event_guide li a {vertical-align:-6px}
+
 
 /* 20190326 추가(채용상세 이벤트 배너) */
 .sub_quick {position:absolute; right:50%; top:390px; margin-right:-730px; width:120px; z-index:2}
