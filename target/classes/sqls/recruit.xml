@@ -214,6 +214,7 @@
       AND RNUM BETWEEN ${param.start} AND ${param.end}
       ORDER BY J.JOBSEQ DESC
       
+
 </select>
 
 <!-- 디테일페이지용 -->
@@ -289,21 +290,26 @@ SELECT JOBSEQ, JOBTITLE, JOBCONTENT,
 
 <!-- 지역분류코드1(대분류) 불러오기 : 공고리스트에 데이터 뿌려주기위함 (검색용) -->
 <select id="areacodeListData" resultType="bit.com.a.dto.RecruitParam">
+
    SELECT *
    FROM JOBAREA1
+
 </select>
 
 
 <!-- 선택된 대분류 값이 NAME이어서 NAME을 통해 CODE를 출력함  // 선택된 셀렉트박스의 밸류값을 받아옴-->
 <select id="getArea1Code" parameterType="String" resultType="Integer">
+
    SELECT AREA1CODE
    FROM JOBAREA1
    WHERE AREA1NAME LIKE #{areaname}||'%'
+
 </select>
 
 
 <!-- 지역분류코드2(소분류) 불러오기 : 공고리스트에 데이터 뿌려주기위함 (검색용) // 선택된 셀렉트박스의 밸류값을 받아옴 -->
 <select id="areacode2ListData" parameterType="Integer" resultType="bit.com.a.dto.RecruitParam">
+
    SELECT *
    FROM JOBAREA2
    WHERE AREA2CODE LIKE ${areacode}||'%'
@@ -311,3 +317,4 @@ SELECT JOBSEQ, JOBTITLE, JOBCONTENT,
 
 
 </mapper>
+

@@ -35,7 +35,7 @@ public class MemberDto implements Serializable{
 	private String pwd;
 	private String name;
 	private String email;
-	//private String phonenumber;
+	private String phonenumber;
 	private int auth;							// 관리자인지 기업인인지 구분하는 번호 그리고 관리자
 	private int del;							// 회원 탈퇴시 del번호를 변경해줘서 회원 탈퇴처리
 	private String address;						// 집주소
