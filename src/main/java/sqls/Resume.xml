@@ -60,6 +60,15 @@ INTO ACTIVITY (ACTIVITYSEQ, RESUMESEQ, ACT_FIELD, ACT_ORG, ACT_STR, ACT_END, ACT
 
 </insert>
 
+
+
+<insert id="writeAward" parameterType="bit.com.a.dto.Resume_AwardVo">
+INSERT
+INTO AWARD (AWDSEQ, RESUMESEQ, AWD_NAME, AWD_DATE, AWD_ORG)
+			VALUES (AWARD_SEQ.NEXTVAL, #{resumeseq}, #{awd_name}, #{awd_date}, #{awd_org} )
+	        
+</insert>
+
 </mapper>    
     
 

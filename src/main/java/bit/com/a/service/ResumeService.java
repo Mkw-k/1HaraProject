@@ -4,6 +4,7 @@ import java.util.Map;
 
 import bit.com.a.dto.ResumeDto;
 import bit.com.a.dto.Resume_ActivityVo;
+import bit.com.a.dto.Resume_AwardVo;
 import bit.com.a.dto.Resume_CareerVo;
 import bit.com.a.dto.Resume_EduVo;
 import bit.com.a.dto.Resume_licenseVo;
@@ -22,5 +23,7 @@ public interface ResumeService {
 	boolean writeLic(Resume_licenseVo licvo);
 
 	boolean writeAct(Resume_ActivityVo actvo);
+
+	boolean writeAward(Resume_AwardVo awdvo);
 
 }

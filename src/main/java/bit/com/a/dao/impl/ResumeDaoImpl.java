@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import bit.com.a.dao.ResumeDao;
 import bit.com.a.dto.ResumeDto;
 import bit.com.a.dto.Resume_ActivityVo;
+import bit.com.a.dto.Resume_AwardVo;
 import bit.com.a.dto.Resume_CareerVo;
 import bit.com.a.dto.Resume_EduVo;
 import bit.com.a.dto.Resume_licenseVo;
@@ -75,6 +76,16 @@ public class ResumeDaoImpl implements ResumeDao {
 	public boolean writeAct(Resume_ActivityVo actvo) {
 		// TODO Auto-generated method stub
 		int i = session.insert(ns + "writeAct", actvo);
+		
+        return i>0?true:false;	
+	}
+
+
+
+	@Override
+	public boolean writeAward(Resume_AwardVo awdvo) {
+		// TODO Auto-generated method stub
+		int i = session.insert(ns + "writeAward", awdvo);
 		
         return i>0?true:false;	
 	}

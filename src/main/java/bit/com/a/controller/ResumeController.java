@@ -149,9 +149,11 @@ public class ResumeController {
 		
 		//학력사항 관련 테이블 insert
 		
-		System.out.println("****************************************888"+edudto.toString());
+		System.out.println("11111111111111111111111111111111111111111111111111111111111111111111111111111"+edudto.toString());
 		for (int i = 0; i < edudto.getUniversity().length; i++) {
 
+			if( edudto.getUniversity()[i] !=null && edudto.getUniversity()[i] != "") {
+			
 			Resume_EduVo eduvo = new Resume_EduVo();
 
 			eduvo.setResumeseq(resumeseq);
@@ -160,6 +162,8 @@ public class ResumeController {
 			eduvo.setHigh_str_status(edudto.getHigh_str_status());
 			eduvo.setHigh_end(edudto.getHigh_end());
 			eduvo.setHigh_end_status(edudto.getHigh_end_status());
+			
+			
 			eduvo.setUniversity(edudto.getUniversity()[i]);
 			eduvo.setUniv_status(edudto.getUniv_status()[i]);
 			eduvo.setUniv_str(edudto.getUniv_str()[i]);
@@ -172,19 +176,21 @@ public class ResumeController {
 			eduvo.setUniv_grade(edudto.getUniv_grade()[i]);
 			eduvo.setUniv_grade_base(edudto.getUniv_grade_base()[i]);
 			eduvo.setUniv_paper(edudto.getUniv_paper()[i]);
-			System.out.println("99999999999999999999999999999999999999999" + eduvo.toString());
+			System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222" + eduvo.toString());
 
 			boolean b = service.writeEdu(eduvo);
 			System.out.println(b);
+			}
 		}
 		
+		//경력사항 관련 테이블 INSERT
 		System.out.println(" careerdto.getPre_comname().length= " + careerdto.getPre_comname().length);
-		System.out.println(" getPre_buscode()[i]" + careerdto.getPre_buscode()[0]);
 		System.out.println(careerdto.toString());
 		
 		for(int i=0; i<careerdto.getPre_comname().length; i++) {
+
+			if( careerdto.getPre_comname()[i] !=null && careerdto.getPre_comname()[i] != "") {
 			Resume_CareerVo carvo = new Resume_CareerVo();
-			
 			carvo.setResumeseq(resumeseq);
 			carvo.setPre_comname(careerdto.getPre_comname()[i]);
 			carvo.setPre_startdate(careerdto.getPre_startdate()[i]);
@@ -197,17 +203,22 @@ public class ResumeController {
 			carvo.setPre_sal(careerdto.getPre_sal()[i]);
 			carvo.setPre_jobdetail(careerdto.getPre_jobdetail()[i]);
 			
-			System.out.println("********************************************************" + carvo.toString());
+			System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333333333" + carvo.toString());
 			
 			boolean b = service.writeCareer(carvo);
 			System.out.println(b);
+			}
 			
 		}
 		
+		//자격증관련 사항 테이블 INSERT
 		System.out.println(licdto.toString());
 		for(int i=0; i<licdto.getLic_name().length; i++) {
-			Resume_licenseVo licvo = new Resume_licenseVo();
 			
+			
+			if( licdto.getLic_name()[i] !=null && licdto.getLic_name()[i] != "") {
+			
+			Resume_licenseVo licvo = new Resume_licenseVo();
 			licvo.setResumeseq(resumeseq);
 			/* licvo.setLic_type(licdto.getLic_type()[i]); */
 			licvo.setLic_date(licdto.getLic_date()[i]);
@@ -215,16 +226,20 @@ public class ResumeController {
 			licvo.setLic_publisher(licdto.getLic_publisher()[i]);
 			licvo.setLic_pass(licdto.getLic_pass()[i]);
 			
-			System.out.println("********************************************************" + licvo.toString());
+			System.out.println("44444444444444444444444444444444444444444444444444444444444444444444444444444444444" + licvo.toString());
 			
 			boolean b = service.writeLic(licvo);
 			System.out.println(b);
+			}
 		}
 		
+		//대외활동관련 사항 테이블 INSERT
 		System.out.println(actdto.toString());
-		for(int i=0; i<actdto.getAct_field().length; i++) {
-			Resume_ActivityVo actvo = new Resume_ActivityVo();
+		for(int i=0; i<actdto.getAct_str().length; i++) {
 			
+			
+			if( actdto.getAct_str()[i] !=null && actdto.getAct_str()[i] != "") {
+			Resume_ActivityVo actvo = new Resume_ActivityVo();
 			actvo.setResumeseq(resumeseq);
 			actvo.setAct_field(actdto.getAct_field()[i]);
 			actvo.setAct_org(actdto.getAct_org()[i]);
@@ -232,12 +247,36 @@ public class ResumeController {
 			actvo.setAct_end(actdto.getAct_end()[i]);
 			actvo.setAct_detail(actdto.getAct_detail()[i]);
 			
-			System.out.println("********************************************************" + actvo.toString());
+			System.out.println("55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555" + actvo.toString());
 			
 			boolean b = service.writeAct(actvo);
 			System.out.println(b);
+			}
 		}
-
+		
+		//수상관련 사항 테이블 INSERT
+		System.out.println(awarddto.toString());
+		for(int i=0; i<awarddto.getAwd_name().length; i++) {
+			
+			
+			
+				
+			Resume_AwardVo awdvo = new Resume_AwardVo();
+			awdvo.setResumeseq(resumeseq);
+			awdvo.setAwd_name(awarddto.getAwd_name()[i]);
+			awdvo.setAwd_date(awarddto.getAwd_date()[i]);
+			awdvo.setAwd_org(awarddto.getAwd_org()[i]);
+			
+			System.out.println("66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666" + awdvo.toString());
+			if( awarddto.getAwd_name()[i] !=null && awarddto.getAwd_name()[i] != "") {
+			boolean b = service.writeAward(awdvo);
+			System.out.println(b);
+			}
+		}
+		
+		
+		
+		
 		return "resume/resumeMain";
 	}
 
