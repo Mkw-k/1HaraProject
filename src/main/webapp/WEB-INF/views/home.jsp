@@ -683,10 +683,14 @@ margin-right : 450px;
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href=companywrite.do style="color:#2186eb">기업등록하기(company)</a>
+      <a class="nav-link bgc" href="companywrite.do" style="color:#2186eb">기업등록하기(company)</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href=companyupdate.do style="color:#2186eb">기업업데이트하기(company)</a>
+      <a class="nav-link bgc" href="companyupdate.do" style="color:#2186eb">기업업데이트하기(company)</a>
+    </li>
+    
+     <li class="nav-item">
+      <a class="nav-link bgc" href="companydetail.do" style="color:#2186eb">기업디테일(company)</a>
     </li>
 
 
