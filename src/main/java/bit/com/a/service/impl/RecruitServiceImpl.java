@@ -93,6 +93,21 @@ public class RecruitServiceImpl implements RecruitService{
 	public List<RecruitDto> getRecruitSearchList(Map<String, Object> map) {
 		return dao.getRecruitSearchList(map);
 	}
+
+	@Override
+	public boolean updateRecruit(Map<String, Object> param) {
+		return dao.updateRecruit(param);
+	}
+
+	@Override
+	public boolean deleteBuscode(int jobSeq) {
+		return dao.deleteBuscode(jobSeq);
+	}
+
+	@Override
+	public boolean insertBuscode(Map<String, Object> param) {
+		return dao.insertBuscode(param);
+	}
 	
 	
 }

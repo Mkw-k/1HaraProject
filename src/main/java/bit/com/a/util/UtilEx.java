@@ -6,6 +6,7 @@ import java.util.List;
 import bit.com.a.dto.RecruitDto;
 
 public class UtilEx {
+	
 
 	// 날짜를 클릭하면 그날의 일정을 모두 볼 수 있는 callist.jsp로 이동하는 함수
 	public static String callist(int year, int month, int day) {

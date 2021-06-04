@@ -7,67 +7,73 @@
 
 <!-- 공고작성 -->
 <insert id="writerecru" parameterType="java.util.HashMap">
-   INSERT ALL
-   INTO JOB (JOBSEQ , COMPANYID , JOBTITLE , JOBCONTENT , AREA1NAME,
-               AREA2NAME, JOBVOLUMN, SALARY, JOBSTART, JOBEND, EMP_TYPE,
-               EDUCATION , CAREER_TYPE, READCOUNT, REGDATE, DEL)
-   VALUES (JOB_SEQ.NEXTVAL, #{dto.companyId}, #{dto.jobTitle}, #{dto.jobContent},
-          #{dto.area1Name}, #{dto.area2Name}, #{dto.jobVolumn}, #{dto.salary},
-          SYSDATE,
-         <!--  TO_DATE(#{dto.jobStart}, 'YYYY-MM-DD HH24:MI:SS') -->
-          TO_DATE(#{dto.jobEnd}, 'YYYY-MM-DD HH24:MI:SS'),
-          #{dto.emp_Type}, #{dto.education}, #{dto.career_Type},
-          0,
-          TO_DATE(SYSDATE, 'YYYY-MM-DD'),
-          0)
+	INSERT ALL
+	INTO JOB (JOBSEQ , COMPANYID , JOBTITLE , JOBCONTENT , AREA1NAME,
+					AREA2NAME, JOBVOLUMN, SALARY, JOBSTART, JOBEND, EMP_TYPE,
+					EDUCATION , CAREER_TYPE, READCOUNT, REGDATE, DEL)
+	VALUES (JOB_SEQ.NEXTVAL, #{dto.companyId}, #{dto.jobTitle}, #{dto.jobContent},
+			 #{dto.area1Name}, #{dto.area2Name}, #{dto.jobVolumn}, #{dto.salary},
+			 <!-- SYSDATE, -->
+			 TO_DATE(#{dto.jobStart}, 'YYYY-MM-DD HH24:MI:SS'),
+			 TO_DATE(#{dto.jobEnd}, 'YYYY-MM-DD HH24:MI:SS'),
+			 #{dto.emp_Type}, #{dto.education}, #{dto.career_Type},
+			 0,
+			 TO_DATE(SYSDATE, 'YYYY-MM-DD'),
+			 0)
 
-      <foreach collection="arrayParam" item="item" index="index" separator="" open="" close="">
-         INTO BSCODSTACK (BSCODSTACKSEQ, JOBSEQ, BUSCODE, RBUSCODE)
-         VALUES (BSCODSTACK_SEQ.nextval, JOB_SEQ.nextval, #{item},
-           (SELECT BUSCODE
-           FROM BUSCODE3
-           WHERE BUSNAME = #{item} )
-           )
+		<foreach collection="arrayParam" item="item" index="index" separator="" open="" close="">
+			INTO BSCODSTACK (BSCODSTACKSEQ, JOBSEQ, RBUSCODE,  BUSCODE)
+			VALUES (BSCODSTACK_SEQ.nextval, JOB_SEQ.nextval, #{item},
+	        (SELECT BUSNAME
+	        FROM BUSCODE3
+	        WHERE BUSCODE = #{item} )
+	        )
 
 
-      </foreach>
-   SELECT 1
-   FROM DUAL
+		</foreach>
+	SELECT 1
+	FROM DUAL
 
 
 </insert>
 
 
-<!-- <delete id="deleteBuscode" parameterType="Integer">
-   DELETE FROM BSCODSTACK
-   WHERE JOBSEQ = ${jobseq}
+<delete id="deleteBuscode" parameterType="Integer">
+	DELETE FROM BSCODSTACK
+	WHERE JOBSEQ = ${jobSeq}
 </delete>
 
 <insert id="insertBuscode" parameterType="java.util.HashMap">
+	INSERT ALL
+	<foreach collection="arrayParam" item="item" index="index" separator="" open="" close="">
+		INTO BSCODSTACK (BSCODSTACKSEQ, JOBSEQ, RBUSCODE, BUSCODE)
+		VALUES (BSCODSTACK_SEQ.nextval, #{dto.jobSeq } , #{item } ,
+			(SELECT BUSNAME
+			FROM BUSCODE3
+			WHERE BUSCODE = #{item } )
+			)
 
-   <foreach collection="arrayParam" item="item" index="index" separator="" open="" close="">
-      INSERT INTO BSCODSTACK (BSCODSTACKSEQ, JOBSEQ, BUSCODE, RBUSCODE)
-         VALUES (BSCODSTACK_SEQ.nextval, #{dto.jobseq}, #{item}, (SELECT BUSCODE
-                                                     FROM BUSCODE3
-                                                     WHERE BUSNAME = #{item} )
-               )
-   </foreach>
-
+	</foreach>
+	SELECT 1
+	FROM DUAL
 
 </insert>
 
 
 <update id="updateRecruit" parameterType="java.util.HashMap">
-      UPDATE JOB (JOBTITLE , JOBCONTENT , AREA1NAME, AREA2NAME, 
-               JOBVOLUMN, SALARY, JOBSTART, JOBEND, 
-               EMP_TYPE, EDUCATION , CAREER_TYPE)
-      VALUES (#{dto.jobTitle}, #{dto.jobContent}, #{dto.area1Name}, #{dto.area2Name}, 
-            #{dto.jobVolumn}, #{dto.salary}, SYSDATE, TO_DATE(#{dto.jobEnd}, 'YYYY-MM-DD HH24:MI:SS'),
-             #{dto.emp_Type}, #{dto.education}, #{dto.career_Type},
-             )
-      WHERE JOBSEQ = #{dto.jobseq}
+		UPDATE JOB
+
+		SET JOBTITLE=#{dto.jobTitle} , JOBCONTENT=#{dto.jobContent} , AREA1NAME=#{dto.area1Name}, AREA2NAME=#{dto.area2Name},
+					JOBVOLUMN=#{dto.jobVolumn}, SALARY=#{dto.salary}, JOBSTART=TO_DATE(#{dto.jobStart}, 'YYYY-MM-DD HH24:MI:SS'), JOBEND=TO_DATE(#{dto.jobEnd}, 'YYYY-MM-DD HH24:MI:SS'),
+					EMP_TYPE=#{dto.emp_Type}, EDUCATION=#{dto.education} , CAREER_TYPE=#{dto.career_Type}
+
+
+
+		WHERE JOBSEQ = #{dto.jobSeq}
+
+
 </update>
- -->
+
 
 <!-- 모든페이지 불러오기 -->
 <select id="getallrecrulist" resultType="bit.com.a.dto.RecruitDto">
@@ -147,7 +153,7 @@
    WHERE RNUM BETWEEN ${start} AND ${end}
    ORDER BY J.JOBSEQ DESC
 
-      
+
 </select>
 
 
@@ -191,29 +197,37 @@
    JOIN JOB_CAREERTYPE P
    ON P.CAREER_TYPE = J.CAREER_TYPE
    <!-- 직종네임가져오기 -->
-   JOIN bscodstack K 
+   JOIN bscodstack K
     ON J.JOBSEQ = K.JOBSEQ
-    
-   
-   WHERE 1=1  
-      <!-- 학력조건 -->
-      AND J.EDUCATION >= #{param.education}
-          <!-- 경력조건 -->
-          AND j.career_type BETWEEN #{param.careerStart} AND #{param.careerEnd}
-        <!-- 지역코드 2번으로 검색 -->
-        
-       <foreach collection="arrArea" item="item" index="index" separator="OR" open="AND" close="">
-      J.AREA2NAME = #{item}
-      </foreach>
-      
-      <!-- 직무코드2번으로 검색 OR조건 -->
-      <foreach collection="arrBusi" item="item" index="index" separator="OR" open="AND" close="">
-      K.BUSCODE = #{item}
-      </foreach>
 
-      AND RNUM BETWEEN ${param.start} AND ${param.end}
-      ORDER BY J.JOBSEQ DESC
-      
+
+	WHERE 1=1
+
+	   <!-- 학력조건 -->
+	   <if test="education != null and education != ''">
+	  	 AND J.EDUCATION >= #{param.education}
+	   </if>
+       	<!-- 경력조건 -->
+       	<if test="CareerEnd != null and CareerEnd != ''">
+       	AND j.career_type BETWEEN #{param.start} AND #{param.end}
+        </if>
+        <!-- 지역코드 2번으로 검색 -->
+        <if test="arrArea != null and arrArea != ''">
+	       <foreach collection="arrArea" item="item" index="index" separator="OR" open="AND(" close=")">
+			J.AREA2NAME = #{item}
+		   </foreach>
+		</if>
+
+		 <!-- 직무코드2번으로 검색 OR조건 -->
+		 <if test="arrBusi != null and arrBusi != ''">
+		   <foreach collection="arrBusi" item="item" index="index" separator="OR" open="AND(" close=" ) ">
+			K.RBUSCODE = #{item}
+		   </foreach>
+		 </if>
+
+		AND RNUM BETWEEN ${param.start} AND ${param.end}
+		ORDER BY J.JOBSEQ DESC
+
 </select>
 
 <!-- 디테일페이지용 -->
@@ -276,15 +290,15 @@ WHERE JOBSEQ = ${jobseq}
 </select>
 
 <select id="getCalendarList" parameterType="bit.com.a.dto.RecruitDto"
-   resultType="bit.com.a.dto.RecruitDto">             
-SELECT JOBSEQ, JOBTITLE, JOBCONTENT, 
+   resultType="bit.com.a.dto.RecruitDto">
+SELECT JOBSEQ, JOBTITLE, JOBCONTENT,
          JOBSTART
         ,JOBEND
-   FROM (SELECT ROW_NUMBER()OVER(PARTITION BY SUBSTR(JOBSTART, 1, 7)ORDER BY JOBSTART ASC) AS RNUM,  
-         JOBSEQ, JOBTITLE, JOBCONTENT, JOBSTART, JOBEND  
-        FROM JOB)  
+   FROM (SELECT ROW_NUMBER()OVER(PARTITION BY SUBSTR(JOBSTART, 1, 7)ORDER BY JOBSTART ASC) AS RNUM,
+         JOBSEQ, JOBTITLE, JOBCONTENT, JOBSTART, JOBEND
+        FROM JOB)
  WHERE RNUM BETWEEN 1 AND 5
-           
+
 </select>
 
 <!-- 지역분류코드1(대분류) 불러오기 : 공고리스트에 데이터 뿌려주기위함 (검색용) -->
