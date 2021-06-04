@@ -60,56 +60,81 @@ INTO ACTIVITY (ACTIVITYSEQ, RESUMESEQ, ACT_FIELD, ACT_ORG, ACT_STR, ACT_END, ACT
 
 </insert>
 
+
+
+<insert id="writeAward" parameterType="bit.com.a.dto.Resume_AwardVo">
+INSERT
+INTO AWARD (AWDSEQ, RESUMESEQ, AWD_NAME, AWD_DATE, AWD_ORG)
+			VALUES (AWARD_SEQ.NEXTVAL, #{resumeseq}, #{awd_name, jdbcType=VARCHAR}, #{awd_date, jdbcType=VARCHAR}, #{awd_org, jdbcType=VARCHAR} )
+	        
+</insert>
+
+<insert id="writeLan" parameterType="bit.com.a.dto.Resume_LanguageVo">
+INSERT
+INTO LANGUAGE (LANSEQ, RESUMESEQ, LAN_KIND, LAN_EXAM, LAN_SCORE, LAN_GRADE, LAN_PASS, LAN_DATE)
+			VALUES (LANGUAGE_SEQ.NEXTVAL, #{resumeseq}, #{lan_kind}, #{lan_exam}, #{lan_score}, #{lan_grade}, #{lan_pass}, #{lan_date})
+	        
+</insert>
+
+<select id="getresume" resultType="bit.com.a.dto.ResumeDto">
+SELECT RESUMESEQ, RESUMETITLE
+FROM RESUME
+</select>
+
+<select id="getTotalPage" resultType="java.lang.Integer">
+SELECT COUNT(*)
+FROM RESUME
+</select>
+
+
+<select id="getResumeDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.ResumeDto">
+SELECT RESUMESEQ, MEMBERID, RESUMETITLE, RECRUIT_STATUS, RESUMEIMAGE, NEWRESUMEIMAGE, RESUME_INTRO_TITLE, RESUME_INTRO_CONTENT, PORTFOLIO, NEWPORTFOLIO, DESIREDSALARY, DESIREDJOBTYPE, DESIRED_STR, DESIRED_END, DESIREDAREA1, DESIREDJOB1, GENDER
+FROM RESUME
+WHERE RESUMESEQ=#{seq}
+</select>
+
+
+<select id="getEduDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.Resume_EduVo">
+SELECT EDUCATIONSEQ, RESUMESEQ, HIGHSCHOOL, HIGH_STR, HIGH_STR_STATUS, HIGH_END, HIGH_END_STATUS, UNIVERSITY, UNIV_STATUS, UNIV_STR, UNIV_STR_STATUS,
+		UNIV_END, UNIV_END_STATUS, UNIV_MAJOR_FIELD, UNIV_MAJOR, UNIV_NIGHT, UNIV_GRADE, UNIV_GRADE_BASE, UNIV_PAPER
+FROM RESUME_EDU
+WHERE RESUMESEQ=#{seq}
+</select>
+
+<select id="getCareerDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.Resume_CareerVo">
+SELECT CAREERSEQ, RESUMESEQ, PRE_COMNAME, PRE_STARTDATE, PRE_ENDDATE, PRE_STATUS, PRE_POSITION, PRE_BUSCODE, PRE_AREA, PRE_DEPT, PRE_SAL, PRE_JOBDETAIL
+FROM CAREER
+WHERE RESUMESEQ=#{seq}
+</select>
+
+<select id="getLicDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.Resume_licenseVo">
+SELECT LICSEQ, RESUMESEQ, LIC_DATE, LIC_NAME, LIC_PUBLISHER, LIC_PASS
+FROM LICENSE
+WHERE RESUMESEQ=#{seq}
+</select>
+
+<select id="getActDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.Resume_ActivityVo">
+SELECT ACTIVITYSEQ, RESUMESEQ, ACT_FIELD, ACT_ORG, ACT_STR, ACT_END, ACT_DETAIL
+FROM ACTIVITY
+WHERE RESUMESEQ=#{seq}
+</select>
+
+<select id="getAwdDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.Resume_AwardVo">
+SELECT AWDSEQ, RESUMESEQ, AWD_NAME, AWD_DATE, AWD_ORG
+FROM AWARD
+WHERE RESUMESEQ=#{seq}
+</select>
+
+<select id="getlanDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.Resume_LanguageVo">
+SELECT LANSEQ, RESUMESEQ, LAN_KIND, LAN_EXAM, LAN_SCORE, LAN_GRADE, LAN_PASS, LAN_DATE
+FROM LANGUAGE
+WHERE RESUMESEQ=#{seq}
+</select>
+
 </mapper>    
     
 
 
-    <!-- 
-	     <foreach collection="edulist" item="edudto" index="index" separator="" open="" close="">
-			INTO RESUME_EDU (EDUCATIONSEQ, RESUMESEQ, HIGHSCHOOL, HIGH_STR, HIGH_STR_STATUS, HIGH_END, HIGH_END_STATUS, UNIVERSITY, UNIV_STATUS, UNIV_STR, UNIV_STR_STATUS,
-							UNIV_END, UNIV_END_STATUS, UNIV_MAJOR_FIELD, UNIV_MAJOR, UNIV_NIGHT, UNIV_GRADE, UNIV_GRADE_BASE, UNIV_PAPER  )
-			VALUES (RESUME_EDU_SEQ.NEXTVAL, RESUME_SEQ.NEXTVAL, #{eduhighschool}, #{eduhigh_str}, #{eduhigh_str_status}, #{eduhigh_end}, #{eduhigh_end_status},
-					#{eduuniversity}, #{eduuniv_status}, #{eduuniv_str}, #{eduuniv_str_status}, #{eduuniv_end}, #{eduuniv_end_status}, #{eduuniv_major_field}, 
-					#{eduuniv_major}, #{eduuniv_night}, #{eduuniv_grade}, #{eduuniv_grade_base}, #{eduuniv_paper} )
-	
-		</foreach> -->
-	
-	
-		
-		
-		<!-- <foreach collection="careerlist" item="careerdto" index="index" separator="" open="" close="">
-			INTO CAREER (CAREERSEQ, RESUMESEQ, PRE_COMNAME, PRE_STARTDATE, PRE_ENDDATE, PRE_STATUS, PRE_POSITION, PRE_BUSCODE, PRE_AREA, PRE_DEPT, PRE_SAL, 
-							PRE_JOBDETAIL)
-			VALUES (CAREER_SEQ.NEXTVAL, RESUME_SEQ.NEXTVAL, #{careerpre_comname}, #{careerpre_startdate}, #{careerpre_enddate}, #{careerpre_status},
-					#{careerpre_position}, #{careerpre_buscode}, #{careerpre_area}, #{careerpre_dept}, #{careerpre_sal}, #{careerpre_jobdetail})
-
-		</foreach>
-		
-		<foreach collection="liclist" item="licdto" index="index" separator="" open="" close="">
-			INTO LICENSE (LICSEQ, RESUMESEQ, LIC_TYPE, LIC_DATE, LIC_NAME, LIC_PUBLISHER, LIC_PASS )
-			VALUES (LICENSE_SEQ.NEXTVAL, RESUME_SEQ.NEXTVAL, #{liclic_type}, #{liclic_date}, #{liclic_name}, #{liclic_publisher}, #{liclic_pass}  )
-
-			
-		</foreach> -->
-		
-		
-
-	<!--	</foreach>
-		
-		<foreach collection="awardlist" item="awarddto" index="index" separator="" open="" close="">
-			INTO AWARD (AWDSEQ, RESUMESEQ, AWD_NAME, AWD_DATE, AWD_ORG)
-			VALUES (AWARD_SEQ.NEXTVAL, RESUME_SEQ.NEXTVAL, #{awardawd_name}, #{awardawd_date}, #{awardawd_org} )
-	        
-
-
-		</foreach>
-		
-		<foreach collection="lanlist" item="landto" index="index" separator="" open="" close="">
-			INTO LANGUAGE_AWARD (LANSEQ, RESUMESEQ, LAN_KIND, LAN_EXAM, LAN_SCORE, LAN_GRADE, LAN_PASS, LAN_GDATE)
-			VALUES (LANGUAGE_SEQ.NEXTVAL, RESUME_SEQ.NEXTVAL, #{lanlan_kind}, #{lanlan_exam}, #{lanlan_score}, #{lanlan_grade}, #{lanlan_pass}, #{lanlan_grade})
-
-
-		</foreach>		 -->
 
 
 
