@@ -120,7 +120,7 @@ height: 150px;
 <h2 onclick="createRecruitNew()" class="createRecruitBtn">채용공고 작성 New</h2>
 
 <form action="#" id="_frmFormSearch" name="dataForm" method="post" novalidate="novalidate">
-	<input type="hidden"  id="_page" name="page">
+	<input type="hidden"  id="_page" >
 		<div class="py-5">
 			<div class="container">
 
@@ -440,7 +440,8 @@ function getrecruitSearchList(pnum) {
 	 $("#_page").val(pnum);
 	 var queryString = $("form[name=dataForm]").serialize()+ "&page="+pnum;
 	 
-
+	 var selectSearchData1 = $("form[name=dataForm]").serialize();
+	 getRecruitListCount(selectSearchData1);
 
      $.ajax({
          type : 'post',
@@ -450,7 +451,7 @@ function getrecruitSearchList(pnum) {
              alert("에러발생");
          },
          success:function(list){
- 			alert('success');
+ 			//alert('success');
  			//alert(list);
 
  			$(".list_col").remove();
@@ -461,9 +462,7 @@ function getrecruitSearchList(pnum) {
  							+"<td>" + val.rnum +"</td>";
 
  							if(val.del==0){
-
-
- 								/* let empT = "";
+								/* let empT = "";
  								if(val.empType == 3){
  									empT = "정규직";
  								} */
@@ -561,12 +560,13 @@ function getrecruListData( pNumber, search ){
 
 
 //글의 총수를 취득
-function getRecruitListCount(pnum) {
+function getRecruitListCount(selectSearchData1) {
 	
-	 var pnum = pnum;
+	/*  var pnum = pnum;
 	 $("#_page").val(pnum);
-	 alert("페이지넘버:"+$("#_page").val(pnum))
-	 var selectSearchData = $("form[name=dataForm]").serialize()+ "&page="+pnum;
+	 alert("페이지넘버:"+$("#_page").val(pnum)) */
+	 var selectSearchData = $("form[name=dataForm]").serialize();
+	 //var selectSearchData = selectSearchData1;
 	 
 
 
@@ -610,7 +610,7 @@ function getRecruitListCount(pnum) {
 //paging 처리
 function loadPage( totalCount ) {
 	
-	 alert("토탈카운트"+totalCount);
+	 //alert("토탈카운트"+totalCount);
 	
 	let pageSize = 5;
 	let nowPage = 1;
@@ -637,7 +637,7 @@ function loadPage( totalCount ) {
 		initiateStartPageClick:false,				//onPageClick 자동 실행되지 않도록 한다
 		onPageClick : function(event, page) {
 			nowPage = page;
-			alert('nowPage:'+ page);
+			//alert('nowPage:'+ page);
 			//getrecruListData(page -1);
 			getrecruitSearchList(page -1);
 		}

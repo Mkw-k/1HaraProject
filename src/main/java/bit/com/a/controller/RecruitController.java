@@ -98,6 +98,9 @@ public class RecruitController {
 	@ResponseBody
 	@RequestMapping(value = "recruitTest.do", method = RequestMethod.POST)
 	public List<RecruitDto> test(RecruitParam param, HttpServletRequest req) {	
+		
+		String page = req.getParameter("page");
+		System.out.println("이게 페이지 : "+ page);
 		//넘어온값 확인 
 		System.out.println("넘어온값 : "+param.toString());
 		
