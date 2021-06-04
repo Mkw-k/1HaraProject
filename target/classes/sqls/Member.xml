@@ -45,4 +45,11 @@
 	SELECT * FROM MEMBER WHERE MEMBERID NOT IN('admin')
 </select>
 
+<delete id="admin_member_forced_evictionCheck">
+    DELETE FROM MEMBER
+    WHERE MEMBERID=#{memberid}
+</delete>
+
+
+
 </mapper>

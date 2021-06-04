@@ -13,5 +13,6 @@ public interface MemberDao {
 	//void authentication(MemberDto dto);
 	void memberDelete(MemberDto dto);
 	List<MemberDto> getMemberList();
+	void admin_member_forced_evictionCheck(MemberDto dto) throws Exception;
 	
 }
