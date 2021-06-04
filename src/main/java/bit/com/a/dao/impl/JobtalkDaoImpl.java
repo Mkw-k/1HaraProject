@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import bit.com.a.dao.JobtalkDao;
 import bit.com.a.dto.BbsDto;
@@ -12,6 +13,8 @@ import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.JobtalkDto;
 import bit.com.a.dto.JobtalkParam;
 
+
+@Repository
 public class JobtalkDaoImpl implements JobtalkDao {
 	
 	@Autowired

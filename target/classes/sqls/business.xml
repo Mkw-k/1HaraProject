@@ -16,9 +16,11 @@
 	</insert>
 		
 	<select id="login" parameterType="bit.com.a.dto.BusinessDto" resultType="bit.com.a.dto.BusinessDto">
-		SELECT MEMBERID, PWD, COMPANYNAME, NAME, AUTH 
+		SELECT MEMBERID, PWD, COMPANYNAME, NAME, AUTH , COMADDRESS
 		FROM BUSINESS
 		WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
+		
+		
 	</select>
 
 	<!-- 회원탈퇴 -->

@@ -53,7 +53,7 @@
 
 <style>
 /* 가로로 정렬 */
-.ulli {list-style-type: none; float: left; margin-left: 20px;  }
+.ulli {list-style-type: none; float: left; margin-left: 70px;  }
 ​
 /* 모달 */
 #login-modal {
@@ -508,7 +508,7 @@ nav {
 	
 	<tr hidden="">
 		<th>회사아아디</th>
-		<td>${company.companyid }</td>
+		<td>${company.memberid }</td>
 	</tr>
 	
 	<tr>
@@ -521,9 +521,9 @@ nav {
 		<td>${company.companynum }</td>
 	</tr>
 	
-	<tr hidden="">
-		<th>직종번호  :</th>
-		<td>${company.buscode }</td>
+	<tr >
+		<th>주요 업무 :</th>
+		<td>${company.content }</td>
 	</tr>
 
 	<tr>

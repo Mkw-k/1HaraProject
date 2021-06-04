@@ -33,11 +33,10 @@ public class RecruitDaoImpl implements RecruitDao{
 		return session.selectList(ns+"getallrecrulist");
 	}
 
-	@Override
-	public int getRecruitCount(BbsParam param) {
-		return session.selectOne(ns+"getRecruitCount", param);
-	}
-
+	/*
+	 * @Override public int getRecruitCount(BbsParam param) { return
+	 * session.selectOne(ns+"getRecruitCount", param); }
+	 */
 	@Override
 	public List<RecruitDto> getRecruitPagingList(RecruitParam param) {
 		return session.selectList(ns+"getRecruitPagingList", param);
@@ -111,6 +110,11 @@ public class RecruitDaoImpl implements RecruitDao{
 	@Override
 	public boolean insertBuscode(Map<String, Object> param) {
 		return session.insert(ns+"insertBuscode", param)>0?true:false;
+	}
+
+	@Override
+	public int getRecruitCount(Map<String, Object> param) {
+		return session.selectOne(ns+"getRecruitCount", param);
 	}
 	
 	

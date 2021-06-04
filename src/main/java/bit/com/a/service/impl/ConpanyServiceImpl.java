@@ -21,6 +21,13 @@ public class ConpanyServiceImpl implements CompanyService {
 	}
 
 	
+	@Override
+	public boolean companywrite(CompanyDto dto) {
+		
+		 return dao.companywrite(dto);
+	}
+
+	
 
 
 }

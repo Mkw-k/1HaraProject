@@ -216,7 +216,6 @@ public class MemberController {
 			dto.setPwd("0000");
 			dto.setAuth(1);
 			dto.setEmail("0000");
-			dto.setDel(0);
 			dto.setDetailaddress("0000");
 			dto.setAddress("0000");
 
