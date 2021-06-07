@@ -9,42 +9,44 @@ import bit.com.a.dto.RecruitParam;
 
 public interface RecruitDao {
 
-	boolean writeRecruit(Map<String, Object> param);
-	
-	List<RecruitDto> getallRecruitlist();
-	
-	//int getRecruitCount(BbsParam param);
-	
-	List<RecruitDto> getRecruitPagingList(RecruitParam param);
-	
-	RecruitDto getRecruitListOne(int jobseq);
-	
-	boolean deleteRecruit(int jobseq);
-	
-	List<RecruitParam> buscodeListData();
-	
-	List<RecruitParam> buscode2ListData(int buscode);
-	
-	List<RecruitParam> buscode3ListData(int buscode);
+   boolean writeRecruit(Map<String, Object> param);
+   
+   List<RecruitDto> getallRecruitlist();
+   
+   //int getRecruitCount(BbsParam param);
+   
+   List<RecruitDto> getRecruitPagingList(RecruitParam param);
+   
+   RecruitDto getRecruitListOne(int jobseq);
+   
+   boolean deleteRecruit(int jobseq);
+   
+   List<RecruitParam> buscodeListData();
+   
+   List<RecruitParam> buscode2ListData(int buscode);
+   
+   List<RecruitParam> buscode3ListData(int buscode);
 
-	List<RecruitDto> getCalendarList(RecruitDto rec);
-	
-	List<String> getBsnameForDetail(int jobseq);
+   List<RecruitDto> getCalendarList(RecruitDto rec);
+   
+   List<String> getBsnameForDetail(int jobseq);
 
-	List<RecruitParam> areacodeListData();
+   List<RecruitParam> areacodeListData();
 
-	int getArea1code(String areaname);
+   int getArea1code(String areaname);
 
-	List<RecruitParam> areacode2ListData(int areacode);
-	
-	List<RecruitDto> getRecruitSearchList(Map<String, Object> map);
+   List<RecruitParam> areacode2ListData(int areacode);
+   
+   List<RecruitDto> getRecruitSearchList(Map<String, Object> map);
 
-	boolean updateRecruit(Map<String, Object> param);
+   boolean updateRecruit(Map<String, Object> param);
 
-	boolean deleteBuscode(int jobSeq);
+   boolean deleteBuscode(int jobSeq);
 
-	boolean insertBuscode(Map<String, Object> param);
+   boolean insertBuscode(Map<String, Object> param);
 
-	int getRecruitCount(Map<String, Object> param);
-	
+   int getRecruitCount(Map<String, Object> param);
+
+   boolean mgDetailUpdate(RecruitDto dto);
+   
 }

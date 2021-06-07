@@ -113,6 +113,12 @@ public class RecruitServiceImpl implements RecruitService{
 	public int getRecruitCount(Map<String, Object> param) {
 		return dao.getRecruitCount(param);
 	}
+
+	@Override
+	public boolean mgDetailUpdate(RecruitDto dto) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 }

@@ -3,7 +3,7 @@
 <%@page import="bit.com.a.dto.Resume_EduVo"%>
 <%@page import="java.util.List"%>
 <%@page import="bit.com.a.dto.MemberDto"%>
-<%@page import="jdk.internal.misc.FileSystemOption"%>
+
 <%@page import="bit.com.a.dto.ResumeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
