@@ -111,7 +111,8 @@ function check(form){
                            <button class="btn_ly_close" type="button" onclick="jQuery('#wrap_autologin').hide()">닫기</button>
                          <span class="dsc_arr"></span>
                             <p class="dsc_txt">
-                               <strong>[개인회원 전용]</strong><br>
+                               <strong>[개인회원 전용]</strong>
+                               <br>
                                개인정보 보호를 위해 개인 PC에서만 이용해 주세요.
                            </p>
                      </div>

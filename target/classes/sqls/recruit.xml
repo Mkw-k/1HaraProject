@@ -227,7 +227,7 @@
 
 <!-- 최종 상세 검색 리스트 가져오기 -->
 <select id="getRecruitSearchList" parameterType="java.util.HashMap" resultType="bit.com.a.dto.RecruitDto">
-   SELECT DISTINCT J.RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+   SELECT DISTINCT RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
                J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
                J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL,
          C.COMPANYNAME, E.EDUNAME, T.EMP_NAME, P.CAREER_DESC

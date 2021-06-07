@@ -1095,12 +1095,12 @@ margin-right : 450px;
 </nav>
 <br>
 
-
+<div class="container">
 
 <section id="contents">
 
 	<div class="tit-util">
-		<h2 class="tit">공지사항</h2>
+		<h2 class="tit">취업톡톡</h2>
 		<div class="page-util">
 			<span class="hide-location" id="navi_1">고객센터</span>
 		    <span class="hide-location" id="navi_2">고객센터 게시판</span>
@@ -1182,7 +1182,7 @@ margin-right : 450px;
 
 	<div class="table-wrap">
 		<table class="board-list" summary="이 표는 번호, 제목, 자료출처, 등록일, 조회 등 공지사항 목록에 대한 정보를 제공합니다.">
-			<caption>공지사항 목록 표</caption>
+			<caption>전체질문</caption>
 			<colgroup>
 				<col style="width:80px;">
 				<col>
@@ -1195,37 +1195,32 @@ margin-right : 450px;
 					<th scope="col">번호</th>
 					<th scope="col">제목</th>
 					<th scope="col">작성자</th>
-					<th scope="col">자료출처</th>
 					<th scope="col">등록일</th>
-					<th scope="col">조회</th>
+					<th scope="col">조회수</th>
 				</tr>
 			</thead>
-			<c:forEach var="notice" items="${noticelist }" varStatus="i">
+			<c:forEach var="jobtalk" items="${jobtalklist }" varStatus="i">
 			<tbody>
 			
 				<tr>
 					<th>${i.count }</th>
 					<td class="a-l">
-						<a href="noticedetail.do?seq=${notice.noticeseq }">
-							${notice.title }
+						<a href="Jobtalkdetail.do?seq=${jobtalk.jobtalkseq }">
+							${jobtalk.jobtalk_title }
 						</a>
 					</td>
-					<td>${notice.memberid }</td>
-					<td>${login.name }</td>
-					<td>${notice.regdate.substring(0,10)}</td>
-					<td>${notice.readcount}</td>
+					<td>${jobtalk.memberid}</td>
+					<td>${jobtalk.wdate.substring(0,10)}</td>
+					<td>${jobtalk.jobtalk_readcount}</td>
 				</tr>	
 				</tbody>
 			</c:forEach>
 		</table>
 	</div>
-	<div class="btn-group center">
-		
-		<c:if test="${login.auth==3 }">
+	<div class="btn-group center">	
 			<a href="noticewrite.do" class="button navy">
 				글추가
 			</a>
-		</c:if>
 	</div>
 	
 	
@@ -1239,6 +1234,7 @@ margin-right : 450px;
 		<div class="right"><b class="font-bold">문의</b> : 1577-7114</div>
 	</div>
 </section>
+</div>
 
 <%-- <div class="container">
 	<nav aria-label="Page navigation">

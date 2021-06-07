@@ -194,17 +194,35 @@ System.out.println(_gender);
 								<div class="dashboard">
 									<ul>
 										<li><strong>학력사항</strong>
-											<p class="txt"><%=edulist.get(0).getUniv_status() %> <%=edulist.get(0).getUniv_end_status() %></p></li>
+										<%for(int i=0 ; i<edulist.size(); i++){ %>
+											<p class="txt"><%=edulist.get(i).getUniv_status() %> <%=edulist.get(i).getUniv_end_status() %></p></li>
+										<%} %>
 										<li><strong>경력사항</strong>
-											<p class="txt">신입</p></li>
+										<%if(calist == null || calist.isEmpty()){ %>
+											<p class="txt">신입</p>
+										<%  } else { %>
+										<p class="txt">경력</p>
+										
+										<% } %>		
+											
+										</li>
 										<li><strong>희망연봉</strong>
-											<p class="txt">회사내규에 따름</p></li>
+											<p class="txt"><%=dto.getDesiredsalary() %></p></li>
 										<li><strong>희망근무지/근무형태</strong>
 											<p class="txt">
-												서울전체<br> 정규직
+												<%=dto.getDesiredarea1() %><br> <%=dto.getDesiredjobtype() %>
 											</p></li>
 										<li><strong>포트폴리오</strong>
-											<p class="txt portfolio_txt">-</p>
+										<!-- 포트폴리오가 있으면 표시하고 없으면 -로 표시 -->
+											<p class="txt portfolio_txt">
+											<%if(dto.getPortfolio()!=null) {
+											dto.getPortfolio(); } else {
+												%>
+												-
+												<%
+											}
+											%>
+											</p>
 											<div class="toolTip portfolio_tooltip" style="display:">
 												<span class="tail tail_top_right"></span>
 												<div class="toolTipCont txtLeft"></div>
@@ -241,15 +259,17 @@ System.out.println(_gender);
 										</tr>
 									</thead>
 									<tbody>
+									<%for(int i=0 ; i<edulist.size(); i++){ %>
 										<tr>
-											<td class="lineup_center" rowspan="1"><%=edulist.get(0).getUniv_str()%>
-												~ <%=edulist.get(0).getUniv_end()%>s</td>
-											<td class="lineup_center" rowspan="1"><%=edulist.get(0).getUniv_end_status()%></td>
-											<td><%=edulist.get(0).getUniversity()%></td>
-											<td><%=edulist.get(0).getUniv_major()%></td>
-											<td class="lineup_center"><%=edulist.get(0).getUniv_grade()%>
-												/ <%=edulist.get(0).getUniv_grade_base()%></td>
+											<td class="lineup_center" rowspan="1"><%=edulist.get(i).getUniv_str()%>
+												~ <%=edulist.get(i).getUniv_end()%></td>
+											<td class="lineup_center" rowspan="1"><%=edulist.get(i).getUniv_end_status()%></td>
+											<td><%=edulist.get(i).getUniversity()%></td>
+											<td><%=edulist.get(i).getUniv_major()%></td>
+											<td class="lineup_center"><%=edulist.get(i).getUniv_grade()%>
+												/ <%=edulist.get(i).getUniv_grade_base()%></td>
 										</tr>
+									
 										<tr>
 											<td class="lineup_center" rowspan="1"><%=edulist.get(0).getHigh_str()%>
 												~ <%=edulist.get(0).getHigh_end()%></td>
@@ -258,6 +278,8 @@ System.out.println(_gender);
 											<td>문과계열</td>
 											<td class="lineup_center">-</td>
 										</tr>
+									
+									<% } %>	
 									</tbody>
 								</table>
 							</div>
@@ -266,7 +288,7 @@ System.out.println(_gender);
 						<div class="section_part">
 							<div class="area_title">
 								<h3 class="title">
-									경력<span class="indetail">신입</span>
+									경력<span class="indetail"></span>
 								</h3>
 							</div>
 							<div class="part_table"></div>
@@ -292,7 +314,7 @@ System.out.println(_gender);
 									</tr>
 								</thead>
 								<tbody>
-									
+									<%for(int i=0 ; i<calist.size(); i++){ %>
 									<tr>
 										<td class="lineup_center" rowspan="2"><%=calist.get(0).getPre_startdate() %> ~ <%=calist.get(0).getPre_enddate() %><br />
 										</td>
@@ -311,11 +333,46 @@ System.out.println(_gender);
 											</p>
 										</td>
 									</tr>
+									
+									<% } %>
 								</tbody>
 							</table>
 						</div>
 
-
+						<div class="section_part">
+							<div class="area_title">
+								<h3 class="title">대외활동</h3>
+							</div>
+							<div class="part_table">
+								<table class="inpart_view" cellspacing="0" cellpadding="0">
+									<caption>대외활동</caption>
+									<colgroup>
+										<col width="19%" />
+										<col width="11%" />
+										<col width="32%" />
+										<col width="*" />
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">기간</th>
+											<th scope="col">구분</th>
+											<th scope="col">기관/장소</th>
+											<th scope="col">내용</th>
+										</tr>
+									</thead>
+									<tbody>
+									<%for(int i=0 ; i< actlist.size(); i++) {%>
+										<tr>
+											<td class="lineup_center"><%=actlist.get(i).getAct_str() %> ~ <%=actlist.get(i).getAct_end() %></td>
+											<td class="lineup_center"><%=actlist.get(i).getAct_field() %></td>
+											<td><%=actlist.get(i).getAct_org() %></td>
+											<td><%=actlist.get(i).getAct_detail() %></td>
+										</tr>
+									<%} %>
+									</tbody>
+								</table>
+							</div>
+						</div>
 
 
 
@@ -343,6 +400,7 @@ System.out.println(_gender);
 										</tr>
 									</thead>
 									<tbody>
+										<% for(int i=0; i< lanlist.size();i++) {%>
 										<tr>
 											<td class="lineup_center"><%=lanlist.get(0).getLan_date() %></td>
 											<td class="lineup_center">어학시험</td>
@@ -350,7 +408,9 @@ System.out.println(_gender);
 											<td><%=lanlist.get(0).getLan_kind() %></td>
 											<td class="lineup_center"><%=lanlist.get(0).getLan_score()%>/<%lanlist.get(0).getLan_grade(); %>/<%=lanlist.get(0).getLan_pass() %></td>
 										</tr>
+										<% } %>
 										
+										<% for(int i=0; i< liclist.size();i++) {%>
 										<tr>
 											<td class="lineup_center"><%=liclist.get(0).getLic_date() %></td>
 											<td class="lineup_center">자격증/면허증</td>
@@ -358,6 +418,9 @@ System.out.println(_gender);
 											<td><%=liclist.get(0).getLic_publisher() %></td>
 											<td class="lineup_center"><%=liclist.get(0).getLic_pass() %></td>
 										</tr>
+										<% } %>
+										
+										<% for(int i=0; i< awdlist.size();i++) {%>
 										<tr>
 											<td class="lineup_center"><%=awdlist.get(0).getAwd_date() %></td>
 											<td class="lineup_center">수상내역/공모전</td>
@@ -365,6 +428,7 @@ System.out.println(_gender);
 											<td><%=awdlist.get(0).getAwd_org() %></td>
 											<td class="lineup_center">수상</td>
 										</tr>
+										<% } %>
 									</tbody>
 								</table>
 							</div>

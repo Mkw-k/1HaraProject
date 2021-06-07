@@ -22,10 +22,10 @@
 	WHERE MEMBERID=#{memberid}
 </select>
 
-<insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
+<!-- <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
 	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH, USERPIC)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, #{userpic})
-</insert>
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, 0)
+</insert> -->
 
 <select id="login" parameterType="bit.com.a.dto.MemberDto"
 	resultType="bit.com.a.dto.MemberDto">
@@ -65,6 +65,11 @@
 	SET NAME=#{name}, EMAIL=#{email}, ADDRESS=#{address}, DETAILADDRESs=#{detailaddress}, BIRTH=#{birth}
 	WHERE MEMBERID=#{memberid}
 	</update>
+
+	<insert parameterType="bit.com.a.dto.MemberDto" id="addmember">
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1) 
+	</insert>
 
 
 </mapper>

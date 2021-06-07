@@ -506,7 +506,7 @@ nav {
 		<td>${company.ceoname }</td>
 	</tr>
 	
-	<tr hidden="">
+	<tr>
 		<th>회사아아디</th>
 		<td>${company.memberid }</td>
 	</tr>
@@ -557,6 +557,11 @@ nav {
 	</tr>
 	
 </table>
+   
+      <a class="nav-link bgc" href="companyupdate.do?seq=${company.companyseq}" style="color:#2186eb">기업업데이트하기(company)</a>
+  
+    
+
 </div>
 </div>
 <!-- //////////////////////////////////////////테이블 끝 -->
@@ -793,8 +798,10 @@ $("#searchBtn").click(function () {
 
 
 
-function btnweb() {
-	var url = '${company.website }';
+function btnweb() {	
+	var url = 'http://' + '${company.website }';
+	alert(url);
+	
 	window.location.href = url;
 }
 

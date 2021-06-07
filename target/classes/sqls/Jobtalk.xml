@@ -14,25 +14,25 @@
  
 <select id="Jobtalklist" parameterType="bit.com.a.dto.JobtalkParam" 
 	resultType="bit.com.a.dto.JobtalkDto">
-	SELECT SEQ, ID, REF, STEP, DEPTH, TITLE, CONTENT, WDATE, DEL, READCOUNT
-	FROM (SELECT ROW_NUMBER()OVER(ORDER BY REF DESC, STEP ASC) AS RNUM,
-			SEQ, ID, REF, STEP, DEPTH, TITLE, CONTENT, WDATE, DEL, READCOUNT
+	SELECT JOBTALKSEQ, MEMBERID, JOBTALK_REF, JOBTALK_STEP, JOBTALK_DEPTH, JOBTALK_TITLE, JOBTALK_CONTENT, WDATE, DEL, JOBTALK_READCOUNT
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY JOBTALK_REF DESC, JOBTALK_STEP ASC) AS RNUM,
+			JOBTALKSEQ, MEMBERID, JOBTALK_REF, JOBTALK_STEP, JOBTALK_DEPTH, JOBTALK_TITLE, JOBTALK_CONTENT, WDATE, DEL, JOBTALK_READCOUNT
 		  FROM JOBTALK
 		  WHERE 1=1
 		  <if test="choice != null and choice != ''
 		  		and search != null and search != ''">
 		  	  <!-- AND DEL=0 -->		
 			  <if test="choice == 'title'">
-			  		AND TITLE LIKE '%'||#{search}||'%'		  
+			  		AND JOBTALK_TITLE LIKE '%'||#{search}||'%'		  
 			  </if>
 			  <if test="choice == 'content'">
-			  		AND CONTENT LIKE '%'||#{search}||'%'			  
+			  		AND JOBTALK_CONTENT LIKE '%'||#{search}||'%'			  
 			  </if>
 			  <if test="choice == 'writer'">
-			  		AND ID=#{search}  
+			  		AND MEMBERID=#{search}  
 			  </if>	
 		  </if>
-		ORDER BY REF DESC, STEP ASC)
+		ORDER BY JOBTALK_REF DESC, JOBTALK_STEP ASC)
 	WHERE RNUM BETWEEN ${start} AND ${end}
 </select> 
  
@@ -64,15 +64,15 @@
 
 <select id="getJobtalk" parameterType="java.lang.Integer"
 	resultType="bit.com.a.dto.JobtalkDto">
-	SELECT SEQ, ID, REF, STEP, DEPTH, TITLE, CONTENT, WDATE, DEL, READCOUNT 
+	SELECT JOBTALKSEQ, MEMBERID, JOBTALK_REF, JOBTALK_STEP, JOBTALK_DEPTH, JOBTALK_TITLE, JOBTALK_CONTENT, WDATE, DEL, JOBTALK_READCOUNT 
 	FROM JOBTALK
-	WHERE SEQ=#{seq}
+	WHERE JOBTALKSEQ=#{jobtalkseq}
 </select>
 
 <update id="readCount" parameterType="java.lang.Integer">
 	UPDATE JOBTALK
-	SET READCOUNT=READCOUNT+1
-	WHERE SEQ=#{seq}
+	SET JOBTALK_READCOUNT=JOBTALK_READCOUNT+1
+	WHERE JOBTALKSEQ=#{jobtalkseq}
 </update>
 
 <!-- 답글 -->

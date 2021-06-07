@@ -124,6 +124,110 @@ public class ResumeServiceImpl implements ResumeService {
 		// TODO Auto-generated method stub
 		return dao.getlanDetail(seq);
 	}
+
+	@Override
+	public boolean deleteResume(int seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteResume(seq);
+	}
+
+	@Override
+	public boolean deleteEduResume(int seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteEduResume(seq);
+	}
+
+	@Override
+	public boolean deleteCareerResume(int seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteCareerResume(seq);
+	}
+
+	@Override
+	public boolean deleteLicenseResume(int seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteLicenseResume(seq);
+	}
+
+	@Override
+	public boolean deleteActivityResume(int seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteLicenseResume(seq);
+	}
+
+	@Override
+	public boolean deleteAwardResume(int seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteLicenseResume(seq);
+	}
+
+	@Override
+	public boolean deleteLanResume(int seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteLanResume(seq);
+	}
+
+	@Override
+	public List<ResumeDto> getNoresume() {
+		// TODO Auto-generated method stub
+		return dao.getNoresume();
+	}
+
+	@Override
+	public void upProgress(ResumeDto dto) {
+		// TODO Auto-generated method stub
+		dao.upProgress(dto);
+	}
+
+	@Override
+	public boolean updateProgress(int resumeseq) {
+		// TODO Auto-generated method stub
+		return dao.updateProgress(resumeseq);
+	}
+
+	@Override
+	public void updateResume(ResumeDto dto) {
+		// TODO Auto-generated method stub
+		 dao.updateResume(dto);
+	}
+
+	@Override
+	public boolean updateEdu(Resume_EduVo eduvo) {
+		// TODO Auto-generated method stub
+		return dao.updateEdu(eduvo);
+	}
+
+	@Override
+	public boolean updateCareer(Resume_CareerVo carvo) {
+		// TODO Auto-generated method stub
+		return dao.updateCareer(carvo);
+	}
+
+	@Override
+	public boolean updateLic(Resume_licenseVo licvo) {
+		// TODO Auto-generated method stub
+		return dao.updateLic(licvo);
+	}
+
+	@Override
+	public boolean updateAct(Resume_ActivityVo actvo) {
+		// TODO Auto-generated method stub
+		return dao.updateAct(actvo);
+	}
+
+	@Override
+	public boolean updateAward(Resume_AwardVo awdvo) {
+		// TODO Auto-generated method stub
+		return dao.updateAward(awdvo);
+	}
+
+	@Override
+	public boolean updateLan(Resume_LanguageVo lanvo) {
+		// TODO Auto-generated method stub
+		return dao.updateLan(lanvo);
+	}
+	
+	
 	
 	
 	

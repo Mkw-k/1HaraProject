@@ -98,6 +98,9 @@ public class RecruitController {
 	@ResponseBody
 	@RequestMapping(value = "recruitTest.do", method = RequestMethod.POST)
 	public List<RecruitDto> test(RecruitParam param, HttpServletRequest req) {	
+		
+		String page = req.getParameter("page");
+		System.out.println("이게 페이지 : "+ page);
 		//넘어온값 확인 
 		System.out.println("넘어온값 : "+param.toString());
 		
@@ -204,6 +207,7 @@ public class RecruitController {
 				Map<String, Object> map = new HashMap<String, Object>();
 				
 				//paging 처리 
+				/*
 				int sn = param.getPage(); 
 				int start = sn * 5 + 1; 	//1  11
 				int end = (sn + 1) * 5; 	//10 20 
@@ -212,7 +216,8 @@ public class RecruitController {
 				System.out.println("end ="+end);
 				param.setStart(start);
 				param.setEnd(end);
-						
+					*/
+				
 				//1. 직무코드 받아오기 
 				String arrBuscode[] = null;
 						
