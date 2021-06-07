@@ -4126,7 +4126,7 @@ body{min-width:1200px; background-color:#f3f5f7;}
 #adTopWrap{width:1200px;}
 #wrap{margin:0 auto; width:1200px;}
 #wrap:after{content:""; clear:both; display:block; visibility:hidden; font-size:0; height:0;}
-#container{display:table-cell; vertical-align:top; width:960px; padding:30px 0 60px; float:right; z-index:3 !important;}
+/* #container{display:table-cell; vertical-align:top; width:960px; padding:30px 0 60px; float:right; z-index:3 !important;} */
 #container #content{width:960px; margin:0 auto; padding-top:0; line-height:1.5; position:relative; z-index:3;}
 #container #content:after{content:""; clear:both; display:block; visibility:hidden; font-size:0; height:0;}
 #container #content .top-title-wrap .title{margin-bottom:15px; font-size:21px; color:#000;}

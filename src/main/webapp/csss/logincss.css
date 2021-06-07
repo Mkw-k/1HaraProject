@@ -121,7 +121,7 @@
 .main-login {float:left; padding:26px 24px 0; margin-left:20px; width:275px; height:500px; background:#fff; color:#666}
 .main-login .before {line-height:14px; font-size:13px}
 .main-login .before .txt {margin:0; text-align:center; letter-spacing:-1px}
-.main-login .before a.login-worknet {display:block; margin:25px 0 0; width:100%; height:46px; line-height:46px; color:#fff; background:#197a99; font-size:14px; font-weight:bold; text-align:center}
+.main-login .before a.login-worknet {display:block; margin:25px 0 0; width:100%; height:46px; line-height:46px; color:#fff; background:rgb(12, 73, 167); font-size:14px; font-weight:bold; text-align:center}
 .main-login .before a.login-worknet:hover, .main-login .before a.login-worknet:focus {text-decoration:none;}
 .main-login .before .link {overflow:hidden; padding:24px 0 30px 0;}
 .main-login .before .link a {display:block}
@@ -149,12 +149,12 @@
 .main-login .after .top.naver {background:url('/static/images/main/bg-main-login-naver.png') no-repeat 0 2px;} /* 20201028 추가 */
 .main-login .after .top.kakao {background:url('/static/images/main/bg-main-login-kakao.png') no-repeat 0 2px;} /* 20201028 추가 */
 .main-login .after .top .bg {padding:0 0 20px 90px}
-.main-login .after .top .bg .txt {margin:0; line-height:20px; font-size:14px; font-weight:bold; color:#666}
+.main-login .after .top .bg .txt {margin:0; margin-left:145px; line-height:20px; font-size:14px; font-weight:bold; color:#666}
 .main-login .after .top .bg a {display:inline-block; vertical-align:middle;}
 .main-login .after .top .bg a:hover .name, .main-login .after .personal .bg .top .bg a:focus .name {text-decoration:underline}
-.main-login .after .top .bg .name {margin:0; font-size:16px; color:#333}
+.main-login .after .top .bg .name {margin:0; margin-left:145px; font-size:16px; color:#333}
 .main-login .after .top .bg .name strong {display:inline-block;overflow:hidden;max-width:117px;white-space:nowrap;text-overflow:ellipsis;vertical-align:bottom; color:#236daa;}
-.main-login .after .top .bg a.mypge {display:inline-block; margin-top:2px; padding:0 11px; height:24px; line-height:22px; border:1px solid #ccc; border-radius:2px; font-size:13px; font-weight:bold; color:#333}
+.main-login .after .top .bg a.mypge {display:inline-block; margin-top:2px; margin-left:130px; padding:0 11px; height:24px; line-height:22px; border:1px solid #ccc; border-radius:2px; font-size:13px; font-weight:bold; color:#333}
 .main-login .after .top .bg a.mypge:hover, .main-login .after.personal .top a.mypge:focus {text-decoration:none}
 .main-login .after .top .btn-grp {padding:0 20px; height:35px; border-top:1px solid #eee; border-bottom:1px solid #eee; overflow:hidden}
 .main-login .after .top .btn-grp a, .main-login .after .top .btn-grp button {display:block; padding:0; line-height:33px; background:none; border:none; font-size:14px; font-weight:bold; color:#666; vertical-align:middle}
