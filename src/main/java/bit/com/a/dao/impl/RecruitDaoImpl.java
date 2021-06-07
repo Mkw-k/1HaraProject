@@ -116,6 +116,21 @@ public class RecruitDaoImpl implements RecruitDao{
 	public int getRecruitCount(Map<String, Object> param) {
 		return session.selectOne(ns+"getRecruitCount", param);
 	}
+
+	@Override
+	public boolean mgDetailUpdate(RecruitDto dto) {
+		return session.update(ns+"mgDetailUpdate", dto)>0?true:false;
+	}
+
+	@Override
+	public boolean mgDetailUpdate2(RecruitDto dto) {
+		return session.update(ns+"mgDetailUpdate2", dto)>0?true:false;
+	}
+
+	@Override
+	public boolean favoriteJob(int jobSeq) {
+		return session.insert(ns+"favoriteJob", jobSeq)>0?true:false;
+	}
 	
 	
 

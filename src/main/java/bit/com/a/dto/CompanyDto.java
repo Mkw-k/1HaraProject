@@ -13,7 +13,7 @@ public class CompanyDto {
 	private String memberid;   		// 가입한 기업아이디
 	private String content;	    	// 사업내용
 	private String comimage;	   	// 회사 이미지
-	private String empcount; 	    	// 직원수
+	private String empcount; 	    // 직원수
 	private String salaryavg; 		// 평균 연봉
 	private String salarystart;		// 초봉
 	private String comyear;			// 회사 나이
@@ -22,7 +22,17 @@ public class CompanyDto {
 	private String website;			// 웹사이트 주소
 	private String mainservice;		// 주요서비스
 	private String totalsale;		// 총매출
+	private String updatecompanylist;		// 변수
 	
+	
+	public String getUpdatecompanylist() {
+		return updatecompanylist;
+	}
+
+	public void setUpdatecompanylist(String updatecompanylist) {
+		this.updatecompanylist = updatecompanylist;
+	}
+
 	public CompanyDto() {
 		// TODO Auto-generated constructor stub
 	}

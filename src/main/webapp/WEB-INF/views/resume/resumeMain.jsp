@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="bit.com.a.dto.ResumeDto"%>
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
 <%@page import="java.util.List"%>
@@ -56,6 +57,8 @@
 <link href="csss/header.css" rel="stylesheet" type="text/css">
 <link href="csss/resume.css" rel="stylesheet" type="text/css">
 
+<!-- 페이지네이션 -->
+<script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
 
 <style type="text/css">
   
@@ -520,6 +523,16 @@ nav {
 <!-- 본문 -->
 <main>
 
+
+<%
+List<ResumeDto> resumelist =(List<ResumeDto>) request.getAttribute("resumelist");
+int totalpage = (Integer) request.getAttribute("totalpage");
+System.out.println("resumelist" +resumelist);
+System.out.println("totalpage" +totalpage);
+
+%>
+
+
 <!-- 검색창 -->
 <section class="newsletter" style="padding-bottom: 10px;">
 <div class="container">
@@ -556,22 +569,19 @@ nav {
 					<div class="tab-pane fade in active" id="completed" name="completed" role="tabpanel" style="width: 1500px;">
 						<div class="bs-callout bs-callout-primary">
 							<ul class="list-group">
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;">
-								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
+							
+						<%
+					for(int i=0; i<resumelist.size(); i++){
+						%>
+						<li class="list-group-item"><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a>
+						<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;">
+						</li>
+					<% 	
+					}			
+					%>
+								
 							</ul>
+							
 						</div>
 					</div>
 
@@ -939,5 +949,7 @@ $(document).ready(function()
     $("[rel='tooltip']").tooltip();
 });
 </script>
+
+
 </body>
 </html>

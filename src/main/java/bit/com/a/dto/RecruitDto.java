@@ -78,6 +78,16 @@ public class RecruitDto implements Serializable{
     private int rnum;
     
     private String buscode;
+    //상세주소(근무지주소)
+    private String detailAdress1;
+    //상세주소2 (근무지주소)
+    private String detailAdress2;
+    //담당자 이름 
+    private String mgName;
+    //담당자 연락처 
+    private String mgPhone;
+    //담당자 이메일주소 
+    private String mgEmail;
     
     
     //
@@ -94,6 +104,11 @@ public class RecruitDto implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
+    
+    
+
+
+	
 
 
 
@@ -432,17 +447,109 @@ public class RecruitDto implements Serializable{
 
 
 
+	
 
-	@Override
-	public String toString() {
-		return "RecruitDto [jobSeq=" + jobSeq + ", companyId=" + companyId + ", jobTitle=" + jobTitle + ", jobContent="
-				+ jobContent + ", area1Name=" + area1Name + ", area2Name=" + area2Name + ", jobVolumn=" + jobVolumn
-				+ ", salary=" + salary + ", jobStart=" + jobStart + ", jobEnd=" + jobEnd + ", emp_Type=" + emp_Type
-				+ ", education=" + education + ", career_Type=" + career_Type + ", career_Desc=" + career_Desc
-				+ ", readcount=" + readcount + ", regdate=" + regdate + ", del=" + del + ", companyname=" + companyname
-				+ ", eduname=" + eduname + ", emp_name=" + emp_name + ", rnum=" + rnum + ", buscode=" + buscode
-				+ ", busname=" + busname + ", certifyUpdate=" + certifyUpdate + "]";
+
+	public String getMgPhone() {
+		return mgPhone;
 	}
+
+
+
+
+
+	public void setMgPhone(String mgPhone) {
+		this.mgPhone = mgPhone;
+	}
+
+
+
+
+
+	public String getMgEmail() {
+		return mgEmail;
+	}
+
+
+
+
+
+	public void setMgEmail(String mgEmail) {
+		this.mgEmail = mgEmail;
+	}
+
+
+
+
+
+	
+
+
+
+
+	public String getDetailAdress1() {
+		return detailAdress1;
+	}
+
+
+
+
+
+
+
+
+
+	public void setDetailAdress1(String detailAdress1) {
+		this.detailAdress1 = detailAdress1;
+	}
+
+
+
+
+
+
+
+
+
+	public String getDetailAdress2() {
+		return detailAdress2;
+	}
+
+
+
+
+
+
+
+
+
+	public void setDetailAdress2(String detailAdress2) {
+		this.detailAdress2 = detailAdress2;
+	}
+
+
+	
+
+	public String getMgName() {
+		return mgName;
+	}
+
+
+
+
+
+
+
+
+
+	public void setMgName(String mgName) {
+		this.mgName = mgName;
+	}
+
+
+
+
+
 
 
 
@@ -450,7 +557,8 @@ public class RecruitDto implements Serializable{
 	public RecruitDto(int jobSeq, String companyId, String jobTitle, String jobContent, String area1Name,
 			String area2Name, int jobVolumn, int salary, String jobStart, String jobEnd, String emp_Type,
 			String education, String career_Type, String career_Desc, int readcount, String regdate, int del,
-			String companyname, String eduname, String emp_name, int rnum, String buscode, List<String> busname,
+			String companyname, String eduname, String emp_name, int rnum, String buscode, String detailAdress1,
+			String detailAdress2, String mgName, String mgPhone, String mgEmail, List<String> busname,
 			String certifyUpdate) {
 		super();
 		this.jobSeq = jobSeq;
@@ -475,9 +583,40 @@ public class RecruitDto implements Serializable{
 		this.emp_name = emp_name;
 		this.rnum = rnum;
 		this.buscode = buscode;
+		this.detailAdress1 = detailAdress1;
+		this.detailAdress2 = detailAdress2;
+		this.mgName = mgName;
+		this.mgPhone = mgPhone;
+		this.mgEmail = mgEmail;
 		this.busname = busname;
 		this.certifyUpdate = certifyUpdate;
 	}
+
+
+
+
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "RecruitDto [jobSeq=" + jobSeq + ", companyId=" + companyId + ", jobTitle=" + jobTitle + ", jobContent="
+				+ jobContent + ", area1Name=" + area1Name + ", area2Name=" + area2Name + ", jobVolumn=" + jobVolumn
+				+ ", salary=" + salary + ", jobStart=" + jobStart + ", jobEnd=" + jobEnd + ", emp_Type=" + emp_Type
+				+ ", education=" + education + ", career_Type=" + career_Type + ", career_Desc=" + career_Desc
+				+ ", readcount=" + readcount + ", regdate=" + regdate + ", del=" + del + ", companyname=" + companyname
+				+ ", eduname=" + eduname + ", emp_name=" + emp_name + ", rnum=" + rnum + ", buscode=" + buscode
+				+ ", detailAdress1=" + detailAdress1 + ", detailAdress2=" + detailAdress2 + ", mgName=" + mgName
+				+ ", mgPhone=" + mgPhone + ", mgEmail=" + mgEmail + ", busname=" + busname + ", certifyUpdate="
+				+ certifyUpdate + "]";
+	}
+
+
+
+
+
 
 
 

@@ -91,14 +91,12 @@ public class MemberController {
 
 	}
 
-	/*@RequestMapping(value = "loginAf.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "loginAf.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String loginAf(MemberDto dto, HttpServletRequest req, HttpServletResponse response,
 			@RequestParam(value="memberid", required=true) String userId, 
 			@RequestParam(value="pwd",required=true) String password ) throws Exception {
 
 		MemberDto login = service.login(dto);
-
-		
 		
 		if (login != null && !login.getMemberid().equals("")) {
 
@@ -115,31 +113,32 @@ public class MemberController {
 			return "redirect:/login1.do";
 		
 		}
-	}*/
-	
-	@RequestMapping(value = "loginAf.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String loginAf(MemberDto dto, HttpServletRequest req, HttpServletResponse response,
-			@RequestParam(value="memberid", required=true) String userId, 
-			@RequestParam(value="pwd",required=true) String password ) throws Exception {
-
-		MemberDto login = service.login(dto);
-		if (login == null) {
-
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('로그인 정보를 확인해주세요.');</script>");
-			
-			return "redirect:/login1.do";
-			
-		} else {
-			req.getSession().setAttribute("login", login);
-			// req.getSession().setMaxInactiveInterval(60 * 60 * 24);
-
-			return "redirect:/home.do";
-		
-		}
 	}
 	
+	/*
+	 * @RequestMapping(value = "loginAf.do", method = { RequestMethod.GET,
+	 * RequestMethod.POST }) public String loginAf(MemberDto dto, HttpServletRequest
+	 * req, HttpServletResponse response,
+	 * 
+	 * @RequestParam(value="memberid", required=true) String userId,
+	 * 
+	 * @RequestParam(value="pwd",required=true) String password ) throws Exception {
+	 * 
+	 * MemberDto login = service.login(dto); if (login == null) {
+	 * 
+	 * response.setContentType("text/html; charset=UTF-8"); PrintWriter out =
+	 * response.getWriter();
+	 * out.println("<script>alert('로그인 정보를 확인해주세요.');</script>");
+	 * 
+	 * return "redirect:/login1.do";
+	 * 
+	 * } else { req.getSession().setAttribute("login", login); //
+	 * req.getSession().setMaxInactiveInterval(60 * 60 * 24);
+	 * 
+	 * return "redirect:/home.do";
+	 * 
+	 * } }
+	 */
 	
 	
 	

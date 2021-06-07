@@ -656,7 +656,7 @@ margin-right : 450px;
 		  <div class="dropdown-content">
 		    <a href="#">채용공고</a>
 		    <a href="#">기업정보</a>
-		    <a href="jobtalk.do">취업톡톡</a>
+		    <a href="jobtalklist.do">취업톡톡</a>
 		    <a href="calendarlist.do">공채달력</a>
 		    <a href="#">자료실</a>
 		    <a href="notice.do">공지사항</a>
@@ -671,7 +671,7 @@ margin-right : 450px;
       <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="jobtalk.do" style="color:#2186eb">취업톡톡</a>
+      <a class="nav-link bgc" href="Jobtalklist.do" style="color:#2186eb">취업톡톡</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="calendarlist.do" style="color:#2186eb">공채달력</a>
@@ -683,10 +683,14 @@ margin-right : 450px;
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href=companywrite.do style="color:#2186eb">기업등록하기(company)</a>
+      <a class="nav-link bgc" href="companywrite.do" style="color:#2186eb">기업등록하기(company)</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href=companyupdate.do style="color:#2186eb">기업업데이트하기(company)</a>
+      <a class="nav-link bgc" href="companyupdate.do" style="color:#2186eb">기업업데이트하기(company)</a>
+    </li>
+    
+     <li class="nav-item">
+      <a class="nav-link bgc" href="companydetail.do" style="color:#2186eb">기업디테일(company)</a>
     </li>
 
 
@@ -1000,7 +1004,7 @@ margin-right : 450px;
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>TOP10</a>
 		                        </div>
 		                        <div>
-		                         <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>취업톡톡</a>
+		                         <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>취업톡톡</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>자료실</a>
 		                          <a href="mypage.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>마이페이지</a>
 		                        </div>

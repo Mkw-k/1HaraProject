@@ -27,6 +27,13 @@ public class ConpanyServiceImpl implements CompanyService {
 		 return dao.companywrite(dto);
 	}
 
+
+	@Override
+	public void companyupdate(CompanyDto dto) {
+		
+		dao.companyupdate(dto);
+	}
+
 	
 
 
