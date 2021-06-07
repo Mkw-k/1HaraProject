@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ㄴ<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -19,6 +19,7 @@
 <script type="text/javascript">
 
 </script>
+
 
 <!-- 제이쿼리 -->
 <script src="//https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -255,7 +256,7 @@ margin-right : 450px;
                             </ul>
                             <p class="no_result" style="display: block">자동완성 검색어가 없습니다</p>
                         </div>
-                    </div>
+                    </div>z
                 </div>
                 <div class="util">
                     <button class="btn_close">닫기</button>
@@ -435,6 +436,24 @@ margin-right : 450px;
         
                         <strong>1</strong>
                             <a class="num" href="javascript:SEARCH.M	ain.getSearchList(2);">2</a>
+                            <a class="num" href="javascript:SEARCH.Main.getSearchList(3);">3</a>
+                            <a class="num" href="javascript:SEARCH.Main.getSearchList(4);">4</a>
+                            <a class="num" href="javascript:SEARCH.Main.getSearchList(5);">5</a>
+                            <a class="num" href="javascript:SEARCH.Main.getSearchList(6);">6</a>
+                            <a class="num" href="javascript:SEARCH.Main.getSearchList(7);">7</a>
+                            <a class="num" href="javascript:SEARCH.Main.getSearchList(8);">8</a>
+                            <a class="num" href="javascript:SEARCH.Main.getSearchList(9);">9</a>
+                            <a class="num" href="javascript:SEARCH.Main.getSearchList(10);">10</a>
+            
+                    <a class="next" type="button" href="javascript:SEARCH.Main.getSearchList(11);">
+                다음
+            </a>
+            </div>
+        </div>
+    	<div class="page_nation">
+        
+                        <strong>1</strong>
+                            <a class="num" href="javascript:SEARCH.Main.getSearchList(2);">2</a>
                             <a class="num" href="javascript:SEARCH.Main.getSearchList(3);">3</a>
                             <a class="num" href="javascript:SEARCH.Main.getSearchList(4);">4</a>
                             <a class="num" href="javascript:SEARCH.Main.getSearchList(5);">5</a>

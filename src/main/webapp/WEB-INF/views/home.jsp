@@ -606,7 +606,7 @@ margin-right : 450px;
   <div>
 	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
   </div>
-=======
+
  <!--  -->
 
 </header>
@@ -656,7 +656,7 @@ margin-right : 450px;
 		  <div class="dropdown-content">
 		    <a href="#">채용공고</a>
 		    <a href="#">기업정보</a>
-		    <a href="jobtalk.do">취업톡톡</a>
+		    <a href="jobtalklist.do">취업톡톡</a>
 		    <a href="calendarlist.do">공채달력</a>
 		    <a href="#">자료실</a>
 		    <a href="notice.do">공지사항</a>
@@ -671,7 +671,7 @@ margin-right : 450px;
       <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="jobtalk.do" style="color:#2186eb">취업톡톡</a>
+      <a class="nav-link bgc" href="Jobtalklist.do" style="color:#2186eb">취업톡톡</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="calendarlist.do" style="color:#2186eb">공채달력</a>
@@ -682,6 +682,19 @@ margin-right : 450px;
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link bgc" href="companywrite.do" style="color:#2186eb">기업등록하기(company)</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link bgc" href="companyupdate.do" style="color:#2186eb">기업업데이트하기(company)</a>
+    </li>
+    
+     <li class="nav-item">
+      <a class="nav-link bgc" href="companydetail.do" style="color:#2186eb">기업디테일(company)</a>
+    </li>
+
+
+
     <li class="nav-item">
      	 <a class="nav-link bgc" href="resumeMain.do" style="color: #2186eb;background-color: #fff;">이력서관리</a>
     </li>    
@@ -868,14 +881,13 @@ margin-right : 450px;
 
     <div class="column2" style="padding-left: 40pt;">
     	<div class="container">
-         
           		<div>
 		            <div class="panel panel-primary">
 		                <div class="panel-heading">
 		                    <h3 class="panel-title">
-		                        <span class="glyphicon glyphicon-bookmark"></span> 일하라와 함께하고 싶다면? </h3>
+		                        <span class="glyphicon glyphicon-bookmark"></span> 일하라와 함께하고 싶다면? 
+		                    </h3>
 		                </div>
-
 		                <div class="panel-body"> <!-- 컨테이너 바디 -->
 
 		                    <div class="main-login" style="width: 358px;">
@@ -912,7 +924,6 @@ margin-right : 450px;
 											<div class="top">
 												<div class="bg" style="background-image: url('bg-main-login-person.png') no-repeat 0 2px;">
 													<p class="txt">개인회원</p>
-
 													<p class="name"><strong>${login.name}</strong> 님</p>
 													<a href="/indivMemberSrv/main/indivMemberSrvMain.do" class="mypge">마이페이지</a>
 												</div>
@@ -933,9 +944,6 @@ margin-right : 450px;
 												<div class="btn-grp">
 													<button type="button" class="btn-logout float-l" onclick="f_logout();">로그아웃</button>
 													<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r">기업 관리</a>
-													
-												
-	
 												</div>
 											</div>
 										</c:when>
@@ -996,9 +1004,9 @@ margin-right : 450px;
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>TOP10</a>
 		                        </div>
 		                        <div>
-		                         <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>취업톡톡</a>
+		                         <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>취업톡톡</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>자료실</a>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>마이페이지</a>
+		                          <a href="mypage.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>마이페이지</a>
 		                        </div>
 		                        <div>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>이력서관리</a>

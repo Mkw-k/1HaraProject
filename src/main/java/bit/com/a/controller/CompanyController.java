@@ -15,7 +15,7 @@ public class CompanyController {
 	@Autowired
 	CompanyService service;
 	
-	@RequestMapping(value = "companydetail.do", method = RequestMethod.GET)
+	@RequestMapping(value = "companydetail.do",  method = {RequestMethod.GET, RequestMethod.POST})
 	public String companydetail(Model model, String companyid) {
 		
 		
@@ -27,6 +27,54 @@ public class CompanyController {
 		
 		return "company/companydetail";
 	}
+	
+	
+	@RequestMapping(value = "companywrite.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String companywrite() {
+
+		return "company/companywrite";
+		
+	}
+	
+	@RequestMapping(value = "companywriteAf.do",  method = {RequestMethod.GET, RequestMethod.POST})
+	public String companywriteAf(Model model, CompanyDto dto) {
+	
+		
+		
+		model.addAttribute("company", dto);
+		service.companywrite(dto);
+		
+		System.out.println("dto : "+dto.toString());
+		
+		System.out.println("아이디:" + dto.getMemberid() + "," + dto.getCompanyname());
+		if(dto.getMemberid().equals("") || dto.getCompanyname().equals("")){
+			return "company/companywrite";
+		}
+		return "redirect:/recuruitlist.do";
+	}
+	
+	@RequestMapping(value = "companyupdate.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String companyupdate(Model model, CompanyDto dto, String memberid) {
+		
+		
+		
+		model.addAttribute("company",dto);
+		return "company/companyupdate";
+	}
+
+		
+	@RequestMapping(value = "companyupdateAf.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String companyupdateAf(Model model, CompanyDto dto, String companyid) {
+		
+		
+		
+		service.companyupdate(dto);
+		dto.setUpdatecompanylist("YES");
+		model.addAttribute("company",dto);
+		System.out.println("af투스트링" + dto.toString());
+		return "redirect:/recuruitlist.do";
+	}
+	
 	
 }
 

@@ -7,6 +7,15 @@
 <!DOCTYPE html>
 <html>
 
+
+<c:import url="header.jsp" charEncoding="utf-8" >
+<c:param name="query" value="민원" />
+<c:param name="method" value="get" />
+</c:import>
+
+
+
+
 <head>
 <meta charset="utf-8">
 <!-- 제이쿼리 -->
@@ -25,6 +34,12 @@
 <!-- 외부css파일과 연결 -->
 <link rel="stylesheet" href="./css/wireframe.css">
 
+<!-- CK-editor -->
+<link rel="stylesheet" href="ckeditor5/sample/styles.css">
+<script src="ckeditor5/build/ckeditor.js"></script>
+
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/WEB-INF/lib/ckeditor5/sample/styles.css"> --%>
+<%-- <script src="${contextPath }/WEB-INF/lib/ckeditor5/build/ckeditor.js"></script> --%>
 
 <style type="text/css">
 /* buscode selected 된거 쌓는곳 */
@@ -35,42 +50,19 @@
 
 </head>
 
-<body class="bg-light">
+<body class="">
   <div class="py-5">
     <div class="container">
       <div class="row">
-        <div class="text-center col-md-7 mx-auto"> <i class="fa d-block fa-bullseye fa-5x mb-4 text-info"></i>
-          <h2><b style="	box-shadow: 0px 0px 4px  black;	text-shadow: 0px 0px 4px black;">채용공고 등록</b></h2>
-          <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        <div class="text-center col-md-7 mx-auto">
+          <h1>채용공고 등록</h1>
+          <p class="lead">채용공고 등록 페이지입니다 (*)가 들어간 부분은 빠짐없이 입력해주세요</p>
         </div>
       </div>
     </div>
   </div>
  
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <ul class="nav nav-pills">
-            <li class="nav-item"> <a href="" class="nav-link active show" data-toggle="pill" data-target="#tabone">Tab 1</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">Tab 2</a> </li>
-            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">Tab 3</a> </li>
-          </ul>
-          <div class="tab-content mt-2">
-            <div class="tab-pane fade active show" id="tabone" role="tabpanel">
-              <p class="">Which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite.</p>
-            </div>
-            <div class="tab-pane fade" id="tabtwo" role="tabpanel">
-              <p class="">When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface.</p>
-            </div>
-            <div class="tab-pane fade" id="tabthree" role="tabpanel">
-              <p class="">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
   
   <div class="py-5" >
     <div class="container">
@@ -86,9 +78,9 @@
               <div class="dropdown-divider"></div>
             </div>
           </div>
-          <a class="btn btn-light" href="#_writeFrm1">입력내역1</a>
-          <a class="btn btn-light" href="#_writeFrm2">입력내역2</a>
-          <a class="btn btn-light" href="#_writeFrm3" style="">입력내역3</a>
+          <a class="btn btn-primary" href="#_writeFrm1">입력내역1</a>
+          <a class="btn btn-primary" href="#_writeFrm2">입력내역2</a>
+          <a class="btn btn-primary" href="#_writeFrm3" style="">입력내역3</a>
         </div>
       </div>
     </div>
@@ -212,13 +204,19 @@
                 <div class="invalid-feedback"> Please enter your shipping address. </div>
               </div>
               
-              <div class="row">
-              <div class="col-md-10 mb-6"> <label for="address">공고상세내역</label>
-              	 <textarea rows="10" cols="100 px" name="jobContent">${dto.jobContent }             
-                 </textarea>
-              </div>
-              </div>
+             
               
+              </div>
+               <div class="row">
+              <div class="col-md-12 mb-12">
+	               <p><label for="address">공고상세내역</label></p>
+	              	<div class="editor" >   	
+	              	${dto.jobContent }  </div>
+	              	
+	              	
+	              	<input type="hidden" name="jobContent" id="_jobContent">              	 
+	              
+              </div>
               </div>
               <hr class="mb-4">
               
@@ -316,7 +314,7 @@
           			<input type="hidden" value="${dto.jobSeq }" id="_jobSeq" name="jobSeq">          		
           		</c:when> 
         	    <c:otherwise>
-          			<div class="col-md-12"><a class="btn btn-secondary" href="javascript:jobRegi();">작성하기</a></div>
+          			<div class="col-md-12"><a class="btn btn-secondary" id="submit" href="javascript:jobRegi();">작성하기</a></div>
           		</c:otherwise> 
           	</c:choose> 
           	
@@ -378,7 +376,8 @@
   
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
-
+var html = "";
+//$(".editor").html(html);
 
 
 function jobRegi() {
@@ -390,13 +389,20 @@ function jobRegi() {
     	busData[i] = $("input[name='buscode']")[i].value;
     }
     
+    /* var data = CKEDITOR.instances.editor.getData();
+    $("#_jobContent").val(data);
+    alert($("#_jobContent").val(data)); */
+    
+    alert($(".editor").text());
+    $("#_jobContent").val($(".editor").text());
+    
+    
+    
    
     
     $("#_recruitcrefrm").attr("action", "recuruitcreateAf.do").submit();
-
     
 }
-
 function jobUpdate() {
 	alert($("#_jobSeq").val());
 	
@@ -410,17 +416,11 @@ function jobUpdate() {
 	$("#sample6_address").val(areaname);
 	
 	//alert($("#_areaName").val());
-
 	$("#_recruitcrefrm").attr("action", "recuruitupdateAf.do").submit();
 }
  
  
-
 	
-
-
-
-
 $(".btnRegister").click(function(){
 	
 	/* var start = $("#_jobStart").val().replace('T', '');
@@ -440,29 +440,21 @@ $(".btnRegister").click(function(){
 	alert("end:" + end); */
 	
 	//$("#_recruitcrefrm").submit();	
-
 });
-
-
-
-
 function sample6_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
             // 각 주소의 노출 규칙에 따라 주소를 조합한다.
             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
             var addr = ''; // 주소 변수
             var extraAddr = ''; // 참고항목 변수
-
             //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
             if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
                 addr = data.roadAddress;
             } else { // 사용자가 지번 주소를 선택했을 경우(J)
                 addr = data.jibunAddress;
             }
-
             // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
             if(data.userSelectedType === 'R'){
                 // 법정동명이 있을 경우 추가한다. (법정리는 제외)
@@ -484,7 +476,6 @@ function sample6_execDaumPostcode() {
             } else {
                 document.getElementById("sample6_extraAddress").value = '';
             }
-
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             document.getElementById('sample6_postcode').value = data.zonecode;
             document.getElementById("sample6_address").value = addr;
@@ -493,8 +484,6 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
-
-
 //첫번째 BUSCODE1 DATA를 받아서 체크박스로 뿌려주는 코드 
 $(document).ready(function() {
 	
@@ -512,9 +501,7 @@ $.ajax({
 		$(".list_col1").remove();
 		
 		$.each(list, function(i, val){
-
 			//alert(val.jobSeq);
-
 			//let app = "<input type='checkbox' class='list_col' name='buscode' value='"+val.buscode1+"' class='form-control'>"+val.buscodename1
 			let app = "<div>"+
 					"<input type='radio' class='list_col1' id='buscode1'"+ 
@@ -532,8 +519,6 @@ $.ajax({
  }); // ajax
  
 }); // document ready 
-
-
 //두번째 BUSCODE2 DATA를 받아서 체크박스로 뿌려주는 코드 
 $(document).on("change",".list_col1", function(){
 	
@@ -574,10 +559,6 @@ $(document).on("change",".list_col1", function(){
     } */
 	
 });
-
-//input Tag (BUSCODE3)에 동적 id를 주기 위한 인덱스용 넘버 
-let count = 1;
-
 let count = 1;
 //마지막 BUSCODE3 DATA를 받아서 체크박스로 뿌려주는 코드 
 $(document).on("change",".list_col2", function(){
@@ -611,7 +592,6 @@ $(document).on("change",".list_col2", function(){
         		
         		
         		
-
         		//기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 초기셋팅 
         		var stackValue = $("input[name='buscode']").length;
 			    var stackData = new Array(stackValue);
@@ -630,27 +610,22 @@ $(document).on("change",".list_col2", function(){
         		
         		
         		
-
         		$.each(list, function(i, val){
 		        	let app = "";
         			
-
-		       	        	
+		        
+		        	
 				//value값 buscode로 바꿧음 (busname에서)
 		        		app += "<span class='list_col3'>"+
 					  	"<input type='checkbox' class='list_col3' name="+count+" id='buscode3data"+count+"' value='"+val.buscode+"' data-value='"+val.busname+"' class='form-control'>"+val.busname+
 					  	"</span>"; 
-
 							   	  
 						 if((i+1)%2==0){
 	        				app += "</br>";
 	        			}
-
-						   
-
+						 
 				$("#_buscodeList3").append(app);
-				count+=1;
-
+				
         		
 				//기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 최종진행
 				//each반복문을 통해 현재 생성되는 list_col3의 아이디값을 buscodeTag 변수에 저장  
@@ -684,26 +659,16 @@ $(document).on("change",".list_col2", function(){
     } */
 	
 });
-
-
-
-
-
-
 //span Tag에 동적 id를 주기 위한 인덱스용 넘버 
 let cnt = 1;
-
 var selectedBuscode = "";
-
 //소분류 체크박스가 변경될때 실행 
 $(document).on("change", ".list_col3" , function(){
 	//$(".list_col3").change(function(){
-
-
+	
 	let app ="";
 	
 	
-
 	
 		//if($("input:checkbox['.list_col3']").is(":checked") == true){ 
 		//if($(this).is(":checked") == true){
@@ -712,7 +677,6 @@ $(document).on("change", ".list_col3" , function(){
 		//실제로 buscode가 들어옴 
 		let buscode = $(this).val();
 		var count = $(this).attr('name');
-
 		//데이터 밸류 값으로 busname값을 받아옴 
 		let busname = $(this).data("value");
 		alert("버스네임(데이터밸류네임):"+busname);
@@ -721,16 +685,13 @@ $(document).on("change", ".list_col3" , function(){
 		//밑에 stack에 만들어지는 input태그의 value 값은 buscode이다 
 		app = "<span class=arrBusdata id=selectedBuscode"+cnt+">"+busname+
 			  "<input name='buscode' type='hidden' value='"+buscode+"'>"+
-
 			  "<a onclick='delSelBuscode("+cnt+","+count+")'>"+
 			  "<img alt='왜안뜨지' src='ma.jpg' style='width:30px; height:30px;'>"+
 			  "</a>"+"</span>"+"&nbsp;&nbsp;";
 			  
-
 	  	var id = $(this).attr("id");
 		//alert(id);
 		let input = document.getElementById(id);
-
 		
 		$(this).removeData('code');
 		
@@ -740,7 +701,6 @@ $(document).on("change", ".list_col3" , function(){
 		//alert('datacode 생성: '+'selectedBuscode'+cnt);
 		
 		//alert('datacode 리얼: ' + $(this).data("code"));
-
 		
 		$("#selectResult").append(app);
 		cnt += 1;
@@ -748,9 +708,7 @@ $(document).on("change", ".list_col3" , function(){
 	}
 	
 	
-
 	
-
 	//체크박스 해제가 될때 밑에 부분에 적재되있는 같은 데이터의 span태그도 삭제
 	else if($(this).is(":checked") == false){
 		//alert("위에 셀렉코드 : "+$(this).data("code"));
@@ -761,18 +719,14 @@ $(document).on("change", ".list_col3" , function(){
 		selectedBuscode = $(this).data("code");
 		//alert('위에 셀렉코드 :'+ selectedBuscode);
 		
-
 		document.getElementById(selectedBuscode).remove();
 	}
 	
 	
 });
-
-
 //밑에 쌓여있는 span태그에서 X버튼을 눌렀을때 위에 체크박스도 같이 체크 해제가 되도록 해주는 코드  
 function delSelBuscode(cnt, count) {
 	//alert(count);
-
 	
 	var spanid = "selectedBuscode"+cnt;
 	alert('밑에셀렉코드 :'+spanid);
@@ -788,17 +742,93 @@ function delSelBuscode(cnt, count) {
 	
 	//체크박스 체크해제
 	document.getElementById(buscodeTag).checked = false;
-
-
 }
-
-
-
-
 </script>
   
   
+  <script>BalloonEditor
+	.create( document.querySelector( '.editor' ), {
+		
+		toolbar: {
+			items: [
+				'heading',
+				'|',
+				'bold',
+				'italic',
+				'link',
+				'bulletedList',
+				'numberedList',
+				'|',
+				'outdent',
+				'indent',
+				'|',
+				'imageUpload',
+				'blockQuote',
+				'insertTable',
+				'fontColor',
+				'fontSize',
+				'fontBackgroundColor',
+				'fontFamily',
+				'highlight',
+				'imageInsert',
+				'mediaEmbed',
+				'undo',
+				'redo'
+			]
+		},
+		language: 'ko',
+		image: {
+			toolbar: [
+				'imageTextAlternative',
+				'imageStyle:full',
+				'imageStyle:side',
+				'linkImage'
+			]
+		},
+		table: {
+			contentToolbar: [
+				'tableColumn',
+				'tableRow',
+				'mergeTableCells'
+			]
+		},
+		licenseKey: '',
+		
+		
+	} )
+	.then( editor => {
+		window.editor = editor;
+		
+		
+		
+		
+		
+		
+	} )
+	.catch( error => {
+		console.error( 'Oops, something went wrong!' );
+		console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+		console.warn( 'Build id: x1h6xk4rd95i-65gjhojljtvk' );
+		console.error( error );
+	} );
   
+	//Assuming there is a <button id="submit">Submit</button> in your application.
+  document.querySelector( '#submit' ).addEventListener( 'click', () => {
+      /* const editorData = editor.getData();
+      
+      alert(editorData);
+      $("#_jobContent").val(editorData); */
+      // ...
+  } );
+  
+ 
+	
+
+
+	
+	
+	
+	</script>
   
   
   

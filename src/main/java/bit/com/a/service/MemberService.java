@@ -15,5 +15,6 @@ public interface MemberService {
 	//public void authentication(MemberDto dto);        //회원 인증관련 메소드
 	void memberDelete(MemberDto dto);
 	List<MemberDto> getMemberList();
+	void admin_member_foced_evictionCheck(MemberDto dto) throws Exception;
 	
 }

@@ -22,8 +22,19 @@ public class CompanyDaoImpl implements CompanyDao {
 	
 	@Override
 	public CompanyDto getCompany(String companyid) {
+	return session.selectOne(ns + "getCompany" , companyid);
+	}
+
+	@Override
+	public boolean companywrite(CompanyDto dto) {
+		int n = session.insert(ns + "companywrite" , dto);
+		return n>0?true:false;
+	}
+
+	@Override
+	public void companyupdate(CompanyDto dto) {
+		session.update(ns + "companyupdate", dto);
 		
-		return session.selectOne(ns + "getCompany" , companyid);
 	}
 
 	

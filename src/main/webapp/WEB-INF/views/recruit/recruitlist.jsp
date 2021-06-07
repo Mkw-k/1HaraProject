@@ -51,6 +51,20 @@ padding:20px;
 height: 150px;
 } */
 
+#nav-main{
+	height: 100 px;
+}
+
+nav.top-nav-collapse {
+   transition: all 300ms ease-in-out;
+   background-color: blue !important;
+   color: white !important;
+}
+
+white{
+	color: white !important;
+}
+
 
 </style>
 
@@ -58,71 +72,96 @@ height: 150px;
 <body>
 
 
-<nav class="navbar navbar-expand-md sticky-top navbar-light" style="text-shadow: white 0px 0px 0.2px; box-shadow: black 0px 0px 10px;" id="nav-example"><a class="navbar-brand d-none d-md-block offset-1" href="#">
-      <i class="fa d-inline fa-lg fa-stop-circle-o" style="	background-image: url(./image/1hara.gif);	background-position: top left;	background-size: 100%;	background-repeat: repeat;"></i>
-      <b> BRAND</b>
+<nav class="navbar navbar-expand-md sticky-top" style="text-shadow: white 0px 0px 0.2px; box-shadow: black 0px 0px 10px;" id="nav-main" ><a class="navbar-brand d-none d-md-block ml-3" href="home.do">
+      <img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px">
+     
     </a>
-    <div class="container"> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar19" style="">
+    <div class="container-fluid"> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar19" style="">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbar19">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
             <div class="btn-group">
-              <button class="btn dropdown-toggle btn-link text-dark" data-toggle="dropdown"> 전체보기</button>
-              <div class="dropdown-menu" style=""> <a class="dropdown-item" href="#">Action</a>
+              <button class="btn dropdown-toggle btn-link" data-toggle="dropdown"> 전체보기</button>
+              <div class="dropdown-menu" style=""> 
+                <a class="dropdown-item" href="#">Action</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Separated link</a>
               </div>
             </div>
           </li>
-          <li class="nav-item"> <a class="nav-link active" href="#">채용공고</a> </li>
-          <li class="nav-item"> <a class="nav-link active" href="#">기업정보</a> </li>
-          <li class="nav-item"> <a class="nav-link active" href="#">취업톡톡</a> </li>
-          <li class="nav-item"> <a class="nav-link active" href="#">공채달력</a> </li>
-          <li class="nav-item"> <a class="nav-link active" href="#">자료실</a> </li>
-          <li class="nav-item"> <a class="nav-link active" href="#">이력서관리</a> </li>
+          
+		<li class="nav-item">
+            <div class="btn-group">
+              <button class="btn dropdown-toggle btn-link" data-toggle="dropdown"> 채용공고</button>
+              <div class="dropdown-menu"> 
+                <a class="dropdown-item" href="javascript:createRecruit()">채용공고 작성</a>
+               <!--  <div class="dropdown-divider"></div> -->
+                <a class="dropdown-item" href="javascript:createRecruitNew()">채용공고 작성 New</a>
+              </div>
+            </div>
+          </li>
+          
+         
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">기업정보</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">취업톡톡</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">공채달력</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">자료실</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">이력서관리</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">기업관리</a> </li>
+
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item"> <a class="nav-link" href="#">
-              <i class="fa fa-twitter fa-fw text-secondary"></i>
+              <i class="fa fa-twitter fa-fw text-primary"></i>
             </a> </li>
-          <li class="nav-item"> <a class="btn btn-secondary mr-1" href="#">로그인</a><a class="btn btn-secondary" href="#">회원가입</a>
+          <li class="nav-item">
+            <div class="btn-group">
+              <button class="btn dropdown-toggle btn-link " data-toggle="dropdown">로그인해주세요</button>
+              <!-- <button class="btn dropdown-toggle btn-link " data-toggle="dropdown">이주영 님</button> -->
+              <div class="dropdown-menu" style=""> <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+              </div>
+            </div><a class="btn btn-secondary mr-1" href="#">로그인</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  
-  
-  
+
+<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<img alt="" src="<%=request.getContextPath() %>/image/개발자23.gif" style="width: 100%; height: 140px;">	
+			</div>
+		</div>
+	</div>
+	<br>
+	
+
+
+
 
 <!-- 프론트 작업중 다중 셀렉트 박스  -->
 	<div class="container">
 		<div class="header clearfix">
 			<nav>
 				<ul class="nav nav-pills float-right">
-					<li class="nav-item"><a class="nav-link" href="#">직업별</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">직업별</a></li>
+					<!-- <li class="nav-item"><a class="nav-link" href="#">직업별</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">지역별</a></li> -->
+					<li class="nav-item"><a class="nav-link" href="#">HOT10</a></li>
 					<li class="nav-item"><a class="nav-link" href="home.do">메인으로</a></li>
 				</ul>
 			</nav>
-			<h3 class="text-muted">채용공고 게시판</h3>
+			<h1 class="text-muted">채용공고 게시판</h1>
 			<div class="m-5"></div>
 		</div>
-		
-		
-
-		
-<h1>채용공고게시판</h1>
-
-<!-- 채용공고 작성 -->
-<h2 onclick="createRecruit()" class="createRecruitBtn">채용공고 작성</h2>
-<h2 onclick="createRecruitNew()" class="createRecruitBtn">채용공고 작성 New</h2>
 
 <form action="#" id="_frmFormSearch" name="dataForm" method="post" novalidate="novalidate">
-	<input type="hidden" value="" id="_page">
-		<div class="py-5">
+	<input type="hidden"  id="_page" >
+		<div class="pb-3">
 			<div class="container">
 
 				<div class="row">
@@ -171,7 +210,6 @@ height: 150px;
 												<div id="_buscodeList3"
 													style="overflow: auto; width: 350px; height: 150px;">
 
-
 												</div>
 
 											</div>
@@ -186,7 +224,7 @@ height: 150px;
 
 
 							<div class="tab-pane fade" id="tabtwo" role="tabpanel">
-								<div class="py-5">
+								<div class="py-1">
 									<div class="container">
 										<div class="row">
 
@@ -358,12 +396,22 @@ height: 150px;
 	</div> -->
 
 	<br><br><br>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<img alt="" src="<%=request.getContextPath() %>/image/개발자23.gif" style="width: 100%; height: 140px;">	
+			</div>
+		</div>
+	</div>
+	<br><br>
+	
 
 	<div class="container">
 		<div class="row marketing">
 
 
-			<table class="table table-hover col-sm-12 " style="" id="table">
+			<table class="table table-hover col-sm-12 " id="table">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -403,11 +451,12 @@ height: 150px;
 			<p>© 1hara Corp. 2021</p>
 		</footer>
 	</div>
+	
 
 
 
 <script type="text/javascript">
-getrecruListData();
+getrecruitSearchList(0);
 getRecruitListCount();
 
 //작성목록으로 이동
@@ -436,13 +485,14 @@ function arrow(depth) {
 }
 */
 
-//5단 검색바 사용 검색할 경우 
+//5단 검색바 사용 검색할 경우
 function getrecruitSearchList(pnum) {
 	 var pnum = pnum;
-	 var queryString = $("form[name=dataForm]").serialize()+ "&page="+pnum ;
-	 
 	 $("#_page").val(pnum);
+	 var queryString = $("form[name=dataForm]").serialize()+ "&page="+pnum;
 
+	 var selectSearchData1 = $("form[name=dataForm]").serialize();
+	 getRecruitListCount(selectSearchData1);
 
      $.ajax({
          type : 'post',
@@ -452,7 +502,7 @@ function getrecruitSearchList(pnum) {
              alert("에러발생");
          },
          success:function(list){
- 			alert('success');
+ 			//alert('success');
  			//alert(list);
 
  			$(".list_col").remove();
@@ -464,12 +514,16 @@ function getrecruitSearchList(pnum) {
 
  							if(val.del==0){
 
-
+ 								"<td>"
+								+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname+"</a>"
+							    + "</td>"
  								/* let empT = "";
  								if(val.empType == 3){
  									empT = "정규직";
  								} */
- 								app +="<td>" + val.companyname + "</td>"
+ 								app +="<td>"
+ 									+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname + "</a>"
+ 									+ "</td>"
  									+"<td style='text-align:left'>"
  									//+ arrow(val.depth)
  									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq + "'>" + val.jobTitle+ "</a>"
@@ -520,14 +574,8 @@ function getrecruListData( pNumber, search ){
 
 							if(val.del==0){
 
-
-								/* let empT = "";
-								if(val.empType == 3){
-									empT = "정규직";
-								} */
-
 								app +="<td>"
-									+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname +"</a>"
+									+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname+"</a>"
 								    + "</td>"
 									+"<td style='text-align:left'>"
 									//+ arrow(val.depth)
@@ -563,7 +611,37 @@ function getrecruListData( pNumber, search ){
 
 
 //글의 총수를 취득
-function getRecruitListCount() {
+function getRecruitListCount(selectSearchData1) {
+
+	/*  var pnum = pnum;
+	 $("#_page").val(pnum);
+	 alert("페이지넘버:"+$("#_page").val(pnum)) */
+	 var selectSearchData = $("form[name=dataForm]").serialize();
+	 //var selectSearchData = selectSearchData1;
+
+
+
+     $.ajax({
+         type : 'get',
+         url : './recruitlistCount.do',
+         data : selectSearchData,
+         success: function( count ) {
+ 			//alert('success');
+			//alert(count);
+
+ 			loadPage(count);
+ 		},
+         error: function(xhr, status, error){
+             alert("글의 총수 불러오기 에러발생");
+         }
+     });
+
+
+
+}
+
+
+/* function getRecruitListCount() {
 	$.ajax({
 		url : "./recruitlistCount.do",
 		type: "get",
@@ -578,11 +656,12 @@ function getRecruitListCount() {
 		}
 	});
 }
-
+ */
 
 //paging 처리
 function loadPage( totalCount ) {
 
+	 //alert("토탈카운트"+totalCount);
 
 	let pageSize = 5;
 	let nowPage = 1;
@@ -609,8 +688,9 @@ function loadPage( totalCount ) {
 		initiateStartPageClick:false,				//onPageClick 자동 실행되지 않도록 한다
 		onPageClick : function(event, page) {
 			nowPage = page;
-		//	alert('nowPage:'+ page);
-			getrecruListData(page -1);
+			//alert('nowPage:'+ page);
+			//getrecruListData(page -1);
+			getrecruitSearchList(page -1);
 		}
 	});
 }
@@ -735,7 +815,7 @@ $(document).on("change","#_buscodeList2", function(){
 
         		//$("_buscodeList3 *").remove(); //내부 요소만 삭제
 
-        		$("#buscodeList3").remove();
+        		$(".list_col3").remove();
 
         		var parent = document.getElementById('_buscodeList3');
         		var var1   = parent.getElementsByTagName('br');
@@ -762,7 +842,7 @@ $(document).on("change","#_buscodeList2", function(){
 
 		        	//stackname = 밑에태그 아이디.val (elements) 배열로 해야될듯
 
-		        		app += 	"<div class='form-check mt-2 form-check-inline' id='buscodeList3'>"+
+		        		app += 	"<div class='form-check mt-2 form-check-inline list_col3' id='buscodeList3'>"+
 		        	    "<input class='form-check-input list_col3' name="+count+" id='buscode3data"+count+"' value='"+val.buscode+"' data-value='"+val.busname+"' type='checkbox'>"+
 		        	    "<label class='form-check-label' for='exampleCheck1'>"+val.busname+
 		        	    "</label></div>";
@@ -828,8 +908,8 @@ $(document).on("change", ".list_col3" , function(){
 
 		let buscode = $(this).val();
 		var count = $(this).attr('name');
-		
-		//데이터 밸류 값으로 busname값을 받아옴 
+
+		//데이터 밸류 값으로 busname값을 받아옴
 		let busname = $(this).data("value");
 		//alert("버스네임(데이터밸류네임):"+busname);
 		//alert(buscode);
@@ -881,7 +961,7 @@ function delSelBuscode(cnt, count) {
 	//alert(count);
 
 	var spanid = "selectedBuscode"+cnt;
-	alert('밑에셀렉코드 :'+spanid);
+	//alert('밑에셀렉코드 :'+spanid);
 
 	var buscodeTag ="buscode3data"+count;
 	//alert(buscodeTag);
@@ -1119,7 +1199,26 @@ function delSelAreacode(cnt2, count2) {
 
 
 
-
+$(function() {
+	   $(window).scroll(function() {
+	      //ADD CLASS
+	      if ($(".navbar").offset().top > 90) {
+	         //바탕색상변경
+	    	 $(".sticky-top").addClass("top-nav-collapse");
+	         //폰트색상 변경
+	         $(".navbar a").addClass("text-light");
+	         //드랍다운색상 변경
+	         $(".navbar li button").addClass("text-light");
+	         //드랍다운 밑에 있는 a태그도 변경 
+	         $(".navbar li button a").addClass("text-dark");
+	      } else {
+	         $(".sticky-top").removeClass("top-nav-collapse");
+	         $(".navbar a").removeClass("text-light");
+	         $(".navbar li button").removeClass("text-light");
+	         $(".navbar li button a").removeClass("text-dark");
+	      }
+	   });
+	});
 
 
 

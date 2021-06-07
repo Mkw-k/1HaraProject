@@ -10,26 +10,36 @@ public class CompanyDto {
 	private int del;				// 삭제용
 	private String companytype;		// 회사 규모 (소 중 대)
 	private int companyseq;   		// 시컨스
-	private String companyid;   	// 가입한 기업아이디
-	private String buscode;	    	// 업종
+	private String memberid;   		// 가입한 기업아이디
+	private String content;	    	// 사업내용
 	private String comimage;	   	// 회사 이미지
-	private int empcount; 	    	// 직원수
+	private String empcount; 	    // 직원수
 	private String salaryavg; 		// 평균 연봉
 	private String salarystart;		// 초봉
 	private String comyear;			// 회사 나이
-	private int retiree;			// 퇴사자 수
-	private int joinner;			// 입사자 수
+	private String retiree;			// 퇴사자 수
+	private String joinner;			// 입사자 수
 	private String website;			// 웹사이트 주소
 	private String mainservice;		// 주요서비스
 	private String totalsale;		// 총매출
+	private String updatecompanylist;		// 변수
 	
+	
+	public String getUpdatecompanylist() {
+		return updatecompanylist;
+	}
+
+	public void setUpdatecompanylist(String updatecompanylist) {
+		this.updatecompanylist = updatecompanylist;
+	}
+
 	public CompanyDto() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public CompanyDto(String companyname, String address, int companynum, String ceoname, int del, String companytype,
-			int companyseq, String companyid, String buscode, String comimage, int empcount, String salaryavg,
-			String salarystart, String comyear, int retiree, int joinner, String website, String mainservice,
+			int companyseq, String memberid, String content, String comimage, String empcount, String salaryavg,
+			String salarystart, String comyear, String retiree, String joinner, String website, String mainservice,
 			String totalsale) {
 		super();
 		this.companyname = companyname;
@@ -39,8 +49,8 @@ public class CompanyDto {
 		this.del = del;
 		this.companytype = companytype;
 		this.companyseq = companyseq;
-		this.companyid = companyid;
-		this.buscode = buscode;
+		this.memberid = memberid;
+		this.content = content;
 		this.comimage = comimage;
 		this.empcount = empcount;
 		this.salaryavg = salaryavg;
@@ -57,7 +67,7 @@ public class CompanyDto {
 	public String toString() {
 		return "CompanyDto [companyname=" + companyname + ", address=" + address + ", companynum=" + companynum
 				+ ", ceoname=" + ceoname + ", del=" + del + ", companytype=" + companytype + ", companyseq="
-				+ companyseq + ", companyid=" + companyid + ", buscode=" + buscode + ", comimage=" + comimage
+				+ companyseq + ", memberid=" + memberid + ", content=" + content + ", comimage=" + comimage
 				+ ", empcount=" + empcount + ", salaryavg=" + salaryavg + ", salarystart=" + salarystart + ", comyear="
 				+ comyear + ", retiree=" + retiree + ", joinner=" + joinner + ", website=" + website + ", mainservice="
 				+ mainservice + ", totalsale=" + totalsale + "]";
@@ -119,20 +129,20 @@ public class CompanyDto {
 		this.companyseq = companyseq;
 	}
 
-	public String getCompanyid() {
-		return companyid;
+	public String getMemberid() {
+		return memberid;
 	}
 
-	public void setCompanyid(String companyid) {
-		this.companyid = companyid;
+	public void setMemberid(String memberid) {
+		this.memberid = memberid;
 	}
 
-	public String getBuscode() {
-		return buscode;
+	public String getContent() {
+		return content;
 	}
 
-	public void setBuscode(String buscode) {
-		this.buscode = buscode;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public String getComimage() {
@@ -143,11 +153,11 @@ public class CompanyDto {
 		this.comimage = comimage;
 	}
 
-	public int getEmpcount() {
+	public String getEmpcount() {
 		return empcount;
 	}
 
-	public void setEmpcount(int empcount) {
+	public void setEmpcount(String empcount) {
 		this.empcount = empcount;
 	}
 
@@ -175,19 +185,19 @@ public class CompanyDto {
 		this.comyear = comyear;
 	}
 
-	public int getRetiree() {
+	public String getRetiree() {
 		return retiree;
 	}
 
-	public void setRetiree(int retiree) {
+	public void setRetiree(String retiree) {
 		this.retiree = retiree;
 	}
 
-	public int getJoinner() {
+	public String getJoinner() {
 		return joinner;
 	}
 
-	public void setJoinner(int joinner) {
+	public void setJoinner(String joinner) {
 		this.joinner = joinner;
 	}
 
@@ -215,6 +225,4 @@ public class CompanyDto {
 		this.totalsale = totalsale;
 	}
 
-	
-	
 }

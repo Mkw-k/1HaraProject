@@ -53,7 +53,7 @@
 
 <style>
 /* 가로로 정렬 */
-.ulli {list-style-type: none; float: left; margin-left: 20px;  }
+.ulli {list-style-type: none; float: left; margin-left: 70px;  }
 ​
 /* 모달 */
 #login-modal {
@@ -506,9 +506,9 @@ nav {
 		<td>${company.ceoname }</td>
 	</tr>
 	
-	<tr hidden="">
+	<tr>
 		<th>회사아아디</th>
-		<td>${company.companyid }</td>
+		<td>${company.memberid }</td>
 	</tr>
 	
 	<tr>
@@ -521,9 +521,9 @@ nav {
 		<td>${company.companynum }</td>
 	</tr>
 	
-	<tr hidden="">
-		<th>직종번호  :</th>
-		<td>${company.buscode }</td>
+	<tr >
+		<th>주요 업무 :</th>
+		<td>${company.content }</td>
 	</tr>
 
 	<tr>
@@ -557,6 +557,11 @@ nav {
 	</tr>
 	
 </table>
+   
+      <a class="nav-link bgc" href="companyupdate.do?seq=${company.companyseq}" style="color:#2186eb">기업업데이트하기(company)</a>
+  
+    
+
 </div>
 </div>
 <!-- //////////////////////////////////////////테이블 끝 -->
@@ -793,8 +798,10 @@ $("#searchBtn").click(function () {
 
 
 
-function btnweb() {
-	var url = '${company.website }';
+function btnweb() {	
+	var url = 'http://' + '${company.website }';
+	alert(url);
+	
 	window.location.href = url;
 }
 

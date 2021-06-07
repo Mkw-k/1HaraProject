@@ -28,10 +28,10 @@ public class RecruitServiceImpl implements RecruitService{
 		return dao.getallRecruitlist();
 	}
 
-	@Override
-	public int getRecruitCount(BbsParam param) {
-		return dao.getRecruitCount(param);
-	}
+	/*
+	 * @Override public int getRecruitCount(BbsParam param) { return
+	 * dao.getRecruitCount(param); }
+	 */
 
 	@Override
 	public List<RecruitDto> getRecruitPagingList(RecruitParam param) {
@@ -107,6 +107,11 @@ public class RecruitServiceImpl implements RecruitService{
 	@Override
 	public boolean insertBuscode(Map<String, Object> param) {
 		return dao.insertBuscode(param);
+	}
+
+	@Override
+	public int getRecruitCount(Map<String, Object> param) {
+		return dao.getRecruitCount(param);
 	}
 	
 	
