@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<%@page import="bit.com.a.dto.MemberDto"%>
+<%@page import="bit.com.a.dto.Resume_LanguageVo"%>
+<%@page import="bit.com.a.dto.Resume_AwardVo"%>
+<%@page import="bit.com.a.dto.Resume_ActivityVo"%>
+<%@page import="bit.com.a.dto.Resume_licenseVo"%>
+<%@page import="bit.com.a.dto.Resume_CareerVo"%>
+<%@page import="bit.com.a.dto.Resume_EduVo"%>
+<%@page import="bit.com.a.dto.ResumeDto"%>
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
 <%@page import="java.util.List"%>
@@ -277,6 +285,104 @@ dt, dd {
 		<!-- 본문 -->
 		<main>
 
+<%
+ResumeDto resumedto =(ResumeDto)request.getAttribute("resumedto");
+List<Resume_EduVo> edulist =(List<Resume_EduVo>)request.getAttribute("edulist");
+List<Resume_CareerVo> calist =(List<Resume_CareerVo>)request.getAttribute("calist");
+List<Resume_licenseVo> liclist =(List<Resume_licenseVo>)request.getAttribute("liclist");
+List<Resume_ActivityVo> actlist =(List<Resume_ActivityVo>)request.getAttribute("actlist");
+List<Resume_AwardVo> awdlist =(List<Resume_AwardVo>)request.getAttribute("awdlist");
+List<Resume_LanguageVo> lanlist =(List<Resume_LanguageVo>)request.getAttribute("lanlist");
+//dto들어오는지 확인
+System.out.println(resumedto.toString());
+
+//학력사항 들어오는지 확인
+for(int i=0; i<edulist.size(); i++){
+if(edulist == null || edulist.isEmpty()){
+	System.out.println("경력없음");
+} else{
+	System.out.println(edulist.get(i));
+}
+}
+
+
+//경력사항 들어오는지 확인
+for(int i=0; i<calist.size(); i++){
+if(calist == null || calist.isEmpty()){
+	System.out.println("경력없음");
+} else{
+	System.out.println(calist.get(i));
+}
+}
+
+
+//자격증사항 들어오는지 확인
+for(int i=0; i<liclist.size(); i++){
+if(liclist == null || liclist.isEmpty()){
+	System.out.println("자격증없음");
+} else{
+	System.out.println(liclist.get(0));
+}
+}
+
+
+//대외활동사항 들어오는지 확인
+for(int i=0; i<actlist.size(); i++){
+if(actlist == null || actlist.isEmpty()){
+	System.out.println("대외활동없음");
+} else{
+	System.out.println(actlist.get(0));
+}
+}
+
+
+
+//수상사항 들어오는지 확인
+for(int i=0; i<awdlist.size(); i++){
+if(awdlist == null || awdlist.isEmpty()){
+	System.out.println("수상없음");
+} else{
+	System.out.println(awdlist.get(0));
+}
+}
+
+
+
+//어학사항 들어오는지 확인
+for(int i=0; i<lanlist.size(); i++){
+if(lanlist == null || lanlist.isEmpty()){
+	System.out.println("어학없음");
+} else{
+	System.out.println(lanlist.get(0));
+}
+}
+
+
+
+/* 로그인 세션 가져오기 */
+Object obj = session.getAttribute("login"); //세션으로 넘어오면 세션으로 
+MemberDto memdto = null;
+if(obj != null){
+	memdto = (MemberDto)obj;
+}
+
+String birth = memdto.getBirth();
+System.out.println(birth);
+
+/* 나이구하기 */
+int age = 2021 - (Integer.parseInt(birth.substring(0, 4))) + 1;
+System.out.println(age);
+
+/* 성별구하기 */
+int gender = resumedto.getGender();
+String _gender = "";
+if(gender==1){
+	_gender += "남자";
+} else{
+	_gender += "여자";
+}
+System.out.println(_gender);
+%>
 
 			<!-- 검색창 -->
 			<section class="newsletter"
@@ -293,8 +399,8 @@ dt, dd {
 				</div>
 			</section>
 
-			<form action="writeAfResume.do" method="post" name="resumewrite" id="resumewrite" enctype="multipart/form-data" >
-
+			<form action="updateAfResume.do" method="post" name="resumewrite" id="resumewrite" enctype="multipart/form-data" >
+				<input type="hidden" name="resumeseq" value=<%=resumedto.getResumeseq() %>>
 				<div class="container" style="margin-top: 0px; margin-right: 400px;">
 					<div class="row">
 						<div class="col-lg-offset-2 col-lg-12" style="margin-left: 0px;">
@@ -309,6 +415,7 @@ dt, dd {
 											</div>
 											<input type="file" name="fileload"
 												style="width: 400px; margin-left: 500px;" id="resumeimg">
+											<input type="text" name="namefile" value="<%=resumedto.getResumeimage() %>" size="50" readonly="readonly">
 											<figcaption style="height: auto;">
 
 
@@ -316,7 +423,7 @@ dt, dd {
 												<div class="resume_title" style="margin-top: 20px;">
 													<div class="resume_input">
 														<input type="text" id="title" name="resumetitle"
-															class="resume_title_input" value="" maxlength="100">
+															class="resume_title_input" value="<%=resumedto.getResumetitle() %>" maxlength="100">
 													</div>
 												</div>
 
@@ -551,50 +658,6 @@ dt, dd {
 
 															<div id="tpl_row_1621990777" class="tpl_row fixedTop"
 																data-tpl_id="tpl_highschool">
-																<input type="hidden" id="school_gb_1621990777"
-																	name="school_gb" value="high"> <input
-																	type="hidden" id="school_cd_1621990777"
-																	name="school_cd" value="19009"> <input
-																	type="hidden" id="school_direct_1621990777"
-																	name="school_direct" value="n"> <input
-																	type="hidden" id="school_entrance_year_1621990777"
-																	name="school_entrance_year" value="2011"> <input
-																	type="hidden" id="school_entrance_month_1621990777"
-																	name="school_entrance_month" value="03"> <input
-																	type="hidden" id="school_graduation_year_1621990777"
-																	name="school_graduation_year" value="2014"> <input
-																	type="hidden" id="school_graduation_month_1621990777"
-																	name="school_graduation_month" value="02"> <input
-																	type="hidden" id="school_minor_check_value_1621990777"
-																	name="school_minor_check_value" value="n"> <input
-																	type="hidden" id="school_major_avg_1621990777"
-																	name="school_major_avg"> <input type="hidden"
-																	id="school_major_perfect_1621990777"
-																	name="school_major_perfect"> <input
-																	type="hidden" id="school_major_department_1621990777"
-																	name="school_major_department"> <input
-																	type="hidden"
-																	id="school_major_department_text_1621990777"
-																	name="school_major_department_text"> <input
-																	type="hidden" id="school_minor_1621990777"
-																	name="school_minor"> <input type="hidden"
-																	id="school_minor_cd_1621990777"
-																	name="school_minor_cd"> <input type="hidden"
-																	id="school_minor_department_1621990777"
-																	name="school_minor_department"> <input
-																	type="hidden"
-																	id="school_minor_department_text_1621990777"
-																	name="school_minor_department_text"> <input
-																	type="hidden" id="stopout_reason_1621990777"
-																	name="school_stopout_reason"> <input
-																	type="hidden" id="school_thesis_category_1621990777"
-																	name="school_thesis_category"> <input
-																	type="hidden" id="school_thesis_title_1621990777"
-																	name="school_thesis_title"> <input
-																	type="hidden" id="school_day_night_1621990777"
-																	name="school_day_night"> <input type="hidden"
-																	id="highschool_gb_1621990777" name="highschool_gb"
-																	value="high">
 
 																<div class="area_title">
 																	<h4 class="title">고등학교 정보 입력</h4>
@@ -608,7 +671,7 @@ dt, dd {
 																	</div>
 																	<div class="resume_input">
 																		<input type="text" id="highschool"
-																			name="highschool" value="" class="box_input"
+																			name="highschool" value="<%=edulist.get(0).getHighschool() %>" class="box_input"
 																			maxlength="100" data-api_type="auto"
 																			data-api_id="school_high" data-min_len="2"
 																			autocomplete="off">
@@ -626,7 +689,7 @@ dt, dd {
 																			<div class="resume_input" style="display:">
 																				<input type="text"
 																					id="high_str"
-																					name="high_str" value=""
+																					name="high_str" value="<%=edulist.get(0).getHigh_str() %>"
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
 																					maxlength="" autocomplete="off">
@@ -634,13 +697,21 @@ dt, dd {
 																			</div>
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
-
+																		<% if( edulist.get(0).getHigh_str_status().equals("입학") ){ %>
 																				<select class="selectpicker" name="high_str_status" id="high_str_status"
 																					style="width: 107.22222px; height: 50.22222px;">
-																					<option value="입학">입학</option>
+																					<option value="입학" selected="selected">입학</option>
 																					<option value="편입">편입</option>
 																				</select>
-
+																		<% } else {%>
+																		<select class="selectpicker" name="high_str_status" id="high_str_status"
+																					style="width: 107.22222px; height: 50.22222px;">
+																					<option value="입학">입학</option>
+																					<option value="편입" selected="selected">편입</option>
+																				</select>
+																		
+																		
+																		<%} %>
 																			</div>
 																			<p class="txt_error"></p>
 																		</div>
@@ -651,7 +722,7 @@ dt, dd {
 																			<div class="resume_input box_period">
 																				<input type="text"
 																					id="high_end"
-																					name="high_end" value=""
+																					name="high_end" value="<%=edulist.get(0).getHigh_end() %>"
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
 																					maxlength="" autocomplete="off">
@@ -661,6 +732,79 @@ dt, dd {
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
 
+																		<% if( edulist.get(0).getHigh_end_status().equals("졸업") ){ %>
+																				<select class="selectpicker" name="high_end_status" id="high_end_status"
+																					style="width: 107.22222px; height: 50.22222px;">
+																					<option value="졸업" selected="selected">졸업</option>
+																					<option value="재학중">재학중</option>
+																					<option value="휴학중">휴학중</option>
+																					<option value="수료">수료</option>
+																					<option value="중퇴">중퇴</option>
+																					<option value="자퇴">자퇴</option>
+																					<option value="졸업예정">졸업예정</option>
+																				</select>
+																		<%} %>
+																		<% if( edulist.get(0).getHigh_end_status().equals("재학중") ){ %>
+																				<select class="selectpicker" name="high_end_status" id="high_end_status"
+																					style="width: 107.22222px; height: 50.22222px;">
+																					<option value="졸업">졸업</option>
+																					<option value="재학중" selected="selected">재학중</option>
+																					<option value="휴학중">휴학중</option>
+																					<option value="수료">수료</option>
+																					<option value="중퇴">중퇴</option>
+																					<option value="자퇴">자퇴</option>
+																					<option value="졸업예정">졸업예정</option>
+																				</select>
+																		<%} %>
+																		<% if( edulist.get(0).getHigh_end_status().equals("휴학중") ){ %>
+																				<select class="selectpicker" name="high_end_status" id="high_end_status"
+																					style="width: 107.22222px; height: 50.22222px;">
+																					<option value="졸업">졸업</option>
+																					<option value="재학중">재학중</option>
+																					<option value="휴학중" selected="selected">휴학중</option>
+																					<option value="수료">수료</option>
+																					<option value="중퇴">중퇴</option>
+																					<option value="자퇴">자퇴</option>
+																					<option value="졸업예정">졸업예정</option>
+																				</select>
+																		<%} %>
+																		<% if( edulist.get(0).getHigh_str_status().equals("수료") ){ %>
+																				<select class="selectpicker" name="high_end_status" id="high_end_status"
+																					style="width: 107.22222px; height: 50.22222px;">
+																					<option value="졸업">졸업</option>
+																					<option value="재학중">재학중</option>
+																					<option value="휴학중">휴학중</option>
+																					<option value="수료" selected="selected">수료</option>
+																					<option value="중퇴">중퇴</option>
+																					<option value="자퇴">자퇴</option>
+																					<option value="졸업예정">졸업예정</option>
+																				</select>
+																		<%} %>
+																		<% if( edulist.get(0).getHigh_end_status().equals("중퇴") ){ %>
+																				<select class="selectpicker" name="high_end_status" id="high_end_status"
+																					style="width: 107.22222px; height: 50.22222px;">
+																					<option value="졸업">졸업</option>
+																					<option value="재학중">재학중</option>
+																					<option value="휴학중">휴학중</option>
+																					<option value="수료">수료</option>
+																					<option value="중퇴" selected="selected">중퇴</option>
+																					<option value="자퇴">자퇴</option>
+																					<option value="졸업예정">졸업예정</option>
+																				</select>
+																		<%} %>
+																		<% if( edulist.get(0).getHigh_end_status().equals("자퇴") ){ %>
+																				<select class="selectpicker" name="high_end_status" id="high_end_status"
+																					style="width: 107.22222px; height: 50.22222px;">
+																					<option value="졸업">졸업</option>
+																					<option value="재학중">재학중</option>
+																					<option value="휴학중">휴학중</option>
+																					<option value="수료">수료</option>
+																					<option value="중퇴">중퇴</option>
+																					<option value="자퇴" selected="selected">자퇴</option>
+																					<option value="졸업예정">졸업예정</option>
+																				</select>
+																		<%} %>
+																		<% if( edulist.get(0).getHigh_end_status().equals("졸업예정") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업">졸업</option>
@@ -669,9 +813,9 @@ dt, dd {
 																					<option value="수료">수료</option>
 																					<option value="중퇴">중퇴</option>
 																					<option value="자퇴">자퇴</option>
-																					<option value="졸업예정">졸업예정</option>
+																					<option value="졸업예정" selected="selected">졸업예정</option>
 																				</select>
-
+																		<%} %>
 																			</div>
 																			<p class="txt_error"></p>
 																		</div>
@@ -682,7 +826,6 @@ dt, dd {
 																<div class="resume_row" style="display:">
 																	<div class="input_title">전공 계열</div>
 																	<div class="sri_select resume_select">
-
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;">
 																			<option>문과계열</option>
@@ -698,30 +841,10 @@ dt, dd {
 
 
 															</div>
-
+														<% for(int i=0; i<edulist.size();i++){ %>
 															<div id="tpl_row_1621990778" class="tpl_row"
 																data-tpl_id="tpl_university">
-																<input type="hidden" id="school_cd_1621990778"
-																	name="school_cd" value="11685"> <input
-																	type="hidden" id="school_open_fl_1621990778"
-																	name="school_open_fl" value="y"> <input
-																	type="hidden" id="school_direct_1621990778"
-																	name="school_direct" value="n"> <input
-																	type="hidden" id="school_major_cd_1621990778"
-																	name="school_major_cd" value=""> <input
-																	type="hidden" id="school_minor_check_value_1621990778"
-																	name="school_minor_check_value" value="n"> <input
-																	type="hidden" id="school_thesis_category_1621990778"
-																	name="school_thesis_category" value="both"> <input
-																	type="hidden" id="school_entrance_year_1621990778"
-																	name="school_entrance_year" value="2014"> <input
-																	type="hidden" id="school_entrance_month_1621990778"
-																	name="school_entrance_month" value="03"> <input
-																	type="hidden" id="school_graduation_year_1621990778"
-																	name="school_graduation_year" value="2019"> <input
-																	type="hidden" id="school_graduation_month_1621990778"
-																	name="school_graduation_month" value="08">
-
+																
 																<div class="area_title">
 																	<h4 class="title">대학·대학원 정보 입력</h4>
 																</div>
@@ -732,13 +855,43 @@ dt, dd {
 																	</div>
 																	<div class="sri_select resume_select">
 
+																<% if( edulist.get(i).getUniv_status().equals("대학교(4년)")){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="univ_status" id="univ_status">
+																			<option value="대학교(4년)" selected="selected">대학교(4년)</option>
+																			<option value="대학(2,3년)">대학(2,3년)</option>
+																			<option value="대학원(석사)">대학원(석사)</option>
+																			<option value="대학원(박사)">대학원(박사)</option>
+																		</select>
+																<% } %>	
+																<% if( edulist.get(i).getUniv_status().equals("대학(2,3년)")){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="univ_status" id="univ_status">
+																			<option value="대학교(4년)">대학교(4년)</option>
+																			<option value="대학(2,3년)" selected="selected">대학(2,3년)</option>
+																			<option value="대학원(석사)">대학원(석사)</option>
+																			<option value="대학원(박사)">대학원(박사)</option>
+																		</select>
+																<% } %>	
+																<% if( edulist.get(i).getUniv_status().equals("대학원(석사)")){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="univ_status" id="univ_status">
+																			<option value="대학교(4년)">대학교(4년)</option>
+																			<option value="대학(2,3년)">대학(2,3년)</option>
+																			<option value="대학원(석사)" selected="selected">대학원(석사)</option>
+																			<option value="대학원(박사)">대학원(박사)</option>
+																		</select>
+																<% } %>	
+																<% if( edulist.get(i).getUniv_status().equals("대학원(박사)")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="univ_status" id="univ_status">
 																			<option value="대학교(4년)">대학교(4년)</option>
 																			<option value="대학(2,3년)">대학(2,3년)</option>
 																			<option value="대학원(석사)">대학원(석사)</option>
-																			<option value="대학원(박사)">대학원(박사)</option>
+																			<option value="대학원(박사)" selected="selected">대학원(박사)</option>
 																		</select>
+																<% } %>		
+																		
 																	</div>
 																</div>
 
@@ -748,7 +901,7 @@ dt, dd {
 																	</div>
 																	<div class="resume_input">
 																		<input type="text" id="university"
-																			name="university" value="" class="box_input"
+																			name="university" value="<%=edulist.get(i).getUniversity() %>" class="box_input"
 																			maxlength="100" data-api_type="auto"
 																			data-api_id="school_univ" data-min_len="2"
 																			autocomplete="off">
@@ -765,7 +918,7 @@ dt, dd {
 																			<div class="resume_input">
 																				<input type="text"
 																					id="univ_str"
-																					name="univ_str" value=""
+																					name="univ_str" value="<%=edulist.get(i).getUniv_str() %>"
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
 																					maxlength="" autocomplete="off">
@@ -775,12 +928,20 @@ dt, dd {
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
 
+																			<% if( edulist.get(i).getUniv_str_status().equals("입학")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="univ_str_status" id="univ_str_status">
+																					<option value="입학" selected="selected">입학</option>
+																					<option value="편입">편입</option>
+																				</select>
+																			<% } %>
+																			<% if( edulist.get(i).getUniv_str_status().equals("편입")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_str_status" id="univ_str_status">
 																					<option value="입학">입학</option>
-																					<option value="편입">편입</option>
+																					<option value="편입" selected="selected">편입</option>
 																				</select>
-
+																			<% } %>
 																			</div>
 																			<p class="txt_error"></p>
 																		</div>
@@ -791,7 +952,7 @@ dt, dd {
 																			<div class="resume_input box_period">
 																				<input type="text"
 																					id="univ_end"
-																					name="univ_end" value=""
+																					name="univ_end" value="<%=edulist.get(i).getUniv_end() %>"
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
 																					maxlength="" autocomplete="off">
@@ -800,6 +961,80 @@ dt, dd {
 
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
+																				
+																				<% if( edulist.get(i).getUniv_end_status().equals("졸업")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
+																					<option value="졸업" selected="selected">졸업</option>
+																					<option value="재학중">재학중</option>
+																					<option value="휴학중">휴학중</option>
+																					<option value="수료">수료</option>
+																					<option value="중퇴">중퇴</option>
+																					<option value="자퇴">자퇴</option>
+																					<option value="졸업예정">졸업예정</option>
+																				</select>
+																				<% } %>
+																				<% if( edulist.get(i).getUniv_end_status().equals("재학중")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
+																					<option value="졸업">졸업</option>
+																					<option value="재학중" selected="selected">재학중</option>
+																					<option value="휴학중">휴학중</option>
+																					<option value="수료">수료</option>
+																					<option value="중퇴">중퇴</option>
+																					<option value="자퇴">자퇴</option>
+																					<option value="졸업예정">졸업예정</option>
+																				</select>
+																				<% } %>
+																				<% if( edulist.get(i).getUniv_end_status().equals("휴학중")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
+																					<option value="졸업">졸업</option>
+																					<option value="재학중">재학중</option>
+																					<option value="휴학중" selected="selected">휴학중</option>
+																					<option value="수료">수료</option>
+																					<option value="중퇴">중퇴</option>
+																					<option value="자퇴">자퇴</option>
+																					<option value="졸업예정">졸업예정</option>
+																				</select>
+																				<% } %>
+																				<% if( edulist.get(i).getUniv_end_status().equals("수료")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
+																					<option value="졸업">졸업</option>
+																					<option value="재학중">재학중</option>
+																					<option value="휴학중">휴학중</option>
+																					<option value="수료" selected="selected">수료</option>
+																					<option value="중퇴">중퇴</option>
+																					<option value="자퇴">자퇴</option>
+																					<option value="졸업예정">졸업예정</option>
+																				</select>
+																				<% } %>
+																				<% if( edulist.get(i).getUniv_end_status().equals("중퇴")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
+																					<option value="졸업">졸업</option>
+																					<option value="재학중">재학중</option>
+																					<option value="휴학중">휴학중</option>
+																					<option value="수료">수료</option>
+																					<option value="중퇴" selected="selected">중퇴</option>
+																					<option value="자퇴">자퇴</option>
+																					<option value="졸업예정">졸업예정</option>
+																				</select>
+																				<% } %>
+																				<% if( edulist.get(i).getUniv_end_status().equals("자퇴")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
+																					<option value="졸업">졸업</option>
+																					<option value="재학중">재학중</option>
+																					<option value="휴학중">휴학중</option>
+																					<option value="수료">수료</option>
+																					<option value="중퇴">중퇴</option>
+																					<option value="자퇴" selected="selected">자퇴</option>
+																					<option value="졸업예정">졸업예정</option>
+																				</select>
+																				<% } %>
+																				<% if( edulist.get(i).getUniv_end_status().equals("졸업예정")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업">졸업</option>
@@ -808,8 +1043,10 @@ dt, dd {
 																					<option value="수료">수료</option>
 																					<option value="중퇴">중퇴</option>
 																					<option value="자퇴">자퇴</option>
-																					<option value="졸업예정">졸업예정</option>
+																					<option value="졸업예정" selected="selected">졸업예정</option>
 																				</select>
+																				<% } %>
+																			
 																			</div>
 																			<p class="txt_error"></p>
 																		</div>
@@ -869,22 +1106,12 @@ dt, dd {
 
 																			</div>
 
-																			<div class="resume_input resume_bottom"
-																				style="display: none">
-																				<label for="school_major_department_text_1621990778"
-																					class="bar_title">전공계열<span
-																					class="valid_hidden"> 직접입력</span></label> <input
-																					type="text"
-																					id=""
-																					name="" value=""
-																					class="box_input" maxlength="50">
-																				<p class="txt_error"></p>
-																			</div>
+																			
 																		</div>
 
 																		<div class="resume_input resume_bottom">
 																			<input type="text" id="school_major_1621990778"
-																				name="univ_major" value="" class="box_input"
+																				name="univ_major" value="<%=edulist.get(i).getUniv_major() %>" class="box_input"
 																				maxlength="50">
 																		</div>
 																		<button type="button" class="btn_edu_type btn_minor"
@@ -895,13 +1122,20 @@ dt, dd {
 																<div class="resume_row">
 																	<div class="input_title">주/야간</div>
 																	<div class="sri_select resume_select resume_input_type">
-
+																	<% if( edulist.get(i).getUniv_night().equals("주간")){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="univ_night" id="univ_night">
+																			<option value="주간" selected="selected">주간</option>
+																			<option value="야간">야간</option>
+																		</select>
+																	<% } %>
+																	<% if( edulist.get(i).getUniv_night().equals("야간")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="univ_night" id="univ_night">
 																			<option value="주간">주간</option>
-																			<option value="야간">야간</option>
+																			<option value="야간" selected="selected">야간</option>
 																		</select>
-
+																	<% } %>
 																	</div>
 																</div>
 
@@ -910,12 +1144,67 @@ dt, dd {
 																	<div class="area_grades">
 																		<div class="resume_input">
 																			<input type="text" id="univ_grade"
-																				name="univ_grade" value="3.59"
+																				name="univ_grade" value="<%=edulist.get(i).getUniv_grade() %>"
 																				class="box_input size_type3" maxlength="5"
 																				data-only-float="true">
 																		</div>
 																		<div class="sri_select resume_select">
-
+																		<% if( edulist.get(i).getUniv_grade_base().equals("4.5")){ %>
+																			<select class="selectpicker"
+																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
+																				<option selected="selected">4.5</option>
+																				<option>4.0</option>
+																				<option>4.3</option>
+																				<option>5.0</option>
+																				<option>7.0</option>
+																				<option>100</option>
+																			</select>
+																		<% } %>
+																		<% if( edulist.get(i).getUniv_grade_base().equals("4.0")){ %>
+																			<select class="selectpicker"
+																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
+																				<option>4.5</option>
+																				<option selected="selected">4.0</option>
+																				<option>4.3</option>
+																				<option>5.0</option>
+																				<option>7.0</option>
+																				<option>100</option>
+																			</select>
+																		<% } %>
+																		<% if( edulist.get(i).getUniv_grade_base().equals("4.3")){ %>
+																			<select class="selectpicker"
+																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
+																				<option>4.5</option>
+																				<option>4.0</option>
+																				<option selected="selected">4.3</option>
+																				<option>5.0</option>
+																				<option>7.0</option>
+																				<option>100</option>
+																			</select>
+																		<% } %>
+																		<% if( edulist.get(i).getUniv_grade_base().equals("5.0")){ %>
+																			<select class="selectpicker"
+																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
+																				<option>4.5</option>
+																				<option>4.0</option>
+																				<option>4.3</option>
+																				<option selected="selected">5.0</option>
+																				<option>7.0</option>
+																				<option>100</option>
+																			</select>
+																		<% } %>
+																		<% if( edulist.get(i).getUniv_grade_base().equals("7.0")){ %>
+																			<select class="selectpicker"
+																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
+																				<option>4.5</option>
+																				<option>4.0</option>
+																				<option>4.3</option>
+																				<option>5.0</option>
+																				<option selected="selected">7.0</option>
+																				<option>100</option>
+																			</select>
+																		<% } %>
+																		<% if( edulist.get(i).getUniv_grade_base().equals("100")){ %>
 																			<select class="selectpicker"
 																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
 																				<option>4.5</option>
@@ -923,9 +1212,10 @@ dt, dd {
 																				<option>4.3</option>
 																				<option>5.0</option>
 																				<option>7.0</option>
-																				<option>100</option>
+																				<option selected="selected">100</option>
 																			</select>
-
+																		<% } %>
+																		
 																		</div>
 																		<p class="txt_error"></p>
 																	</div>
@@ -941,7 +1231,7 @@ dt, dd {
 																			class="bar_title">학위논문 및 졸업작품<span
 																			class="valid_hidden"> 입력</span></label>
 																		<textarea id="univ_paper"
-																			name="univ_paper" class="box_textarea"></textarea>
+																			name="univ_paper" class="box_textarea"><%=edulist.get(i).getUniv_paper() %></textarea>
 																	</div>
 																</div>
 
@@ -959,6 +1249,8 @@ dt, dd {
 
 																</div>
 															</div>
+															
+															<% } %>
 														</div>
 
 
@@ -968,11 +1260,6 @@ dt, dd {
 													</div>
 												</div>
 												<div id="career" class="resume_section blind_guide">
-													<input type="hidden" id="career_contents_type"
-														name="career_contents_type" value="style"> <input
-														type="hidden" id="exchange_usd" name="exchange_usd"
-														value="1127.6"> <input type="hidden"
-														id="exchange_jpy" name="exchange_jpy" value="1036.25">
 
 													<div class="area_title">
 														<h3 class="title">경력사항</h3>
@@ -1038,45 +1325,11 @@ dt, dd {
 
 															</div>
 
-
-															<div id="career_template" style="display: none">
+															
+															<div id="career_template" style="display: ">
 
 																<div id="tpl_row_1621990779" class="tpl_row"
 																	data-tpl_id="tpl_career_item">
-																	<input type="hidden" id="career_mcom_id_1621990779"
-																		name="career_mcom_idx" value=""> <input
-																		type="hidden" id="career_com_idx_1621990779"
-																		name="career_com_idx" value=""> <input
-																		type="hidden" id="career_csn1_1621990779"
-																		name="career_csn1" value=""> <input
-																		type="hidden" id="career_csn2_1621990779"
-																		name="career_csn2" value=""> <input
-																		type="hidden" id="career_csn3_1621990779"
-																		name="career_csn3" value=""> <input
-																		type="hidden" id="career_job_category_cd_1621990779"
-																		name="career_job_category_cd" value=""> <input
-																		type="hidden" id="career_start_year_1621990779"
-																		name="career_start_year" value=""> <input
-																		type="hidden" id="career_start_month_1621990779"
-																		name="career_start_month" value=""> <input
-																		type="hidden" id="career_end_year_1621990779"
-																		name="career_end_year" value=""> <input
-																		type="hidden" id="career_end_month_1621990779"
-																		name="career_end_month" value=""> <input
-																		type="hidden" id="career_total_month_1621990779"
-																		name="career_total_month"> <input
-																		type="hidden" id="career_job_grade_1621990779"
-																		name="career_job_grade" value=""> <input
-																		type="hidden" id="career_job_duties_1621990779"
-																		name="career_job_duties" value=""> <input
-																		type="hidden" id="career_job_text_input_1621990779"
-																		name="career_job_text_input" value=""> <input
-																		type="hidden" id="career_comnm_open_fl_1621990779"
-																		name="career_comnm_open_fl" value=""> <input
-																		type="hidden" id="career_seq_1621990779"
-																		name="career_seq"> <input type="hidden"
-																		id="profilecareer_seq_1621990779"
-																		name="profilecareer_seq" value="">
 
 																	<div class="resume_row">
 																		<div class="input_title">
@@ -1087,9 +1340,7 @@ dt, dd {
 																				name="pre_comname" value=""
 																				class="box_input" maxlength="80"
 																				data-api_type="auto" data-api_id="career_company">
-
 																		</div>
-
 																	</div>
 
 																	<div class="resume_row">
@@ -1116,12 +1367,20 @@ dt, dd {
 
 																			</div>
 																			<div class="sri_select resume_select">
+																			
+																			
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_status">
+																					<option value="퇴사" selected="selected">퇴사</option>
+																					<option value="재직중">재직중</option>
+																				</select>
+																			
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="pre_status">
 																					<option value="퇴사">퇴사</option>
-																					<option value="재직중">재직중</option>
+																					<option value="재직중" selected="selected">재직중</option>
 																				</select>
-
+																			
 
 																			</div>
 																			<p class="txt_error"></p>
@@ -1149,10 +1408,6 @@ dt, dd {
 																				</select>
 
 
-
-
-
-
 																			</div>
 
 																		</div>
@@ -1171,9 +1426,7 @@ dt, dd {
 																					data-api_type="layer"
 																					data-api_id="career_job_grade_duties"
 																					maxlength="20">
-
 																			</div>
-
 
 																			<p class="txt_number"></p>
 																		</div>
@@ -1275,11 +1528,14 @@ dt, dd {
 																		추가</button>
 																</div>
 															</div>
-
+															
 
 														</div>
 													</div>
 												</div>
+												
+												<% for(int i=0; i< actlist.size(); i++) { %>
+												
 												<div id="activity" class="resume_section blind_guide"
 													data-order_item="activity" data-except="y">
 													<div class="area_title">
@@ -1290,25 +1546,172 @@ dt, dd {
 
 														<div id="tpl_row_1621990780" class="tpl_row"
 															data-tpl_id="tpl_activity_item">
-															<input type="hidden" id="activity_start_year_1621990780"
-																name="activity_start_year" value=""> <input
-																type="hidden" id="activity_start_month_1621990780"
-																name="activity_start_month" value=""> <input
-																type="hidden" id="activity_start_day_1621990780"
-																name="activity_start_day" value=""> <input
-																type="hidden" id="activity_end_year_1621990780"
-																name="activity_end_year" value=""> <input
-																type="hidden" id="activity_end_month_1621990780"
-																name="activity_end_month" value=""> <input
-																type="hidden" id="activity_end_day_1621990780"
-																name="activity_end_day" value=""> <input
-																type="hidden" id="profileactivity_seq_1621990780"
-																name="profileactivity_seq" value="">
 
 															<div class="resume_row">
 																<div class="input_title">활동구분</div>
 																<div class="sri_select resume_select">
-
+																
+																<% if(actlist.get(i).getAct_field().equals("인턴")){ %>
+																	<select class="selectpicker"
+																		style="width: 107.22222px; height: 50.22222px;" name="act_field">
+																		<option value="인턴" selected="selected">인턴</option>
+																		<option value="서포터즈/기자단">서포터즈/기자단</option>
+																		<option value="공모전">공모전</option>
+																		<option value="동아리">동아리</option>
+																		<option value="교내활동">교내활동</option>
+																		<option value="자원봉사">자원봉사</option>
+																		<option value="아르바이트">아르바이트</option>
+																		<option value="사회활동">사회활동</option>
+																		<option value="수행과제">수행과제</option>
+																		<option value="해외연수">해외연수</option>
+																		<option value="교육이수내역">교육이수내역</option>
+																	</select>
+																<% } %>
+																<% if(actlist.get(i).getAct_field().equals("서포터즈/기자단")){ %>
+																	<select class="selectpicker"
+																		style="width: 107.22222px; height: 50.22222px;" name="act_field">
+																		<option value="인턴">인턴</option>
+																		<option value="서포터즈/기자단" selected="selected">서포터즈/기자단</option>
+																		<option value="공모전">공모전</option>
+																		<option value="동아리">동아리</option>
+																		<option value="교내활동">교내활동</option>
+																		<option value="자원봉사">자원봉사</option>
+																		<option value="아르바이트">아르바이트</option>
+																		<option value="사회활동">사회활동</option>
+																		<option value="수행과제">수행과제</option>
+																		<option value="해외연수">해외연수</option>
+																		<option value="교육이수내역">교육이수내역</option>
+																	</select>
+																<% } %>
+																<% if(actlist.get(i).getAct_field().equals("공모전")){ %>
+																	<select class="selectpicker"
+																		style="width: 107.22222px; height: 50.22222px;" name="act_field">
+																		<option value="인턴">인턴</option>
+																		<option value="서포터즈/기자단">서포터즈/기자단</option>
+																		<option value="공모전" selected="selected">공모전</option>
+																		<option value="동아리">동아리</option>
+																		<option value="교내활동">교내활동</option>
+																		<option value="자원봉사">자원봉사</option>
+																		<option value="아르바이트">아르바이트</option>
+																		<option value="사회활동">사회활동</option>
+																		<option value="수행과제">수행과제</option>
+																		<option value="해외연수">해외연수</option>
+																		<option value="교육이수내역">교육이수내역</option>
+																	</select>
+																<% } %>
+																<% if(actlist.get(i).getAct_field().equals("동아리")){ %>
+																	<select class="selectpicker"
+																		style="width: 107.22222px; height: 50.22222px;" name="act_field">
+																		<option value="인턴">인턴</option>
+																		<option value="서포터즈/기자단">서포터즈/기자단</option>
+																		<option value="공모전">공모전</option>
+																		<option value="동아리" selected="selected">동아리</option>
+																		<option value="교내활동">교내활동</option>
+																		<option value="자원봉사">자원봉사</option>
+																		<option value="아르바이트">아르바이트</option>
+																		<option value="사회활동">사회활동</option>
+																		<option value="수행과제">수행과제</option>
+																		<option value="해외연수">해외연수</option>
+																		<option value="교육이수내역">교육이수내역</option>
+																	</select>
+																<% } %>
+																<% if(actlist.get(i).getAct_field().equals("교내활동")){ %>
+																	<select class="selectpicker"
+																		style="width: 107.22222px; height: 50.22222px;" name="act_field">
+																		<option value="인턴">인턴</option>
+																		<option value="서포터즈/기자단">서포터즈/기자단</option>
+																		<option value="공모전">공모전</option>
+																		<option value="동아리">동아리</option>
+																		<option value="교내활동" selected="selected">교내활동</option>
+																		<option value="자원봉사">자원봉사</option>
+																		<option value="아르바이트">아르바이트</option>
+																		<option value="사회활동">사회활동</option>
+																		<option value="수행과제">수행과제</option>
+																		<option value="해외연수">해외연수</option>
+																		<option value="교육이수내역">교육이수내역</option>
+																	</select>
+																<% } %>
+																<% if(actlist.get(i).getAct_field().equals("자원봉사")){ %>
+																	<select class="selectpicker"
+																		style="width: 107.22222px; height: 50.22222px;" name="act_field">
+																		<option value="인턴">인턴</option>
+																		<option value="서포터즈/기자단">서포터즈/기자단</option>
+																		<option value="공모전">공모전</option>
+																		<option value="동아리">동아리</option>
+																		<option value="교내활동">교내활동</option>
+																		<option value="자원봉사" selected="selected">자원봉사</option>
+																		<option value="아르바이트">아르바이트</option>
+																		<option value="사회활동">사회활동</option>
+																		<option value="수행과제">수행과제</option>
+																		<option value="해외연수">해외연수</option>
+																		<option value="교육이수내역">교육이수내역</option>
+																	</select>
+																<% } %>
+																<% if(actlist.get(i).getAct_field().equals("아르바이트")){ %>
+																	<select class="selectpicker"
+																		style="width: 107.22222px; height: 50.22222px;" name="act_field">
+																		<option value="인턴">인턴</option>
+																		<option value="서포터즈/기자단">서포터즈/기자단</option>
+																		<option value="공모전">공모전</option>
+																		<option value="동아리">동아리</option>
+																		<option value="교내활동">교내활동</option>
+																		<option value="자원봉사">자원봉사</option>
+																		<option value="아르바이트" selected="selected">아르바이트</option>
+																		<option value="사회활동">사회활동</option>
+																		<option value="수행과제">수행과제</option>
+																		<option value="해외연수">해외연수</option>
+																		<option value="교육이수내역">교육이수내역</option>
+																	</select>
+																<% } %>
+																<% if(actlist.get(i).getAct_field().equals("사회활동")){ %>
+																	<select class="selectpicker"
+																		style="width: 107.22222px; height: 50.22222px;" name="act_field">
+																		<option value="인턴">인턴</option>
+																		<option value="서포터즈/기자단">서포터즈/기자단</option>
+																		<option value="공모전">공모전</option>
+																		<option value="동아리">동아리</option>
+																		<option value="교내활동">교내활동</option>
+																		<option value="자원봉사">자원봉사</option>
+																		<option value="아르바이트">아르바이트</option>
+																		<option value="사회활동" selected="selected">사회활동</option>
+																		<option value="수행과제">수행과제</option>
+																		<option value="해외연수">해외연수</option>
+																		<option value="교육이수내역">교육이수내역</option>
+																	</select>
+																<% } %>
+																<% if(actlist.get(i).getAct_field().equals("수행과제")){ %>
+																	<select class="selectpicker"
+																		style="width: 107.22222px; height: 50.22222px;" name="act_field">
+																		<option value="인턴">인턴</option>
+																		<option value="서포터즈/기자단">서포터즈/기자단</option>
+																		<option value="공모전">공모전</option>
+																		<option value="동아리">동아리</option>
+																		<option value="교내활동">교내활동</option>
+																		<option value="자원봉사">자원봉사</option>
+																		<option value="아르바이트">아르바이트</option>
+																		<option value="사회활동">사회활동</option>
+																		<option value="수행과제" selected="selected">수행과제</option>
+																		<option value="해외연수">해외연수</option>
+																		<option value="교육이수내역">교육이수내역</option>
+																	</select>
+																<% } %>
+																<% if(actlist.get(i).getAct_field().equals("해외연수")){ %>
+																	<select class="selectpicker"
+																		style="width: 107.22222px; height: 50.22222px;" name="act_field">
+																		<option value="인턴">인턴</option>
+																		<option value="서포터즈/기자단">서포터즈/기자단</option>
+																		<option value="공모전">공모전</option>
+																		<option value="동아리">동아리</option>
+																		<option value="교내활동">교내활동</option>
+																		<option value="자원봉사">자원봉사</option>
+																		<option value="아르바이트">아르바이트</option>
+																		<option value="사회활동">사회활동</option>
+																		<option value="수행과제">수행과제</option>
+																		<option value="해외연수" selected="selected">해외연수</option>
+																		<option value="교육이수내역">교육이수내역</option>
+																	</select>
+																<% } %>
+																<% if(actlist.get(i).getAct_field().equals("교육이수내역")){ %>
 																	<select class="selectpicker"
 																		style="width: 107.22222px; height: 50.22222px;" name="act_field">
 																		<option value="인턴">인턴</option>
@@ -1321,9 +1724,10 @@ dt, dd {
 																		<option value="사회활동">사회활동</option>
 																		<option value="수행과제">수행과제</option>
 																		<option value="해외연수">해외연수</option>
-																		<option value="교육이수내역">교육이수내역</option>
+																		<option value="교육이수내역" selected="selected">교육이수내역</option>
 																	</select>
-
+																<% } %>
+																
 																</div>
 															</div>
 
@@ -1335,7 +1739,7 @@ dt, dd {
 																	<label for="activity_org_1621990780" class="bar_title">기관/장소<span
 																		class="valid_hidden"> 입력</span></label> <input type="text"
 																		id="activity_org_1621990780" name="act_org"
-																		value="" maxlength="50" class="box_input">
+																		value="<%=actlist.get(i).getAct_org() %>" maxlength="50" class="box_input">
 																	<p class="txt_error"></p>
 																</div>
 															</div>
@@ -1347,7 +1751,7 @@ dt, dd {
 																	<div class="resume_input">
 																		<input type="text" id="activity_start_1621990780"
 																			name="act_str" class="expect_date box_input"
-																			value="" maxlength="6" data-only-number="true"
+																			value="<%=actlist.get(i).getAct_str() %>" maxlength="6" data-only-number="true"
 																			data-dateformat="yymm" autocomplete="off">
 
 																	</div>
@@ -1357,7 +1761,7 @@ dt, dd {
 																	<div class="resume_input">
 																		<input type="text" id="activity_end_1621990780"
 																			name="act_end" class="expect_date box_input"
-																			value="" maxlength="6" data-only-number="true"
+																			value="<%=actlist.get(i).getAct_end() %>" maxlength="6" data-only-number="true"
 																			data-dateformat="yymm" autocomplete="off">
 
 																	</div>
@@ -1372,7 +1776,7 @@ dt, dd {
 																		class="bar_title">활동내용<span
 																		class="valid_hidden"> 입력</span></label>
 																	<textarea id="activity_contents_1621990780"
-																		name="act_detail" class="box_textarea"></textarea>
+																		name="act_detail" class="box_textarea"><%=actlist.get(i).getAct_detail() %></textarea>
 																	<p class="txt_error"></p>
 																</div>
 															</div>
@@ -1388,6 +1792,10 @@ dt, dd {
 														</div>
 													</div>
 												</div>
+												
+												<% } %>
+												
+												
 												<div id="license" class="resume_section blind_guide"
 													data-order_item="license" data-except="y">
 													<div class="area_title">
@@ -1410,12 +1818,14 @@ dt, dd {
 																	</select>
 																</div>
 															</div>
+															
+															<% for(int i=0; i< liclist.size(); i++) { %>
 															<div id="licensechk" style="display: block">
 																<div class="resume_row">
 																	<div class="input_title">자격증명</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="lic_name" value="" maxlength="50"
+																			name="lic_name" value="<%=liclist.get(i).getLic_name() %>" maxlength="50"
 																			class="box_input">
 																	</div>
 																</div>
@@ -1424,7 +1834,7 @@ dt, dd {
 																	<div class="input_title">발행처/기관</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="lic_publisher" value="" maxlength="50"
+																			name="lic_publisher" value="<%=liclist.get(i).getLic_publisher() %>" maxlength="50"
 																			class="box_input">
 
 																	</div>
@@ -1433,11 +1843,21 @@ dt, dd {
 																<div class="resume_row">
 																	<div class="input_title">합격구분</div>
 																	<div class="sri_select resume_select">
+																	
+																	<% if(liclist.get(i).getLic_pass().equals("합격")){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="lic_pass">
+																			<option value="합격" selected="selected">합격</option>
+																			<option value="불합격">불합격</option>
+																		</select>
+																	<% } %>	
+																	<% if(liclist.get(i).getLic_pass().equals("불합격")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lic_pass">
 																			<option value="합격">합격</option>
-																			<option value="불합격">불합격</option>
+																			<option value="불합격" selected="selected">불합격</option>
 																		</select>
+																	<% } %>	
 																	</div>
 																</div>
 
@@ -1445,17 +1865,165 @@ dt, dd {
 																	<div class="input_title">취득일</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="lic_date" value="" maxlength="50"
+																			name="lic_date" value="<%=liclist.get(i).getLic_date() %>" maxlength="50"
 																			class="box_input">
 																	</div>
 																</div>
 															</div>
-
-
-															<div id="languagechk" style="display: none">
+															<% } %>
+															
+															
+															<% for(int i=0; i< lanlist.size(); i++) { %>
+															<div id="languagechk" style="display: block">
 																<div class="resume_row">
 																	<div class="input_title">언어</div>
 																	<div class="sri_select resume_select">
+																	
+																	<% if(lanlist.get(i).getLan_kind().equals("영어")){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="lan_kind">
+																			<option value="영어" selected="selected">영어</option>
+																			<option value="일본어">일본어</option>
+																			<option value="중국어">중국어</option>
+																			<option value="독일어">독일어</option>
+																			<option value="불어">불어</option>
+																			<option value="스페인어">스페인어</option>
+																			<option value="러시아어">러시아어</option>
+																			<option value="이탈리아어">이탈리아어</option>
+																			<option value="한국어">한국어</option>
+																			<option value="기타">기타</option>
+																		</select>
+																		
+																	<% } %>
+																	<% if(lanlist.get(i).getLan_kind().equals("일본어")){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="lan_kind">
+																			<option value="영어">영어</option>
+																			<option value="일본어" selected="selected">일본어</option>
+																			<option value="중국어">중국어</option>
+																			<option value="독일어">독일어</option>
+																			<option value="불어">불어</option>
+																			<option value="스페인어">스페인어</option>
+																			<option value="러시아어">러시아어</option>
+																			<option value="이탈리아어">이탈리아어</option>
+																			<option value="한국어">한국어</option>
+																			<option value="기타">기타</option>
+																		</select>
+																		
+																	<% } %>
+																	<% if(lanlist.get(i).getLan_kind().equals("중국어")){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="lan_kind">
+																			<option value="영어">영어</option>
+																			<option value="일본어">일본어</option>
+																			<option value="중국어" selected="selected">중국어</option>
+																			<option value="독일어">독일어</option>
+																			<option value="불어">불어</option>
+																			<option value="스페인어">스페인어</option>
+																			<option value="러시아어">러시아어</option>
+																			<option value="이탈리아어">이탈리아어</option>
+																			<option value="한국어">한국어</option>
+																			<option value="기타">기타</option>
+																		</select>
+																		
+																	<% } %>
+																	<% if(lanlist.get(i).getLan_kind().equals("독일어")){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="lan_kind">
+																			<option value="영어">영어</option>
+																			<option value="일본어">일본어</option>
+																			<option value="중국어">중국어</option>
+																			<option value="독일어" selected="selected">독일어</option>
+																			<option value="불어">불어</option>
+																			<option value="스페인어">스페인어</option>
+																			<option value="러시아어">러시아어</option>
+																			<option value="이탈리아어">이탈리아어</option>
+																			<option value="한국어">한국어</option>
+																			<option value="기타">기타</option>
+																		</select>
+																		
+																	<% } %>
+																	<% if(lanlist.get(i).getLan_kind().equals("불어")){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="lan_kind">
+																			<option value="영어">영어</option>
+																			<option value="일본어">일본어</option>
+																			<option value="중국어">중국어</option>
+																			<option value="독일어">독일어</option>
+																			<option value="불어" selected="selected">불어</option>
+																			<option value="스페인어">스페인어</option>
+																			<option value="러시아어">러시아어</option>
+																			<option value="이탈리아어">이탈리아어</option>
+																			<option value="한국어">한국어</option>
+																			<option value="기타">기타</option>
+																		</select>
+																		
+																	<% } %>
+																	<% if(lanlist.get(i).getLan_kind().equals("스페인어")){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="lan_kind">
+																			<option value="영어">영어</option>
+																			<option value="일본어">일본어</option>
+																			<option value="중국어">중국어</option>
+																			<option value="독일어">독일어</option>
+																			<option value="불어">불어</option>
+																			<option value="스페인어" selected="selected">스페인어</option>
+																			<option value="러시아어">러시아어</option>
+																			<option value="이탈리아어">이탈리아어</option>
+																			<option value="한국어">한국어</option>
+																			<option value="기타">기타</option>
+																		</select>
+																		
+																	<% } %>
+																	<% if(lanlist.get(i).getLan_kind().equals("러시아어")){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="lan_kind">
+																			<option value="영어">영어</option>
+																			<option value="일본어">일본어</option>
+																			<option value="중국어">중국어</option>
+																			<option value="독일어">독일어</option>
+																			<option value="불어">불어</option>
+																			<option value="스페인어">스페인어</option>
+																			<option value="러시아어" selected="selected">러시아어</option>
+																			<option value="이탈리아어">이탈리아어</option>
+																			<option value="한국어">한국어</option>
+																			<option value="기타">기타</option>
+																		</select>
+																		
+																	<% } %>
+																	<% if(lanlist.get(i).getLan_kind().equals("이탈리아어")){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="lan_kind">
+																			<option value="영어">영어</option>
+																			<option value="일본어">일본어</option>
+																			<option value="중국어">중국어</option>
+																			<option value="독일어">독일어</option>
+																			<option value="불어">불어</option>
+																			<option value="스페인어">스페인어</option>
+																			<option value="러시아어">러시아어</option>
+																			<option value="이탈리아어" selected="selected">이탈리아어</option>
+																			<option value="한국어">한국어</option>
+																			<option value="기타">기타</option>
+																		</select>
+																		
+																	<% } %>
+																	<% if(lanlist.get(i).getLan_kind().equals("한국어")){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="lan_kind">
+																			<option value="영어">영어</option>
+																			<option value="일본어">일본어</option>
+																			<option value="중국어">중국어</option>
+																			<option value="독일어">독일어</option>
+																			<option value="불어">불어</option>
+																			<option value="스페인어">스페인어</option>
+																			<option value="러시아어">러시아어</option>
+																			<option value="이탈리아어">이탈리아어</option>
+																			<option value="한국어" selected="selected">한국어</option>
+																			<option value="기타">기타</option>
+																		</select>
+																		
+																	<% } %>
+																	<% if(lanlist.get(i).getLan_kind().equals("기타")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lan_kind">
 																			<option value="영어">영어</option>
@@ -1467,8 +2035,10 @@ dt, dd {
 																			<option value="러시아어">러시아어</option>
 																			<option value="이탈리아어">이탈리아어</option>
 																			<option value="한국어">한국어</option>
-																			<option value="기타">기타</option>
+																			<option value="기타" selected="selected">기타</option>
 																		</select>
+																		
+																	<% } %>
 																	</div>
 																</div>
 
@@ -1477,7 +2047,7 @@ dt, dd {
 																	<div class="input_title">시험명</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="lan_exam" value="" maxlength="50"
+																			name="lan_exam" value="<%=lanlist.get(i).getLan_exam() %>" maxlength="50"
 																			class="box_input">
 																	</div>
 																</div>
@@ -1486,7 +2056,7 @@ dt, dd {
 																	<div class="input_title">점수</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="lan_score" value="" maxlength="50"
+																			name="lan_score" value="<%=lanlist.get(i).getLan_score() %>" maxlength="50"
 																			class="box_input">
 
 																	</div>
@@ -1529,7 +2099,7 @@ dt, dd {
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lan_pass">
 																			<option>취득여부</option>
-																			<option value="취득(PASS)">취득(PASS)</option>
+																			<option value="취득(PASS)" selected="selected">취득(PASS)</option>
 																		</select>
 																	</div>
 																</div>
@@ -1538,20 +2108,22 @@ dt, dd {
 																	<div class="input_title">취득일</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="lan_date" value="" maxlength="50"
+																			name="lan_date" value="<%=lanlist.get(i).getLan_date() %>" maxlength="50"
 																			class="box_input">
 																	</div>
 																</div>
 															</div>
+																<% } %>
 
 
-															<div id="awardchk" style="display: none">
+															<% for(int i=0; i< awdlist.size(); i++) { %>
+															<div id="awardchk" style="display: block">
 
 																<div class="resume_row">
 																	<div class="input_title">수상명</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="awd_name" value="" maxlength="50"
+																			name="awd_name" value="<%=awdlist.get(i).getAwd_name() %>" maxlength="50"
 																			class="box_input">
 																	</div>
 																</div>
@@ -1560,7 +2132,7 @@ dt, dd {
 																	<div class="input_title">수여기관</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="awd_date" value="" maxlength="50"
+																			name="awd_date" value="<%=awdlist.get(i).getAwd_date() %>" maxlength="50"
 																			class="box_input">
 
 																	</div>
@@ -1570,12 +2142,12 @@ dt, dd {
 																	<div class="input_title">취득일</div>
 																	<div class="resume_input">
 																		<input type="text" id="activity_org_1621990780"
-																			name="awd_org" value="" maxlength="50"
+																			name="awd_org" value="<%=awdlist.get(i).getAwd_org() %>" maxlength="50"
 																			class="box_input">
 																	</div>
 																</div>
 															</div>
-
+															<% } %>
 														</div>
 
 														<div id="licenseAdd"></div>
@@ -1591,14 +2163,6 @@ dt, dd {
 
 												<div id="personal" class="resume_section blind_guide"
 													data-order_item="personal" data-except="y">
-													<input type="hidden" id="military_start_year"
-														name="military_start_year" value=""> <input
-														type="hidden" id="military_start_month"
-														name="military_start_month" value=""> <input
-														type="hidden" id="military_end_year"
-														name="military_end_year" value=""> <input
-														type="hidden" id="military_end_month"
-														name="military_end_month" value="">
 
 
 												</div>
@@ -1619,6 +2183,7 @@ dt, dd {
 															<br>
 														</div>
 														<div class="area_add_btn">
+															<input type="text" name="filename2" value="<%=resumedto.getPortfolio() %>" size="50" readonly="readonly">
 															<input type="file" name="fileload2" style="width: 400px">
 															<!-- <button type="button" class="btn_resume_add"
 														data-api_type="layer" data-api_id="attach_file">
@@ -1630,14 +2195,6 @@ dt, dd {
 
 												<div id="introduce" data-order_item="introduce"
 													data-except="y">
-													<input type="hidden" id="intro_template"
-														name="intro_template" value="standard"> <input
-														type="hidden" id="intro_spell_target_fl"
-														name="intro_spell_target_fl" value=""> <input
-														type="hidden" id="intro_spell_need_seq"
-														name="intro_spell_need_seq" value=""> <input
-														type="hidden" id="intro_typo_seq" name="intro_typo_seq"
-														value="">
 
 													<div class="resume_section" id="introduce_write">
 														<div class="area_title">
@@ -1657,7 +2214,7 @@ dt, dd {
 																		data-tpl_id="tpl_introduce_item">
 																		<div class="item_title">
 																			<div class="input_wrap">
-																				<input type="text" id="intro_title_1621990782"
+																				<input type="text" id="intro_title_1621990782" value="<%=resumedto.getResume_intro_title() %>"
 																					name="resume_intro_title" class="input_type1"
 																					placeholder="자소서 제목" maxlength="100">
 																			</div>
@@ -1669,7 +2226,7 @@ dt, dd {
 																					name="resume_intro_content" class="textarea_type1"
 																					rows="1" cols="100" data-char-count="true"
 																					placeholder="자소서 내용" name="contents"
-																					onkeyup="javascript:fnChkByte(this,'4000')"></textarea>
+																					onkeyup="javascript:fnChkByte(this,'4000')"><%=resumedto.getResume_intro_content() %></textarea>
 																				<!-- <span id="byteInfo">0</span> 4000bytes -->
 																			</div>
 
@@ -1728,11 +2285,6 @@ dt, dd {
 
 
 													<div class="resume_write">
-														<input type="hidden" name="apply_dept" id="apply_dept"
-															value=""> <input type="hidden"
-															name="applycareer_gb" id="applycareer_gb" value="">
-														<input type="hidden" name="possible_work_day"
-															id="possible_work_day" value=",,">
 
 														<div>
 															<div class="resume_row" style="height: 125px;">
@@ -1745,7 +2297,7 @@ dt, dd {
 																		class="area_task_input resume_input">
 
 																		<input type="text" id="jobtypes" name="desiredjobtype"
-																			value="" maxlength="50" class="box_input">
+																			value="<%=resumedto.getDesiredjobtype() %>" maxlength="50" class="box_input">
 																		<div>
 																			<ul>
 																				<li class="menu"><a><img
@@ -1786,7 +2338,7 @@ dt, dd {
 																<div class="resume_input">
 																	<input type="text" id="possible_work_day_start"
 																		name="desired_str"
-																		class="expect_date box_input" value=""
+																		class="expect_date box_input" value="<%=resumedto.getDesired_str() %>"
 																		data-only-number="true" data-dateformat="yymmdd"
 																		autocomplete="off">
 
@@ -1795,7 +2347,7 @@ dt, dd {
 																<div class="resume_input">
 																	<input type="text" id="possible_work_day_end"
 																		name="desired_end"
-																		class="expect_date box_input" value=""
+																		class="expect_date box_input" value="<%=resumedto.getDesired_end() %>"
 																		data-only-number="true" data-dateformat="yymmdd"
 																		autocomplete="off">
 																</div>
@@ -1840,7 +2392,7 @@ dt, dd {
 																<div id="desire_area"
 																	class="area_task_input resume_input">
 																	<input type="text" id="Areas" name="desiredarea1"
-																		value="" maxlength="50" class="box_input">
+																		value="<%=resumedto.getDesiredarea1() %>" maxlength="50" class="box_input">
 
 																	<div>
 
@@ -1873,7 +2425,7 @@ dt, dd {
 																<div id="desire_job_category"
 																	class="area_task_input resume_input">
 																	<input type="text" id="Buses" name="desiredjob1"
-																		value="" maxlength="50" class="box_input">
+																		value="<%=resumedto.getDesiredjob1() %>" maxlength="50" class="box_input">
 
 																	<div>
 

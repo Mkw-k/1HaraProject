@@ -1,9 +1,12 @@
+<%@page import="bit.com.a.dto.Resume_AwardVo"%>
+<%@page import="bit.com.a.dto.Resume_LanguageVo"%>
+<%@page import="bit.com.a.dto.Resume_AwardDto"%>
+<%@page import="bit.com.a.dto.Resume_ActivityVo"%>
 <%@page import="bit.com.a.dto.Resume_licenseVo"%>
 <%@page import="bit.com.a.dto.Resume_CareerVo"%>
 <%@page import="bit.com.a.dto.Resume_EduVo"%>
 <%@page import="java.util.List"%>
 <%@page import="bit.com.a.dto.MemberDto"%>
-<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@page import="bit.com.a.dto.ResumeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -62,9 +65,9 @@ ResumeDto dto =(ResumeDto)request.getAttribute("dto");
 List<Resume_EduVo> edulist =(List<Resume_EduVo>)request.getAttribute("edulist");
 List<Resume_CareerVo> calist =(List<Resume_CareerVo>)request.getAttribute("calist");
 List<Resume_licenseVo> liclist =(List<Resume_licenseVo>)request.getAttribute("liclist");
-List<Resume_licenseVo> actlist =(List<Resume_licenseVo>)request.getAttribute("actlist");
-List<Resume_licenseVo> awdlist =(List<Resume_licenseVo>)request.getAttribute("awdlist");
-List<Resume_licenseVo> lanlist =(List<Resume_licenseVo>)request.getAttribute("lanlist");
+List<Resume_ActivityVo> actlist =(List<Resume_ActivityVo>)request.getAttribute("actlist");
+List<Resume_AwardVo> awdlist =(List<Resume_AwardVo>)request.getAttribute("awdlist");
+List<Resume_LanguageVo> lanlist =(List<Resume_LanguageVo>)request.getAttribute("lanlist");
 //dto들어오는지 확인
 System.out.println(dto.toString());
 
@@ -191,18 +194,36 @@ System.out.println(_gender);
 								<div class="dashboard">
 									<ul>
 										<li><strong>학력사항</strong>
-											<p class="txt"><%=edulist.get(0).getUniv_status() %> <%=edulist.get(0).getUniv_end_status() %></p></li>
+										<%for(int i=0 ; i<edulist.size(); i++){ %>
+											<p class="txt"><%=edulist.get(i).getUniv_status() %> <%=edulist.get(i).getUniv_end_status() %></p></li>
+										<%} %>
 										<li><strong>경력사항</strong>
-											<p class="txt">신입</p></li>
+										<%if(calist == null || calist.isEmpty()){ %>
+											<p class="txt">신입</p>
+										<%  } else { %>
+										<p class="txt">경력</p>
+										
+										<% } %>		
+											
+										</li>
 										<li><strong>희망연봉</strong>
-											<p class="txt">회사내규에 따름</p></li>
+											<p class="txt"><%=dto.getDesiredsalary() %></p></li>
 										<li><strong>희망근무지/근무형태</strong>
 											<p class="txt">
-												서울전체<br> 정규직
+												<%=dto.getDesiredarea1() %><br> <%=dto.getDesiredjobtype() %>
 											</p></li>
 										<li><strong>포트폴리오</strong>
-											<p class="txt portfolio_txt">-</p>
-											<div class="toolTip portfolio_tooltip" style="display: none;">
+										<!-- 포트폴리오가 있으면 표시하고 없으면 -로 표시 -->
+											<p class="txt portfolio_txt">
+											<%if(dto.getPortfolio()!=null) {
+											dto.getPortfolio(); } else {
+												%>
+												-
+												<%
+											}
+											%>
+											</p>
+											<div class="toolTip portfolio_tooltip" style="display:">
 												<span class="tail tail_top_right"></span>
 												<div class="toolTipCont txtLeft"></div>
 											</div></li>
@@ -213,8 +234,8 @@ System.out.println(_gender);
 						<div class="section_part">
 							<div class="area_title">
 								<h3 class="title">
-									학력<span class="indetail">최종학력<span class="bar">대학교<em>4년</em>졸업
-									</span></span>
+									학력<span class="indetail">
+									</span>
 								</h3>
 							</div>
 
@@ -238,15 +259,17 @@ System.out.println(_gender);
 										</tr>
 									</thead>
 									<tbody>
+									<%for(int i=0 ; i<edulist.size(); i++){ %>
 										<tr>
-											<td class="lineup_center" rowspan="1"><%=edulist.get(0).getUniv_str()%>
-												~ <%=edulist.get(0).getUniv_end()%>s</td>
-											<td class="lineup_center" rowspan="1"><%=edulist.get(0).getUniv_end_status()%></td>
-											<td><%=edulist.get(0).getUniversity()%></td>
-											<td><%=edulist.get(0).getUniv_major()%></td>
-											<td class="lineup_center"><%=edulist.get(0).getUniv_grade()%>
-												/ <%=edulist.get(0).getUniv_grade_base()%></td>
+											<td class="lineup_center" rowspan="1"><%=edulist.get(i).getUniv_str()%>
+												~ <%=edulist.get(i).getUniv_end()%></td>
+											<td class="lineup_center" rowspan="1"><%=edulist.get(i).getUniv_end_status()%></td>
+											<td><%=edulist.get(i).getUniversity()%></td>
+											<td><%=edulist.get(i).getUniv_major()%></td>
+											<td class="lineup_center"><%=edulist.get(i).getUniv_grade()%>
+												/ <%=edulist.get(i).getUniv_grade_base()%></td>
 										</tr>
+									
 										<tr>
 											<td class="lineup_center" rowspan="1"><%=edulist.get(0).getHigh_str()%>
 												~ <%=edulist.get(0).getHigh_end()%></td>
@@ -255,6 +278,8 @@ System.out.println(_gender);
 											<td>문과계열</td>
 											<td class="lineup_center">-</td>
 										</tr>
+									
+									<% } %>	
 									</tbody>
 								</table>
 							</div>
@@ -263,13 +288,13 @@ System.out.println(_gender);
 						<div class="section_part">
 							<div class="area_title">
 								<h3 class="title">
-									경력<span class="indetail">신입</span>
+									경력<span class="indetail"></span>
 								</h3>
 							</div>
 							<div class="part_table"></div>
 						</div>
 
-						<div class="part_table">
+						<div class="part_table" id="career_table" style="display: ">
 							<table class="inpart_view" cellspacing="0" cellpadding="0">
 								<caption>개인 경력</caption>
 								<colgroup>
@@ -289,30 +314,65 @@ System.out.println(_gender);
 									</tr>
 								</thead>
 								<tbody>
+									<%for(int i=0 ; i<calist.size(); i++){ %>
 									<tr>
-										<td class="lineup_center" rowspan="2">2020.01 ~ 2021.06<br />(1년
-											6개월)
+										<td class="lineup_center" rowspan="2"><%=calist.get(0).getPre_startdate() %> ~ <%=calist.get(0).getPre_enddate() %><br />
 										</td>
-										<td>KG이니시스</td>
-										<td>회계팀&nbsp;/&nbsp;사원</td>
-										<td>서울 / 경영·사무 > 기획·전략·경영</td>
-										<td class="lineup_center">3,300만원</td>
+										<td><%=calist.get(0).getPre_comname() %></td>
+										<td><%=calist.get(0).getPre_dept() %>&nbsp;/&nbsp;<%=calist.get(0).getPre_position() %></td>
+										<td><%=calist.get(0).getPre_area() %> / <%=calist.get(0).getPre_buscode() %></td>
+										<td class="lineup_center"><%=calist.get(0).getPre_sal() %></td>
 									</tr>
 									<tr>
 										<td colspan="4">
 											<p class="box_point">
-												<span class="ico_point">담당업무</span>전표처리 및 월비용마감
+												<span class="ico_point">담당업무</span><%=calist.get(0).getPre_jobdetail()%>
 											</p>
 											<p class="box_point">
-												<span class="ico_point">퇴사사유</span>업직종 전환
+												<span class="ico_point">퇴사사유</span><%=calist.get(0).getResumeseq() %>
 											</p>
 										</td>
 									</tr>
+									
+									<% } %>
 								</tbody>
 							</table>
 						</div>
 
-
+						<div class="section_part">
+							<div class="area_title">
+								<h3 class="title">대외활동</h3>
+							</div>
+							<div class="part_table">
+								<table class="inpart_view" cellspacing="0" cellpadding="0">
+									<caption>대외활동</caption>
+									<colgroup>
+										<col width="19%" />
+										<col width="11%" />
+										<col width="32%" />
+										<col width="*" />
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">기간</th>
+											<th scope="col">구분</th>
+											<th scope="col">기관/장소</th>
+											<th scope="col">내용</th>
+										</tr>
+									</thead>
+									<tbody>
+									<%for(int i=0 ; i< actlist.size(); i++) {%>
+										<tr>
+											<td class="lineup_center"><%=actlist.get(i).getAct_str() %> ~ <%=actlist.get(i).getAct_end() %></td>
+											<td class="lineup_center"><%=actlist.get(i).getAct_field() %></td>
+											<td><%=actlist.get(i).getAct_org() %></td>
+											<td><%=actlist.get(i).getAct_detail() %></td>
+										</tr>
+									<%} %>
+									</tbody>
+								</table>
+							</div>
+						</div>
 
 
 
@@ -340,34 +400,35 @@ System.out.println(_gender);
 										</tr>
 									</thead>
 									<tbody>
+										<% for(int i=0; i< lanlist.size();i++) {%>
 										<tr>
-											<td class="lineup_center">2019.02</td>
+											<td class="lineup_center"><%=lanlist.get(0).getLan_date() %></td>
 											<td class="lineup_center">어학시험</td>
-											<td>TOEIC</td>
-											<td>영어</td>
-											<td class="lineup_center">880점/PASS</td>
+											<td><%=lanlist.get(0).getLan_exam() %></td>
+											<td><%=lanlist.get(0).getLan_kind() %></td>
+											<td class="lineup_center"><%=lanlist.get(0).getLan_score()%>/<%lanlist.get(0).getLan_grade(); %>/<%=lanlist.get(0).getLan_pass() %></td>
 										</tr>
+										<% } %>
+										
+										<% for(int i=0; i< liclist.size();i++) {%>
 										<tr>
-											<td class="lineup_center">2017.10</td>
-											<td class="lineup_center">어학시험</td>
-											<td>TOEIC Speaking Test</td>
-											<td>영어</td>
-											<td class="lineup_center">6급/PASS</td>
-										</tr>
-										<tr>
-											<td class="lineup_center">2018.06</td>
+											<td class="lineup_center"><%=liclist.get(0).getLic_date() %></td>
 											<td class="lineup_center">자격증/면허증</td>
-											<td>컴퓨터활용능력2급</td>
-											<td>대한상공회의소</td>
-											<td class="lineup_center">최종합격</td>
+											<td><%=liclist.get(0).getLic_name() %></td>
+											<td><%=liclist.get(0).getLic_publisher() %></td>
+											<td class="lineup_center"><%=liclist.get(0).getLic_pass() %></td>
 										</tr>
+										<% } %>
+										
+										<% for(int i=0; i< awdlist.size();i++) {%>
 										<tr>
-											<td class="lineup_center">2017.06</td>
-											<td class="lineup_center">자격증/면허증</td>
-											<td>한국사능력검정시험 1급</td>
-											<td>국사편찬위원회</td>
-											<td class="lineup_center">최종합격</td>
+											<td class="lineup_center"><%=awdlist.get(0).getAwd_date() %></td>
+											<td class="lineup_center">수상내역/공모전</td>
+											<td><%=awdlist.get(0).getAwd_name() %></td>
+											<td><%=awdlist.get(0).getAwd_org() %></td>
+											<td class="lineup_center">수상</td>
 										</tr>
+										<% } %>
 									</tbody>
 								</table>
 							</div>
@@ -378,42 +439,9 @@ System.out.println(_gender);
 							</div>
 							<div class="part_table">
 								<div class="my_letter_view">
-									<p class="intit">[다양한 사회경험을 가진 인재]</p>
+									<p class="intit"><%=dto.getResume_intro_title() %></p>
 									<div class="intxt">
-										[나만의 속도로 꾸준히 성장하는 나]<br /> <br /> 저는 마라톤을 하듯이 저만의 속도로 꾸준히
-										앞으로 나아가는 사람입니다. 대학에 진학한 후 지속적으로 여러 활동을 해오면서 성장을 해왔습니다. <br />
-										<br /> 저는 다양한 서비스 아르바이트를 함으로써 협동심과 상황대처능력을 기를 수 있었습니다. 대학생 때
-										스스로 용돈을 벌어 쓰기 위해 편의점, 카페, 피시방, 샌드위치 가게 등에서 아르바이트를 꾸준하게 해왔습니다.
-										다양한 고객에게 서비스를 제공하기 때문에, 예상치 못하는 상황이 자주 발생했습니다. 저는 그럴 때마다 당황하지
-										않고, 순발력 있고 센스있게 대처하기 위해 노력하였고, 상황대처능력을 기를 수 있었습니다. 또한, 다른
-										아르바이트생과 함께 일하면서 협동심을 기를 수 있었습니다.<br /> <br /> 저는 주어진 일 이상을
-										하려는 적극성을 가졌습니다. 컨설팅 회사의 문제 개발팀에서 사무보조 일을 한 경험이 있습니다. 오탈자를 검수하는
-										것이 저의 주어진 일이었습니다. 당시 한 공기업의 시험 날짜가 일주일밖에 남지 않은 상황에서, 문제조차 다
-										만들어지지 못하여 시간이 매우 부족한 상황이었습니다. 저의 역할은 단순한 사무보조였지만 팀의 다급한 상황을
-										알아채고, 팀의 일을 완벽하게 끝내는 데 도움이 되고 싶었습니다. 팀원들에게 먼저 찾아가 도와드릴 일이 없는지
-										물어보고, 팀의 일을 적극적으로 도우려고 노력하였습니다. 그 결과 무사히 시험이 진행될 수 있었습니다.<br />
-										<br /> 핀테크 전문 기업인 (주)다우데이타 PG 사업팀에서의 6개월간의 인턴십 경험을 통해 업무 의사소통
-										능력과 꼼꼼함을 기를 수 있었습니다. 저의 주요 직무는 PG 서비스 계약진행 및 가맹점 관리였습니다.
-										계약체결에서부터 PG 서비스 오픈까지의 진행과정에서 업체에 안내해야 하는 사항이 많았고, 이를 위해 업체와
-										지속적으로 연락을 주고받았습니다. 또한, 카드사로부터 들어오는 민원을 처리하기 위해, 업체에 전달하여 민원인과의
-										원만한 조율을 유도함으로써 업무 의사소통 능력을 향상할 수 있었습니다. 저는 매일 추가되는 새로운 계약 건들의
-										효율적 관리를 위해서, 따로 엑셀 파일을 만들어서 계약 진행 상황을 한눈에 알 수 있게 하였습니다. 진행과정에서
-										지연되거나 누락되는 상황이 없도록 노력하였고, 이를 통해 꼼꼼함을 기를 수 있었습니다.<br /> <br />
-										최근에는 PG업계 1위인 (주)케이지이니시스의 회계팀에서 8개월간 일을 하며 직무 경험을 쌓을 수 있었습니다.
-										저의 주요 직무는 사내 일체의 비용을 관리하는 업무였습니다. 타부서에서 예산을 사용하기 위해서 지출결의서를
-										작성하여 저에게 가져다주면 올바른 회계처리를 하였습니다. 미지급금 리스트를 작성하여 자금파트에 전달하여
-										자금집행이 원활히 이루어지도록 노력하였습니다. 또한 팀의 막내로서, 전표정리를 도맡아 하였습니다. 전표를
-										꼼꼼하게 보관하여 회계감사시 샘플링을 할 때에도 원활하게 진행될 수 있었습니다. <br /> 또한, 월초마다
-										이루어지는 비용마감을 담당하였습니다. 홈택스를 통해 전월에 발행된 세금계산서와 ERP상 비용 금액이 일치하는지
-										매입대사를 진행하여 누락되는 비용이 없도록 관리하였습니다. <br /> 임직원들의 법인카드 사용내역 및
-										개인경비를 관리하는 업무도 하였습니다. 직원들이 상신한 개인경비관련 기안지를 토대로 사용내역이 올바른지 세세히
-										확인하여 기표하였습니다. 개인경비 데이터를 자금팀에 전달하여 개인경비가 정확하게 개인들에게 지급될 수 있도록
-										노력하였습니다. <br /> 또한 회사의 주된 비용인 초기등록비와 연관리비를 관리하였습니다. 매월 초
-										영업팀과의 의사소통을 통해 차이나는 금액을 조정하여 비용을 마감하였습니다. <br /> 이러한
-										(주)케이지이니시스 회계팀에서의 업무경험을 통해 숫자에 대한 감각, 업무적 꼼꼼함, 의사소통능력을 크게 함양시킬
-										수 있었습니다.<br /> <br /> 저는 이러한 다양한 경험으로 쌓아온 것들이 향후 귀사의 업무를
-										수행함에 있어 도움이 될 것으로 생각합니다. 저의 직무를 수행하며 회사와 함께 꾸준히 성장하는 직원이 되고
-										싶습니다.
+										<%=dto.getResume_intro_content() %>
 									</div>
 								</div>
 							</div>
@@ -424,5 +452,25 @@ System.out.println(_gender);
 			</div>
 		</div>
 	</div>
+	
+	
+<script type="text/javascript">
+$( document ).ready(function() {
+
+careerChk();
+	
+function careerChk() {
+if ( calist == null || calist.isEmpty() ) {
+	alert("callist null");
+	document.getElementById('career_table').style.display='none';
+	} else {
+	alert("calist not null");
+	document.getElementById('career_table').style.display='block';
+	}
+}
+
+});
+</script>
+
 </body>
 </html>

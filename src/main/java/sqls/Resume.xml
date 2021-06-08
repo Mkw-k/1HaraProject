@@ -6,14 +6,14 @@
 <mapper namespace="Resume">
 
 
-<insert id="writeResume" parameterType="java.util.HashMap">
+<insert id="writeResume" parameterType="bit.com.a.dto.ResumeDto">
 
     INSERT  
-    INTO RESUME (RESUMESEQ, MEMBERID,RESUMETITLE, RECRUIT_STATUS, RESUMEIMAGE, NEWRESUMEIMAGE,
-    			RESUME_INTRO_TITLE, RESUME_INTRO_CONTENT, PORTFOLIO, NEWPORTFOLIO, DESIREDSALARY, DESIREDJOBTYPE, DESIRED_STR, DESIRED_END, DESIREDAREA1, DESIREDJOB1, GENDER)
-    VALUES (RESUME_SEQ.NEXTVAL, #{memberid}, #{resumetitle}, #{recruit_status}, #{resumeimage}, #{newresumeimage}, 
+    INTO RESUME (RESUMESEQ, MEMBERID,RESUMETITLE, RECRUIT_STATUS, RESUME_STATUS, RESUMEIMAGE, NEWRESUMEIMAGE,
+    			RESUME_INTRO_TITLE, RESUME_INTRO_CONTENT, PORTFOLIO, NEWPORTFOLIO, DESIREDSALARY, DESIREDJOBTYPE, DESIRED_STR, DESIRED_END, DESIREDAREA1, DESIREDJOB1, GENDER, PROGRESS)
+    VALUES (RESUME_SEQ.NEXTVAL, #{memberid}, #{resumetitle}, #{recruit_status}, #{resume_status}, #{resumeimage}, #{newresumeimage}, 
     		#{resume_intro_title}, #{resume_intro_content}, #{portfolio}, #{newportfolio}, #{desiredsalary}, #{desiredjobtype}, 
-    		#{desired_str}, #{desired_end}, #{desiredarea1}, #{desiredjob1}, #{gender} ) 
+    		#{desired_str}, #{desired_end}, #{desiredarea1}, #{desiredjob1}, #{gender} , 0) 
 	
 </insert>
 
@@ -79,6 +79,8 @@ INTO LANGUAGE (LANSEQ, RESUMESEQ, LAN_KIND, LAN_EXAM, LAN_SCORE, LAN_GRADE, LAN_
 <select id="getresume" resultType="bit.com.a.dto.ResumeDto">
 SELECT RESUMESEQ, RESUMETITLE
 FROM RESUME
+WHERE RESUME_STATUS LIKE '%YES%'
+ORDER BY RESUMESEQ DESC
 </select>
 
 <select id="getTotalPage" resultType="java.lang.Integer">
@@ -88,7 +90,7 @@ FROM RESUME
 
 
 <select id="getResumeDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.ResumeDto">
-SELECT RESUMESEQ, MEMBERID, RESUMETITLE, RECRUIT_STATUS, RESUMEIMAGE, NEWRESUMEIMAGE, RESUME_INTRO_TITLE, RESUME_INTRO_CONTENT, PORTFOLIO, NEWPORTFOLIO, DESIREDSALARY, DESIREDJOBTYPE, DESIRED_STR, DESIRED_END, DESIREDAREA1, DESIREDJOB1, GENDER
+SELECT RESUMESEQ, MEMBERID, RESUMETITLE, RECRUIT_STATUS, RESUME_STATUS, RESUMEIMAGE, NEWRESUMEIMAGE, RESUME_INTRO_TITLE, RESUME_INTRO_CONTENT, PORTFOLIO, NEWPORTFOLIO, DESIREDSALARY, DESIREDJOBTYPE, DESIRED_STR, DESIRED_END, DESIREDAREA1, DESIREDJOB1, GENDER
 FROM RESUME
 WHERE RESUMESEQ=#{seq}
 </select>
@@ -130,6 +132,117 @@ SELECT LANSEQ, RESUMESEQ, LAN_KIND, LAN_EXAM, LAN_SCORE, LAN_GRADE, LAN_PASS, LA
 FROM LANGUAGE
 WHERE RESUMESEQ=#{seq}
 </select>
+
+
+<delete id="deleteResume" parameterType="java.lang.Integer" >
+DELETE 
+FROM RESUME 
+WHERE RESUMESEQ=#{seq}
+</delete>
+
+<delete id="deleteEduResume" parameterType="java.lang.Integer" >
+DELETE 
+FROM RESUME_EDU 
+WHERE RESUMESEQ=#{seq}
+</delete>
+
+<delete id="deleteCareerResume" parameterType="java.lang.Integer" >
+DELETE 
+FROM CAREER 
+WHERE RESUMESEQ=#{seq}
+</delete>
+
+<delete id="deleteLicenseResume" parameterType="java.lang.Integer" >
+DELETE 
+FROM LICENSE 
+WHERE RESUMESEQ=#{seq}
+</delete>
+
+<delete id="deleteActivityResume" parameterType="java.lang.Integer" >
+DELETE 
+FROM ACTIVITY 
+WHERE RESUMESEQ=#{seq}
+</delete>
+
+<delete id="deleteAwardResume" parameterType="java.lang.Integer" >
+DELETE 
+FROM AWARD 
+WHERE RESUMESEQ=#{seq}
+</delete>
+
+<delete id="deleteLanResume" parameterType="java.lang.Integer" >
+DELETE 
+FROM LANGUAGE 
+WHERE RESUMESEQ=#{seq}
+</delete>
+
+<select id="getNoresume" resultType="bit.com.a.dto.ResumeDto">
+SELECT RESUMESEQ, RESUMETITLE, PROGRESS
+FROM RESUME
+WHERE RESUME_STATUS LIKE '%NO%'
+ORDER BY RESUMESEQ DESC
+</select>
+
+<update id="upProgress" parameterType="bit.com.a.dto.ResumeDto">
+ UPDATE RESUME
+ SET PROGRESS = 10
+ WHERE RESUMESEQ=#{resumeseq}
+</update>
+
+<update id="updateProgress" parameterType="java.lang.Integer">
+ UPDATE RESUME
+ SET PROGRESS = PROGRESS+10
+ WHERE RESUMESEQ=#{resumeseq}
+</update>
+
+<update id="updateResume" parameterType="bit.com.a.dto.ResumeDto">
+ UPDATE RESUME
+ SET RESUMETITLE=#{resumetitle}, RECRUIT_STATUS=#{recruit_status}, RESUME_STATUS=#{resume_status}, RESUMEIMAGE=#{resumeimage},
+    			RESUME_INTRO_TITLE=#{resume_intro_title}, RESUME_INTRO_CONTENT=#{resume_intro_content}, PORTFOLIO=#{portfolio}, DESIREDSALARY=#{desiredsalary}, 
+    			DESIREDJOBTYPE=#{desiredjobtype}, DESIRED_STR=#{desired_str}, DESIRED_END=#{desired_end}, DESIREDAREA1=#{desiredarea1}, DESIREDJOB1=#{desiredjob1}, GENDER=#{gender}
+ WHERE RESUMESEQ=#{resumeseq}
+</update>
+
+<update id="updateEdu" parameterType="bit.com.a.dto.Resume_EduVo">
+UPDATE RESUME_EDU
+SET HIGHSCHOOL=#{highschool}, HIGH_STR=#{high_str}, HIGH_STR_STATUS=#{high_str_status}, HIGH_END=#{high_end}, HIGH_END_STATUS=#{high_end_status}, UNIVERSITY=#{university}, UNIV_STATUS=#{univ_status}, UNIV_STR=#{univ_str}, UNIV_STR_STATUS=#{univ_str_status},
+		UNIV_END=#{univ_end}, UNIV_END_STATUS=#{univ_end_status}, UNIV_MAJOR_FIELD=#{univ_major_field}, UNIV_MAJOR=#{univ_major}, UNIV_NIGHT=#{univ_night}, UNIV_GRADE=#{univ_grade}, UNIV_GRADE_BASE=#{univ_grade_base}, UNIV_PAPER=#{univ_paper}
+WHERE RESUMESEQ=#{resumeseq}
+
+</update>
+
+<update id="updateCareer" parameterType="bit.com.a.dto.Resume_CareerVo">
+	UPDATE CAREER
+    SET PRE_COMNAME=#{pre_comname}, PRE_STARTDATE=#{pre_startdate}, PRE_ENDDATE=#{pre_enddate}, 
+    PRE_STATUS=#{pre_status}, PRE_POSITION=#{pre_position}, PRE_BUSCODE=#{pre_buscode}, PRE_AREA=#{pre_area}, PRE_DEPT=#{pre_dept}, PRE_SAL=#{pre_sal}, PRE_JOBDETAIL=#{pre_jobdetail}
+WHERE RESUMESEQ=#{resumeseq}
+	
+</update>
+
+<update id="updateLic" parameterType="bit.com.a.dto.Resume_licenseVo">
+	UPDATE LICENSE
+    SET LIC_DATE=#{lic_date}, LIC_NAME=#{lic_name}, LIC_PUBLISHER=#{lic_publisher}, LIC_PASS=#{lic_pass}
+WHERE RESUMESEQ=#{resumeseq}
+</update>
+
+<update id="updateAct" parameterType="bit.com.a.dto.Resume_ActivityVo">
+	UPDATE ACTIVITY
+    SET ACT_FIELD=#{act_field}, ACT_ORG=#{act_org}, ACT_STR=#{act_str}, ACT_END=#{act_end}, ACT_DETAIL=#{act_detail}
+WHERE RESUMESEQ=#{resumeseq}
+</update>
+
+<update id="updateAward" parameterType="bit.com.a.dto.Resume_AwardVo">
+	UPDATE AWARD
+    SET AWD_NAME=#{awd_name}, AWD_DATE=#{awd_date}, AWD_ORG=#{awd_org}
+WHERE RESUMESEQ=#{resumeseq}
+</update>
+
+<update id="updateLan" parameterType="bit.com.a.dto.Resume_LanguageVo">
+	UPDATE LANGUAGE
+    SET LAN_KIND=#{lan_kind}, LAN_EXAM=#{lan_exam}, LAN_SCORE=#{lan_score}, LAN_GRADE=#{lan_grade}, LAN_PASS=#{lan_pass}, LAN_DATE=#{lan_date}
+WHERE RESUMESEQ=#{resumeseq}
+</update>
+
 
 </mapper>    
     

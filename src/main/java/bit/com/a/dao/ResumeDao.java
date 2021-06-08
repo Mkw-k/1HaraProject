@@ -50,4 +50,39 @@ public interface ResumeDao {
 	List<Resume_AwardVo> getAwdDetail(int seq);
 	
 	List<Resume_LanguageVo> getlanDetail(int seq);
+	
+	boolean deleteResume(int seq);
+	
+	boolean deleteEduResume(int seq);
+
+	boolean deleteCareerResume(int seq);
+
+	boolean deleteLicenseResume(int seq);
+
+	boolean deleteActivityResume(int seq);
+
+	boolean deleteAwardResume(int seq);
+
+	boolean deleteLanResume(int seq);
+	
+	List<ResumeDto> getNoresume();
+	
+	void upProgress(ResumeDto dto);
+	
+	boolean updateProgress(int resumeseq);
+	
+	void updateResume(ResumeDto dto);
+	
+	boolean updateEdu(Resume_EduVo eduvo);
+	
+	boolean updateCareer(Resume_CareerVo carvo);
+	
+	boolean updateLic(Resume_licenseVo licvo);
+
+	boolean updateAct(Resume_ActivityVo actvo);
+	
+	boolean updateAward(Resume_AwardVo awdvo);
+	
+	boolean updateLan(Resume_LanguageVo lanvo);
+
 }
