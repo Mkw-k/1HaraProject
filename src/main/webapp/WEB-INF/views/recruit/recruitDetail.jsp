@@ -27,6 +27,8 @@ System.out.println("resumelist" +resumelist);
   <!-- 전체 공통 스크립트 임포트 -->
   <c:import url="script.jsp" charEncoding="utf-8"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <!-- <link rel="stylesheet" href="static/csss/bootstrap.css" media="all"> -->
+
   <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
   <!-- 카카오맵스 -->
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=685fcbb766340d7c8812f4e0a29a6661&libraries=services"></script>

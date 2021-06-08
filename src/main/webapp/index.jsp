@@ -9,7 +9,6 @@
 </head>
 <body>
 
-
 index.jsp
 
 <br>
@@ -51,7 +50,7 @@ index.jsp
 
 <a href="companywrite.do">기업 디테일 쓰깅</a>
 
-<a href="testtest.do">기업 디테일 쓰깅</a>
+<a href="Maintest.do">메인테스트</a>
 
 
 </body>
