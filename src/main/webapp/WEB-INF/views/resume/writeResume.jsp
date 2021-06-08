@@ -1602,7 +1602,8 @@ dt, dd {
 
 
 												</div>
-												<div id="attach_port_files" class="resume_section"
+												
+												<!-- <div id="attach_port_files" class="resume_section"
 													data-order_item="attach_port_files" data-except="y">
 													<div class="area_title">
 														<h3 class="title">포트폴리오 및 기타문서</h3>
@@ -1620,13 +1621,13 @@ dt, dd {
 														</div>
 														<div class="area_add_btn">
 															<input type="file" name="fileload2" style="width: 400px">
-															<!-- <button type="button" class="btn_resume_add"
+															<button type="button" class="btn_resume_add"
 														data-api_type="layer" data-api_id="attach_file">
 														<span>포트폴리오 및 기타문서 추가</span>
-													</button> -->
+													</button>
 														</div>
 													</div>
-												</div>
+												</div> -->
 
 												<div id="introduce" data-order_item="introduce"
 													data-except="y">

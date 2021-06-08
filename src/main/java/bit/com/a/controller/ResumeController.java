@@ -71,23 +71,19 @@ public class ResumeController {
 	@RequestMapping(value = "writeAfResume.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String writeAfResume(ResumeDto dto, Resume_EduDto edudto, Resume_CareerDto careerdto,
 			Resume_LicenseDto licdto, Resume_ActivityDto actdto, Resume_AwardDto awarddto, Resume_LanguageDto landto,
-			@RequestParam(value = "fileload", required = false) MultipartFile fileload,
-			@RequestParam(value = "fileload2", required = false) MultipartFile fileload2, HttpServletRequest req,
+			@RequestParam(value = "fileload", required = false) MultipartFile fileload, HttpServletRequest req,
 			Model model) throws Exception {
 
 
 		System.out.println("fileload : " + fileload);
-		System.out.println("fileload2 : " + fileload2);
 
 
-		if (!fileload.isEmpty() && !fileload2.isEmpty()) {
+		if (!fileload.isEmpty()) {
 			System.out.println("안비었다");
 			// filename 취득
 			String filename = fileload.getOriginalFilename();
-			String filename2 = fileload2.getOriginalFilename();
 
 			dto.setResumeimage(filename); // 원본 파일명을 설정
-			dto.setPortfolio(filename2);
 
 			// upload 경로 설정
 			// server(tomcat)
@@ -98,14 +94,11 @@ public class ResumeController {
 
 			System.out.println("fupload:" + fupload);
 			System.out.println(dto.getResumeimage());
-			System.out.println(dto.getPortfolio());
 
 			// 파일명 변경 처리
 			String newfilename = PdsUtil.getNewFileName(dto.getResumeimage());
-			String newfilename2 = PdsUtil.getNewFileName(dto.getPortfolio());
 
 			dto.setNewresumeimage(newfilename);
-			dto.setNewportfolio(newfilename2);
 
 			File file = new File(fupload + "/" + newfilename);
 
@@ -128,11 +121,8 @@ public class ResumeController {
 
 		else {
 			dto.setResumeimage("");
-			dto.setPortfolio("");
 
 			dto.setNewresumeimage("");
-			dto.setNewportfolio("");
-
 
 			System.out.println("비었다");
 			service.writeResume(dto);
@@ -412,36 +402,29 @@ public class ResumeController {
 	@RequestMapping(value = "updateAfResume.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String updateAfResume(ResumeDto dto, Resume_EduDto edudto, Resume_CareerDto careerdto,
 			Resume_LicenseDto licdto, Resume_ActivityDto actdto, Resume_AwardDto awarddto, Resume_LanguageDto landto, 
-			String namefile, String namefile2,
-			@RequestParam(value = "fileload", required = false) MultipartFile fileload,
-			@RequestParam(value = "fileload2", required = false) MultipartFile fileload2, HttpServletRequest req,
+			String namefile,
+			@RequestParam(value = "fileload", required = false) MultipartFile fileload, HttpServletRequest req,
 			Model model) throws Exception {
 
-
+		System.out.println("fileload" + fileload);
 		dto.setResumeimage(fileload.getOriginalFilename());
-		dto.setPortfolio(fileload2.getOriginalFilename());
 
 		
-		if(!fileload.isEmpty() && !fileload2.isEmpty()) {
+		if(!fileload.isEmpty()) {
 	        // 파일 경로
 	        String fupload = req.getServletContext().getRealPath("/upload");
 	        
 	        // 수정할 파일이 있음
-	        if(dto.getResumeimage() != null && !dto.getResumeimage().equals("")
-	        		&& dto.getPortfolio()!=null && dto.getPortfolio().equals("")) {
+	        if(dto.getResumeimage() != null && !dto.getResumeimage().equals("")) {
 	            
 	            String f = dto.getResumeimage();
-	            String f2 = dto.getPortfolio();
 	            String newfilename = PdsUtil.getNewFileName(f);
-	            String newfilename2 = PdsUtil.getNewFileName(f2);
 	            
 	            dto.setResumeimage(f);
-	            dto.setPortfolio(f2);
 	            dto.setNewresumeimage(newfilename);
-	            dto.setNewportfolio(newfilename2);
 	            
 	            File file = new File(fupload + "/" + newfilename);            
-	            
+	            System.out.println(newfilename);
 	            try {
 	                // 실제 업로드
 	                FileUtils.writeByteArrayToFile(file, fileload.getBytes());
@@ -458,7 +441,6 @@ public class ResumeController {
 	            
 	            // 기존의 파일명으로 설정
 	            dto.setResumeimage(namefile);
-	            dto.setPortfolio(namefile2);
 	            System.out.println("파일이 없다");
 	            // DB
 	            service.updateResume(dto); 
@@ -468,11 +450,7 @@ public class ResumeController {
 	        
 	        	else {
 	    			dto.setResumeimage("");
-	    			dto.setPortfolio("");
-
 	    			dto.setNewresumeimage("");
-	    			dto.setNewportfolio("");
-
 
 	    			System.out.println("비었다");
 	    			service.updateResume(dto); 
@@ -491,6 +469,8 @@ public class ResumeController {
 		//학력사항 관련 테이블 insert
 		
 		System.out.println("11111111111111111111111111111111111111111111111111111111111111111111111111111"+edudto.toString());
+		
+		if(edudto.getUniversity()!=null) {
 		for (int i = 0; i < edudto.getUniversity().length; i++) {
 
 			if( edudto.getUniversity()[i] == null || edudto.getUniversity()[i].equals("")) {
@@ -504,7 +484,6 @@ public class ResumeController {
 			eduvo.setHigh_str_status(edudto.getHigh_str_status());
 			eduvo.setHigh_end(edudto.getHigh_end());
 			eduvo.setHigh_end_status(edudto.getHigh_end_status());
-			
 			
 			eduvo.setUniversity(edudto.getUniversity()[i]);
 			eduvo.setUniv_status(edudto.getUniv_status()[i]);
@@ -526,11 +505,12 @@ public class ResumeController {
 			System.out.println(c);
 			}
 		}
-		
+		}
 		//경력사항 관련 테이블 INSERT
 		System.out.println(" careerdto.getPre_comname().length= " + careerdto.getPre_comname().length);
 		System.out.println(careerdto.toString());
 		
+		if(careerdto.getPre_comname()!=null) {
 		for(int i=0; i<careerdto.getPre_comname().length; i++) {
 
 			if( careerdto.getPre_comname()[i] ==null || careerdto.getPre_comname()[i].equals("")) {
@@ -555,11 +535,12 @@ public class ResumeController {
 			System.out.println(b);
 			System.out.println(c);
 			}
-			
+		}
 		}
 		
 		//자격증관련 사항 테이블 INSERT
 		System.out.println(licdto.toString());
+		if(licdto.getLic_name()!=null) { 
 		for(int i=0; i<licdto.getLic_name().length; i++) {
 			
 			
@@ -583,9 +564,10 @@ public class ResumeController {
 			System.out.println(c);
 			}
 		}
-		
+		}
 		//대외활동관련 사항 테이블 INSERT
 		System.out.println(actdto.toString());
+		if(actdto.getAct_str()!=null) { 
 		for(int i=0; i<actdto.getAct_str().length; i++) {
 			
 			
@@ -603,13 +585,15 @@ public class ResumeController {
 			
 			boolean b = service.updateAct(actvo);
 			boolean c = service.updateProgress(resumeseq);
+			System.out.println(b);
 			System.out.println(c);
 			}
 		}
-		
+		}
 		//수상관련 사항 테이블 INSERT
 		System.out.println(awarddto.toString());
-		
+		if(awarddto.getAwd_name()!=null) { 
+			
 		for(int i=0; i<awarddto.getAwd_name().length; i++) {
 			
 			if( awarddto.getAwd_name()[i]==null || awarddto.getAwd_name()[i].equals("")) {
@@ -628,9 +612,10 @@ public class ResumeController {
 			System.out.println(c);
 			}
 		}
+		}
 		
 		System.out.println(landto.toString());
-		
+		if(landto.getLan_exam()!=null) { 
 		for(int i=0; i<landto.getLan_exam().length; i++) {
 			if( landto.getLan_exam()[i] ==null || landto.getLan_exam()[i].equals("")) {
 			} else {
@@ -652,7 +637,7 @@ public class ResumeController {
 			System.out.println(c);
 		}
 		}
-		
+		}
 		//이력서 리스트
 		List<ResumeDto> resumelist = service.getresume();
 		List<ResumeDto> resumeNolist = service.getNoresume();

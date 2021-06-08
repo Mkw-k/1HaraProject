@@ -10,9 +10,9 @@
 
     INSERT  
     INTO RESUME (RESUMESEQ, MEMBERID,RESUMETITLE, RECRUIT_STATUS, RESUME_STATUS, RESUMEIMAGE, NEWRESUMEIMAGE,
-    			RESUME_INTRO_TITLE, RESUME_INTRO_CONTENT, PORTFOLIO, NEWPORTFOLIO, DESIREDSALARY, DESIREDJOBTYPE, DESIRED_STR, DESIRED_END, DESIREDAREA1, DESIREDJOB1, GENDER, PROGRESS)
+    			RESUME_INTRO_TITLE, RESUME_INTRO_CONTENT, DESIREDSALARY, DESIREDJOBTYPE, DESIRED_STR, DESIRED_END, DESIREDAREA1, DESIREDJOB1, GENDER, PROGRESS)
     VALUES (RESUME_SEQ.NEXTVAL, #{memberid}, #{resumetitle}, #{recruit_status}, #{resume_status}, #{resumeimage}, #{newresumeimage}, 
-    		#{resume_intro_title}, #{resume_intro_content}, #{portfolio}, #{newportfolio}, #{desiredsalary}, #{desiredjobtype}, 
+    		#{resume_intro_title}, #{resume_intro_content}, #{desiredsalary}, #{desiredjobtype}, 
     		#{desired_str}, #{desired_end}, #{desiredarea1}, #{desiredjob1}, #{gender} , 0) 
 	
 </insert>
@@ -197,8 +197,8 @@ ORDER BY RESUMESEQ DESC
 
 <update id="updateResume" parameterType="bit.com.a.dto.ResumeDto">
  UPDATE RESUME
- SET RESUMETITLE=#{resumetitle}, RECRUIT_STATUS=#{recruit_status}, RESUME_STATUS=#{resume_status}, RESUMEIMAGE=#{resumeimage},
-    			RESUME_INTRO_TITLE=#{resume_intro_title}, RESUME_INTRO_CONTENT=#{resume_intro_content}, PORTFOLIO=#{portfolio}, DESIREDSALARY=#{desiredsalary}, 
+ SET RESUMETITLE=#{resumetitle}, RECRUIT_STATUS=#{recruit_status}, RESUME_STATUS=#{resume_status}, RESUMEIMAGE=#{resumeimage}, NEWRESUMEIMAGE=#{newresumeimage},
+    			RESUME_INTRO_TITLE=#{resume_intro_title}, RESUME_INTRO_CONTENT=#{resume_intro_content}, DESIREDSALARY=#{desiredsalary}, 
     			DESIREDJOBTYPE=#{desiredjobtype}, DESIRED_STR=#{desired_str}, DESIRED_END=#{desired_end}, DESIREDAREA1=#{desiredarea1}, DESIREDJOB1=#{desiredjob1}, GENDER=#{gender}
  WHERE RESUMESEQ=#{resumeseq}
 </update>

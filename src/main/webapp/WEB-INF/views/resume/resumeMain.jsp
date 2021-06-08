@@ -601,7 +601,8 @@ System.out.println("resumeNolist" +resumeNolist);
 											value="<%=resumeNolist.get(i).getProgress() %>" max="100">
 											<span class="sr-only"></span>
 										</progress>
-										<a href="writeResume.do" class="box-btn">작성</a>
+										<a href="updateResume.do?seq=<%=resumeNolist.get(i).getResumeseq()%>" class="box-btn">작성</a>
+										<a href="deleteResume.do?seq=<%=resumeNolist.get(i).getResumeseq()%>" class="box-btn">삭제</a>
 									</div>
 								</li>
 							<%  

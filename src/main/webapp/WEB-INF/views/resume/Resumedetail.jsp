@@ -173,7 +173,7 @@ System.out.println(_gender);
 								<div class="box_photo">
 									<div class="inbox">
 										<img alt=""
-											src="https://www.saramin.co.kr/zf_user/persons/picture?idx=9101898|60cf721e06356913493a383c40a1ae4234142d14be82e071ef3c9965ad9ed950"
+											src="./upload/<%=dto.getNewresumeimage() %>"
 											border="0" width="100" height="140" />
 									</div>
 								</div>
