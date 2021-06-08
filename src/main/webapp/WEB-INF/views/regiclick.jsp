@@ -39,7 +39,7 @@
 			<!-- 개인회원 -->
 			<div class="join-form join-idv">
 				<div class="join-area">
-				<img src="img-join-ent.png">
+				<img src="img-join-ent.png"> 
 					<a href="memberRegi.do" class="button blue">개인 회원가입</a>
 				</div>
 			</div>

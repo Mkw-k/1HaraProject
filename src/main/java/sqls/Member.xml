@@ -22,10 +22,15 @@
 	WHERE MEMBERID=#{memberid}
 </select>
 
-<!-- <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH, USERPIC)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, 0)
-</insert> -->
+<!-- <!-- <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH, USERPIC, NEWUSERPIC)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, #{userpic}, #{newuserpic})
+</insert> --> -->
+
+<insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, AUTH, BIRTH, DETAILADDRESS, ADDRESS, USERPIC, NEWUSERPIC)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, 1, #{birth}, #{detailaddress}, #{address}, #{userpic}, #{newuserpic})
+</insert>
 
 <select id="login" parameterType="bit.com.a.dto.MemberDto"
 	resultType="bit.com.a.dto.MemberDto">

@@ -56,7 +56,7 @@
 
 <div class="container" style="text-align: center;">
     <h3>일반 회원</h3>
-    <form method="post" id="myForm" enctype=multipart/form-data>
+    <form method="post" id="myForm" action="regiAf.do" enctype="multipart/form-data">
         <div class="form-group has-feedback">
         
         <!-- 프로필 사진 -->
@@ -68,7 +68,7 @@
                                 <h4 style="margin-left: 35px;">프로필 사진을 등록해주세요</h4>
                                 <div class="f_box">
                                         <label for="img"></label>
-                                        <input type="file" name="userpic" id="img"  name="bf_file[]">
+                                        <input type="file" name="fileload" id="img">
                                 </div>
                             </li>
 						</ul>

@@ -15,6 +15,7 @@ public class MemberDto implements Serializable{
 	private String detailaddress;				// 집상세주소
 	private String birth;						// 생년월일
 	private String userpic;
+	private String newuserpic;
 	
 	
 	public MemberDto() {
@@ -111,14 +112,45 @@ public class MemberDto implements Serializable{
 	public void setUserpic(String userpic) {
 		this.userpic = userpic;
 	}
+	
+	
+
+
+	public String getNewuserpic() {
+		return newuserpic;
+	}
+
+
+	public void setNewuserpic(String newuserpic) {
+		this.newuserpic = newuserpic;
+	}
+
+
+	public MemberDto(String memberid, String pwd, String name, String email, int auth, String address,
+			String detailaddress, String birth, String userpic, String newuserpic) {
+		super();
+		this.memberid = memberid;
+		this.pwd = pwd;
+		this.name = name;
+		this.email = email;
+		this.auth = auth;
+		this.address = address;
+		this.detailaddress = detailaddress;
+		this.birth = birth;
+		this.userpic = userpic;
+		this.newuserpic = newuserpic;
+	}
 
 
 	@Override
 	public String toString() {
 		return "MemberDto [memberid=" + memberid + ", pwd=" + pwd + ", name=" + name + ", email=" + email + ", auth="
 				+ auth + ", address=" + address + ", detailaddress=" + detailaddress + ", birth=" + birth + ", userpic="
-				+ userpic + "]";
+				+ userpic + ", newuserpic=" + newuserpic + "]";
 	}
+
+
+	
 
 
 	
