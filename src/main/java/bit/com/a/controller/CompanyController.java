@@ -48,30 +48,41 @@ public class CompanyController {
 		
 		System.out.println("아이디:" + dto.getMemberid() + "," + dto.getCompanyname());
 		if(dto.getMemberid().equals("") || dto.getCompanyname().equals("")){
-			return "company/companywrite";
+			/* return "company/companywrite"; */
+			return "company/companyupdate";
 		}
 		return "redirect:/recuruitlist.do";
 	}
 	
 	@RequestMapping(value = "companyupdate.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String companyupdate(Model model, CompanyDto dto, String memberid) {
+	public String companyupdate(Model model, String memberid) {
+		//페이지 받아오기 
+		CompanyDto dto = service.getCompany(memberid);
+		System.out.println("아이디: "+dto.getMemberid());
 		
-		
-		
+		dto.setUpdatecompanylist("YES");
 		model.addAttribute("company",dto);
-		return "company/companyupdate";
+		System.out.println("af투스트링" + dto.toString());
+		
+		return "company/companywrite";
 	}
 
 		
 	@RequestMapping(value = "companyupdateAf.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String companyupdateAf(Model model, CompanyDto dto, String companyid) {
+	public String companyupdateAf(Model model, CompanyDto dto) {
+		System.out.println("업데이트 실행됨");
+		//넘어온 데이터 확인 
+		System.out.println("업데이트 데이타 : "+ dto.toString());
+		//업데이트 진행
+		boolean b = service.companyupdate(dto);
 		
+		if(b) {
+			System.out.println("업데이트성공");
+		}else {
+			System.out.println("업데이트실패");
+		}
 		
-		
-		service.companyupdate(dto);
-		dto.setUpdatecompanylist("YES");
-		model.addAttribute("company",dto);
-		System.out.println("af투스트링" + dto.toString());
+	
 		return "redirect:/recuruitlist.do";
 	}
 	

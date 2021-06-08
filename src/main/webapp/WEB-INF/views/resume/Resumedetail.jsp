@@ -51,8 +51,8 @@
 <link href="csss/header.css" rel="stylesheet" type="text/css">
 <link href="csss/resume2.css" rel="stylesheet" type="text/css">
 <link href="csss/resume3.css" rel="stylesheet" type="text/css">
-<link href="csss/resume4.css" rel="stylesheet" type="text/css">	
-	
+<link href="csss/resume4.css" rel="stylesheet" type="text/css">
+
 </head>
 <head>
 <meta charset="UTF-8">
@@ -135,7 +135,7 @@ if(lanlist == null || lanlist.isEmpty()){
 
 
 /* 로그인 세션 가져오기 */
-Object obj = session.getAttribute("login"); //세션으로 넘어오면 세션으로 
+Object obj = session.getAttribute("login"); //세션으로 넘어오면 세션으로
 MemberDto memdto = null;
 if(obj != null){
 	memdto = (MemberDto)obj;
@@ -202,9 +202,9 @@ System.out.println(_gender);
 											<p class="txt">신입</p>
 										<%  } else { %>
 										<p class="txt">경력</p>
-										
-										<% } %>		
-											
+
+										<% } %>
+
 										</li>
 										<li><strong>희망연봉</strong>
 											<p class="txt"><%=dto.getDesiredsalary() %></p></li>
@@ -269,7 +269,7 @@ System.out.println(_gender);
 											<td class="lineup_center"><%=edulist.get(i).getUniv_grade()%>
 												/ <%=edulist.get(i).getUniv_grade_base()%></td>
 										</tr>
-									
+
 										<tr>
 											<td class="lineup_center" rowspan="1"><%=edulist.get(0).getHigh_str()%>
 												~ <%=edulist.get(0).getHigh_end()%></td>
@@ -278,8 +278,8 @@ System.out.println(_gender);
 											<td>문과계열</td>
 											<td class="lineup_center">-</td>
 										</tr>
-									
-									<% } %>	
+
+									<% } %>
 									</tbody>
 								</table>
 							</div>
@@ -333,7 +333,7 @@ System.out.println(_gender);
 											</p>
 										</td>
 									</tr>
-									
+
 									<% } %>
 								</tbody>
 							</table>
@@ -409,7 +409,7 @@ System.out.println(_gender);
 											<td class="lineup_center"><%=lanlist.get(0).getLan_score()%>/<%lanlist.get(0).getLan_grade(); %>/<%=lanlist.get(0).getLan_pass() %></td>
 										</tr>
 										<% } %>
-										
+
 										<% for(int i=0; i< liclist.size();i++) {%>
 										<tr>
 											<td class="lineup_center"><%=liclist.get(0).getLic_date() %></td>
@@ -419,7 +419,7 @@ System.out.println(_gender);
 											<td class="lineup_center"><%=liclist.get(0).getLic_pass() %></td>
 										</tr>
 										<% } %>
-										
+
 										<% for(int i=0; i< awdlist.size();i++) {%>
 										<tr>
 											<td class="lineup_center"><%=awdlist.get(0).getAwd_date() %></td>
@@ -452,13 +452,13 @@ System.out.println(_gender);
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 <script type="text/javascript">
 $( document ).ready(function() {
 
 careerChk();
-	
+
 function careerChk() {
 if ( calist == null || calist.isEmpty() ) {
 	alert("callist null");

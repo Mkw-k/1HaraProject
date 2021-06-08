@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<form name="frmForm" id="_frmForm" action="noticeupdateAf.do"
+<form name="frmForm" id="_frmForm" action="JobtalkupdateAf.do"
 	method="post" enctype="multipart/form-data">
-<input type="hidden" name="noticeseq" value="${notice.noticeseq}">
+<input type="hidden" name="jobtalkseq" value="${job.jobtalkseq}">
 
 <table class="list_table" style="width: 85%">
 <colgroup>
@@ -14,31 +14,20 @@
 
 <tr>
 	<th>아이디</th>
-	<td style="text-align: left;">${notice.memberid}</td>
+	<td style="text-align: left;">${job.memberid}</td>
 </tr>
 
 <tr>
 	<th>제목</th>
 	<td style="text-align: left;">
-		<input type="text" name="title" size="50" value="${notice.title}">
-	</td>
-</tr>
-
-<tr>
-	<th>파일 업로드</th>
-	<td style="text-align: left;">
-		<!-- 기존의 파일 -->
-		<input type="hidden" name="newfilename" value="${notice.newfilename}">
-		<input type="text" name="filename" value="${notice.filename}" size="50" readonly="readonly">
-		<!-- 수정할 파일 -->
-		<input type="file" name="fileload" id="_fileload" style="width: 400px">		
+		<input type="text" name="jobtalk_title" size="50" value="${job.jobtalk_title}">
 	</td>
 </tr>
 
 <tr>
 	<th>내용</th>
 	<td style="text-align: left;">
-		<textarea rows="10" cols="50" name="content" id="_content">${notice.content}</textarea>
+		<textarea rows="10" cols="50" name="jobtalk_content" id="_content">${job.jobtalk_content}</textarea>
 	</td>
 </tr>
 
@@ -58,7 +47,7 @@
 <script>
 $("#btnupdate").click(function(){
 	
-	alert($("#_fileload").val());
+	alert("수정");
 	$("#_frmForm").submit();
 });
 

@@ -546,11 +546,11 @@ table thead th {
 
 
 <!-- 자료추가 버튼 -->
-
+<c:if test="${login.auth==3 }">
 <div id="button.wrap" align="center" style="padding-bottom: 100px;">
 	 <a href="#" class="box-btn" id="_btnAdd">자료추가</a>
 </div>
-
+</c:if>
 
 
 

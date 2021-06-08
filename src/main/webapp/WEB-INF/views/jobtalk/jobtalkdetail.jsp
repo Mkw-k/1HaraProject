@@ -10,6 +10,7 @@
 	<link href="csss/gnb.css" rel="stylesheet" type="text/css">
 	<link href="csss/view.css" rel="stylesheet" type="text/css">
 	<link href="csss/side_navigation.css" rel="stylesheet" type="text/css">
+	
 	<style type="text/css">
 	div {
     display: block;
@@ -19,16 +20,14 @@
 	}
 	element.style {
 	}
+	
 	</style>
+	
+
+	
 	<!-- 제이쿼리 -->
 	<script src="//https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-
-	<link href="csss/common1.css" rel="stylesheet" type="text/css">
-	<link href="csss/gnb.css" rel="stylesheet" type="text/css">
-	<link href="csss/view.css" rel="stylesheet" type="text/css">
-	<link href="csss/side_navigation.css" rel="stylesheet" type="text/css">
-
 <body class="qnaWrapBody">
 
 	<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled">
@@ -39,35 +38,63 @@
 			</ins>
 		</ins>
 	</ins>
+	
 	<div id="wrap">
-		<div id="side-navigation">
+	
+	 	 <div class="side-navigation">
+	<h2 class="skip">선배에게 질문하기 세부메뉴</h2>
+	<div class="navi-top-area">
+		<a href="Jobtalkwrite.do" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
+			<div class="myInfoSec logout">
+				<a href="/User/Qstn/Index" class="myInfo devLoginLayer" devalert="0">
+					<span class="proThumb"><img src="https://i.jobkorea.kr/content/images/user/qna/profile_thumb/random_default.jpg" alt="프로필 이미지"></span>
+                    <p class="msg"><em>로그인</em> 후 질문답변 해보세요!</p>
+				</a>
+			</div> 
+		 <%-- <input type="hidden" name="jobtalkseq" value="${jobtalk.jobtalkseq}"/> --%>		
+		<%-- <div id="side-navigation" style="">
+			<h2 class="skip">선배에게 질문하기 세부메뉴</h2>
 			<div class="navi-top-area">
 				<a href="Jobtalkwrite.do" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
 			</div>
-		</div>
-		
-		<div class="myInfoSec logout">
-			<a href="login.do" class="myInfo devLoginLayer" devalert="0">
-				<span class="proThumb">
-				<img src="https://i.jobkorea.kr/content/images/user/qna/profile_thumb/random_default.jpg" alt="프로필 이미지"></span>
-                <p class="msg"><em>로그인</em> 후 질문답변 해보세요!</p>
-			</a>
-		</div>
-		<div class="navi-list-area">
+			<div class="myInfoSec logout">
+				<a href="login.do" class="myInfo devLoginLayer" devalert="0">
+					<span class="proThumb">
+					<img src="https://i.jobkorea.kr/content/images/user/qna/profile_thumb/random_default.jpg" alt="프로필 이미지"></span>
+                	<p class="msg"><em>로그인</em> 후 질문답변 해보세요!</p>
+				</a>
+			</div>
+			--%>
+			<div class="navi-list-area">
 			<!-- [Dev] 메뉴 on : 클래스 active 추가 -->
-			<div class="sideNavLow">
-				<strong class="sideNavTit"><a id="devLeftMenuRequireTag" href="" data-tab="1" class="devLoginLayer " devalert="0">답변하기</a></strong>
+				<div class="sideNavLow">
+					<strong class="sideNavTit"><a id="devLeftMenuRequireTag" href="" data-tab="1" class="devLoginLayer " devalert="0">답변하기</a></strong>
+				</div>
+				<div class="sideNavLow">
+					<strong class="sideNavTit"><a id="devLeftMenuOwnerTag" href="/User/Qstn/Index?MainType=2" data-tab="2" class="devLoginLayer " devalert="0">나의질문</a></strong>
+				</div>
+				<div class="sideNavLow">
+					<strong class="sideNavTit"><a id="devLeftMenuEntireTag" href="/User/Qstn/Index?MainType=3" data-tab="3" class="">전체질문</a></strong>
+				</div>
+					<c:choose>
+						<c:when test="${jobtalk.memberid==login.memberid }">
+							<div class="sideNavLow">
+								<strong class="sideNavTit"><a id="devLeftMenuEntireTag" href="Jobtalkupdate.do?jobtalkseq=${jobtalk.jobtalkseq }" data-tab="3" class="">수정하기</a></strong>
+							</div>
+							<div class="sideNavLow">	
+								<strong class="sideNavTit"><a id="devLeftMenuEntireTag1" href="Jobtalkdelete.do?jobtalkseq=${jobtalk.jobtalkseq }" data-tab="3" class="">삭제하기</a></strong>
+							</div>
+						</c:when>
+					</c:choose>
+				</div>
 			</div>
-			<div class="sideNavLow">
-				<strong class="sideNavTit"><a id="devLeftMenuOwnerTag" href="/User/Qstn/Index?MainType=2" data-tab="2" class="devLoginLayer " devalert="0">나의질문</a></strong>
-			</div>
-			<div class="sideNavLow">
-				<strong class="sideNavTit"><a id="devLeftMenuEntireTag" href="/User/Qstn/Index?MainType=3" data-tab="3" class="">전체질문</a></strong>
-			</div>
-		</div>
+		</div> 
+	</div>	
+		
 	
-		<div id="container">
+		<div id="container">	
 			<div id="content" class="qnaViewWrap">
+				<input type="hidden" name="jobtalkseq" value="${jobtalk.jobtalkseq}"/>
 				<div class="lyViewBoard">
 					<div class="viewContWrap">
 						<div class="contBox">
@@ -79,22 +106,22 @@
 								${jobtalk.jobtalk_content }
 							</div>
 							<div class="btmArea">
-								<div class="infoBx">
+							<div class="infoBx">
 								${jobtalk.memberid }
-								</div>
-							</div>	
+							</div>
 							<div class="cellBx">
 								<span class="cell">
-									조회 ${jobtalk_readcount }
+									조회 ${jobtalk.jobtalk_readcount }
 								</span>
 								<span class="cell">
-									${jobtalk.wdate }
+									${jobtalk.wdate.substring(0,10)}
 								</span>
 							</div>
-						</div>
+						</div>	
+						</div>		
 					<div class="inputBox">
 						<div class="writeBoxWrap cmtWrite">
-							<form action="jobtalkanswer.do" method="post" oncopy="return false" oncut="return false" onpaste="retunr false">
+							<form action="replyinsert.do" method="post" oncopy="return false" oncut="return false" onpaste="retunr false">
 								<fieldset>
 									<div class="uiplaceholder">
 										<span class="ph">솔직하고 따뜻한 답변을 남겨주세요.<br>*휴대폰 번호, 메일 주소, 카카오톡 ID 등 개인정보가 포함된 내용은 비노출 처리 될 수 있습니다.</span>
@@ -123,366 +150,75 @@
 				<div class="viewListWrap">
                 	<div class="headerWrap">
                     	<div class="numBx">
-                           <span>답변 <span class="num">4</span></span>
+                           <span>답변 <span class="num">${list.reply_count}</span></span>
                         </div>
                     </div>
 					<div class="listWrap commonSecWrap">
-   						 <ul class="answerArea">
-                			<li>
-                    		<!-- [Dev] 내 답변일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 수정/삭제만 노출 -->
-                    			<div class="contSec devContSection " style="display: block;">
-                        			<div class="infoBx">
-                               			 <a href="/User/Qstn/MainProfile?Target=16729193" class="my-profile" target="_blank">
-                                		    <span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_9.jpg" alt="프로필 이미지"></span>
-                                    		<span class="nickname">mentor6951051</span>
-                                		</a>
-                            			<span class="info">시스템프로그래머 / 6년차</span>
-                            			<span class="lvIcon">Lv 3</span>
-                        			</div>
-                       				<p class="cont">요즘 유통사 및 이커머스사에는 php는... 잘 못 알아보신듯합니다. <br>프론트라면 js와 spring, 백엔드라면 java가 시장 주력입니다. <br>lms, mes, erp 는 서로의 연관관계는 있지만 엄연히 다른 시스템이고 추후에 테크트리에 영향이 있습니다. <br>객관적으로 it에 대한 전반적인 지식이 많이 없으신 것 같습니다. <br>개인적으로는 순수 si보다 솔루션 위주 업무 유지보수를 하심이 어떠실까 싶습니다. (sap 등)<br>그리고 시스템 엔지니어로 알아보신 것 같은데, 그보다 웹퍼블리셔, 프론트엔드 관련 시장도 많이 커지고 수요도 많아지고 있습니다. it는 첫회사 연봉 및 이직으로 연봉을 올리는 업계입니다. 이직에 수월한, 수요가 많은 언어와 시스템을 선택하시길 바랍니다. mes와 erp는 상용 솔루션이 워낙 많아 기술력에 대해서는 하위수준이라 봅니다. </p>
-                        			<div class="cellBx">
-                            			<span class="cell devAnswerDate">4시간 전 작성</span>
-                                	    <span class="cell"><button type="button" class="btnReport devBtnReport" data-type="2">신고</button></span>
-                        			</div>
-                        			<div class="btnBx devComtRoot" data-answerno="204511">
-                            			<!-- 댓글, 좋아요 버튼 클릭시 클래스 active 추가 -->
-                            			<button type="button" class="btnCmt devBtnComtList">댓글 <em>0</em></button>
-                           				<button type="button" class="btnHeart qnaSpB devBtnAnswerLike ">0</button>
-                        			</div>
-                    			</div>
-                    			<!-- [Dev] 내 답글 수정 영역 -->
-                    			<div class="contSec modify-answer" style="display: none;">
-                        			<div class="writeBoxWrap cmtWrite">
-                        			    <form action="#" oncopy="return false" oncut="return false" onpaste="return false">
-                            			    <fieldset>
-                                		    <legend>후배에게 답변하기 입력</legend>
-                                    			<div class="uiPlaceholder">
-                                       			 	<span class="ph">솔직하고 따뜻한 답변을 남겨주세요.<br>*휴대폰번호, 메일주소, 카카오톡 ID 등 개인정보가 포함된 내용은 비노출 처리 될 수 있습니다.</span>
-                                       					 <textarea name="Cntnt" maxlength="1000" title="답변쓰기"></textarea>
-                                   				</div>
-                                   			 	<div class="btnWrap">
-                                       				 <div class="infoBx">
-                                            		 	<a href="/User/Qstn/MainProfile?Target=16755209" class="my-profile" target="_blank">
-                                                    		<span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_9.jpg" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'" alt="프로필 이미지"></span>
-                                                   			<span class="info">mentor6951051</span>
-                                                		</a>
-                                            		</div>
-                                        			<span class="byte"><b id="count">0</b> / 1,000</span>
-                                        			<button type="button" id="btnSubmit" class="btnSbm devAnswerEditSubmitButton" data-answerno="204511">등록</button>
-                                    			</div>
-                                			</fieldset>
-                           				 </form>
-                            			<button type="button" class="btnModifyCancel qnaSpB"><span class="blind">수정 취소</span></button>
-                        			</div>
-                    			</div>
-                    			<!-- // 내 답글 수정 영역 -->
-                    			<div class="commentSec" style="display: none;">
-                        			<div class="cmtArea">
-                            			<ul class="cmtList replyWrap">
-                                			<!-- [Dev] 내 댓글일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 삭제만 노출 -->
-                            			</ul>
-
-										<div class="writeBoxWrap cmtWrite case">
-   											 <form id="" action="" method="post" oncopy="return false" oncut="return false" onpaste="return false">
-      											  <fieldset>
-            										<legend>후배에게 답변하기 입력</legend>
-           											<div class="uiPlaceholder">
-                										<span class="ph ph_1">댓글을 입력해주세요.</span>
-                										<span class="ph ph_2">
-                    										· 개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.<br>
-                    										· 부적절한 댓글은 비노출 또는 서비스 이용 정지 사유가 될 수 있습니다.
-                										</span>
-                										<textarea name="" maxlength="1000" title="답변쓰기"></textarea>
-            										</div>
-           	 										<div class="btnWrap">
-														<div class="infoBx">
-															<a href="/User/Qstn/MainProfile?Target=16755209" class="my-profile" target="_blank">
-																<span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_8.jpg" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
-																<span class="info">mentor0642669</span>
-															</a>
-														</div>
-               											<span class="byte"><b id="count">0</b> / 1,000</span>
-                										<button type="button" id="btnSubmit" class="btnSbm devBtnComtWrite">등록</button>
-            										</div>
-       											 </fieldset>
-    										</form>
-										</div>                        
-									</div>
-                        			<button type="button" class="btnCmtClose qnaSpA qnaBtnClose">댓글접기</button>
-                    			</div>
-                			</li>
-                		<li>
-                    	<!-- [Dev] 내 답변일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 수정/삭제만 노출 -->
-                    	<div class="contSec devContSection " style="display: block;">
-                        	<div class="infoBx">
-                                <a href="/User/Qstn/MainProfile?Target=16202086" class="my-profile" target="_blank">
-                                    <span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_6.jpg" alt="프로필 이미지"></span>
-                                    <span class="nickname">mentor4593486</span>
-                                </a>
-                          		<span class="info">응용프로그래머 / 5년차</span>
-                            	<span class="lvIcon">Lv 1</span>
-                        	</div>
-                        	<p class="cont">어떤 이커머스를 이야기 하는지 모르지만 중견이상 회사는 spring을 더 많이 씁니다.<br>저는 PHP하다 갈만한 곳이 없어서 AOS 하고 있어요.</p>
-                        	<div class="cellBx">
-                           		 <span class="cell devAnswerDate">4시간 전 작성</span>
-                                 <span class="cell"><button type="button" class="btnReport devBtnReport" data-type="2">신고</button></span>
-                        	</div>
-                        	<div class="btnBx devComtRoot" data-answerno="204469">
-                            	<!-- 댓글, 좋아요 버튼 클릭시 클래스 active 추가 -->
-                            	<button type="button" class="btnCmt devBtnComtList">댓글 <em>0</em></button>
-                            	<button type="button" class="btnHeart qnaSpB devBtnAnswerLike ">0</button>
-                        	</div>
-                    	</div>
-                    	<!-- [Dev] 내 답글 수정 영역 -->
-                    	<div class="contSec modify-answer" style="display: none;">
-                        	<div class="writeBoxWrap cmtWrite">
-                            	<form action="#" oncopy="return false" oncut="return false" onpaste="return false">
-                            	    <fieldset>
-                            	        <legend>후배에게 답변하기 입력</legend>
-                                	    <div class="uiPlaceholder">
-                                    	    <span class="ph">솔직하고 따뜻한 답변을 남겨주세요.<br>*휴대폰번호, 메일주소, 카카오톡 ID 등 개인정보가 포함된 내용은 비노출 처리 될 수 있습니다.</span>
-                                       		<textarea name="Cntnt" maxlength="1000" title="답변쓰기"></textarea>
-                                    	</div>
-                                    	<div class="btnWrap">
-                                        	<div class="infoBx">
-                                                <a href="/User/Qstn/MainProfile?Target=16755209" class="my-profile" target="_blank">
-                                                    <span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_6.jpg" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'" alt="프로필 이미지"></span>
-                                                    <span class="info">mentor4593486</span>
-                                                </a>
-                                            </div>
-                                        	<span class="byte"><b id="count">0</b> / 1,000</span>
-                                        	<button type="button" id="btnSubmit" class="btnSbm devAnswerEditSubmitButton" data-answerno="204469">등록</button>
-                                    	</div>
-                                	</fieldset>
-                            	</form>
-                           		<button type="button" class="btnModifyCancel qnaSpB"><span class="blind">수정 취소</span></button>
-                        	</div>
-                    	</div>
-                    	<!-- // 내 답글 수정 영역 -->
-                    	<div class="commentSec" style="display: none;">
-                        	<div class="cmtArea">
-                            	<ul class="cmtList replyWrap">
-                            	    <!-- [Dev] 내 댓글일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 삭제만 노출 -->
-                            	</ul>
-
-
-
-<div class="writeBoxWrap cmtWrite case">
-    <form id="" action="" method="post" oncopy="return false" oncut="return false" onpaste="return false">
-        <fieldset>
-            <legend>후배에게 답변하기 입력</legend>
-            <div class="uiPlaceholder">
-                <span class="ph ph_1">댓글을 입력해주세요.</span>
-                <span class="ph ph_2">
-                    · 개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.<br>
-                    · 부적절한 댓글은 비노출 또는 서비스 이용 정지 사유가 될 수 있습니다.
-                </span>
-                <textarea name="" maxlength="1000" title="답변쓰기"></textarea>
-            </div>
-            <div class="btnWrap">
-				<div class="infoBx">
-					<a href="/User/Qstn/MainProfile?Target=16755209" class="my-profile" target="_blank">
-						<span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_8.jpg" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
-						<span class="info">mentor0642669</span>
-					</a>
-				</div>
-                <span class="byte"><b id="count">0</b> / 1,000</span>
-                <button type="button" id="btnSubmit" class="btnSbm devBtnComtWrite">등록</button>
-            </div>
-        </fieldset>
-    </form>
-</div>                        </div>
-                        <button type="button" class="btnCmtClose qnaSpA qnaBtnClose">댓글접기</button>
-                    </div>
-
-                </li>
-                <li>
-                    <!-- [Dev] 내 답변일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 수정/삭제만 노출 -->
-                    <div class="contSec devContSection " style="display: block;">
-                        <div class="infoBx">
-
-                                <a href="/User/Qstn/MainProfile?Target=24165965" class="my-profile" target="_blank">
-                                    <span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_16.jpg" alt="프로필 이미지"></span>
-                                    <span class="nickname">mentor8788621</span>
-                                </a>
-                            <span class="info">웹프로그래머 / 4년차</span>
-                            <span class="lvIcon">Lv 2</span>
-                        </div>
-                        <p class="cont">Si를 간다면 워라벨이 침해를 받을가능성이 크지만<br>다양하게 접해  볼수있다는 장점<br>Sm간다면 워라벨이 괜찮고 한분야를 깊게 팔수있다는 장점. php도 java보다 개발기간이 단축되기에 많이들 써요. 연봉은 경력에 따라 실력에따라</p>
-                        <div class="cellBx">
-                            <span class="cell devAnswerDate">7시간 전 작성</span>
-                                    <span class="cell"><button type="button" class="btnReport devBtnReport" data-type="2">신고</button></span>
-                        </div>
-                        <div class="btnBx devComtRoot" data-answerno="204377">
-                            <!-- 댓글, 좋아요 버튼 클릭시 클래스 active 추가 -->
-                            <button type="button" class="btnCmt devBtnComtList">댓글 <em>0</em></button>
-                            <button type="button" class="btnHeart qnaSpB devBtnAnswerLike ">0</button>
-                        </div>
-                    </div>
-                    <!-- [Dev] 내 답글 수정 영역 -->
-                    <div class="contSec modify-answer" style="display: none;">
-                        <div class="writeBoxWrap cmtWrite">
-                            <form action="#" oncopy="return false" oncut="return false" onpaste="return false">
-                                <fieldset>
-                                    <legend>후배에게 답변하기 입력</legend>
-                                    <div class="uiPlaceholder">
-                                        <span class="ph">솔직하고 따뜻한 답변을 남겨주세요.<br>*휴대폰번호, 메일주소, 카카오톡 ID 등 개인정보가 포함된 내용은 비노출 처리 될 수 있습니다.</span>
-                                        <textarea name="Cntnt" maxlength="1000" title="답변쓰기"></textarea>
-                                    </div>
-                                    <div class="btnWrap">
-                                        <div class="infoBx">
-                                                <a href="/User/Qstn/MainProfile?Target=16755209" class="my-profile" target="_blank">
-                                                    <span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_16.jpg" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'" alt="프로필 이미지"></span>
-                                                    <span class="info">mentor8788621</span>
-                                                </a>
-                                            </div>
-                                        <span class="byte"><b id="count">0</b> / 1,000</span>
-                                        <button type="button" id="btnSubmit" class="btnSbm devAnswerEditSubmitButton" data-answerno="204377">등록</button>
-                                    </div>
-                                </fieldset>
-                            </form>
-                            <button type="button" class="btnModifyCancel qnaSpB"><span class="blind">수정 취소</span></button>
-                        </div>
-                    </div>
-                    <!-- // 내 답글 수정 영역 -->
-                    <div class="commentSec" style="display: none;">
-                        <div class="cmtArea">
-                            <ul class="cmtList replyWrap">
-                                <!-- [Dev] 내 댓글일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 삭제만 노출 -->
-                            </ul>
-
-
-
-<div class="writeBoxWrap cmtWrite case">
-    <form id="" action="" method="post" oncopy="return false" oncut="return false" onpaste="return false">
-        <fieldset>
-            <legend>후배에게 답변하기 입력</legend>
-            <div class="uiPlaceholder">
-                <span class="ph ph_1">댓글을 입력해주세요.</span>
-                <span class="ph ph_2">
-                    · 개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.<br>
-                    · 부적절한 댓글은 비노출 또는 서비스 이용 정지 사유가 될 수 있습니다.
-                </span>
-                <textarea name="" maxlength="1000" title="답변쓰기"></textarea>
-            </div>
-            <div class="btnWrap">
-				<div class="infoBx">
-					<a href="/User/Qstn/MainProfile?Target=16755209" class="my-profile" target="_blank">
-						<span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_8.jpg" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
-						<span class="info">mentor0642669</span>
-					</a>
-				</div>
-                <span class="byte"><b id="count">0</b> / 1,000</span>
-                <button type="button" id="btnSubmit" class="btnSbm devBtnComtWrite">등록</button>
-            </div>
-        </fieldset>
-    </form>
-</div>                        </div>
-                        <button type="button" class="btnCmtClose qnaSpA qnaBtnClose">댓글접기</button>
-                    </div>
-
-                </li>
-                <li>
-                    <!-- [Dev] 내 답변일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 수정/삭제만 노출 -->
-                    <div class="contSec devContSection " style="display: block;">
-                        <div class="infoBx">
-
-                                <a href="/User/Qstn/MainProfile?Target=13598294" class="my-profile" target="_blank">
-                                    <span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_11.jpg" alt="프로필 이미지"></span>
-                                    <span class="nickname">mentor1809223</span>
-                                </a>
-                            <span class="info">웹프로그래머 / 6년차</span>
-                            <span class="lvIcon">Lv 1</span>
-                        </div>
-                        <p class="cont">첫 시작이 중요하다고 생각합니다.<br>개발분야 및 업종 회사규모를 잘 선택해야해요<br>전체적인 업무를 배우고자 한다면 서비스를 운영중인 회사를 추천하지만 나중에 이직을 생각했을때 선택의 폭이 좁아질수있습니다. SI 로 간다면 기술적인 성장이 빠를것으로 보이지만 각각의 장단점이 있습니다. 워라밸 및 연봉 등 화이팅하세요..</p>
-                        <div class="cellBx">
-                            <span class="cell devAnswerDate">14시간 전 작성</span>
-                                    <span class="cell"><button type="button" class="btnReport devBtnReport" data-type="2">신고</button></span>
-                        </div>
-                        <div class="btnBx devComtRoot" data-answerno="204363">
-                            <!-- 댓글, 좋아요 버튼 클릭시 클래스 active 추가 -->
-                            <button type="button" class="btnCmt devBtnComtList">댓글 <em>0</em></button>
-                            <button type="button" class="btnHeart qnaSpB devBtnAnswerLike ">0</button>
-                        </div>
-                    </div>
-                    <!-- [Dev] 내 답글 수정 영역 -->
-                    <div class="contSec modify-answer" style="display: none;">
-                        <div class="writeBoxWrap cmtWrite">
-                            <form action="#" oncopy="return false" oncut="return false" onpaste="return false">
-                                <fieldset>
-                                    <legend>후배에게 답변하기 입력</legend>
-                                    <div class="uiPlaceholder">
-                                        <span class="ph">솔직하고 따뜻한 답변을 남겨주세요.<br>*휴대폰번호, 메일주소, 카카오톡 ID 등 개인정보가 포함된 내용은 비노출 처리 될 수 있습니다.</span>
-                                        <textarea name="Cntnt" maxlength="1000" title="답변쓰기"></textarea>
-                                    </div>
-                                    <div class="btnWrap">
-                                        <div class="infoBx">
-                                                <a href="/User/Qstn/MainProfile?Target=16755209" class="my-profile" target="_blank">
-                                                    <span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_11.jpg" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'" alt="프로필 이미지"></span>
-                                                    <span class="info">mentor1809223</span>
-                                                </a>
-                                            </div>
-                                        <span class="byte"><b id="count">0</b> / 1,000</span>
-                                        <button type="button" id="btnSubmit" class="btnSbm devAnswerEditSubmitButton" data-answerno="204363">등록</button>
-                                    </div>
-                                </fieldset>
-                            </form>
-                            <button type="button" class="btnModifyCancel qnaSpB"><span class="blind">수정 취소</span></button>
-                        </div>
-                    </div>
-                    <!-- // 내 답글 수정 영역 -->
-                    <div class="commentSec" style="display: none;">
-                        <div class="cmtArea">
-                            <ul class="cmtList replyWrap">
-                                <!-- [Dev] 내 댓글일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 삭제만 노출 -->
-                            </ul>
-
-
-
-<div class="writeBoxWrap cmtWrite case">
-    <form id="" action="" method="post" oncopy="return false" oncut="return false" onpaste="return false">
-        <fieldset>
-            <legend>후배에게 답변하기 입력</legend>
-            <div class="uiPlaceholder">
-                <span class="ph ph_1">댓글을 입력해주세요.</span>
-                <span class="ph ph_2">
-                    · 개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.<br>
-                    · 부적절한 댓글은 비노출 또는 서비스 이용 정지 사유가 될 수 있습니다.
-                </span>
-                <textarea name="" maxlength="1000" title="답변쓰기"></textarea>
-            </div>
-            <div class="btnWrap">
-				<div class="infoBx">
-					<a href="/User/Qstn/MainProfile?Target=16755209" class="my-profile" target="_blank">
-						<span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_8.jpg" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
-						<span class="info">mentor0642669</span>
-					</a>
-				</div>
-                <span class="byte"><b id="count">0</b> / 1,000</span>
-                <button type="button" id="btnSubmit" class="btnSbm devBtnComtWrite">등록</button>
-            </div>
-        </fieldset>
-    </form>
-</div>                        </div>
-                        <button type="button" class="btnCmtClose qnaSpA qnaBtnClose">댓글접기</button>
-                    </div>
-
-                </li>
-    </ul>
-
-    <!--?xml version="1.0" encoding="utf-16"?-->
-<div class="tplPagination newVer" role="navigation">
-  <ul>
-    <li>
-      <span class="now">1</span>
-    </li>
-  </ul>
-</div>
-</div>
-                        </div>
+   						<c:forEach var="row" items="${list}">	
+   						 	<ul class="answerArea">
+                				<li>
+                					<div class="contSec devContSection" style="display: block;">
+                						<div class="writeBoxWrap cmtWrite">
+                							<div class="infoBx">
+                								<a href="mypage.do" class="my-profile">
+                									<span class="nickname">${list.memberid}</span>
+                								</a>
+                							</div>
+                							<p class="cont">${list.reply_content}</p>
+                							<div class="cellBx">
+                								<span class="cell devAnswerDate">${list.rdate.substring(0,10)}</span>
+                							</div>
+                							<div class="btnBx devComtRoot" data-answerno="205449">
+                            					<!-- 댓글, 좋아요 버튼 클릭시 클래스 active 추가 -->
+                            					<button type="button" class="btnCmt devBtnComtList active">댓글 <em>${list.reply_count}</em></button>
+                            					<button type="button" class="btnHeart qnaSpB devBtnAnswerLike ">0</button>
+                        					</div>
+                						</div>
+                						<div class="commentSec" style="display: block;">
+                							<div class="cmtArea">
+                								<div class="cmtList replyWrap">
+                									<ul class="cmtList replyWrap">
+                                						<!-- [Dev] 내 댓글일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 삭제만 노출 -->
+                            						</ul>
+                            						<div class="writeBoxWrap cmtWrite case">
+   				 										<form id="" action="" method="post" oncopy="return false" oncut="return false" onpaste="return false">
+        													<fieldset>
+            													<legend>후배에게 답변하기 입력</legend>
+            														<div class="uiPlaceholder">
+                														<span class="ph ph_1" style="display: block;">댓글을 입력해주세요.</span>
+                														<span class="ph ph_2" style="display: none;">
+                   	 														· 개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.<br>
+                    														· 부적절한 댓글은 비노출 또는 서비스 이용 정지 사유가 될 수 있습니다.
+                														</span>
+			               				 								<textarea name="" maxlength="1000" title="답변쓰기"></textarea>
+           	 														</div>
+            														<div class="btnWrap">
+																		<div class="infoBx">
+																			<a href="/User/Qstn/MainProfile?Target=0" class="my-profile" target="_blank">
+																				<span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
+																				<span class="info"></span>
+																			</a>
+																		</div>
+	                													<span class="byte"><b id="count">0</b> / 1,000</span>
+                														<button type="button" id="btnSubmit" class="btnSbm devBtnComtWrite">등록</button>
+            														</div>
+        													</fieldset>
+    													</form>
+													</div>                        						
+                								</div>
+                							</div>	
+                						</div>
+                					</div>
+                				</li>
+					  		</ul>
+						</c:forEach>  
+					</div>
+			   	</div>
+               </div>
 			</div>
 		</div>
-	</div>
+	<!-- </div>
+</div>	 -->
 <script>
         /* ui 검수용 스크립트 */
         $(function () {

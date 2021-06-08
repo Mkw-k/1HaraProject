@@ -187,6 +187,8 @@
 		</li>
 	</ul>
 </nav>
+
+
 <h1 class="ci">
 <a href="/zf_user/" class="track_event" data-track_event="main|gnb|menu|ci" title="사람인" ondragstart="return false;" oncontextmenu="return false;">
 <svg xmlns="http://www.w3.org/2000/svg" width="120" height="24" viewBox="0 0 120 24" class="default">
@@ -219,6 +221,8 @@
 </svg>
 </a>
 </h1>
+
+
 <nav id="gnb" class="gnb">
 <ul class="gnb_menu">
 <li data-gnb="1"><a href="/zf_user/jobs/list/domestic" class="track_event" data-track_event="main|gnb|menu|area">지역별</a></li>
@@ -1393,6 +1397,7 @@ function f_empPgmList(resultObj){
 				<a href="http://www.acrc.go.kr" title="새창 열림" target="_blank">국민권익위원회</a>
 				<a href="http://www.kcc.go.kr" title="새창 열림" target="_blank">방송통신위원회</a>
 			</li>
+			
 			<li>
 				<strong>유관기관</strong>
 				<a href="http://www.kcomwel.or.kr" title="새창 열림" target="_blank">근로복지공단</a>
@@ -1415,14 +1420,12 @@ function f_empPgmList(resultObj){
 				<div class="inner-wrap">
 					<div class="link-footer">
 						<a href="info.do">일하라 소개</a>
-						<a href="/useInvite/worknetHomepgInvite/useClause1.do">이용약관</a>
-						<a href="/useInvite/worknetHomepgInvite/indivInfoPrtecPolicy.do"><b>개인정보처리방침</b></a>
-						<a href="/useInvite/worknetHomepgInvite/emailAddrWonoticeGatherRefuse.do">이메일주소무단수집거부</a>
-						<a href="/useInvite/worknetHomepgInvite/webAccessPlcy.do">웹접근성정책</a>
-						<a href="/useInvite/worknetHomepgInvite/cprgtPolicyAsAllianceInq.do">저작권정책 및 제휴문의</a>
-						<a href="http://openapi.work.go.kr" target="_blank">Open API</a>
-						<a href="/contents.do?relAddr=/useInvite/worknetHomepgInvite/workBanner&amp;titleId=UIFG000001">배너 가져가기</a>
-						<a href="/useInfo/lieJobadRpt/lieJobadRptList.do">거짓구인광고 신고</a>
+						<a href="infoyakgwan.do">이용약관</a>
+						<a href="infomember.do"><b>개인정보처리방침</b></a>
+						<a href="infoemail.do">이메일주소무단수집거부</a>
+						<a href="infowebaccess.do">웹접근성정책</a>
+						<a href="infocopyright.do">저작권정책 및 제휴문의</a>
+						<a href="infobanner.do">배너 가져가기</a>
 					</div>
 				</div>
 			</div>
