@@ -63,12 +63,12 @@
                           <ul>
  						   <li class="img" style="list-style: none; margin-left : 200px">
                                 <div id="image_preview">
-                                    <img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 160px;" src="unnamed.png" alt="프로필사진"  style="width:126px; height:165px;">
+                                    <img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 160px;" src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
                                 </div>
                                 <h4 style="margin-left: 35px;">프로필 사진을 등록해주세요</h4>
                                 <div class="f_box">
                                         <label for="img"></label>
-                                        <input type="file" name="userpic" id="img"  name="bf_file[]">
+                                        <input type="file" name="userpic" id="img">
                                 </div>
                             </li>
 						</ul>

@@ -67,8 +67,8 @@
 	</update>
 
 	<insert parameterType="bit.com.a.dto.MemberDto" id="addmember">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1) 
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, USERPIC, AUTH)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, #{userpic} 1) 
 	</insert>
 
 

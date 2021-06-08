@@ -1,5 +1,7 @@
 package bit.com.a.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.HashMap;
@@ -7,6 +9,8 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,11 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import bit.com.a.dto.MemberDto;
 import bit.com.a.service.MemberService;
+import bit.com.a.util.PdsUtil;
 
 @Controller
 public class MemberController {
@@ -78,17 +84,46 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "regiAf.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String regiAf(MemberDto dto) {
+	public String regiAf(MemberDto dto, 
+						@RequestParam(value = "userpic", required = false) MultipartFile fileload, 
+						HttpServletRequest req) {
 
-		System.out.println("addmember:" + dto.toString());
-
+		  System.out.println("addmember:" + dto.toString());
+		
+		  String userpic = fileload.getOriginalFilename();
+		  dto.setUserpic(userpic);
+		
+		 //upload 경로 설정 
+		 //server(tomcat) 
+		 String fupload = req.getServletContext().getRealPath("/upload");
+		
+		 //폴더에 올리는 법 
+		 //String fupload = "d:\\tmp";
+		
+		 System.out.println("fupload:"+fupload);
+		 String newuserpic = PdsUtil.getNewFileName(dto.getUserpic());
+		 
+		 dto.setNewuserpic(newuserpic);
+		 
+		 File file = new File(fupload + "/" + newuserpic);
+		 
+		 try {
+			 FileUtils.writeByteArrayToFile(file, fileload.getBytes());
+			 
+			 //db에 저장
+			 service.addmember(dto);
+			 
+		 } catch (IOException e) {
+			 e.printStackTrace();
+		 }
+		 
 		 boolean b = service.addmember(dto);
 		 if(b) { System.out.println("회원 가입되었습니다 " + new Date());
 		 return "home";
 		 }
 		 System.out.println("가입되지 않았습니다 " + new Date());
 		 return "login/memberRegi";
-
+		 
 	}
 
 	@RequestMapping(value = "loginAf.do", method = { RequestMethod.GET, RequestMethod.POST })

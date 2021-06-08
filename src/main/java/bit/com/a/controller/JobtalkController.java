@@ -1,7 +1,5 @@
 
   package bit.com.a.controller;
- 
-  import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 import java.util.List;
  
@@ -11,14 +9,18 @@ import java.util.List;
   org.springframework.web.bind.annotation.RequestMapping; import
   org.springframework.web.bind.annotation.RequestMethod; import
   org.springframework.web.bind.annotation.ResponseBody; import
-  bit.com.a.dto.JobtalkDto; import bit.com.a.dto.JobtalkParam; import
+  bit.com.a.dto.JobtalkDto; import bit.com.a.dto.JobtalkParam;
+import bit.com.a.dto.replyDto;
+import
   bit.com.a.service.JobtalkService;
+import bit.com.a.service.ReplyService;
  
  
  
   @Controller public class JobtalkController {
  
   @Autowired JobtalkService service;
+  @Autowired ReplyService replyservice;
  
   @RequestMapping(value = "Jobtalklist.do", method = RequestMethod.GET) 
   public String jobtalklist(Model model, JobtalkParam param) { 
@@ -84,23 +86,11 @@ import java.util.List;
   
   model.addAttribute("jobtalk", job);
  
+  List<replyDto> replylist = replyservice.list(jobtalkseq);
+  model.addAttribute("replylist", replylist);
+  
   return "jobtalk/jobtalkdetail"; 
   
-  }
- 
-  @RequestMapping(value = "answer.do", method = {RequestMethod.GET, RequestMethod.POST}) 
-  public String answer(int seq, Model model) throws Exception { 
-	 model.addAttribute("doc_title", "답글추가"); 
-	 JobtalkDto job = null;
-	 job = service.getJobtalk(seq); 
-	 model.addAttribute("job", job); 
-	 return "answer"; 
-  }
- 
-  @RequestMapping(value = "answerAf.do", method = {RequestMethod.GET, RequestMethod.POST}) 
-  public String answerAf(JobtalkDto job, Model model) {
-	  service.reply(job); 
-	  return "redirect:/Jobtalklist.do"; 
   }
  
   @RequestMapping(value = "Jobtalkdelete.do", method = {RequestMethod.GET, RequestMethod.POST}) 

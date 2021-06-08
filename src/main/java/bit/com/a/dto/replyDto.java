@@ -9,7 +9,6 @@ public class replyDto implements Serializable{
 	private String reply_content;
 	private String memberid;
 	private String rdate;
-	private String udate;
 	private int reply_count;	// 답글 수
 	
 	
@@ -19,7 +18,9 @@ public class replyDto implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public replyDto(int replyseq, int jobtalkseq, String reply_content, String memberid, String rdate, String udate,
+	
+
+	public replyDto(int replyseq, int jobtalkseq, String reply_content, String memberid, String rdate,
 			int reply_count) {
 		super();
 		this.replyseq = replyseq;
@@ -27,9 +28,10 @@ public class replyDto implements Serializable{
 		this.reply_content = reply_content;
 		this.memberid = memberid;
 		this.rdate = rdate;
-		this.udate = udate;
 		this.reply_count = reply_count;
 	}
+
+
 
 	public int getReplyseq() {
 		return replyseq;
@@ -89,18 +91,6 @@ public class replyDto implements Serializable{
 	}
 
 
-
-	public String getUdate() {
-		return udate;
-	}
-
-
-
-	public void setUdate(String udate) {
-		this.udate = udate;
-	}
-
-
 	public int getReply_count() {
 		return reply_count;
 	}
@@ -110,11 +100,12 @@ public class replyDto implements Serializable{
 		this.reply_count = reply_count;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "replyDto [replyseq=" + replyseq + ", jobtalkseq=" + jobtalkseq + ", reply_content=" + reply_content
-				+ ", memberid=" + memberid + ", rdate=" + rdate + ", udate=" + udate + ", reply_count=" + reply_count
-				+ "]";
+				+ ", memberid=" + memberid + ", rdate=" + rdate + ", reply_count=" + reply_count + "]";
 	}
 	
 }

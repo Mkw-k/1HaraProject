@@ -19,12 +19,19 @@ public class ReplyDaoImpl implements ReplyDao {
 	
 	@Override
 	public List<replyDto> list(int jobtalkseq) {
-		return sqlsession.selectList(namespace+"listReply", jobtalkseq);
+		return sqlsession.selectList(namespace+"readReply", jobtalkseq);
 	}
 	
 	@Override
 	public void readCount(int replyseq) {
 		sqlsession.update(namespace + "reply_count", replyseq);
 	}
+	
+	@Override
+	public boolean insertreply(replyDto dto) {
+		int i = sqlsession.insert(namespace + "insertReply", dto);
+		return i > 0 ? true:false;
+	}
+	
 
 }
