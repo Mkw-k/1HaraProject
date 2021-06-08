@@ -128,8 +128,18 @@ public class RecruitDaoImpl implements RecruitDao{
 	}
 
 	@Override
-	public boolean favoriteJob(int jobSeq) {
-		return session.insert(ns+"favoriteJob", jobSeq)>0?true:false;
+	public boolean favoriteJob(RecruitParam param) {
+		return session.insert(ns+"favoriteJob", param)>0?true:false;
+	}
+
+	@Override
+	public int getJobFavorite(RecruitParam param) {
+		return session.selectOne(ns+"getJobFavorite", param);
+	}
+
+	@Override
+	public boolean dropFavoriteJob(RecruitParam param) {
+		return session.delete(ns+"dropFavoriteJob", param)>0?true:false;
 	}
 
 

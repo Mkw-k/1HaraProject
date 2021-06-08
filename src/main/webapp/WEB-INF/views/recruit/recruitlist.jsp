@@ -49,12 +49,12 @@ height: 150px;
 <div class="container-fluid">
       <div class="row">
          <div class="col-12">
-            <img alt="" src="<%=request.getContextPath() %>/image/개발자23.gif" style="width: 100%; height: 140px;">   
+            <img alt="" src="<%=request.getContextPath() %>/image/개발자23.gif" style="width: 100%; height: 140px;">
          </div>
       </div>
    </div>
    <br>
-   
+
 
 
 
@@ -178,9 +178,13 @@ height: 150px;
 
 
 
-                     <div class="col-md-12">
-                        <p id="selectResult"></p>
-                     </div>
+							<div class="col-md-12">
+								<p id="selectResult"></p>
+							</div>
+
+							<p>
+								<button type="button" id="deleteResult">삭제하기</button>
+							</p>
 
                   </div>
                </div>
@@ -311,16 +315,16 @@ height: 150px;
    </div> -->
 
    <br><br><br>
-   
+
    <div class="container">
       <div class="row">
          <div class="col-12">
-            <img alt="" src="<%=request.getContextPath() %>/image/개발자23.gif" style="width: 100%; height: 140px;">   
+            <img alt="" src="<%=request.getContextPath() %>/image/개발자23.gif" style="width: 100%; height: 140px;">
          </div>
       </div>
    </div>
    <br><br>
-   
+
 
    <div class="container">
       <div class="row marketing">
@@ -416,55 +420,55 @@ function getrecruitSearchList(pnum) {
              alert("에러발생");
          },
          success:function(list){
-          //alert('success');
-          //alert(list);
+ 			//alert('success');
+ 			//alert(list);
 
-          $(".list_col").remove();
-          
-          var memberid = '<c:out value="${login.memberid}"/>';
+ 			$(".list_col").remove();
 
-          $.each(list, function(i, val){
-             //alert(val.jobSeq);
-             let app = "<tr class= 'list_col'>"
-                      +"<td>" + val.rnum +"</td>";
-               
-                      if(val.del==0){
+ 			var memberid = '<c:out value="${login.memberid}"/>';
 
-                         "<td>"
-                        + "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname+"</a>"
-                         + "</td>"
-                         /* let empT = "";
-                         if(val.empType == 3){
-                            empT = "정규직";
-                         } */
-                         app +="<td>"
-                            + "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname + "</a>"
-                            + "</td>"
-                            +"<td style='text-align:left'>"
-                            //+ arrow(val.depth)
-                            +"<a href='RecruitDetail.do?jobseq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
-                            +"</td>"
-                            +"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
-                            +"<td>" + val.jobVolumn + "</td>"
-                            +"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
-                            +"<td>" + val.jobEnd +"<br>"+val.regdate+ "&nbsp;&nbsp;"
-                            +"<input type='button' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"+ "</td>";
-                      }
+ 			$.each(list, function(i, val){
+ 				//alert(val.jobSeq);
+ 				let app = "<tr class= 'list_col'>"
+ 							+"<td>" + val.rnum +"</td>";
 
-                      else{
-                         app += "<td style='text-align:left' colspan='6'>"
-                               +"<font color='#ff0000'>********* 이 글은 작성자에 의해서 삭제되었습니다</font>"
-                               +"</td>";
-                      }
+ 							if(val.del==0){
 
-                      +"</tr>";
+ 								"<td>"
+								+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname+"</a>"
+							    + "</td>"
+ 								/* let empT = "";
+ 								if(val.empType == 3){
+ 									empT = "정규직";
+ 								} */
+ 								app +="<td>"
+ 									+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname + "</a>"
+ 									+ "</td>"
+ 									+"<td style='text-align:left'>"
+ 									//+ arrow(val.depth)
+ 									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
+ 									+"</td>"
+ 									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
+ 									+"<td>" + val.jobVolumn + "</td>"
+ 									+"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
+ 									+"<td>" + val.jobEnd +"<br>"+val.regdate+ "&nbsp;&nbsp;"
+ 									+"<input type='button' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"+ "</td>";
+ 							}
 
-                $("#table").append(app);
-          });
-       },
-       error:function(){
-          alert('error');
-       }
+ 							else{
+ 								app += "<td style='text-align:left' colspan='6'>"
+ 										+"<font color='#ff0000'>********* 이 글은 작성자에 의해서 삭제되었습니다</font>"
+ 										+"</td>";
+ 							}
+
+ 							+"</tr>";
+
+ 					$("#table").append(app);
+ 			});
+ 		},
+ 		error:function(){
+ 			alert('error');
+ 		}
      });
 
 }
@@ -1115,7 +1119,15 @@ function delSelAreacode(cnt2, count2) {
 
 
 
+$("#deleteResult").click(function() {
+	alert('선택함');
+	$(".arrAreadata").remove();
+	$(".arrBusdata").remove();
 
+	$( ".list_col5" ).prop("checked", false);
+	$( ".list_col3" ).prop("checked", false);
+
+});
 
 
 

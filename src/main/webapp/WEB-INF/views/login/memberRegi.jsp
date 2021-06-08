@@ -195,7 +195,7 @@
 		else{	
 			alert($("#memberid").val());
 			$("#myForm").attr("action", "regiAf.do").submit();
-			alert("회원가입이 성공적으로 완료되었습니다");;/
+			alert("회원가입이 성공적으로 완료되었습니다");
 		}	
 		
 		
