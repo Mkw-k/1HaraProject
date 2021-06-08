@@ -61,7 +61,7 @@ public class RecruitController {
 	}
 	
 	
-//TODOAjax로 페이징 리스트 불러오기(검색, 페이지 추가)
+//TODOAjax로 페이징 리스트 불러오기(검색, 페이지 추가)(XXXXXXX사용안함)
 	//parameter Dto는 동일해서 BbsParam가져다 썻음 
 	@ResponseBody
 	@RequestMapping(value = "recruitPagingListData.do", method = RequestMethod.GET)
@@ -93,7 +93,7 @@ public class RecruitController {
 	}
 	
 	
-	//TODO 모든 검색조건 추가하여 검색한 결과를 리스트로 반환하여 Ajax로 전송 
+	//TODO모든 검색조건 추가하여 검색한 결과를 리스트로 반환하여 Ajax로 전송 
 	//getRecruitSearchList
 	@ResponseBody
 	@RequestMapping(value = "recruitTest.do", method = RequestMethod.POST)
@@ -195,7 +195,7 @@ public class RecruitController {
 
 
 
-//TODO Ajax로 리스트의 총수 불러오기
+//TODOAjax로 리스트의 총수 불러오기
 	//parameter Dto는 동일해서 BbsParam가져다 썻음 
 	@ResponseBody
 	@RequestMapping(value = "recruitlistCount.do", method = RequestMethod.GET)
@@ -344,6 +344,11 @@ public class RecruitController {
 		  String area2 = dto.getArea2Name();
 		  //다음 주소 api를 통해 가져온 주소를 split메서드를 통해 띄어쓰기를 기준으로 잘라준다
 		  String[] area = area1.split("\\s");
+		  //디테일주소 1 셋팅
+		  String detailAdress1 = "";
+		  for (int i = 2; i < area.length; i++) {
+			  detailAdress1 += area[i] + " ";
+		  }
 		  //대분류 지역이름에서 특별시 광역시는 제거해준다 
 		  String area1Name = area[0]
 				  				.replace("특별시", "")
@@ -351,8 +356,11 @@ public class RecruitController {
 		  System.out.println(area1Name);
 		  dto.setArea1Name(area1Name);
 		  dto.setArea2Name(area[1]);
+		  dto.setDetailAdress1(detailAdress1);
+		  dto.setDetailAdress2(area2);
 		  
-				  
+		  String[] mgDetail = new String [] {dto.getDetailAdress1(), dto.getDetailAdress2(), dto.getMgName(), dto.getMgEmail(), dto.getMgPhone()};
+			  
 		  System.out.println("변경된 데이터 :"+dto.toString());
 		
 		
@@ -369,6 +377,7 @@ public class RecruitController {
 		
 		//map에 배열을 넣는다
 		param.put("arrayParam", arrayParam); 
+		param.put("mgDetail", mgDetail);
 		
 		boolean b = service.writeRecruit(param);
 		
@@ -665,30 +674,98 @@ public class RecruitController {
 		}
 		
 		
-		//채용공고 리스트에 지역코드를 뿌려주는 코드 (지역1) 
-			@ResponseBody
-			@RequestMapping(value = "areacodeListData.do", method = {RequestMethod.GET, RequestMethod.POST}) 
-			public List<RecruitParam> areacodeListData(Model model) {
-				
-				List<RecruitParam> list = service.areacodeListData();
-				
-				System.out.println(list.toString());
-				
-				return list;
+	//채용공고 리스트에 지역코드를 뿌려주는 코드 (지역1) 
+		@ResponseBody
+		@RequestMapping(value = "areacodeListData.do", method = {RequestMethod.GET, RequestMethod.POST}) 
+		public List<RecruitParam> areacodeListData(Model model) {
+			
+			List<RecruitParam> list = service.areacodeListData();
+			
+			System.out.println(list.toString());
+			
+			return list;
+		}
+			
+		//채용공고 리스트에 지역코드를 뿌려주는 코드 (지역2) 
+		@ResponseBody
+		@RequestMapping(value = "areacode2ListData.do", method = {RequestMethod.GET, RequestMethod.POST}) 
+		public List<RecruitParam> areacode2ListData(int areacode, Model model) {
+			
+			//int areacode = service.getArea1Code(areaname);
+			
+			List<RecruitParam> list = service.areacode2ListData(areacode);
+			
+			System.out.println(list.toString());
+			
+			return list;
+		}
+		
+		//담당자 상세정보 업데이트 
+		@RequestMapping(value = "mgDetailUpdate.do", method = {RequestMethod.GET, RequestMethod.POST}) 
+		public void mgDetailUpdate(RecruitDto dto, Model model) {
+			
+		  //int areacode = service.getArea1Code(areaname);
+		
+		  //지역 데이터 재설정 해주기 
+		  String area1 = dto.getArea1Name();
+		  //상세 주소 현재 사용안함 (컴퍼니 테이블과 조인하면 상세주소를 가져올수 있을거라 생각됨 여기선 필요없)
+		  String area2 = dto.getArea2Name();
+		  //다음 주소 api를 통해 가져온 주소를 split메서드를 통해 띄어쓰기를 기준으로 잘라준다
+		  String[] area = area1.split("\\s");
+		  //디테일주소 1 셋팅
+		  String detailAdress1 = "";
+		  for (int i = 2; i < area.length; i++) {
+			  detailAdress1 += area[i] + " ";
+		  }
+		  //대분류 지역이름에서 특별시 광역시는 제거해준다 
+		  String area1Name = area[0]
+				  				.replace("특별시", "")
+				  				.replace("광역시", "");
+		  System.out.println(area1Name);
+		  dto.setArea1Name(area1Name);
+		  dto.setArea2Name(area[1]);
+		  dto.setDetailAdress1(detailAdress1);
+		  dto.setDetailAdress2(area2);
+		  
+		//시작일 종료일 데이터 정비 
+		  String start = dto.getJobStart(); 
+		  String end = dto.getJobEnd();
+		  //datetime-local 데이터는 중간에 T가 들어있어서 DB저장을 위해 잘라준다
+		  start = start.replace("T", " "); 
+		  end = end.replace("T", " ");
+		  dto.setJobStart(start);
+		  dto.setJobEnd(end);
+		  
+			
+			boolean b  = service.mgDetailUpdate(dto);
+			boolean f = service.mgDetailUpdate2(dto);
+			
+			
+			if(b) {
+				System.out.println("담당자 업뎃 1성공");
+			}else {
+				System.out.println("담당자 업뎃 1실패");
 			}
-				
-			//채용공고 리스트에 지역코드를 뿌려주는 코드 (지역2) 
-			@ResponseBody
-			@RequestMapping(value = "areacode2ListData.do", method = {RequestMethod.GET, RequestMethod.POST}) 
-			public List<RecruitParam> areacode2ListData(int areacode, Model model) {
-				
-				//int areacode = service.getArea1Code(areaname);
-				
-				List<RecruitParam> list = service.areacode2ListData(areacode);
-				
-				System.out.println(list.toString());
-				
-				return list;
+			if(f) {
+				System.out.println("담당자 업뎃 2성공");
+			}else {
+				System.out.println("담당자 업뎃 2실패");
 			}
+			
+			
+		
+		}
+		
+		//채용공고 즐겨찾기 추가 
+		@RequestMapping(value = "favoriteJob.do", method = {RequestMethod.GET, RequestMethod.POST}) 
+		public void favoriteJob(int jobSeq, Model model) {
+			
+		  boolean b = service.favoriteJob(jobSeq);
+			
+			
+		
+		}
+			
+			
 				
 }

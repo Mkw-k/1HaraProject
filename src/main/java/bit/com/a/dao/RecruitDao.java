@@ -46,5 +46,11 @@ public interface RecruitDao {
 	boolean insertBuscode(Map<String, Object> param);
 
 	int getRecruitCount(Map<String, Object> param);
+
+	boolean mgDetailUpdate(RecruitDto dto);
+
+	boolean mgDetailUpdate2(RecruitDto dto);
+
+	boolean favoriteJob(int jobSeq);
 	
 }

@@ -113,6 +113,21 @@ public class RecruitServiceImpl implements RecruitService{
 	public int getRecruitCount(Map<String, Object> param) {
 		return dao.getRecruitCount(param);
 	}
+
+	@Override
+	public boolean mgDetailUpdate(RecruitDto dto) {
+		return dao.mgDetailUpdate(dto);
+	}
+
+	@Override
+	public boolean mgDetailUpdate2(RecruitDto dto) {
+		return dao.mgDetailUpdate2(dto);
+	}
+
+	@Override
+	public boolean favoriteJob(int jobSeq) {
+		return dao.favoriteJob(jobSeq);
+	}
 	
 	
 }
