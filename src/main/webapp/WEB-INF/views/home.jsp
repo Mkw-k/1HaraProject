@@ -708,7 +708,7 @@ margin-right : 450px;
 
 
     <li class="nav-item">
-     	 <a class="nav-link bgc" href="resumeMain.do" style="color: #2186eb;background-color: #fff;">이력서관리</a>
+     	 <a class="nav-link bgc" href="resumeMain.do?memberid=${login.memberid }" style="color: #2186eb;background-color: #fff;">이력서관리</a>
     </li>    
     <li class="nav-item">
        <c:if test="${login.auth==3}">

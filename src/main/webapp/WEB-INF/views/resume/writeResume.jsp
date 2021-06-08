@@ -604,7 +604,7 @@ dt, dd {
 
 																<div class="resume_row" style="display:">
 																	<div class="input_title">
-																		학교명 <span class="point">필수</span>
+																		학교명
 																	</div>
 																	<div class="resume_input">
 																		<input type="text" id="highschool"
@@ -619,7 +619,7 @@ dt, dd {
 
 																<div class="resume_row">
 																	<div class="input_title">
-																		재학기간 <span class="point">필수</span>
+																		재학기간
 																	</div>
 																	<div class="area_period">
 																		<div class="period_bundle">
@@ -728,7 +728,7 @@ dt, dd {
 
 																<div class="resume_row">
 																	<div class="input_title">
-																		대학 <span class="point">필수</span>
+																		대학 
 																	</div>
 																	<div class="sri_select resume_select">
 
@@ -744,7 +744,7 @@ dt, dd {
 
 																<div class="resume_row">
 																	<div class="input_title">
-																		학교명 <span class="point">필수</span>
+																		학교명 
 																	</div>
 																	<div class="resume_input">
 																		<input type="text" id="university"
@@ -758,7 +758,7 @@ dt, dd {
 
 																<div class="resume_row">
 																	<div class="input_title">
-																		재학기간 <span class="point">필수</span>
+																		재학기간
 																	</div>
 																	<div class="area_period">
 																		<div class="period_bundle">
@@ -819,7 +819,7 @@ dt, dd {
 																<div class="resume_row area_school_major"
 																	style="height: 125px;">
 																	<div class="input_title">
-																		전공 <span class="point">필수</span>
+																		전공
 																	</div>
 																	<div class="area_add">
 																		<div class="resume_input resume_select">
@@ -1602,7 +1602,8 @@ dt, dd {
 
 
 												</div>
-												<div id="attach_port_files" class="resume_section"
+												
+												<!-- <div id="attach_port_files" class="resume_section"
 													data-order_item="attach_port_files" data-except="y">
 													<div class="area_title">
 														<h3 class="title">포트폴리오 및 기타문서</h3>
@@ -1620,13 +1621,13 @@ dt, dd {
 														</div>
 														<div class="area_add_btn">
 															<input type="file" name="fileload2" style="width: 400px">
-															<!-- <button type="button" class="btn_resume_add"
+															<button type="button" class="btn_resume_add"
 														data-api_type="layer" data-api_id="attach_file">
 														<span>포트폴리오 및 기타문서 추가</span>
-													</button> -->
+													</button>
 														</div>
 													</div>
-												</div>
+												</div> -->
 
 												<div id="introduce" data-order_item="introduce"
 													data-except="y">
@@ -1918,7 +1919,7 @@ dt, dd {
 						</div>
 						</section>
 						
-						<button onclick="iscompleted()">중간저장</button>
+						<button onclick="iscompleted()" id="incomplete">중간저장</button>
 						<input type="submit" value="작성완료" id="complete">
 						
 					</div>
@@ -3615,8 +3616,24 @@ alert("iscompleted");
 }
 </script>
 
-
-
+<!-- 빈칸 체크 -->
+<script type="text/javascript">
+$("#_btnLogin").click(function () {
+ 
+    if($("#_userid").val().trim() == ""){
+        alert('id를 입력해 주십시오');
+        $("#_userid").focus();
+    }
+    else if($("#_pwd").val().trim() == ""){
+        alert('패스워드를 입력해 주십시오');
+        $("#_pwd").focus();
+    }
+    else{
+        $("#_frmFrom").submit();    
+    }    
+    
+});
+</script>
 
 
 

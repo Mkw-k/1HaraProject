@@ -409,7 +409,7 @@ System.out.println(_gender);
 									<article class="panel-body">
 										<figure class="text-center">
 											<div class="select_img">
-												<img src="./image/profile.jpg"
+												<img src="./upload/<%=resumedto.getNewresumeimage() %>"
 													class="img-thumbnail img-circle img-responsive profileimg"
 													alt="" style="width: 200px; height: 200px;">
 											</div>
@@ -2166,7 +2166,7 @@ System.out.println(_gender);
 
 
 												</div>
-												<div id="attach_port_files" class="resume_section"
+												<%-- <div id="attach_port_files" class="resume_section"
 													data-order_item="attach_port_files" data-except="y">
 													<div class="area_title">
 														<h3 class="title">포트폴리오 및 기타문서</h3>
@@ -2191,7 +2191,7 @@ System.out.println(_gender);
 													</button> -->
 														</div>
 													</div>
-												</div>
+												</div> --%>
 
 												<div id="introduce" data-order_item="introduce"
 													data-except="y">

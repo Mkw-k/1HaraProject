@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import bit.com.a.dao.ResumeDao;
 import bit.com.a.dto.ResumeDto;
+import bit.com.a.dto.ApplyDto;
 import bit.com.a.dto.Resume_ActivityVo;
 import bit.com.a.dto.Resume_AwardVo;
 import bit.com.a.dto.Resume_CareerVo;
@@ -105,9 +106,9 @@ public class ResumeDaoImpl implements ResumeDao {
 
 
 	@Override
-	public List<ResumeDto> getresume() {
+	public List<ResumeDto> getresume(String memberid) {
 		// TODO Auto-generated method stub
-		return session.selectList(ns + "getresume");	
+		return session.selectList(ns + "getresume", memberid);	
 	}
 
 
@@ -247,9 +248,9 @@ public class ResumeDaoImpl implements ResumeDao {
 
 
 	@Override
-	public List<ResumeDto> getNoresume() {
+	public List<ResumeDto> getNoresume(String memberid) {
 		// TODO Auto-generated method stub
-		return session.selectList(ns+"getNoresume");
+		return session.selectList(ns+"getNoresume", memberid);
 	}
 
 
@@ -337,10 +338,40 @@ public class ResumeDaoImpl implements ResumeDao {
 		
         return i>0?true:false;	
 	}
-	
-	
-	
-	
+
+
+
+	@Override
+	public boolean addApply(ApplyDto param) {
+		// TODO Auto-generated method stub
+		int i = session.insert(ns + "addApply", param);
+		
+        return i>0?true:false;
+	}
+
+
+
+	@Override
+	public List<ApplyDto> getApplyList(String memberid) {
+		// TODO Auto-generated method stub
+		return session.selectList(ns+"getApplyList", memberid);
+	}
+
+
+
+	@Override
+	public String getJobtitle(int jobseq) {
+		// TODO Auto-generated method stub
+		return session.selectOne(ns+"getJobtitle", jobseq);
+	}
+
+
+
+	@Override
+	public String getResumeTitle(int resumeseq) {
+		// TODO Auto-generated method stub
+		return session.selectOne(ns+"getResumeTitle", resumeseq);
+	}
 	
 	
 	

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import bit.com.a.dto.ResumeDto;
+import bit.com.a.dto.ApplyDto;
 import bit.com.a.dto.Resume_ActivityVo;
 import bit.com.a.dto.Resume_AwardVo;
 import bit.com.a.dto.Resume_CareerVo;
@@ -30,7 +31,7 @@ public interface ResumeService {
 
 	boolean writeLan(Resume_LanguageVo lanvo);
 
-	List<ResumeDto> getresume();
+	List<ResumeDto> getresume(String memberid);
 
 	int getTotalPage();
 
@@ -62,7 +63,7 @@ public interface ResumeService {
 
 	boolean deleteLanResume(int seq);
 
-	List<ResumeDto> getNoresume();
+	List<ResumeDto> getNoresume(String memberid);
 
 	void upProgress(ResumeDto dto);
 
@@ -81,6 +82,14 @@ public interface ResumeService {
 	boolean updateAward(Resume_AwardVo awdvo);
 
 	boolean updateLan(Resume_LanguageVo lanvo);
+
+	boolean addApply(ApplyDto param);
+
+	List<ApplyDto> getApplyList(String memberid);
+
+	String getJobtitle(int jobseq);
+
+	String getResumeTitle(int resumeseq);
 
 	
 	
