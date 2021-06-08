@@ -67,10 +67,10 @@ public class RecruitServiceImpl implements RecruitService{
 	public List<String> getBsnameForDetail(int jobseq) {
 		return dao.getBsnameForDetail(jobseq);
 	}
-	
+
 	@Override
 	public List<RecruitDto> getCalendarList(RecruitDto rec) {
-		
+
 		return dao.getCalendarList(rec);
 	}
 
@@ -128,6 +128,6 @@ public class RecruitServiceImpl implements RecruitService{
 	public boolean favoriteJob(int jobSeq) {
 		return dao.favoriteJob(jobSeq);
 	}
-	
-	
+
+
 }
