@@ -69,9 +69,9 @@ public class RecruitServiceImpl implements RecruitService{
 	}
 
 	@Override
-	public List<RecruitDto> getCalendarList(RecruitDto rec) {
+	public List<RecruitDto> getCalendarList(RecruitParam param) {
 
-		return dao.getCalendarList(rec);
+		return dao.getCalendarList(param);
 	}
 
 	@Override
@@ -139,5 +139,9 @@ public class RecruitServiceImpl implements RecruitService{
 		return dao.dropFavoriteJob(param);
 	}
 
+	@Override
+	public List<RecruitDto> getCalendarList_1() {
+		return dao.getCalendarList_1();
+	}
 
 }

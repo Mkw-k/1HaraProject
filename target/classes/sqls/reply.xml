@@ -7,16 +7,18 @@
 <mapper namespace="Reply">
 	
 	<!-- 댓글 입력 -->
-	<insert id="insertReply">
-		INSERT INTO REPLY (REPLYSEQ, JOBTALKSEQ, REPLY_CONTENT, MEMBERID, RDATE, UDATE, DEL)
-		VALUES(REPLYSEQ_REPLY.NEXTVAL, #{jobtalkseq}, #{reply_content}, #{memberid}, SYSDATE, #{udate}, 0)		
+	<insert id="insertReply" parameterType="bit.com.a.dto.replyDto">
+		INSERT INTO REPLY(REPLYSEQ, JOBTALKSEQ, REPLY_CONTENT, REPLY_COUNT, MEMBERID, RDATE, DEL)
+		VALUES(REPLYSEQ_REPLY.NEXTVAL, #{jobtalkseq}, #{reply_content}, 0,  #{memberid}, SYSDATE, 0)		
 	</insert>
-	<select id="listReply" resultType="bit.com.a.dto.replyDto">
-		SELECT REPLYSEQ, JOBTALKSEQ, REPLY_CONTENT, MEMBERID, R.RDATE, R.UDATE, DEL
-		FROM REPLY R, MEMBER M
-		WHERE R.MEMBERID = M.MEMBERID AND JOBTALKSEQ=#{jobtalkseq}
-		ORDER BY REPLYSEQ
+	
+	<!-- 댓글 리스트 -->
+	<select id="readReply" resultType="bit.com.a.dto.replyDto">
+    	SELECT REPLYSEQ, JOBTALKSEQ, REPLY_CONTENT, MEMBERID, RDATE, REPLY_COUNT
+    	FROM REPLY 
+    	WHERE JOBTALKSEQ = #{jobtalkseq}
 	</select>
+	
 	<update id="reply_count" parameterType="java.lang.Integer">
 		UPDATE REPLY
 		SET REPLY_COUNT=REPLY_COUNT+1

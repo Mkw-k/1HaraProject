@@ -669,7 +669,7 @@ margin-right : 450px;
 		    <a href="#">채용공고</a>
 		    <a href="#">기업정보</a>
 		    <a href="jobtalklist.do">취업톡톡</a>
-		    <a href="calendarlist.do">공채달력</a>
+		    <a href="calendarlist2.do">공채달력</a>
 		    <a href="#">자료실</a>
 		    <a href="notice.do">공지사항</a>
 		  </div>
@@ -686,7 +686,7 @@ margin-right : 450px;
       <a class="nav-link bgc" href="Jobtalklist.do" style="color:#2186eb">취업톡톡</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="calendarlist.do" style="color:#2186eb">공채달력</a>
+      <a class="nav-link bgc" href="calendarlist2.do" style="color:#2186eb">공채달력</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
@@ -904,11 +904,25 @@ margin-right : 450px;
 		                    
 
 		                    <div class="main-login" style="width: 358px;height: 346px;">
-		                    
+		                
 		                     <!-- 프로필사진 이미지 들어가는곳 -->
-		                	<img src="다람쥐.jpg">
-		                    
-		                   
+		                
+		                	<c:choose>
+		                		<c:when test="${login.memberid == null}">
+		                			<img src="다람쥐.jpg">
+		                   	 	</c:when>
+		                   	 	<c:when test="${login.auth == 1 || login.auth == 3}">
+		                   	 		<c:if test="${login.newuserpic ne null}">
+		                   	 			<img src="./upload/${login.newuserpic}" style="width: 150px;height: 150px;">
+		                   	 		</c:if>
+		                   	 	</c:when>
+		                   	 	<c:otherwise>
+		                   	 		<c:if test="${login.newfilename ne null }">
+		                   	 			<img src="./upload/${login.newfilename}" style="width: 150px;height: 150px;">
+		                   	 		</c:if>
+		                   	 	</c:otherwise>
+		                   	 	
+		                   	</c:choose>
 			<!-- 로그인 전 -->
 					<!-- 로그인 전 -->
 

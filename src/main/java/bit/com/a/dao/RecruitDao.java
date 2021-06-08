@@ -27,7 +27,7 @@ public interface RecruitDao {
 
 	List<RecruitParam> buscode3ListData(int buscode);
 
-	List<RecruitDto> getCalendarList(RecruitDto rec);
+	List<RecruitDto> getCalendarList(RecruitParam param);
 
 	List<String> getBsnameForDetail(int jobseq);
 
@@ -56,5 +56,7 @@ public interface RecruitDao {
 	int getJobFavorite(RecruitParam param);
 
 	boolean dropFavoriteJob(RecruitParam param);
+
+	List<RecruitDto> getCalendarList_1();
 
 }

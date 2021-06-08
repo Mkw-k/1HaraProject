@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import bit.com.a.dto.BbsParam;
-import bit.com.a.dto.CalendarParam;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 import bit.com.a.dto.ResumeDto;
@@ -100,7 +99,7 @@ public class RecruitController {
 	}
 
 
-	//TODO모든 검색조건 추가하여 검색한 결과를 리스트로 반환하여 Ajax로 전송
+	//TODO 모든 검색조건 추가하여 검색한 결과를 리스트로 반환하여 Ajax로 전송
 	//getRecruitSearchList
 	@ResponseBody
 	@RequestMapping(value = "recruitTest.do", method = RequestMethod.POST)
@@ -628,9 +627,90 @@ public class RecruitController {
 			return list;
 		}
 
-		@RequestMapping(value = "calendarlist.do",  method = {RequestMethod.GET, RequestMethod.POST})
-		String calendarlist(Model model, CalendarParam param, HttpSession session) {
+		//TODO 5단검색 캘린더 
+		@RequestMapping(value = "calendarlist1.do",  method = {RequestMethod.GET, RequestMethod.POST})
+		String calendarlist1(Model model, RecruitParam param, HttpSession session) {
 
+			//넘어온값 확인
+			System.out.println("넘어온값 : "+param.toString());
+
+			//해시맵 생성
+			Map<String, Object> map = new HashMap<String, Object>();
+
+			
+			//1. 직무코드 받아오기
+			String arrBuscode[] = null;
+
+			if(param.getBuscode() != null) {
+				System.out.println(param.getBuscode().toString() );
+				String buscode = param.getBuscode();
+				System.out.println("이게버스코드:"+buscode);
+
+				//띄어쓰기 기준으로 잘랐음 buscode도 실제 buscode임
+				arrBuscode = buscode.split(",");
+
+				//확인
+				for (String item : arrBuscode) {
+					System.out.println(item.toString());
+				}
+				//직무코드 넣기
+			}
+			map.put("arrBusi", arrBuscode);
+
+			//2. 지역코드 받아오기
+			String arrAreacode[] = null;
+
+			if(param.getArea2name() != null) {
+				String areaname = param.getArea2name();
+				System.out.println("이게지역이름:"+areaname);
+
+				//배열에 ,기준으로 잘라서 담기 (지역네임)
+				 arrAreacode = areaname.split(",");
+
+				//확인
+				for (String item : arrAreacode) {
+					System.out.println(item.toString());
+				}
+				//지역코드 넣기
+			}
+			map.put("arrAreacode", arrAreacode);
+
+			String search = param.getSearch();
+			String choice = param.getChoice();
+
+			System.out.println("서치 + 초이스 : " +search+", " + choice);
+			System.out.println("결과값 : "+param.toString());
+			//디티오 넣기
+			map.put("param", param);
+			//choice 넣기(검색범주선택)
+			map.put("choice", choice);
+			//search 넣기(검색어)
+			map.put("search", search);
+
+			String education = "0";
+			if(param.getEducation() != null && !param.getEducation().equals("")) {
+				 education = param.getEducation();
+			}
+			map.put("education", education);
+
+			String CareerStart = "0";
+			if(param.getCareerStart() != null && !param.getCareerStart().equals("")) {
+				 CareerStart = param.getCareerStart();
+			}
+			map.put("CareerStart", CareerStart);
+
+			String CareerEnd = "0";
+			if(param.getCareerEnd() != null && !param.getCareerEnd().equals("")) {
+				CareerEnd = param.getCareerEnd();
+			}
+			map.put("CareerEnd", CareerEnd);
+
+			//최종결과 리스트로 받기
+			List<RecruitDto> list = service.getRecruitSearchList(map);
+
+			System.out.println("결과:"+list.toString());
+
+			
 			Calendar cal = Calendar.getInstance();
 
 
@@ -679,14 +759,76 @@ public class RecruitController {
 
 
 			// Db로부터 일정들을 취득한다
-			List<RecruitDto> list = service.getCalendarList(fcal);
-			System.out.println(fcal);
+			//List<RecruitDto> list1 = service.getCalendarList(fcal);
+			//System.out.println(list1.toString());
 			// 짐싸!
 			model.addAttribute("flist", list);	// 일정목록을 포장
 			model.addAttribute("cal", param);	// 설정된 날짜를 포장
 
 			return "recruit/recruitcalendar";
 		}
+		
+		//기존 캘린더
+		@RequestMapping(value = "calendarlist2.do",  method = {RequestMethod.GET, RequestMethod.POST})
+		String calendarlist2(Model model, RecruitParam param, HttpSession session) {		
+			
+			Calendar cal = Calendar.getInstance();
+			
+			
+			int year = param.getYear();
+			int month = param.getMonth();
+			int day = param.getDay();
+			
+			if(month == 0) {
+				year--;
+				month = 12;
+			}
+			else if(month == 13) {
+				year++;
+				month = 1;
+			}
+			else if(month < 0) {	// 처음 들어온 경우 여기로 들어 와서 연월일을 현재 날짜로 셋팅한다 
+				year = cal.get(Calendar.YEAR);
+				month = cal.get(Calendar.MONTH) + 1;
+				if(day < 0) {
+					day = cal.get(Calendar.DATE);
+				}
+			}		 
+			cal.set(year, month - 1, 1);	// 요일을 구하기 위한 설정
+					
+			// 요일
+			int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+			// 마지막 날짜
+			int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+			
+			// 셋팅된 날짜를 다시 넘겨주기 위한 set
+			param.setYear(year);
+			param.setMonth(month);
+			param.setDay(day);
+			param.setDayOfWeek(dayOfWeek);
+			param.setLastDay(lastDay);
+					
+			// 로그인 정보
+			//String id = ((MemberDto)session.getAttribute("login")).getId();
+			// 날짜 취득
+			String yyyymmdd = UtilEx.yyyymmdd(param.getYear(), param.getMonth(), param.getDay());
+			
+			// DB에서 그달의 일정을 모두 취득하기 위한 Dto
+			RecruitDto fcal = new RecruitDto();
+			fcal.setJobStart(yyyymmdd);
+			System.out.println(fcal.toString());
+			
+			
+			// Db로부터 일정들을 취득한다
+			List<RecruitDto> list = service.getCalendarList_1();
+			System.out.println(fcal);
+			// 짐싸!
+			model.addAttribute("flist", list);	// 일정목록을 포장
+			model.addAttribute("cal", param);	// 설정된 날짜를 포장
+			
+			return "recruit/recruitcalendar";
+		}
+		
 
 
 	//채용공고 리스트에 지역코드를 뿌려주는 코드 (지역1)
@@ -700,6 +842,8 @@ public class RecruitController {
 
 			return list;
 		}
+		
+		
 
 		//채용공고 리스트에 지역코드를 뿌려주는 코드 (지역2)
 		@ResponseBody

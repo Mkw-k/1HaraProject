@@ -73,8 +73,8 @@ public class RecruitDaoImpl implements RecruitDao{
 	}
 
 	@Override
-	public List<RecruitDto> getCalendarList(RecruitDto rec) {
-		return session.selectList(ns+"getCalendarList", rec);
+	public List<RecruitDto> getCalendarList(RecruitParam param) {
+		return session.selectList(ns+"getCalendarList", param);
 	}
 
 	@Override
@@ -142,6 +142,10 @@ public class RecruitDaoImpl implements RecruitDao{
 		return session.delete(ns+"dropFavoriteJob", param)>0?true:false;
 	}
 
+	@Override
+	public List<RecruitDto> getCalendarList_1() {
+		return session.selectList(ns + "getCalendarList_1");
+	}
 
 
 
