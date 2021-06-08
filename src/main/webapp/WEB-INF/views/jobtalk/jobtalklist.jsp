@@ -22,6 +22,12 @@
   <!-- 링크!  -->
 	<link href="csss/common.css" rel="stylesheet" type="text/css">
 	<link href="csss/reset.css" rel="stylesheet" type="text/css">
+	<title>Insert title here</title>
+	<link href="csss/common1.css" rel="stylesheet" type="text/css">
+	<link href="csss/gnb.css" rel="stylesheet" type="text/css">	
+	<link href="csss/view.css" rel="stylesheet" type="text/css">
+	<link href="csss/side_navigation.css" rel="stylesheet" type="text/css">
+	<link href="csss/star_style.css" rel="stylesheet" type="text/css">
 	<!-- 링크!  -->
   
   
@@ -1095,6 +1101,72 @@ margin-right : 450px;
 </nav>
 <br>
 
+<div class="side-navigation">
+			<h2 class="skip">선배에게 질문하기 세부메뉴</h2>
+			<div class="navi-top-area">
+				<a href="/User/Qstn/QstnWrite" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
+				<div class="myInfoSec">
+					<a href="/User/Qstn/MainProfile" class="myInfo">
+						<!-- [Dev] 프로필 랜덤 이미지 파일명 : random_1 ~ random_20, 이미지 없음 : random_default -->
+						<span class="proThumb">
+							<img onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'" src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_8.jpg" alt="프로필 이미지">
+						</span>
+						<dl class="infoBx">
+							<dt class="qnaSpA">
+								<span class="nickname">${login.name }</span> 
+								<span class="lvIcon">Lv.1</span>
+							</dt>
+							<dd>
+								<span>질문 0</span>
+								<span>답변 0 (채택 0)</span>
+							</dd>
+						</dl>
+					</a>
+					<button type="button" class="myPoint devMainCouponButton">
+						<span class="point qnaSpB">0</span><span class="btnCoupon qnaSpA">쿠폰교환</span>
+					</button>
+				</div>
+			</div>
+			<div class="navi-list-area">
+			<!-- [Dev] 메뉴 on : 클래스 active 추가 -->
+				<div class="sideNavLow">
+					<strong class="sideNavTit"><a id="devLeftMenuRequireTag" href="/User/Qstn/Index?MainType=1" data-tab="1" class="devLoginLayer " devalert="0">답변하기</a></strong>
+				</div>
+				<div class="sideNavLow">
+					<strong class="sideNavTit"><a id="devLeftMenuOwnerTag" href="/User/Qstn/Index?MainType=2" data-tab="2" class="devLoginLayer " devalert="0">나의질문</a></strong>
+				</div>
+				<div class="sideNavLow">
+					<strong class="sideNavTit"><a id="devLeftMenuEntireTag" href="/User/Qstn/Index?MainType=3" data-tab="3" class="">전체질문</a></strong>
+				</div>
+				
+				<div class="sideNavLow has-tooltip">
+					<strong class="sideNavTit no-link">
+						<a href="javascript:void()">나의그룹</a>
+					</strong>
+					<button type="button" class="select-tooltip qnaSpA">
+						<span class="skip">나의그룹 설명 보기</span>
+					</button>
+					<ul class="sideNavList">
+									<li><a href="/User/Qstn/QstnBizGroup?GroupCode=1000100">웹프로그래머</a></li>
+									<li><a href="/User/Qstn/QstnBizGroup?GroupCode=1000101">응용프로그래머</a></li>
+									<li><a href="/User/Qstn/QstnBizGroup?GroupCode=1000109">빅데이터·AI(인공지능)</a></li>
+									<li><a href="/User/Qstn/QstnUnivGroup?GroupCode=C0033">김포대학</a></li>
+						<!-- [Dev] 신규 아이콘 : 클래스 icnNew 추가 -->
+					</ul>
+
+					<div class="tooltip-layer qnaSpB">
+						<p class="txt">나의그룹은 기본 이력서의 학력(대학교, 대학원), 경력으로 자동 설정되며<br>답변활동 또는 질문등록 시 매칭조건으로 활용됩니다.</p>
+						<button type="button" class="btn-tooltip-close qnaSpB"><span class="skip">닫기</span></button>
+					</div>
+				</div>
+			<div class="sideNavLow devRecentVisitGroup" style="display:none;">
+				<strong class="sideNavTit"><a href="javascript:void();">최근 본 그룹</a></strong>
+				<ul class="sideNavList boxList"></ul>
+			</div>
+	</div>
+</div>
+
+
 <div class="container">
 
 <section id="contents">
@@ -1153,7 +1225,8 @@ margin-right : 450px;
 		</div>
 	<div>
 <input type="hidden" name="_csrf" value="f9429a24-06a6-4e86-9fb8-413ddf249c96">
-</div></form>
+</div>
+</form>
 		
 	<form id="empBoardSrchVO1" name="listRangeForm" action="/ntNewsData/ntMatter/retrieveNtMatterListPost.do" method="post">
 	<input type="hidden" name="regDtm" value="">
@@ -1178,7 +1251,8 @@ margin-right : 450px;
 		</div>
 	<div>
 <input type="hidden" name="_csrf" value="f9429a24-06a6-4e86-9fb8-413ddf249c96">
-</div></form>
+</div>
+</form>
 
 	<div class="table-wrap">
 		<table class="board-list" summary="이 표는 번호, 제목, 자료출처, 등록일, 조회 등 공지사항 목록에 대한 정보를 제공합니다.">
@@ -1205,7 +1279,7 @@ margin-right : 450px;
 				<tr>
 					<th>${i.count }</th>
 					<td class="a-l">
-						<a href="Jobtalkdetail.do?seq=${jobtalk.jobtalkseq }">
+						<a href="Jobtalkdetail.do?jobtalkseq=${jobtalk.jobtalkseq }">
 							${jobtalk.jobtalk_title }
 						</a>
 					</td>
@@ -1218,8 +1292,8 @@ margin-right : 450px;
 		</table>
 	</div>
 	<div class="btn-group center">	
-			<a href="noticewrite.do" class="button navy">
-				글추가
+			<a href="Jobtalkwrite.do" class="button navy">
+				질문하기
 			</a>
 	</div>
 	

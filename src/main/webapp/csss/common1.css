@@ -683,3 +683,41 @@ a.tplBtn_2 span {top:0;}
 .tplNoScroll .lgiSubRead .lgiTickerWrap {right:109px;}
 
 .tplNoScroll {overflow:hidden;}
+
+
+.btnCommWrap{overflow:hidden; text-align:center;}
+
+.btnCommWrap button {
+    margin: 0 5px;
+    width: 135px;
+    height: 50px;
+    background: #3399ff;
+    border: 1px solid #3399ff;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #fff;
+    line-height: 50px;
+}
+
+.btnCommWrap button.bg_white{background:#fff; border-color:#d7d8d9; color:#666;}
+
+
+#searching a {
+    width: 700px;
+    height: 50px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 0;
+    background: #eee;
+    font-size: 17px;
+    transition: all 0.5s;
+}
+
+#searching a:hover {
+    background: #ccc;
+}
+
+#searching a:focus {
+    outline: none;
+}
