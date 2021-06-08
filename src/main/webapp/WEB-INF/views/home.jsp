@@ -694,17 +694,17 @@ margin-right : 450px;
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
-<!--     <li class="nav-item">
+     <li class="nav-item">
       <a class="nav-link bgc" href="companywrite.do" style="color:#2186eb">기업등록하기(company)</a>
     </li>
-    <li class="nav-item">
+  <!--   <li class="nav-item">
       <a class="nav-link bgc" href="companyupdate.do" style="color:#2186eb">기업업데이트하기(company)</a>
     </li>
     
      <li class="nav-item">
       <a class="nav-link bgc" href="companydetail.do" style="color:#2186eb">기업디테일(company)</a>
-    </li> -->
-
+    </li>
+ -->
 
 
     <li class="nav-item">
@@ -962,7 +962,7 @@ margin-right : 450px;
 													<p class="txt">기업</p>
 
 													<p class="name"><strong>${login.name}</strong> 님</p>
-													<a href="/indivMemberSrv/main/indivMemberSrvMain.do" class="mypge">마이페이지</a>
+													<a href="buspage.do?memberid=${login.memberid }" class="mypge">마이페이지</a>
 												</div>
 												<div class="btn-grp">
 													<button type="button" class="btn-logout float-l" onclick="f_logout();" style="margin-left : 40px;">로그아웃</button>

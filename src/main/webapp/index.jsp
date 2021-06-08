@@ -36,22 +36,14 @@ index.jsp
 
 <a href="newslist.do">끼업 뉴쓰</a>
 
-<a href="kokolog.do">까까오 로꾸인</a>
-
-
 <a href="chatpractice.do">채팅(건설중)</a>
 
 <a href="jobtalklist.do">취업톡톡게시판</a>
 
 <a href="idsearch.do">아이디 찾기</a>
 
-<a href="companylist.do">끼업 리스트</a>
-
 <a href="member_info.do">개인정보관리</a>
 
-<a href="companywrite.do">기업 디테일 쓰깅</a>
-
-<a href="testtest.do">기업 디테일 쓰깅</a>
 
 
 </body>

@@ -29,4 +29,18 @@
 		WHERE MEMBERID = #{memberid} AND PWD = #{pwd}
 	</delete>
 
+	<select id="getBuspage" parameterType="java.lang.String" resultType="bit.com.a.dto.BusinessDto">
+	SELECT MEMBERID,COMPANYNAME,PWD,COMADDRESS,ADDRESSDETAIL,DEL,AUTH,NAME,FILENAME, NEWFILENAME
+	FROM BUSINESS
+	WHERE MEMBERID=#{memberid}
+	</select>
+
+	<!-- 회원정보 수정 -->
+	<update id="updateBuspage">
+	UPDATE BUSINESS
+	SET COMPANYID=#{companyid}, NAME=#{name},COMADDRESS=#{comaddress}, ADDRESSDETAIL=#{addressdetail}, PWD=#{pwd}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}
+	WHERE MEMBERID=#{memberid}
+	</update>
+
+
   </mapper>

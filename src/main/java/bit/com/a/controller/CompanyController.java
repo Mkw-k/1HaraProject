@@ -49,7 +49,7 @@ public class CompanyController {
 		System.out.println("아이디:" + dto.getMemberid() + "," + dto.getCompanyname());
 		if(dto.getMemberid().equals("") || dto.getCompanyname().equals("")){
 			/* return "company/companywrite"; */
-			return "company/companyupdate";
+			return "company/companywrite";
 		}
 		return "redirect:/recuruitlist.do";
 	}
