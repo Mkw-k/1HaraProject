@@ -16,7 +16,7 @@ public class JobtalkDto implements Serializable{
 	private String wdate;	// 작성일
 	
 	private int del;		// 삭제
-	private int jobtalk_readcount;	// 조회수
+	private int jobtalk_readcount;	// 댓글수
 	
 	public JobtalkDto() {
 	}
@@ -116,6 +116,15 @@ public class JobtalkDto implements Serializable{
 		this.jobtalk_readcount = jobtalk_readcount;
 	}
 
+	@Override
+	public String toString() {
+		return "JobtalkDto [jobtalkseq=" + jobtalkseq + ", memberid=" + memberid + ", jobtalk_ref=" + jobtalk_ref
+				+ ", jobtalk_step=" + jobtalk_step + ", jobtalk_depth=" + jobtalk_depth + ", jobtalk_title="
+				+ jobtalk_title + ", jobtalk_content=" + jobtalk_content + ", wdate=" + wdate + ", del=" + del
+				+ ", jobtalk_readcount=" + jobtalk_readcount + "]";
+	}
+
+	
 	
 	
 }

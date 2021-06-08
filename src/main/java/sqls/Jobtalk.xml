@@ -14,11 +14,11 @@
  
 <select id="Jobtalklist" parameterType="bit.com.a.dto.JobtalkParam" 
 	resultType="bit.com.a.dto.JobtalkDto">
-	SELECT JOBTALKSEQ, MEMBERID, JOBTALK_REF, JOBTALK_STEP, JOBTALK_DEPTH, JOBTALK_TITLE, JOBTALK_CONTENT, WDATE, DEL, JOBTALK_READCOUNT
-	FROM (SELECT ROW_NUMBER()OVER(ORDER BY JOBTALK_REF DESC, JOBTALK_STEP ASC) AS RNUM,
-			JOBTALKSEQ, MEMBERID, JOBTALK_REF, JOBTALK_STEP, JOBTALK_DEPTH, JOBTALK_TITLE, JOBTALK_CONTENT, WDATE, DEL, JOBTALK_READCOUNT
+	SELECT JOBTALKSEQ, MEMBERID, JOBTALK_REF, JOBTALK_TITLE, JOBTALK_CONTENT, WDATE, DEL, JOBTALK_READCOUNT
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY JOBTALK_REF DESC) AS RNUM,
+			JOBTALKSEQ, MEMBERID, JOBTALK_REF, JOBTALK_TITLE, JOBTALK_CONTENT, WDATE, DEL, JOBTALK_READCOUNT
 		  FROM JOBTALK
-		  WHERE 1=1
+		  WHERE 1=1 AND DEL = 0
 		  <if test="choice != null and choice != ''
 		  		and search != null and search != ''">
 		  	  <!-- AND DEL=0 -->		
@@ -32,7 +32,7 @@
 			  		AND MEMBERID=#{search}  
 			  </if>	
 		  </if>
-		ORDER BY JOBTALK_REF DESC, JOBTALK_STEP ASC)
+		ORDER BY JOBTALK_REF DESC)
 	WHERE RNUM BETWEEN ${start} AND ${end}
 </select> 
  
@@ -57,14 +57,14 @@
 </select>
 
 <insert id="writeJobtalk" parameterType="bit.com.a.dto.JobtalkDto">
-	INSERT INTO JOBTALK(SEQ, ID, REF, STEP, DEPTH, TITLE, CONTENT, WDATE, DEL, READCOUNT)
-	VALUES(SEQ_BBS.NEXTVAL, #{id}, (SELECT NVL(MAX(REF)+1, 0) FROM JOBTALK), 0, 0, 
-			#{title}, #{content}, SYSDATE, 0, 0)
+	INSERT INTO JOBTALK(JOBTALKSEQ, MEMBERID, JOBTALK_REF, JOBTALK_TITLE, JOBTALK_CONTENT, WDATE, DEL, JOBTALK_READCOUNT)
+	VALUES(JOBTALKSEQ_JOBTALK.NEXTVAL, #{memberid}, (SELECT NVL(MAX(JOBTALK_REF)+1, 0) FROM JOBTALK), 
+			#{jobtalk_title}, #{jobtalk_content}, SYSDATE, 0, 0)
 </insert>
 
 <select id="getJobtalk" parameterType="java.lang.Integer"
 	resultType="bit.com.a.dto.JobtalkDto">
-	SELECT JOBTALKSEQ, MEMBERID, JOBTALK_REF, JOBTALK_STEP, JOBTALK_DEPTH, JOBTALK_TITLE, JOBTALK_CONTENT, WDATE, DEL, JOBTALK_READCOUNT 
+	SELECT JOBTALKSEQ, MEMBERID, JOBTALK_REF, JOBTALK_TITLE, JOBTALK_CONTENT, WDATE, DEL, JOBTALK_READCOUNT 
 	FROM JOBTALK
 	WHERE JOBTALKSEQ=#{jobtalkseq}
 </select>
@@ -75,39 +75,18 @@
 	WHERE JOBTALKSEQ=#{jobtalkseq}
 </update>
 
-<!-- 답글 -->
-<update id="replyJobtalkUpdate"
-	parameterType="bit.com.a.dto.BbsDto">
-	UPDATE JOBTALK
-	SET STEP=STEP+1
-	WHERE REF=(SELECT REF FROM JOBTALK WHERE SEQ=#{seq})
-		AND STEP>(SELECT STEP FROM JOBTALK WHERE SEQ=#{seq})		
-</update>
-
-<insert id="replyJobtalkInsert"
-	parameterType="bit.com.a.dto.JobtalkDto">
-	INSERT INTO JOBTALK
-		(SEQ, ID, REF, STEP, DEPTH, 
-		TITLE, CONTENT, WDATE, DEL, READCOUNT)
-	VALUES(SEQ_JOBTALK.NEXTVAL, #{id},
-		(SELECT REF FROM JOBTALK WHERE SEQ=#{seq}),
-		(SELECT STEP FROM JOBTALK WHERE SEQ=#{seq})+1,
-		(SELECT DEPTH FROM JOBTALK WHERE SEQ=#{seq})+1,
-		#{title}, #{content}, SYSDATE,
-		0, 0)	
-</insert>
 
 <update id="deleteJobtalk" parameterType="java.lang.Integer">
 	UPDATE JOBTALK
 	SET DEL=1
-	WHERE SEQ=#{seq}
+	WHERE JOBTALKSEQ=#{jobtalkseq}
 </update>
 
 <update id="updateJobtalk"
 	parameterType="bit.com.a.dto.JobtalkDto">
 		UPDATE JOBTALK SET
-		TITLE=#{title}, CONTENT=#{content}, WDATE=SYSDATE
-		WHERE SEQ=#{seq}
+		JOBTALK_TITLE=#{jobtalk_title}, JOBTALK_CONTENT=#{jobtalk_content}, WDATE=SYSDATE
+		WHERE JOBTALKSEQ=#{jobtalkseq}
 </update>
 
 </mapper>
