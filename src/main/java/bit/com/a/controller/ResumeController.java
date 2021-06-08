@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.ResumeDto;
+import bit.com.a.dto.ResumeParam;
+import bit.com.a.dto.ApplyDto;
 import bit.com.a.dto.Resume_ActivityDto;
 import bit.com.a.dto.Resume_ActivityVo;
 import bit.com.a.dto.Resume_AwardDto;
@@ -33,6 +37,7 @@ import bit.com.a.dto.Resume_LanguageDto;
 import bit.com.a.dto.Resume_LanguageVo;
 import bit.com.a.dto.Resume_LicenseDto;
 import bit.com.a.dto.Resume_licenseVo;
+import bit.com.a.service.RecruitService;
 import bit.com.a.service.ResumeService;
 import bit.com.a.util.PdsUtil;
 
@@ -42,18 +47,46 @@ public class ResumeController {
 
 	@Autowired
 	ResumeService service;
+	
+	 @Autowired
+	 RecruitService recruitservice;
 
 
 	@RequestMapping(value = "resumeMain.do", method = {RequestMethod.GET, RequestMethod.POST})
 
-	public String goResumeMain(Model model) {
+	public String goResumeMain(Model model, String memberid) {
 		
+		System.out.println(memberid);
 		//이력서 리스트
-		List<ResumeDto> resumelist = service.getresume();
-		List<ResumeDto> resumeNolist = service.getNoresume();
+		List<ResumeDto> resumelist = service.getresume(memberid);
+		List<ResumeDto> resumeNolist = service.getNoresume(memberid);
+		List<ApplyDto> applylist = service.getApplyList(memberid);
+		System.out.println("7777777777777777777777777777777777777777777"+applylist);
+		List<ResumeParam> param = new ArrayList<ResumeParam>();
+		
+		for(int i=0; i<applylist.size();i++) {
+			
+			ResumeParam pa = new ResumeParam();
+			
+			pa.setJobseq(applylist.get(i).getJobseq());
+			pa.setResumeseq(applylist.get(i).getResumeseq());
+			pa.setApplydate(applylist.get(i).getApplydate());
+			
+			int jobseq = applylist.get(i).getJobseq();
+			String jobtitle = service.getJobtitle(jobseq);
+			pa.setJobtitle(jobtitle);
+			
+			int resumeseq = applylist.get(i).getResumeseq();
+			String resumetitle = service.getResumeTitle(resumeseq);
+			pa.setResumetitle(resumetitle);
+			
+			param.add(pa);
+		}
+		
 		
 		model.addAttribute("resumelist", resumelist);
 		model.addAttribute("resumeNolist", resumeNolist);
+		model.addAttribute("param", param);
 
 		return "resume/resumeMain";
 	}
@@ -304,10 +337,35 @@ public class ResumeController {
 		}
 		
 		//이력서 리스트
-		List<ResumeDto> resumelist = service.getresume();
-		List<ResumeDto> resumeNolist = service.getNoresume();
+		List<ResumeDto> resumelist = service.getresume(dto.getMemberid());
+		List<ResumeDto> resumeNolist = service.getNoresume(dto.getMemberid());
+		List<ApplyDto> applylist = service.getApplyList(dto.getMemberid());
+		System.out.println("7777777777777777777777777777777777777777777"+applylist);
+		List<ResumeParam> param = new ArrayList<ResumeParam>();
+		
+		for(int i=0; i<applylist.size();i++) {
+			
+			ResumeParam pa = new ResumeParam();
+			
+			pa.setJobseq(applylist.get(i).getJobseq());
+			pa.setResumeseq(applylist.get(i).getResumeseq());
+			pa.setApplydate(applylist.get(i).getApplydate());
+			
+			int jobseq = applylist.get(i).getJobseq();
+			String jobtitle = service.getJobtitle(jobseq);
+			pa.setJobtitle(jobtitle);
+			
+			int resumeseqs = applylist.get(i).getResumeseq();
+			String resumetitle = service.getResumeTitle(resumeseqs);
+			pa.setResumetitle(resumetitle);
+			
+			param.add(pa);
+		}
+		
+		
 		model.addAttribute("resumelist", resumelist);
 		model.addAttribute("resumeNolist", resumeNolist);
+		model.addAttribute("param", param);
 		
 		return "resume/resumeMain";
 	}
@@ -340,7 +398,7 @@ public class ResumeController {
 	}
 	
 	@RequestMapping(value = "deleteResume.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String deleteResume(int seq, Model model) {
+	public String deleteResume(int seq, String memberid, Model model) {
 		
 		//이력서 리스트
 
@@ -363,10 +421,35 @@ public class ResumeController {
 		System.out.println(h);
 		
 		//이력서 리스트
-		List<ResumeDto> resumelist = service.getresume();
-		List<ResumeDto> resumeNolist = service.getNoresume();
+		List<ResumeDto> resumelist = service.getresume(memberid);
+		List<ResumeDto> resumeNolist = service.getNoresume(memberid);
+		List<ApplyDto> applylist = service.getApplyList(memberid);
+		System.out.println("7777777777777777777777777777777777777777777"+applylist);
+		List<ResumeParam> param = new ArrayList<ResumeParam>();
+		
+		for(int i=0; i<applylist.size();i++) {
+			
+			ResumeParam pa = new ResumeParam();
+			
+			pa.setJobseq(applylist.get(i).getJobseq());
+			pa.setResumeseq(applylist.get(i).getResumeseq());
+			pa.setApplydate(applylist.get(i).getApplydate());
+			
+			int jobseq = applylist.get(i).getJobseq();
+			String jobtitle = service.getJobtitle(jobseq);
+			pa.setJobtitle(jobtitle);
+			
+			int resumeseq = applylist.get(i).getResumeseq();
+			String resumetitle = service.getResumeTitle(resumeseq);
+			pa.setResumetitle(resumetitle);
+			
+			param.add(pa);
+		}
+		
+		
 		model.addAttribute("resumelist", resumelist);
 		model.addAttribute("resumeNolist", resumeNolist);
+		model.addAttribute("param", param);
 
 		return "resume/resumeMain";
 
@@ -639,13 +722,64 @@ public class ResumeController {
 		}
 		}
 		//이력서 리스트
-		List<ResumeDto> resumelist = service.getresume();
-		List<ResumeDto> resumeNolist = service.getNoresume();
+		List<ResumeDto> resumelist = service.getresume(dto.getMemberid());
+		List<ResumeDto> resumeNolist = service.getNoresume(dto.getMemberid());
+		List<ApplyDto> applylist = service.getApplyList(dto.getMemberid());
+		System.out.println("7777777777777777777777777777777777777777777"+applylist);
+		List<ResumeParam> param = new ArrayList<ResumeParam>();
+		
+		for(int i=0; i<applylist.size();i++) {
+			
+			ResumeParam pa = new ResumeParam();
+			
+			pa.setJobseq(applylist.get(i).getJobseq());
+			pa.setResumeseq(applylist.get(i).getResumeseq());
+			pa.setApplydate(applylist.get(i).getApplydate());
+			
+			int jobseq = applylist.get(i).getJobseq();
+			String jobtitle = service.getJobtitle(jobseq);
+			pa.setJobtitle(jobtitle);
+			
+			int resumeseqs = applylist.get(i).getResumeseq();
+			String resumetitle = service.getResumeTitle(resumeseqs);
+			pa.setResumetitle(resumetitle);
+			
+			param.add(pa);
+		}
+		
+		
 		model.addAttribute("resumelist", resumelist);
 		model.addAttribute("resumeNolist", resumeNolist);
+		model.addAttribute("param", param);
 		
 		return "resume/resumeMain";
 	}
+	
+	@RequestMapping(value = "jobApply.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String getMyResume(int jobseq, int resumeseq, String memberid, Model model) {
+		
+		ApplyDto param = new ApplyDto();
+		
+		param.setJobseq(jobseq);
+		param.setMemberid(memberid);
+		param.setResumeseq(resumeseq);
+		
+		RecruitDto dto = recruitservice.getRecruitListOne(jobseq);
+		List<String> list = recruitservice.getBsnameForDetail(jobseq);
+		List<ResumeDto> resumelist = service.getresume(memberid);
+		
+	
+	    dto.setBusname(list);
+		//이력서 리스트
+		boolean b = service.addApply(param);
+		
+		 model.addAttribute("dto", dto);
+		 model.addAttribute("resumelist", resumelist);
+		
+		return "recruit/recruitDetail";
+
+	}
+	
 
 
 }

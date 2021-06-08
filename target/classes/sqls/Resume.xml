@@ -76,10 +76,11 @@ INTO LANGUAGE (LANSEQ, RESUMESEQ, LAN_KIND, LAN_EXAM, LAN_SCORE, LAN_GRADE, LAN_
 	        
 </insert>
 
-<select id="getresume" resultType="bit.com.a.dto.ResumeDto">
+<select id="getresume" parameterType="java.lang.String" resultType="bit.com.a.dto.ResumeDto">
 SELECT RESUMESEQ, RESUMETITLE
 FROM RESUME
 WHERE RESUME_STATUS LIKE '%YES%'
+AND MEMBERID = #{memberid}
 ORDER BY RESUMESEQ DESC
 </select>
 
@@ -176,10 +177,11 @@ FROM LANGUAGE
 WHERE RESUMESEQ=#{seq}
 </delete>
 
-<select id="getNoresume" resultType="bit.com.a.dto.ResumeDto">
+<select id="getNoresume" parameterType="java.lang.String" resultType="bit.com.a.dto.ResumeDto">
 SELECT RESUMESEQ, RESUMETITLE, PROGRESS
 FROM RESUME
 WHERE RESUME_STATUS LIKE '%NO%'
+AND MEMBERID = #{memberid}
 ORDER BY RESUMESEQ DESC
 </select>
 
@@ -243,6 +245,31 @@ WHERE RESUMESEQ=#{resumeseq}
 WHERE RESUMESEQ=#{resumeseq}
 </update>
 
+<insert id="addApply" parameterType="bit.com.a.dto.ResumeParam">
+INSERT 
+INTO APPLY (APPLYSEQ, MEMBERID, JOBSEQ, RESUMESEQ, APPLYDATE)
+VALUES (APPLY_SEQ.NEXTVAL, #{memberid}, #{jobseq}, #{resumeseq}, SYSDATE)
+</insert>
+
+<select id="getApplyList" parameterType="java.lang.String" resultType="bit.com.a.dto.ApplyDto">
+SELECT APPLYSEQ, MEMBERID, JOBSEQ, RESUMESEQ, APPLYDATE
+FROM APPLY
+WHERE MEMBERID = #{memberid}
+ORDER BY APPLYDATE DESC
+</select>
+
+<select id="getJobtitle" parameterType="java.lang.Integer" resultType="java.lang.String">
+SELECT JOBTITLE
+FROM JOB
+WHERE JOBSEQ=#{jobseq}
+</select>
+
+
+<select id="getResumeTitle" parameterType="java.lang.Integer" resultType="java.lang.String">
+SELECT RESUMETITLE
+FROM RESUME
+WHERE RESUMESEQ=#{resumeseq}
+</select>
 
 </mapper>    
     

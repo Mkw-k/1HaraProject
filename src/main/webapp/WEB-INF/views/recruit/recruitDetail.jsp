@@ -1,3 +1,5 @@
+<%@page import="bit.com.a.dto.ResumeDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
@@ -6,7 +8,13 @@
 <%
 RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
 
-%>    
+%>
+
+<%
+List<ResumeDto> resumelist =(List<ResumeDto>) request.getAttribute("resumelist");
+System.out.println("resumelist" +resumelist);
+%>	    
+
 <!DOCTYPE html>
 <html>
 
@@ -19,7 +27,33 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
   <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
   <!-- 카카오맵스 -->
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=685fcbb766340d7c8812f4e0a29a6661&libraries=services"></script>
+  
+  <!-- 입사지원 모달 -->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
+
+<style>
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+</style>
 
 <body>
 
@@ -35,10 +69,77 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
         </div>
         <div class="col-md-4 text-right" style="">
           <a class="btn btn-secondary" href="javascript:jobFavorite(${dto.jobSeq })"><i class="fa fa-star fa-fw fa-1x py-1"></i></a>
-          <a class="btn btn-secondary" href="#">입사지원</a>
+          <%-- <a class="btn btn-secondary" href="javascript:jobApply(${dto.jobSeq })" data-target="#squarespaceModal">입사지원</a> --%>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">입사지원</button>
           <a class="btn btn-secondary" href="javascript:updateRecruit(${dto.jobSeq })">수정하기</a>
           <a class="btn btn-secondary" href="javascript:deleteRecruit(${dto.jobSeq })">삭제</a></div>
        </div>
+       
+       
+
+       
+       
+								 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								  <div class="modal-dialog" role="document" style="width: -webkit-fill-available;">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <h5 class="modal-title" id="exampleModalLabel" style="width: 700px;">입사지원</h5>
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">×</span>
+								        </button>
+								      </div>
+								      <div class="modal-body">
+								       <table>
+								       <colgroup>
+								       <col width="400"><col width="50"> 
+											<tr><td colspan="2">이력서list</td></tr>
+										<%		
+										for(int i=0; i<resumelist.size(); i++){
+										%>	
+											
+											<tr>
+											<td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a></td>
+											<td><button type="button" class="btn btn-primary" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>')">지원하기</button></td>
+											</tr> 
+										<%
+										}
+										%>
+								
+									</table>
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
           
       </div>
       <hr class="mb-12">
@@ -340,7 +441,18 @@ function jobFavorite(sjobSeqeq) {
 	
 }
 
+function jobApply(jobseq, memberid, resumeseq) {
+	alert("jobApply");
+	alert(jobseq);
+	alert(memberid);
+	alert(resumeseq);
+	
+	location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
+	
+}
+
 </script>
+
 	
 
 </body>

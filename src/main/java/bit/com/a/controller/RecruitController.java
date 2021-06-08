@@ -21,7 +21,9 @@ import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.CalendarParam;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
+import bit.com.a.dto.ResumeDto;
 import bit.com.a.service.RecruitService;
+import bit.com.a.service.ResumeService;
 import bit.com.a.util.UtilEx;
 
 @Controller
@@ -29,6 +31,9 @@ public class RecruitController {
 
    @Autowired
    RecruitService service;
+   
+   @Autowired
+   ResumeService resumeservice;
 
 //TODO채용공고 리스트로 이동
    @RequestMapping(value = "recuruitlist.do", method = RequestMethod.GET)
@@ -402,11 +407,12 @@ public class RecruitController {
 
 //TODO디테일 창으로 이동
    @RequestMapping(value = "RecruitDetail.do", method = RequestMethod.GET)
-   public String RecruitDetail(int jobseq, Model model) {
+   public String RecruitDetail(int jobseq, String memberid, Model model) {
       model.addAttribute("doc_title", "채용공고");
 
       System.out.println("seq:"+jobseq);
       RecruitDto dto = service.getRecruitListOne(jobseq);
+      List<ResumeDto> resumelist = resumeservice.getresume(memberid);
 
       System.out.println(dto.toString());
 
@@ -419,6 +425,8 @@ public class RecruitController {
       System.out.println("변경된 Dto :"+dto.toString());
 
       model.addAttribute("dto", dto);
+      model.addAttribute("resumelist", resumelist);
+      
       return "recruit/recruitDetail";
    }
 
