@@ -28,9 +28,16 @@
 	        FROM BUSCODE3
 	        WHERE BUSCODE = #{item} )
 	        )
-
-
 		</foreach>
+
+		<if test='mgDetail != null'>
+		   INTO MGDETAIL (mgdetailseq, jobseq, detailAdress1, detailAdress2,  mgName, mgEmail, mgPhone)
+		   VALUES (mgdetail_SEQ.nextval, JOB_SEQ.nextval,
+			<foreach collection="mgDetail" item="item" index="index" separator="," open="" close=")">
+			#{item}
+	    	</foreach>
+		</if>
+
 	SELECT 1
 	FROM DUAL
 
@@ -39,37 +46,37 @@
 
 
 <delete id="deleteBuscode" parameterType="Integer">
-	DELETE FROM BSCODSTACK
-	WHERE JOBSEQ = ${jobSeq}
+   DELETE FROM BSCODSTACK
+   WHERE JOBSEQ = ${jobSeq}
 </delete>
 
 <insert id="insertBuscode" parameterType="java.util.HashMap">
-	INSERT ALL
-	<foreach collection="arrayParam" item="item" index="index" separator="" open="" close="">
-		INTO BSCODSTACK (BSCODSTACKSEQ, JOBSEQ, RBUSCODE, BUSCODE)
-		VALUES (BSCODSTACK_SEQ.nextval, #{dto.jobSeq } , #{item } ,
-			(SELECT BUSNAME
-			FROM BUSCODE3
-			WHERE BUSCODE = #{item } )
-			)
+   INSERT ALL
+   <foreach collection="arrayParam" item="item" index="index" separator="" open="" close="">
+      INTO BSCODSTACK (BSCODSTACKSEQ, JOBSEQ, RBUSCODE, BUSCODE)
+      VALUES (BSCODSTACK_SEQ.nextval, #{dto.jobSeq } , #{item } ,
+         (SELECT BUSNAME
+         FROM BUSCODE3
+         WHERE BUSCODE = #{item } )
+         )
 
-	</foreach>
-	SELECT 1
-	FROM DUAL
+   </foreach>
+   SELECT 1
+   FROM DUAL
 
 </insert>
 
 
 <update id="updateRecruit" parameterType="java.util.HashMap">
-		UPDATE JOB
+      UPDATE JOB
 
-		SET JOBTITLE=#{dto.jobTitle} , JOBCONTENT=#{dto.jobContent} , AREA1NAME=#{dto.area1Name}, AREA2NAME=#{dto.area2Name},
-					JOBVOLUMN=#{dto.jobVolumn}, SALARY=#{dto.salary}, JOBSTART=TO_DATE(#{dto.jobStart}, 'YYYY-MM-DD HH24:MI:SS'), JOBEND=TO_DATE(#{dto.jobEnd}, 'YYYY-MM-DD HH24:MI:SS'),
-					EMP_TYPE=#{dto.emp_Type}, EDUCATION=#{dto.education} , CAREER_TYPE=#{dto.career_Type}
+      SET JOBTITLE=#{dto.jobTitle} , JOBCONTENT=#{dto.jobContent} , AREA1NAME=#{dto.area1Name}, AREA2NAME=#{dto.area2Name},
+               JOBVOLUMN=#{dto.jobVolumn}, SALARY=#{dto.salary}, JOBSTART=TO_DATE(#{dto.jobStart}, 'YYYY-MM-DD HH24:MI:SS'), JOBEND=TO_DATE(#{dto.jobEnd}, 'YYYY-MM-DD HH24:MI:SS'),
+               EMP_TYPE=#{dto.emp_Type}, EDUCATION=#{dto.education} , CAREER_TYPE=#{dto.career_Type}
 
 
 
-		WHERE JOBSEQ = #{dto.jobSeq}
+      WHERE JOBSEQ = #{dto.jobSeq}
 
 
 </update>
@@ -97,12 +104,12 @@
                J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME
          FROM JOB J, BUSINESS C
          WHERE J.COMPANYID = C.MEMBERID
-		<!-- AND J.DEL =0 -->
+      <!-- AND J.DEL =0 -->
          <if test="choice != null and choice != ''and search != null and search != ''">
-			 <if test="choice == 'title'">
-	            AND J.JOBTITLE LIKE '%'||#{search}||'%'</if>
-			 <if test="choice == 'companyname'">
-	            AND C.COMPANYNAME LIKE '%'||#{search}||'%'</if>
+          <if test="choice == 'title'">
+               AND J.JOBTITLE LIKE '%'||#{search}||'%'</if>
+          <if test="choice == 'companyname'">
+               AND C.COMPANYNAME LIKE '%'||#{search}||'%'</if>
          </if>
          )J
    <!-- 회사이름가져오기 -->
@@ -120,39 +127,39 @@
    <!-- 직종네임가져오기 -->
    JOIN bscodstack K
    ON J.JOBSEQ = K.JOBSEQ
-	WHERE 1=1
-	<!-- 학력조건 -->
+   WHERE 1=1
+   <!-- 학력조건 -->
    <if test='education != 0'>
-  	<![CDATA[  AND J.EDUCATION <= ${education}  ]]> 
+     <![CDATA[  AND J.EDUCATION <= ${education}  ]]>
    </if>
-   
+
    <!-- 경력조건 -->
    <choose>
-		<when test = "CareerEnd == 0 ">
-			<![CDATA[AND j.career_type >= ${param.careerStart}]]> 
-		</when>
-		<when test = "CareerStart == 0">
-			<![CDATA[AND j.career_type <= ${param.careerEnd}]]> 
-		</when>
-		<otherwise>
-		AND j.career_type BETWEEN ${param.careerStart} AND ${param.careerEnd}
-		</otherwise>
-	</choose>
-    
+      <when test = "CareerEnd == 0 ">
+         <![CDATA[AND j.career_type >= ${param.careerStart}]]>
+      </when>
+      <when test = "CareerStart == 0">
+         <![CDATA[AND j.career_type <= ${param.careerEnd}]]>
+      </when>
+      <otherwise>
+      AND j.career_type BETWEEN ${param.careerStart} AND ${param.careerEnd}
+      </otherwise>
+   </choose>
+
     <!-- 지역코드 2번으로 검색 -->
-    		<if test="arrAreacode != null and arrAreacode != ''">
-		<foreach collection="arrAreacode" item="item" index="index" separator="OR" open="AND(" close=")">
-	J.AREA2NAME = #{item}
-		</foreach>
-			</if>
-	<!-- 직무코드2번으로 검색 OR조건 -->
-	 	<if test="arrBusi != null and arrBusi != ''">
-	   <foreach collection="arrBusi" item="item" index="index" separator="OR" open="AND(" close=" ) ">
-	K.RBUSCODE = #{item}
-	   </foreach>
-	 	</if>
-	
-	ORDER BY J.JOBSEQ DESC
+          <if test="arrAreacode != null and arrAreacode != ''">
+      <foreach collection="arrAreacode" item="item" index="index" separator="OR" open="AND(" close=")">
+   J.AREA2NAME = #{item}
+      </foreach>
+         </if>
+   <!-- 직무코드2번으로 검색 OR조건 -->
+       <if test="arrBusi != null and arrBusi != ''">
+      <foreach collection="arrBusi" item="item" index="index" separator="OR" open="AND(" close=" ) ">
+   K.RBUSCODE = #{item}
+      </foreach>
+       </if>
+
+   ORDER BY J.JOBSEQ DESC
 
 </select>
 
@@ -227,7 +234,7 @@
 
 <!-- 최종 상세 검색 리스트 가져오기 -->
 <select id="getRecruitSearchList" parameterType="java.util.HashMap" resultType="bit.com.a.dto.RecruitDto">
-   SELECT DISTINCT J.RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+   SELECT DISTINCT RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
                J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
                J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL,
          C.COMPANYNAME, E.EDUNAME, T.EMP_NAME, P.CAREER_DESC
@@ -237,12 +244,12 @@
                J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME
          FROM JOB J, BUSINESS C
          WHERE J.COMPANYID = C.MEMBERID
-		<!-- AND J.DEL =0 -->
+      <!-- AND J.DEL =0 -->
          <if test="choice != null and choice != ''and search != null and search != ''">
-			 <if test="choice == 'title'">
-	            AND J.JOBTITLE LIKE '%'||#{search}||'%'</if>
-			 <if test="choice == 'companyname'">
-	            AND C.COMPANYNAME LIKE '%'||#{search}||'%'</if>
+          <if test="choice == 'title'">
+               AND J.JOBTITLE LIKE '%'||#{search}||'%'</if>
+          <if test="choice == 'companyname'">
+               AND C.COMPANYNAME LIKE '%'||#{search}||'%'</if>
          </if>
          )J
    <!-- 회사이름가져오기 -->
@@ -260,39 +267,39 @@
    <!-- 직종네임가져오기 -->
    JOIN bscodstack K
    ON J.JOBSEQ = K.JOBSEQ
-	WHERE 1=1
-	<!-- 학력조건 -->
+   WHERE 1=1
+   <!-- 학력조건 -->
    <if test='education != 0'>
-  	<![CDATA[  AND J.EDUCATION <= ${education}  ]]> 
+     <![CDATA[  AND J.EDUCATION <= ${education}  ]]>
    </if>
-   
+
    <!-- 경력조건 -->
    <choose>
-		<when test = "CareerEnd == 0 ">
-			<![CDATA[AND j.career_type >= ${param.careerStart}]]> 
-		</when>
-		<when test = "CareerStart == 0">
-			<![CDATA[AND j.career_type <= ${param.careerEnd}]]> 
-		</when>
-		<otherwise>
-		AND j.career_type BETWEEN ${param.careerStart} AND ${param.careerEnd}
-		</otherwise>
-	</choose>
-    
+      <when test = "CareerEnd == 0 ">
+         <![CDATA[AND j.career_type >= ${param.careerStart}]]>
+      </when>
+      <when test = "CareerStart == 0">
+         <![CDATA[AND j.career_type <= ${param.careerEnd}]]>
+      </when>
+      <otherwise>
+      AND j.career_type BETWEEN ${param.careerStart} AND ${param.careerEnd}
+      </otherwise>
+   </choose>
+
     <!-- 지역코드 2번으로 검색 -->
-    		<if test="arrAreacode != null and arrAreacode != ''">
-		<foreach collection="arrAreacode" item="item" index="index" separator="OR" open="AND(" close=")">
-	J.AREA2NAME = #{item}
-		</foreach>
-			</if>
-	<!-- 직무코드2번으로 검색 OR조건 -->
-	 	<if test="arrBusi != null and arrBusi != ''">
-	   <foreach collection="arrBusi" item="item" index="index" separator="OR" open="AND(" close=" ) ">
-	K.RBUSCODE = #{item}
-	   </foreach>
-	 	</if>
-	AND RNUM BETWEEN ${param.start} AND ${param.end}
-	ORDER BY J.JOBSEQ DESC
+          <if test="arrAreacode != null and arrAreacode != ''">
+      <foreach collection="arrAreacode" item="item" index="index" separator="OR" open="AND(" close=")">
+   J.AREA2NAME = #{item}
+      </foreach>
+         </if>
+   <!-- 직무코드2번으로 검색 OR조건 -->
+       <if test="arrBusi != null and arrBusi != ''">
+      <foreach collection="arrBusi" item="item" index="index" separator="OR" open="AND(" close=" ) ">
+   K.RBUSCODE = #{item}
+      </foreach>
+       </if>
+   AND RNUM BETWEEN ${param.start} AND ${param.end}
+   ORDER BY J.JOBSEQ DESC
 
 </select>
 
@@ -301,12 +308,13 @@
 SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
                J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
                J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.DEL, C.COMPANYNAME, P.CAREER_DESC,
-               E.EDUNAME, T.EMP_NAME
-FROM JOB J, BUSINESS C, EDUCATION E, JOB_CAREERTYPE P, EMPLOYEE_TYPE T
+               E.EDUNAME, T.EMP_NAME, D.detailAdress1, D.detailAdress2, D.mgName, D.mgPhone, D.mgEmail
+FROM JOB J, BUSINESS C, EDUCATION E, JOB_CAREERTYPE P, EMPLOYEE_TYPE T, MGDETAIL D
 WHERE J.COMPANYID = C.MEMBERID AND
      J.EDUCATION = E.EDUCODE AND
      P.CAREER_TYPE = J.CAREER_TYPE AND
      T.EMP_TYPE = J.EMP_TYPE AND
+     J.JOBSEQ = D.JOBSEQ AND
      J.JOBSEQ = ${jobseq}
 </select>
 
@@ -355,7 +363,8 @@ WHERE JOBSEQ = ${jobseq}
 
 </select>
 
-<select id="getCalendarList" parameterType="bit.com.a.dto.RecruitDto"
+<!-- 기존캘린더 -->
+<select id="getCalendarList_1" parameterType="bit.com.a.dto.RecruitDto"
    resultType="bit.com.a.dto.RecruitDto">
 SELECT JOBSEQ, JOBTITLE, JOBCONTENT,
          JOBSTART
@@ -366,6 +375,72 @@ SELECT JOBSEQ, JOBTITLE, JOBCONTENT,
  WHERE RNUM BETWEEN 1 AND 5
 
 </select>
+
+<!-- 5단검색 캘린더 -->
+<select id="getCalendarList" parameterType="java.util.HashMap" resultType="bit.com.a.dto.RecruitDto">
+	SELECT DISTINCT RNUM, J.JOBSEQ , J.JOBTITLE , J.JOBSTART, J.JOBEND, J.DEL
+    
+    FROM (SELECT ROW_NUMBER()OVER(ORDER BY JOBSEQ DESC)AS RNUM, J.JOBSEQ , J.JOBTITLE , J.JOBSTART, J.JOBEND, J.DEL
+         FROM JOB J, BUSINESS C
+         WHERE J.COMPANYID = C.MEMBERID
+      <!-- AND J.DEL =0 -->
+         <if test="choice != null and choice != ''and search != null and search != ''">
+          <if test="choice == 'title'">
+               AND J.JOBTITLE LIKE '%'||#{search}||'%'</if>
+          <if test="choice == 'companyname'">
+               AND C.COMPANYNAME LIKE '%'||#{search}||'%'</if>
+         </if>
+         )J
+   <!-- 회사이름가져오기 -->
+   JOIN BUSINESS C
+   ON J.COMPANYID = C.MEMBERID
+   <!-- 학력조건 가져오기 -->
+   JOIN EDUCATION E
+    ON E.EDUCODE = J.EDUCATION
+   <!-- 고용타입가져오기 -->
+   JOIN EMPLOYEE_TYPE T
+   ON T.EMP_TYPE = J.EMP_TYPE
+   <!-- 경력타입가져오기 -->
+   JOIN JOB_CAREERTYPE P
+   ON P.CAREER_TYPE = J.CAREER_TYPE
+   <!-- 직종네임가져오기 -->
+   JOIN bscodstack K
+   ON J.JOBSEQ = K.JOBSEQ
+   WHERE 1=1
+   <!-- 학력조건 -->
+   <if test='education != 0'>
+     <![CDATA[  AND J.EDUCATION <= ${education}  ]]>
+   </if>
+
+   <!-- 경력조건 -->
+   <choose>
+      <when test = "CareerEnd == 0 ">
+         <![CDATA[AND j.career_type >= ${param.careerStart}]]>
+      </when>
+      <when test = "CareerStart == 0">
+         <![CDATA[AND j.career_type <= ${param.careerEnd}]]>
+      </when>
+      <otherwise>
+      AND j.career_type BETWEEN ${param.careerStart} AND ${param.careerEnd}
+      </otherwise>
+   </choose> 
+
+    <!-- 지역코드 2번으로 검색 -->
+          <if test="arrAreacode != null and arrAreacode != ''">
+      <foreach collection="arrAreacode" item="item" index="index" separator="OR" open="AND(" close=")">
+   J.AREA2NAME = #{item}
+      </foreach>
+         </if>
+   <!-- 직무코드2번으로 검색 OR조건 -->
+       <if test="arrBusi != null and arrBusi != ''">
+      <foreach collection="arrBusi" item="item" index="index" separator="OR" open="AND(" close=" ) ">
+   K.RBUSCODE = #{item}
+      </foreach>
+       </if>
+   AND RNUM BETWEEN ${param.start} AND ${param.end}
+   ORDER BY J.JOBSEQ DESC
+</select>
+
 
 <!-- 지역분류코드1(대분류) 불러오기 : 공고리스트에 데이터 뿌려주기위함 (검색용) -->
 <select id="areacodeListData" resultType="bit.com.a.dto.RecruitParam">
@@ -389,5 +464,23 @@ SELECT JOBSEQ, JOBTITLE, JOBCONTENT,
    WHERE AREA2CODE LIKE ${areacode}||'%'
 </select>
 
+<!-- 채용 담당자 정보 수정  -->
+<update id="mgDetailUpdate" parameterType="bit.com.a.dto.RecruitDto">
+   UPDATE MGDETAIL
+   SET detailAdress1 = #{detailAdress1}, detailAdress2 = #{detailAdress2}, mgName = #{mgName}, mgPhone = #{mgPhone}, mgEmail = #{mgEmail}
+   WHERE JOBSEQ=#{jobSeq}
+</update>
+
+<update id="mgDetailUpdate2" parameterType="bit.com.a.dto.RecruitDto">
+	UPDATE JOB
+	SET AREA1NAME = #{area1Name}, AREA2NAME = #{area2Name}, JOBSTART = #{jobStart}, JOBEND =#{jobEnd}
+	WHERE JOBSEQ = #{jobSeq}
+</update>
+
+<!-- <insert id="favoriteJob">
+	INSERT INTO JOBFAVORITE (JFSEQ, JOBSEQ, MEMBERID)
+	VALUES(JOBFAVORITE_SEQ.NEXTVAL, #{jobSeq}, #{memberid}
+
+</insert> -->
 
 </mapper>

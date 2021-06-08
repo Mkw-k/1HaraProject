@@ -20,7 +20,7 @@ public class RecruitDaoImpl implements RecruitDao{
 
 	@Autowired
 	SqlSession session;
-	
+
 	String ns = "Recruit.";
 
 	@Override
@@ -71,10 +71,10 @@ public class RecruitDaoImpl implements RecruitDao{
 	public List<String> getBsnameForDetail(int jobseq) {
 		return session.selectList(ns+"getBsnameForDetail", jobseq);
 	}
-	
+
 	@Override
-	public List<RecruitDto> getCalendarList(RecruitDto rec) {
-		return session.selectList(ns+"getCalendarList", rec);
+	public List<RecruitDto> getCalendarList(RecruitParam param) {
+		return session.selectList(ns+"getCalendarList", param);
 	}
 
 	@Override
@@ -116,10 +116,29 @@ public class RecruitDaoImpl implements RecruitDao{
 	public int getRecruitCount(Map<String, Object> param) {
 		return session.selectOne(ns+"getRecruitCount", param);
 	}
-	
-	
 
-	
-	
-	
+	@Override
+	public boolean mgDetailUpdate(RecruitDto dto) {
+		return session.update(ns+"mgDetailUpdate", dto)>0?true:false;
+	}
+
+	@Override
+	public boolean mgDetailUpdate2(RecruitDto dto) {
+		return session.update(ns+"mgDetailUpdate2", dto)>0?true:false;
+	}
+
+	@Override
+	public boolean favoriteJob(int jobSeq) {
+		return session.insert(ns+"favoriteJob", jobSeq)>0?true:false;
+	}
+
+	@Override
+	public List<RecruitDto> getCalendarList_1() {
+		return session.selectList(ns + "getCalendarList_1");
+	}
+
+
+
+
+
 }

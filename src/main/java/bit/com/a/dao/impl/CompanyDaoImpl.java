@@ -31,5 +31,11 @@ public class CompanyDaoImpl implements CompanyDao {
 		return n>0?true:false;
 	}
 
+	@Override
+	public boolean companyupdate(CompanyDto dto) {
+		return session.update(ns + "companyupdate", dto)>0? true:false;
+		
+	}
+
 	
 }

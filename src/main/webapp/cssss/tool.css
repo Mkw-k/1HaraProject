@@ -1,0 +1,612 @@
+@charset "utf-8";
+/*
+.File Name	: /content/css/ver_2/svc/tool.css
+.Final Editor	: 김혜선(2016-07-28)
+*/
+
+/*****************************
+	성공취업툴
+*****************************/
+/* button icon */
+.toolBtnIco {content:""; display:inline-block; background:url(/content/images/ver_1/common/tpl_sp_btn.png?v1) no-repeat 0 0; vertical-align:middle;}
+.toolBtnIco.calChk {width:14px; height:10px; background-position:-321px -65px;}
+.toolBtnIco.tipBtnIco {width:14px; height:14px; background-position:-33px -30px;}
+.toolBtnIco.resetBtnIco {width:11px; height:11px; background-position:-290px -65px;}
+.toolBtnIco.closeBtnIco {width:20px; height:20px; background-position:-134px 5px; vertical-align:top;}
+.toolBtnIco.moreBtnIco {width:8px; height:11px; background-position:-334px 0;}
+
+/* gnb */
+.svcuSubTool .svcNav .bgBar {height:100px;}
+.svcuSubTool .svcNav .subToolMn {margin-left:0; left:0;}
+.svcuSubTool .svcNav .subToolMn li {padding:23px 0 17px; width:96px; height:60px;}
+/*.svcuSubTool .svcNav .subToolMn li.subMn_1 {width:100px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_9 {width:90px;}*/
+.svcuSubTool .svcNav .subToolMn li a {padding:40px 0 0; height:20px; background:url(/content/images/ver_1/service/tool/gnb_tool.png?v1) no-repeat 0 -23px; border-left:1px solid #5eabff; font-size:12px; color:#b2d2ff;}
+.svcuSubTool .svcNav .subToolMn li a:hover,
+.svcuSubTool .svcNav .subToolMn li a:active,
+.svcuSubTool .svcNav .subToolMn li.on a {color:#ffffcc;}
+.svcuSubTool .svcNav .subToolMn li.subMn_1 a {background-position:-3px -23px; border-left:0;}
+.svcuSubTool .svcNav .subToolMn li.subMn_1 a:hover,
+.svcuSubTool .svcNav .subToolMn li.subMn_1 a:active,
+.svcuSubTool .svcNav .subToolMn li.subMn_1.on a {background-position:-3px -129px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_2 a {background-position:-108px -23px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_2 a:hover,
+.svcuSubTool .svcNav .subToolMn li.subMn_2 a:active,
+.svcuSubTool .svcNav .subToolMn li.subMn_2.on a {background-position:-108px -129px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_3 a {background-position:-218px -23px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_3 a:hover,
+.svcuSubTool .svcNav .subToolMn li.subMn_3 a:active,
+.svcuSubTool .svcNav .subToolMn li.subMn_3.on a {background-position:-218px -129px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_4 a {background-position:-328px -23px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_4 a:hover,
+.svcuSubTool .svcNav .subToolMn li.subMn_4 a:active,
+.svcuSubTool .svcNav .subToolMn li.subMn_4.on a {background-position:-328px -129px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_5 a {background-position:-438px -23px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_5 a:hover,
+.svcuSubTool .svcNav .subToolMn li.subMn_5 a:active,
+.svcuSubTool .svcNav .subToolMn li.subMn_5.on a {background-position:-438px -129px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_6 a {background-position:-548px -23px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_6 a:hover,
+.svcuSubTool .svcNav .subToolMn li.subMn_6 a:active,
+.svcuSubTool .svcNav .subToolMn li.subMn_6.on a {background-position:-548px -129px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_7 a {background-position:-658px -23px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_7 a:hover,
+.svcuSubTool .svcNav .subToolMn li.subMn_7 a:active,
+.svcuSubTool .svcNav .subToolMn li.subMn_7.on a {background-position:-658px -129px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_8 a {background-position:-768px -23px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_8 a:hover,
+.svcuSubTool .svcNav .subToolMn li.subMn_8 a:active,
+.svcuSubTool .svcNav .subToolMn li.subMn_8.on a {background-position:-768px -129px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_9 a {background-position:-865px -23px; letter-spacing:-2px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_9 a:hover,
+.svcuSubTool .svcNav .subToolMn li.subMn_9 a:active,
+.svcuSubTool .svcNav .subToolMn li.subMn_9.on a {background-position:-865px -129px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_10 a {background-position:-984px -23px; letter-spacing:-2px;}
+.svcuSubTool .svcNav .subToolMn li.subMn_10 a:hover,
+.svcuSubTool .svcNav .subToolMn li.subMn_10 a:active,
+.svcuSubTool .svcNav .subToolMn li.subMn_10.on a {background-position:-984px -129px;}
+
+.svcuSubTool .svcNav .subToolMn li a span {display:inline;}
+
+.artBx .topBx {position:relative; height:70px; background:#fafafa; border-bottom:1px solid #e3e3e3;}
+.artBx .btmBx {padding-top:10px;}
+
+/* 맞춤법 검사 */
+.artBx .topBx .txSpell_1 {padding-top:20px; text-align:center;}
+.artBx .topBx .txSpell_1 strong {font-size:20px; font-weight:bold; color:#333;}
+.artBx .topBx .txSpell_1 .svcBtnIm {margin:-6px 13px 0; width:145px; font-size:13px; font-weight:normal;}
+.artBx .txBx {position:relative; padding:30px;}
+.artBx .txBx textarea, .artBx .txBx .cntWrap {width:100%;/*  padding-right:17px;  */height:270px; background:#fff; font:normal 15px "Malgun Gothic", "맑은고딕", sans-serif; color:#333; line-height:1.6; letter-spacing:-1px; word-break:keep-all; overflow-y:auto; box-sizing:border-box;}
+.artBx .txBx textarea {border:0; resize:none;}
+.artBx .txBx .placeholder {position:absolute; top:30px; left:30px; font-size:15px; color:#999; line-height:1.6;}
+.artBx .txBx .cntWrap {width:958px; height:330px; padding:30px 30px; margin:-30px -30px; background-color:#fafafa; word-break:break-all;}
+.artBx .txBx .cntWrap .checkOff {padding:2px 0; background:url(/content/images/ver_1/service/tool/check_bg.gif) repeat-x 0 bottom; color:#ff0029; cursor:pointer;}
+.artBx .txBx .cntWrap .checkOn {color:#39f; cursor:pointer;}
+.artBx .topBx .txSpell_2 {float:left; padding-top:20px; padding-left:30px; font-size:16px;}
+.artBx .topBx .txSpell_2 .tit {color:#39f; vertical-align:middle;}
+.artBx .topBx .txSpell_2 .tit:after {content:""; display:inline-block; margin-left:12px; margin-right:5px; width:2px; height:17px; background:#e3e3e3; vertical-align:middle;}
+.artBx .topBx .txSpell_2 strong {display:inline-block; max-width:500px; font-weight:bold; color:#666; vertical-align:middle; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.artBx .topBx .txSpell_2 .svcBtnArr {margin-top:4px; margin-left:10px;}
+.artBx .topBx .spellChkTx {float:right; padding-right:30px;}
+.artBx .topBx .spellChkTx strong {display:block; padding:10px 0 5px; font-size:20px; font-weight:bold; color:#333; letter-spacing:-2px;}
+.artBx .topBx .spellChkTx .cmt {display:block;font-size:12px; color:#888; text-align:right;}
+.artBx .topBx .spellChkTx strong em, .artBx .topBx .spellChkTx .cmt em {font-weight:bold; color:#ff0029;}
+.artBx .topBx .spellChkTx strong em {display:inline-block; margin-top:-3px; vertical-align:middle;}
+.artBx .btmBx {overflow:hidden; margin-top:10px;}
+.artBx .btmBx .txByte {float:left; font-size:18px; color:#666; padding-bottom:10px;}
+.artBx .btmBx .txByte > span:before {content:""; display:inline-block; margin:0 15px; width:1px; height:18px; background:#e3e3e3; vertical-align:middle;}
+.artBx .btmBx .txByte em {color:#39f;}
+.artBx .btmBx .btnMmGp {float:right; margin:0;}
+.artBx .btmBx .btnMmGp a {color:#666;}
+.artBx .btnGp  {margin:40px 0; padding:0;}
+.artBx .ntcTx li {padding:3px 0; font-size:12px; color:#888;}
+.artBx .ntcTx li a {color:#888; letter-spacing:-0.2px;}
+/* .artBx .btmBx li em, .artBx .btmBx li em a {color:#06c;} */
+.artBx .innerDep2 {margin-top:80px; padding-top:75px; background:url(/content/images/ver_1/service/bg_slash.png) repeat-x top left;}
+.artBx .help .wrongTx {color:#ff0029;}
+.artBx .help .replaceTx {color:#39f;}
+.artBx .help .ex p, .artBx .help .ex li {padding-bottom:4px;}
+.artBx .help .ex li.first:before {content:"(예)"; display:inline-block; margin-right:5px;}
+.artBx .help .emptylist {padding:30px 0; border-left:0; font-size:16px; text-align:center; color:#888;}
+
+/* 레이어팝업 */
+.svcOpenResume .resumeTit {width:370px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.svcOpenResume .resumeTit a {color:#333;}
+.svcOpenResume .btnFunc .svcBtnPop_2 {width:116px;}
+.svcSpellCheck {border-width:1px;}
+.svcSpellCheck > .lyCnt {padding:20px 30px;}
+.svcSpellCheck .svcTbl {border-top:0;}
+.svcSpellCheck dt, .svcSpellCheck dd {float:left; padding:9px 0;}
+.svcSpellCheck dt {width:18%; color:#333;}
+.svcSpellCheck dd {width:82%;}
+.svcSpellCheck .checkOff {padding:0 0 2px; background:url(/content/images/ver_1/service/tool/check_bg.gif) repeat-x 0 bottom; color:#ff0029;}
+.svcSpellCheck .checkOn {/*margin-right:8px;*/margin:5px 8px 5px 0; color:#39f;}
+.svcSpellCheck .replaceTxt {padding:0 0 8px;} 
+.svcSpellCheck .helpTx {padding:10px; width:100%; height:100px; line-height:1.2; border-top:1px solid #CCC; border-left:1px solid #CCC; border-right:1px solid #ECECEC; border-bottom:1px solid #ECECEC; background:#fff; color:#999; word-break:keep-all; box-sizing:border-box; overflow-y:auto;}
+.svcSpellCheck .svcBtnSel {min-width:49px; width:49px; height:26px; color:#333; line-height:1.4;}
+.svcSpellCheck .replaceTxt .svcBtnSel {height:22px;}
+.svcSpellCheck .devPrdtInqryInput + .svcBtnSel {margin-left:5px;}
+
+/* 글자수 체크 */
+.artBx .topBx .txTxcount {padding-top:25px; font-size:16px; color:#333; text-align:center;}
+.artBx .topBx .txTxcount > span:before {content:""; display:inline-block; margin:-2px 20px 0; width:1px; height:16px; background:#e3e3e3; vertical-align:middle;}
+.artBx .topBx .txTxcount strong {display:inline-block; margin:-5px 3px 0 5px; font-size:24px; font-weight:normal; color:#39f; vertical-align:middle;}
+.artBx .topBx .txTxcount .byte {font-family:tahoma, sans-serif; color:#999; letter-spacing:0;}
+.artBx .topBx .txTxcount .byte:before {content:""; display:inline-block; margin:-2px 13px 0; height:16px; background:none; border-left:1px dotted #ccc; vertical-align:middle;}
+.artBx .topBx .txTxcount .byte strong {color:#666;}
+.svcuSecTextC .btnGp {margin-top:15px; text-align:right;}
+
+/* 학점변환 */
+.pointBx .inputP, .pointBx .outputP {position:relative; float:left;}
+.pointBx .inputP {width:430px; background:#fff; }
+.pointBx .outputP {padding-left:8px; width:519px; background:#f6f7f7; border-left:1px solid #e8e8e8;}
+.pointBx .wrap {padding:50px;}
+.pointBx .tit {display:block; margin-bottom:20px; font-size:16px; font-weight:bold; color:#333;}
+.pointBxEng .inputP {width:519px;}
+.pointBxEng .outputP {width:430px;}
+.pointBxEng .svcBtnPoint {margin-left:15px;}
+.artBx .pointBx .formGp .inner {width:49%;}
+.artBx .pointBxEng .formGp .inner {width:100%;}
+.artBx .pointBxEng .formGp .innerEng .lbEng {display:inline-block; width:135px; letter-spacing:0;}
+.pointBx .icnSvcPointArr {position:absolute; left:-1px; top:36px; width:21px; height:41px; background-position:-479px -144px;}
+.svcBtnPoint {margin-left:2px; width:70px; height:34px; font-size:14px; font-weight:normal;}
+.artBx .pointBx .formGp .slash {padding:0 5px;}
+.pointBx .svcSltBx label {top:3px;}
+
+/* 자소서 자동완성 */
+.svcTab .lst {position:absolute; left:0;}
+.svcuSubTool .cont_dep2 {clear:both; padding:30px 0 0; overflow:hidden;}
+.svcuSubTool .cont_dep2 .hdBx {padding-bottom:0;}
+.svcuSubTool .tplPagination {padding:20px 0;}
+.svcuSubTool .cont_dep2 .btnSel {display:block; position:absolute; bottom:10px; right:0;}
+.svcuSubTool .cont_dep2 .btnSel li {position:relative; display:inline-block; margin-left:7px; padding-left:10px;}
+.svcuSubTool .cont_dep2 .btnSel li:before {content:""; display:inline-block; position:absolute; top:5px; left:0; width:1px; height:10px; background:#ccc;}
+.svcuSubTool .cont_dep2 .btnSel li:first-child:before {margin-left:0; padding-left:0; width:0; background:none;}
+.svcuSubTool .cont_dep2 .btnSel li a {padding:0 2px; height:19px; color:#666; font-family:gulim, "굴림"; font-size:12px; font-weight:bold; letter-spacing:0;}
+.svcuSubTool .cont_dep2 .btnSel li a.on {color:#39f;}
+.svcuSubTool .cont_dep2 .btnSel li a .count {font-weight:normal;}
+.svcuSecAutoResume .cont_dep2.first {margin-top:70px;}
+.svcuSecAutoResume .cont_dep2 .svcBtnRange {font-size:13px; font-weight:bold; color:#333;}
+.svcuSecAutoResume .cont_dep2 .svcBtnRange .icn {display:inline-block; width:8px; margin-left:5px; height:5px; background:url(/content/images/ver_1/service/tpl_svc.png) no-repeat -269px -57px; vertical-align:middle;}
+.svcuSecAutoResume .cont_dep2 .svcBtnRange.reverse .icn {background-position: -296px -57px;}
+.svcuSecAutoResume .cont_dep2 .txCount {display:block; position:absolute; bottom:10px; right:0; font-size:12px;}
+.svcuSecAutoResume .svcTblAutoResume td {font-size:12px; text-align:center; vertical-align:middle; color:#888; letter-spacing:0;}
+.svcuSecAutoResume .svcTblAutoResume .tahoma {font-family:tahoma, sans-serif;}
+.svcuSecAutoResume .svcTblAutoResume .sampleTx {padding-left:20px; font-size:13px; text-align:left; color:#000; letter-spacing:-0.2px; line-height:1.4; font-family:"맑은 고딕", "Malgun Gothic", "돋움", Dotum, sans-serif;}
+/* 영문 */
+/*.svcTab .lstEn li button, .svcTab .lstEn li a {font-size:13px; letter-spacing:0; line-height:1.8;}*/
+.svcuSecAutoResume .svcTblAutoResume td.sampleTx .trans {margin-top:8px; font-size:11px; color:#888;}
+.svcuSecAutoResume .svcBtnChk {margin-top:2px; padding:2px; color:#888;}
+.svcuSecAutoResume .svcBtnChk .icnChk {margin-top:-4px; width:17px; height:15px; background-position:-335px -9px;}
+.svcuSecAutoResume .svcBtnChk.on {color:#f63;}
+.svcuSecAutoResume .svcBtnChk.on .icnChk {background-position:-365px -9px;}
+.svcuSecAutoResume .bxResumeEdit {padding:0 20px 20px; border:1px solid #e3e3e3; background:#f5f7f8;}
+.svcuSecAutoResume .bxResumeEdit .tit {padding:30px 0 10px; font-size:12px; font-weight: bold; color:#666; letter-spacing:0;}
+.svcuSecAutoResume .bxResumeEdit .tit em {color:#999;}
+.svcuSecAutoResume .bxResumeEdit .txBx {padding-left:12px; background:#fff; border:1px solid #e8eef1;}
+.svcuSecAutoResume .bxResumeEdit .txBx .inner {position:relative; padding:15px 0 15px 3px; border-top:1px solid #e6e9eb; overflow:hidden;}
+.svcuSecAutoResume .bxResumeEdit .txBx .inner.first {border-top:0;}
+.svcuSecAutoResume .bxResumeEdit .txBx p {margin-right:140px; padding:6px 0; font-size:14px; color:#000;}
+.svcuSecAutoResume .bxResumeEdit .txBx .trans {font-size:11px; color:#888;}
+.svcuSecAutoResume .bxResumeEdit .txBx .edit {padding:0; background:#fffcf0; border:1px solid #f99;}
+.svcuSecAutoResume .bxResumeEdit .txBx .btn {position:absolute; top:15px; right:13px;}
+.svcuSecAutoResume .bxResumeEdit .txBx .btn .svcBtnSm {width:56px;}
+.svcuSecAutoResume .bxResumeEdit .txBx textarea {padding:10px; width:739px; height:50px; background:transparent; font:14px "맑은 고딕", "Malgun Gothic", "돋움", Dotum, sans-serif; color:#000;}
+.svcuSecAutoResume .bxResumeEdit .empty {padding:110px 0 90px; text-align:center; font-size:18px; color:#888; line-height:1.4;}
+
+/* 레이어 */
+.tplLyTypeA .point {padding:8px 0 20px; font-size:14px; color:#333;}
+.tplLyTypeA th, .tplLyTypeA td {padding:8px 10px; height:24px; border-left:0; font-weight:normal; text-align:center; vertical-align:middle;}
+.tplLyTypeA th {padding:8px 15px;}
+.tplLyTypeA .txtL {text-align:left;}
+.tplLyTypeA .cmt {padding:10px; background:#f9f9f9; font-size:12px; color:#666;}
+.tplLyTypeA .txtBlue {color:#39f;}
+.tplLyTypeA .tplChkBx {margin-top:6px; }
+.svcPopSendmail th, .svcPopSendmail td {text-align:left;}
+.svcPopSendmail th { width:30%;}
+.svcPrintSpellChk .btnTop {text-align:right}
+.svcPrintSpellChk .btnTop .svcBtnPop_2 {width:86px;}
+.svcPrintSpellChk .spellChkBx {margin-bottom:50px; font-size:14px; color:#333; line-height:1.8; word-break:keep-all;}
+
+
+
+/* 자소서 자동완성 - 미리보기 */
+.printBtnBtm {position:absolute; top:15px; right:16px;}
+.previewCont .tit {padding:15px 0 20px; font-size:17px; font-weight:bold; color:#000; text-align:center;}
+.previewCont .contWp {padding:10px 15px; border:4px solid #f0f0f2;}
+.previewCont .cont {padding:20px 8px; border-top:1px solid #e6e9eb; font-size:14px; color:#000; letter-spacing:-0.4px;}
+.previewCont .cont:first-child {border-top:0;}
+.previewCont .cont h2 {padding-bottom:10px; font:bold 12px gulim, "굴림"; color:#666;}
+
+@media print {
+.printBtnBtm {display:none;}
+}
+
+
+/* 자소서·면접 답변사전 */
+.svcuSecDic .cont_dep2 .hdBx {border-bottom:2px solid #bfbfbf;;}
+.svcuSecDic .svcTab li {width:320px;}
+.svcuSecDic .bxBtnGp {padding:15px 0; overflow:hidden;}
+.svcuSecDic .bxBtnGp .tit {font-size:20px; color:#333; text-align:center;}
+.svcuSecDic .bxBtnGp .lisBxBtn {margin-left:-20px; overflow:hidden;}
+.svcuSecDic .bxBtnGp .lisBxBtn li {float:left; margin-left:20px; margin-top:20px; width:176px;}
+.svcuSecDic .bxBtnGp .lisBxBtn li a, .svcuSecDic .bxBtnGp .lisBxBtn li button {display:block; height:75px; /*padding:26px 0 26px;*/ background:#f6f7f9; border:1px solid #f6f7f9; font-size:16px; color:#666; text-align:center; line-height:75px;}
+.svcuSecDic .bxBtnGp .lisBxBtn li.on a,
+.svcuSecDic .bxBtnGp .lisBxBtn li a:hover,
+.svcuSecDic .bxBtnGp .lisBxBtn li a:active,
+.svcuSecDic .bxBtnGp .lisBxBtn li.on button,
+.svcuSecDic .bxBtnGp .lisBxBtn li button:hover {background:#fff; border-color:#39f; color:#39f;}
+.svcuSecDic .hdBx .hd_blue {display:inline-block; font-weight:bold;}
+.svcuSecDic .hdBx > .count {display:inline-block; margin-left:5px; font-size:20px; color:#666;}
+.svcuSecDic .hdBx > .count em {font-weight:normal; color:#39f;}
+.svcuSecDic .lisRecomm .lis li {position:relative; display:block; padding:25px 0; border-bottom:1px solid #edeef0;}
+.svcuSecDic .lisRecomm .lis li .tit, .svcuSecDic .lisRecomm .lis li dl {padding-left:160px;}
+.svcuSecDic .lisRecomm .lis li .tit {padding-bottom:10px; font-size:16px; font-weight:bold; color:#000;}
+.svcuSecDic .lisRecomm .lis li .image {position:absolute; top:44px; left:30px; width:98px; height:98px; border:1px solid #e5e5e5; border-radius:50px; overflow:hidden;}
+.svcuSecDic .lisRecomm .lis li .btn {position:absolute; top:25px; right:10px;}
+.svcuSecDic .lisRecomm .lis li .svcBtnRecomm {display:block; width:70px; padding:5px 0 6px; border:1px solid #ccc; font-size:14px; font-weight:bold; color:#888;}
+.svcuSecDic .lisRecomm .lis li .svcBtnRecomm:before {content:""; display:inline-block; margin-right:5px; width:16px; height:15px; background:url(/content/images/ver_1/service/tpl_svc.png) no-repeat -395px -9px; margin-top:-4px;}
+.svcuSecDic .lisRecomm .lis li .svcBtnRecomm.on {border-color:#39f; color:#39f;}
+.svcuSecDic .lisRecomm .lis li .svcBtnRecomm.on:before {background-position:-422px -9px;}
+.svcuSecDic .lisRecomm .lis li dl {padding-right:20px;}
+.svcuSecDic .lisRecomm .lis li dt, .svcuSecDic .lisRecomm .lis li dd {float:left; font-family:gulim, "굴림"; font-size:12px; line-height:1.8; }
+.svcuSecDic .lisRecomm .lis li dt {width:10%; color:#888; text-indent:3px;}
+.svcuSecDic .lisRecomm .lis li dd {width:90%; color:#666; word-break:keep-all;}
+.svcuSecDic .lisRecomm .lis li dd a {color:#666; text-decoration:underline;}
+.svcuSecDic .lisRecomm .lis li .link {padding-top:10px;}
+.svcuSecDic .lisRecomm .lis li .motto {padding:5px 100px 5px 10px; font-size:16px; color:#666;}
+.svcuSecDic .tplPagination {padding-bottom: 0}
+
+/* 사진크기 조정 */
+.svcuSecPhoto .artBx.first .secInner {background:url(/content/images/ver_1/service/bg_slash.png) repeat-x bottom left;}
+.svcuSecPhoto .artBx .howTo.step .icnSvc_s1 {width:80px; height:66px; background-position:0 -262px;}
+.svcuSecPhoto .artBx .howTo.step .icnSvc_s2 {width:70px; height:62px; background-position:-82px -262px; margin-top:2px;}
+.svcuSecPhoto .artBx .howTo.step .icnSvc_s3 {width:66px; height:63px; background-position:-154px -262px; margin-top:2px;}
+.svcuSecPhoto .artBx .howTo.step .icnSvc_s4 {width:68px; height:64px; background-position:-222px -262px; margin-top:1px;}
+.artBx .bxGray {padding:0 50px; background:#f6f7f7; border:1px solid #e3e3e3; border-top:0; zoom:1;}
+.artBx .bxGray > dl {position:relative; padding:30px 0; border-top:1px solid #e3e3e3;}
+.artBx .bxGray > dl:first-child {border-top:none;}
+.artBx .bxGray > dl dt {position:absolute; top:35px; left:0; font-size:16px; font-weight:bold; color:#333;}
+.artBx .bxGray > dl dd {padding-left:160px;}
+.artBx .bxGray > dl dd .cmt {padding:18px 0 10px; font-size:13px; color:#666;}
+.artBx .bxGray > dl dd .lisCmt {padding-top:18px; padding-left:170px; font-size:13px; color:#999; line-height:1.8;}
+.artBx .formGp {font-size:16px; color:#333;}
+.artBx .formGp .inner {display:inline-block; width:220px;}
+.artBx .bxGray .formGp .inner .svcIpt {margin:0 10px;}
+.artBx .formGp .slash {font-size:16px; color:#c4c5c6; padding:0 15px;}
+.artBx .bxGray .sizeHd {display:inline-block; width:120px; font-size:16px; font-weight:bold; color:#39f;}
+.artBx .bxGray .photoArea {padding:16px 19px 19px; background:#fff; border:1px solid #e3e3e3;}
+.artBx .bxGray .photoArea > div {float:left; text-align:center;}
+.artBx .bxGray .photoArea .photoHd {display:block; padding-bottom:20px; font-size:13px; font-weight:normal; color:#333; letter-spacing:-0.75px}
+.artBx .bxGray .photoArea .photo {display:block; overflow:hidden;}
+.artBx .bxGray .photoArea .before {padding:0 60px 0 30px; width:300px;}
+.artBx .bxGray .photoArea .before .photo {width:100%; height:232px; background:url(/content/images/ver_1/service/tool/bg_none.png) repeat 0 0;}
+.artBx .bxGray .photoArea .before .arr {display:block; position:absolute; left:560px; top:180px; width:18px; height:30px; background:url(/content/images/ver_1/service/icn_arrowR.png) no-repeat 0 0;}
+.artBx .bxGray .photoArea .after {padding:0 30px 0 40px;}
+.artBx .bxGray .photoArea .after .photoWrap {display:block; width:197px; height:232px; text-align:center;}
+.artBx .bxGray .photoArea .after .photoWrap:before {content:""; display:inline-block; height:100%; vertical-align:middle;}
+.artBx .bxGray .photoArea .after .photo {display:inline-block; vertical-align:middle; margin:0 auto; padding:5px; width:103px; height:132px; background:#fff; border:1px solid #e3e3e3;}
+.artBx .bxGray .photoArea .after .photo .inner {display:block; width:100%; height:100%; overflow:hidden;}
+.svcBtnSch {width:133px; height:36px; font-size:14px; font-weight:normal;}
+
+/* 온라인 도장 만들기 */
+.svcuSecStamp .bxGray {padding:20px 50px;}
+.lisStamp li {position:relative; float:left; margin-left:106px; width:162px; text-align:center;}
+.lisStamp li:first-child {margin-left:0;}
+.lisStamp li .fontFam {font-size:14px; font-weight:normal; color:#333;}
+.lisStamp .sample {display:inline-block; width:76px;}
+.lisStamp .sample_2 {padding-left:18px; width:68px;}
+.lisStamp .sample label {display:inline-block; margin:11px 0;}
+#secSvcu .svcuSecStamp .step .icnSvc_s1 {width:69px; height:73px; background-position:-292px -262px;}
+#secSvcu .svcuSecStamp .step .icnSvc_s2 {margin-left:0; width:86px; height:73px; background-position:-367px -180px;}
+#secSvcu .svcuSecStamp .step .icnSvc_s3 {width:82px; height:73px; background-position:-363px -262px;}
+#secSvcu .svcuSecStamp .step .icnSvc_s4 {width:68px; height:73px; background-position:0 -344px;}
+
+/* 도장 만들기 레이어 */
+.tplLyWrap {position:static;}
+.lyStamp {position:absolute; left:50%; top:200px; margin-left:-300px; width:592px;}
+.lyStamp.fin {top:120px;}
+.lyStamp .lyCnt {padding:150px 30px; text-align:center;}
+.lyStamp .lyCnt .hdTxt {font-size:38px; color:#39f;}
+.lyStamp .lyCnt .subTxt {padding:10px 0 0; font-size:18px; color:#888;}
+.lyStamp .lyCnt .animation {display:inline-block; padding-left:10px; width:30px; text-align:left;}
+.lyStamp.fin .lyCnt {padding:80px 30px 60px;}
+.lyStamp .lyCnt .hdTxtFin {padding:0 0 50px; font-size:24px; color:#333;}
+.lyStamp .lyCnt .hdTxtFin em {margin-right:5px; font-weight:bold;}
+.lyStamp .lyCnt .stampImg {margin:20px auto; width:199px; height:199px;}
+.lyStamp .lyCnt .circle {background-image:url(/content/images/ver_1/service/tool/stamp_circle.png)}
+.lyStamp .lyCnt .square {background-image:url(/content/images/ver_1/service/tool/stamp_square.png)}
+.lyStamp .lyCnt .stampImg span {position:relative; top:20px; left:-4px; font-size:80px; color:#dd1500; line-height:1; letter-spacing:-10px;}
+.lyStamp .lyCnt .gulim {font-family:gulim,"굴림",sans-serif;}
+.lyStamp .lyCnt .batang {font-family:batang,"바탕",sans-serif;}
+.lyStamp .lyCnt .gungsuh {font-family:gungsuh,"궁서",sans-serif;}
+.lyStamp .lyCnt .text_2 span {top:48px; left:-7px; font-size:100px; letter-spacing:-20px;}
+
+/* 취업활동 증명서 */
+.svcuSecApplycert .artBx .bx p {padding-right:50px; padding-left:5px; font-size:15px; color:#666; line-height:1.8; word-break:keep-all;}
+.svcuSecApplycert .artBx .bx p + p {margin-top:30px;}
+.svcuSecApplycert .artBx .bx p strong {font-weight:bold; color:#333;}
+.svcuSecApplycert .guideBx {padding-left:19px;}
+.svcuSecApplycert .guideBx li {padding-bottom:35px; width:301px;}
+.svcuSecApplycert .guideBx .lis li {margin-left:18px;}
+.svcuSecApplycert .guideBx .lis li:first-child {margin-left:0;}
+.svcuSecApplycert .guideBx .lis_2 {margin-top:45px;}
+.svcuSecApplycert .guideBx .lis_2 li {margin-right:18px;}
+.svcuSecApplycert .guideBx .lis_2 li:first-child {margin-right:0;}
+.svcuSecApplycert .guideBx .bg {padding-left:27px; padding-right:22px; height:190px;}
+.svcuSecApplycert .guideBx .bg span {display:block; background:url(/content/images/ver_1/service/tool/svcTool_guide.png) no-repeat;}
+.svcuSecApplycert .guideBx .bg .bg_1 {width:235px; height:163px; background-position:0 0;}
+.svcuSecApplycert .guideBx .bg .bg_2 {width:220px; height:163px; background-position:-300px 0;}
+.svcuSecApplycert .guideBx .bg .bg_3 {width:220px; height:170px; background-position:0 -200px;}
+.svcuSecApplycert .guideBx .bg .bg_4 {width:220px; height:182px; background-position:-300px -200px;}
+.svcuSecApplycert .guideBx .bg .bg_5 {width:251px; height:163px; background-position:0 -400px;}
+.svcuSecApplycert .guideBx .bg .bg_6 {width:199px; height:179px; background-position:-300px -400px;}
+
+.exclamationText { margin:20px 0 10px; color:#ff6600;}
+.exclamationText:before { content:''; display:inline-block; width:14px; height:14px; margin-right:5px; margin-top:-3px; vertical-align:middle; background:url(/content/images/text_user/resume/ico_exclamation.gif) no-repeat;}
+
+/* 연봉계산기 */
+.artBx .incomeCalBx {display:table; table-layout:fixed; width:100%; margin-bottom:45px; box-sizing:border-box;}
+.incomeCalBx .inputP, .incomeCalBx .outputP {position:relative; display:table-cell; width:50%; padding:54px 40px 0 40px; height:572px; vertical-align:top;}
+.incomeCalBx .tit {margin-bottom:40px; color:#333; font-weight:bold; font-size:16px; line-height:1;}
+.incomeCalBx .tipBtn {margin:1px 0 0 8px; vertical-align:top; line-height:100%;}
+.incomeCalBx .inputP .calCell {position:relative;}
+.incomeCalBx .inputP .calCell:first-child {padding-top:0;}
+.incomeCalBx .inputP .calCell {padding:25px 0 0 0; line-height:34px;}
+.incomeCalBx .inputP .calCell:after {clear:both; display:block; content:""; height:0; overflow:hidden; visibility:hidden;}
+.incomeCalBx .inputP .calCell .calLb {float:left; width:178px; height:26px; padding:8px 0 0 0; font-size:14px; color:#666; line-height:1; font-weight:normal;}
+.incomeCalBx .inputP .calCell .calFrm {float:right; text-align:right;}
+.incomeCalBx .inputP .calCell .calFrm .calChkBx {position:relative; float:left; width:111px; height:32px; margin-right:-1px; z-index:1;} /* 체크버튼 */
+.incomeCalBx .inputP .calCell .calFrm .calChkBx label {position:relative; display:block; width:100%; height:32px; line-height:32px; background:#fff; border:1px solid #e4e4e4; color:#999; font-size:14px; text-align:center;}
+.incomeCalBx .inputP .calCell .calFrm .calChkBx .calChk {display:none;}
+.incomeCalBx .inputP .calCell .calFrm .calChkBx input[type="checkbox"] {position:absolute; left:0; top:0; z-index:0; width:109px; height:34px; -webkit-appearance:none; -moz-appearance:none; appearance:none;}
+.incomeCalBx .inputP .calCell .calFrm .calChkBx.chk {z-index:2;}
+.incomeCalBx .inputP .calCell .calFrm .calChkBx.chk label {color:#3399ff; border:1px solid #3399ff;}
+.incomeCalBx .inputP .calCell .calFrm .calChkBx.chk .calChk {display:inline-block; margin:0 9px 0 -8px;}
+.incomeCalBx .inputP .calCell .calFrm .calTxtBx {position:relative; width:220px; height:34px; padding:7px 10px 11px; border:1px solid #e4e4e4; box-sizing:border-box; font-size:14px;}
+.incomeCalBx .inputP .calCell .calFrm .calTxtBx input[type="text"] {width:120px; height:16px; border:0; color:#333; line-height:1; text-align:right; vertical-align:top; font-family:"맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;}
+.incomeCalBx .inputP .calCell .calFrm .calTxtBx .ezVal {position:absolute; left:10px; top:10px; font-size:11px; color:#666; line-height:1;}
+.incomeCalBx .inputP .calCell .calFrm .calTxtBx .unit {display:inline-block; color:#999; vertical-align:top; line-height:1;}
+.incomeCalBx .inputP .calCell .calFrm .calTxtBx .calPholder {position:absolute; top:10px; right:26px; color:#999; font-size:12px; line-height:1; letter-spacing:0;}
+.incomeCalBx .inputP .calCell .calFrm .calErrMsg {min-height:11px; margin:10px 0 -5px 0 ; font-size:11px; color:#ff0000; line-height:1;}
+.incomeCalBx .inputP .calCell.annCell {margin-top:35px; padding-top:40px; border-top:1px solid #e4e4e4;}
+.incomeCalBx .inputP .calCell.annCell .calLb {color:#333; font-weight:bold;}
+.incomeCalBx .inputP .btnGp {position:absolute; left:0; right:0; bottom:30px; margin:0; text-align:center;}
+.incomeCalBx .inputP .btnGp .calBtnReset {position:absolute; right:40px; bottom:9px; height:15px; border-bottom:1px solid #666; line-height:1; font-size:12px; color:#666; letter-spacing:-1px;}
+.incomeCalBx .inputP .btnGp .resetBtnIco {margin-right:6px;}
+.incomeCalBx .outputP {background:#f6f7f7; border-left:1px solid #e8e8e8; box-sizing:border-box;}
+.incomeCalBx .outputP .calRpt {padding:40px 0; font-weight:bold; color:#333; line-height:1; font-size:14px;}
+.incomeCalBx .outputP .calRpt:first-child {padding-top:10px; border-bottom:1px solid #e4e4e4;}
+.incomeCalBx .outputP .calRpt:after {clear:both; display:block; content:""; height:0; overflow:hidden; visibility:hidden;}
+.incomeCalBx .outputP .calRpt .rptLb {float:left;}
+.incomeCalBx .outputP .calRpt .rptVal {float:right;}
+.incomeCalBx .outputP .calRpt .unit {margin-left:5px;}
+.incomeCalBx .outputP .calRptDtl {padding-top:13px; clear:both;}
+.incomeCalBx .outputP .calDtl {position:relative; height:25px; padding:11px 0 0 0; font-weight:normal; color:#666;}
+.incomeCalBx .outputP .calDtl:after {clear:both; display:block; content:""; height:0; overflow:hidden; visibility:hidden;}
+.incomeCalBx .outputP .calDtl .dtlLb {float:left; font-weight:normal;}
+.incomeCalBx .outputP .calDtl .dtlVal {float:right;}
+.incomeCalBx .outputP .calDtl .toolLyType {top:28px;}
+.incomeCalBx .outputP .finaljRptBx {position:absolute; left:20px; right:20px; bottom:20px; height:67px; padding:32px 20px 0 20px; background:#fff; border:1px solid #e4e4e4; line-height:1;}
+.incomeCalBx .outputP .finaljRptBx .dtlLb {float:left; color:#333; font-size:14px; line-height:34px;}
+.incomeCalBx .outputP .finaljRptBx .dtlLb .tipBtn {vertical-align:middle; margin-top:-1px;}
+.incomeCalBx .outputP .finaljRptBx .dtlVal {float:right; font-size:20px; color:#3399ff; font-weight:bold; letter-spacing:0;}
+.incomeCalBx .outputP .finaljRptBx .ezVal {clear:right; float:right; margin-top:8px; font-size:11px; color:#3399ff; text-align:right;}
+.incomeCalBx .outputP .finaljRptBx .toolLyType {top:59px;}
+
+/* 연봉정보 */
+.salaryHdTit {margin-bottom:18px; font-size:21px; color:#333; line-height:1;}
+.salaryList {position: relative; margin-bottom:10px; overflow: hidden;}
+.salaryList .listHeader { position: relative; }
+.salaryList ol.list, .salaryList ul.list { clear: both; overflow: hidden; position: relative; padding: 0 18px; border: 1px solid #d6dce4; }
+.salaryList ol.list li, .salaryList ul.list li { overflow: hidden; position: relative; border-top: 1px solid #edeef0; }
+.salaryList ol.list li:first-child, .salaryList ul.list li:first-child { border-top: 0; }
+.salaryList .listHeader { min-height: 34px; height: 34px; margin-bottom: 8px; }
+.salaryList .total { float: left; font-size: 20px; color: #000; }
+.salaryList .total em { color: #3399ff; }
+.salaryList .total .subtitle { margin-left: 5px; font-size: 16px; }
+.salaryList .sort { float: right; font-size: 0; }
+.salaryList .sort .buttonViewOnlyCompany { height: 34px; }
+.salaryList .sort .buttonViewOnlyCompany span { display: block; width: 100%; height: 34px; padding-top: 8px; box-sizing: border-box; }
+.salaryList .sort .buttonViewOnlyCompany span:before { content: ''; display: inline-block; width: 15px; height: 15px; margin-right: 7px; vertical-align: middle; background: url("/content/images/salary/sprite-index.png") no-repeat 0 -65px; }
+.salaryList .sort .buttonViewOnlyCompany.selected span:before { background-position: 0 -140px; }
+.salaryList .dropdown { width: 150px; zoom: 1; *display: inline; margin-left: 19px; }
+.salaryList ul.list li { position: relative; height: 129px; padding: 32px 180px 0 220px; box-sizing: border-box; }
+.salaryList ul.list .thumbnail { overflow: hidden; position: absolute; left: 31px; top: 46px; width: 100px; height: 40px; }
+.salaryList ul.list .thumbnail img { width: 100px; height: 40px; }
+.salaryList ul.list .thumbnailText { display: table; top: 42px; }
+.salaryList ul.list .thumbnailText .inner { width: 100px; height: 40px; display: table-cell; vertical-align: middle; text-align: center; font-size: 14px; font-weight: bold; color: #ccc; line-height: 1.45; }
+.salaryList ul.list .dummy { overflow: hidden; overflow-y: scroll; position: absolute; left: -100%; top: -100%; z-index: -10; width: 100px; height: 40px; }
+.salaryList ul.list .headers .text, .salaryList ul.list .headers .buttonFavorites, .salaryList ul.list .headers .badge, .salaryList ul.list .summary .item, .salaryList ul.list .summary .item:before {display: inline-block; zoom: 1; vertical-align: top;}
+.salaryList ul.list .headers { margin-bottom: 9px; font-size: 0; }
+.salaryList ul.list .headers .text {color: #333; font-size: 21px; font-weight: bold; vertical-align: middle; }
+.salaryList ul.list .headers .buttonFavorites { position: relative; top: 2px; overflow: hidden; width: 15px; height: 13px; margin-left: 4px; vertical-align: middle; }
+.salaryList ul.list .headers .buttonFavorites:before { content: ''; display: block; width: 15px; height: 13px; background: url("/content/images/salary/sprite-index.png") no-repeat 0 -42px; }
+.salaryList ul.list .headers .buttonFavorites_on:before { background-position: 0 -19px; }
+.salaryList ul.list .headers .badge { overflow: hidden; position: relative; top: 2px; width: 50px; height: 20px; margin-left: 15px; font-size: 12px; text-align: center; color: #3399ff; vertical-align: middle; }
+.salaryList ul.list .headers .badge:before { content: ''; display: block; width: 50px; height: 20px; background: url("/content/images/salary/sprite-index.png") no-repeat 0 -165px; }
+.salaryList ul.list .summary { overflow: hidden; position: relative; }
+.salaryList ul.list .summary .item {font-size: 14px; }
+.salaryList ul.list .summary .item:before { content: ''; position: relative; width: 1px; height: 14px; margin: 0 8px; background-color: #c5c5c5; vertical-align: middle; }
+.salaryList ul.list .summary .item:first-child:before { display: none; }
+.salaryList ul.list .salary { display: table; position: absolute; right: 31px; top: 0; height: 100%; font-size: 20px; color: #999; }
+.salaryList ul.list .salary strong { color: #333; font-family: 'Tahoma'; font-size: 30px; font-weight: bold; }
+.salaryList ul.list .salary .inner { display: table-cell; vertical-align: middle; }
+.salaryList .btnMmGp {margin-top:10px;}
+.salaryList .moreBtn {display:inline-block; width:95px; height:42px; border:1px solid #ccc; line-height:42px; text-align:center; color:#000;}
+.salaryList .moreBtn .moreBtnIco {margin-left:7px;}
+
+/* tooltip */
+.toolLyType {display:none; position:absolute; top:50px; line-height:1.5; border:1px solid #565d79; background-color:#fff; text-align:left; z-index:2000;}
+.toolLyType > .lyCnt {padding:16px 25px 16px 20px; line-height:1.5em;}
+.toolLyType > .lyCnt dl {width:auto; float:none;}
+.toolLyType > .lyCnt dt:first-child {margin-top:0;}
+.toolLyType > .lyCnt dt {margin:10px 0 3px 0; font-size:12px; color:#333; font-weight:bold;}
+.toolLyType > .lyCnt dd {color:#666; font-size:12px;}
+.toolLyType > .lyCnt dd > ul > li {position:relative; padding-left:8px;}
+.toolLyType > .lyCnt dd > ul > li:before {position:absolute; left:0; top:3px; content:""; width:2px; height:2px; margin:5px 5px 0 0; background:#bfc0c2; vertical-align:top;}
+.toolLyType > .lyCnt .add {margin-top:10px;}
+.toolLyType > .lyCnt strong {color:#39f; font-weight:normal;}
+.toolLyType > .lyBtn {position:absolute; top:2px; right:2px; width:20px; height:19px;}
+.toolLyType .toolBtnClose {padding:10px;}
+
+/* 실업급여계산기 */
+.unemployed .fl {float: left;}
+.unemployed .mr {margin-right: 10px;}
+.unemployed .ml {margin-left: 10px;}
+.unemployed input[type="text"]{color: #333;}
+.unemployed input[type="text"]::-webkit-input-placeholder{color: #999;}
+.unemployed input[type="text"]:-ms-input-placeholder{color: #999;}
+.unemployed input[type="text"]:-mos-input-placeholder{color: #999;}
+.unemployed {display:table; table-layout:fixed; width:100%; margin-bottom:10px; box-sizing:border-box; background: #fff; border: 1px solid #e3e3e3; border-top: 0;}
+.unemployed .box-left {position:relative; display:table-cell; width:58%; padding:40px 40px 100px;}
+.unemployed .box-right {position:relative; display:table-cell; width:42%; padding:40px 40px 100px;}
+.unemployed .box-right {background: #f6f7f7; border-left: 1px solid #e8e8e8; box-sizing: border-box;}
+.unemployed .tit {margin-bottom:20px; color:#333; font-weight:bold; font-size:16px; line-height:1;}
+.unemployed .p-fr {color:#999; font-size:12px;}
+.unemployed .p-color {color: #333;}
+.unemployed .box-left .list-input {margin-bottom: 40px;}
+.unemployed .box-left .list-input .box-input {position:relative; width:220px; height:34px;border:1px solid #e4e4e4; box-sizing:border-box; font-size:14px;}
+.unemployed .box-left .list-input .box-input input[type="text"] {width:100%; height: 32px;  padding-left: 10px; border:0; text-align:left; box-sizing: border-box; background: transparent; font-family:"맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;}
+.unemployed .box-left .list-input .box-input label,
+.unemployed .box-left .list-input .box-type label{position: absolute; top: 0; left: 0; width: 100%; height: 34px; z-index: 0; text-indent: -9999px;}
+.unemployed .box-left .list-input .box-msg {margin-top:4px; }
+.unemployed .box-left .list-input .form-msg {font-size:11px; color:#ff0000; display: none;}
+.unemployed .box-left .list-input .btn{width: 100%; height: 34px; border: 1px solid #e4e4e4;  color: #666;}
+.unemployed .box-left .list-input .btn i{width:9px; height: 9px; display: inline-block; margin-right: 5px; vertical-align: middle; background: url("/content/images/ver_1/common/icon_add.png") no-repeat;}
+/* .unemployed .box-left .reSet{width:34px; height:34px; position:absolute; right:2px; top:0; text-indent: -999999px;}
+.unemployed .box-left .reSet:after{content:""; background: url(/content/images/m/ver_1/bg_form_sprite_v1.png?v=20170329) no-repeat 0 0; background-size: 100px 200px; display:block; position:absolute; width:15px; height:15px; background-position:-50px -100px; left:9px; top:9px;} */
+
+.box-date {display: inline-block; width: 100%; margin-bottom: 10px;}
+.box-date li {float: left; height: 34px; line-height: 34px;}
+.box-date .txt-date {width: 95px; box-sizing: border-box; background: #fafafa; color: #333; font-size: 13px; text-align: center;}
+.box-date .delete {width: 50px; height: 34px; border: 1px solid #e4e4e4; box-sizing: border-box; background: #fff; margin-left: 10px;}
+.box-date .delete button {width: 100%; line-height: 34px; color:#cccccc; cursor: unset; vertical-align: top;}
+.box-date .delete.on button {color:#666; cursor: pointer;}
+.box-date .input-date {position: relative; width: 140px; border: 1px solid #e4e4e4; box-sizing: border-box;}
+.box-date .input-date input {cursor: pointer; border: 0; display: block; width: 100%; height: 32px; padding: 0 10px; background: url('/content/images/ver_1/common/icon_date.png') no-repeat; background-position: calc(100% - 10px) center; box-sizing: border-box; font: 12px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;}
+.box-date .space {width: 30px; text-align: center; color: #333;}
+.unemployed .box-left .list-input .box-type{position: relative; display: table; width: 100%; border: 1px solid #e4e4e4; padding: 0 10px; box-sizing: border-box; margin-top: 10px; font-size: 11px; cursor: pointer;}
+.unemployed .box-left .list-input .box-type li{display: table-cell; vertical-align: middle;}
+.unemployed .box-left .list-input .box-type li:nth-child(1){width: 60px;}
+.unemployed .box-left .list-input .box-type li:nth-child(2){width: 130px; color: #3399ff;}
+.unemployed .box-left .list-input .box-type li:nth-child(3){width: 280px; float: right;}
+.unemployed .box-left .list-input .box-type li:nth-child(4){width: 15px; color: #999; text-align: right;}
+.unemployed .box-left .list-input .box-type input[type="text"]{position: relative; z-index: 1; border:none; width:150px; height: 34px; background-color: transparent; float: right; text-align: right; font: 12px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;}
+.unemployed .box-left .btnGp .calBtnReset {position: absolute; right: 40px; bottom: 0px; height: 15px; border-bottom: 1px solid #666; line-height: 1; font-size: 12px; color: #666; letter-spacing: -1px;}
+.unemployed .box-left .btnGp .calBtnReset .toolBtnIco.resetBtnIco {padding-right: 5px;}
+.unemployed .box-right .text-group {position: relative;}
+.unemployed .box-right .text-group .toolLyType{top:80px; left: 18px;}
+.unemployed .box-right .toolLyType > .lyCnt {width: 100%; box-sizing: border-box; padding: 16px 20px 16px 20px;}
+.unemployed .box-right .text-group .toolLyType > .lyCnt dl {min-width: 240px;}
+.unemployed .box-right .text-group .toolLyType > .lyCnt dd > ul > li {padding-left: 0;}
+.unemployed .box-right .text-group .toolLyType > .lyCnt dd > ul > li:before {display: none;}
+.unemployed .box-right .text-group .toolLyType .tplLyIcnArrTop {position: absolute; top: -6px; right: 40px;}
+.unemployed .box-right .text-group.blue {display: none;}
+.unemployed .box-right .text-group.red {display: block;}
+.unemployed .box-right .text-group h1 {font-size: 25px; font-weight: bold; text-align: center; padding-bottom: 10px;} 
+.unemployed .box-right .text-group .h-blue {color: #3399ff;}
+.unemployed .box-right .text-group .h-red {color: #fe3332;}
+.unemployed .box-right .text-group h4 {font-size:15px; font-weight:bold; text-align: center; color:#333;}
+.unemployed .box-right table {border: none; width: 100%; margin-top: 30px;}
+.unemployed .box-right table tr {border-top: 1px solid #e4e4e4;}
+.unemployed .box-right table tr:last-child {border-bottom: 1px solid #e4e4e4;}
+.unemployed .box-right table tr td {font-size: 15px; font-weight: bold; color: #333; padding: 25px 0;}
+.unemployed .box-right table tr td:last-child {text-align: right;}
+.unemployed .box-right table tr td i {font-size: 22px; font-style: normal; padding-right: 4px; color: #3399ff;}
+.unemployed .box-right .tool-layer {position: relative; margin-top: 10px;}
+.unemployed .box-right .tool-layer .dtlLb {font-size: 12px; padding-bottom: 8px; color: #888;}
+.unemployed .box-right .tool-layer strong {font-size: 12px; margin-left: 14px; border-bottom: 1px solid #d1d2d2; color: #000;}
+.unemployed .box-right .tool-layer .arrow-ico {width: 14px; height: 14px; background-position: -78px 2px;}
+.unemployed .box-right .tool-layer .toolBtnIco.tipBtnIco {margin: 0 2px 3px 4px;}
+.unemployed .box-right .tool-layer .toolLyType {top: 30px;}
+.unemployed .box-right .tool-layer .toolLyType .tplLyIcnArrTop {position: absolute; left: 136px; top: -6px;}
+.unemployed .box-right .tool-layer .toolLyType > .lyCnt dd > ul > li:before {width: 4px; height: 1px;}
+.unemployed .btnGp {position: absolute; left: 0; right: 0; bottom: 30px; margin: 0;}
+.unemployed .check-box {position: relative; float: left;}
+.unemployed input[type="checkbox"] {position: absolute; top: 3px;}
+.unemployed input[type="checkbox"] + label {float: left; font-size: 12px; color: #333; margin-right: 6px;}
+.unemployed input[type="checkbox"] + label:before {content: ""; position: relative; top: 3px; width: 14px; height: 14px; margin-right: 5px; border: 1px solid #e4e4e4; background-color: #fff; box-sizing: border-box; float: left;}
+.unemployed input[type="checkbox"]:checked + label:after {content: ""; position: absolute; top: 3px; left: 0px; width: 14px; height: 14px; background: url(/content/images/ver_1/common/checkbox.png) no-repeat -14px 0px;}
+.unemployed .svcBtnMm {width: 158px;}
+.unemployed .svcBtnMm.off {background: #e4e4e4; color: #ccc; border: 1px solid #e4e4e4;}
+.ul-list {font-size: 12px; line-height: 22px; color: #888888;}
+.arrow-right {position: absolute; left: -1px; top: 50px; width: 21px; height: 41px; background-position: -479px -144px;}
+.mt-50 {margin-top: 50px !important;}
+.picker__day{font-family: "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif !important;}
+.gjTopWrap .total{color: #333 !important;}
+
+
+/* 학점계산기 re */
+.univpoint {background: #ffffff; border: 1px solid #e3e3e3; border-top: 0; box-sizing: border-box; margin-bottom: 40px;} 
+.univpoint .section {position: relative; float: left; padding: 50px 40px; box-sizing: border-box;}
+.univpoint .section .tit {font-size:16px; line-height: 15px; font-weight:bold; color:#333; margin-bottom:24px;}
+.univpoint .section i {font-style: normal; color: #3399ff; padding-right: 4px;}
+.univpoint .section .form-group {height: 34px;}
+.univpoint .section .form-group em {font-size: 15px; padding-right: 10px;}
+.univpoint .section .form-group .form {width: 49%; float: left;}
+.univpoint .section .form-group .form span {font-size: 15px; color: #333;}
+.univpoint .section .form-group .form span i {padding: 0 5px; color: #c9caca;}
+.univpoint .section .tplSltBx {box-sizing: border-box;}
+.univpoint .section .form-group .tplSltBx label {top: 0; color: #333;}
+.univpoint .section .tplSltBx label {top: 0; color: #999;}
+.univpoint .section .tplSltBx label.chk {color:#333;}
+.univpoint .section button.svcBtnMm {width: 158px; display: block; margin: 30px auto 0;}
+.univpoint .section .check-box {position: relative; float: left; margin: 9px 0;}
+.univpoint .section input[type="checkbox"] {position: absolute; top: 2px; left: 0;}
+.univpoint .section input[type="checkbox"] + label {float: left; font-size: 12px; color: #333;}
+.univpoint .section input[type="checkbox"] + label:before {content: ""; position: relative; top: 2px; width: 14px; height: 14px; margin-right: 5px; border: 1px solid #e4e4e4; background-color: #fff; box-sizing: border-box; float: left;}
+.univpoint .section input[type="checkbox"]:checked + label:after {content: ""; position: absolute; top: 2px; left: 0px; width: 14px; height: 14px; background: url(/content/images/ver_1/common/checkbox.png) no-repeat -14px 0px;}
+.univpoint .section .box-table {margin-top: 18px;}
+.univpoint .section .box-table .head {position: relative; height: 32px; background: #f8f8f8; border-bottom: 1px solid #e4e4e4;}
+.univpoint .section .box-table .head::before{content: ''; display: block; position: absolute; bottom: -5px; left: 0; z-index: 2; width: 440px; height: 4px; background: #fff;}
+.univpoint .section .box-table .head::after{content: ''; display: block; position: absolute; bottom: -268px; left: 0; z-index: 2; width: 440px; height: 4px; background: #fff;}
+.univpoint .section .box-table .head ul {width: 450px;  display: inline-block; font-size: 12px; }
+.univpoint .section .box-table ul li {float: left; height: 30px; line-height: 30px; text-align: center; box-sizing: border-box; margin-right: 8px;}
+.univpoint .section .box-table ul li:nth-child(1) {width: 225px;}
+.univpoint .section .box-table ul li:nth-child(2) {width: 50px;}
+.univpoint .section .box-table ul li:nth-child(3) {width: 66px;}
+.univpoint .section .box-table ul li:nth-child(4) {width: 25px;}
+.univpoint .section .box-table ul li:nth-child(5) {width: 42px;}
+.univpoint .section .box-table .body {display: inline-block; width: 100%; height: 267px; overflow-y: scroll; -ms-overflow-y: scroll; overflow-x: hidden; -ms-overflow-x: hidden; border-bottom: 1px solid #e4e4e4;}
+.univpoint .section .box-table .body ul {display: flex; display: -ms-flex; margin-bottom: 16px; vertical-align: top;}
+.univpoint .section .box-table .body ul:first-child {margin-top: 16px;}
+.univpoint .section .box-table .body ul li {height: 34px;}
+.univpoint .section .box-table .body ul li input[type="text"] {width: 100%; height: 34px; line-height: 34px; padding: 0 5px; border: 1px solid #e4e4e4; color: #333; box-sizing: border-box;}
+.univpoint .section .box-table .body ul li:nth-child(2) input[type="text"] {text-align: center;}
+.univpoint .section .box-table .body ul li input[type="checkbox"],
+.univpoint .section .box-table .body ul li input[type="checkbox"] + label:before,
+.univpoint .section .box-table .body ul li input[type="checkbox"]:checked + label:after  {left: 5px; margin-right: 0;} 
+.univpoint .section .box-table .body ul li .svcSltBx {width: 66px; margin-right: 0;}
+.univpoint .section .box-table .body .delete {width: 100%; height: 34px; border: 1px solid #e4e4e4; color: #ccc; cursor: unset;}
+.univpoint .section .box-table .body .on {color: #666; cursor: pointer;}
+.univpoint .section .box-table .body .on:hover,
+.univpoint .section .box-table .add:hover {border: 1px solid #3399ff; color: #3399ff;}
+.univpoint .section .box-table .add{position: absolute; left: 0; right: 0; bottom: 128px; margin: 16px auto 0; width: 85%; height: 34px; box-sizing: border-box; border: 1px solid #e4e4e4; color: #666;}
+.univpoint .section .box-table .add i{width:9px; height: 9px; display: inline-block; vertical-align: middle; background: url("/content/images/ver_1/common/icon_add.png") no-repeat;}
+
+
+
+.univpoint .section-left {width: 57%;}
+.univpoint .section-left input.svcIpt {width: 100px; vertical-align: top; color: #333;}
+.univpoint .section-left .svcSltBx {width: 115px; margin-right: 10px;}
+.univpoint .section-left .calBtnReset {position: absolute; right: 40px; bottom: 50px; height: 15px; border-bottom: 1px solid #666; line-height: 1; font-size: 12px; color: #666; letter-spacing: -1px;}
+
+.univpoint .section-right {width: 43%; background: #f6f7f7; border-left: 1px solid #e8e8e8;}
+.univpoint .section-right .form-group {width: 100%; display: inline-block; margin-top: 20px;}
+.univpoint .section-right .form-group:first-of-type {margin-top: 0;}
+.univpoint .section-right .form-group input {width: 66px; color: #333;}
+.univpoint .section-right h4 {font-size: 16px; float: right; font-weight: bold; color: #333; padding-bottom: 40px; line-height: 30px;}
+.univpoint .section-right h4 i{font-size: 50px;}
+.univpoint .section-right table {border: none; width: 100%;}
+.univpoint .section-right table tr {border-top: 1px solid #e4e4e4;}
+.univpoint .section-right table tr:last-child {border-bottom: 1px solid #e4e4e4;}
+.univpoint .section-right table tr td {font-size: 15px; font-weight: bold; color: #333; padding: 36px 0;}
+.univpoint .section-right table tr td:last-child {text-align: right;}
+.univpoint .section-right table tr td i {font-size: 22px;}
+
+.last-univpoint {display: table; width: 100%; height: 100%; margin-bottom: 0px;}
+.last-univpoint .section {display: table-cell; height: 620px;}
+.last-univpoint .section button.svcBtnMm {position: absolute; left: 0; right: 0; bottom: 50px;}
+
+.arrow-right {position: absolute; left: -1px; top: 30px; width: 21px; height: 41px; background-position: -479px -144px;}

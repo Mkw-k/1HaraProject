@@ -29,7 +29,7 @@
 
 <select id="login" parameterType="bit.com.a.dto.MemberDto"
 	resultType="bit.com.a.dto.MemberDto">
-	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, BIRTH
+	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, BIRTH, NEWUSERPIC
 	FROM MEMBER
 	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 </select>

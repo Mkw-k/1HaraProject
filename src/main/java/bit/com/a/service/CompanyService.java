@@ -8,9 +8,9 @@ public interface CompanyService {
 
 	CompanyDto getCompany(String companyid);
 
-	
-
 	boolean companywrite(CompanyDto dto);
+
+	boolean companyupdate(CompanyDto dto);
 
 
 	

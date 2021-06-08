@@ -13,6 +13,8 @@
 <meta name="keywords" content="#">
 <meta name="selected-menu" content="0, 0, 0, 0">
 
+<!-- 코어테그 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- 제이쿼리 -->
 <script src="//https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- 네비바 -->
@@ -455,7 +457,10 @@ nav {
 
 
 
+
 <!-- ///////////////////////////////////// 테이블 시작 -->
+
+<form id="_comform">
 <div class="container" align="center">
 	<div style="padding-top: 100px">
 		<h1><strong>${company.companyname }</strong></h1>
@@ -491,10 +496,10 @@ nav {
 			<strong>회사 복지</strong><br>
 			<span>${company.mainservice } </span>
 		</li>
-	</div>
+	
 	
 	</ul>
-	
+	</div>
 <br><br>
 
 <div>
@@ -506,14 +511,14 @@ nav {
 		<td>${company.ceoname }</td>
 	</tr>
 	
-	<tr hidden="">
+	<tr>
 		<th>회사아아디</th>
 		<td>${company.memberid }</td>
 	</tr>
 	
 	<tr>
 		<th>회사 위치</th>
-		<td>${company.address }</td>
+		<td>${login.comaddress }</td>
 	</tr>
 	
 	<tr hidden="">
@@ -558,7 +563,12 @@ nav {
 	
 </table>
 </div>
-</div>
+
+	<c:if test="${company.memberid } == ${login.memberid } ">
+   	  <a class="nav-link bgc" href="companyupdate.do?memberid=${company.memberid }" style="color:#2186eb">기업수정/등록</a>
+  	</c:if>
+
+</form>
 <!-- //////////////////////////////////////////테이블 끝 -->
 
 
@@ -793,10 +803,13 @@ $("#searchBtn").click(function () {
 
 
 
-function btnweb() {
-	var url = '${company.website }';
+function btnweb() {	
+	var url = 'http://' + '${company.website }';
+	alert(url);
+	
 	window.location.href = url;
 }
+
 
 </script>
 

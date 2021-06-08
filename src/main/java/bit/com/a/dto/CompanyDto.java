@@ -13,7 +13,7 @@ public class CompanyDto {
 	private String memberid;   		// 가입한 기업아이디
 	private String content;	    	// 사업내용
 	private String comimage;	   	// 회사 이미지
-	private String empcount; 	    	// 직원수
+	private String empcount; 	    // 직원수
 	private String salaryavg; 		// 평균 연봉
 	private String salarystart;		// 초봉
 	private String comyear;			// 회사 나이
@@ -23,47 +23,33 @@ public class CompanyDto {
 	private String mainservice;		// 주요서비스
 	private String totalsale;		// 총매출
 	
+	 private String updatecompanylist; // 변수
+	  
+	 
+	 /*public String getUpdatecompanylist() { return updatecompanylist; }
+	 * 
+	 * public void setUpdatecompanylist(String updatecompanylist) {
+	 * this.updatecompanylist = updatecompanylist; }
+	 */
+
 	public CompanyDto() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CompanyDto(String companyname, String address, int companynum, String ceoname, int del, String companytype,
-			int companyseq, String memberid, String content, String comimage, String empcount, String salaryavg,
-			String salarystart, String comyear, String retiree, String joinner, String website, String mainservice,
-			String totalsale) {
-		super();
-		this.companyname = companyname;
-		this.address = address;
-		this.companynum = companynum;
-		this.ceoname = ceoname;
-		this.del = del;
-		this.companytype = companytype;
-		this.companyseq = companyseq;
-		this.memberid = memberid;
-		this.content = content;
-		this.comimage = comimage;
-		this.empcount = empcount;
-		this.salaryavg = salaryavg;
-		this.salarystart = salarystart;
-		this.comyear = comyear;
-		this.retiree = retiree;
-		this.joinner = joinner;
-		this.website = website;
-		this.mainservice = mainservice;
-		this.totalsale = totalsale;
+	
+	
+	public String getUpdatecompanylist() {
+		return updatecompanylist;
 	}
 
-	@Override
-	public String toString() {
-		return "CompanyDto [companyname=" + companyname + ", address=" + address + ", companynum=" + companynum
-				+ ", ceoname=" + ceoname + ", del=" + del + ", companytype=" + companytype + ", companyseq="
-				+ companyseq + ", memberid=" + memberid + ", content=" + content + ", comimage=" + comimage
-				+ ", empcount=" + empcount + ", salaryavg=" + salaryavg + ", salarystart=" + salarystart + ", comyear="
-				+ comyear + ", retiree=" + retiree + ", joinner=" + joinner + ", website=" + website + ", mainservice="
-				+ mainservice + ", totalsale=" + totalsale + "]";
+
+
+	public void setUpdatecompanylist(String updatecompanylist) {
+		this.updatecompanylist = updatecompanylist;
 	}
 
-	public String getCompanyname() {
+
+public String getCompanyname() {
 		return companyname;
 	}
 
@@ -214,5 +200,50 @@ public class CompanyDto {
 	public void setTotalsale(String totalsale) {
 		this.totalsale = totalsale;
 	}
+
+
+
+	public CompanyDto(String companyname, String address, int companynum, String ceoname, int del, String companytype,
+			int companyseq, String memberid, String content, String comimage, String empcount, String salaryavg,
+			String salarystart, String comyear, String retiree, String joinner, String website, String mainservice,
+			String totalsale, String updatecompanylist) {
+		super();
+		this.companyname = companyname;
+		this.address = address;
+		this.companynum = companynum;
+		this.ceoname = ceoname;
+		this.del = del;
+		this.companytype = companytype;
+		this.companyseq = companyseq;
+		this.memberid = memberid;
+		this.content = content;
+		this.comimage = comimage;
+		this.empcount = empcount;
+		this.salaryavg = salaryavg;
+		this.salarystart = salarystart;
+		this.comyear = comyear;
+		this.retiree = retiree;
+		this.joinner = joinner;
+		this.website = website;
+		this.mainservice = mainservice;
+		this.totalsale = totalsale;
+		this.updatecompanylist = updatecompanylist;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "CompanyDto [companyname=" + companyname + ", address=" + address + ", companynum=" + companynum
+				+ ", ceoname=" + ceoname + ", del=" + del + ", companytype=" + companytype + ", companyseq="
+				+ companyseq + ", memberid=" + memberid + ", content=" + content + ", comimage=" + comimage
+				+ ", empcount=" + empcount + ", salaryavg=" + salaryavg + ", salarystart=" + salarystart + ", comyear="
+				+ comyear + ", retiree=" + retiree + ", joinner=" + joinner + ", website=" + website + ", mainservice="
+				+ mainservice + ", totalsale=" + totalsale + ", updatecompanylist=" + updatecompanylist + "]";
+	}
+	
+	
+	
+	
 
 }
