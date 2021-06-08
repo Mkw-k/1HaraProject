@@ -56,7 +56,7 @@
 
 <div class="container" style="text-align: center;">
     <h3>일반 회원</h3>
-    <form method="post" id="myForm" action="regiAf.do" enctype="multipart/form-data">
+    <form method="post" id="myForm" enctype="multipart/form-data">
         <div class="form-group has-feedback">
         
         <!-- 프로필 사진 -->
@@ -69,12 +69,14 @@
                                 <div class="f_box">
                                         <label for="img"></label>
                                         <input type="file" name="fileload" id="img">
+                                        
                                 </div>
                             </li>
 						</ul>
                        <script>
                             // 이미지 업로드  
                             $('#img').on('change', function() {
+                            	alert($('#img').val());
                             ext = $(this).val().split('.').pop().toLowerCase(); //확장자
                             //배열에 추출한 확장자가 존재하는지 체크
                             if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
@@ -195,7 +197,7 @@
 		else{	
 			alert($("#memberid").val());
 			$("#myForm").attr("action", "regiAf.do").submit();
-			alert("회원가입이 성공적으로 완료되었습니다");;/
+			alert("회원가입이 성공적으로 완료되었습니다");
 		}	
 		
 		

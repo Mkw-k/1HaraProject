@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 /* ==========================================================================
-	common style
+   common style
 ========================================================================== */
 html, body {/*min-width:1160px;*/ width:100%; height:100%; margin:0; padding:0;}
 body {font-size:14px; line-height:1.8; color:#666; font-weight:normal; font-family:NanumGothic, '나눔고딕',  'Malgun Gothic', '맑은 고딕', Dotum, '돋움', sans-serif;}
@@ -57,7 +57,7 @@ label {display: inline-block; vertical-align: middle; cursor: pointer;}
 .deleted-file {position:fixed; left:0; top:0; z-index:99999; width:100%; height:100%; padding:350px 0 0 0; font-size:100px; font-weight:700; text-align:center; color:#fff; background-color:rgba(0,0,0,0.75);}
 
 /* ==========================================================================
-	custom style
+   custom style
 ========================================================================== */
 /* jquery ui reset */
 .ui-icon,
@@ -108,16 +108,16 @@ label {display: inline-block; vertical-align: middle; cursor: pointer;}
 
 /* font size */
 /*
-	default setting 14px
-	12px = 0.8571em
-	13px = 0.9286em
-	15px = 1.071em
-	16px = 1.1429em
-	18px = 1.286em
-	20px = 1.4286em
-	22px = 1.5174em
-	24px = 1.714em
-	36px = 2.5714em
+   default setting 14px
+   12px = 0.8571em
+   13px = 0.9286em
+   15px = 1.071em
+   16px = 1.1429em
+   18px = 1.286em
+   20px = 1.4286em
+   22px = 1.5174em
+   24px = 1.714em
+   36px = 2.5714em
 */
 
 /* title */
@@ -908,8 +908,8 @@ p.reset {margin:0; padding:0;}
 /* .btn-close-search-word {overflow:hidden; display:inline-block; width:34px; height:34px; margin:0; padding:0; border:0; vertical-align:middle; text-indent:-9999px; background:#fff url('../images/common/btn/btn-close-search-word.png') no-repeat center;} */
 /* .btn-close-search-word {overflow:hidden; display:inline-block; width:12px; height:12px; margin:0; padding:0; border:0; vertical-align:middle; text-indent:-9999px; background:url('../images/common/btn/btn-close-search-word.png') no-repeat 0 0;} */
 /*
-	2018-08-03
-	btn-modify ,btn-modify-comp 버튼을 따로 만들었으나 톱니바퀴 모양의 버튼은 사용하지 않는것으로 결론나서 배경 이미지 교체함
+   2018-08-03
+   btn-modify ,btn-modify-comp 버튼을 따로 만들었으나 톱니바퀴 모양의 버튼은 사용하지 않는것으로 결론나서 배경 이미지 교체함
  */
 .btn-modify {overflow:hidden; display:inline-block; width:19px; height:18px; margin:0; padding:0; border:0; vertical-align:middle; text-indent:-9999px; background:url('../images/common/btn/btn-modify-comp.png') no-repeat 0 0;}
 .btn-modify-comp, .btn-reply-comp {overflow:hidden; display:inline-block; width:19px; height:18px; margin:0; padding:0; border:0; vertical-align:middle; text-indent:-9999px; background:url('../images/common/btn/btn-modify-comp.png') no-repeat 0 0;}
@@ -1297,6 +1297,7 @@ input[type='search']::-ms-clear {width:20px; height:20px; margin-right:-3px; pad
 .board-list-count .util .radio-group {float:left; line-height:36px;}
 .board-list-count .util .radio-group label {margin-right:10px;}
 .board-list-count .util .range-view {float:left; margin-left:10px;} /* ej */
+
 .board-list-count .util .range-view select {float:left; height:36px; border:1px solid #ccc;}
 .board-list-count .util .range-view select + select {border-left:0;}
 .board-list-count .util .range-view .button {float:left;}
@@ -3040,14 +3041,14 @@ button.iconset {border:0;background-color:transparent;}
 #header .middle-area .header-search:before,
 #header .middle-area .header-search:after {content:''; display:table;}
 #header .middle-area .header-search:after {clear:both;}
-#header .middle-area .header-search .searc-area {position:relative; float:left; width:440px; height:40px; padding:3px 40px 0 3px; background-color:#0095c8;}
+#header .middle-area .header-search .searc-area {position:relative; float:left; width:440px; height:40px; padding:3px 40px 0 3px; background-color:#1b82ea;}
 #header .middle-area .header-search .searc-area .input-text {width:100%; height:34px; border:0; padding:0 10px; background-color:#fff;}
 #header .middle-area .header-search .searc-area .input-text::-webkit-search-decoration,
 #header .middle-area .header-search .searc-area .input-text::-webkit-search-cancel-button,
 #header .middle-area .header-search .searc-area .input-text::-webkit-search-results-button,
 #header .middle-area .header-search .searc-area .input-text::-webkit-search-results-decoration {display:none;}
 #header .middle-area .header-search .searc-area .input-text::-ms-clear {display:none !important;}
-#header .middle-area .header-search .searc-area .btn-search {overflow:hidden; position:absolute; right:0; top:0; width:40px; height:40px; margin:0; padding:0; border:0; text-indent:-9999px; background:#0095c8 url('../images/common/btn/btn-search-header.png') no-repeat center;}
+#header .middle-area .header-search .searc-area .btn-search {overflow:hidden; position:absolute; right:0; top:0; width:40px; height:40px; margin:0; padding:0; border:0; text-indent:-9999px; background:#1b82ea url('../images/common/btn/btn-search-header.png') no-repeat center;}
 #header .middle-area .header-search > .button {float:left; width:140px; height:40px; margin:0 10px; padding:0; font-size:1.1429em; font-weight:700; line-height:39px; color:#3683c3; border:1px solid #3683c3;}
 #header .middle-area .header-search .auto-complete {display:none; position:absolute; left:0; top:40px; z-index:101; width:401px; margin:0; padding:0; text-align:left; border:1px solid #42b7df; border-width:0 1px 1px 1px; background-color:#fff;}
 #header .middle-area .header-search .auto-complete.on {display:block;}
@@ -3077,7 +3078,7 @@ button.iconset {border:0;background-color:transparent;}
 
 /* gnb */
 /*#gnb {position:relative; background-color:#3683c3; min-width:1160px;}*/
-#gnb {position:relative; background-color:#2b76b4; min-width:1160px;}/* 고대비 작업 */
+#gnb {position:relative; background-color:#1b82ea; min-width:1160px;}/* 고대비 작업 */
 #gnb > ul {display:block; width:1160px; margin:0 auto; position:relative;}
 #gnb .background {width:100%; position:absolute; top:50px; left:0; z-index:101; background-color:#fff; content:""; border-bottom:1px solid #3683c3}
 #gnb ul:before,
@@ -3086,7 +3087,7 @@ button.iconset {border:0;background-color:transparent;}
 #gnb > ul > li {float:left; width:20%; text-align:center;}
 /* 20201030 수정 start */
 #gnb > ul > li > a {position:relative; display:block; height:50px; font-size:18px; color:#fff; line-height:49px; font-weight:700; text-align:center;}
-#gnb > ul > li + li a.menu:before {display:block; position:absolute; left:0; top:50%; display:block; margin-top:-10px; width:1px; height:20px; background:#80add2; content:""}
+#gnb > ul > li + li a.menu:before {display:block; position:absolute; left:0; top:50%; display:block; margin-top:-10px; width:1px; height:20px; background:#1b82ea; content:""}
 #gnb > ul > li > a > span {display:inline-block; line-height:42px}
 #gnb > ul > li > a:hover span,
 #gnb > ul > li > a:focus span,
@@ -4372,3 +4373,5 @@ body{min-width:1200px; background-color:#f3f5f7;}
 
 /* 이력서 직급없는 경우 / Placeholder(20210517) 관련 추가 */
 .resumePlaceholder {color:#cacaca; font-style:italic; font-size:8px; font-family:NanumGothic, '나눔고딕', 'Malgun Gothic', '맑은 고딕', Dotum, '돋움', sans-serif;}
+
+

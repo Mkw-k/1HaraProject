@@ -21,7 +21,7 @@ import java.util.List;
   @Autowired JobtalkService service;
  
   @RequestMapping(value = "Jobtalklist.do", method = RequestMethod.GET) 
-  public String bbslist(Model model, JobtalkParam param) { 
+  public String jobtalklist(Model model, JobtalkParam param) { 
 	  model.addAttribute("doc_title", "글목록");
 	// paging 처리 
 		  int sn = param.getPage(); 
@@ -57,27 +57,31 @@ import java.util.List;
   @RequestMapping(value = "Jobtalkwrite.do", method = RequestMethod.GET) 
   public String Jobtalkwrite(Model model) { 
 	  model.addAttribute("doc_title", "글쓰기");
-	  return "jobtalkwrite"; 
+	  return "jobtalk/jobtalkwrite"; 
   }
  
-  @RequestMapping(value = "JobtalkwriteAf.do", method = RequestMethod.POST)
+  @RequestMapping(value = "JobtalkwriteAf.do", method = {RequestMethod.GET, RequestMethod.POST})
   public String bbswriteAf(JobtalkDto job, Model model) throws Exception {
-  if(job.getJobtalk_content().equals("") || job.getJobtalk_title().equals("")){ 
-	 
-	  return "jobtalkwrite"; 
+	  System.out.println("들어옴?");
+	  if(job.getJobtalk_content().equals("") || job.getJobtalk_title().equals("")){ 
+		  System.out.println("DTO: " + job.toString());	
+	  return "jobtalk/jobtalkwrite"; 
 	  
   } 
   	service.writeJobtalk(job); 
+  	System.out.println("DTO: " + job.toString());	
   	return "redirect:/Jobtalklist.do"; 
   }
  
   @RequestMapping(value = "Jobtalkdetail.do", method = {RequestMethod.GET, RequestMethod.POST}) 
-  public String Jobtalkdetail(int seq, Model model) {
+  public String Jobtalkdetail(int jobtalkseq, Model model) {
   model.addAttribute("doc_title", "상세글 보기");
  
-  service.readCount(seq); // 조회수 증가
+  service.readCount(jobtalkseq); // 조회수 증가
  
-  JobtalkDto job = service.getJobtalk(seq);
+  JobtalkDto job = service.getJobtalk(jobtalkseq);
+  System.out.println("job : " + job);
+  
   model.addAttribute("jobtalk", job);
  
   return "jobtalk/jobtalkdetail"; 
@@ -100,17 +104,17 @@ import java.util.List;
   }
  
   @RequestMapping(value = "Jobtalkdelete.do", method = {RequestMethod.GET, RequestMethod.POST}) 
-  public String deleteJobtalk(int seq, Model model) {
-	  	service.deleteJobtalk(seq); 
-  		return "redirect:/bbslist.do"; 
+  public String deleteJobtalk(int jobtalkseq, Model model) {
+	  	service.deleteJobtalk(jobtalkseq); 
+  		return "redirect:/jobtalklist.do"; 
   }
  
   @RequestMapping(value = "Jobtalkupdate.do", method = {RequestMethod.GET, RequestMethod.POST}) 
-  public String Jobtalkupdate(int seq, Model model){
+  public String Jobtalkupdate(int jobtalkseq, Model model){
 	  model.addAttribute("doc_title", "글수정"); 
-	  JobtalkDto job = service.getJobtalk(seq); 
+	  JobtalkDto job = service.getJobtalk(jobtalkseq); 
 	  model.addAttribute("job", job); 
-	  return "jobtalkupdate"; 
+	  return "jobtalk/jobtalkupdate"; 
   }
  
   @RequestMapping(value = "JobtalkupdateAf.do", method = RequestMethod.POST)

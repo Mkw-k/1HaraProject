@@ -10,7 +10,7 @@ public interface CompanyService {
 
 	boolean companywrite(CompanyDto dto);
 
-	void companyupdate(CompanyDto dto);
+	boolean companyupdate(CompanyDto dto);
 
 
 	

@@ -293,7 +293,7 @@ dt, dd {
 				</div>
 			</section>
 
-			<form action="writeAfResume.do" method="post" name="resumewrite" enctype="multipart/form-data" >
+			<form action="writeAfResume.do" method="post" name="resumewrite" id="resumewrite" enctype="multipart/form-data" >
 
 				<div class="container" style="margin-top: 0px; margin-right: 400px;">
 					<div class="row">
@@ -875,8 +875,8 @@ dt, dd {
 																					class="bar_title">전공계열<span
 																					class="valid_hidden"> 직접입력</span></label> <input
 																					type="text"
-																					id="univ_major"
-																					name="univ_major" value=""
+																					id=""
+																					name="" value=""
 																					class="box_input" maxlength="50">
 																				<p class="txt_error"></p>
 																			</div>
@@ -1909,7 +1909,7 @@ dt, dd {
 
 													</div>
 												</div>
-						
+						<input type="hidden" name="resume_status" value="YES" id="resumeStatus">
 
 
 								</figcaption>
@@ -1918,7 +1918,9 @@ dt, dd {
 						</div>
 						</section>
 						
-						<input type="submit" value="작성완료" id="save">
+						<button onclick="iscompleted()">중간저장</button>
+						<input type="submit" value="작성완료" id="complete">
+						
 					</div>
 				</div>
 	</div>
@@ -2799,8 +2801,8 @@ function careerokCheck() {
 																					class="bar_title">전공계열<span
 																					class="valid_hidden"> 직접입력</span></label> <input
 																					type="text"
-																					id="univ_major"
-																					name="univ_major" value=""
+																					id=""
+																					name="" value=""
 																					class="box_input" maxlength="50">
 																				<p class="txt_error"></p>
 																			</div>
@@ -2808,7 +2810,7 @@ function careerokCheck() {
 
 																		<div class="resume_input resume_bottom">
 																			<input type="text" id="school_major_1621990778"
-																				name="school_major" value="" class="box_input"
+																				name="univ_major" value="" class="box_input"
 																				maxlength="50">
 																		</div>
 																		<button type="button" class="btn_edu_type btn_minor"
@@ -3601,6 +3603,17 @@ function selectCareerArea(val) {
 
 </script>
 
+<script type="text/javascript">
+function iscompleted() {
+alert("iscompleted");
+
+	document.getElementById('resumeStatus').value = 'NO';
+	alert(document.getElementById('resumeStatus').value);
+		
+	$("#resumewrite").submit();
+	
+}
+</script>
 
 
 

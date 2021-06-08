@@ -22,10 +22,10 @@
 	WHERE MEMBERID=#{memberid}
 </select>
 
-<!-- <!-- <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
+<!-- <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
 	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH, USERPIC, NEWUSERPIC)
 	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, #{userpic}, #{newuserpic})
-</insert> --> -->
+</insert> -->
 
 <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
 	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, AUTH, BIRTH, DETAILADDRESS, ADDRESS, USERPIC, NEWUSERPIC)
@@ -70,11 +70,11 @@
 	SET NAME=#{name}, EMAIL=#{email}, ADDRESS=#{address}, DETAILADDRESs=#{detailaddress}, BIRTH=#{birth}
 	WHERE MEMBERID=#{memberid}
 	</update>
-
+<!-- 
 	<insert parameterType="bit.com.a.dto.MemberDto" id="addmember">
 	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH)
 	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1) 
 	</insert>
-
+ -->
 
 </mapper>

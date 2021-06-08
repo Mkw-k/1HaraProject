@@ -29,9 +29,8 @@ public class ConpanyServiceImpl implements CompanyService {
 
 
 	@Override
-	public void companyupdate(CompanyDto dto) {
-		
-		dao.companyupdate(dto);
+	public boolean companyupdate(CompanyDto dto) {
+		return dao.companyupdate(dto);
 	}
 
 	

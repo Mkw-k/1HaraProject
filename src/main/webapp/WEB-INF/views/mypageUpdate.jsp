@@ -8,7 +8,8 @@
         <title>Insert title here</title>
         <link href="csss/common.css" rel="stylesheet" type="text/css">
         <link href="csss/reset.css" rel="stylesheet" type="text/css">
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <style type="text/css">
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
@@ -16,9 +17,15 @@ body {
   font-family: "Noto Sans KR", sans-serif !important;
 }
 </style>
+
+ <style>
+                .disabledbutton {
+                    pointer-events: none;
+                    opacity: 0.4;
+                }
+            </style>
         
-        
-    </head>
+</head>
     
     
      <body id="sub_layout">
@@ -1099,9 +1106,13 @@ body {
                     </div>
                     <div class="sub-visual-noline">
                     	<!-- 프로필사진 들어가는곳  -->
+                    	
                         <p class="img-area">
                             <i class="ico-circle-gray tool"></i>
                         </p>
+                        <img src="${login.userpic}"/>
+                        
+                        
                         <p class="txt">
                             일하라는 회원님의 개인정보를 신중히 취급하며, 회원님의 동의 없이 기재하신 회원정보를 공개하지 않습니다.
                             <br>
@@ -1146,22 +1157,14 @@ body {
                                                 *</span>
                                         </th>
                                         <td>
-                                            <div class="zip-wrap">
-                                                <input
-                                                type="hidden" class="commHouseYn" id="commHouseYn" name="address" value="Y">
-                                        
-                                                <p>
-                                                    <input type="hidden" name="addrType" value="street">
-                                                    <input type="text" class="input-text w160px" title="우편번호 입력" readonly="readonly" name="jusoZipCd" id="jusoZipCd" value="21061">
-                                                    <a href="#road" onclick="worknet.popup.popRoadNameSrch({returnFunction:'f_roadNmSrch', targetObjName:'#streetPop',loc:{posRel:[-350,-50]}});" class="button ml05" title="새창">주소찾기</a>
-                                                </p>
-                                                <p class="mt10"><input type="text" class="input-text w600px" title="기본주소 입력" placeholder="기본주소" readonly="readonly" id="juso1" name="address" value="${login.address}" pil="PF_BASS_ADR"></p>
-                                                <p class="mt10">
-                                                    <input type="text" class="input-text w160px" title="건물번호" placeholder="건물번호" readonly="readonly" name="bldgNo" id="bldgNo" value="141" pil="PF_BULD_MNNO">
-                                                    <input type="text" class="input-text w430px ml05" title="상세주소 입력 " placeholder="상세주소" id="juso2" name="detailaddress" value="201동 601호" pil="PF_DTAL_ADR">
-                                                </p>
-                                                <p class="mt10"><input type="text" class="input-text w600px" title="참고항목" placeholder="참고항목" readonly="readonly" id="strtnmRefItem" name="strtnmRefItem" value="${login.detailaddress}"></p>
-                                            </div>
+                                           <div class="form-group has-feedback">
+        	<label class="control-label" for="registrationNum">주소</label>
+        		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
+				<input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" readonly="readonly" value="우편번호 찾기"><br>
+				<input type="text" class="form-control" id="sample6_address" name="address" placeholder="주소"><br>
+				<input type="text" class="form-control" id="sample6_detailAddress" name="detailaddress" placeholder="상세주소"><br>
+				<input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목"><br>
+        </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1379,13 +1382,62 @@ body {
                 $(document).ready(function () {
                     console.timeEnd('checktime2');
                 });
+                
+                
             </script>
-            <style>
-                .disabledbutton {
-                    pointer-events: none;
-                    opacity: 0.4;
-                }
-            </style>
+            
+            <script type="text/javascript">
+            function sample6_execDaumPostcode() {
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                        // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                        var addr = ''; // 주소 변수
+                        var extraAddr = ''; // 참고항목 변수
+
+                        //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                        if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                            addr = data.roadAddress;
+                        } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                            addr = data.jibunAddress;
+                        }
+
+                        // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                        if(data.userSelectedType === 'R'){
+                            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                                extraAddr += data.bname;
+                            }
+                            // 건물명이 있고, 공동주택일 경우 추가한다.
+                            if(data.buildingName !== '' && data.apartment === 'Y'){
+                                extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                            }
+                            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                            if(extraAddr !== ''){
+                                extraAddr = ' (' + extraAddr + ')';
+                            }
+                            // 조합된 참고항목을 해당 필드에 넣는다.
+                            document.getElementById("sample6_extraAddress").value = extraAddr;
+                        
+                        } else {
+                            document.getElementById("sample6_extraAddress").value = '';
+                        }
+
+                        // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                        document.getElementById('sample6_postcode').value = data.zonecode;
+                        document.getElementById("sample6_address").value = addr;
+                        // 커서를 상세주소 필드로 이동한다.
+                        document.getElementById("sample6_detailAddress").focus();
+                    }
+                }).open();
+            }
+
+            </script>
+            
+           
         </div>
 
     </body>

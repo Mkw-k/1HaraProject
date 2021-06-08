@@ -84,12 +84,12 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "regiAf.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String regiAf(MemberDto dto, @RequestParam(value = "fileload", required = false) MultipartFile fileload,
-			
+	public String regiAf(MemberDto dto, 
+			@RequestParam(value = "fileload", required = false) 
+			MultipartFile fileload,
 			HttpServletRequest req) {
 
-		System.out.println("addmember:" + dto.toString());
-		
+		System.out.println("fileload = " + fileload);
 		
 		//filename 취득 
 		String filename = fileload.getOriginalFilename();
@@ -108,7 +108,7 @@ public class MemberController {
 		
 		String newfilename = PdsUtil.getNewFileName(dto.getUserpic());
 		
-		dto.setUserpic(newfilename);
+		dto.setNewuserpic(newfilename);
 		
 		File file = new File(fupload + "/" + newfilename);
 		
@@ -128,11 +128,10 @@ public class MemberController {
 		} catch (IOException e) {
 			
 			System.out.println("가입되지 않았습니다 " + new Date());
-			 return "login/memberRegi";
 			
-				/* e.printStackTrace(); */
 			}
-		
+		 return "login/memberRegi";
+			
 		 }
 		
 
