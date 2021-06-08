@@ -1,0 +1,186 @@
+@charset "utf-8";
+/*
+.File Name	: /content/css/user/qna/write.css
+.Final Editor	: 장유리(2020-02-17 생성)
+.Description	: 취업톡톡 - 쓰기
+*/
+
+.lyWriteBoard .selectBoxWrap{margin-bottom:10px; padding:30px; background:#fff; border:1px solid #dbdbdb;}
+.lyWriteBoard .selectBoxWrap:after{content:""; clear:both; display:block; visibility:hidden; font-size:0; height:0;}
+.lyWriteBoard .selectBoxWrap .checkListArea li{float:left; position:relative; width:250px; margin-right:20px;}
+.lyWriteBoard .selectBoxWrap .checkListArea li .lb-checkbox{font-weight:bold;}
+.lyWriteBoard .selectBoxWrap .checkListArea li .tooltip-box{display:none; z-index:10; position:absolute; left:-10px; top:-40px; padding:7px 8px; width:280px; background:#fefcea; border:1px solid #565d79; box-shadow:0px 2px 5px rgba(0,0,0,.1);}
+.lyWriteBoard .selectBoxWrap .checkListArea li:first-child .tooltip-box{width:245px;}
+.lyWriteBoard .selectBoxWrap .checkListArea li .tooltip-box:after{position:absolute; left:15px; bottom:-6px; width:11px; height:6px; background-position:-291px 0;}
+.lyWriteBoard .selectBoxWrap .checkListArea li .tooltip-box .txt{font-size:12px; color:#333;}
+.lyWriteBoard .selectBoxWrap .selectListArea{margin-top:10px;}
+.lyWriteBoard .selectBoxWrap .selectListArea > ul:after{content:""; clear:both; display:block; visibility:hidden; font-size:0; height:0;}
+.lyWriteBoard .selectBoxWrap .selectListArea > ul > li{float:left; position:relative; width:250px; margin-right:20px;}
+.lyWriteBoard .selectBoxWrap .selectListArea > ul > li .btn-select{overflow:hidden; display:inline-block; position:relative; padding:0 25px 0 12px; width:100%; height:40px; background:#fff; border:1px solid #ececec; border-radius:2px; box-sizing:border-box; font-size:14px; color:#666; line-height:40px; text-align:left; white-space:nowrap; text-overflow:ellipsis;}
+.lyWriteBoard .selectBoxWrap .selectListArea > ul > li .btn-select:after{position:absolute; right:12px; top:50%; -ms-transform:translateY(-50%); -webkit-transform:translateY(-50%); transform:translateY(-50%); width:11px; height:7px; background-position:-195px -142px;}
+.lyWriteBoard .selectBoxWrap .selectListArea > ul > li .btn-select.on{color:#3399ff; border-color:#99ccff;}
+.lyWriteBoard .selectBoxWrap .selectListArea > ul > li .btn-select.on:after{background-position:-195px -152px;}
+.lyWriteBoard .selectBoxWrap .noticeListArea{margin-top:20px;}
+.lyWriteBoard .selectBoxWrap .noticeListArea li{margin-bottom:8px; font-size:14px; color:#999;}
+.lyWriteBoard .selectBoxWrap .noticeListArea li:last-child{margin-bottom:0;}
+.lyWriteBoard .keywordBoxWrap{overflow:hidden; position:relative; margin-bottom:10px; padding:14px 15px; width:100%; height:60px; min-height:60px; background:#fff; border:1px solid #dbdbdb; box-sizing:border-box; font-size:13px; color:#999; line-height:30px;}
+.lyWriteBoard .keywordBoxWrap em{float:left; margin-right:10px;}
+.lyWriteBoard .keywordBoxWrap .labelSwiper{overflow:hidden; float:left; position:absolute; left:43px; width:-webkit-calc(100% - 70px); width:calc(100% - 70px); height:30px; white-space:nowrap;}
+.lyWriteBoard .keywordBoxWrap .labelSwiper:after{z-index:1; content:""; position:absolute; right:0; top:0; display:block; width:30px; height:100%; background:url("/content/images/user/qna/bg_gradation_wh.png?202002070000") no-repeat right center; background-size:30px auto;}
+.lyWriteBoard .keywordBoxWrap .labelSwiper .keywordArea > span{display:inline-block; margin-right:6px; padding:0 10px; width:auto; height:30px; background:#f2f3f3; font-size:15px; color:#666; line-height:30px; cursor:default;}
+.lyWriteBoard .keywordBoxWrap .labelSwiper .keywordArea > span:last-child{margin-right:0px;}
+.lyWriteBoard .writeBoxWrap{padding:0 30px; background:#fff; border:1px solid #dbdbdb;}
+.lyWriteBoard .writeBoxWrap .jkTxInput{position:relative; border-bottom:1px solid #dbdbdb; box-sizing:border-box; text-align:left; border-radius:0;}
+.lyWriteBoard .writeBoxWrap .jkTxInput .inpWrap{position:relative; background:#fff;}
+.lyWriteBoard .writeBoxWrap .jkTxInput .inpWrap .jkSchInp{padding:0 10px; width:100%; height:85px; min-height:85px; border:none; box-sizing:border-box; font-size:26px; color:#333; line-height:1.3; vertical-align:top; outline:none; border-radius:0; letter-spacing:-1px;}
+.lyWriteBoard .writeBoxWrap .jkTxInput .inpWrap .jkSchInp::placeholder{font-size:26px !important; color:#999 !important; letter-spacing:-1px !important;}
+.lyWriteBoard .writeBoxWrap .jkTxInput .inpWrap .jkSchInp::-webkit-input-placeholder{font-size:26px !important; color:#999 !important; letter-spacing:-1px !important;}
+.lyWriteBoard .writeBoxWrap .jkTxInput .inpWrap .jkSchInp::-moz-placeholder{font-size:26px !important; color:#999 !important; letter-spacing:-1px !important;}
+.lyWriteBoard .writeBoxWrap .jkTxInput .inpWrap .jkSchInp:-ms-input-placeholder{font-size:26px !important; color:#999 !important; letter-spacing:-1px !important;}
+.lyWriteBoard .writeBoxWrap .jkTxInput .inpWrap .jkSchInp::-ms-input-placeholder{font-size:26px !important; color:#999 !important; letter-spacing:-1px !important;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder{position:relative; padding:20px 0; background-color:#fff; border-bottom:1px solid #dbdbdb; box-sizing:border-box;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder .ph{position:absolute; left:10px; top:20px; font-size:15px; line-height:23px; color:#999;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder textarea{overflow:auto; position:relative; padding:0px 10px; width:100%; height:400px; box-sizing:border-box; resize:none; font-size:15px; line-height:23px; color:#333; background-color:transparent; border:none; outline:none;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder .byte{z-index:2; position:relative; display:block; margin:2px 10px 0 10px; color:#999; font-size:15px; text-align:right;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder .byte b{color:#39f; font-weight:normal;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder .attach-box{position:relative; margin:15px 10px 0 10px; padding:20px 35px 20px 30px; background:#f9f9f9; font-size:0;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder .attach-box:after{content:""; clear:both; display:block; visibility:hidden; font-size:0; height:0;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder .attach-box .title{float:left; font-weight:bold; font-size:15px; color:#333;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder .attach-box .select-tooltip{float:left; position:relative; top:4px; margin-left:5px; width:14px; height:14px;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder .attach-box .select-tooltip:before{width:14px; height:14px; background-position:-120px -90px;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder .attach-box .content{overflow:hidden; float:left; margin-left:20px; width:700px; font-size:15px; color:#333; text-overflow:ellipsis; white-space:nowrap;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder .attach-box .button-attach-close{position:absolute; right:20px; top:20px; width:15px; height:15px;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder .attach-box .button-attach-close:before{width:15px; height:15px; background-position:-262px -113px;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder .attach-box .tooltip-layer{left:-10px; top:-60px; width:320px;}
+.lyWriteBoard .writeBoxWrap .uiPlaceholder .attach-box .tooltip-layer:after{left:103px;}
+.lyWriteBoard .writeBoxWrap .btnCommWrap{margin:40px 0;}
+.lyWriteBoard .writeBoxWrap .jkSelWrap{display:inline-block; position:relative; margin-bottom:8px; width:100%; vertical-align:middle; line-height:1.3; background-color:#fff;}
+.lyWriteBoard .writeBoxWrap .jkSelWrap:after{position:absolute; top:50%; top:21px; width:19px; height:9px; right:12px; background-position:-64px -135px;}
+.lyWriteBoard .writeBoxWrap .jkSelWrap .jkSelect{display:block; width:100%; min-height:auto; box-sizing:border-box; font-size:15px; color:#333; height:50px; padding:0 30px 0 18px; border-color:#e6e6e6; background:transparent; border-radius:0; outline:none;}
+.lyWriteBoard .writeBoxWrap .jkSelWrap .jkSelect option{color:#333;}
+.lyWriteBoard .writeBoxWrap .jkSelWrap .jkSelect.focus{border-color:#666;}
+.lyWriteBoard .writeBoxWrap .jkSelWrap.on .jkSelect{border-color:#666 !important; color:#333 !important;}
+.lyWriteBoard .writeBoxWrap .jkSelWrap.change .jkSelect{color:#333 !important; font-weight:bold !important;}
+.lyWriteBoard .agreecheckbox{position:relative; left:15px; margin-top:30px;}
+.lyWriteBoard .agreecheckbox .info{display:inline-block; position:relative; margin-left:7px; padding-left:7px; font-size:15px; color:#999;}
+.lyWriteBoard .agreecheckbox .info:before{position:absolute; left:0; top:0; width:1px; height:12px; background:#e6e6e6;}
+.lyWriteBoard .agreecheckbox .txtLayer{position:absolute; left:-15px; top:-35px; padding:0 6px 0 9px; height:26px; background:#ff6261; font-size:12px; color:#fff; line-height:26px;}
+.lyWriteBoard .agreecheckbox .txtLayer:after{position:absolute; left:17px; bottom:-5px; width:9px; height:5px; background-position:-195px -217px;}
+.lyWriteBoard .agreecheckbox .txtLayer .btn-txtLyer-close{display:inline-block; position:relative; margin:-2px 0 0 11px; width:7px; height:7px;}
+.lyWriteBoard .agreecheckbox .txtLayer .btn-txtLyer-close:before{position:absolute; left:0; top:0; width:7px; height:7px; background-position:-107px -90px;}
+.lyWriteBoard .txInfoWrap{margin-top:20px; padding:15px 25px; background:#f9f9f9; border:1px solid #e5e5e7;}
+.lyWriteBoard .txInfoWrap li{position:relative; padding-left:10px; font-size:13px; color:#666; line-height:2;}
+.lyWriteBoard .txInfoWrap li:before{content:''; display:inline-block; position:absolute; left:0; top:50%; margin:-1px 7px 0 0; width:2px; height:2px; background:#999;}
+
+/* 질문 대상 선택 레이어 */
+.selectListArea .layer-box-wrap{z-index:1; position:absolute; left:0; top:50px;}
+.selectListArea .layer-box-wrap .subtitle-wrap{position:relative; margin-bottom:12px;}
+.selectListArea .layer-box-wrap .subtitle-wrap:after{content:""; clear:both; display:block; visibility:hidden; font-size:0; height:0;}
+.selectListArea .layer-box-wrap .subtitle-wrap .subtitle{font-weight:bold; font-size:14px; color:#333;}
+.selectListArea .layer-box-wrap .subtitle-wrap .btnAllDel{float:right; padding-bottom:1px; border-bottom:1px solid #999; font-size:12px; color:#999;}
+.selectListArea .layer-box-wrap .has-tooltip .select-tooltip{position:relative; margin:-2px 0 0 -2px; width:20px; height:20px;}
+.selectListArea .layer-box-wrap .has-tooltip .select-tooltip:after{position:absolute; left:50%; top:50%; width:14px; height:14px; background-position:-120px -90px; transform:translate(-50%,-50%);}
+.selectListArea .layer-box-wrap .has-tooltip .tooltip-layer{left:40px; top:30px; width:290px;}
+.selectListArea .layer-box-wrap .listWrap li{margin-bottom:10px;}
+.selectListArea .layer-box-wrap .listWrap li:last-child{margin-bottom:0;}
+.selectListArea .layer-box-wrap .listWrap li label{display:block; padding-left:23px; text-indent:-23px; word-wrap:break-word; word-break:break-all;}
+.selectListArea .layer-box-wrap .listWrap li label:before{margin:2px 2px 0 0;}
+.selectListArea .layer-box-wrap .listWrap li span[class^="txt"]{display:inline; margin:0;}
+.selectListArea .layer-box-wrap .listWrap li span.txt_name{font-size:15px; color:#333;}
+.selectListArea .layer-box-wrap .listWrap li span.txt_info{margin-left:5px; font-size:14px; color:#999;}
+.selectListArea .layer-box-wrap .searchList li{margin-bottom:7px;}
+.selectListArea .layer-box-wrap .searchList li:last-child{margin-bottom:0;}
+.selectListArea .layer-box-wrap .searchList button{width:100%; font-size:15px; color:#333; line-height:24px; text-align:left; word-wrap:break-word; word-break:break-all;}
+.selectListArea .layer-box-wrap .searchList button:hover{color:#39f;}
+.selectListArea .layer-box-wrap .searchList button:before{margin:-5px 8px 0 0; width:13px; height:13px; background-position:-241px -90px;}
+.selectListArea .layer-box-wrap .nullWrap{text-align:center;}
+.selectListArea .layer-box-wrap .nullWrap .msgBx{font-size:14px; color:#999; line-height:1.8;}
+.selectListArea .layer-box-wrap .btnComm-box{margin-top:15px;}
+.selectListArea .layer-box-wrap .btnComm-box button, .selectListArea .layer-box-wrap .btnComm-box a{display:block; width:100%; height:40px; background:#fff; border:1px solid #3399ff; box-sizing:border-box; font-weight:bold; font-size:14px; color:#3399ff; line-height:38px; text-align:center;}
+.selectListArea .layer-box-wrap .btnComm-box button:after, .selectListArea .layer-box-wrap .btnComm-box a:after{margin:-2px 0 0 5px; width:6px; height:11px; background-position:-195px -179px;}
+.selectListArea .layer-box-wrap .btnComm-box.type2{margin:0;}
+.selectListArea .layer-box-wrap .btnComm-box.type2 button, .selectListArea .layer-box-wrap .btnComm-box.type2 a{display:inline-block; width:auto; border:0;}
+.selectListArea .layer-box-wrap.innerScroll{padding:30px 0 0;}
+.selectListArea .layer-box-wrap.innerScroll .layer-header{padding:0 28px;}
+.selectListArea .layer-box-wrap.innerScroll .keywordSearch{padding:0 28px;}
+.selectListArea .layer-box-wrap.innerScroll .inner-scroll-box{overflow-x:hidden; overflow-y:auto; padding:0 28px 20px; max-height:150px;}
+.selectListArea .layer-box-wrap.innerScroll .inner-scroll-box::-webkit-scrollbar{width:6px; background-color:#d8dbe2;}
+.selectListArea .layer-box-wrap.innerScroll .inner-scroll-box::-webkit-scrollbar-track{background-color:#fff;}
+.selectListArea .layer-box-wrap.innerScroll .inner-scroll-box::-webkit-scrollbar-thumb{border-radius:50px; background-color:#d8dbe2;}
+.selectListArea .layer-box-wrap.innerScroll .inner-scroll-box .tab{position:relative; display:block; padding:0 10px 0 20px; width:100%; height:32px; -webkit-box-sizing:border-box; box-sizing:border-box; font-size:13px; color:#333; text-align:left;}
+/* 질문 대상 선택 레이어 - 동문 */
+.selectListArea .layer-box-wrap.alumni, .selectListArea .layer-box-wrap.alumni-null{width:245px;}
+.selectListArea .layer-box-wrap.alumni .has-tooltip .tooltip-layer, .selectListArea .layer-box-wrap.alumni-null .has-tooltip .tooltip-layer{width:270px;}
+/* 질문 대상 선택 레이어 - 직무 */
+.selectListArea .layer-box-wrap.job{padding:30px 0 15px; width:300px;}
+.selectListArea .layer-box-wrap.job .layer-cont{margin-top:0; padding-top:0; padding-bottom:13px; border-top:0;}
+.selectListArea .layer-box-wrap.job .layer-cont .subtitle-wrap{margin:0 28px 12px; padding-top:15px; border-top:1px solid #e6eaf1;}
+.selectListArea .layer-box-wrap.job .layer-cont:first-of-type .subtitle-wrap{border-top:0;}
+.selectListArea .layer-box-wrap.job .has-tooltip .tooltip-layer{top:45px;}
+.selectListArea .layer-box-wrap.job .searchList{padding:0 28px;}
+.selectListArea .layer-box-wrap.job .btnComm-box{padding:0 28px;}
+.selectListArea .layer-box-wrap.job.innerScroll .inner-scroll-box{max-height:55px;}
+/* 질문 대상 선택 레이어 - 직무 직접선택 */
+.selectListArea .layer-box-wrap.job-directInput{width:380px;}
+.selectListArea .layer-box-wrap.job-directInput .btnCommWrap{margin-top:20px;}
+.selectListArea .layer-box-wrap.job-directInput .btnCommWrap button{width:85px;}
+.tab-box-wrap > .tab-menu{margin:20px 0 15px 2px;}
+.tab-box-wrap > .tab-menu:after{content:""; clear:both; display:block; visibility:hidden; font-size:0; height:0;}
+.tab-box-wrap > .tab-menu .tab{float:left; position:relative; margin-left:-1px; width:188px; height:48px; background-color:#fff; border:1px solid #c1c3c7; font-size:14px; color:#333; line-height:48px; text-align:center; cursor:pointer;}
+.tab-box-wrap > .tab-menu .tab > span:before{display:none; margin:0 6px 3px 0; width:12px; height:10px; background-position:-216px -281px;}
+.tab-box-wrap > .tab-menu .tab.selected{z-index:1; border-color:#3399ff; font-weight:bold; color:#3399ff;}
+.tab-box-wrap > .tab-menu .tab.selected > span:before{display:inline-block;}
+.category-group{display:none; padding-bottom:0; height:300px; box-sizing:border-box; border:1px solid #c1c3c7;}
+.category-group.on{display:block;}
+.category-group .vertical-list-wrap{position:relative; padding-left:150px; height:100%;}
+.category-group .tab-menu{z-index:1; overflow:hidden; overflow-y:auto; position:absolute; left:0; top:0; bottom:0; padding:5px 0; width:151px; height:100%; -webkit-box-sizing:border-box; box-sizing:border-box;}
+.category-group .tab-menu::-webkit-scrollbar-track{background-color:#fff;}
+.category-group .tab-menu::-webkit-scrollbar{width:6px; background-color:#d8dbe2;}
+.category-group .tab-menu::-webkit-scrollbar-thumb{border-radius:50px; background-color:#d8dbe2;}
+.category-group .tab-menu .tab{position:relative; display:block; padding:0 10px 0 20px; width:100%; height:32px; -webkit-box-sizing:border-box; box-sizing:border-box; font-size:13px; color:#333; text-align:left; }
+.category-group .tab-menu .tab:after{display:none; position:absolute; right:10px; top:50%; -ms-transform:translateY(-50%); -webkit-transform:translateY(-50%); transform:translateY(-50%); width:7px; height:13px; background-position:-195px -196px;}
+.category-group .tab-menu .tab.selected{background-color:#e6f3ff; color:#39f; font-weight:700;}
+.category-group .tab-menu .tab.selected:after{display:inline-block;}
+.category-group .blank-box-wrap{z-index:10; display:block; position:absolute; width:228px; height:100%; background:#fafafa; border-left:1px solid #e0e0e0; -webkit-box-sizing:border-box; box-sizing:border-box;}
+.category-group .blank-box-wrap .txt-noti{position:absolute; left:20px; top:20px; font-size:13px; color:#bbb;}
+.category-group .blank-box-wrap .txt-noti:before{margin:-3px 5px 0 0; width:11px; height:5px; background-position:-195px -227px;}
+.category-group .cont-list-wrap{height:100%;}
+.category-group .cont-list{display:none; z-index:2; position:relative; overflow:hidden; overflow-y:auto; height:100%; border-left:1px solid #e0e0e0; -webkit-box-sizing:border-box; box-sizing:border-box;}
+.category-group .cont-list.attached{display:block;}
+.category-group .cont-list::-webkit-scrollbar-track{background-color:#fff;}
+.category-group .cont-list::-webkit-scrollbar{width:6px; background-color:#d8dbe2;}
+.category-group .cont-list::-webkit-scrollbar-thumb{border-radius:50px; background-color:#d8dbe2;}
+.category-group .cont-list .category-area{padding:5px 0;}
+.category-group .cont-list .category-area li{display:block; width:100%; height:32px;}
+.category-group .cont-list .category-area .check-area{width:100%; height:100%; position:relative;}
+.category-group .cont-list .category-area .check-area label{position:relative; display:block; padding:0 10px 0 20px; width:100%; height:100%; -webkit-box-sizing:border-box; box-sizing:border-box; font-size:13px; color:#333; text-align:left; line-height:32px;}
+.category-group .cont-list .category-area .check-area label:after{display:none; position:absolute; right:10px; top:50%; -ms-transform:translateY(-50%); -webkit-transform:translateY(-50%); transform:translateY(-50%); width:7px; height:13px; background-position:-195px -196px;}
+.category-group .cont-list .category-area .check-area input:checked+label:after{display:inline-block;}
+.category-group .cont-list .category-area .check-area input:checked+label{background-color:#e6f3ff; color:#39f; font-weight:700;}
+/* 질문 대상 선택 레이어 - 기업 */
+.selectListArea .layer-box-wrap.corporation{width:330px;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch{position:relative; margin-top:12px;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .inpWrap{position:relative;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .schInp{padding:0 30px 0 15px; width:100%; height:40px; min-height:40px; border:1px solid #e5e5e5; box-sizing:border-box; font-size:14px; color:#666; line-height:1.3; vertical-align:top; outline:0;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .btnSch{position:absolute; right:10px; top:50%; width:25px; height:25px; -ms-transform:translateY(-50%); -webkit-transform:translateY(-50%); transform:translateY(-50%);}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .btnSch:before{width:13px; height:13px; background-position:-241px -90px;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer{z-index:3; display:none; position:absolute; left:28px; top:39px; width:274px; background-color:#fff; box-sizing: border-box; border:1px solid #555b76;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer ul{overflow-x:hidden; overflow-y:auto; padding:10px 0; max-height:285px;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer ul::-webkit-scrollbar-track{background-color:#fff;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer ul::-webkit-scrollbar{width:6px; background-color:#d8dbe2;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer ul::-webkit-scrollbar-thumb{border-radius:50px; background-color:#d8dbe2;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer ul li{padding:5px 0; height:70px;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer ul li button{padding:0 15px; width:100%; height:100%; background:#fff; box-sizing:border-box; text-align:left;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer ul li button:hover{background:#f3f9ff;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer ul li button .companyName{overflow:hidden; color:#333; font-size:14px; text-overflow:ellipsis; white-space:nowrap;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer ul li button .text_on{color:#3399ff;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer ul li button .companyInfo-area{overflow:hidden; margin-top:3px; text-overflow:ellipsis; white-space:nowrap;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer ul li button .companyInfo-area .type{display:inline; font-size:12px; color:#666;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer ul li button .companyInfo-area .type:after{content:''; display:inline-block; margin:0 8px 0 6px; width:2px; height:12px; background:#ebeff3; vertical-align:middle;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer ul li button .companyInfo-area .address{display:inline; font-size:12px; color:#999;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer ul li button .companyInfo{overflow:hidden; margin-top:3px; font-size:12px; color:#999; text-overflow:ellipsis; white-space:nowrap;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer .btn-more{margin:0 15px; width:242px; height:40px; border-top:1px solid #e3e2e2; font-size:13px; color:#666; line-height:40px;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch .searchLayer .btn-more:after{margin:-2px 0 0 6px; width:9px; height:6px; background-position:-195px -170px;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch.focus .inpWrap .schInp{border-color:#333;}
+.selectListArea .layer-box-wrap.corporation .keywordSearch.focus .searchLayer{display:block;}
+.selectListArea .layer-box-wrap.corporation .layer-cont{margin-top:0; border-top:0;}

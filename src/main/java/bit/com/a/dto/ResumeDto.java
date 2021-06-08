@@ -82,6 +82,7 @@ public class ResumeDto implements Serializable {
 	private String desiredjob4;
 	private String desiredjob5;
 	private int gender;
+	private int progress;
 	
 	public ResumeDto() {
 		// TODO Auto-generated constructor stub
@@ -89,12 +90,15 @@ public class ResumeDto implements Serializable {
 	
 	
 	
+	
+
+
 	public ResumeDto(int resumeseq, String memberid, int careerseq, int educationseq, String resumetitle,
 			String recruit_status, String resume_status, String resumeimage, String newresumeimage,
 			String resume_intro_title, String resume_intro_content, String portfolio, String newportfolio,
 			String desiredsalary, String desiredjobtype, String desired_str, String desired_end, String desiredarea1,
 			String desiredarea2, String desiredarea3, String desiredjob1, String desiredjob2, String desiredjob3,
-			String desiredjob4, String desiredjob5, int gender) {
+			String desiredjob4, String desiredjob5, int gender, int progress) {
 		super();
 		this.resumeseq = resumeseq;
 		this.memberid = memberid;
@@ -122,9 +126,12 @@ public class ResumeDto implements Serializable {
 		this.desiredjob4 = desiredjob4;
 		this.desiredjob5 = desiredjob5;
 		this.gender = gender;
+		this.progress = progress;
 	}
 
-	
+
+
+
 
 
 	public int getResumeseq() {
@@ -284,6 +291,17 @@ public class ResumeDto implements Serializable {
 		this.gender = gender;
 	}
 
+	public int getProgress() {
+		return progress;
+	}
+
+	public void setProgress(int progress) {
+		this.progress = progress;
+	}
+
+
+
+
 
 
 	@Override
@@ -297,8 +315,15 @@ public class ResumeDto implements Serializable {
 				+ ", desired_str=" + desired_str + ", desired_end=" + desired_end + ", desiredarea1=" + desiredarea1
 				+ ", desiredarea2=" + desiredarea2 + ", desiredarea3=" + desiredarea3 + ", desiredjob1=" + desiredjob1
 				+ ", desiredjob2=" + desiredjob2 + ", desiredjob3=" + desiredjob3 + ", desiredjob4=" + desiredjob4
-				+ ", desiredjob5=" + desiredjob5 + ", gender=" + gender + "]";
+				+ ", desiredjob5=" + desiredjob5 + ", gender=" + gender + ", progress=" + progress + "]";
 	}
+
+
+
+
+
+
+
 	
 	
 	

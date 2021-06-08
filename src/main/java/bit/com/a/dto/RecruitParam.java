@@ -30,6 +30,9 @@ public class RecruitParam implements Serializable{
 	private String careerStart;
 	private String careerEnd;
 	
+	private String memberid;
+	private String jobSeq;
+	
 	public RecruitParam() {
 		// TODO Auto-generated constructor stub
 	}
@@ -178,18 +181,36 @@ public class RecruitParam implements Serializable{
 		this.careerEnd = careerEnd;
 	}
 
+	public String getMemberid() {
+		return memberid;
+	}
+
+	public void setMemberid(String memberid) {
+		this.memberid = memberid;
+	}
+
+	public String getJobSeq() {
+		return jobSeq;
+	}
+
+	public void setJobSeq(String jobSeq) {
+		this.jobSeq = jobSeq;
+	}
+
 	@Override
 	public String toString() {
 		return "RecruitParam [buscode1=" + buscode1 + ", buscodename1=" + buscodename1 + ", buscode2=" + buscode2
 				+ ", buscodename2=" + buscodename2 + ", buscode=" + buscode + ", busname=" + busname + ", area1name="
 				+ area1name + ", area1code=" + area1code + ", area2name=" + area2name + ", area2code=" + area2code
 				+ ", choice=" + choice + ", search=" + search + ", page=" + page + ", start=" + start + ", end=" + end
-				+ ", education=" + education + ", careerStart=" + careerStart + ", careerEnd=" + careerEnd + "]";
+				+ ", education=" + education + ", careerStart=" + careerStart + ", careerEnd=" + careerEnd
+				+ ", memberid=" + memberid + ", jobSeq=" + jobSeq + "]";
 	}
 
 	public RecruitParam(String buscode1, String buscodename1, String buscode2, String buscodename2, String buscode,
 			String busname, String area1name, String area1code, String area2name, String area2code, String choice,
-			String search, int page, int start, int end, String education, String careerStart, String careerEnd) {
+			String search, int page, int start, int end, String education, String careerStart, String careerEnd,
+			String memberid, String jobSeq) {
 		super();
 		this.buscode1 = buscode1;
 		this.buscodename1 = buscodename1;
@@ -209,8 +230,10 @@ public class RecruitParam implements Serializable{
 		this.education = education;
 		this.careerStart = careerStart;
 		this.careerEnd = careerEnd;
+		this.memberid = memberid;
+		this.jobSeq = jobSeq;
 	}
-	
+
 	
 	
 	

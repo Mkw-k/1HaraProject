@@ -11,6 +11,9 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
 <html>
 
 <head>
+  <!-- CK-editor -->
+<link rel="stylesheet" href="ckeditor5/sample/styles.css">
+<script src="ckeditor5/build/ckeditor.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- 전체 공통 스크립트 임포트 -->
@@ -19,6 +22,17 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
   <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
   <!-- 카카오맵스 -->
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=685fcbb766340d7c8812f4e0a29a6661&libraries=services"></script>
+  
+  
+<style type="text/css">
+.star-on {
+  color: gray;
+}
+.star-off {
+  color: #7cccc2;
+}
+</style>
+
 </head>
 
 <body>
@@ -31,18 +45,34 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <h3 class="">${dto.companyname}&nbsp; &nbsp;&nbsp;<a class="btn btn-secondary" href=""><i class="fa fa-star fa-fw fa-1x py-1"></i></a><br>${dto.jobTitle}</h3>
+          <h3 class="">${dto.companyname}&nbsp; &nbsp;&nbsp;<a style="color:red" class="btn btn-secondary red" href="">
+          <i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
+          </a><br>${dto.jobTitle}</h3>
         </div>
         <div class="col-md-4 text-right" style="">
-          <a class="btn btn-secondary" href="javascript:jobFavorite(${dto.jobSeq })"><i class="fa fa-star fa-fw fa-1x py-1"></i></a>
+         
+          	<c:choose>
+          		<c:when test="${dto.favoriteJob >0 }">
+          					<a style="color:red" class="btn btn-secondary" href="javascript:dropFavoriteJob(${dto.jobSeq }, '${login.memberid }')">
+				          <i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
+				          </a>          		
+          		</c:when>
+          		<c:otherwise>
+          					<a class="btn btn-secondary" href="javascript:jobFavorite(${dto.jobSeq }, '${login.memberid }')">
+				            <i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
+				            </a>  
+          		</c:otherwise>
+          	</c:choose>
+          	
           <a class="btn btn-secondary" href="#">입사지원</a>
           <a class="btn btn-secondary" href="javascript:updateRecruit(${dto.jobSeq })">수정하기</a>
-          <a class="btn btn-secondary" href="javascript:deleteRecruit(${dto.jobSeq })">삭제</a></div>
+          <a class="btn btn-secondary" href="javascript:deleteRecruit(${dto.jobSeq })">삭제</a>
+          </div>
        </div>
-          
+          <hr class="mb-12">
       </div>
-      <hr class="mb-12">
       <div class="row">
+
       </div>
     </div>
   </div>
@@ -81,6 +111,7 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
     <div class="container">
       <div class="row">
         <div class="col-md-12" style="float:left;">
+        <hr class="mb-12">
           <li class="text-right mb-3">조회수&nbsp;&nbsp;<font>${dto.readcount }</font>
           </li>
         </div>
@@ -90,7 +121,10 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
   <div class="py-5" style="" >
     <div class="container">
       <div class="row">
-        <div class="col-md-12"> ${dto.jobContent } </div>
+        <div class="col-md-12">
+				<div class="editor" >    	
+	              	${dto.jobContent }  </div>
+		</div>
       </div>
     </div>
   </div>
@@ -333,14 +367,106 @@ function sample6_execDaumPostcode() {
     }).open();
 }
 
-function jobFavorite(sjobSeqeq) {
-	alert(jobSeq);
+function jobFavorite(jobSeq, memberid) {
+	//alert("즐겨찾기등록");
+	//alert(jobSeq);
+	//alert(memberid);
 	
-	location.href = "favoriteJob.do?jobSeq="+jobSeq;
+	location.href = "favoriteJob.do?jobSeq="+jobSeq+"&memberid="+memberid;
 	
+	//setTimeout("location.reload()", 15);
+	
+	//location.href = "RecruitDetail.do?jobseq=" +jobSeq; 
+	 
+}
+
+function dropFavoriteJob(jobSeq, memberid) {
+	//alert("즐겨찾기해제");
+	//alert(jobSeq);
+	//alert(memberid);
+	
+	location.href = "dropFavoriteJob.do?jobSeq="+jobSeq+"&memberid="+memberid;
+	
+	//setTimeout("location.reload()", 15);
+	
+	//location.href = "RecruitDetail.do?jobseq=" +jobSeq; 
 }
 
 </script>
+
+
+
+<script>BalloonEditor
+	.create( document.querySelector( '.editor' ), {
+		
+		toolbar: {
+			items: [
+				'heading',
+				'|',
+				'bold',
+				'italic',
+				'link',
+				'bulletedList',
+				'numberedList',
+				'|',
+				'outdent',
+				'indent',
+				'|',
+				'imageUpload',
+				'blockQuote',
+				'insertTable',
+				'fontColor',
+				'fontSize',
+				'fontBackgroundColor',
+				'fontFamily',
+				'highlight',
+				'imageInsert',
+				'mediaEmbed',
+				'undo',
+				'redo'
+			]
+		},
+		language: 'ko',
+		image: {
+			toolbar: [
+				'imageTextAlternative',
+				'imageStyle:full',
+				'imageStyle:side',
+				'linkImage'
+			]
+		},
+		table: {
+			contentToolbar: [
+				'tableColumn',
+				'tableRow',
+				'mergeTableCells'
+			]
+		},
+		licenseKey: '',
+		
+		
+	} )
+	.then( editor => {
+		window.editor = editor;
+		
+		//읽기전용으로 셋팅 (디테일페이지에서 사용)
+		editor.isReadOnly = true;
+		
+		//editor.setData();
+		
+		
+		
+	} )
+	.catch( error => {
+		console.error( 'Oops, something went wrong!' );
+		console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+		console.warn( 'Build id: x1h6xk4rd95i-65gjhojljtvk' );
+		console.error( error );
+	} );
+  
+  
+  
+  </script>
 	
 
 </body>

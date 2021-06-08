@@ -181,6 +181,10 @@ height: 150px;
 							<div class="col-md-12">
 								<p id="selectResult"></p>
 							</div>
+							
+							<p>
+								<button type="button" id="deleteResult">삭제하기</button>
+							</p>
 
 						</div>
 					</div>
@@ -420,12 +424,14 @@ function getrecruitSearchList(pnum) {
  			//alert(list);
 
  			$(".list_col").remove();
+ 			
+ 			var memberid = '<c:out value="${login.memberid}"/>';
 
  			$.each(list, function(i, val){
  				//alert(val.jobSeq);
  				let app = "<tr class= 'list_col'>"
  							+"<td>" + val.rnum +"</td>";
-
+					
  							if(val.del==0){
 
  								"<td>"
@@ -440,7 +446,7 @@ function getrecruitSearchList(pnum) {
  									+ "</td>"
  									+"<td style='text-align:left'>"
  									//+ arrow(val.depth)
- 									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq + "'>" + val.jobTitle+ "</a>"
+ 									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
  									+"</td>"
  									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
  									+"<td>" + val.jobVolumn + "</td>"
@@ -1113,7 +1119,15 @@ function delSelAreacode(cnt2, count2) {
 
 
 
-
+$("#deleteResult").click(function() {
+	alert('선택함');
+	$(".arrAreadata").remove();
+	$(".arrBusdata").remove();
+	
+	$( ".list_col5" ).prop("checked", false);
+	$( ".list_col3" ).prop("checked", false);
+			
+});
 
 
 

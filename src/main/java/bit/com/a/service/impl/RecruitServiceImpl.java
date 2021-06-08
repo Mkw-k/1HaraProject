@@ -67,10 +67,10 @@ public class RecruitServiceImpl implements RecruitService{
 	public List<String> getBsnameForDetail(int jobseq) {
 		return dao.getBsnameForDetail(jobseq);
 	}
-	
+
 	@Override
 	public List<RecruitDto> getCalendarList(RecruitDto rec) {
-		
+
 		return dao.getCalendarList(rec);
 	}
 
@@ -125,9 +125,19 @@ public class RecruitServiceImpl implements RecruitService{
 	}
 
 	@Override
-	public boolean favoriteJob(int jobSeq) {
-		return dao.favoriteJob(jobSeq);
+	public boolean favoriteJob(RecruitParam param) {
+		return dao.favoriteJob(param);
 	}
-	
-	
+
+	@Override
+	public int getJobFavorite(RecruitParam param) {
+		return dao.getJobFavorite(param);
+	}
+
+	@Override
+	public boolean dropFavoriteJob(RecruitParam param) {
+		return dao.dropFavoriteJob(param);
+	}
+
+
 }

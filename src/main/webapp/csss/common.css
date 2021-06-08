@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 /* ==========================================================================
-	common style
+   common style
 ========================================================================== */
 html, body {/*min-width:1160px;*/ width:100%; height:100%; margin:0; padding:0;}
 body {font-size:14px; line-height:1.8; color:#666; font-weight:normal; font-family:NanumGothic, '나눔고딕',  'Malgun Gothic', '맑은 고딕', Dotum, '돋움', sans-serif;}
@@ -57,7 +57,7 @@ label {display: inline-block; vertical-align: middle; cursor: pointer;}
 .deleted-file {position:fixed; left:0; top:0; z-index:99999; width:100%; height:100%; padding:350px 0 0 0; font-size:100px; font-weight:700; text-align:center; color:#fff; background-color:rgba(0,0,0,0.75);}
 
 /* ==========================================================================
-	custom style
+   custom style
 ========================================================================== */
 /* jquery ui reset */
 .ui-icon,
@@ -108,16 +108,16 @@ label {display: inline-block; vertical-align: middle; cursor: pointer;}
 
 /* font size */
 /*
-	default setting 14px
-	12px = 0.8571em
-	13px = 0.9286em
-	15px = 1.071em
-	16px = 1.1429em
-	18px = 1.286em
-	20px = 1.4286em
-	22px = 1.5174em
-	24px = 1.714em
-	36px = 2.5714em
+   default setting 14px
+   12px = 0.8571em
+   13px = 0.9286em
+   15px = 1.071em
+   16px = 1.1429em
+   18px = 1.286em
+   20px = 1.4286em
+   22px = 1.5174em
+   24px = 1.714em
+   36px = 2.5714em
 */
 
 /* title */
@@ -908,8 +908,8 @@ p.reset {margin:0; padding:0;}
 /* .btn-close-search-word {overflow:hidden; display:inline-block; width:34px; height:34px; margin:0; padding:0; border:0; vertical-align:middle; text-indent:-9999px; background:#fff url('../images/common/btn/btn-close-search-word.png') no-repeat center;} */
 /* .btn-close-search-word {overflow:hidden; display:inline-block; width:12px; height:12px; margin:0; padding:0; border:0; vertical-align:middle; text-indent:-9999px; background:url('../images/common/btn/btn-close-search-word.png') no-repeat 0 0;} */
 /*
-	2018-08-03
-	btn-modify ,btn-modify-comp 버튼을 따로 만들었으나 톱니바퀴 모양의 버튼은 사용하지 않는것으로 결론나서 배경 이미지 교체함
+   2018-08-03
+   btn-modify ,btn-modify-comp 버튼을 따로 만들었으나 톱니바퀴 모양의 버튼은 사용하지 않는것으로 결론나서 배경 이미지 교체함
  */
 .btn-modify {overflow:hidden; display:inline-block; width:19px; height:18px; margin:0; padding:0; border:0; vertical-align:middle; text-indent:-9999px; background:url('../images/common/btn/btn-modify-comp.png') no-repeat 0 0;}
 .btn-modify-comp, .btn-reply-comp {overflow:hidden; display:inline-block; width:19px; height:18px; margin:0; padding:0; border:0; vertical-align:middle; text-indent:-9999px; background:url('../images/common/btn/btn-modify-comp.png') no-repeat 0 0;}
@@ -1297,6 +1297,7 @@ input[type='search']::-ms-clear {width:20px; height:20px; margin-right:-3px; pad
 .board-list-count .util .radio-group {float:left; line-height:36px;}
 .board-list-count .util .radio-group label {margin-right:10px;}
 .board-list-count .util .range-view {float:left; margin-left:10px;} /* ej */
+
 .board-list-count .util .range-view select {float:left; height:36px; border:1px solid #ccc;}
 .board-list-count .util .range-view select + select {border-left:0;}
 .board-list-count .util .range-view .button {float:left;}
@@ -4126,7 +4127,7 @@ body{min-width:1200px; background-color:#f3f5f7;}
 #adTopWrap{width:1200px;}
 #wrap{margin:0 auto; width:1200px;}
 #wrap:after{content:""; clear:both; display:block; visibility:hidden; font-size:0; height:0;}
-#container{display:table-cell; vertical-align:top; width:960px; padding:30px 0 60px; float:right; z-index:3 !important;}
+/* #container{display:table-cell; vertical-align:top; width:960px; padding:30px 0 60px; float:right; z-index:3 !important;} */
 #container #content{width:960px; margin:0 auto; padding-top:0; line-height:1.5; position:relative; z-index:3;}
 #container #content:after{content:""; clear:both; display:block; visibility:hidden; font-size:0; height:0;}
 #container #content .top-title-wrap .title{margin-bottom:15px; font-size:21px; color:#000;}
@@ -4372,3 +4373,5 @@ body{min-width:1200px; background-color:#f3f5f7;}
 
 /* 이력서 직급없는 경우 / Placeholder(20210517) 관련 추가 */
 .resumePlaceholder {color:#cacaca; font-style:italic; font-size:8px; font-family:NanumGothic, '나눔고딕', 'Malgun Gothic', '맑은 고딕', Dotum, '돋움', sans-serif;}
+
+
