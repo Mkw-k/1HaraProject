@@ -17,10 +17,14 @@
 	COMIMAGE, EMPCOUNT, SALARYAVG, SALARYSTART, COMYEAR, RETIREE, JOINNER, WEBSITE, MAINSERVICE, TOTALSALE)
 	VALUES(#{companyname}, #{address}, #{companynum}, #{ceoname}, 0, #{companytype}, COMPANY_SEQ.NEXTVAL , #{memberid} , #{content}, 
 	#{comimage, jdbcType=VARCHAR}, #{content} ,#{salaryavg} , #{salarystart}, #{comyear} , #{retiree} , #{joinner} , #{website}, #{mainservice}, #{totalsale} )
-		
-	
 	</insert>
 	
+	<update id="companyupdate" parameterType="bit.com.a.dto.CompanyDto">
+		UPDATE COMPANY SET
+		COMPANYTYPE=#{companytype}, SALARYAVG=#{salaryavg}, SALARYSTART=#{salarystart}, COMYEAR=#{comyear}, CONTENT=#{content},
+		WEBSITE=#{website}, MAINSERVICE=#{mainservice}, TOTALSALE=#{totalsale},EMPCOUNT=#{empcount},RETIREE=#{retiree},JOINNER=#{joinner}   
+		WHERE MEMBERID=#{memberid}
+	</update>
 
 	
 </mapper>	

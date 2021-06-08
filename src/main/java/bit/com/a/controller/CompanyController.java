@@ -54,13 +54,27 @@ public class CompanyController {
 	}
 	
 	@RequestMapping(value = "companyupdate.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String companyupdate(Model model, CompanyDto dto) {
+	public String companyupdate(Model model, CompanyDto dto, String memberid) {
+		
+		
 		
 		model.addAttribute("company",dto);
 		return "company/companyupdate";
 	}
 
 		
+	@RequestMapping(value = "companyupdateAf.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String companyupdateAf(Model model, CompanyDto dto, String companyid) {
+		
+		
+		
+		service.companyupdate(dto);
+		dto.setUpdatecompanylist("YES");
+		model.addAttribute("company",dto);
+		System.out.println("af투스트링" + dto.toString());
+		return "redirect:/recuruitlist.do";
+	}
+	
 	
 }
 

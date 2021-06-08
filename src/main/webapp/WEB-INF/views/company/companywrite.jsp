@@ -14,8 +14,8 @@
  color:green
  }
  </style>
-    
-<form name="comform" id="_comform" action="companywriteAf.do" method="get">    
+   
+<form name="comform" id="_comform" method="get">    
     <table border="1">
      	<tr>
     		<th>회사이름:<p class="fontscolor2">* 변경할수없습니다</p></th>
@@ -105,19 +105,43 @@
     </table>
     <br><br>
     <div align="center">
-    	<button id="companyBtn">등록하기</button>
+    		<c:choose> 
+          		<c:when test="${dto.Updatecompanylist == 'YES'}">
+          			<div class="col-md-12"><a class="btn btn-secondary" href="javascript:ComUpdate();">수정하기</a></div>
+          			<input type="hidden" value="${dto.memberid }">          		
+          		</c:when> 
+        	    <c:otherwise>
+          			<div class="col-md-12"><a class="btn btn-secondary" href="javascript:ComRegi();">작성하기</a></div>
+          		</c:otherwise> 
+          	</c:choose> 
+    	
+    	<!-- 
+    	<button id="companyBtn" >등록하기</button>
+  		<button id="updateBtn">수정하기</button> -->
     </div>
 </form>    
 
+	
+	
 
 <script>
-	$("#companyBtn").click(function () {
-		
-		
-		alert("클릭크 수정");
-		$("#_comform").submit();
-	});
 
+function ComRegi() {
+ 
+    
+    $("#_comform").attr("action", "companywriteAf.do").submit();
 
+    
+}
+
+function ComUpdate() {
+	
+
+	$("#_comform").attr("action", "companyupdateAf.do").submit();
+}
+ 
+ 
+
+	
 </script>    
     
