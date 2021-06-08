@@ -15,45 +15,45 @@ import bit.com.a.service.MypageService;
 @Controller
 public class MypageController {
 
-	@Autowired
+   @Autowired
 
-	MypageService service;
-	
-	/*마이페이지*/
-	@RequestMapping(value = "mypage.do", method = RequestMethod.GET)
-	public String mypage() throws Exception {
+   MypageService service;
+   
+   /*마이페이지*/
+   @RequestMapping(value = "mypage.do", method = RequestMethod.GET)
+   public String mypage() throws Exception {
 
-		return "mypage";
+      return "mypage";
 
-	}
-	
-	/* 회원정보수정페이지*/
-	
-	@RequestMapping(value = "mypageUpdate.do", method = RequestMethod.GET)
-	public String mypageUpdate() throws Exception {
+   }
+   
+   /* 회원정보수정페이지*/
+   
+   @RequestMapping(value = "mypageUpdate.do", method = RequestMethod.GET)
+   public String mypageUpdate() throws Exception {
 
-		return "mypageUpdate";
-	}
-	
-	@RequestMapping(value = "mypageUpdateAf.do", method = RequestMethod.GET)
-	public String mypageUpdateAf(MemberDto dto) throws Exception {
-		
-		service.updateMypage(dto);
-		
-		System.out.println(dto.toString());
-		
-		return "mypage";
-		
-	}
+      return "mypageUpdate";
+   }
+   
+   @RequestMapping(value = "mypageUpdateAf.do", method = RequestMethod.GET)
+   public String mypageUpdateAf(MemberDto dto) throws Exception {
+      
+      service.updateMypage(dto);
+      
+      System.out.println(dto.toString());
+      
+      return "mypage";
+      
+   }
 
-	/*
-	 * @RequestMapping(value = "mypageupdate.do", method = RequestMethod.GET) public
-	 * String mypageupdate(HttpSession session, Model model) throws Exception {
-	 * 
-	 * model.Attributes("MemberDto", service.getMypage(dto))
-	 * 
-	 * 
-	 * }
-	 */
+   /*
+    * @RequestMapping(value = "mypageupdate.do", method = RequestMethod.GET) public
+    * String mypageupdate(HttpSession session, Model model) throws Exception {
+    * 
+    * model.Attributes("MemberDto", service.getMypage(dto))
+    * 
+    * 
+    * }
+    */
 
 }
