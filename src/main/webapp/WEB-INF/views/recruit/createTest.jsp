@@ -9,21 +9,18 @@
 
 <head>
 <meta charset="utf-8">
-<!-- 제이쿼리 -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout</title>
+<!-- 전체 공통 스크립트 임포트 -->
+<c:import url="script.jsp" charEncoding="utf-8"/>
 <!-- PAGE settings 페이지네이션-->
 <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
-<title>Checkout</title>
-<!-- 핀젠도 프론트 ui  -->
-<meta name="description" content="Wireframe design of a checkout form by Pingendo">
-<meta name="keywords" content="Pingendo bootstrap example template wireframe checkout form">
-<meta name="author" content="Pingendo">
 <!-- CSS dependencies -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 <!-- 외부css파일과 연결 -->
 <link rel="stylesheet" href="./css/wireframe.css">
+<!-- CK-editor -->
+<link rel="stylesheet" href="ckeditor5/sample/styles.css">
+<script src="ckeditor5/build/ckeditor.js"></script>
 
 
 <style type="text/css">
@@ -32,8 +29,11 @@
 	color: red;
 }
 </style>
-
 </head>
+
+
+<c:import url="header.jsp" charEncoding="utf-8"/>
+
 
 <body class="bg-light">
   <div class="py-5">
@@ -212,13 +212,21 @@
                 <div class="invalid-feedback"> Please enter your shipping address. </div>
               </div>
               
-              <div class="row">
-              <div class="col-md-10 mb-6"> <label for="address">공고상세내역</label>
-              	 <textarea rows="10" cols="100 px" name="jobContent">${dto.jobContent }             
-                 </textarea>
-              </div>
-              </div>
+             
               
+              </div>
+               <div class="row">
+              <div class="col-md-12 mb-12">
+	               <p><label for="address">공고상세내역</label></p>
+	              	<div class="editor" ><h1>여기다가 쓰면 들어옴 </h1>
+	              							<span>띄어쓰기는 안댐</span><span>띄어쓰기는 안댐</span><span>띄어쓰기는 안댐</span>      
+											<img alt="" src="">       	
+	              	${dto.jobContent }  </div>
+	              	
+	              	
+	              	<input type="hidden" name="jobContent" id="_jobContent">              	 
+	              
+              </div>
               </div>
               <hr class="mb-4">
               
@@ -256,8 +264,8 @@
               <div class="form-group">
                   	<input type="text" id="sample6_postcode" placeholder="우편번호">
 					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" name="area1Name" id="sample6_address" placeholder="주소" value="${dto.area1Name } ${dto.area2Name}"><br>
-					<input type="text" name="area2Name" id="sample6_detailAddress" placeholder="상세주소">
+					<input type="text" name="area1Name" id="sample6_address" placeholder="주소" value="${dto.area1Name } ${dto.area2Name} ${dto.detailAdress1 }"><br>
+					<input type="text" name="area2Name" id="sample6_detailAddress" placeholder="상세주소" value="${dto.detailAdress2 }">
 					<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 			</div>
          
@@ -274,11 +282,11 @@
        
         <div class="row">
           <div class="col-md-6 mb-3"> <label for="cc-name">담당자명</label>
-            <input type="text" class="form-control" name="manager" id="_manager" placeholder="담당자명" > <small class="text-muted">Full name as displayed on card</small>
+            <input type="text" class="form-control" name="mgName" value="${dto.mgName }" id="_manager" placeholder="담당자명" > <small class="text-muted">Full name as displayed on card</small>
             <div class="invalid-feedback"> Name on card is required </div>
           </div>
           <div class="col-md-6 mb-3"> <label for="cc-number">전화번호</label>
-            <input type="text" class="form-control" name="managerPhone" id="_managerPhone" placeholder="담당자연락처" >
+            <input type="text" class="form-control" name="mgPhone" value="${dto.mgPhone }" id="_managerPhone" placeholder="담당자연락처" >
             <div class="invalid-feedback"> Credit card number is required </div>
           </div>
         </div>
@@ -286,7 +294,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="mb-3"> <label for="email">이메일&nbsp;<span class="text-muted">(Optional)</span></label>
-              <input type="email" class="form-control" name="managerEmail" id="_managerEmail" placeholder="you@example.com">
+              <input type="email" class="form-control" name="mgEmail" value="${dto.mgEmail }" id="_managerEmail" placeholder="you@example.com">
               <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
             </div>
           </div>
@@ -316,7 +324,7 @@
           			<input type="hidden" value="${dto.jobSeq }" id="_jobSeq" name="jobSeq">          		
           		</c:when> 
         	    <c:otherwise>
-          			<div class="col-md-12"><a class="btn btn-secondary" href="javascript:jobRegi();">작성하기</a></div>
+          			<div class="col-md-12"><a class="btn btn-secondary" id="submit" href="javascript:jobRegi();">작성하기</a></div>
           		</c:otherwise> 
           	</c:choose> 
           	
@@ -389,6 +397,15 @@ function jobRegi() {
     for(var i=0; i<busValue; i++){                          
     	busData[i] = $("input[name='buscode']")[i].value;
     }
+    
+    /* var data = CKEDITOR.instances.editor.getData();
+    $("#_jobContent").val(data);
+    alert($("#_jobContent").val(data)); */
+    
+    alert($(".editor").html());
+    $("#_jobContent").val($(".editor").html());
+    
+    
     
    
     
@@ -781,7 +798,86 @@ function delSelBuscode(cnt, count) {
 </script>
   
   
+  <script>BalloonEditor
+	.create( document.querySelector( '.editor' ), {
+		
+		toolbar: {
+			items: [
+				'heading',
+				'|',
+				'bold',
+				'italic',
+				'link',
+				'bulletedList',
+				'numberedList',
+				'|',
+				'outdent',
+				'indent',
+				'|',
+				'imageUpload',
+				'blockQuote',
+				'insertTable',
+				'fontColor',
+				'fontSize',
+				'fontBackgroundColor',
+				'fontFamily',
+				'highlight',
+				'imageInsert',
+				'mediaEmbed',
+				'undo',
+				'redo'
+			]
+		},
+		language: 'ko',
+		image: {
+			toolbar: [
+				'imageTextAlternative',
+				'imageStyle:full',
+				'imageStyle:side',
+				'linkImage'
+			]
+		},
+		table: {
+			contentToolbar: [
+				'tableColumn',
+				'tableRow',
+				'mergeTableCells'
+			]
+		},
+		licenseKey: '',
+		
+		
+	} )
+	.then( editor => {
+		window.editor = editor;
+
+		
+		
+		
+
+		
+		
+		
+	} )
+	.catch( error => {
+		console.error( 'Oops, something went wrong!' );
+		console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+		console.warn( 'Build id: x1h6xk4rd95i-65gjhojljtvk' );
+		console.error( error );
+	} );
   
+	//Assuming there is a <button id="submit">Submit</button> in your application.
+  document.querySelector( '#submit' ).addEventListener( 'click', () => {
+      /* const editorData = editor.getData();
+      
+      alert(editorData);
+      $("#_jobContent").val(editorData); */
+
+      // ...
+  } );
+  
+  
+	</script>
   
   
   

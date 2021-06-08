@@ -28,9 +28,16 @@
 	        FROM BUSCODE3
 	        WHERE BUSCODE = #{item} )
 	        )
-
-
 		</foreach>
+		
+		<if test='mgDetail != null'>
+		   INTO MGDETAIL (mgdetailseq, jobseq, detailAdress1, detailAdress2,  mgName, mgEmail, mgPhone)
+		   VALUES (mgdetail_SEQ.nextval, JOB_SEQ.nextval,
+			<foreach collection="mgDetail" item="item" index="index" separator="," open="" close=")">
+			#{item}
+	    	</foreach>
+		</if>
+		
 	SELECT 1
 	FROM DUAL
 
@@ -227,7 +234,7 @@
 
 <!-- 최종 상세 검색 리스트 가져오기 -->
 <select id="getRecruitSearchList" parameterType="java.util.HashMap" resultType="bit.com.a.dto.RecruitDto">
-   SELECT DISTINCT J.RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+   SELECT DISTINCT RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
                J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
                J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL,
          C.COMPANYNAME, E.EDUNAME, T.EMP_NAME, P.CAREER_DESC
@@ -301,12 +308,13 @@
 SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
                J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
                J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.DEL, C.COMPANYNAME, P.CAREER_DESC,
-               E.EDUNAME, T.EMP_NAME
-FROM JOB J, BUSINESS C, EDUCATION E, JOB_CAREERTYPE P, EMPLOYEE_TYPE T
+               E.EDUNAME, T.EMP_NAME, D.detailAdress1, D.detailAdress2, D.mgName, D.mgPhone, D.mgEmail
+FROM JOB J, BUSINESS C, EDUCATION E, JOB_CAREERTYPE P, EMPLOYEE_TYPE T, MGDETAIL D
 WHERE J.COMPANYID = C.MEMBERID AND
      J.EDUCATION = E.EDUCODE AND
      P.CAREER_TYPE = J.CAREER_TYPE AND
      T.EMP_TYPE = J.EMP_TYPE AND
+     J.JOBSEQ = D.JOBSEQ AND 
      J.JOBSEQ = ${jobseq}
 </select>
 
@@ -389,5 +397,23 @@ SELECT JOBSEQ, JOBTITLE, JOBCONTENT,
    WHERE AREA2CODE LIKE ${areacode}||'%'
 </select>
 
+<!-- 채용 담당자 정보 수정  -->
+<update id="mgDetailUpdate" parameterType="bit.com.a.dto.RecruitDto">
+   UPDATE MGDETAIL
+   SET detailAdress1 = #{detailAdress1}, detailAdress2 = #{detailAdress2}, mgName = #{mgName}, mgPhone = #{mgPhone}, mgEmail = #{mgEmail}
+   WHERE JOBSEQ=#{jobSeq}
+</update>
+
+<update id="mgDetailUpdate2" parameterType="bit.com.a.dto.RecruitDto">
+	UPDATE JOB 
+	SET AREA1NAME = #{area1Name}, AREA2NAME = #{area2Name}, JOBSTART = #{jobStart}, JOBEND =#{jobEnd} 
+	WHERE JOBSEQ = #{jobSeq}
+</update>
+
+<!-- <insert id="favoriteJob">
+	INSERT INTO JOBFAVORITE (JFSEQ, JOBSEQ, MEMBERID)
+	VALUES(JOBFAVORITE_SEQ.NEXTVAL, #{jobSeq}, #{memberid}
+	
+</insert> -->
 
 </mapper>

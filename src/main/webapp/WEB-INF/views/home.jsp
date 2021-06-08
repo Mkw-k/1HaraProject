@@ -18,6 +18,16 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+<style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+  font-family: "Noto Sans KR", sans-serif !important;
+}
+</style>
+
 <!-- 카카오 로그인 -->
 <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <!-- 제이쿼리 -->
@@ -74,6 +84,8 @@
 
 <!-- 서치 css -->
 <link href="csss/search.css" rel="stylesheet" type="text/css">
+
+
 
 
 <style type="text/css">
@@ -656,7 +668,7 @@ margin-right : 450px;
 		  <div class="dropdown-content">
 		    <a href="#">채용공고</a>
 		    <a href="#">기업정보</a>
-		    <a href="jobtalk.do">취업톡톡</a>
+		    <a href="jobtalklist.do">취업톡톡</a>
 		    <a href="calendarlist.do">공채달력</a>
 		    <a href="#">자료실</a>
 		    <a href="notice.do">공지사항</a>
@@ -671,7 +683,7 @@ margin-right : 450px;
       <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href="jobtalk.do" style="color:#2186eb">취업톡톡</a>
+      <a class="nav-link bgc" href="Jobtalklist.do" style="color:#2186eb">취업톡톡</a>
     </li>
     <li class="nav-item">
       <a class="nav-link bgc" href="calendarlist.do" style="color:#2186eb">공채달력</a>
@@ -682,12 +694,16 @@ margin-right : 450px;
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href=companywrite.do style="color:#2186eb">기업등록하기(company)</a>
+<!--     <li class="nav-item">
+      <a class="nav-link bgc" href="companywrite.do" style="color:#2186eb">기업등록하기(company)</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link bgc" href=companyupdate.do style="color:#2186eb">기업업데이트하기(company)</a>
+      <a class="nav-link bgc" href="companyupdate.do" style="color:#2186eb">기업업데이트하기(company)</a>
     </li>
+    
+     <li class="nav-item">
+      <a class="nav-link bgc" href="companydetail.do" style="color:#2186eb">기업디테일(company)</a>
+    </li> -->
 
 
 
@@ -770,8 +786,6 @@ margin-right : 450px;
 
 <!-- 본문 -->
 <main>
-
-
 
 <div class="wrapper col3" style="margin-top: -150px;">
 
@@ -885,8 +899,16 @@ margin-right : 450px;
 		                    </h3>
 		                </div>
 		                <div class="panel-body"> <!-- 컨테이너 바디 -->
+		                
+		                
+		                    
 
-		                    <div class="main-login" style="width: 358px;">
+		                    <div class="main-login" style="width: 358px;height: 346px;">
+		                    
+		                     <!-- 프로필사진 이미지 들어가는곳 -->
+		                	<img src="다람쥐.jpg">
+		                    
+		                   
 			<!-- 로그인 전 -->
 					<!-- 로그인 전 -->
 
@@ -919,13 +941,18 @@ margin-right : 450px;
 										<c:when test="${login.auth==1 }">
 											<div class="top">
 												<div class="bg" style="background-image: url('bg-main-login-person.png') no-repeat 0 2px;">
-													<p class="txt">개인회원</p>
-													<p class="name"><strong>${login.name}</strong> 님</p>
-													<a href="/indivMemberSrv/main/indivMemberSrvMain.do" class="mypge">마이페이지</a>
+											
+													<p class="txt" style="
+    margin-left: 155px;
+">개인회원</p>
+													<p class="name" style="margin-left: 130px;"><strong style="
+    margin-left: 155px;
+">${login.name}</strong> 님</p>
+													<a href="/indivMemberSrv/main/indivMemberSrvMain.do" class="mypge" style="margin-left: 130px;"> 마이페이지</a>
 												</div>
 												<div class="btn-grp">
-													<button type="button" class="btn-logout float-l" onclick="f_logout();">로그아웃</button>
-													<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r">회원정보 관리</a>
+													<button type="button" class="btn-logout float-l" onclick="f_logout();" style="margin-left : 40px;">로그아웃</button>
+													<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r" style="margin-right : 40px;">회원정보 관리</a>
 												</div>
 											</div>
 										</c:when>
@@ -938,8 +965,8 @@ margin-right : 450px;
 													<a href="/indivMemberSrv/main/indivMemberSrvMain.do" class="mypge">마이페이지</a>
 												</div>
 												<div class="btn-grp">
-													<button type="button" class="btn-logout float-l" onclick="f_logout();">로그아웃</button>
-													<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r">기업 관리</a>
+													<button type="button" class="btn-logout float-l" onclick="f_logout();" style="margin-left : 40px;">로그아웃</button>
+													<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r" style="margin-right : 40px;" >기업 관리</a>
 												</div>
 											</div>
 										</c:when>
@@ -953,8 +980,8 @@ margin-right : 450px;
 													<a href="/indivMemberSrv/main/indivMemberSrvMain.do" class="mypge">마이페이지</a>
 												</div>
 												<div class="btn-grp">
-													<button type="button" class="btn-logout float-l" onclick="f_logout();">로그아웃</button>
-													<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r">개인 관리</a>
+													<button type="button" style="margin-left : 40px;"class="btn-logout float-l" onclick="f_logout();">로그아웃</button>
+													<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" class="float-r" style="margin-right : 40px;">개인 관리</a>
 												</div>
 											</div>
 
@@ -985,7 +1012,7 @@ margin-right : 450px;
 
          <!-- 구분선 -->
 
-		    <div class="row" style="width: 450px;">
+		   <div class="row" style="width: 450px;">
 		        <div>
 		            <div class="panel panel-primary">
 		                <div class="panel-heading">
@@ -995,19 +1022,19 @@ margin-right : 450px;
 		                <div class="panel-body">
 		                    <div class="row">
 		                        <div>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br/>10대기업</a>
-		                          <a href="calendarlist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>공채달력</a>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>TOP10</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br>10대기업</a>
+		                          <a href="calendarlist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
 		                        </div>
 		                        <div>
-		                         <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>취업톡톡</a>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>자료실</a>
-		                          <a href="mypage.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>마이페이지</a>
+		                         <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br>자료실</a>
+		                          <a href="mypage.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>마이페이지</a>
 		                        </div>
 		                        <div>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>이력서관리</a>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br/>취업뉴스</a>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br/>공지사항</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>이력서관리</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br>취업뉴스</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br>공지사항</a>
 		                        </div>
 		                    </div>
 		                </div>
@@ -1506,11 +1533,11 @@ function kakaoLogin() {
            		dataType: "text",
            		success: function (data) {	
            				
-           		//	alert('카카오 씨발 로그인성공')
+           		//	alert('카카오 로그인성공')
            		},
            		error: function(){
            			alert("birth:" + birth);
-           			alert('ㅋㅋ썽공 구라징');
+           			alert('성공');
            		}
            	  })
                

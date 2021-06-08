@@ -25,21 +25,6 @@ CRUD
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
-<!-- https://github.com/josecebe/twbs-pagination -->
-<script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
-
-
-
-
-
-
 <style type="text/css">
 .createRecruitBtn{
 	cursor: pointer;
@@ -56,46 +41,22 @@ height: 150px;
 
 </head>
 <body>
+<c:import url="script.jsp" charEncoding="utf-8"/>
+
+<c:import url="header.jsp" charEncoding="utf-8"/>
 
 
-<nav class="navbar navbar-expand-md sticky-top navbar-light" style="text-shadow: white 0px 0px 0.2px; box-shadow: black 0px 0px 10px;" id="nav-example"><a class="navbar-brand d-none d-md-block offset-1" href="#">
-      <i class="fa d-inline fa-lg fa-stop-circle-o" style="	background-image: url(./image/1hara.gif);	background-position: top left;	background-size: 100%;	background-repeat: repeat;"></i>
-      <b> BRAND</b>
-    </a>
-    <div class="container"> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar19" style="">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbar19">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <div class="btn-group">
-              <button class="btn dropdown-toggle btn-link text-dark" data-toggle="dropdown"> 전체보기</button>
-              <div class="dropdown-menu" style=""> <a class="dropdown-item" href="#">Action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-              </div>
-            </div>
-          </li>
-          <li class="nav-item"> <a class="nav-link active" href="#">채용공고</a> </li>
-          <li class="nav-item"> <a class="nav-link active" href="#">기업정보</a> </li>
-          <li class="nav-item"> <a class="nav-link active" href="#">취업톡톡</a> </li>
-          <li class="nav-item"> <a class="nav-link active" href="#">공채달력</a> </li>
-          <li class="nav-item"> <a class="nav-link active" href="#">자료실</a> </li>
-          <li class="nav-item"> <a class="nav-link active" href="#">이력서관리</a> </li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item"> <a class="nav-link" href="#">
-              <i class="fa fa-twitter fa-fw text-secondary"></i>
-            </a> </li>
-          <li class="nav-item"> <a class="btn btn-secondary mr-1" href="#">로그인</a><a class="btn btn-secondary" href="#">회원가입</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
-  
-  
+<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<img alt="" src="<%=request.getContextPath() %>/image/개발자23.gif" style="width: 100%; height: 140px;">	
+			</div>
+		</div>
+	</div>
+	<br>
+	
+
+
 
 <!-- 프론트 작업중 다중 셀렉트 박스  -->
 	<div class="container">
@@ -110,17 +71,11 @@ height: 150px;
 			<h3 class="text-muted">채용공고 게시판</h3>
 			<div class="m-5"></div>
 		</div>
-		
-		
-		
-<h1>채용공고게시판</h1>
 
-<!-- 채용공고 작성 -->
-<h2 onclick="createRecruit()" class="createRecruitBtn">채용공고 작성</h2>
-<h2 onclick="createRecruitNew()" class="createRecruitBtn">채용공고 작성 New</h2>
+
 
 <form action="#" id="_frmFormSearch" name="dataForm" method="post" novalidate="novalidate">
-	<input type="hidden"  id="_page" name="page">
+	<input type="hidden"  id="_page" >
 		<div class="py-5">
 			<div class="container">
 
@@ -356,6 +311,16 @@ height: 150px;
 	</div> -->
 
 	<br><br><br>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<img alt="" src="<%=request.getContextPath() %>/image/개발자23.gif" style="width: 100%; height: 140px;">	
+			</div>
+		</div>
+	</div>
+	<br><br>
+	
 
 	<div class="container">
 		<div class="row marketing">
@@ -434,13 +399,14 @@ function arrow(depth) {
 }
 */
 
-//5단 검색바 사용 검색할 경우 
+//5단 검색바 사용 검색할 경우
 function getrecruitSearchList(pnum) {
 	 var pnum = pnum;
 	 $("#_page").val(pnum);
 	 var queryString = $("form[name=dataForm]").serialize()+ "&page="+pnum;
-	 
 
+	 var selectSearchData1 = $("form[name=dataForm]").serialize();
+	 getRecruitListCount(selectSearchData1);
 
      $.ajax({
          type : 'post',
@@ -450,7 +416,7 @@ function getrecruitSearchList(pnum) {
              alert("에러발생");
          },
          success:function(list){
- 			alert('success');
+ 			//alert('success');
  			//alert(list);
 
  			$(".list_col").remove();
@@ -462,12 +428,16 @@ function getrecruitSearchList(pnum) {
 
  							if(val.del==0){
 
-
+ 								"<td>"
+								+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname+"</a>"
+							    + "</td>"
  								/* let empT = "";
  								if(val.empType == 3){
  									empT = "정규직";
  								} */
- 								app +="<td>" + val.companyname + "</td>"
+ 								app +="<td>"
+ 									+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname + "</a>"
+ 									+ "</td>"
  									+"<td style='text-align:left'>"
  									//+ arrow(val.depth)
  									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq + "'>" + val.jobTitle+ "</a>"
@@ -518,14 +488,8 @@ function getrecruListData( pNumber, search ){
 
 							if(val.del==0){
 
-
-								/* let empT = "";
-								if(val.empType == 3){
-									empT = "정규직";
-								} */
-
 								app +="<td>"
-									+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname +"</a>"
+									+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname+"</a>"
 								    + "</td>"
 									+"<td style='text-align:left'>"
 									//+ arrow(val.depth)
@@ -561,13 +525,14 @@ function getrecruListData( pNumber, search ){
 
 
 //글의 총수를 취득
-function getRecruitListCount(pnum) {
-	
-	 var pnum = pnum;
+function getRecruitListCount(selectSearchData1) {
+
+	/*  var pnum = pnum;
 	 $("#_page").val(pnum);
-	 alert("페이지넘버:"+$("#_page").val(pnum))
-	 var selectSearchData = $("form[name=dataForm]").serialize()+ "&page="+pnum;
-	 
+	 alert("페이지넘버:"+$("#_page").val(pnum)) */
+	 var selectSearchData = $("form[name=dataForm]").serialize();
+	 //var selectSearchData = selectSearchData1;
+
 
 
      $.ajax({
@@ -577,16 +542,16 @@ function getRecruitListCount(pnum) {
          success: function( count ) {
  			//alert('success');
 			//alert(count);
-			
+
  			loadPage(count);
  		},
          error: function(xhr, status, error){
              alert("글의 총수 불러오기 에러발생");
          }
      });
-	
-	
-	
+
+
+
 }
 
 
@@ -609,9 +574,9 @@ function getRecruitListCount(pnum) {
 
 //paging 처리
 function loadPage( totalCount ) {
-	
-	 alert("토탈카운트"+totalCount);
-	
+
+	 //alert("토탈카운트"+totalCount);
+
 	let pageSize = 5;
 	let nowPage = 1;
 
@@ -637,7 +602,7 @@ function loadPage( totalCount ) {
 		initiateStartPageClick:false,				//onPageClick 자동 실행되지 않도록 한다
 		onPageClick : function(event, page) {
 			nowPage = page;
-			alert('nowPage:'+ page);
+			//alert('nowPage:'+ page);
 			//getrecruListData(page -1);
 			getrecruitSearchList(page -1);
 		}
@@ -857,8 +822,8 @@ $(document).on("change", ".list_col3" , function(){
 
 		let buscode = $(this).val();
 		var count = $(this).attr('name');
-		
-		//데이터 밸류 값으로 busname값을 받아옴 
+
+		//데이터 밸류 값으로 busname값을 받아옴
 		let busname = $(this).data("value");
 		//alert("버스네임(데이터밸류네임):"+busname);
 		//alert(buscode);

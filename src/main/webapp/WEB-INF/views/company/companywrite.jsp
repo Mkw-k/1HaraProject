@@ -14,8 +14,8 @@
  color:green
  }
  </style>
-    
-<form name="comform" id="_comform" action="companywriteAf.do" method="get">    
+   
+<form name="comform" id="_comform" method="get">    
     <table border="1">
      	<tr>
     		<th>회사이름:<p class="fontscolor2">* 변경할수없습니다</p></th>
@@ -44,7 +44,7 @@
     
     	<tr>
     		<th>회사 규모 (중소기업 , 대기업):</th>
-    		<td><input type="text" name="companytype" value="${company.companytype}"></td>
+    		<td><input type="text" name="companytype" value="${company.companytype}">(필수)</td>
     	</tr>
 
      	<tr hidden="">
@@ -54,12 +54,12 @@
 
 		<tr>
     		<th>평균 연봉:</th>
-    		<td><input type="text" name="salaryavg" value="${company.salaryavg }"></td>
+    		<td><input type="text" name="salaryavg" value="${company.salaryavg }">(필수)</td>
     	</tr>
     
     	<tr>
     		<th>초봉:</th>
-    		<td><input type="text" name="salarystart" value="${company.salarystart }"></td>
+    		<td><input type="text" name="salarystart" value="${company.salarystart }">(필수)</td>
     	</tr>
     
     	<tr>
@@ -105,19 +105,43 @@
     </table>
     <br><br>
     <div align="center">
-    	<button id="companyBtn">등록하기</button>
+    		<c:choose> 
+          		<c:when test='${company.updatecompanylist=="YES"}'>
+          			<div class="col-md-12"><a class="btn btn-secondary" href="javascript:ComUpdate()">수정하기</a></div>
+          			<%-- <input type="hidden" value="${company.memberid }"> --%>          		
+          		</c:when> 
+        	    <c:otherwise>
+          			<div class="col-md-12"><a class="btn btn-secondary" href="javascript:ComRegi()">작성하기</a></div>
+          		</c:otherwise> 
+          	</c:choose> 
+    	
+    	<!-- 
+    	<button id="companyBtn" >등록하기</button>
+  		<button id="updateBtn">수정하기</button> -->
     </div>
 </form>    
 
+	
+	
 
 <script>
-	$("#companyBtn").click(function () {
-		
-		
-		alert("클릭크 수정");
-		$("#_comform").submit();
-	});
 
+function ComRegi() {
+ 
+    
+    $("#_comform").attr("action", "companywriteAf.do").submit();
 
+    
+}
+
+function ComUpdate() {
+	
+
+	$("#_comform").attr("action", "companyupdateAf.do").submit();
+}
+ 
+ 
+
+	
 </script>    
     

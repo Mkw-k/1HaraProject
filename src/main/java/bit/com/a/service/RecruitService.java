@@ -9,42 +9,48 @@ import bit.com.a.dto.RecruitParam;
 
 public interface RecruitService {
 
-	boolean writeRecruit(Map<String, Object> param);
-	
-	List<RecruitDto> getallRecruitlist();
-	
-	//int getRecruitCount(BbsParam param);
-	
-	List<RecruitDto> getRecruitPagingList(RecruitParam param);
-	
-	RecruitDto getRecruitListOne(int jobseq);
-	
-	boolean deleteRecruit(int jobseq);
-	
-	List<RecruitParam> buscodeListData();
-	
-	List<RecruitParam> buscode2ListData(int buscode);
+   boolean writeRecruit(Map<String, Object> param);
 
-	List<RecruitParam> buscode3ListData(int buscode);
+   List<RecruitDto> getallRecruitlist();
 
-	List<RecruitDto> getCalendarList(RecruitDto rec);
-	
-	List<String> getBsnameForDetail(int jobseq);
+   //int getRecruitCount(BbsParam param);
 
-	List<RecruitParam> areacodeListData();
+   List<RecruitDto> getRecruitPagingList(RecruitParam param);
 
-	int getArea1Code(String areaname);
+   RecruitDto getRecruitListOne(int jobseq);
 
-	List<RecruitParam> areacode2ListData(int areacode);
+   boolean deleteRecruit(int jobseq);
 
-	List<RecruitDto> getRecruitSearchList(Map<String, Object> map);
+   List<RecruitParam> buscodeListData();
 
-	boolean updateRecruit(Map<String, Object> param);
+   List<RecruitParam> buscode2ListData(int buscode);
 
-	boolean deleteBuscode(int jobSeq);
+   List<RecruitParam> buscode3ListData(int buscode);
 
-	boolean insertBuscode(Map<String, Object> param);
+   List<RecruitDto> getCalendarList(RecruitDto rec);
+
+   List<String> getBsnameForDetail(int jobseq);
+
+   List<RecruitParam> areacodeListData();
+
+   int getArea1Code(String areaname);
+
+   List<RecruitParam> areacode2ListData(int areacode);
+
+   List<RecruitDto> getRecruitSearchList(Map<String, Object> map);
+
+   boolean updateRecruit(Map<String, Object> param);
+
+   boolean deleteBuscode(int jobSeq);
+
+   boolean insertBuscode(Map<String, Object> param);
 
 	int getRecruitCount(Map<String, Object> map);
-	
+
+	boolean mgDetailUpdate(RecruitDto dto);
+
+	boolean mgDetailUpdate2(RecruitDto dto);
+
+	boolean favoriteJob(int jobSeq);
+
 }

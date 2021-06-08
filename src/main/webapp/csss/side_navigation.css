@@ -1,0 +1,56 @@
+@charset "utf-8";
+/*
+.File Name	: /content/css/user/qna/module/side_menu.css
+.Final Editor	: 장유리(2020-02-06 생성)
+.Description	: 취업톡톡 - 공통(lnb)
+*/
+
+.side-navigation{float:left; width:210px; padding-top:13px; border:1px solid #e5e5e7; border-top:none; background-color:#fff;}
+.side-navigation .navi-top-area{padding:0 12px;}
+.side-navigation .btn-question{display:block; width:100%; height:56px; background:#394a78; font-weight:bold; font-size:17px; color:#fff; line-height:58px; text-align:center;}
+.side-navigation .btn-question:before{margin:-3px 7px 0 0; width:17px; height:17px; background-position:-140px -90px;}
+.side-navigation .btn-question:hover{background-color:#202e54;}
+.side-navigation .myInfoSec{margin:10px 0 20px;padding:0 20px; background:#f5f5f5;}
+.side-navigation .myInfoSec .myInfo{display:block; padding:20px 0 15px;}
+.side-navigation .myInfoSec .myInfo .proThumb{overflow:hidden; display:block; margin:0 auto; width:48px; height:48px; border-radius:50%;}
+.side-navigation .myInfoSec .myInfo .proThumb img{width:100%; height:100%; border-radius:50%;}
+.side-navigation .myInfoSec .myInfo .infoBx{margin-top:10px; text-align:center;}
+.side-navigation .myInfoSec .myInfo .infoBx dt{line-height:1;}
+.side-navigation .myInfoSec .myInfo .infoBx dt:after{margin:-2px 0 0 5px; width:4px; height:7px; background-position:-120px -65px;}
+.side-navigation .myInfoSec .myInfo .infoBx dt .nickname{display:inline-block; margin-right:2px; overflow:hidden; text-overflow:ellipsis; max-width:90px; white-space:nowrap; font-size:13px; color:#000; letter-spacing:-.5px;}
+.side-navigation .myInfoSec .myInfo .infoBx dt .lvIcon{display:inline-block; position:relative; left:0; top:-1px; padding:0 5px; height:14px; background:#b6c1c6; border-radius:2px; font-size:11px; color:#fff; line-height:14px;}
+.side-navigation .myInfoSec .myInfo .infoBx dd{margin-top:10px; line-height:1;}
+.side-navigation .myInfoSec .myInfo .infoBx dd span{display:inline-block; position:relative; margin-left:6px; padding-left:6px; font-size:13px; color:#666; line-height:1.3;}
+.side-navigation .myInfoSec .myInfo .infoBx dd span:before{content:""; position:absolute; left:-1px; top:50%; margin-top:-1px; width:2px; height:2px; background:#999;}
+.side-navigation .myInfoSec .myInfo .infoBx dd span:first-child{margin:0; padding:0;}
+.side-navigation .myInfoSec .myInfo .infoBx dd span:first-child:before{display:none; width:0;}
+.side-navigation .myInfoSec .myPoint{display:block; padding:10px 0 20px; width:100%; border-top:1px solid #e1e1e1;}
+.side-navigation .myInfoSec .myPoint .point{display:inline-block; margin-top:5px; font-size:15px; color:#333; letter-spacing:-1px; line-height:22px;}
+.side-navigation .myInfoSec .myPoint .point:before{margin:-2px 5px 0 0; width:20px; height:20px; background-position:-170px -90px;}
+.side-navigation .myInfoSec .myPoint .btnCoupon{display:inline-block; margin:5px 0 0 6px; padding:0 5px; height:20px; background:#fff; border:1px solid rgba(153,153,153,0.5); font-size:12px; color:#333; text-align:center; line-height:20px;}
+.side-navigation .myInfoSec .myPoint .btnCoupon:after{margin:-3px 0 0 5px; width:4px; height:7px; background-position:-120px -65px;}
+.side-navigation .myInfoSec.logout{padding:0;}
+.side-navigation .myInfoSec.logout .myInfo{padding:20px 0;}
+.side-navigation .myInfoSec.logout .myInfo .msg{margin-top:10px; font-size:13px; color:#000; text-align:center;}
+.side-navigation .myInfoSec.logout .myInfo .msg em{font-weight:bold; color:#3399ff; text-decoration:underline;}
+.side-navigation .navi-list-area .sideNavLow{position:relative; padding:16px 19px 19px; border-top:1px solid #efeff1;}
+.side-navigation .navi-list-area .sideNavLow .sideNavTit a{font-size:16px; color:#000; font-weight:bold; letter-spacing:-0.5px;}
+.side-navigation .navi-list-area .sideNavLow .sideNavTit a.active{color:#3399ff;}
+.side-navigation .navi-list-area .sideNavLow .sideNavTit a:hover{text-decoration:underline;}
+.side-navigation .navi-list-area .sideNavLow .sideNavTit.no-active a{cursor:default;}
+.side-navigation .navi-list-area .sideNavLow .sideNavTit.no-link a:hover{text-decoration:none;}
+.side-navigation .navi-list-area .sideNavLow .sideNavList{padding:6px 0 0 10px;}
+.side-navigation .navi-list-area .sideNavLow .sideNavList li{margin-top:8px;}
+.side-navigation .navi-list-area .sideNavLow .sideNavList li a{overflow:hidden; display:inline-block; position:relative; padding:0 5px 0 0; max-width:100%; font-size:13px; color:#666; letter-spacing:-0.5px; text-overflow:ellipsis; white-space:nowrap;}
+.side-navigation .navi-list-area .sideNavLow .sideNavList li a:hover{text-decoration:underline;}
+.side-navigation .navi-list-area .sideNavLow .sideNavList li.active a{color:#3399ff; font-weight:bold;}
+.side-navigation .navi-list-area .sideNavLow .sideNavList.boxList{padding:6px 0 0;}
+.side-navigation .navi-list-area .sideNavLow .sideNavList.boxList:after{content:""; display:block; clear:both;}
+.side-navigation .navi-list-area .sideNavLow .sideNavList.boxList li{position:relative; border:1px solid #dedede; float:left; margin-right:6px; padding-right:18px; max-width:calc(100% - 18px); max-width:-webkit-calc(100% - 18px); word-wrap:break-word; word-break:break-all;}
+.side-navigation .navi-list-area .sideNavLow .sideNavList.boxList li a{overflow:initial; display:inline-block; padding:5px; letter-spacing:-1px; white-space:normal;}
+.side-navigation .navi-list-area .sideNavLow .icnNew{display:inline-block; position:relative; left:3px; top:3px; width:4px; height:4px; text-indent:-9999px;}
+.side-navigation .navi-list-area .sideNavLow .icnNew:after{position:absolute; left:0px; top:0px; width:4px; height:4px; background-position:-30px -70px; vertical-align:middle;}
+.side-navigation .navi-list-area .sideNavLow .icnDel{display:inline-block; position:absolute; right:6px; top:50%; transform:translateY(-50%); -ms-transform:translateY(-50%); -webkit-transform:translateY(-50%); transform:translateY(-50%); text-indent:-9999px;}
+.side-navigation .navi-list-area .sideNavLow .icnDel:after{position:absolute; right:0; top:50%; width:7px; height:7px; background-position:-94px -90px; -webkit-transform:translateY(-50%); transform:translateY(-50%);}
+.side-navigation .navi-list-area .has-tooltip .select-tooltip{margin:-5px 0 0 5px; width:14px; height:14px;}
+.side-navigation .navi-list-area .has-tooltip .select-tooltip:after{width:14px; height:14px; background-position:-120px -90px;}

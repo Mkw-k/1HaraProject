@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="bit.com.a.dto.ResumeDto"%>
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
 <%@page import="java.util.List"%>
@@ -56,6 +57,8 @@
 <link href="csss/header.css" rel="stylesheet" type="text/css">
 <link href="csss/resume.css" rel="stylesheet" type="text/css">
 
+<!-- 페이지네이션 -->
+<script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
 
 <style type="text/css">
   
@@ -520,6 +523,17 @@ nav {
 <!-- 본문 -->
 <main>
 
+
+<%
+List<ResumeDto> resumelist =(List<ResumeDto>) request.getAttribute("resumelist");
+List<ResumeDto> resumeNolist =(List<ResumeDto>) request.getAttribute("resumeNolist");
+System.out.println("resumelist" +resumelist);
+System.out.println("resumeNolist" +resumeNolist);
+
+
+%>
+
+
 <!-- 검색창 -->
 <section class="newsletter" style="padding-bottom: 10px;">
 <div class="container">
@@ -556,22 +570,22 @@ nav {
 					<div class="tab-pane fade in active" id="completed" name="completed" role="tabpanel" style="width: 1500px;">
 						<div class="bs-callout bs-callout-primary">
 							<ul class="list-group">
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;">
-								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 최은지
-								<img alt="" src="<%=request.getContextPath()%>/image/book.png" height="30px" width="30px" style="margin-left: 40px;"></li>
+							
+						<%
+					for(int i=0; i<resumelist.size(); i++){
+						%>
+						<li class="list-group-item"><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a>
+						<div>
+						<a href="updateResume.do?seq=<%=resumelist.get(i).getResumeseq()%>" class="box-btn">수정</a>
+						<a href="deleteResume.do?seq=<%=resumelist.get(i).getResumeseq()%>" class="box-btn">삭제</a>
+						</div>
+						</li>
+					<% 	
+					}			
+					%>
+								
 							</ul>
+							
 						</div>
 					</div>
 
@@ -579,77 +593,21 @@ nav {
 						<div class="bs-callout bs-callout-primary" id="certifications"
 							name="certifications" style="width: 1500px;">
 							<ul class="list-group">
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 이정우
+							
+							<%for(int i=0; i<resumeNolist.size();i++){ %>
+								<li class="list-group-item"><a href="Resumedetail.do?seq=<%=resumeNolist.get(i).getResumeseq()%>"><%=resumeNolist.get(i).getResumetitle() %></a>
 									<div class="pendiv">
 										<progress class="progress progress-striped progress-success"
-											value="90" max="100">
-											<span class="sr-only">90%</span>
+											value="<%=resumeNolist.get(i).getProgress() %>" max="100">
+											<span class="sr-only"></span>
 										</progress>
-										<img alt="" src="<%=request.getContextPath()%>/image/pen.png"
-											height="30px" width="30px" style="margin-left: 30px;">
-									</div>
-
-								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 이정우
-									<div class="pendiv">
-										<progress class="progress progress-striped progress-warning"
-											value="40" max="100">
-											<span class="sr-only">40%</span>
-										</progress>
-										<img alt="" src="<%=request.getContextPath()%>/image/pen.png"
-											height="30px" width="30px" style="margin-left: 30px;">
+										<a href="writeResume.do" class="box-btn">작성</a>
 									</div>
 								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 이정우
-									<div class="pendiv">
-										<progress class="progress progress-striped progress-danger"
-											value="30" max="100">
-											<span class="sr-only">30%</span>
-										</progress>
-										<img alt="" src="<%=request.getContextPath()%>/image/pen.png"
-											height="30px" width="30px" style="margin-left: 30px;">
-									</div>
-								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 이정우
-									<div class="pendiv">
-										<progress class="progress progress-striped progress-warning"
-											value="60" max="100">
-											<span class="sr-only">60%</span>
-										</progress>
-										<img alt="" src="<%=request.getContextPath()%>/image/pen.png"
-											height="30px" width="30px" style="margin-left: 30px;">
-									</div>
-								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 이정우
-									<div class="pendiv">
-										<progress class="progress progress-striped progress-warning"
-											value="50" max="100">
-											<span class="sr-only">50%</span>
-										</progress>
-										<img alt="" src="<%=request.getContextPath()%>/image/pen.png"
-											height="30px" width="30px" style="margin-left: 30px;">
-									</div>
-								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 이정우
-									<div class="pendiv">
-										<progress class="progress progress-striped progress-success"
-											value="70" max="100">
-											<span class="sr-only">70%</span>
-										</progress>
-										<img alt="" src="<%=request.getContextPath()%>/image/pen.png"
-											height="30px" width="30px" style="margin-left: 30px;">
-									</div>
-								</li>
-								<li class="list-group-item">프로그래머의 자질을 갖춘 지원자 이정우
-									<div class="pendiv">
-										<progress class="progress progress-striped progress-success"
-											value="60" max="100">
-											<span class="sr-only">60%</span>
-										</progress>
-										<img alt="" src="<%=request.getContextPath()%>/image/pen.png"
-											height="30px" width="30px" style="margin-left: 30px;">
-									</div>
-								</li>
+							<%  
+							System.out.println("progress"+resumeNolist.get(i).getProgress());
+							}
+							%>	
 							</ul>
 						</div>
 
@@ -939,5 +897,7 @@ $(document).ready(function()
     $("[rel='tooltip']").tooltip();
 });
 </script>
+
+
 </body>
 </html>
