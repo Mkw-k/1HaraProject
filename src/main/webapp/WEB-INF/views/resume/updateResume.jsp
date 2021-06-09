@@ -656,6 +656,8 @@ System.out.println(_gender);
 
 														<div id="education" class="resume_write resume_edu">
 
+
+														
 															<div id="tpl_row_1621990777" class="tpl_row fixedTop"
 																data-tpl_id="tpl_highschool">
 
@@ -663,7 +665,7 @@ System.out.println(_gender);
 																	<h4 class="title">고등학교 정보 입력</h4>
 																</div>
 
-
+												
 
 																<div class="resume_row" style="display:">
 																	<div class="input_title">
@@ -838,10 +840,16 @@ System.out.println(_gender);
 																	</div>
 																</div>
 
-
-
 															</div>
-														<% for(int i=0; i<edulist.size();i++){ %>
+															
+											
+															
+														<% if(edulist.get(0).getUniversity()==null || edulist.get(0).getUniversity().equals("")){
+															
+															
+														}else{
+															
+																for(int i=0; i<edulist.size();i++){ %>
 															<div id="tpl_row_1621990778" class="tpl_row"
 																data-tpl_id="tpl_university">
 																
@@ -1250,7 +1258,8 @@ System.out.println(_gender);
 																</div>
 															</div>
 															
-															<% } %>
+															<% 		}
+																}%>
 														</div>
 
 
@@ -1259,6 +1268,9 @@ System.out.println(_gender);
 
 													</div>
 												</div>
+												
+												
+												<% for(int i=0; i<calist.size();i++){ %>
 												<div id="career" class="resume_section blind_guide">
 
 													<div class="area_title">
@@ -1337,7 +1349,7 @@ System.out.println(_gender);
 																		</div>
 																		<div class="resume_input">
 																			<input type="text" id="career_company_nm_1621990779"
-																				name="pre_comname" value=""
+																				name="pre_comname" value="<%=calist.get(i).getPre_comname() %>"
 																				class="box_input" maxlength="80"
 																				data-api_type="auto" data-api_id="career_company">
 																		</div>
@@ -1351,7 +1363,7 @@ System.out.println(_gender);
 																			<div class="resume_input">
 																				<input type="text" id="career_start_dt_1621990779"
 																					name="pre_startdate"
-																					class="expect_date box_input size_type2" value=""
+																					class="expect_date box_input size_type2" value="<%=calist.get(i).getPre_startdate() %>"
 																					data-dateformat="yymm" data-only-number="true"
 																					autocomplete="off">
 
@@ -1361,26 +1373,27 @@ System.out.println(_gender);
 
 																				<input type="text" id="career_end_dt_1621990779"
 																					name="pre_enddate"
-																					class="expect_date box_input size_type2" value=""
+																					class="expect_date box_input size_type2" value="<%=calist.get(i).getPre_enddate() %>"
 																					data-dateformat="yymm" data-only-number="true"
 																					autocomplete="off">
 
 																			</div>
 																			<div class="sri_select resume_select">
 																			
-																			
+																			<% if(calist.get(i).getPre_status().equals("퇴사")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="pre_status">
 																					<option value="퇴사" selected="selected">퇴사</option>
 																					<option value="재직중">재직중</option>
 																				</select>
-																			
+																			<% } %>
+																			<% if(calist.get(i).getPre_status().equals("재직중")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="pre_status">
 																					<option value="퇴사">퇴사</option>
 																					<option value="재직중" selected="selected">재직중</option>
 																				</select>
-																			
+																			<% } %>
 
 																			</div>
 																			<p class="txt_error"></p>
@@ -1393,10 +1406,10 @@ System.out.println(_gender);
 																		<div class="resume_bundle">
 																			<div class="sri_select resume_select">
 
-
+																			<% if(calist.get(i).getPre_reason().equals("업직종 전환")){ %>
 																				<select class="selectpicker"
-																					style="width: 107.22222px; height: 50.22222px;">
-																					<option>업직종 전환</option>
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_reason" id="pre_reason">
+																					<option selected="selected">업직종 전환</option>
 																					<option>근무조건</option>
 																					<option>경영악화</option>
 																					<option>계약만료</option>
@@ -1406,8 +1419,120 @@ System.out.println(_gender);
 																					<option>개인사정</option>
 																					<option>기타</option>
 																				</select>
-
-
+																			<% } %>
+																			<% if(calist.get(i).getPre_reason().equals("근무조건")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_reason" id="pre_reason">
+																					<option>업직종 전환</option>
+																					<option selected="selected">근무조건</option>
+																					<option>경영악화</option>
+																					<option>계약만료</option>
+																					<option>출산/육아</option>
+																					<option>학업</option>
+																					<option>유학</option>
+																					<option>개인사정</option>
+																					<option>기타</option>
+																				</select>
+																			<% } %>
+																			<% if(calist.get(i).getPre_reason().equals("경영악화")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_reason" id="pre_reason">
+																					<option>업직종 전환</option>
+																					<option>근무조건</option>
+																					<option selected="selected">경영악화</option>
+																					<option>계약만료</option>
+																					<option>출산/육아</option>
+																					<option>학업</option>
+																					<option>유학</option>
+																					<option>개인사정</option>
+																					<option>기타</option>
+																				</select>
+																			<% } %>
+																			<% if(calist.get(i).getPre_reason().equals("계약만료")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_reason" id="pre_reason">
+																					<option>업직종 전환</option>
+																					<option>근무조건</option>
+																					<option>경영악화</option>
+																					<option selected="selected">계약만료</option>
+																					<option>출산/육아</option>
+																					<option>학업</option>
+																					<option>유학</option>
+																					<option>개인사정</option>
+																					<option>기타</option>
+																				</select>
+																			<% } %>
+																			<% if(calist.get(i).getPre_reason().equals("출산/육아")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_reason" id="pre_reason">
+																					<option>업직종 전환</option>
+																					<option>근무조건</option>
+																					<option>경영악화</option>
+																					<option>계약만료</option>
+																					<option selected="selected">출산/육아</option>
+																					<option>학업</option>
+																					<option>유학</option>
+																					<option>개인사정</option>
+																					<option>기타</option>
+																				</select>
+																			<% } %>
+																			<% if(calist.get(i).getPre_reason().equals("학업")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_reason" id="pre_reason">
+																					<option>업직종 전환</option>
+																					<option>근무조건</option>
+																					<option>경영악화</option>
+																					<option>계약만료</option>
+																					<option>출산/육아</option>
+																					<option selected="selected">학업</option>
+																					<option>유학</option>
+																					<option>개인사정</option>
+																					<option>기타</option>
+																				</select>
+																			<% } %>
+																			<% if(calist.get(i).getPre_reason().equals("유학")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_reason" id="pre_reason">
+																					<option>업직종 전환</option>
+																					<option>근무조건</option>
+																					<option>경영악화</option>
+																					<option>계약만료</option>
+																					<option>출산/육아</option>
+																					<option>학업</option>
+																					<option selected="selected">유학</option>
+																					<option>개인사정</option>
+																					<option>기타</option>
+																				</select>
+																			<% } %>
+																			<% if(calist.get(i).getPre_reason().equals("개인사정")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_reason" id="pre_reason">
+																					<option>업직종 전환</option>
+																					<option>근무조건</option>
+																					<option>경영악화</option>
+																					<option>계약만료</option>
+																					<option>출산/육아</option>
+																					<option>학업</option>
+																					<option>유학</option>
+																					<option selected="selected">개인사정</option>
+																					<option>기타</option>
+																				</select>
+																			<% } %>
+																			<% if(calist.get(i).getPre_reason().equals("기타")){ %>
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_reason" id="pre_reason">
+																					<option>업직종 전환</option>
+																					<option>근무조건</option>
+																					<option>경영악화</option>
+																					<option>계약만료</option>
+																					<option>출산/육아</option>
+																					<option>학업</option>
+																					<option>유학</option>
+																					<option>개인사정</option>
+																					<option selected="selected">기타</option>
+																				</select>
+																			<% } %>
+																			
 																			</div>
 
 																		</div>
@@ -1422,7 +1547,7 @@ System.out.println(_gender);
 																				<input type="text"
 																					id="career_job_grade_duties_1621990779"
 																					name="pre_position"
-																					class="box_input max_length" value=""
+																					class="box_input max_length" value="<%=calist.get(i).getPre_position() %>"
 																					data-api_type="layer"
 																					data-api_id="career_job_grade_duties"
 																					maxlength="20">
@@ -1440,7 +1565,7 @@ System.out.println(_gender);
 																			<div class="option option_area">
 																				<input type="text"
 																					id="career_job_category_text_1621990779"
-																					name="pre_buscode" value=""
+																					name="pre_buscode" value="<%=calist.get(i).getPre_buscode() %>"
 																					class="box_input" data-api_type="layer"
 																					data-api_id="career_job_category" data-dim="n"
 																					data-position="unused" >
@@ -1463,7 +1588,7 @@ System.out.println(_gender);
 																		<div class="input_title">근무부서</div>
 																		<div class="resume_input">
 																			<input type="text" id="career_dept_nm_1621990779"
-																				name="pre_dept" class="box_input" value=""
+																				name="pre_dept" class="box_input" value="<%=calist.get(i).getPre_dept() %>"
 																				maxlength="16">
 
 																		</div>
@@ -1502,7 +1627,7 @@ System.out.println(_gender);
 
 																			<textarea id="career_contents_1621990779"
 																				name="pre_jobdetail" class="box_textarea"
-																				style="width: 500px;"></textarea>
+																				style="width: 500px;"><%=calist.get(i).getPre_jobdetail() %></textarea>
 																		</div>
 																	</div>
 
@@ -1533,7 +1658,8 @@ System.out.println(_gender);
 														</div>
 													</div>
 												</div>
-												
+											
+											<% } %>	
 												<% for(int i=0; i< actlist.size(); i++) { %>
 												
 												<div id="activity" class="resume_section blind_guide"

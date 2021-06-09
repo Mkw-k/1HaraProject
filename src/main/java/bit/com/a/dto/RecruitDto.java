@@ -90,6 +90,8 @@ public class RecruitDto implements Serializable{
     private String mgEmail;
     //즐겨찾기여부 (디테일 페이지 들어갔을때) 
     private String favoriteJob;
+    //좋아요 여부 (회사 좋아요)
+    private String favoriteCom;
 
 
     //
@@ -111,44 +113,47 @@ public class RecruitDto implements Serializable{
 
 
 
+
 public RecruitDto(int jobSeq, String companyId, String jobTitle, String jobContent, String area1Name,
-			String area2Name, int jobVolumn, int salary, String jobStart, String jobEnd, String emp_Type,
-			String education, String career_Type, String career_Desc, int readcount, String regdate, int del,
-			String companyname, String eduname, String emp_name, int rnum, String buscode, String detailAdress1,
-			String detailAdress2, String mgName, String mgPhone, String mgEmail, String favoriteJob,
-			List<String> busname, String certifyUpdate) {
-		super();
-		this.jobSeq = jobSeq;
-		this.companyId = companyId;
-		this.jobTitle = jobTitle;
-		this.jobContent = jobContent;
-		this.area1Name = area1Name;
-		this.area2Name = area2Name;
-		this.jobVolumn = jobVolumn;
-		this.salary = salary;
-		this.jobStart = jobStart;
-		this.jobEnd = jobEnd;
-		this.emp_Type = emp_Type;
-		this.education = education;
-		this.career_Type = career_Type;
-		this.career_Desc = career_Desc;
-		this.readcount = readcount;
-		this.regdate = regdate;
-		this.del = del;
-		this.companyname = companyname;
-		this.eduname = eduname;
-		this.emp_name = emp_name;
-		this.rnum = rnum;
-		this.buscode = buscode;
-		this.detailAdress1 = detailAdress1;
-		this.detailAdress2 = detailAdress2;
-		this.mgName = mgName;
-		this.mgPhone = mgPhone;
-		this.mgEmail = mgEmail;
-		this.favoriteJob = favoriteJob;
-		this.busname = busname;
-		this.certifyUpdate = certifyUpdate;
-	}
+         String area2Name, int jobVolumn, int salary, String jobStart, String jobEnd, String emp_Type,
+         String education, String career_Type, String career_Desc, int readcount, String regdate, int del,
+         String companyname, String eduname, String emp_name, int rnum, String buscode, String detailAdress1,
+         String detailAdress2, String mgName, String mgPhone, String mgEmail, String favoriteJob, String favoriteCom,
+         List<String> busname, String certifyUpdate) {
+      super();
+      this.jobSeq = jobSeq;
+      this.companyId = companyId;
+      this.jobTitle = jobTitle;
+      this.jobContent = jobContent;
+      this.area1Name = area1Name;
+      this.area2Name = area2Name;
+      this.jobVolumn = jobVolumn;
+      this.salary = salary;
+      this.jobStart = jobStart;
+      this.jobEnd = jobEnd;
+      this.emp_Type = emp_Type;
+      this.education = education;
+      this.career_Type = career_Type;
+      this.career_Desc = career_Desc;
+      this.readcount = readcount;
+      this.regdate = regdate;
+      this.del = del;
+      this.companyname = companyname;
+      this.eduname = eduname;
+      this.emp_name = emp_name;
+      this.rnum = rnum;
+      this.buscode = buscode;
+      this.detailAdress1 = detailAdress1;
+      this.detailAdress2 = detailAdress2;
+      this.mgName = mgName;
+      this.mgPhone = mgPhone;
+      this.mgEmail = mgEmail;
+      this.favoriteJob = favoriteJob;
+      this.favoriteCom = favoriteCom;
+      this.busname = busname;
+      this.certifyUpdate = certifyUpdate;
+   }
+
 
 
 
@@ -156,17 +161,18 @@ public RecruitDto(int jobSeq, String companyId, String jobTitle, String jobConte
 
 
 @Override
-	public String toString() {
-		return "RecruitDto [jobSeq=" + jobSeq + ", companyId=" + companyId + ", jobTitle=" + jobTitle + ", jobContent="
-				+ jobContent + ", area1Name=" + area1Name + ", area2Name=" + area2Name + ", jobVolumn=" + jobVolumn
-				+ ", salary=" + salary + ", jobStart=" + jobStart + ", jobEnd=" + jobEnd + ", emp_Type=" + emp_Type
-				+ ", education=" + education + ", career_Type=" + career_Type + ", career_Desc=" + career_Desc
-				+ ", readcount=" + readcount + ", regdate=" + regdate + ", del=" + del + ", companyname=" + companyname
-				+ ", eduname=" + eduname + ", emp_name=" + emp_name + ", rnum=" + rnum + ", buscode=" + buscode
-				+ ", detailAdress1=" + detailAdress1 + ", detailAdress2=" + detailAdress2 + ", mgName=" + mgName
-				+ ", mgPhone=" + mgPhone + ", mgEmail=" + mgEmail + ", favoriteJob=" + favoriteJob + ", busname="
-				+ busname + ", certifyUpdate=" + certifyUpdate + "]";
-	}
+   public String toString() {
+      return "RecruitDto [jobSeq=" + jobSeq + ", companyId=" + companyId + ", jobTitle=" + jobTitle + ", jobContent="
+            + jobContent + ", area1Name=" + area1Name + ", area2Name=" + area2Name + ", jobVolumn=" + jobVolumn
+            + ", salary=" + salary + ", jobStart=" + jobStart + ", jobEnd=" + jobEnd + ", emp_Type=" + emp_Type
+            + ", education=" + education + ", career_Type=" + career_Type + ", career_Desc=" + career_Desc
+            + ", readcount=" + readcount + ", regdate=" + regdate + ", del=" + del + ", companyname=" + companyname
+            + ", eduname=" + eduname + ", emp_name=" + emp_name + ", rnum=" + rnum + ", buscode=" + buscode
+            + ", detailAdress1=" + detailAdress1 + ", detailAdress2=" + detailAdress2 + ", mgName=" + mgName
+            + ", mgPhone=" + mgPhone + ", mgEmail=" + mgEmail + ", favoriteJob=" + favoriteJob + ", favoriteCom="
+            + favoriteCom + ", busname=" + busname + ", certifyUpdate=" + certifyUpdate + "]";
+   }
+
 
 
 
@@ -174,539 +180,619 @@ public RecruitDto(int jobSeq, String companyId, String jobTitle, String jobConte
 
 
 public int getJobSeq() {
-		return jobSeq;
-	}
+      return jobSeq;
+   }
 
 
 
 
 
 
-	public void setJobSeq(int jobSeq) {
-		this.jobSeq = jobSeq;
-	}
 
+   public void setJobSeq(int jobSeq) {
+      this.jobSeq = jobSeq;
+   }
 
 
 
 
 
-	public String getCompanyId() {
-		return companyId;
-	}
 
 
+   public String getCompanyId() {
+      return companyId;
+   }
 
 
 
 
-	public void setCompanyId(String companyId) {
-		this.companyId = companyId;
-	}
 
 
 
+   public void setCompanyId(String companyId) {
+      this.companyId = companyId;
+   }
 
 
 
-	public String getJobTitle() {
-		return jobTitle;
-	}
 
 
 
 
+   public String getJobTitle() {
+      return jobTitle;
+   }
 
 
-	public void setJobTitle(String jobTitle) {
-		this.jobTitle = jobTitle;
-	}
 
 
 
 
 
+   public void setJobTitle(String jobTitle) {
+      this.jobTitle = jobTitle;
+   }
 
-	public String getJobContent() {
-		return jobContent;
-	}
 
 
 
 
 
 
-	public void setJobContent(String jobContent) {
-		this.jobContent = jobContent;
-	}
+   public String getJobContent() {
+      return jobContent;
+   }
 
 
 
 
 
 
-	public String getArea1Name() {
-		return area1Name;
-	}
 
+   public void setJobContent(String jobContent) {
+      this.jobContent = jobContent;
+   }
 
 
 
 
 
-	public void setArea1Name(String area1Name) {
-		this.area1Name = area1Name;
-	}
 
 
+   public String getArea1Name() {
+      return area1Name;
+   }
 
 
 
 
-	public String getArea2Name() {
-		return area2Name;
-	}
 
 
 
+   public void setArea1Name(String area1Name) {
+      this.area1Name = area1Name;
+   }
 
 
 
-	public void setArea2Name(String area2Name) {
-		this.area2Name = area2Name;
-	}
 
 
 
 
+   public String getArea2Name() {
+      return area2Name;
+   }
 
 
-	public int getJobVolumn() {
-		return jobVolumn;
-	}
 
 
 
 
 
+   public void setArea2Name(String area2Name) {
+      this.area2Name = area2Name;
+   }
 
-	public void setJobVolumn(int jobVolumn) {
-		this.jobVolumn = jobVolumn;
-	}
 
 
 
 
 
 
-	public int getSalary() {
-		return salary;
-	}
+   public int getJobVolumn() {
+      return jobVolumn;
+   }
 
 
 
 
 
 
-	public void setSalary(int salary) {
-		this.salary = salary;
-	}
 
+   public void setJobVolumn(int jobVolumn) {
+      this.jobVolumn = jobVolumn;
+   }
 
 
 
 
 
-	public String getJobStart() {
-		return jobStart;
-	}
 
 
+   public int getSalary() {
+      return salary;
+   }
 
 
 
 
-	public void setJobStart(String jobStart) {
-		this.jobStart = jobStart;
-	}
 
 
 
+   public void setSalary(int salary) {
+      this.salary = salary;
+   }
 
 
 
-	public String getJobEnd() {
-		return jobEnd;
-	}
 
 
 
 
+   public String getJobStart() {
+      return jobStart;
+   }
 
 
-	public void setJobEnd(String jobEnd) {
-		this.jobEnd = jobEnd;
-	}
 
 
 
 
 
+   public void setJobStart(String jobStart) {
+      this.jobStart = jobStart;
+   }
 
-	public String getEmp_Type() {
-		return emp_Type;
-	}
 
 
 
 
 
 
-	public void setEmp_Type(String emp_Type) {
-		this.emp_Type = emp_Type;
-	}
+   public String getJobEnd() {
+      return jobEnd;
+   }
 
 
 
 
 
 
-	public String getEducation() {
-		return education;
-	}
 
+   public void setJobEnd(String jobEnd) {
+      this.jobEnd = jobEnd;
+   }
 
 
 
 
 
-	public void setEducation(String education) {
-		this.education = education;
-	}
 
 
+   public String getEmp_Type() {
+      return emp_Type;
+   }
 
 
 
 
-	public String getCareer_Type() {
-		return career_Type;
-	}
 
 
 
+   public void setEmp_Type(String emp_Type) {
+      this.emp_Type = emp_Type;
+   }
 
 
 
-	public void setCareer_Type(String career_Type) {
-		this.career_Type = career_Type;
-	}
 
 
 
 
+   public String getEducation() {
+      return education;
+   }
 
 
-	public String getCareer_Desc() {
-		return career_Desc;
-	}
 
 
 
 
 
+   public void setEducation(String education) {
+      this.education = education;
+   }
 
-	public void setCareer_Desc(String career_Desc) {
-		this.career_Desc = career_Desc;
-	}
 
 
 
 
 
 
-	public int getReadcount() {
-		return readcount;
-	}
+   public String getCareer_Type() {
+      return career_Type;
+   }
 
 
 
 
 
 
-	public void setReadcount(int readcount) {
-		this.readcount = readcount;
-	}
 
+   public void setCareer_Type(String career_Type) {
+      this.career_Type = career_Type;
+   }
 
 
 
 
 
-	public String getRegdate() {
-		return regdate;
-	}
 
 
+   public String getCareer_Desc() {
+      return career_Desc;
+   }
 
 
 
 
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
-	}
 
 
 
+   public void setCareer_Desc(String career_Desc) {
+      this.career_Desc = career_Desc;
+   }
 
 
 
-	public int getDel() {
-		return del;
-	}
 
 
 
 
+   public int getReadcount() {
+      return readcount;
+   }
 
 
-	public void setDel(int del) {
-		this.del = del;
-	}
 
 
 
 
 
+   public void setReadcount(int readcount) {
+      this.readcount = readcount;
+   }
 
-	public String getCompanyname() {
-		return companyname;
-	}
 
 
 
 
 
 
-	public void setCompanyname(String companyname) {
-		this.companyname = companyname;
-	}
+   public String getRegdate() {
+      return regdate;
+   }
 
 
 
 
 
 
-	public String getEduname() {
-		return eduname;
-	}
 
+   public void setRegdate(String regdate) {
+      this.regdate = regdate;
+   }
 
 
 
 
 
-	public void setEduname(String eduname) {
-		this.eduname = eduname;
-	}
 
 
+   public int getDel() {
+      return del;
+   }
 
 
 
 
-	public String getEmp_name() {
-		return emp_name;
-	}
 
 
 
+   public void setDel(int del) {
+      this.del = del;
+   }
 
 
 
-	public void setEmp_name(String emp_name) {
-		this.emp_name = emp_name;
-	}
 
 
 
 
+   public String getCompanyname() {
+      return companyname;
+   }
 
 
-	public int getRnum() {
-		return rnum;
-	}
 
 
 
 
 
+   public void setCompanyname(String companyname) {
+      this.companyname = companyname;
+   }
 
-	public void setRnum(int rnum) {
-		this.rnum = rnum;
-	}
 
 
 
 
 
 
-	public String getBuscode() {
-		return buscode;
-	}
+   public String getEduname() {
+      return eduname;
+   }
 
 
 
 
 
 
-	public void setBuscode(String buscode) {
-		this.buscode = buscode;
-	}
 
+   public void setEduname(String eduname) {
+      this.eduname = eduname;
+   }
 
 
 
 
 
-	public String getDetailAdress1() {
-		return detailAdress1;
-	}
 
 
+   public String getEmp_name() {
+      return emp_name;
+   }
 
 
 
 
-	public void setDetailAdress1(String detailAdress1) {
-		this.detailAdress1 = detailAdress1;
-	}
 
 
 
+   public void setEmp_name(String emp_name) {
+      this.emp_name = emp_name;
+   }
 
 
 
-	public String getDetailAdress2() {
-		return detailAdress2;
-	}
 
 
 
 
+   public int getRnum() {
+      return rnum;
+   }
 
 
-	public void setDetailAdress2(String detailAdress2) {
-		this.detailAdress2 = detailAdress2;
-	}
 
 
 
 
 
+   public void setRnum(int rnum) {
+      this.rnum = rnum;
+   }
 
-	public String getMgName() {
-		return mgName;
-	}
 
 
 
 
 
 
-	public void setMgName(String mgName) {
-		this.mgName = mgName;
-	}
+   public String getBuscode() {
+      return buscode;
+   }
 
 
 
 
 
 
-	public String getMgPhone() {
-		return mgPhone;
-	}
 
+   public void setBuscode(String buscode) {
+      this.buscode = buscode;
+   }
 
 
 
 
 
-	public void setMgPhone(String mgPhone) {
-		this.mgPhone = mgPhone;
-	}
 
 
+   public String getDetailAdress1() {
+      return detailAdress1;
+   }
 
 
 
 
-	public String getMgEmail() {
-		return mgEmail;
-	}
 
 
 
+   public void setDetailAdress1(String detailAdress1) {
+      this.detailAdress1 = detailAdress1;
+   }
 
 
 
-	public void setMgEmail(String mgEmail) {
-		this.mgEmail = mgEmail;
-	}
 
 
 
 
+   public String getDetailAdress2() {
+      return detailAdress2;
+   }
 
 
-	public String getFavoriteJob() {
-		return favoriteJob;
-	}
 
 
 
 
 
+   public void setDetailAdress2(String detailAdress2) {
+      this.detailAdress2 = detailAdress2;
+   }
 
-	public void setFavoriteJob(String favoriteJob) {
-		this.favoriteJob = favoriteJob;
-	}
 
 
 
 
 
 
-	public List<String> getBusname() {
-		return busname;
-	}
+   public String getMgName() {
+      return mgName;
+   }
 
 
 
 
 
 
-	public void setBusname(List<String> busname) {
-		this.busname = busname;
-	}
 
+   public void setMgName(String mgName) {
+      this.mgName = mgName;
+   }
 
 
 
 
 
-	public String getCertifyUpdate() {
-		return certifyUpdate;
-	}
 
 
+   public String getMgPhone() {
+      return mgPhone;
+   }
 
 
 
 
-	public void setCertifyUpdate(String certifyUpdate) {
-		this.certifyUpdate = certifyUpdate;
-	}
+
+
+
+   public void setMgPhone(String mgPhone) {
+      this.mgPhone = mgPhone;
+   }
+
+
+
+
+
+
+
+   public String getMgEmail() {
+      return mgEmail;
+   }
+
+
+
+
+
+
+
+   public void setMgEmail(String mgEmail) {
+      this.mgEmail = mgEmail;
+   }
+
+
+
+
+
+
+
+   public String getFavoriteJob() {
+      return favoriteJob;
+   }
+
+
+
+
+
+
+
+   public void setFavoriteJob(String favoriteJob) {
+      this.favoriteJob = favoriteJob;
+   }
+
+
+
+
+
+
+
+   public String getFavoriteCom() {
+      return favoriteCom;
+   }
+
+
+
+
+
+
+
+   public void setFavoriteCom(String favoriteCom) {
+      this.favoriteCom = favoriteCom;
+   }
+
+
+
+
+
+
+
+   public List<String> getBusname() {
+      return busname;
+   }
+
+
+
+
+
+
+
+   public void setBusname(List<String> busname) {
+      this.busname = busname;
+   }
+
+
+
+
+
+
+
+   public String getCertifyUpdate() {
+      return certifyUpdate;
+   }
+
+
+
+
+
+
+
+   public void setCertifyUpdate(String certifyUpdate) {
+      this.certifyUpdate = certifyUpdate;
+   }
+
 
 
 

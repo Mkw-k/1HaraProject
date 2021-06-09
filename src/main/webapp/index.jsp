@@ -24,7 +24,6 @@ index.jsp
 
 <a href="login1.do">로그인</a>
 
-
 <a href="jobdetail.do">채용디테일</a>
 
 <a href="jobsearch.do">직종서치</a>
