@@ -18,9 +18,9 @@ public class BuspageServiceimpl implements BuspageService {
 	private BuspageDao dao;
 	
 	@Override
-	public void updateBuspage(BusinessDto dto) {
+	public boolean updateBuspage(BusinessDto dto) {
 		
-		dao.updateBuspage(dto);
+		return dao.updateBuspage(dto);
 	}
 
 	@Override
