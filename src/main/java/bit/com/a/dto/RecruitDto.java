@@ -115,44 +115,44 @@ public class RecruitDto implements Serializable{
 
 
 public RecruitDto(int jobSeq, String companyId, String jobTitle, String jobContent, String area1Name,
-         String area2Name, int jobVolumn, int salary, String jobStart, String jobEnd, String emp_Type,
-         String education, String career_Type, String career_Desc, int readcount, String regdate, int del,
-         String companyname, String eduname, String emp_name, int rnum, String buscode, String detailAdress1,
-         String detailAdress2, String mgName, String mgPhone, String mgEmail, String favoriteJob, String favoriteCom,
-         List<String> busname, String certifyUpdate) {
-      super();
-      this.jobSeq = jobSeq;
-      this.companyId = companyId;
-      this.jobTitle = jobTitle;
-      this.jobContent = jobContent;
-      this.area1Name = area1Name;
-      this.area2Name = area2Name;
-      this.jobVolumn = jobVolumn;
-      this.salary = salary;
-      this.jobStart = jobStart;
-      this.jobEnd = jobEnd;
-      this.emp_Type = emp_Type;
-      this.education = education;
-      this.career_Type = career_Type;
-      this.career_Desc = career_Desc;
-      this.readcount = readcount;
-      this.regdate = regdate;
-      this.del = del;
-      this.companyname = companyname;
-      this.eduname = eduname;
-      this.emp_name = emp_name;
-      this.rnum = rnum;
-      this.buscode = buscode;
-      this.detailAdress1 = detailAdress1;
-      this.detailAdress2 = detailAdress2;
-      this.mgName = mgName;
-      this.mgPhone = mgPhone;
-      this.mgEmail = mgEmail;
-      this.favoriteJob = favoriteJob;
-      this.favoriteCom = favoriteCom;
-      this.busname = busname;
-      this.certifyUpdate = certifyUpdate;
-   }
+			String area2Name, int jobVolumn, int salary, String jobStart, String jobEnd, String emp_Type,
+			String education, String career_Type, String career_Desc, int readcount, String regdate, int del,
+			String companyname, String eduname, String emp_name, int rnum, String buscode, String detailAdress1,
+			String detailAdress2, String mgName, String mgPhone, String mgEmail, String favoriteJob, String favoriteCom,
+			List<String> busname, String certifyUpdate) {
+		super();
+		this.jobSeq = jobSeq;
+		this.companyId = companyId;
+		this.jobTitle = jobTitle;
+		this.jobContent = jobContent;
+		this.area1Name = area1Name;
+		this.area2Name = area2Name;
+		this.jobVolumn = jobVolumn;
+		this.salary = salary;
+		this.jobStart = jobStart;
+		this.jobEnd = jobEnd;
+		this.emp_Type = emp_Type;
+		this.education = education;
+		this.career_Type = career_Type;
+		this.career_Desc = career_Desc;
+		this.readcount = readcount;
+		this.regdate = regdate;
+		this.del = del;
+		this.companyname = companyname;
+		this.eduname = eduname;
+		this.emp_name = emp_name;
+		this.rnum = rnum;
+		this.buscode = buscode;
+		this.detailAdress1 = detailAdress1;
+		this.detailAdress2 = detailAdress2;
+		this.mgName = mgName;
+		this.mgPhone = mgPhone;
+		this.mgEmail = mgEmail;
+		this.favoriteJob = favoriteJob;
+		this.favoriteCom = favoriteCom;
+		this.busname = busname;
+		this.certifyUpdate = certifyUpdate;
+	}
 
 
 
@@ -161,17 +161,17 @@ public RecruitDto(int jobSeq, String companyId, String jobTitle, String jobConte
 
 
 @Override
-   public String toString() {
-      return "RecruitDto [jobSeq=" + jobSeq + ", companyId=" + companyId + ", jobTitle=" + jobTitle + ", jobContent="
-            + jobContent + ", area1Name=" + area1Name + ", area2Name=" + area2Name + ", jobVolumn=" + jobVolumn
-            + ", salary=" + salary + ", jobStart=" + jobStart + ", jobEnd=" + jobEnd + ", emp_Type=" + emp_Type
-            + ", education=" + education + ", career_Type=" + career_Type + ", career_Desc=" + career_Desc
-            + ", readcount=" + readcount + ", regdate=" + regdate + ", del=" + del + ", companyname=" + companyname
-            + ", eduname=" + eduname + ", emp_name=" + emp_name + ", rnum=" + rnum + ", buscode=" + buscode
-            + ", detailAdress1=" + detailAdress1 + ", detailAdress2=" + detailAdress2 + ", mgName=" + mgName
-            + ", mgPhone=" + mgPhone + ", mgEmail=" + mgEmail + ", favoriteJob=" + favoriteJob + ", favoriteCom="
-            + favoriteCom + ", busname=" + busname + ", certifyUpdate=" + certifyUpdate + "]";
-   }
+	public String toString() {
+		return "RecruitDto [jobSeq=" + jobSeq + ", companyId=" + companyId + ", jobTitle=" + jobTitle + ", jobContent="
+				+ jobContent + ", area1Name=" + area1Name + ", area2Name=" + area2Name + ", jobVolumn=" + jobVolumn
+				+ ", salary=" + salary + ", jobStart=" + jobStart + ", jobEnd=" + jobEnd + ", emp_Type=" + emp_Type
+				+ ", education=" + education + ", career_Type=" + career_Type + ", career_Desc=" + career_Desc
+				+ ", readcount=" + readcount + ", regdate=" + regdate + ", del=" + del + ", companyname=" + companyname
+				+ ", eduname=" + eduname + ", emp_name=" + emp_name + ", rnum=" + rnum + ", buscode=" + buscode
+				+ ", detailAdress1=" + detailAdress1 + ", detailAdress2=" + detailAdress2 + ", mgName=" + mgName
+				+ ", mgPhone=" + mgPhone + ", mgEmail=" + mgEmail + ", favoriteJob=" + favoriteJob + ", favoriteCom="
+				+ favoriteCom + ", busname=" + busname + ", certifyUpdate=" + certifyUpdate + "]";
+	}
 
 
 
@@ -180,8 +180,8 @@ public RecruitDto(int jobSeq, String companyId, String jobTitle, String jobConte
 
 
 public int getJobSeq() {
-      return jobSeq;
-   }
+		return jobSeq;
+	}
 
 
 
@@ -189,9 +189,9 @@ public int getJobSeq() {
 
 
 
-   public void setJobSeq(int jobSeq) {
-      this.jobSeq = jobSeq;
-   }
+	public void setJobSeq(int jobSeq) {
+		this.jobSeq = jobSeq;
+	}
 
 
 
@@ -199,9 +199,9 @@ public int getJobSeq() {
 
 
 
-   public String getCompanyId() {
-      return companyId;
-   }
+	public String getCompanyId() {
+		return companyId;
+	}
 
 
 
@@ -209,9 +209,9 @@ public int getJobSeq() {
 
 
 
-   public void setCompanyId(String companyId) {
-      this.companyId = companyId;
-   }
+	public void setCompanyId(String companyId) {
+		this.companyId = companyId;
+	}
 
 
 
@@ -219,9 +219,9 @@ public int getJobSeq() {
 
 
 
-   public String getJobTitle() {
-      return jobTitle;
-   }
+	public String getJobTitle() {
+		return jobTitle;
+	}
 
 
 
@@ -229,9 +229,9 @@ public int getJobSeq() {
 
 
 
-   public void setJobTitle(String jobTitle) {
-      this.jobTitle = jobTitle;
-   }
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
 
 
 
@@ -239,9 +239,9 @@ public int getJobSeq() {
 
 
 
-   public String getJobContent() {
-      return jobContent;
-   }
+	public String getJobContent() {
+		return jobContent;
+	}
 
 
 
@@ -249,9 +249,9 @@ public int getJobSeq() {
 
 
 
-   public void setJobContent(String jobContent) {
-      this.jobContent = jobContent;
-   }
+	public void setJobContent(String jobContent) {
+		this.jobContent = jobContent;
+	}
 
 
 
@@ -259,9 +259,9 @@ public int getJobSeq() {
 
 
 
-   public String getArea1Name() {
-      return area1Name;
-   }
+	public String getArea1Name() {
+		return area1Name;
+	}
 
 
 
@@ -269,9 +269,9 @@ public int getJobSeq() {
 
 
 
-   public void setArea1Name(String area1Name) {
-      this.area1Name = area1Name;
-   }
+	public void setArea1Name(String area1Name) {
+		this.area1Name = area1Name;
+	}
 
 
 
@@ -279,9 +279,9 @@ public int getJobSeq() {
 
 
 
-   public String getArea2Name() {
-      return area2Name;
-   }
+	public String getArea2Name() {
+		return area2Name;
+	}
 
 
 
@@ -289,9 +289,9 @@ public int getJobSeq() {
 
 
 
-   public void setArea2Name(String area2Name) {
-      this.area2Name = area2Name;
-   }
+	public void setArea2Name(String area2Name) {
+		this.area2Name = area2Name;
+	}
 
 
 
@@ -299,9 +299,9 @@ public int getJobSeq() {
 
 
 
-   public int getJobVolumn() {
-      return jobVolumn;
-   }
+	public int getJobVolumn() {
+		return jobVolumn;
+	}
 
 
 
@@ -309,9 +309,9 @@ public int getJobSeq() {
 
 
 
-   public void setJobVolumn(int jobVolumn) {
-      this.jobVolumn = jobVolumn;
-   }
+	public void setJobVolumn(int jobVolumn) {
+		this.jobVolumn = jobVolumn;
+	}
 
 
 
@@ -319,9 +319,9 @@ public int getJobSeq() {
 
 
 
-   public int getSalary() {
-      return salary;
-   }
+	public int getSalary() {
+		return salary;
+	}
 
 
 
@@ -329,9 +329,9 @@ public int getJobSeq() {
 
 
 
-   public void setSalary(int salary) {
-      this.salary = salary;
-   }
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
 
 
 
@@ -339,9 +339,9 @@ public int getJobSeq() {
 
 
 
-   public String getJobStart() {
-      return jobStart;
-   }
+	public String getJobStart() {
+		return jobStart;
+	}
 
 
 
@@ -349,9 +349,9 @@ public int getJobSeq() {
 
 
 
-   public void setJobStart(String jobStart) {
-      this.jobStart = jobStart;
-   }
+	public void setJobStart(String jobStart) {
+		this.jobStart = jobStart;
+	}
 
 
 
@@ -359,9 +359,9 @@ public int getJobSeq() {
 
 
 
-   public String getJobEnd() {
-      return jobEnd;
-   }
+	public String getJobEnd() {
+		return jobEnd;
+	}
 
 
 
@@ -369,9 +369,9 @@ public int getJobSeq() {
 
 
 
-   public void setJobEnd(String jobEnd) {
-      this.jobEnd = jobEnd;
-   }
+	public void setJobEnd(String jobEnd) {
+		this.jobEnd = jobEnd;
+	}
 
 
 
@@ -379,9 +379,9 @@ public int getJobSeq() {
 
 
 
-   public String getEmp_Type() {
-      return emp_Type;
-   }
+	public String getEmp_Type() {
+		return emp_Type;
+	}
 
 
 
@@ -389,9 +389,9 @@ public int getJobSeq() {
 
 
 
-   public void setEmp_Type(String emp_Type) {
-      this.emp_Type = emp_Type;
-   }
+	public void setEmp_Type(String emp_Type) {
+		this.emp_Type = emp_Type;
+	}
 
 
 
@@ -399,9 +399,9 @@ public int getJobSeq() {
 
 
 
-   public String getEducation() {
-      return education;
-   }
+	public String getEducation() {
+		return education;
+	}
 
 
 
@@ -409,9 +409,9 @@ public int getJobSeq() {
 
 
 
-   public void setEducation(String education) {
-      this.education = education;
-   }
+	public void setEducation(String education) {
+		this.education = education;
+	}
 
 
 
@@ -419,9 +419,9 @@ public int getJobSeq() {
 
 
 
-   public String getCareer_Type() {
-      return career_Type;
-   }
+	public String getCareer_Type() {
+		return career_Type;
+	}
 
 
 
@@ -429,9 +429,9 @@ public int getJobSeq() {
 
 
 
-   public void setCareer_Type(String career_Type) {
-      this.career_Type = career_Type;
-   }
+	public void setCareer_Type(String career_Type) {
+		this.career_Type = career_Type;
+	}
 
 
 
@@ -439,9 +439,9 @@ public int getJobSeq() {
 
 
 
-   public String getCareer_Desc() {
-      return career_Desc;
-   }
+	public String getCareer_Desc() {
+		return career_Desc;
+	}
 
 
 
@@ -449,9 +449,9 @@ public int getJobSeq() {
 
 
 
-   public void setCareer_Desc(String career_Desc) {
-      this.career_Desc = career_Desc;
-   }
+	public void setCareer_Desc(String career_Desc) {
+		this.career_Desc = career_Desc;
+	}
 
 
 
@@ -459,9 +459,9 @@ public int getJobSeq() {
 
 
 
-   public int getReadcount() {
-      return readcount;
-   }
+	public int getReadcount() {
+		return readcount;
+	}
 
 
 
@@ -469,9 +469,9 @@ public int getJobSeq() {
 
 
 
-   public void setReadcount(int readcount) {
-      this.readcount = readcount;
-   }
+	public void setReadcount(int readcount) {
+		this.readcount = readcount;
+	}
 
 
 
@@ -479,9 +479,9 @@ public int getJobSeq() {
 
 
 
-   public String getRegdate() {
-      return regdate;
-   }
+	public String getRegdate() {
+		return regdate;
+	}
 
 
 
@@ -489,9 +489,9 @@ public int getJobSeq() {
 
 
 
-   public void setRegdate(String regdate) {
-      this.regdate = regdate;
-   }
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
 
 
 
@@ -499,9 +499,9 @@ public int getJobSeq() {
 
 
 
-   public int getDel() {
-      return del;
-   }
+	public int getDel() {
+		return del;
+	}
 
 
 
@@ -509,9 +509,9 @@ public int getJobSeq() {
 
 
 
-   public void setDel(int del) {
-      this.del = del;
-   }
+	public void setDel(int del) {
+		this.del = del;
+	}
 
 
 
@@ -519,9 +519,9 @@ public int getJobSeq() {
 
 
 
-   public String getCompanyname() {
-      return companyname;
-   }
+	public String getCompanyname() {
+		return companyname;
+	}
 
 
 
@@ -529,9 +529,9 @@ public int getJobSeq() {
 
 
 
-   public void setCompanyname(String companyname) {
-      this.companyname = companyname;
-   }
+	public void setCompanyname(String companyname) {
+		this.companyname = companyname;
+	}
 
 
 
@@ -539,9 +539,9 @@ public int getJobSeq() {
 
 
 
-   public String getEduname() {
-      return eduname;
-   }
+	public String getEduname() {
+		return eduname;
+	}
 
 
 
@@ -549,9 +549,9 @@ public int getJobSeq() {
 
 
 
-   public void setEduname(String eduname) {
-      this.eduname = eduname;
-   }
+	public void setEduname(String eduname) {
+		this.eduname = eduname;
+	}
 
 
 
@@ -559,9 +559,9 @@ public int getJobSeq() {
 
 
 
-   public String getEmp_name() {
-      return emp_name;
-   }
+	public String getEmp_name() {
+		return emp_name;
+	}
 
 
 
@@ -569,9 +569,9 @@ public int getJobSeq() {
 
 
 
-   public void setEmp_name(String emp_name) {
-      this.emp_name = emp_name;
-   }
+	public void setEmp_name(String emp_name) {
+		this.emp_name = emp_name;
+	}
 
 
 
@@ -579,9 +579,9 @@ public int getJobSeq() {
 
 
 
-   public int getRnum() {
-      return rnum;
-   }
+	public int getRnum() {
+		return rnum;
+	}
 
 
 
@@ -589,9 +589,9 @@ public int getJobSeq() {
 
 
 
-   public void setRnum(int rnum) {
-      this.rnum = rnum;
-   }
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
 
 
 
@@ -599,9 +599,9 @@ public int getJobSeq() {
 
 
 
-   public String getBuscode() {
-      return buscode;
-   }
+	public String getBuscode() {
+		return buscode;
+	}
 
 
 
@@ -609,9 +609,9 @@ public int getJobSeq() {
 
 
 
-   public void setBuscode(String buscode) {
-      this.buscode = buscode;
-   }
+	public void setBuscode(String buscode) {
+		this.buscode = buscode;
+	}
 
 
 
@@ -619,9 +619,9 @@ public int getJobSeq() {
 
 
 
-   public String getDetailAdress1() {
-      return detailAdress1;
-   }
+	public String getDetailAdress1() {
+		return detailAdress1;
+	}
 
 
 
@@ -629,9 +629,9 @@ public int getJobSeq() {
 
 
 
-   public void setDetailAdress1(String detailAdress1) {
-      this.detailAdress1 = detailAdress1;
-   }
+	public void setDetailAdress1(String detailAdress1) {
+		this.detailAdress1 = detailAdress1;
+	}
 
 
 
@@ -639,9 +639,9 @@ public int getJobSeq() {
 
 
 
-   public String getDetailAdress2() {
-      return detailAdress2;
-   }
+	public String getDetailAdress2() {
+		return detailAdress2;
+	}
 
 
 
@@ -649,9 +649,9 @@ public int getJobSeq() {
 
 
 
-   public void setDetailAdress2(String detailAdress2) {
-      this.detailAdress2 = detailAdress2;
-   }
+	public void setDetailAdress2(String detailAdress2) {
+		this.detailAdress2 = detailAdress2;
+	}
 
 
 
@@ -659,9 +659,9 @@ public int getJobSeq() {
 
 
 
-   public String getMgName() {
-      return mgName;
-   }
+	public String getMgName() {
+		return mgName;
+	}
 
 
 
@@ -669,9 +669,9 @@ public int getJobSeq() {
 
 
 
-   public void setMgName(String mgName) {
-      this.mgName = mgName;
-   }
+	public void setMgName(String mgName) {
+		this.mgName = mgName;
+	}
 
 
 
@@ -679,9 +679,9 @@ public int getJobSeq() {
 
 
 
-   public String getMgPhone() {
-      return mgPhone;
-   }
+	public String getMgPhone() {
+		return mgPhone;
+	}
 
 
 
@@ -689,9 +689,9 @@ public int getJobSeq() {
 
 
 
-   public void setMgPhone(String mgPhone) {
-      this.mgPhone = mgPhone;
-   }
+	public void setMgPhone(String mgPhone) {
+		this.mgPhone = mgPhone;
+	}
 
 
 
@@ -699,9 +699,9 @@ public int getJobSeq() {
 
 
 
-   public String getMgEmail() {
-      return mgEmail;
-   }
+	public String getMgEmail() {
+		return mgEmail;
+	}
 
 
 
@@ -709,9 +709,9 @@ public int getJobSeq() {
 
 
 
-   public void setMgEmail(String mgEmail) {
-      this.mgEmail = mgEmail;
-   }
+	public void setMgEmail(String mgEmail) {
+		this.mgEmail = mgEmail;
+	}
 
 
 
@@ -719,9 +719,9 @@ public int getJobSeq() {
 
 
 
-   public String getFavoriteJob() {
-      return favoriteJob;
-   }
+	public String getFavoriteJob() {
+		return favoriteJob;
+	}
 
 
 
@@ -729,9 +729,9 @@ public int getJobSeq() {
 
 
 
-   public void setFavoriteJob(String favoriteJob) {
-      this.favoriteJob = favoriteJob;
-   }
+	public void setFavoriteJob(String favoriteJob) {
+		this.favoriteJob = favoriteJob;
+	}
 
 
 
@@ -739,9 +739,9 @@ public int getJobSeq() {
 
 
 
-   public String getFavoriteCom() {
-      return favoriteCom;
-   }
+	public String getFavoriteCom() {
+		return favoriteCom;
+	}
 
 
 
@@ -749,9 +749,9 @@ public int getJobSeq() {
 
 
 
-   public void setFavoriteCom(String favoriteCom) {
-      this.favoriteCom = favoriteCom;
-   }
+	public void setFavoriteCom(String favoriteCom) {
+		this.favoriteCom = favoriteCom;
+	}
 
 
 
@@ -759,9 +759,9 @@ public int getJobSeq() {
 
 
 
-   public List<String> getBusname() {
-      return busname;
-   }
+	public List<String> getBusname() {
+		return busname;
+	}
 
 
 
@@ -769,9 +769,9 @@ public int getJobSeq() {
 
 
 
-   public void setBusname(List<String> busname) {
-      this.busname = busname;
-   }
+	public void setBusname(List<String> busname) {
+		this.busname = busname;
+	}
 
 
 
@@ -779,9 +779,9 @@ public int getJobSeq() {
 
 
 
-   public String getCertifyUpdate() {
-      return certifyUpdate;
-   }
+	public String getCertifyUpdate() {
+		return certifyUpdate;
+	}
 
 
 
@@ -789,9 +789,9 @@ public int getJobSeq() {
 
 
 
-   public void setCertifyUpdate(String certifyUpdate) {
-      this.certifyUpdate = certifyUpdate;
-   }
+	public void setCertifyUpdate(String certifyUpdate) {
+		this.certifyUpdate = certifyUpdate;
+	}
 
 
 
