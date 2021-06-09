@@ -31,17 +31,17 @@ INTO RESUME_EDU (EDUCATIONSEQ, RESUMESEQ, HIGHSCHOOL, HIGH_STR, HIGH_STR_STATUS,
 				UNIV_END, UNIV_END_STATUS, UNIV_MAJOR_FIELD, UNIV_MAJOR, UNIV_NIGHT, UNIV_GRADE, UNIV_GRADE_BASE, UNIV_PAPER  )
 			VALUES (RESUME_EDU_SEQ.NEXTVAL, #{resumeseq}, 
 					#{highschool}, #{high_str}, #{high_str_status}, #{high_end}, #{high_end_status},
-					#{university}, #{univ_status}, #{univ_str}, #{univ_str_status}, #{univ_end}, #{univ_end_status}, #{univ_major_field}, 
-					#{univ_major}, #{univ_night}, #{univ_grade}, #{univ_grade_base}, #{univ_paper} )
+					#{university, jdbcType=VARCHAR}, #{univ_status, jdbcType=VARCHAR}, #{univ_str, jdbcType=VARCHAR}, #{univ_str_status, jdbcType=VARCHAR}, #{univ_end, jdbcType=VARCHAR}, #{univ_end_status, jdbcType=VARCHAR}, #{univ_major_field, jdbcType=VARCHAR}, 
+					#{univ_major, jdbcType=VARCHAR}, #{univ_night, jdbcType=VARCHAR}, #{univ_grade, jdbcType=VARCHAR}, #{univ_grade_base, jdbcType=VARCHAR}, #{univ_paper, jdbcType=VARCHAR} )
 </insert>
 
 
 <insert  id="writeCareer" parameterType="bit.com.a.dto.Resume_CareerVo">
 INSERT
-INTO CAREER (CAREERSEQ, RESUMESEQ, PRE_COMNAME, PRE_STARTDATE, PRE_ENDDATE, PRE_STATUS, PRE_POSITION, PRE_BUSCODE, PRE_AREA, PRE_DEPT, PRE_SAL, PRE_JOBDETAIL)
+INTO CAREER (CAREERSEQ, RESUMESEQ, PRE_COMNAME, PRE_STARTDATE, PRE_ENDDATE, PRE_STATUS, PRE_POSITION, PRE_BUSCODE, PRE_AREA, PRE_DEPT, PRE_SAL, PRE_JOBDETAIL, PRE_REASON)
 			VALUES (CAREER_SEQ.NEXTVAL, #{resumeseq}, 
 					#{pre_comname}, #{pre_startdate}, #{pre_enddate}, #{pre_status},
-					#{pre_position}, #{pre_buscode}, #{pre_area}, #{pre_dept}, #{pre_sal}, #{pre_jobdetail})
+					#{pre_position}, #{pre_buscode}, #{pre_area}, #{pre_dept}, #{pre_sal}, #{pre_jobdetail}, #{pre_reason})
 
 
 </insert>
@@ -105,7 +105,7 @@ WHERE RESUMESEQ=#{seq}
 </select>
 
 <select id="getCareerDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.Resume_CareerVo">
-SELECT CAREERSEQ, RESUMESEQ, PRE_COMNAME, PRE_STARTDATE, PRE_ENDDATE, PRE_STATUS, PRE_POSITION, PRE_BUSCODE, PRE_AREA, PRE_DEPT, PRE_SAL, PRE_JOBDETAIL
+SELECT CAREERSEQ, RESUMESEQ, PRE_COMNAME, PRE_STARTDATE, PRE_ENDDATE, PRE_STATUS, PRE_POSITION, PRE_BUSCODE, PRE_AREA, PRE_DEPT, PRE_SAL, PRE_JOBDETAIL, PRE_REASON
 FROM CAREER
 WHERE RESUMESEQ=#{seq}
 </select>
@@ -215,8 +215,8 @@ WHERE RESUMESEQ=#{resumeseq}
 
 <update id="updateCareer" parameterType="bit.com.a.dto.Resume_CareerVo">
 	UPDATE CAREER
-    SET PRE_COMNAME=#{pre_comname}, PRE_STARTDATE=#{pre_startdate}, PRE_ENDDATE=#{pre_enddate}, 
-    PRE_STATUS=#{pre_status}, PRE_POSITION=#{pre_position}, PRE_BUSCODE=#{pre_buscode}, PRE_AREA=#{pre_area}, PRE_DEPT=#{pre_dept}, PRE_SAL=#{pre_sal}, PRE_JOBDETAIL=#{pre_jobdetail}
+    SET PRE_COMNAME=#{pre_comname}, PRE_STARTDATE=#{pre_startdate}, PRE_ENDDATE=#{pre_enddate}, PRE_STATUS=#{pre_status}, PRE_POSITION=#{pre_position}, 
+    PRE_BUSCODE=#{pre_buscode}, PRE_AREA=#{pre_area}, PRE_DEPT=#{pre_dept}, PRE_SAL=#{pre_sal}, PRE_JOBDETAIL=#{pre_jobdetail}, PRE_REASON=#{pre_reason}
 WHERE RESUMESEQ=#{resumeseq}
 	
 </update>

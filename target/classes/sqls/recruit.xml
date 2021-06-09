@@ -308,7 +308,7 @@
 SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
                J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
                J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.DEL, C.COMPANYNAME, P.CAREER_DESC,
-               E.EDUNAME, T.EMP_NAME, D.detailAdress1, D.detailAdress2, D.mgName, D.mgPhone, D.mgEmail
+               E.EDUNAME, T.EMP_NAME, D.detailAdress1, D.detailAdress2, D.mgName, D.mgPhone, D.mgEmail 
 FROM JOB J, BUSINESS C, EDUCATION E, JOB_CAREERTYPE P, EMPLOYEE_TYPE T, MGDETAIL D
 WHERE J.COMPANYID = C.MEMBERID AND
      J.EDUCATION = E.EDUCODE AND
@@ -477,10 +477,55 @@ SELECT JOBSEQ, JOBTITLE, JOBCONTENT,
 	WHERE JOBSEQ = #{jobSeq}
 </update>
 
-<!-- <insert id="favoriteJob">
-	INSERT INTO JOBFAVORITE (JFSEQ, JOBSEQ, MEMBERID)
-	VALUES(JOBFAVORITE_SEQ.NEXTVAL, #{jobSeq}, #{memberid}
+<!-- 즐겨찾기 기능 : 공고시퀀스 + 멤버아이디와 완전히 동일한 데이터(즐겨찾기 이미 되있음)가 있으면 동작안함 -->
+<insert id="favoriteJob" parameterType="bit.com.a.dto.RecruitParam">
+	<if test="jobSeq != null and jobSeq != '' and 
+			memberid != null and memberid != ''">
+		DECLARE
 
-</insert> -->
+		jSeq number(10);
+		memid varchar2(50);
+		exist number(10);
+		
+		BEGIN
+		
+		jSeq := #{jobSeq};
+		memid := #{memberid};
+		
+		select count(*) 
+		into exist
+		from JOBFAVORITE
+		WHERE JOBSEQ = jSeq and  memberid = memid;
+		
+		IF <![CDATA[exist<=0]]> then
+		INSERT INTO JOBFAVORITE (JFSEQ, JOBSEQ, MEMBERID)
+				VALUES(JOBFAVORITE_SEQ.NEXTVAL, jSeq, memid);
+		
+		ELSE
+		
+		dbms_output.put_line('이미 즐겨찾기 하셨습니다');
+		
+		END IF;
+		
+		END;
+
+
+	</if>
+</insert> 
+
+<!-- 즐겨찾기 내역 가져오기 -->
+<select id="getJobFavorite" resultType="Integer" parameterType="bit.com.a.dto.RecruitParam">
+	SELECT NVL(COUNT(*),0)
+	FROM JOBFAVORITE
+	WHERE JOBSEQ = #{jobSeq} and 
+		  MEMBERID = #{memberid} 
+</select>
+
+<delete id="dropFavoriteJob" parameterType="bit.com.a.dto.RecruitParam">
+   DELETE FROM JOBFAVORITE
+  WHERE JOBSEQ = #{jobSeq} and 
+		MEMBERID = #{memberid} 
+
+</delete>
 
 </mapper>

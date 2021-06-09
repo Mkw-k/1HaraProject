@@ -194,39 +194,44 @@ System.out.println(_gender);
 								<div class="dashboard">
 									<ul>
 										<li><strong>학력사항</strong>
-										<%for(int i=0 ; i<edulist.size(); i++){ %>
-											<p class="txt"><%=edulist.get(i).getUniv_status() %> <%=edulist.get(i).getUniv_end_status() %></p></li>
-										<%} %>
+										<%-- <% for(int i=0; i< edulist.size(); i++){ %> --%>
+										<% if(edulist.get(0).getUniversity()==null || edulist.get(0).getUniversity().equals("")){
+											if(edulist.get(0).getHighschool()==null || edulist.get(0).getHighschool().equals("")){
+											}else{
+											%>
+											<p class="txt"><%=edulist.get(0).getHighschool() %> <%=edulist.get(0).getHigh_end_status() %></p></li>
+										<% }
+										} else {
+										for(int j=0 ; j<edulist.size(); j++){ %>
+											<p class="txt"><%=edulist.get(j).getUniv_status() %> <%=edulist.get(j).getUniv_end_status() %></p></li>
+										<%		}
+											}
+										%>
 										<li><strong>경력사항</strong>
 										<%if(calist == null || calist.isEmpty()){ %>
 											<p class="txt">신입</p>
 										<%  } else { %>
 										<p class="txt">경력</p>
 
-										<% } %>
+										<% }
+										%>
 
 										</li>
 										<li><strong>희망연봉</strong>
 											<p class="txt"><%=dto.getDesiredsalary() %></p></li>
-										<li><strong>희망근무지/근무형태</strong>
+										<li><strong>희망근무지</strong>
 											<p class="txt">
-												<%=dto.getDesiredarea1() %><br> <%=dto.getDesiredjobtype() %>
+												<%=dto.getDesiredarea1() %>
 											</p></li>
-										<li><strong>포트폴리오</strong>
+										 <li><strong>희망근무형태</strong>
 										<!-- 포트폴리오가 있으면 표시하고 없으면 -로 표시 -->
 											<p class="txt portfolio_txt">
-											<%if(dto.getPortfolio()!=null) {
-											dto.getPortfolio(); } else {
-												%>
-												-
-												<%
-											}
-											%>
+											<%=dto.getDesiredjobtype() %>
 											</p>
 											<div class="toolTip portfolio_tooltip" style="display:">
 												<span class="tail tail_top_right"></span>
 												<div class="toolTipCont txtLeft"></div>
-											</div></li>
+											</div></li> 
 									</ul>
 								</div>
 							</div>
@@ -259,7 +264,11 @@ System.out.println(_gender);
 										</tr>
 									</thead>
 									<tbody>
-									<%for(int i=0 ; i<edulist.size(); i++){ %>
+									<%	if(edulist!=null && !edulist.isEmpty()){
+										if(edulist.get(0).getUniversity()==null || edulist.get(0).getUniversity().equals("")){
+									} else{
+										
+									for(int i=0 ; i<edulist.size(); i++){ %>
 										<tr>
 											<td class="lineup_center" rowspan="1"><%=edulist.get(i).getUniv_str()%>
 												~ <%=edulist.get(i).getUniv_end()%></td>
@@ -269,17 +278,32 @@ System.out.println(_gender);
 											<td class="lineup_center"><%=edulist.get(i).getUniv_grade()%>
 												/ <%=edulist.get(i).getUniv_grade_base()%></td>
 										</tr>
-
+									<% 		} 
+										}
+									
+									%>
+									
+									<%  if(edulist!=null && !edulist.isEmpty()){
+										if(edulist.get(0).getHighschool()==null || edulist.get(0).getHighschool().equals("")){ 
+									
+									} else{
+										for(int i=0; i<edulist.size(); i++){
+										%>
+										
 										<tr>
-											<td class="lineup_center" rowspan="1"><%=edulist.get(0).getHigh_str()%>
-												~ <%=edulist.get(0).getHigh_end()%></td>
+											<td class="lineup_center" rowspan="1"><%=edulist.get(i).getHigh_str()%>
+												~ <%=edulist.get(i).getHigh_end()%></td>
 											<td class="lineup_center" rowspan="1">졸업</td>
-											<td><%=edulist.get(0).getHighschool()%></td>
+											<td><%=edulist.get(i).getHighschool()%></td>
 											<td>문과계열</td>
 											<td class="lineup_center">-</td>
 										</tr>
 
-									<% } %>
+									<% 		} 
+										}
+									}
+									}
+									%>
 									</tbody>
 								</table>
 							</div>
@@ -439,10 +463,14 @@ System.out.println(_gender);
 							</div>
 							<div class="part_table">
 								<div class="my_letter_view">
+									<% if(dto.getResume_intro_title()==null || dto.getResume_intro_content()==null){
+										
+									} else {%>
 									<p class="intit"><%=dto.getResume_intro_title() %></p>
 									<div class="intxt">
 										<%=dto.getResume_intro_content() %>
 									</div>
+									<% } %>
 								</div>
 							</div>
 

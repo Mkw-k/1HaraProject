@@ -2,19 +2,19 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
   <mapper namespace="Business">
   	<select id="getId" parameterType="bit.com.a.dto.BusinessDto" resultType="java.lang.Integer">
 		SELECT NVL(COUNT(*), 0)
 		FROM BUSINESS
 		WHERE MEMBERID=#{memberid}
 	</select>
-	
+
 	<insert id="addmember" parameterType="bit.com.a.dto.BusinessDto">
 		INSERT INTO BUSINESS(MEMBERID, PWD, COMPANYNAME, NAME, COMADDRESS, ADDRESSDETAIL, FILENAME, NEWFILENAME, AUTH)
 		VALUES(#{memberid}, #{pwd}, #{companyname}, #{name}, #{comaddress}, #{addressdetail},#{filename}, #{newfilename}, 2)
 	</insert>
-		
+
 	<select id="login" parameterType="bit.com.a.dto.BusinessDto" resultType="bit.com.a.dto.BusinessDto">
 		SELECT MEMBERID, PWD, COMPANYNAME, NAME, AUTH , COMADDRESS, NEWFILENAME
 		FROM BUSINESS
@@ -26,4 +26,19 @@
 		DELETE FROM BUSINESS
 		WHERE MEMBERID = #{memberid} AND PWD = #{pwd}
 	</delete>
+
+	<select id="getBuspage" parameterType="java.lang.String" resultType="bit.com.a.dto.BusinessDto">
+	SELECT MEMBERID,COMPANYNAME,PWD,COMADDRESS,ADDRESSDETAIL,DEL,AUTH,NAME,FILENAME, NEWFILENAME
+	FROM BUSINESS
+	WHERE MEMBERID=#{memberid}
+	</select>
+
+	<!-- 회원정보 수정 -->
+	<update id="updateBuspage">
+	UPDATE BUSINESS
+	SET COMPANYID=#{companyid}, NAME=#{name},COMADDRESS=#{comaddress}, ADDRESSDETAIL=#{addressdetail}, PWD=#{pwd}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}
+	WHERE MEMBERID=#{memberid}
+	</update>
+
+
   </mapper>
