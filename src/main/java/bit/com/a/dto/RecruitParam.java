@@ -9,36 +9,39 @@ public class RecruitParam implements Serializable{
 	private int day = -1;
 	private int lastDay; // 28 29 30 31
 	private int dayOfWeek;	// 요일
-	
+
 	private int hour = 0;
 	private int min = 0;
-	
+
 	private String buscode1;
 	private String buscodename1;
-	
+
 	private String buscode2;
 	private String buscodename2;
-	
+
 	private String buscode;
 	//buscode3 테이블은 name 변수명이 busname임
 	private String busname;
-	
-	private String area1name; 
-	private String area1code; 
-	private String area2name; 
-	private String area2code; 
-	
+
+	private String area1name;
+	private String area1code;
+	private String area2name;
+	private String area2code;
+
 	private String choice;
 	private String search;
 	private int page;
-	
+
 	private int start;
 	private int end;
-	
+
 	private String education;
 	private String careerStart;
 	private String careerEnd;
-	
+
+	private String memberid;
+	private String jobSeq;
+
 	public RecruitParam() {
 		// TODO Auto-generated constructor stub
 	}
@@ -243,7 +246,7 @@ public class RecruitParam implements Serializable{
 		this.min = min;
 	}
 
-	
+
 	@Override
 	public String toString() {
 		return "RecruitParam [year=" + year + ", month=" + month + ", day=" + day + ", lastDay=" + lastDay
@@ -285,12 +288,14 @@ public class RecruitParam implements Serializable{
 		this.education = education;
 		this.careerStart = careerStart;
 		this.careerEnd = careerEnd;
+		this.memberid = memberid;
+		this.jobSeq = jobSeq;
 	}
 
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 }

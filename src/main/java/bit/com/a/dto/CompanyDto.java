@@ -25,12 +25,7 @@ public class CompanyDto {
 	
 	 private String updatecompanylist; // 변수
 	  
-	 
-	 /*public String getUpdatecompanylist() { return updatecompanylist; }
-	 * 
-	 * public void setUpdatecompanylist(String updatecompanylist) {
-	 * this.updatecompanylist = updatecompanylist; }
-	 */
+
 
 	public CompanyDto() {
 		// TODO Auto-generated constructor stub

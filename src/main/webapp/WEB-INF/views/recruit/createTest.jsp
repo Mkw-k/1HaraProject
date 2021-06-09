@@ -218,9 +218,7 @@
                <div class="row">
               <div class="col-md-12 mb-12">
 	               <p><label for="address">공고상세내역</label></p>
-	              	<div class="editor" ><h1>여기다가 쓰면 들어옴 </h1>
-	              							<span>띄어쓰기는 안댐</span><span>띄어쓰기는 안댐</span><span>띄어쓰기는 안댐</span>      
-											<img alt="" src="">       	
+	              	<div class="editor" >    	
 	              	${dto.jobContent }  </div>
 	              	
 	              	
@@ -255,7 +253,29 @@
                 <!-- 데이터들어오는자리 -->
 				</div>
 			</div>
-			<p id="selectResult"></p>
+			
+			
+			<%-- <c:choose> 
+          		<c:when test="${dto.certifyUpdate == 'YES'}">
+          			<p id="selectResult">
+          				<c:forEach var="name" items="${dto.}" varStatus="status">
+
+    						<p>${status.count} : <c:out value="${name}" /></p>
+
+						</c:forEach>
+
+          			</p>       		
+          		</c:when> 
+        	    <c:otherwise>
+          			<p id="selectResult"></p>
+          		</c:otherwise> 
+          	</c:choose>  --%>
+			
+			
+			
+			
+			
+			
      
         
         <div class="row">
@@ -398,12 +418,10 @@ function jobRegi() {
     	busData[i] = $("input[name='buscode']")[i].value;
     }
     
-    /* var data = CKEDITOR.instances.editor.getData();
-    $("#_jobContent").val(data);
-    alert($("#_jobContent").val(data)); */
+ 
     
-    alert($(".editor").html());
-    $("#_jobContent").val($(".editor").html());
+    //alert($(".editor").html());
+    //$("#_jobContent").val($(".editor").html());
     
     
     
@@ -850,11 +868,11 @@ function delSelBuscode(cnt, count) {
 	} )
 	.then( editor => {
 		window.editor = editor;
-
 		
+		//읽기전용으로 셋팅 (디테일페이지에서 사용)
+		//editor.isReadOnly = true;
 		
-		
-
+		//editor.setData();
 		
 		
 		
@@ -866,15 +884,14 @@ function delSelBuscode(cnt, count) {
 		console.error( error );
 	} );
   
-	//Assuming there is a <button id="submit">Submit</button> in your application.
-  document.querySelector( '#submit' ).addEventListener( 'click', () => {
-      /* const editorData = editor.getData();
-      
-      alert(editorData);
-      $("#_jobContent").val(editorData); */
-
-      // ...
-  } );
+  
+//내부 데이터를 겟하는 코드 
+  //Assuming there is a <button id="submit">Submit</button> in your application.
+    document.querySelector( '#submit' ).addEventListener( 'click', () => {
+    	const editorData = editor.getData();
+  		alert("이게 에디터 데이터 : "+editorData);
+	    $("#_jobContent").val(editorData);
+    } );
   
   
 	</script>

@@ -125,8 +125,18 @@ public class RecruitServiceImpl implements RecruitService{
 	}
 
 	@Override
-	public boolean favoriteJob(int jobSeq) {
-		return dao.favoriteJob(jobSeq);
+	public boolean favoriteJob(RecruitParam param) {
+		return dao.favoriteJob(param);
+	}
+
+	@Override
+	public int getJobFavorite(RecruitParam param) {
+		return dao.getJobFavorite(param);
+	}
+
+	@Override
+	public boolean dropFavoriteJob(RecruitParam param) {
+		return dao.dropFavoriteJob(param);
 	}
 
 	@Override

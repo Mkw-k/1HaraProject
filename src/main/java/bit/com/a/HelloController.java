@@ -130,5 +130,11 @@ public class HelloController {
 			logger.info("HelloController member_info() " + new Date());
 			return "member_info";
 		}
+		
+		@RequestMapping(value ="Maintest.do", method = RequestMethod.GET)
+		public String Maintest(Model model) {
+			logger.info("HelloController member_info() " + new Date());
+			return "Maintest";
+		}
 
 }

@@ -51,7 +51,11 @@ public interface RecruitService {
 
 	boolean mgDetailUpdate2(RecruitDto dto);
 
-	boolean favoriteJob(int jobSeq);
+	boolean favoriteJob(RecruitParam param);
+
+	int getJobFavorite(RecruitParam param);
+
+	boolean dropFavoriteJob(RecruitParam param);
 
 	List<RecruitDto> getCalendarList_1();
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import bit.com.a.dao.ResumeDao;
 import bit.com.a.dto.ResumeDto;
+import bit.com.a.dto.ApplyDto;
 import bit.com.a.dto.Resume_ActivityVo;
 import bit.com.a.dto.Resume_AwardVo;
 import bit.com.a.dto.Resume_CareerVo;
@@ -72,9 +73,9 @@ public class ResumeServiceImpl implements ResumeService {
 	}
 
 	@Override
-	public List<ResumeDto> getresume() {
+	public List<ResumeDto> getresume(String memberid) {
 		// TODO Auto-generated method stub
-		return dao.getresume();
+		return dao.getresume(memberid);
 	}
 
 	@Override
@@ -168,9 +169,9 @@ public class ResumeServiceImpl implements ResumeService {
 	}
 
 	@Override
-	public List<ResumeDto> getNoresume() {
+	public List<ResumeDto> getNoresume(String memberid) {
 		// TODO Auto-generated method stub
-		return dao.getNoresume();
+		return dao.getNoresume(memberid);
 	}
 
 	@Override
@@ -226,16 +227,35 @@ public class ResumeServiceImpl implements ResumeService {
 		// TODO Auto-generated method stub
 		return dao.updateLan(lanvo);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
+	@Override
+	public boolean addApply(ApplyDto param) {
+		// TODO Auto-generated method stub
+		return dao.addApply(param);
+	}
+
+	@Override
+	public List<ApplyDto> getApplyList(String memberid) {
+		// TODO Auto-generated method stub
+		return dao.getApplyList(memberid);
+	}
+
+	@Override
+	public String getJobtitle(int jobseq) {
+		// TODO Auto-generated method stub
+		return dao.getJobtitle(jobseq);
+	}
+
+	@Override
+	public String getResumeTitle(int resumeseq) {
+		// TODO Auto-generated method stub
+		return dao.getResumeTitle(resumeseq);
+	}
+	
+	
+	
+	
+	
+	
 	
 }

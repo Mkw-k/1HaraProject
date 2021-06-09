@@ -17,12 +17,13 @@ public class JobtalkDto implements Serializable{
 	
 	private int del;		// 삭제
 	private int jobtalk_readcount;	// 댓글수
+	private int rnum;
 	
 	public JobtalkDto() {
 	}
 
 	public JobtalkDto(int jobtalkseq, String memberid, int jobtalk_ref, int jobtalk_step, int jobtalk_depth,
-			String jobtalk_title, String jobtalk_content, String wdate, int del, int jobtalk_readcount) {
+			String jobtalk_title, String jobtalk_content, String wdate, int del, int jobtalk_readcount, int rnum) {
 		super();
 		this.jobtalkseq = jobtalkseq;
 		this.memberid = memberid;
@@ -34,7 +35,10 @@ public class JobtalkDto implements Serializable{
 		this.wdate = wdate;
 		this.del = del;
 		this.jobtalk_readcount = jobtalk_readcount;
+		this.rnum = rnum;
 	}
+
+
 
 	public int getJobtalkseq() {
 		return jobtalkseq;
@@ -116,15 +120,21 @@ public class JobtalkDto implements Serializable{
 		this.jobtalk_readcount = jobtalk_readcount;
 	}
 
+	
+	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+
 	@Override
 	public String toString() {
 		return "JobtalkDto [jobtalkseq=" + jobtalkseq + ", memberid=" + memberid + ", jobtalk_ref=" + jobtalk_ref
 				+ ", jobtalk_step=" + jobtalk_step + ", jobtalk_depth=" + jobtalk_depth + ", jobtalk_title="
 				+ jobtalk_title + ", jobtalk_content=" + jobtalk_content + ", wdate=" + wdate + ", del=" + del
-				+ ", jobtalk_readcount=" + jobtalk_readcount + "]";
+				+ ", jobtalk_readcount=" + jobtalk_readcount + ", rnum=" + rnum + "]";
 	}
-
-	
-	
 	
 }

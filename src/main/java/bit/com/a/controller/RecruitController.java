@@ -1,5 +1,6 @@
 package bit.com.a.controller;
 import java.util.Calendar;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
+import bit.com.a.dto.ResumeDto;
 import bit.com.a.service.RecruitService;
+import bit.com.a.service.ResumeService;
 import bit.com.a.util.UtilEx;
 
 @Controller
@@ -28,6 +32,9 @@ public class RecruitController {
 
    @Autowired
    RecruitService service;
+
+   @Autowired
+   ResumeService resumeservice;
 
 //TODO채용공고 리스트로 이동
    @RequestMapping(value = "recuruitlist.do", method = RequestMethod.GET)
@@ -389,35 +396,43 @@ public class RecruitController {
 		return "redirect:/recuruitlist.do";
 	}
 
-//TODO채용공고 디테일 창으로 이동 (삭제)
-   @RequestMapping(value = "recruitdetail.do", method = RequestMethod.GET)
-   public String recuruitdetail(RecruitDto dto, String seq) {
 
-
-      System.out.println("seq : "+seq);
-
-      return "recruit/recruitDetail";
-   }
 
 //TODO디테일 창으로 이동
    @RequestMapping(value = "RecruitDetail.do", method = RequestMethod.GET)
-   public String RecruitDetail(int jobseq, Model model) {
+   public String RecruitDetail(int jobseq, Model model, String memberid) {
       model.addAttribute("doc_title", "채용공고");
 
+      //디테일 데이터 받아오기
       System.out.println("seq:"+jobseq);
       RecruitDto dto = service.getRecruitListOne(jobseq);
+      List<ResumeDto> resumelist = resumeservice.getresume(memberid);
 
       System.out.println(dto.toString());
 
-
+      //직무이름 받아오는 코드
       List<String> list = service.getBsnameForDetail(jobseq);
       System.out.println("직무이름 :"+ list.toString());
 
       dto.setBusname(list);
 
+      //검색용 파라미터 dto설정
+      RecruitParam param = new RecruitParam();
+      String jobSeq = jobseq + "";
+      param.setJobSeq(jobSeq);
+      param.setMemberid(memberid);
+
+      //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
+      int IjobFavoriteCount = service.getJobFavorite(param);
+      String jobFavoriteCount = IjobFavoriteCount + "";
+
+      dto.setFavoriteJob(jobFavoriteCount);
+
       System.out.println("변경된 Dto :"+dto.toString());
 
       model.addAttribute("dto", dto);
+      model.addAttribute("resumelist", resumelist);
+
       return "recruit/recruitDetail";
    }
 
@@ -580,7 +595,7 @@ public class RecruitController {
 		@ResponseBody
 		@RequestMapping(value = "buscodeListData.do", method = {RequestMethod.GET, RequestMethod.POST})
 		public List<RecruitParam> buscodeListData(Model model) {
-			
+
 			List<RecruitParam> list = service.buscodeListData();
 
 			System.out.println(list.toString());
@@ -902,13 +917,57 @@ public class RecruitController {
 
 		//채용공고 즐겨찾기 추가
 		@RequestMapping(value = "favoriteJob.do", method = {RequestMethod.GET, RequestMethod.POST})
-		public void favoriteJob(int jobSeq, Model model) {
+		public String favoriteJob(RecruitParam param, Model model)throws Exception {
 
-		  boolean b = service.favoriteJob(jobSeq);
+			System.out.println("공고 즐겨찾기 메서드 실행");
+
+		  boolean b = service.favoriteJob(param);
 
 
+		  if(b) {
+			  	System.out.println("즐겨찾기 등록 성공");
 
+			}else {
+				System.out.println("즐겨찾기 실패");
+
+			}
+
+			model.addAttribute("jobseq", param.getJobSeq());
+		  	model.addAttribute("memberid", param.getMemberid());
+
+		  	return "redirect:/RecruitDetail.do";
 		}
+
+
+
+
+		//채용공고 즐겨찾기 해제
+		@RequestMapping(value = "dropFavoriteJob.do", method = {RequestMethod.GET, RequestMethod.POST})
+		public String dropFavoriteJob(RecruitParam param, Model model)throws Exception {
+
+			System.out.println("공고 즐겨찾기 해제 메서드 실행");
+
+		  boolean b = service.dropFavoriteJob(param);
+
+
+		  if(b) {
+			  	System.out.println("즐겨찾기 해제 성공");
+
+
+			}else {
+				System.out.println("즐겨찾기 해제 실패");
+
+			}
+
+		    int jobseq = Integer.parseInt(param.getJobSeq());
+		  	model.addAttribute("jobseq", jobseq);
+		  	model.addAttribute("memberid", param.getMemberid());
+
+
+
+		  return "redirect:/RecruitDetail.do";
+		}
+
 
 
 

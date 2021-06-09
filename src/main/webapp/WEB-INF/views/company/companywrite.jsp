@@ -105,6 +105,7 @@
     </table>
     <br><br>
     <div align="center">
+    	
     		<c:choose> 
           		<c:when test='${company.updatecompanylist=="YES"}'>
           			<div class="col-md-12"><a class="btn btn-secondary" href="javascript:ComUpdate()">수정하기</a></div>
@@ -115,6 +116,9 @@
           		</c:otherwise> 
           	</c:choose> 
     	
+    	
+          	<a class="btn btn-secondary" href="javascript:ComUpdate()">수정하기</a>
+          	
     	<!-- 
     	<button id="companyBtn" >등록하기</button>
   		<button id="updateBtn">수정하기</button> -->
@@ -127,7 +131,7 @@
 <script>
 
 function ComRegi() {
- 
+	 
     
     $("#_comform").attr("action", "companywriteAf.do").submit();
 

@@ -126,8 +126,9 @@ public class MemberDto implements Serializable{
 	public void setUserpic(String userpic) {
 		this.userpic = userpic;
 	}
-
 	
+	
+
 
 	public String getNewuserpic() {
 		return newuserpic;
@@ -139,12 +140,17 @@ public class MemberDto implements Serializable{
 	}
 
 
+
+
 	@Override
 	public String toString() {
 		return "MemberDto [memberid=" + memberid + ", pwd=" + pwd + ", name=" + name + ", email=" + email + ", auth="
 				+ auth + ", address=" + address + ", detailaddress=" + detailaddress + ", birth=" + birth + ", userpic="
-				+ userpic + "]";
+				+ userpic + ", newuserpic=" + newuserpic + "]";
 	}
+
+
+	
 
 
 	

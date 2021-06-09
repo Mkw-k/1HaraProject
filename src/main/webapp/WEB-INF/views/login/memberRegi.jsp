@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8">
 	<meta name="_csrf_parameter" content="_csrf"><meta name="_csrf_header" content="X-CSRF-TOKEN"><meta name="_csrf" content="5557377e-0013-402c-90e5-0dad4d61305f">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta http-equiv="p3p" content="CP=&quot;CAO DSP AND SO &quot; policyref=&quot;/w3c/p3p.xml&quot;">
 	<meta http-equiv="imagetoolbar" content="no">
@@ -20,7 +20,7 @@
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- TO_BE CSS.. -->
 	<link rel="stylesheet" href="static/css/import.css" media="all">
-    
+
     <title>/ajax/test04.html</title>
     <link rel="stylesheet" href="csss/bootstrap.css"/>
     <style>
@@ -45,7 +45,7 @@
     		background-clip: padding-box;
    			border: 1px solid #ced4da;
     		border-radius: 0.4rem;
-    		transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; 
+    		transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
     </style>
 </head>
@@ -56,9 +56,9 @@
 
 <div class="container" style="text-align: center;">
     <h3>일반 회원</h3>
-    <form method="post" id="myForm" enctype=multipart/form-data>
+    <form method="post" id="myForm" enctype="multipart/form-data">
         <div class="form-group has-feedback">
-        
+
         <!-- 프로필 사진 -->
                           <ul>
  						   <li class="img" style="list-style: none; margin-left : 200px">
@@ -73,8 +73,9 @@
                             </li>
 						</ul>
                        <script>
-                            // 이미지 업로드  
+                            // 이미지 업로드
                             $('#img').on('change', function() {
+                            	alert($('#img').val());
                             ext = $(this).val().split('.').pop().toLowerCase(); //확장자
                             //배열에 추출한 확장자가 존재하는지 체크
                             if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
@@ -84,16 +85,16 @@
                                 file = $('#img').prop("files")[0];
                                 blobURL = window.URL.createObjectURL(file);
                                 $('#image_preview img').attr('src', blobURL);
-                                $('#image_preview').slideDown(); //업로드한 이미지 미리보기 
+                                $('#image_preview').slideDown(); //업로드한 이미지 미리보기
                                 $(this).slideUp(); //파일 양식 감춤
                             }
                             });
-                 
+
  						</script>
                     	<br><br>
-                    	
+
         <!-- 프로필사진 등록 끝나는 구간  -->
-        
+
             <label class="control-label" for="id">아이디</label>
           	<div class="input-group">
 			  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -115,10 +116,10 @@
             <span id="rePwdErr" class="help-block">비밀번호와 일치하지 않습니다. 다시 입력해 주세요.</span>
             <span class="glyphicon glyphicon-ok form-control-feedback"></span>
         </div>
-        <div class="form-group has-feedback"> 
-  			<label class="control-label" for="name">이름</label> 
-  				<input type="text" class="form-control" id="name" name="name" placeholder=""> 
-  		</div> 
+        <div class="form-group has-feedback">
+  			<label class="control-label" for="name">이름</label>
+  				<input type="text" class="form-control" id="name" name="name" placeholder="">
+  		</div>
 
        <!--  <div class="form-group has-feedback">
         	<label class="control-label" for="registrationNum">주민등록번호</label><br>
@@ -136,15 +137,15 @@
 				<input type="text" class="form-control" id="sample6_detailAddress" name="detailaddress" placeholder="상세주소">
 				<input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목">
         </div>
-  		<div class="form-group has-feedback"> 
-  			<label class="control-label" for="mem_birth">생년월일</label> 
-  				<input type="tel" class="form-control" id="mem_birth" name="birth" placeholder="ex) 19990101"> 
+  		<div class="form-group has-feedback">
+  			<label class="control-label" for="mem_birth">생년월일</label>
+  				<input type="tel" class="form-control" id="mem_birth" name="birth" placeholder="ex) 19990101">
   			<div class="eheck_font" id="birth_check">
-  			</div> 
+  			</div>
   		</div>
 
 
-        
+
        <!--  <div class="form-group">
 			<label for="phonenumer" class="cols-sm-2 control-label">전화번호 (필수)</label>
 			   <div class="cols-sm-10">
@@ -160,7 +161,7 @@
 		       <div class="cols-sm-6" id="phone_authNumber">
 		       </div>
 		 </div> -->
-        
+
         <div class="form-group">
 			<label for="email" class="cols-sm-2 control-label">이메일 (필수)</label>
 			   <div class="cols-sm-10">
@@ -192,17 +193,17 @@
 			alert("패스워드를 입력해 주십시오");
 			$("#pwd").focus();
 		}
-		else{	
+		else{
 			alert($("#memberid").val());
 			$("#myForm").attr("action", "regiAf.do").submit();
 			alert("회원가입이 성공적으로 완료되었습니다");
-		}	
-		
-		
+		}
+
+
 	});
 
 
-	//주민번호 
+	//주민번호
 	function validate() {
         var re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
         var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -259,59 +260,59 @@
         what.focus();
         //return false;
     }
-    
-    
- 	// 생일 유효성 검사 
-	var birthJ = false; 
- 	// 생년월일 birthJ 유효성 검사 
- 	$('#mem_birth').blur(function(){ 
- 		var dateStr = $(this).val(); 
- 		var year = Number(dateStr.substr(0,4)); 
- 	// 입력한 값의 0~4자리까지 (연) 
- 	var month = Number(dateStr.substr(4,2)); 
- 	// 입력한 값의 4번째 자리부터 2자리 숫자 (월) 
- 	var day = Number(dateStr.substr(6,2)); 
- 	// 입력한 값 6번째 자리부터 2자리 숫자 (일) 
- 	var today = new Date(); 
- 	// 날짜 변수 선언 
- 	var yearNow = today.getFullYear(); 
- 	// 올해 연도 가져옴 
- 	if (dateStr.length <=8) { 
- 		// 연도의 경우 1900 보다 작거나 yearNow 보다 크다면 false를 반환합니다. 
- 		if (year > yearNow || year < 1900 ){ 
- 			$('#birth_check').text('생년월일을 확인해주세요'); 
- 			$('#birth_check').css('color', 'red'); 
- 			} else if (month < 1 || month > 12) { 
- 				$('#birth_check').text('생년월일을 확인해주세요 '); 
- 				$('#birth_check').css('color', 'red'); 
- 				}else if (day < 1 || day > 31) { 
- 					$('#birth_check').text('생년월일을 확인해주세요 '); 
- 					$('#birth_check').css('color', 'red'); 
- 					}else if ((month==4 || month==6 || month==9 || month==11) && day==31) { 
- 						$('#birth_check').text('생년월일을 확인해주세요 '); 
- 						$('#birth_check').css('color', 'red'); 
- 						}else if (month == 2) 
- 						{ var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)); 
- 						if (day>29 || (day==29 && !isleap)) 
- 						{ $('#birth_check').text('생년월일을 확인해주세요 '); 
+
+
+ 	// 생일 유효성 검사
+	var birthJ = false;
+ 	// 생년월일 birthJ 유효성 검사
+ 	$('#mem_birth').blur(function(){
+ 		var dateStr = $(this).val();
+ 		var year = Number(dateStr.substr(0,4));
+ 	// 입력한 값의 0~4자리까지 (연)
+ 	var month = Number(dateStr.substr(4,2));
+ 	// 입력한 값의 4번째 자리부터 2자리 숫자 (월)
+ 	var day = Number(dateStr.substr(6,2));
+ 	// 입력한 값 6번째 자리부터 2자리 숫자 (일)
+ 	var today = new Date();
+ 	// 날짜 변수 선언
+ 	var yearNow = today.getFullYear();
+ 	// 올해 연도 가져옴
+ 	if (dateStr.length <=8) {
+ 		// 연도의 경우 1900 보다 작거나 yearNow 보다 크다면 false를 반환합니다.
+ 		if (year > yearNow || year < 1900 ){
+ 			$('#birth_check').text('생년월일을 확인해주세요');
+ 			$('#birth_check').css('color', 'red');
+ 			} else if (month < 1 || month > 12) {
+ 				$('#birth_check').text('생년월일을 확인해주세요 ');
+ 				$('#birth_check').css('color', 'red');
+ 				}else if (day < 1 || day > 31) {
+ 					$('#birth_check').text('생년월일을 확인해주세요 ');
+ 					$('#birth_check').css('color', 'red');
+ 					}else if ((month==4 || month==6 || month==9 || month==11) && day==31) {
+ 						$('#birth_check').text('생년월일을 확인해주세요 ');
+ 						$('#birth_check').css('color', 'red');
+ 						}else if (month == 2)
+ 						{ var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+ 						if (day>29 || (day==29 && !isleap))
+ 						{ $('#birth_check').text('생년월일을 확인해주세요 ');
  						$('#birth_check').css('color', 'red'); }
- 						else{ $('#birth_check').text(''); birthJ = true; 
- 						} 
- 						}else{ $('#birth_check').text(''); birthJ = true; 
- 						}//end of if 
- 						}else{ //1.입력된 생년월일이 8자 초과할때 : auth:false 
- 							$('#birth_check').text('생년월일을 확인해주세요 '); 
- 							$('#birth_check').css('color', 'red'); } 
+ 						else{ $('#birth_check').text(''); birthJ = true;
+ 						}
+ 						}else{ $('#birth_check').text(''); birthJ = true;
+ 						}//end of if
+ 						}else{ //1.입력된 생년월일이 8자 초과할때 : auth:false
+ 							$('#birth_check').text('생년월일을 확인해주세요 ');
+ 							$('#birth_check').css('color', 'red'); }
  	}); //End of method /*
 
-   
-    
+
+
 
 
     /* 아이디 중복확인 버튼 클릭 */
     $(function () {
     	$("#chkIdBtn").click(function () {
-    		
+
     		var userIdCheck = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);
     		if(!userIdCheck.test($('#memberid').val())) {
     			alert("ID는 영문 대소문자, 숫자, _ , - 만 입력 가능하며 5~20 글자만 가능합니다. ");
@@ -319,7 +320,7 @@
     		};
     		let memid = $("#memberid").val();
     		alert(memid);
-    		
+
     		$.ajax({
     			url: "getId.do",
     			type: "post",
@@ -327,7 +328,7 @@
     			success:function( msg ){
     			//	alert('chkIdBtn success');
     				if(msg == "YES"){
-    				
+
     					$("#idCheck").css("color", "#0000ff");
     					$("#idCheck").html('사용 가능한 ID입니다.');
     					//$('#memberid').attr('disabled', true);
@@ -340,12 +341,12 @@
     			},
     			error:function(){
     				alert('error');
-    			}			
+    			}
     		});
-    		
-    	});	
+
+    	});
     });
- 	
+
     $("#pwd").keyup(function(){
         var pwd=$(this).val();
         // 비밀번호 검증할 정규 표현식
@@ -371,31 +372,31 @@
             errorState("#rePwd");
         }
     });
-    
-    
+
+
      //핸드폰인증
     var count = 0; /* 문자 중복을 막기 위한 인증번호 */
-    
+
     $(document).ready(function() {
 
        $("#send").click(function() {
-          
+
           var number = Math.floor(Math.random() * 1000000) + 100000;
              if(number>1000000){
                 number = number - 100000;
              }
 
              $("#text").val(number);      /* 난수로 생성된 인증번호를 hidden name : text 에 숨긴다 */
-          
+
           // 인증번호 입력란 생성
  			$("<input>", {type:'text', id:"userNum", name:"userNum", size:"30px", placeholder:"인증번호 6자리를 입력하세요."}).appendTo('#phone_authNumber');
  			$("<input>", {type:'button', "class":"btn btn-primary", id:"phoneNumBtn", name:"phoneNumBtn", disabled:"disabled", value:"인증하기"}).appendTo('#phone_authNumber');
  			$("<p></p>", {id:'time'}).appendTo('#phone_authNumber');
- 			 
- 		
+
+
  		var display = $('#time');
 	    var leftSec = 180;	//인증 남은시간(초)
-	    	
+
 	    // 이미 타이머가 작동중이면 중지
 	    if (isRunning){
 	    	clearInterval(timer);
@@ -403,63 +404,63 @@
 	    	startTimer(leftSec, display);
 	    }else{
 	    	startTimer(leftSec, display);
-	    	}	
+	    	}
           var to = $("#to").val();
-          
+
           if(to == "" || to == null){
              alert("빈칸이나 공백을 채워주세요");
           }
-         
+
           else {
           var con_test = confirm("해당번호로 인증문자를 발송하시겠습니까?");   /* 문자를 보낼껀지 물어본다 */
-             
+
              if(con_test == true){
-                  
+
                 if(count < 3){      /* 추후 데이터베이스에 컬럼 값을 확인하여 count 값을 비교 할 예정 */
-                    
+
                   $.ajax({
                       url:"sendSms.do",
                       type:"post",
                       data:{to: $("#to").val(),			// 휴대폰 번호
-                           text: $("#text").val()				// 인증번호 
+                           text: $("#text").val()				// 인증번호
                            },
                     success:function(){
                       alert("해당 휴대폰으로 인증번호를 발송했습니다");
                       count++;
-                      
+
                       alert(count);
                       }
                      /*  error(){
-                         
+
                       } */
-                      
+
                    });
                 } else {
                    alert("휴대폰 인증 그만하세요")
                 }
-             
+
              }
                 else if(con_test == false){
-                   
+
                 }
-            }   
+            }
        })
        $("#enterBtn").click(function() {   /* 내가 작성한 번호와 인증번호를 비교한다 */
           alert($("#text").val());
           var userNum = $("#userNum").val();
-          
-          var sysNum = $("#text").val();         
-          
+
+          var sysNum = $("#text").val();
+
           if(userNum == null || userNum == ""){
              alert("휴대폰으로 발송된 인증번호를 입력해주세요");
-          }     
-          else{     
+          }
+          else{
              if(userNum.trim() == sysNum.trim()){
                  alert("성공");
               }
               else {
                  alert("실패");
-              }          
+              }
           }
        });
      });
@@ -473,7 +474,7 @@
         .removeClass("glyphicon-remove")
         .addClass("glyphicon-ok")
         .show();
- 
+
         $("#myForm button[type=submit]")
                     .removeAttr("disabled");
     };
@@ -487,11 +488,11 @@
         .removeClass("glyphicon-ok")
         .addClass("glyphicon-remove")
         .show();
- 
+
         $("#myForm button[type=submit]")
                     .attr("disabled","disabled");
     };
-     
+
     /* 인증번호 입력값 없으면 인증하기 버튼 비활성화 */
     $(document).on("keyup","#authNum", function () {
     	if($('#authNum').val().length > 0) {
@@ -513,7 +514,7 @@
     let timer = null;
     let isRunning = false;
     function startTimer(count, display) {
-        
+
     	var minutes, seconds;
         timer = setInterval(function () {
         minutes = parseInt(count / 60, 10);
@@ -536,7 +537,7 @@
     }, 1000);
          isRunning = true;
     }
-    
+
     // 성공 상태로 바꾸는 함수
     function successState(sel){
         $(sel)
@@ -547,7 +548,7 @@
         .removeClass("glyphicon-remove")
         .addClass("glyphicon-ok")
         .show();
- 
+
         $("#myForm button[type=submit]")
                     .removeAttr("disabled");
     };
@@ -561,7 +562,7 @@
         .removeClass("glyphicon-ok")
         .addClass("glyphicon-remove")
         .show();
- 
+
         $("#myForm button[type=submit]")
                     .attr("disabled","disabled");
     };
@@ -591,7 +592,7 @@
    theme: themeObj
   }).embed(target);
   */
-  	
+
       function sample6_execDaumPostcode() {
           new daum.Postcode({
               oncomplete: function(data) {
@@ -626,7 +627,7 @@
                       }
                       // 조합된 참고항목을 해당 필드에 넣는다.
                       document.getElementById("sample6_extraAddress").value = extraAddr;
-                  
+
                   } else {
                       document.getElementById("sample6_extraAddress").value = '';
                   }
@@ -639,8 +640,8 @@
               }
           }).open();
       }
-    
-    
+
+
 </script>
  <!-- ==============FOOTER================= -->
       <footer class="main-footer">
@@ -660,14 +661,14 @@
 					</div>
 				</div>
 			</div>
-	
+
 		<div class="bottom-area">
 			<div class="inner-wrap">
 				<div class="link-logo">
 					<a href="http://www.moel.go.kr/" class="bg-logo-moel" target="_blank" title="새창 열림">고용노동부</a>
 					<a href="http://www.keis.or.kr/" class="bg-logo-keis" target="_blank" title="새창 열림">한국고용정보원</a>
 				</div>
-			
+
 				<div class="info">
 					<address class="address">
 						서울특별시 마포구 신수동 63-14 비트캠프 신촌센터
@@ -683,15 +684,15 @@
 				<div class="etc">
 					<a href="/images/useInfo/certification_kor2015.jpg" target="_blank" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; var remote = window.open('https://www.eprivacy.or.kr/front/certifiedSiteMark/certifiedSiteMarkPopup.do?certCmd=E&amp;certNum=2021-E-R001','EPRIVACY','width=527,height=720'); remote.focus(); return false;" title="새창"><img src="./static/images/brn-epriavcy.png" alt="개인정보보호우수사이트 인증서"></a>
 								<a href="/html/wauMark2020_worknet.html" onclick="try { latte.getEvent(event).stop(); } catch (ex) {};window.open(this.href,'mark2020','width=605,height=850,scrollbars=no');return false;" title="새창" target="_blank" style="margin-top:-3px"><img src="./static/images/brn-wa-2019.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)"></a>
-							
+
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
    </footer>
       <!-- ==============FOOTER END================= -->
 
 
-    
+
 </body>
 </html>

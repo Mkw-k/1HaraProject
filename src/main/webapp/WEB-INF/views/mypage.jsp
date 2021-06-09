@@ -42,13 +42,686 @@
 <script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
 <script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
 <link href="csss/top.css" rel="stylesheet" type="text/css">
+<link href="csss/common.css" rel="stylesheet" type="text/css">
+        <link href="csss/reset.css" rel="stylesheet" type="text/css">
 
 
 </head>
 
-<body>
+ <body id="sub_layout">
+     
+     <div class="wrapper"> 
 <!--  -->
 <header id="header">
+	<div class="top-area">
+		<div class="inner-wrap">
+			<div class="link-out">
+				<a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do" target="_blank" title="새창 열림">지역일하라</a> 
+				<a href="/useInfo/empCenterInfo/useEmpIntroList.do" target="" title="새창">고용복지<sup></sup>센터</a>
+				<a href="#3" title="새창 열림" onclick="f_moveUrl('WT')">장애인고용포털</a>
+			</div>
+			<div class="util">
+				<!-- 로그인 전 -->
+				
+				<!--// 로그인 전 -->
+				<!-- 로그인 후 -->
+
+				<!-- S : 2018-09-28 추가 -->
+				
+					<div class="login-mypage">
+						<a href="#"> 
+								<span>[개인]</span>
+							  ${login.name}님
+						</a>
+						<ul>
+							
+								<!-- 개인 -->
+								<li><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지 홈</a></li>
+								<li><a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do">회원정보관리</a></li>
+								<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">구직신청관리</a></li>
+								<li><a href="#" onclick="worknet.popup.popCenterSuppAgree(); return false;" target="_blank" title="새창">고객지원</a></li>
+							
+							
+						</ul>
+					</div>
+					<a href="#" onclick="f_logout();" class="font-blue">로그아웃</a>
+				
+				<!-- E : 2018-09-28 추가 -->
+				<!--// 로그인 후 -->
+
+				<!-- 공통 -->
+				<a href="#" class="worknet-chatbot-start-button-for-client">챗봇</a>
+				<a href="jobtalk.do">취업톡톡<img src="static/images/common/ico/ico-gnb-new.png" style="width:15px; height:15px" class="va-m" alt="new"></a>
+				<a href="/useInfo/worknetInfo/useWorknetGuide.do">이용안내</a>
+				<a href="info.do">고객센터</a> 
+				<a href="http://as82.kr/keis" target="_blank" title="새창">원격지원</a> 
+				<a href="/useInvite/worknetHomepgInvite/sitemap.do">사이트맵</a>
+				<!-- 20201022 추가 -->
+				
+				<!-- //20201022 추가 -->
+<!--<div class="font-control"> -->
+<!--<p>글자크기</p> -->
+<!--<button type="button" class="big">글자 크게 하기</button> -->
+<!--<button type="button" class="small">글자 작게 하기</button> -->
+<!--<button type="button" class="reset">글자 초기화</button> -->
+<!--</div> -->
+<!--// 공통 -->
+			</div>
+		</div>
+	</div>
+
+	<div class="middle-area">
+		<div class="inner-wrap">
+			
+				
+					<h1 class="top-logoWorknet">
+						<a href="home.do"><img src="static/images/common/bg/bg-top-logo.png" style="width:130px; height:60px" alt="일하라"></a>
+					</h1>
+				
+				
+			
+			
+			<form id="searchFrm" name="searchFrm" action="/wnSearch/unifSrch.do" method="post" onsubmit="return false">
+				<div class="header-search">
+					<div class="searc-area">
+						<input type="search" id="topQuery" name="topQuery" onclick="if(event.keyCode == '13'){goWnSearch();}" maxlength="50" onfocus="input_limit_string(this,'/kor,/eng,/d,/symbol6,/s');" class="input-text" autocomplete="off" title="검색어를 입력해주세요.">
+						<button type="button" onclick="goWnSearch()" class="btn-search">검색</button>
+					</div>
+
+
+					<div id="searchWord" class="auto-complete">
+						<ul>
+							<li><a href="#"><em class="word">사회복지</em> 관련 관리자</a></li>
+						</ul>
+
+						<button type="button" class="btn-input-reset">자동완성 닫기</button>
+					</div>
+
+					<a href="javascript:f_job_search()" class="button">일자리 검색</a>
+				</div>
+			<div>
+<input type="hidden" name="_csrf" value="40c07236-ce2a-46f9-b046-8fbf7137e0fa">
+</div></form>
+
+
+
+
+			<div class="link-special">
+				<a href="/jobyoung/main.do">청년</a> <a href="/woman/main/main.do">여성</a> <a href="/senior/main/main.do">장년</a>
+			</div>
+		</div>
+	</div>
+
+	<nav id="gnb">
+		<ul>
+			<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchMain.do" class="menu"><span>채용정보</span></a>
+				<div class="sub">
+					<dl>
+						<dt>채용정보</dt>
+						<dd>
+							<p>
+								<a href="/empInfo/empInfoSrch/list/dtlEmpSrchMain.do">채용정보 홈</a>
+							</p>
+							<p>
+								<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?moreCon=more">채용정보
+									상세검색</a>
+							</p>
+							<p>
+								<a href="/empInfo/empInfoSrch/calendar/empCalendarMonth.do">채용캘린더</a>
+							</p>
+							<!-- 2018-11-27 -->
+							<!-- 20190807 추가 -->
+							<p><a href="/empInfo/empInfoSrch/list/openEmpSpecCalendarList.do?thisMenuId=M201400343">공채 </a></p><!-- 20200212 수정 -->
+							<p><a href="/empInfo/indRev/indRevMain.do">4차산업혁명 <img src="/static/images/common/ico/ico-gnb-new.png" class="va-m" alt="new"></a></p>
+							<p><a href="/empInfo/empInfoSrch/list/retriveEnEmpSrchList.do">e-채용마당</a></p>
+							<p><a href="/empInfo/totBusiInfo/busiSearchList.do">통합기업정보&nbsp;<img src="/static/images/common/ico/ico-gnb-new.png" class="va-m" alt="new"></a></p><!-- 20200408 추가 -->
+							<!-- //20190807 추가 -->
+						</dd>
+					</dl>
+
+					<ul>
+						<li><b><a href="/empInfo/empInfoSrch/list/retriveJobsEmpIntroList.do?webIsOut=job">직종별</a></b>
+							<ul>
+								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=08">건설·채굴직</a></li>
+								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=01">경영·사무·금융·보험직</a></li>
+								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=03">교육·법률·사회복지·경찰·소방직
+										및 군인직</a></li>
+								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=13">농림어업직</a></li>
+								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=06">미용·여행·숙박·음식·경비·돌봄·청소직</a></li>
+								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=04">보건·의료직</a></li>
+								<li><a href="javascript:void(0);">설치·정비·생산직</a>
+									<ul class="depth2">
+										<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=09">기계·금속·재료</a></li>
+										<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=12">인쇄·목재·공예
+												및 제조 단순</a></li>
+										<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=10">전기·전자·정보통신</a></li>
+										<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=11">화학·환경·섬유·의복·식품가공</a></li>
+									</ul></li>
+								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=02">연구
+										및 공학기술직</a></li>
+								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=07">영업·판매·운전·운송직</a></li>
+								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=05">예술·디자인·방송·스포츠직</a></li>
+							</ul></li>
+						<li><b><a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do">지역별</a></b>
+							<ul>
+								<li class="group mb10"><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region">전체</a>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=11000">서울</a>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=26000">부산</a>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=28000">인천</a>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=27000">대구</a><br>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=30000">대전</a>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=29000">광주</a>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=31000">울산</a>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=36110">세종</a>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=41000">경기</a><br>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=44000">충남</a>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=43000">충북</a>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=48000">경남</a>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=47000">경북</a>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=46000">전남</a><br>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=45000">전북</a>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=42000">강원</a>
+									<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=region&amp;region=50000">제주</a>
+								</li>
+								<li><a href="/empInfo/empInfoSrch/list/aroundMeEmpInfoList.do">내
+										주변 채용정보
+								</a></li>
+								<li><a href="/empInfo/empInfoSrch/list/worldJobEmpSrchList.do">해외지역(K-Move)</a></li>
+								<!--
+								<li>
+									<br/>
+									<div class="a-l">
+										<a href="/event/eventContent.do?eventNo=533">
+										<img src="/static/images/event/workRenewal/workRenewalBann.png" alt="2020년 새로워진 워크넷 서비스! 20개 경품이 와르르~~ 3월23일(월)~4월24일(수)" />
+										</a>
+									</div>
+									</li>
+								 -->
+							</ul></li>
+						<li><b><a href="/empInfo/themeEmp/themeEmpInfoSrchListForGnb.do">테마별</a></b>
+
+								<div class="bann">
+									<img src="/static/images/common/img-gnb-ban.png" alt="">
+									<p>
+										정책, 지역별로<br>제공되는 다양한<br><em>테마별 채용정보</em>를<br>경험하세요.
+										<span class="center"><a href="/empInfo/themeEmp/themeEmpInfoSrchListForGnb.do" class="button s-small round"><img src="/static/images/common/ico/ico-add-copy-sm.png" class="inline-block" alt="">&nbsp;바로가기</a></span>
+									</p>
+								</div>
+
+						<!-- 	<ul>
+								<li><a
+									href="/empInfo/empInfoSrch/list/openEmpSpecCalendarList.do?thisMenuId=M201400343">공채기업관</a></li>
+								<li><a href="/smallGiants/empInfoSrch/empInfoSrchList.do">청년친화강소기업</a></li>
+								<li><a
+									href="/smallGiants/empInfoSrch/empInfoSrchList.do?coGbCd=small">강소기업</a></li>
+								<li><a href="/empInfo/indRev/indRevMain.do">4차산업혁명 채용관
+										<img src="/static/images/common/ico/ico-gnb-new.png" alt="new">
+								</a></li>
+																		NCS 채용관 오픈 이후 런칭 대상
+																		<li><a href="#">NCS 채용관</a></li>
+								<li><a
+									href="/ilmoa/jobSearch/retrieveIlmoaJobDetailSearchByMain.do">정부지원일자리</a></li>
+								<li><a
+									href="/empInfo/tsjEmpInfo/retrieveTsjEmpAllSrchList.do">시간선택제
+										일자리</a></li>
+								<li><a href="/empInfo/subEmpHopeInfo/subEmpHopeSrchList.do">대체인력</a></li>
+								<li><a
+									href="/empInfo/empInfoSrch/list/retriveEnEmpSrchList.do">e-채용마당</a></li>
+								<li><a
+									href="/empInfo/themeEmp/themeEmpInfoSrchListForGnb.do">테마별 채용관</a></li>
+																		<li><a href="#" class="worknet-chatbot-start-button-for-client">워크넷 챗봇(시범)</a></li>
+							</ul>
+									<ul class="dir">
+										<li><a href="#" class="worknet-chatbot-start-button-for-client">워크넷 챗봇(시범)</a></li>
+									</ul>
+									 -->
+								<!-- <p class="eve_link"><a href="https://www.work.go.kr/event/eventContent.do?eventNo=530">[이벤트] 당신의 구직 테마는?</a></p> 20190903 추가 -->
+
+						</li>
+					</ul>
+				</div></li>
+			<li><a href="/jobMain.do" class="menu"><span>직업·진로</span></a>
+				<div class="sub">
+					<dl>
+						<dt>직업·진로</dt>
+						<dd>
+							<p>
+								<a href="/jobMain.do">직업·진로 홈</a>
+							</p>
+						</dd>
+						<!-- 화상상담 서비스 종료에 따른 주석처리(20210224) 
+						<dd>
+							<p class="imgConslt"><a href="/consltJobCarpa/videoChatting/conslt/videoChattingConslt.do">화상상담 예약</a> <img src="/static/images/common/ico/ico-gnb-new.png" alt="new" style="vertical-align:-2px"></p>
+						</dd>
+						 -->
+					</dl>
+
+					<ul>
+						<li><b><a href="/consltJobCarpa/jobPsyExam/jobPsyExamIntro.do">직업심리검사</a></b>
+							<ul>
+								<li><a href="/consltJobCarpa/jobPsyExam/jobPsyExamIntro.do">직업심리검사 소개</a></li>
+								<li><a href="/consltJobCarpa/jobPsyExamNew/jobPsyExamYouthList.do">청소년 심리검사 실시</a></li>
+								<li><a href="/consltJobCarpa/jobPsyExamNew/jobPsyExamAdultList.do">성인용 심리검사 실시</a></li>
+								<li><a href="/consltJobCarpa/jobPsyExamNew/psyExamRsltList.do">검사결과 보기</a></li>
+								<li><a href="/consltJobCarpa/jobPsyExamNew/conslt/jobPsyExamConsltList.do">검사결과 상담</a></li>
+								<li><a href="/consltJobCarpa/jobPsyExamNew/conslt/jobPsyExamConsltFaqList.do">검사결과 상담 FAQ</a></li>
+							</ul> <b><a href="/consltJobCarpa/srch/jobInfoSrch/srchJobInfo.do">직업정보</a></b>
+							<ul>
+								<li><a href="/consltJobCarpa/srch/jobInfoSrch/srchJobInfo.do">직업정보
+										찾기</a></li>
+								<li><a href="/consltJobCarpa/srch/korJobProspect/korJobProspectSrchByJobClList.do">한국직업전망</a></li>
+								<li><a href="/consltJobCarpa/srch/jobDic/jobDicIntro.do">한국직업사전</a></li>
+								<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=01&amp;catCd1=01&amp;catCd2=0101">직업
+										동영상·VR</a></li>
+								<li><a href="/consltJobCarpa/srch/meetPerson/meetPerson.do">직업인
+										인터뷰</a></li>
+							</ul></li>
+						<li><b><a href="/consltJobCarpa/srch/schdpt/schdptSrch.do">학과정보</a></b>
+							<ul>
+								<li><a href="/consltJobCarpa/srch/schdpt/schdptSrch.do">학과
+										검색</a></li>
+								<li><a href="/consltJobCarpa/jobData/retrieveCareerInfoList.do">전공진로
+										가이드</a></li>
+								<li><a href="/consltJobCarpa/srch/schdpt/dptFaqList.do">학과정보
+										FAQ</a></li>
+								<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=10&amp;catCd1=04&amp;catCd2=0401">학과정보
+										동영상</a></li>
+							</ul> <b><a href="/consltJobCarpa/jobConslt/jobConsltList.do">진로상담</a></b>
+							<ul>
+								<li><a href="/consltJobCarpa/jobConslt/jobConsltList.do">상담신청</a></li>
+								<li><a href="/consltJobCarpa/jobConslt/bestConsltList.do">상담 FAQ</a></li>
+							</ul> <b><a href="/consltJobCarpa/jobData/retrieveJobInfoReportList.do">자료실</a></b>
+							<ul>
+								<li><a href="/consltJobCarpa/jobData/retrieveJobInfoReportList.do">직업진로정보서</a></li>
+								<li><a href="/consltJobCarpa/jobData/retrieveReseReportList.do">연구보고서</a></li>
+							</ul></li>
+						<li><b><a href="/empSpt/empGuide/empTrend/resumeSelfIntroGuide.do">취업가이드</a></b>
+							<ul>
+								<li>
+									<a href="/empSpt/empGuide/empTrend/resumeSelfIntroGuide.do">이력서·자기소개서 작성법</a>
+								</li>
+								<li>
+									<a href="/empSpt/empGuide/empTrend/interviewGuide.do">면접전략</a>
+								</li>
+								<li>
+									<a href="/empSpt/empTrend/empTrend.do">채용 트렌드</a>
+								</li>
+								<li>
+									<a href="/empSpt/empBlind/retrieveEmpBlind.do">블라인드 채용
+									</a>
+								</li>
+								<li>
+									<a href="/empSpt/empBlind/retrieveEmpNcs.do">NCS 기반 능력중심 채용
+										</a>
+									
+								</li>
+								<li><a href="/empSpt/empGuide/empTrend/TargetGuide.do">대상별 취업가이드
+									</a>
+								</li>
+								<li>
+									<a href="/empSpt/empGuide/empTrend/GoalGuide.do">기업별 취업팁 <img src="/static/images/common/ico/ico-gnb-new.png" alt="new"></a>
+								</li>
+								<li>
+									<a href="/empSpt/empGuide/empSptPolicy.do">취업지원정책 
+									</a>
+								</li>
+								<li>
+									<a href="/empSpt/empGuide/wiseWorkLife.do">슬기로운 직장생활 <img src="/static/images/common/ico/ico-gnb-new.png" alt="new"></a>
+								</li>
+								<li>
+									<a href="/empSpt/empEtc/pictureEmpTrend.do">그림으로
+										보는 취업동향</a>
+								</li>
+								<li>
+									<a href="/empSpt/empGuide/selfintroWriteGuide/selfintroWriteGuideViewList.do">직무별 자소서 작성가이드
+										</a>
+								</li>
+								<li>
+									<a href="/empSpt/empSucc/empSuccSubMainList.do">취업성공수기
+									<img src="/static/images/common/ico/ico-gnb-new.png" alt="new"></a>
+								</li>
+								<li>
+									<a href="/empSpt/empEtc/enterDocIssueSvc.do">입사서류
+										발급 안내</a>
+								</li>
+
+							</ul>
+							</li>
+						<li>
+							<b><a href="/empSpt/empNews/retrieveEmpNewsList.do">뉴스</a></b>
+							<ul>
+								<li><a href="/empSpt/empNews/retrieveEmpNewsList.do">취업뉴스 <img src="/static/images/common/ico/ico-gnb-new.png" alt="new">
+									</a></li>
+								
+								<li><a href="/empSpt/exhibit/exhibit/exhibitList.do">공모전</a></li>
+								<li><a href="/empSpt/empEvent/retrieveEmpEventList.do">채용행사</a></li>
+								<li><a href="/empSpt/empExhibition/retrieveEmpExhibitionList.do">채용박람회</a></li>
+							</ul>
+							<b><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=06&amp;catCd1=02&amp;catCd2=0203">취업 동영상</a></b>
+							<ul>
+								<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=06&amp;catCd1=02&amp;catCd2=0203">청년층</a></li>
+								<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=05&amp;catCd1=02&amp;catCd2=0202">경력단절여성</a></li>
+								<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=04&amp;catCd1=02&amp;catCd2=0201">중장년층</a></li>
+							</ul>
+							
+						</li>
+					</ul>
+					<ul class="dir">
+						<li><a href="#1" onclick="f_moveUrl('CM')">사이버진로교육센터</a></li>
+						<li><a target="_blank" href="/cyberedu/webzine.do">커리어
+								Info(웹진)</a></li>
+						<li><a target="_blank" href="/cyberedu/cyb/career/contents/main/registerContentsMainView.do">커리어
+								엔진</a></li>
+					</ul>
+				</div></li>
+			<li><a href="/empWelfareSrv/recommendSrv/empWelfareSrvMain.do" title="새창" class="menu"><span>고용복지정책</span></a>
+				<div class="sub">
+					<dl>
+						<dt>고용복지정책</dt>
+						<dd>
+							<p>
+								<a href="/empWelfareSrv/recommendSrv/empWelfareSrvMain.do">고용복지정책 홈</a>
+							</p>
+						</dd>
+					</dl>
+
+					<ul>
+						<li class="w200px"><b><a href="/empWelfareSrv/recommendSrv/srvEmpPolList.do">고용정책</a></b>
+							<ul>
+								<li><a href="/empWelfareSrv/recommendSrv/srvEmpPolList.do">고용정책
+										찾기</a></li>
+								<li><a href="/empWelfareSrv/recommendSrv/consultCalcl.do">고용
+										모의계산</a></li>
+							</ul> <b><a href="/empWelfareSrv/recommendSrv/searchIndexList.do">복지정책</a></b>
+							<ul>
+								<li><a href="/empWelfareSrv/recommendSrv/searchIndexList.do">색인별
+										서비스 찾기</a></li>
+								<li><a href="/empWelfareSrv/recommendSrv/recommendSrvSrchField.do">분류별
+										서비스 찾기</a></li>
+								<li><a href="/empWelfareSrv/recommendSrv/categoryTitleList.do">나에게
+										맞는 서비스 찾기</a></li>
+								<li><a href="/empWelfareSrv/recommendSrv/welfareCalcl.do">복지
+										모의계산</a></li>
+							</ul></li>
+						<li style="width:505px"><b><a href="/empSpt/empSptPgm/empSptSubMain.do">구직자취업역량 강화프로그램</a></b>
+							<ul class="float-l w220px">
+								<li><a href="/empSpt/empSptPgm/empSptSubMain.do">프로그램 소개</a></li>
+								<li><a href="/empSpt/empSptPgm/empHope/compare.do">프로그램 비교</a></li>
+								<li><a href="/empSpt/empSptPgm/pgmSchdInvite/empSchdInviteCtrList.do">프로그램 일정</a></li>
+								<li><a href="/empSpt/empSptPgm/empHope/intro.do">취업희망 프로그램</a></li>
+								<li><a href="/empSpt/empSptPgm/happyTmrrwEmpSpt/intro.do">행복내일 취업지원 프로그램</a></li>
+								<li><a href="/empSpt/empSptPgm/succ/intro.do">성취 프로그램</a></li>
+								<li><a href="/empSpt/empSptPgm/shortTerm/intro.do">취업특강</a></li>
+								<li><a href="/empSpt/empSptPgm/grpConslt/intro.do">단기집단상담 프로그램</a></li>
+								<li><a href="/empSpt/empSptPgm/empAbility/intro.do">취업능력향상(행복오름) 프로그램 I</a></li>
+								<li><a href="/empSpt/empSptPgm/empAbility2/intro.do">취업능력향상(행복오름) 프로그램 II</a></li>
+							</ul>
+							<ul class="float-l overflow-hidden ml10">
+								
+								<li><a href="/empSpt/empSptPgm/oldReemp/intro.do">성장(성공장년) 프로그램</a></li>
+								<li><a href="/empSpt/empSptPgm/wmReemp/intro.do">경력단절여성 프로그램</a></li>
+								<li><a href="/empSpt/empSptPgm/maritalImmgrnt/intro.do">Wici(결혼이민여성)지원 프로그램</a></li>
+								<li><a href="/empSpt/empSptPgm/youngJobGuide/intro.do">청년층직업지도프로그램(CAP+/CAP@)</a></li>
+								<li><a href="/empSpt/empSptPgm/youngAbility/intro.do">allA(청년진로역량강화)프로그램</a></li>
+								<li><a href="/empSpt/empSptPgm/youngJobCapaPgm/intro.do">청년취업역량 프로그램</a></li>
+								<li><a href="/empSpt/empSptPgm/hi/intro.do">Hi(고졸자취업지원) 프로그램</a></li>
+								<!-- <li><a href="/empSpt/empSptPgm/youngSporPgm/intro.do">청년지원 프로그램</a></li> 2019.6.17 사용안함-->
+								<li><a href="/empSpt/empSptPgm/youngSporPgmSec/intro.do">청년지원 프로그램(예비교육 이외)</a></li>
+								<!--
+								<li><a href="/jobyoung/jynEmpSptNew/jynEmpSptGuide.do?pageIndex=1&arrSearchData=&sortField=displayRank&setZzimBusiId=&busiId=201512170008&btnSearchTxt=&edubgCheckAll=Y&majorCheckAll=Y&coCheckAll=Y&specCheckAll=Y&onlineApplPossYn=all&empCheckAll=Y"
+								target="_blank" title="새창">중소기업탐방프로그램</a></li>
+								 -->
+								 <li><a href="/empSpt/empSptPgm/empCamp/retriveNoticeSchList.do">일자리희망 프로그램(인별)</a></li>
+								 <li><a href="/empSpt/empSptPgm/age40EmpSptAblPgm/intro.do">40대 구직자취업역량강화프로그램(4U<sup>+</sup>)</a></li>
+							</ul>
+						</li>
+						<li class="w200px"><b><a href="/useInfo/empCenterInfo/useEmpIntroList.do">일자리지원기관</a></b>
+							<ul>
+								<li><a href="/useInfo/empCenterInfo/useEmpIntroList.do">고용복지<sup>+</sup>센터
+								</a></li>
+								<li><a href="/jobyoung/weSchEmpConsltRoom/weSchEmpConsltRoomSvcInvite.do" target="_blank" title="새창">대학일자리센터</a></li>
+								<li><a href="https://saeil.mogef.go.kr/" title="새창열림" target="_blank">여성새로일하기센터 <img src="/static/images/common/ico/ico-gnb-dir.png" alt=""></a></li>
+								<li><a href="/senior/chgjbSptSvc/noaSeniorWantedHopeCtr.do" target="_blank" title="새창">중장년일자리희망센터</a></li>
+								<li><a href="/shipHopeCenter/intro.do">조선업 희망센터</a></li>
+								<li><a href="/useInfo/jobAndDesp/ynJobIntroList.do">직업소개소</a></li>
+								<!-- <li><a href="/useInfo/jobAndDesp/despCoInfoList.do">파견업체</a></li> -->
+							</ul></li>
+					</ul>
+					<!-- 2018-11-27 -->
+					<!-- 2019.04 중소기업탐방프로그램 이동-->
+					<ul class="dir" style="position:static !important;"><!-- 20200701 수정 -->
+						<li><a href="/youngtomorrow/emp/internEmpInfoList.do" title="새창" target="_blank">청년내일채움공제</a></li>
+						<li><a href="/pkg" title="새창" target="_blank">취업성공패키지</a></li>
+						<li><a href="/experi/index.do" title="새창" target="_blank">중소기업탐방프로그램</a></li>
+					</ul>
+					<!-- // 2018-11-27 -->
+					<!-- 20200701 청년디지털일자리사업, 청년일경험지원사업 추가-->
+					<ul class="dir" style="position:static !important;">
+						<li><a href="/youthjob/intro/dgtjbIntro.do" title="새창" target="_blank">청년디지털일자리사업</a></li>
+						<li><a href="/youthjob/intro/expjbIntro.do" title="새창" target="_blank">청년일경험지원사업</a></li>
+						<li><a href="/kua/index.do" title="새창" target="_blank">국민취업지원제도</a></li>
+					</ul>
+					<!-- 20210517 청년도전 지원사업 추가-->
+					<ul class="dir" style="position:static !important;">
+						<li><a href="/youngChallenge/index.do" title="새창" target="_blank">청년도전지원사업</a></li>
+					</ul>
+				</div></li>
+			<li class=""><a href="/trnCourseMain.do" title="새창" class="menu"><span>훈련정보</span></a>
+				<div class="sub" style="">
+					<dl>
+						<dt>훈련정보</dt>
+						<dd>
+							<p>
+								<a href="/trnCourseMain.do">훈련정보 홈</a>
+							</p>
+						</dd>
+					</dl>
+
+					<ul>
+						<li><b><a href="/trnCourseTranin/retrieveTrnCourseTrainSeeker.do">구직자훈련과정</a></b></li>
+						<li><b><a href="/trnCourseTranin/retrieveTrnCourseTrainHffc.do">근로자훈련과정</a></b></li>
+						<li><b><a href="/trnCourseTranin/retrieveTrnCourseTrainCo.do">기업훈련과정</a></b></li>
+					</ul>
+				</div></li>
+			<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrchMain.do" class="menu"><span>인재정보</span></a>
+				<div class="sub">
+					<dl>
+						<dt>인재정보</dt>
+						<dd>
+							<p>
+								<a href="/psnInfo/psnInfoSrch/dtlPsnSrchMain.do">인재정보
+									홈</a>
+							</p>
+							<p>
+								<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do">인재정보
+									상세검색</a>
+							</p>
+						</dd>
+					</dl>
+
+					<ul>
+						<li><b><a href="/psnInfo/psnInfoSrch/jobsPsnSrchMain.do">직종별</a></b>
+							<ul>
+								<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=job&amp;occupation=08">건설·채굴직</a></li>
+								<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=job&amp;occupation=01">경영·사무·금융·보험직</a></li>
+								<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=job&amp;occupation=03">교육·법률·사회복지·경찰·소방
+										및 군인직</a></li>
+								<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=job&amp;occupation=13">농림어업직</a></li>
+								<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=job&amp;occupation=06">미용·여행·숙박·음식·경비·청소직</a></li>
+								<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=job&amp;occupation=04">보건·의료직</a></li>
+								<li><a href="javascript:void(0);">설치·정비·생산직</a>
+									<ul class="depth2">
+										<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=job&amp;occupation=09">기계·금속·재료</a></li>
+										<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=job&amp;occupation=12">인쇄·목재·공예
+												및 제조 단순</a></li>
+										<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=job&amp;occupation=10">전기·전자·정보통신</a></li>
+										<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=job&amp;occupation=11">화학·환경·섬유·의복·식품가공</a></li>
+									</ul></li>
+								<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=job&amp;occupation=02">연구
+										및 공학기술직</a></li>
+								<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=job&amp;occupation=07">영업·판매·운전·운송직</a></li>
+								<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=job&amp;occupation=05">예술·디자인·방송·스포츠직</a></li>
+							</ul></li>
+						<li><b><a href="/psnInfo/psnInfoSrch/hopeWorkRegionPsnSrchMain.do">지역별</a></b>
+							<ul>
+								<li class="group"><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do">전체</a>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=11000">서울</a>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=26000">부산</a>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=28000">인천</a>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=27000">대구</a><br>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=30000">대전</a>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=29000">광주</a>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=31000">울산</a>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=36110">세종</a>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=41000">경기</a><br>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=44000">충남</a>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=43000">충북</a>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=48000">경남</a>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=47000">경북</a>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=46000">전남</a><br>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=45000">전북</a>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=42000">강원</a>
+									<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?webIsOut=region&amp;region=50000">제주</a>
+								</li>
+							</ul></li>
+						<li><b><a href="/psnInfo/psnInfoSrch/majorDptPsnSrchMain.do">전공계열별</a></b>
+							<b><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?pageCode=01">자격증별</a></b>
+							<b><a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do?pageCode=02">석박사
+									인재정보</a></b> <b><a href="/psnInfo/psnInfoSrch/ovrseasempHopePsnSrch.do">해외취업희망인재</a></b>
+							<b><a href="/psnInfo/psnInfoSrch/empHopePool.do">취업희망풀</a></b>
+						</li>
+						<!-- // 2018-11-27 -->
+					</ul>
+				</div></li>
+		</ul>
+	</nav>
+</header>
+    <!-- 헤더 -->
+
+    
+    
+
+
+        <div class="container  bg-gray" id="container">
+            <div class="sub-util">
+                <div class="inner-wrap">
+                    <div class="location">
+                        <i class="iconset ico-home">홈</i>
+                        <span>마이페이지(개인)</span>
+                        <span>회원정보 관리</span>
+                        <em>내 정보수정 / 성명변경</em>
+                    </div>
+                    <script type="text/javascript" defer="defer">
+                        function openMyCustomMenu() {
+                            var popupHeight = '470';
+                            var scr_height = screen.height;
+                            var scr_width = screen.width;
+                            var pop_height = popupHeight;
+                            var pop_width = 800;
+                            var pop_top = scr_height / 2 - (pop_height / 2);
+                            var pop_left = scr_width / 2 - (pop_width / 2);
+                            window.open("/common/popup/PopMyCustomMenu.do", "MyCustomMenu", "width=800,height=" + popupHeight + ",scrollbars=no,resizable=no,left=" + pop_left + ",top=" + pop_top);
+                        }
+                        $(document).ready(function () {
+                            $('.custom-menu').show();
+                        });
+                    </script>
+                    <div class="custom-menu">
+                        <div>
+                            <a href="#" id="myCustomMenu">나만의 맞춤메뉴(<span>0</span>)</a>
+                        </div>
+                        <span>
+                            <a href="javascript:void(0);" onclick="openMyCustomMenu();" title="새창열림">맞춤메뉴설정</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="inner-wrap">
+                <script type="text/javascript" src="/js/framework/keis.window.js" charset="utf-8"></script>
+                <script type="text/javascript" src="/js/framework/keis.cookie.js" charset="utf-8"></script>
+                <script type="text/javascript" defer="defer">
+                    $(document).ready(function () {
+                        var isFind = false;
+                        var navi_2 = $('#navi_2')
+                            .text()
+                            .replace(/^\s+/, "")
+                            .replace(/\s+$/, "");
+                        var navi_3 = $('#navi_3')
+                            .text()
+                            .replace(/^\s+/, "")
+                            .replace(/\s+$/, "");
+                        var location_txt = $('div .location em')
+                            .text()
+                            .replace(/^\s+/, "")
+                            .replace(/\s+$/, "");
+                        var a_text = "";
+                        var p_text = "";
+                        if (location_txt == navi_3) { // LNB depth3 메뉴명 검색
+                            $('nav#lnb ul li div.depth3 ul li a').each(function () {
+                                $a = $(this);
+                                a_text = $a
+                                    .text()
+                                    .replace(/^\s+/, "")
+                                    .replace(/\s+$/, "");
+                                // console.log('a_text==>' + a_text);
+                                if (a_text == location_txt && ! isFind) {
+                                    $p_a = $a
+                                        .parent()
+                                        .parent()
+                                        .parent()
+                                        .parent()
+                                        .find('a')
+                                        .eq(0);
+                                    p_text = $p_a
+                                        .text()
+                                        .replace(/^\s+/, "")
+                                        .replace(/\s+$/, "");
+                                    // console.log('p_text==>' + p_text);
+                                    if (p_text == navi_2 && ! isFind) {
+                                        $a.parent().addClass('curr');
+                                        isFind = true;
+                                    }
+                                }
+                            });
+                        } else if (location_txt == navi_2) {
+                            $('nav#lnb ul li a').each(function () {
+                                $a = $(this);
+                                a_text = $a
+                                    .text()
+                                    .replace(/^\s+/, "")
+                                    .replace(/\s+$/, "");
+                                if (a_text == location_txt && ! isFind) {
+                                    $a.parent().addClass('curr');
+                                    isFind = true;
+                                }
+                            });
+                        }
+                    });
+                    // 기업 마이페이지 > 구인신청서 등록 레이어팝업 분기
+                    function choiceWantedList(tag) {
+                        $.ajax({
+                            type: 'GET',
+                            url: '/coMemberSrv/wantedInfoAdmin/checkConditionAjax.do',
+                            error: function (request, status, error) {
+                                alert("오류가 발생했습니다. : " + error);
+                            },
+                            success: function (result) {
+                                if (result == 'Y') {
+                                    var option = {
+                                        left: '235px',
+                                        top: '-71px',
+                                        width: '600px'
+                                    };
+                                    keis.window.newLayer('/coMemberSrv/wantedInfoAdmin/notile/choiceWantedList.do', '#wanted-admin-apply', option)
+                                } else {
+                                    location.href = "/coMemberSrv/wantedInfoAdmin/registerWantedAdminApplyForm.do"
+                                }
+                            }
+                        });
+                    }
+                </script>
+
+
 <div class="inner">
 	<nav id="lnb">
 	<!-- S : 2018-09-28 추가 -->
@@ -189,102 +862,8 @@
 </nav>
 
 
-<h1 class="ci">
-<a href="/zf_user/" class="track_event" data-track_event="main|gnb|menu|ci" title="사람인" ondragstart="return false;" oncontextmenu="return false;">
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="24" viewBox="0 0 120 24" class="default">
-<title>사람인로고</title>
-<g fill="none" fill-rule="evenodd">
-<g fill="#4876EF">
-<path d="M21.442 18.766l-.037.023c-.275.17-1.112.69-2.634.69-1.578 0-2.483-.665-2.483-1.825 0-1.06.966-1.773 2.403-1.773 1.023 0 1.79.161 2.694.421l.057.016v2.448zm-7.56-8.492c0 .482.195.888.55 1.143.439.313 1.08.363 1.804.139.653-.204 1.632-.447 2.59-.447 1.833 0 2.616.631 2.616 2.112v.802L21.344 14c-.985-.228-1.773-.389-2.946-.389-5.034 0-5.425 3.195-5.425 4.174 0 2.181 1.46 4.513 5.558 4.513 3.199 0 5.09-1.088 5.592-1.422.46-.299.607-.581.607-1.162v-6.389c0-3.462-1.96-5.217-5.825-5.217-1.615 0-3.152.334-3.896.646-.748.3-1.127.812-1.127 1.52zM60.794 9.63l-.05-.051c-.963-1.003-2.176-1.47-3.817-1.47-1.766 0-3.553.552-4.781 1.478-.494.352-.659.66-.659 1.223v9.756c0 .939.778 1.732 1.699 1.732.969 0 1.7-.745 1.7-1.732v-8.514l.086-.054c.262-.167.956-.61 2.114-.61 1.479 0 2.229.82 2.229 2.438v6.74c0 .939.778 1.732 1.699 1.732.952 0 1.699-.761 1.699-1.732v-8.514l.088-.054c.26-.167.955-.61 2.114-.61 1.457 0 2.228.852 2.228 2.464v6.714c0 .939.766 1.732 1.672 1.732.968 0 1.726-.761 1.726-1.732v-6.792c0-3.812-1.78-5.666-5.441-5.666-1.543 0-3.012.512-4.25 1.478l-.056.044zM45.361 18.766l-.036.023c-.275.17-1.112.69-2.634.69-1.579 0-2.484-.665-2.484-1.825 0-1.06.966-1.773 2.404-1.773 1.023 0 1.789.161 2.693.421l.057.016v2.448zm-7.56-8.492c0 .482.196.888.55 1.143.44.313 1.08.363 1.804.139.653-.204 1.632-.447 2.59-.447 1.833 0 2.616.631 2.616 2.112v.802L45.264 14c-.985-.228-1.774-.389-2.947-.389-5.034 0-5.425 3.195-5.425 4.174 0 2.181 1.46 4.513 5.558 4.513 3.199 0 5.09-1.088 5.593-1.422.459-.298.606-.58.606-1.162v-6.389c0-3.462-1.96-5.217-5.825-5.217-1.616 0-3.152.334-3.896.646-.748.3-1.127.812-1.127 1.52zM34.481 8.316c-.522-.128-1.397-.208-2.282-.208-2.943 0-4.631 1.606-4.631 4.407v8.17c0 .889.739 1.613 1.647 1.613.015-.002.022-.004.031-.004l.029.002h.001c.968 0 1.72-.748 1.72-1.704V13.17c0-1.17.48-1.753 1.468-1.783.452-.016.83.059 1.194.13.282.054.549.106.817.106 1.096 0 1.606-.94 1.606-1.574 0-.847-.568-1.463-1.6-1.734M7.45 14.118l-2.102-.429c-1.177-.262-1.678-.647-1.678-1.29 0-.372.194-1.237 1.99-1.237.744 0 1.821.258 2.504.6.852.439 1.73.361 2.237-.197.283-.323.432-.778.397-1.214-.024-.293-.138-.714-.55-1.054C9.39 8.586 7.6 8.108 5.793 8.108c-3.296 0-5.426 1.727-5.426 4.399 0 2.504 2.115 3.572 3.89 4.026.608.155.912.21 1.264.273.252.046.514.093.918.182 1.122.267 1.622.682 1.622 1.343 0 .481-.271 1.287-2.09 1.287-1.26 0-2.623-.353-3.471-.9-.343-.219-.694-.326-1.024-.326-.466 0-.892.212-1.2.627-.469.617-.324 1.62.309 2.147.552.462 2.17 1.537 5.272 1.537 3.286 0 5.494-1.843 5.494-4.586 0-2.087-1.276-3.395-3.901-3.999M75 6.487c-.923 0-1.62.74-1.62 1.721v9.125c0 .933.742 1.721 1.62 1.721.91 0 1.622-.756 1.622-1.72V8.207c0-.965-.712-1.721-1.621-1.721M75 0c-1.386 0-2.432 1.031-2.432 2.398 0 1.384 1.069 2.467 2.433 2.467 1.318 0 2.432-1.13 2.432-2.467C77.433 1.053 76.365 0 75.001 0M85.644 8.108c-3.391 0-5.234 1.19-5.577 1.428-.454.315-.607.623-.607 1.222v9.807c0 .94.783 1.733 1.709 1.733.974 0 1.708-.745 1.708-1.733v-8.513l.037-.023c.498-.309 1.508-.641 2.624-.641 1.29 0 2.667.668 2.667 2.543v6.634c0 .94.783 1.733 1.709 1.733.974 0 1.709-.745 1.709-1.733v-6.792c0-3.706-2.068-5.665-5.979-5.665" transform="translate(27.485)"></path>
-</g>
-<g transform="translate(0 3.295)">
-<circle cx="4.257" cy="4.257" r="4.257" fill="#4876EF"></circle>
-<circle cx="15.608" cy="4.257" r="4.257" fill="#B4C0D3"></circle>
-<circle cx="4.257" cy="15.608" r="4.257" fill="#B4C0D3"></circle>
-<circle cx="15.608" cy="15.608" r="4.257" fill="#00D3AB"></circle>
-</g>
-</g>
-</svg>
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="24" viewBox="0 0 120 24" class="default fixed">
-<title>사람인로고</title>
-<g fill="none" fill-rule="evenodd">
-<g fill="#FFF">
-<path d="M21.442 18.766l-.037.023c-.275.17-1.112.69-2.634.69-1.578 0-2.483-.665-2.483-1.825 0-1.06.966-1.773 2.403-1.773 1.023 0 1.79.161 2.694.421l.057.016v2.448zm-7.56-8.492c0 .482.195.888.55 1.143.439.313 1.08.363 1.804.139.653-.204 1.632-.447 2.59-.447 1.833 0 2.616.631 2.616 2.112v.802L21.344 14c-.985-.228-1.773-.389-2.946-.389-5.034 0-5.425 3.195-5.425 4.174 0 2.181 1.46 4.513 5.558 4.513 3.199 0 5.09-1.088 5.592-1.422.46-.299.607-.581.607-1.162v-6.389c0-3.462-1.96-5.217-5.825-5.217-1.615 0-3.152.334-3.896.646-.748.3-1.127.812-1.127 1.52zM60.794 9.63l-.05-.051c-.963-1.003-2.176-1.47-3.817-1.47-1.766 0-3.553.552-4.781 1.478-.494.352-.659.66-.659 1.223v9.756c0 .939.778 1.732 1.699 1.732.969 0 1.7-.745 1.7-1.732v-8.514l.086-.054c.262-.167.956-.61 2.114-.61 1.479 0 2.229.82 2.229 2.438v6.74c0 .939.778 1.732 1.699 1.732.952 0 1.699-.761 1.699-1.732v-8.514l.088-.054c.26-.167.955-.61 2.114-.61 1.457 0 2.228.852 2.228 2.464v6.714c0 .939.766 1.732 1.672 1.732.968 0 1.726-.761 1.726-1.732v-6.792c0-3.812-1.78-5.666-5.441-5.666-1.543 0-3.012.512-4.25 1.478l-.056.044zM45.361 18.766l-.036.023c-.275.17-1.112.69-2.634.69-1.579 0-2.484-.665-2.484-1.825 0-1.06.966-1.773 2.404-1.773 1.023 0 1.789.161 2.693.421l.057.016v2.448zm-7.56-8.492c0 .482.196.888.55 1.143.44.313 1.08.363 1.804.139.653-.204 1.632-.447 2.59-.447 1.833 0 2.616.631 2.616 2.112v.802L45.264 14c-.985-.228-1.774-.389-2.947-.389-5.034 0-5.425 3.195-5.425 4.174 0 2.181 1.46 4.513 5.558 4.513 3.199 0 5.09-1.088 5.593-1.422.459-.298.606-.58.606-1.162v-6.389c0-3.462-1.96-5.217-5.825-5.217-1.616 0-3.152.334-3.896.646-.748.3-1.127.812-1.127 1.52zM34.481 8.316c-.522-.128-1.397-.208-2.282-.208-2.943 0-4.631 1.606-4.631 4.407v8.17c0 .889.739 1.613 1.647 1.613.015-.002.022-.004.031-.004l.029.002h.001c.968 0 1.72-.748 1.72-1.704V13.17c0-1.17.48-1.753 1.468-1.783.452-.016.83.059 1.194.13.282.054.549.106.817.106 1.096 0 1.606-.94 1.606-1.574 0-.847-.568-1.463-1.6-1.734M7.45 14.118l-2.102-.429c-1.177-.262-1.678-.647-1.678-1.29 0-.372.194-1.237 1.99-1.237.744 0 1.821.258 2.504.6.852.439 1.73.361 2.237-.197.283-.323.432-.778.397-1.214-.024-.293-.138-.714-.55-1.054C9.39 8.586 7.6 8.108 5.793 8.108c-3.296 0-5.426 1.727-5.426 4.399 0 2.504 2.115 3.572 3.89 4.026.608.155.912.21 1.264.273.252.046.514.093.918.182 1.122.267 1.622.682 1.622 1.343 0 .481-.271 1.287-2.09 1.287-1.26 0-2.623-.353-3.471-.9-.343-.219-.694-.326-1.024-.326-.466 0-.892.212-1.2.627-.469.617-.324 1.62.309 2.147.552.462 2.17 1.537 5.272 1.537 3.286 0 5.494-1.843 5.494-4.586 0-2.087-1.276-3.395-3.901-3.999M75 6.487c-.923 0-1.62.74-1.62 1.721v9.125c0 .933.742 1.721 1.62 1.721.91 0 1.622-.756 1.622-1.72V8.207c0-.965-.712-1.721-1.621-1.721M75 0c-1.386 0-2.432 1.031-2.432 2.398 0 1.384 1.069 2.467 2.433 2.467 1.318 0 2.432-1.13 2.432-2.467C77.433 1.053 76.365 0 75.001 0M85.644 8.108c-3.391 0-5.234 1.19-5.577 1.428-.454.315-.607.623-.607 1.222v9.807c0 .94.783 1.733 1.709 1.733.974 0 1.708-.745 1.708-1.733v-8.513l.037-.023c.498-.309 1.508-.641 2.624-.641 1.29 0 2.667.668 2.667 2.543v6.634c0 .94.783 1.733 1.709 1.733.974 0 1.709-.745 1.709-1.733v-6.792c0-3.706-2.068-5.665-5.979-5.665" transform="translate(27.485)"></path>
-</g>
-<g transform="translate(0 3.295)">
-<circle cx="4.257" cy="4.257" r="4.257" fill="#114FF4"></circle>
-<circle cx="15.608" cy="4.257" r="4.257" fill="#B4C0D3"></circle>
-<circle cx="4.257" cy="15.608" r="4.257" fill="#B4C0D3"></circle>
-<circle cx="15.608" cy="15.608" r="4.257" fill="#00D3AB"></circle>
-</g>
-</g>
-</svg>
-</a>
-</h1>
 
 
-<nav id="gnb" class="gnb">
-<ul class="gnb_menu">
-<li data-gnb="1"><a href="/zf_user/jobs/list/domestic" class="track_event" data-track_event="main|gnb|menu|area">지역별</a></li>
-<li data-gnb="1"><a href="/zf_user/jobs/list/job-category" class="track_event" data-track_event="main|gnb|menu|job">직업별</a></li>
-<li data-gnb="2"><a href="/zf_user/jobs/list/headhunting" class="track_event" data-track_event="main|gnb|menu|headhunting">헤드헌팅</a></li>
-<li data-gnb="2"><a href="/zf_user/jobs/hot100" class="track_event" data-track_event="main|gnb|menu|hot100">HOT100<em class="ico_new">new</em></a></li>
-<li data-gnb="2"><a href="/zf_user/jobs/public/list" class="track_event" data-track_event="main|gnb|menu|public">공채</a></li>
-<li data-gnb="3"><a href="/zf_user/companylab" class="track_event" data-track_event="main|gnb|menu|companylab">기업연구소</a></li>
-<li data-gnb="3"><a href="/zf_user/company-review-qst-and-ans" class="track_event" data-track_event="main|gnb|menu|qst-and-ans">취준진담<em class="ico_badge_qna">고민해결</em></a></li>
-</ul>
-<div id="hidden_gnb" class="hidden_gnb">
-<span class="btn_more" title="메뉴 더보기"><span class="blind">더보기</span></span>
-<ul>
-<li data-gnb="1"><a href="/zf_user/jobs/list/domestic" class="track_event" data-track_event="main|gnb|hidden_menu|area">지역별</a></li>
-<li data-gnb="1"><a href="/zf_user/jobs/list/job-category" class="track_event" data-track_event="main|gnb|hidden_menu|job">직업별</a></li>
-<li data-gnb="2"><a href="/zf_user/jobs/hot100" class="track_event" data-track_event="main|gnb|hidden_menu|hot100">HOT100</a></li>
-<li data-gnb="2"><a href="/zf_user/curation" class="track_event" data-track_event="main|gnb|hidden_menu|curation">큐레이션</a></li>
-<li data-gnb="2"><a href="/zf_user/jobs/public/list" class="track_event" data-track_event="main|gnb|hidden_menu|public">공채</a></li>
-<li data-gnb="3"><a href="/zf_user/companylab" class="track_event" data-track_event="main|gnb|hidden_menu|companylab">기업연구소</a></li>
-<li data-gnb="3"><a href="/zf_user/memcom/talent-pool/main#/recommend" class="track_event" data-track_event="main|gnb|hidden_menu|talent-pool">인재Pool</a></li>
-</ul>
-</div>
-</nav>
-<ul class="utility">
-<li>
-<button type="button" id="search_open" class="btn_search">카카오</button>
-</li>
-<li id="member_menu" class="member_menu">
-<a href="/zf_user/auth?url=%2Fzf_user%2F" id="btn_member" class="btn_member track_event" data-track_event="main|gnb|layer_sign|signin">로그인</a>
-<div id="layer_member" class="wrap_member" style="display: none;">
-<div class="member">
-<ul class="list nologin">
-<li class="btn_link"><a href="/zf_user/auth?ut=p" class="track_event" data-track_event="main|gnb|layer_sign|signin01"><strong>개인회원</strong> 로그인<span class="sri_gnb_option ic_go_arrow"></span></a></li>
-<li><a href="/zf_user/resume/resume-manage" class="track_event" data-track_event="main|gnb|layer_sign|signin02">이력서 관리</a></li>
-<li><a href="/zf_user/member/avatar/list" class="track_event ico_recommend" data-track_event="main|gnb|layer_sign|signin03">추천</a></li>
-<li><a href="/zf_user/member/svq/list" class="track_event" data-track_event="main|gnb|layer_sign|signin_svq">인적성검사</a></li>
-<li><a href="/zf_user/member/suited-recruit-mail/list" class="track_event" data-track_event="main|gnb|layer_sign|signin04">맞춤채용 정보</a></li>
-</ul>
-<ul class="list nologin">
-<li class="btn_link"><a href="/zf_user/auth?ut=c" class="track_event" data-track_event="main|gnb|layer_sign|signin05"><strong>기업회원</strong> 로그인<span class="sri_gnb_option ic_go_arrow"></span></a></li>
-<li><a href="/zf_user/recruit-manage" class="track_event" data-track_event="main|gnb|layer_sign|signin06">공고 등록</a></li>
-<li><a href="/zf_user/company/recruit-manage" class="track_event" data-track_event="main|gnb|layer_sign|signin07">공고·지원자 관리</a></li>
-<li><a href="/zf_user/service/products" class="track_event" data-track_event="main|gnb|layer_sign|signin08">채용 상품 안내</a></li>
-<li><a href="/zf_user/service/products?part_id=talent_search" class="track_event" data-track_event="main|gnb|layer_sign|signin09">인재 상품 안내</a></li>
-<li class="com_member_link"><a href="/zf_user/curation?inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=main_top_login&amp;inner_term=curation" target="_blank" title="큐레이션 페이지로 이동합니다."><img src="//www.saraminimage.co.kr/banner/20210310/A_02.png" width="164" height="52" alt="다양하게 골라보는 큐레이션"></a></li>
-</ul>
-</div>
-</div>
-</li>
-<li><a href="/zf_user/resume/resume-manage" class="btn_link_menu ico_resume track_event" data-track_event="main|gnb|menu|resume_manage">이력서 관리</a></li>
-<li><a href="/zf_user/member/avatar/list" class="track_event" data-track_event="main|gnb|menu|avatar">추천</a></li>
-<li><a href="/zf_user/member/svq/list" class="track_event" data-track_event="main|gnb|hidden_menu|svq">인적성검사</a></li>
-<li><a href="/zf_user/memcom" class="btn_company_service track_event" title="기업서비스" data-track_event="main|gnb|menu|company"><span>기업 서비스</span></a></li>            </ul>
-</div>
-<div id="total_menu" class="wrap_total_menu">
-<a href="/zf_user/recruit" class="btn_menu" title="전체메뉴 보기">
-<span class="blind">전체메뉴</span>
-</a>
-<div id="layer_menu" class="total_menu"> <div class="inner"> <div class="title"> <span>전체 채용정보</span> <a href="/zf_user/curation" class="track_event" data-track_event="main|gnb|public|m900">채용정보 홈</a> </div> <ul class="recruits"> <li class="row1"> <a href="/zf_user/area-recruit" class="title track_event" data-track_event="main|gnb|menu|total">지역별</a> <ul class="col4"> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=101000" class="track_event" data-track_event="main|gnb|public|m021">서울</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=102000" class="track_event" data-track_event="main|gnb|public|m021">경기</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=108000" class="track_event" data-track_event="main|gnb|public|m021">인천</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=106000" class="track_event" data-track_event="main|gnb|public|m021">부산</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=104000" class="track_event" data-track_event="main|gnb|public|m021">대구</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=105000" class="track_event" data-track_event="main|gnb|public|m021">대전</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=103000" class="track_event" data-track_event="main|gnb|public|m021">광주</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=107000" class="track_event" data-track_event="main|gnb|public|m021">울산</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=118000" class="track_event" data-track_event="main|gnb|public|m021">세종</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=109000" class="track_event" data-track_event="main|gnb|public|m021">강원</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=110000" class="track_event" data-track_event="main|gnb|public|m021">경남</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=111000" class="track_event" data-track_event="main|gnb|public|m021">경북</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=112000" class="track_event" data-track_event="main|gnb|public|m021">전남</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=113000" class="track_event" data-track_event="main|gnb|public|m021">전북</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=115000" class="track_event" data-track_event="main|gnb|public|m021">충남</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=114000" class="track_event" data-track_event="main|gnb|public|m021">충북</a></li> <li><a href="/zf_user/jobs/list/domestic?loc_mcd=116000" class="track_event" data-track_event="main|gnb|public|m021">제주</a></li> <li><a href="/zf_user/area-recruit/index-foreign-map" class="track_event" data-track_event="main|gnb|public|m022">해외</a></li> <li><a href="/zf_user/jobs/list/subway" class="track_event" data-track_event="main|gnb|public|m022">역세권별</a> <span class="img_main ico_new"><span class="blind">new</span></span></li> </ul> </li> <li class="row1 wide"> <a href="/zf_user/upjikjong-recruit/select-upjikjong/recruitform_type/classified" class="title track_event" data-track_event="main|gnb|menu|total">직업별(직종)</a> <ul class="col2"> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=1" class="track_event" data-track_event="main|gnb|public|m030">경영∙사무</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=2" class="track_event" data-track_event="main|gnb|public|m030">영업∙고객상담</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=4" class="track_event" data-track_event="main|gnb|public|m030">IT∙인터넷</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=12" class="track_event" data-track_event="main|gnb|public|m030">디자인</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=11" class="track_event" data-track_event="main|gnb|public|m030">서비스</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=5" class="track_event" data-track_event="main|gnb|public|m030">전문직</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=13" class="track_event" data-track_event="main|gnb|public|m030">의료</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=3" class="track_event" data-track_event="main|gnb|public|m030">생산∙제조</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=9" class="track_event" data-track_event="main|gnb|public|m030">건설</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=10" class="track_event" data-track_event="main|gnb|public|m030">유통∙무역</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=7" class="track_event" data-track_event="main|gnb|public|m030">미디어</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=6" class="track_event" data-track_event="main|gnb|public|m030">교육</a></li> <li><a href="/zf_user/jobs/list/job-category?cat_bcd=8" class="track_event" data-track_event="main|gnb|public|m030">특수계층∙공공</a></li> </ul> </li> <li class="row1"> <a href="/zf_user/curation" class="title track_event" data-track_event="main|gnb|public|total">큐레이션</a> <ul class="col2"> <li> <a href="/zf_user/jobs/list/curation?category_seq=46" class="track_event" data-track_event="main|gnb|public|cu046">반짝오픈</a> </li> <li> <a href="/zf_user/jobs/list/curation?category_seq=44" class="track_event" data-track_event="main|gnb|public|cu044">인턴관</a> </li> <li> <a href="/zf_user/jobs/list/curation?category_seq=43" class="track_event" data-track_event="main|gnb|public|cu043">기업별</a> </li> <li> <a href="/zf_user/jobs/list/curation?category_seq=36" class="track_event" data-track_event="main|gnb|public|cu036">경력관 </a> </li> <li> <a href="/zf_user/jobs/list/curation?category_seq=40" class="track_event" data-track_event="main|gnb|public|cu040">고졸관</a> </li> <li> <a href="/zf_user/jobs/list/curation?category_seq=37" class="track_event" data-track_event="main|gnb|public|cu037">복지관</a> </li> <li> <a href="/zf_user/jobs/list/curation?category_seq=38" class="track_event" data-track_event="main|gnb|public|cu038">연봉관</a> </li> <li> <a href="/zf_user/jobs/list/curation?category_seq=33" class="track_event" data-track_event="main|gnb|public|cu033">HOT공고</a> </li> </ul> </li> <li class="row1"> <a href="/zf_user/jobs/public/list" class="title track_event" data-track_event="main|gnb|menu|total">공채의 명가</a> <ul> <li><a href="/zf_user/jobs/public/list" class="track_event" data-track_event="main|gnb|public|m012">1000대기업 채용</a></li> <li><a href="/zf_user/jobs/public/list?sort=ud&amp;quick_apply=&amp;search_day=&amp;keyword=&amp;company_scale%5B%5D=3#listTop" class="track_event" data-track_event="main|gnb|public|m017">중견기업 채용</a></li> <li><a href="/zf_user/calendar" class="track_event" data-track_event="main|gnb|public|m013">채용 달력</a></li> </ul> </li> <li> <a class="title">기업별</a> <ul> <li><a href="/zf_user/search?company_type=scale001&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m050">대기업 </a></li><li><a href="/zf_user/search?company_type=foreign&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m050">외국계 기업</a></li> <li><a href="/zf_user/search?company_type=public&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m050">공사∙공기업∙공공기관</a></li> <li><a href="/zf_user/search?company_type=kosdaq%2Ckospi%2Ckonex&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m050">상장기업</a></li> <li><a href="/zf_user/search?company_type=goodcompany%2Cmain-biz%2Cinnobiz%2Cventure%2Cw-small-giant&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m050">강소∙인증기업</a></li> </ul> </li> <li class="wide"> <a href="/zf_user/upjikjong-recruit/select-upjikjong/recruitform_type/industrial" class="title track_event" data-track_event="main|gnb|menu|total">산업별(업종)</a> <ul class="col2"> <li><a href="/zf_user/jobs/list/industry?ind_bcd=1" class="track_event" data-track_event="main|gnb|public|m040">서비스업</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=7" class="track_event" data-track_event="main|gnb|public|m040">의료∙제약∙복지</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=2" class="track_event" data-track_event="main|gnb|public|m040">제조∙화학</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=8" class="track_event" data-track_event="main|gnb|public|m040">판매∙유통</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=3" class="track_event" data-track_event="main|gnb|public|m040">IT∙웹∙통신</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=9" class="track_event" data-track_event="main|gnb|public|m040">건설업</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=6" class="track_event" data-track_event="main|gnb|public|m040">교육업</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=5" class="track_event" data-track_event="main|gnb|public|m040">미디어∙디자인</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=4" class="track_event" data-track_event="main|gnb|public|m040">은행∙금융업</a></li> <li><a href="/zf_user/jobs/list/industry?ind_bcd=10" class="track_event" data-track_event="main|gnb|public|m040">기관∙협회</a></li> </ul> </li> <li> <a class="title">전공별</a> <ul class="col2"> <li><a href="/zf_user/search?major_cd=maj021&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">기계공학</a></li> <li><a href="/zf_user/search?major_cd=maj014%2Cmaj055&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">전기공학</a></li> <li><a href="/zf_user/search?major_cd=maj015&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">컴퓨터공학</a></li> <li><a href="/zf_user/search?major_cd=maj018&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">건축∙토목</a></li> <li><a href="/zf_user/search?major_cd=maj016%2Cmaj022&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">재료∙금속</a></li> <li><a href="/zf_user/search?major_cd=maj017%2Cmaj049&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">화학공학</a></li> <li><a href="/zf_user/search?major_cd=maj054%2Cmaj050&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">생물∙생명</a></li> <li><a href="/zf_user/search?major_cd=maj020&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">산업공학</a></li> <li><a href="/zf_user/search?major_cd=maj003%2Cmaj004&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">인문∙사회</a></li> <li><a href="/zf_user/search?major_cd=maj008&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">상경</a></li> <li><a href="/zf_user/search?major_cd=maj002&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">어학</a></li> <li><a href="/zf_user/search?major_cd=maj009&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">법학</a></li> <li><a href="/zf_user/search?major_cd=maj010&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">사범</a></li> <li><a href="/zf_user/search?major_cd=maj006&amp;open_search_detail=y" class="track_event" data-track_event="main|gnb|public|m080">예체능</a></li> </ul> </li> <li class="row_small row_top"> <a class="title">학력별</a> <ul> <li><a href="/zf_user/jobs/list/highschool" class="track_event" data-track_event="main|gnb|public|m060">고졸채용</a></li> <li><a href="/zf_user/search?edu_min=7&amp;edu_max=10&amp;preview_fl=y" class="track_event" data-track_event="main|gnb|public|m060">2,3년제 채용</a></li> <li><a href="/zf_user/search?edu_min=9&amp;edu_max=13&amp;preview_fl=y" class="track_event" data-track_event="main|gnb|public|m060">석박사 채용</a></li> </ul> </li> <li class="row_small"> <a class="title">HOT100</a> <ul> <li><a href="/zf_user/jobs/hot100" class="track_event" data-track_event="main|gnb|public|hot100">직업별</a></li> <li><a href="/zf_user/jobs/hot100?loc_mcd=0" class="track_event" data-track_event="main|gnb|public|hot100">지역별</a></li> <li><a href="/zf_user/jobs/hot100?edu_cd=0" class="track_event" data-track_event="main|gnb|public|hot100">학력별</a></li> <li><a href="/zf_user/jobs/hot100?company_type=0" class="track_event" data-track_event="main|gnb|public|hot100">기업규모</a></li> </ul> </li> </ul> <ul class="links"> <li> <a class="title">사람인서비스</a> <ul> <li><a href="/zf_user/companylab" class="track_event ico_salary" data-track_event="main|gnb|public|m180">기업연구소</a></li> <li><a href="/zf_user/talent/search" class="track_event ico_talent" data-track_event="main|gnb|public|m150">인재검색</a></li> <li class="sep"><a href="/zf_user/jobs/list/highschool" class="track_event" data-track_event="main|gnb|public|m090">고졸채용</a> <span class="img_main ico_renew"><span class="blind">renew</span></span></li> <li><a href="/zf_user/jobs/theme/main" class="track_event" data-track_event="main|gnb|public|m180">채용관</a> <span class="img_main ico_new"><span class="blind">new</span></span></li> <li><a href="/zf_user/jobs/list/headhunting" class="track_event" data-track_event="main|gnb|public|m110">헤드헌팅</a></li> <li><a href="/zf_user/jobs/list/dispatch" class="track_event" data-track_event="main|gnb|public|m120">파견/대행</a></li> <li class="sep"><a href="/zf_user/help" class="track_event" data-track_event="main|gnb|public|m170">고객센터</a></li> <li><a href="https://play.google.com/store/apps/details?id=kr.co.saramin.brandapp&amp;referer=utm_source%3Dsaramin%26utm_medium%3Dreferral%26utm_campaign%3Dsaramin-app%26utm_content%3Dmobile_layer" target="_blank" title="새창" class="track_event" data-track_event="main|gnb|public|m160">사람인 앱 설치</a></li> <li><a href="http://www.otwojob.com/" target="_blank" title="새창" class="track_event" data-track_event="main|gnb|public|m200">재능마켓 오투잡</a></li> <li class="outlink link_company_home"><a href="/zf_user/memcom" target="_blank" title="새창" class="track_event" data-track_event="main|gnb|public|m210">기업서비스 홈</a></li> </ul> </li> </ul> <div class="banner1"> <a href="/zf_user/companylab?inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=gnb_left&amp;inner_term=companylab" target="_blank" class="track_event" data-track_event="main|gnb|public|companylab"><img src="//www.saraminimage.co.kr/2020/storyry.png" alt="기업스토리. 복지부터 사내문화까지 총집합"></a> </div> </div> <div class="dimmed"></div>
-</div>
-</div>
-</header>
 <!--  -->
 
 
@@ -1012,7 +1591,10 @@ function f_empPgmList(resultObj){
 											<col style="width:120px">
 											<col style="width:140px">
 										</colgroup>
-										<tbody>
+										<tbody>			
+										<c:if test="${login.userpic ne null}">	 	
+										<img alt="" src ="./upload/${login.newuserpic}">
+			    						</c:if> 	
 											<tr>
 												<th scope="row">연락처</th>
 												<td>
