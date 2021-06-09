@@ -85,7 +85,7 @@ public class MemberController {
 
 	@RequestMapping(value = "regiAf.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String regiAf(MemberDto dto,
-						@RequestParam(value = "userpic", required = false) MultipartFile fileload,
+						@RequestParam(value = "fileload", required = false) MultipartFile fileload,
 						HttpServletRequest req) {
 
 		  System.out.println("addmember:" + dto.toString());

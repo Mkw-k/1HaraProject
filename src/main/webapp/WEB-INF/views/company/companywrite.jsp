@@ -137,9 +137,16 @@ hr {
   }
 }
 </style>
+
+
+<header>헤더</header>
+
+
+
+<div class="container"></div>
    
 <form name="comform" id="_comform" method="get">    
-    <table border="1">
+    <table border="1" >
      	<tr>
     		<th>회사이름:<p class="fontscolor2">* 변경할수없습니다</p></th>
     		<td><input type="text" name="companyname" value="${login.companyname }" readonly="readonly"></td>
@@ -226,6 +233,8 @@ hr {
     	</tr>
     	   	
     </table>
+    
+    
     <br><br>
     <div align="center">
     	
@@ -246,6 +255,7 @@ hr {
     	<button id="companyBtn" >등록하기</button>
   		<button id="updateBtn">수정하기</button> -->
     </div>
+    
 </form>    
 
 

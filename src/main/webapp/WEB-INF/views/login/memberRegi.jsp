@@ -68,7 +68,7 @@
                                 <h4 style="margin-left: 35px;">프로필 사진을 등록해주세요</h4>
                                 <div class="f_box">
                                         <label for="img"></label>
-                                        <input type="file" name="userpic" id="img">
+                                        <input type="file" name="fileload" id="img">
                                 </div>
                             </li>
 						</ul>
