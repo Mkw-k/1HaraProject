@@ -85,7 +85,7 @@ public class MemberController {
 
 	@RequestMapping(value = "regiAf.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String regiAf(MemberDto dto,
-						@RequestParam(value = "userpic", required = false) MultipartFile fileload,
+						@RequestParam(value = "fileload", required = false) MultipartFile fileload,
 						HttpServletRequest req) {
 
 		  System.out.println("addmember:" + dto.toString());
@@ -110,21 +110,19 @@ public class MemberController {
 		 try {
 			 FileUtils.writeByteArrayToFile(file, fileload.getBytes());
 
-			 //db에 저장
-			 service.addmember(dto);
+			 boolean b = service.addmember(dto);
+			 if(b) { System.out.println("회원 가입되었습니다 " + new Date());
+			 return "home";
 
-		 } catch (IOException e) {
+		 }
+		 }catch (IOException e) {
 			 e.printStackTrace();
+			 System.out.println("가입되지 않았습니다 " + new Date());
 		 }
-
-		 boolean b = service.addmember(dto);
-		 if(b) { System.out.println("회원 가입되었습니다 " + new Date());
-		 return "home";
-		 }
-		 System.out.println("가입되지 않았습니다 " + new Date());
+		 
 		 return "login/memberRegi";
 
-	}
+		 }		 
 
 	@RequestMapping(value = "loginAf.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String loginAf(MemberDto dto, HttpServletRequest req, HttpServletResponse response,

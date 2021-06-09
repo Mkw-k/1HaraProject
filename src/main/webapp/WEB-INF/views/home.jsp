@@ -606,8 +606,22 @@ margin-right : 450px;
 <svg class="icon" aria-hidden="true"><use xlink:href="#svg_gnb_search"></use></svg>
 <span>궁금한 정보를 검색해보세요</span>
 </button>
-<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="javascript:login()" class="btn_sign signin"><span class="txt">로그인</span></a>
-<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="/zf_user/member/registration/join" class="btn_sign signup"><span class="txt">회원가입</span></a>
+
+<c:choose>
+	<c:when test="${login.auth == null}">
+		<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="javascript:login()" class="btn_sign signin"><span class="txt">로그인</span></a>
+		<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="regiclick.do" class="btn_sign signup"><span class="txt">회원가입</span></a>
+	</c:when>
+	<c:when test="${login.auth == 1 }">
+		<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="mypage.do" class="btn_sign signin"><span class="txt">${login.name}</span></a>
+	</c:when>
+	<c:when test="${login.auth == 2 }">
+		<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="mypage.do" class="btn_sign signin"><span class="txt">${login.name}</span></a>
+	</c:when>
+	<c:otherwise>
+		<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="mypage.do" class="btn_sign signin"><span class="txt">관리자</span></a>
+	</c:otherwise>
+</c:choose>
 </div>
 </div>
 <div class="navi_total">

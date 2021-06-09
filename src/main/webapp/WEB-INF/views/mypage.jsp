@@ -847,13 +847,13 @@
 						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
 					</li>
 					<li>
-						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustInfoView.do" target="_self">회원정보 수정(성명변경)</a>
+						<a href="mypageUpdate.do" target="_self">회원정보 수정(성명변경)</a>
 					</li>
 					<li>
 						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a>
 					</li>
 					<li>
-						<a href="/indivMemberSrv/custInfoAdmin/deleteIndivCustView.do" target="_self">회원탈퇴</a>
+						<a href="mypageUpdate.do" target="_self">회원탈퇴</a>
 					</li>
 				</ul>
 			</div>
