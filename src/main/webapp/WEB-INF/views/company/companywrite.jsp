@@ -14,6 +14,129 @@
  color:green
  }
  </style>
+ 
+ <style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+  font-family: "Noto Sans KR", sans-serif !important;
+}
+</style>
+
+<!-- 버튼 모달 -->
+<style type="text/css">
+
+
+* {box-sizing: border-box}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+  background-color: #ccc;
+  color: black;
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+  background-color: #f44336;
+}
+
+/* Add padding and center-align text to the container */
+.container {
+  padding: 16px;
+  text-align: center;
+}
+
+.foota {
+width:2000px;
+}
+
+.con{
+border-top-left-radius: 2em; border-top-right-radius: 2em; border-bottom-right-radius: 2em; border-bottom-left-radius: 2em;
+
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* The Modal Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+  
+
+}
+
+/* Change styles for cancel button and delete button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .deletebtn {
+    width: 100%;
+  }
+}
+</style>
    
 <form name="comform" id="_comform" method="get">    
     <table border="1">
@@ -108,16 +231,16 @@
     	
     		<c:choose> 
           		<c:when test='${company.updatecompanylist=="YES"}'>
-          			<div class="col-md-12"><a class="btn btn-secondary" href="javascript:ComUpdate()">수정하기</a></div>
+          			<div class="col-md-12"><button type="button" class="button cancel" onclick="location.href='javascript:ComUpdate()'">수정하기</button></div>
           			<%-- <input type="hidden" value="${company.memberid }"> --%>          		
           		</c:when> 
         	    <c:otherwise>
-          			<div class="col-md-12"><a class="btn btn-secondary" href="javascript:ComRegi()">작성하기</a></div>
+          			<div class="col-md-12"><button type="button" class="button cancel" onclick="location.href='javascript:ComRegi()'">작성하기</button></div>
           		</c:otherwise> 
           	</c:choose> 
     	
     	
-          	<a class="btn btn-secondary" href="javascript:ComUpdate()">수정하기</a>
+          	<button class="btn btn-secondary" onclick="location.href='javascript:ComUpdate()'">수정하기</button>
           	
     	<!-- 
     	<button id="companyBtn" >등록하기</button>
@@ -125,8 +248,6 @@
     </div>
 </form>    
 
-	
-	
 
 <script>
 
