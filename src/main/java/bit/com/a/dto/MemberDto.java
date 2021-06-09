@@ -140,31 +140,6 @@ public class MemberDto implements Serializable{
 	}
 
 
-	public MemberDto(String memberid, String pwd, String name, String email, int auth, String address,
-			String detailaddress, String birth, String userpic, String newuserpic) {
-		super();
-		this.memberid = memberid;
-		this.pwd = pwd;
-		this.name = name;
-		this.email = email;
-		this.auth = auth;
-		this.address = address;
-		this.detailaddress = detailaddress;
-		this.birth = birth;
-		this.userpic = userpic;
-		this.newuserpic = newuserpic;
-	}
-
-	
-
-	public String getNewuserpic() {
-		return newuserpic;
-	}
-
-
-	public void setNewuserpic(String newuserpic) {
-		this.newuserpic = newuserpic;
-	}
 
 
 	@Override

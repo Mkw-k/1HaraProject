@@ -606,7 +606,7 @@ margin-right : 450px;
 <svg class="icon" aria-hidden="true"><use xlink:href="#svg_gnb_search"></use></svg>
 <span>궁금한 정보를 검색해보세요</span>
 </button>
-<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="/zf_user/auth?url=%2Fzf_user%2F" class="btn_sign signin"><span class="txt">로그인</span></a>
+<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="javascript:login()" class="btn_sign signin"><span class="txt">로그인</span></a>
 <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="/zf_user/member/registration/join" class="btn_sign signup"><span class="txt">회원가입</span></a>
 </div>
 </div>
@@ -1837,12 +1837,8 @@ IT·인터넷&nbsp;면접 후기 748건
 											<div class="top">
 												<div class="bg" style="background-image: url('bg-main-login-person.png') no-repeat 0 2px;">
 
-													<p class="txt" style="
-    margin-left: 155px;
-">개인회원</p>
-													<p class="name" style="margin-left: 130px;"><strong style="
-    margin-left: 155px;
-">${login.name}</strong> 님</p>
+													<p class="txt" style="margin-left: 155px;">개인회원</p>
+													<p class="name" style="margin-left: 130px;"><strong style="margin-left: 155px;">${login.name}</strong> 님</p>
 													<a href="/indivMemberSrv/main/indivMemberSrvMain.do" class="mypge" style="margin-left: 130px;"> 마이페이지</a>
 												</div>
 												<div class="btn-grp">

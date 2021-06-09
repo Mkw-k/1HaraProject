@@ -14,7 +14,7 @@
  
 <select id="Jobtalklist" parameterType="bit.com.a.dto.JobtalkParam" 
 	resultType="bit.com.a.dto.JobtalkDto">
-	SELECT JOBTALKSEQ, MEMBERID, JOBTALK_REF, JOBTALK_TITLE, JOBTALK_CONTENT, WDATE, DEL, JOBTALK_READCOUNT
+	SELECT RNUM, JOBTALKSEQ, MEMBERID, JOBTALK_REF, JOBTALK_TITLE, JOBTALK_CONTENT, WDATE, DEL, JOBTALK_READCOUNT
 	FROM (SELECT ROW_NUMBER()OVER(ORDER BY JOBTALK_REF DESC) AS RNUM,
 			JOBTALKSEQ, MEMBERID, JOBTALK_REF, JOBTALK_TITLE, JOBTALK_CONTENT, WDATE, DEL, JOBTALK_READCOUNT
 		  FROM JOBTALK
@@ -32,7 +32,7 @@
 			  		AND MEMBERID=#{search}  
 			  </if>	
 		  </if>
-		ORDER BY JOBTALK_REF DESC)
+		ORDER BY JOBTALKSEQ DESC)
 	WHERE RNUM BETWEEN ${start} AND ${end}
 </select> 
  
@@ -45,13 +45,13 @@
 	<if test="choice != null and choice != ''
 	  		and search != null and search != ''">	  	  		
 		  <if test="choice == 'title'">
-		  		AND TITLE LIKE '%'||#{search}||'%'		  
+		  		AND JOBTALK_TITLE LIKE '%'||#{search}||'%'		  
 		  </if>
 		  <if test="choice == 'content'">
-		  		AND CONTENT LIKE '%'||#{search}||'%'			  
+		  		AND JOBTALK_CONTENT LIKE '%'||#{search}||'%'			  
 		  </if>
 		  <if test="choice == 'writer'">
-		  		AND ID=#{search}  
+		  		AND MEMBERID=#{search}  
 		  </if>	
 	  </if>
 </select>
@@ -84,8 +84,8 @@
 
 <update id="updateJobtalk"
 	parameterType="bit.com.a.dto.JobtalkDto">
-		UPDATE JOBTALK SET
-		JOBTALK_TITLE=#{jobtalk_title}, JOBTALK_CONTENT=#{jobtalk_content}, WDATE=SYSDATE
+		UPDATE JOBTALK
+		SET JOBTALK_TITLE=#{jobtalk_title}, JOBTALK_CONTENT=#{jobtalk_content}, WDATE=SYSDATE
 		WHERE JOBTALKSEQ=#{jobtalkseq}
 </update>
 
