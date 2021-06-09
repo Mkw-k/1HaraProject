@@ -9,47 +9,47 @@
      	
      	<tr>
      		<th>아이디: </th>
-     		<td><input type="text" name="memberid" value="${login.memberid }" readonly="readonly"></td>
+     		<td><input type="text" name="memberid" value="${login.memberid }" readonly="readonly"> (필수) </td>
      	</tr>
      	
     	<tr>
     		<th>회사 이름: </th>
-    		<td><input type="text" name="companyname" value="${business.companyname }"></td>
+    		<td><input type="text" name="companyname" value="${login.companyname }"> (필수)</td>
     	</tr>
     	
     	<tr>
     		<th>비밀번호: </th>
-    		<td><input type="text" name="pwd" value="${business.pwd }"></td>
+    		<td><input type="text" name="pwd" value="${login.pwd }"> (필수)</td>
     	</tr>
     	
     	<tr>
     		<th>비밀번호 확인: </th>
-    		<td><input type="text" name="pwdch" value="${business.pwd }"></td>
+    		<td><input type="text" id="pwdch" name="pwdch" value="${login.pwd }"> (필수)</td>
     	</tr>
     	
     	<tr>
     		<th>주소: </th>
-    		<td><input type="text" name="comaddress" value="${business.comaddress }"></td>
+    		<td><input type="text" name="comaddress" value="${login.comaddress }"> (필수)</td>
     	</tr>
     	
     	<tr>
     		<th>상세 주소 : </th>
-    		<td><input type="text" name="addressdetail" value="${business.addressdetail }"></td>
+    		<td><input type="text" name="addressdetail" value="${login.addressdetail }"> (필수)</td>
     	</tr>
  		
     	<tr>
     		<th>대표자명 : </th>
-    		<td><input type="text" name="name" value="${business.name }"></td>
+    		<td><input type="text" name="name" value="${login.name }"> (필수)</td>
     	</tr>
  		
  		<tr>
      		<th>회사 이미지: </th>
-    		<td><input type="text" name="filename" value="${business.filename }" readonly="readonly"></td>
+    		<td><input type="text" name="filename" value="${login.filename }" readonly="readonly"></td>
     	</tr>
     	   	
     	<tr>
      		<th>변경할 회사 이미지: </th>
-    		<td><input type="file" name="newfilename" value="${business.newfilename }"></td>
+    		<td><input type="file" name="newfilename" value="${login.newfilename }"></td>
     	</tr>  	
     	
     </table>
@@ -68,5 +68,20 @@ $("#busBtn").click(function () {
 	$("#_busform").submit();
 	}
 });
+
+
+$("#pwdch").keyup(function(){
+    var rePwd=$(this).val();
+    var pwd=$("#pwd").val();
+    // 비밀번호 같은지 확인
+    if(pwdch==pwd){//비밀번호 같다면
+        $("#rePwdErr").hide();
+        successState("#rePwd");
+    }else{//비밀번호 다르다면
+        $("#rePwdErr").show();
+        errorState("#rePwd");
+    }
+});
+
 
 </script>
