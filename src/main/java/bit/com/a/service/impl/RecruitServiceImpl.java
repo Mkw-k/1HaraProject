@@ -165,4 +165,9 @@ public class RecruitServiceImpl implements RecruitService{
 		return dao.priMemberAf(dto);
 	}
 
+	@Override
+	public List<RecruitDto> getCalendarSearchList(Map<String, Object> map) {
+		return dao.getCalendarSearchList(map);
+	}
+
 }
