@@ -44,6 +44,15 @@
 <link href="csss/top.css" rel="stylesheet" type="text/css">
 <link href="csss/common.css" rel="stylesheet" type="text/css">
         <link href="csss/reset.css" rel="stylesheet" type="text/css">
+        
+        
+<style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+  font-family: "Noto Sans KR", sans-serif !important;
+}
+</style>        
 
 
 </head>
