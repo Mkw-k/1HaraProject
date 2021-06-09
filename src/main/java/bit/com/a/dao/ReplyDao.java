@@ -10,4 +10,6 @@ public interface ReplyDao {
 
 	void readCount(int replyseq);
 
+	boolean insertreply(replyDto dto);
+
 }

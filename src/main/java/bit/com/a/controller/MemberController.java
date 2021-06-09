@@ -1,5 +1,7 @@
 package bit.com.a.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.HashMap;
@@ -7,6 +9,8 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,11 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import bit.com.a.dto.MemberDto;
 import bit.com.a.service.MemberService;
+import bit.com.a.util.PdsUtil;
 
 @Controller
 public class MemberController {
@@ -78,9 +84,38 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "regiAf.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String regiAf(MemberDto dto) {
+	public String regiAf(MemberDto dto,
+						@RequestParam(value = "userpic", required = false) MultipartFile fileload,
+						HttpServletRequest req) {
 
-		System.out.println("addmember:" + dto.toString());
+		  System.out.println("addmember:" + dto.toString());
+
+		  String userpic = fileload.getOriginalFilename();
+		  dto.setUserpic(userpic);
+
+		 //upload 경로 설정
+		 //server(tomcat)
+		 String fupload = req.getServletContext().getRealPath("/upload");
+
+		 //폴더에 올리는 법
+		 //String fupload = "d:\\tmp";
+
+		 System.out.println("fupload:"+fupload);
+		 String newuserpic = PdsUtil.getNewFileName(dto.getUserpic());
+
+		 dto.setNewuserpic(newuserpic);
+
+		 File file = new File(fupload + "/" + newuserpic);
+
+		 try {
+			 FileUtils.writeByteArrayToFile(file, fileload.getBytes());
+
+			 //db에 저장
+			 service.addmember(dto);
+
+		 } catch (IOException e) {
+			 e.printStackTrace();
+		 }
 
 		 boolean b = service.addmember(dto);
 		 if(b) { System.out.println("회원 가입되었습니다 " + new Date());
@@ -93,55 +128,55 @@ public class MemberController {
 
 	@RequestMapping(value = "loginAf.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String loginAf(MemberDto dto, HttpServletRequest req, HttpServletResponse response,
-			@RequestParam(value="memberid", required=true) String userId, 
+			@RequestParam(value="memberid", required=true) String userId,
 			@RequestParam(value="pwd",required=true) String password ) throws Exception {
 
 		MemberDto login = service.login(dto);
-		
+
 		if (login != null && !login.getMemberid().equals("")) {
 
 			req.getSession().setAttribute("login", login);
 			// req.getSession().setMaxInactiveInterval(60 * 60 * 24);
 
 			return "redirect:/home.do";
-			
+
 		} else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
-			
+
 			return "redirect:/login1.do";
-		
+
 		}
 	}
-	
+
 	/*
 	 * @RequestMapping(value = "loginAf.do", method = { RequestMethod.GET,
 	 * RequestMethod.POST }) public String loginAf(MemberDto dto, HttpServletRequest
 	 * req, HttpServletResponse response,
-	 * 
+	 *
 	 * @RequestParam(value="memberid", required=true) String userId,
-	 * 
+	 *
 	 * @RequestParam(value="pwd",required=true) String password ) throws Exception {
-	 * 
+	 *
 	 * MemberDto login = service.login(dto); if (login == null) {
-	 * 
+	 *
 	 * response.setContentType("text/html; charset=UTF-8"); PrintWriter out =
 	 * response.getWriter();
 	 * out.println("<script>alert('로그인 정보를 확인해주세요.');</script>");
-	 * 
+	 *
 	 * return "redirect:/login1.do";
-	 * 
+	 *
 	 * } else { req.getSession().setAttribute("login", login); //
 	 * req.getSession().setMaxInactiveInterval(60 * 60 * 24);
-	 * 
+	 *
 	 * return "redirect:/home.do";
-	 * 
+	 *
 	 * } }
 	 */
-	
-	
-	
+
+
+
 	@RequestMapping("logout.do")
     public ModelAndView logout(HttpSession session) {
         session.invalidate();
@@ -238,18 +273,18 @@ public class MemberController {
 		}
 
 	}
-	
+
 	@RequestMapping(value = "searchidpwd.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String idpwdsearch(Model model, MemberDto mem) {
 		model.addAttribute("mem", mem);
 		return "login/searchidpwd";
 	}
-	
+
 	@RequestMapping(value ="memberDelete.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String memberDelete(MemberDto dto, HttpSession session, RedirectAttributes rttr) throws Exception {
 		return "login/memberDelete";
 	}
-	
+
 	@RequestMapping(value="memberDeleteAf.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String memberDeleteAf(MemberDto dto, HttpSession session, RedirectAttributes rttr) throws Exception{
 		// member변수 가져옴
@@ -257,10 +292,10 @@ public class MemberController {
 		System.out.println("비번" + mem.getPwd());
 		// 세션에 있는 비밀번호
 		String sessionPass = mem.getPwd();
-		
+
 		// dto로 들어오는 비밀번호
 		String dtopass = dto.getPwd();
-	
+
 		if(!(sessionPass.equals(dtopass))) {
 			rttr.addFlashAttribute("msg", false);
 			return "redirect:memberDelete.do";
@@ -269,10 +304,10 @@ public class MemberController {
 		session.invalidate();
 		return "home";
 	}
-	
+
 	@RequestMapping(value="memberlist.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String listGET(HttpSession session, Model model) throws Exception{
-		
+
 		// 1. 관리자 세션 제어
 		MemberDto member = (MemberDto) session.getAttribute("login");
 		if(member.getAuth()==3) {
@@ -283,36 +318,36 @@ public class MemberController {
 			return "redirect:home.do";
 		}
 	}
-	
+
 	@RequestMapping(value="memberdeletemerong.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView admin_member_forced_eviction(String memberid) throws Exception {
         System.out.println("들어오냐?");
         //유저의 아이디를 삭제 (강제탈퇴) 시키기위해서 dto에 담는다.
         MemberDto dto = new MemberDto();
         dto.setMemberid(memberid);
-        
+
         //회원탈퇴 체크를 하기위한 메소드, 탈퇴 시키려는 회원의 아이디가 있는지 검사한후에 result 변수에 저장한다.
-        
+
         service.admin_member_foced_evictionCheck(dto);
- 
+
         ModelAndView mav = new ModelAndView();
-        
+
         if(dto.getMemberid() != null) {    //회원 강제탈퇴가 성공했을시 출력되는 뷰
-            
+
             mav.setViewName("home");
-            
+
             mav.addObject("message", "회원이 정상적으로 강제탈퇴 처리 되었습니다.");
-            
+
         }else {
-            
+
             mav.setViewName("admin/memberlist");
-            
+
             mav.addObject("message", "회원 목록에 없는 회원입니다. 다시 확인해주세요.");
         }
-        
-        
+
+
         return mav;
-                
+
     }
-	
+
 }

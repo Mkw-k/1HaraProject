@@ -32,6 +32,8 @@ public class BusinessDto implements Serializable{
 		private String pwd; 			// 사원일 경우 비밀번호
 		private String addressdetail; 	// 상세 주소
 		private int del;				// 삭제 번호(사원이 탈퇴할경우)
+		private String filename;
+		private String newfilename;
 		private int auth;
 		
 		
@@ -40,9 +42,8 @@ public class BusinessDto implements Serializable{
 			// TODO Auto-generated constructor stub
 		}
 
-
 		public BusinessDto(String memberid, String companyname, String name, String comaddress, String pwd,
-				String addressdetail, int del, int auth) {
+				String addressdetail, int del, String filename, String newfilename, int auth) {
 			super();
 			this.memberid = memberid;
 			this.companyname = companyname;
@@ -51,6 +52,8 @@ public class BusinessDto implements Serializable{
 			this.pwd = pwd;
 			this.addressdetail = addressdetail;
 			this.del = del;
+			this.filename = filename;
+			this.newfilename = newfilename;
 			this.auth = auth;
 		}
 
@@ -111,6 +114,21 @@ public class BusinessDto implements Serializable{
 			this.addressdetail = addressdetail;
 		}
 
+		public String getFilename() {
+			return filename;
+		}
+
+		public void setFilename(String filename) {
+			this.filename = filename;
+		}
+
+		public String getNewfilename() {
+			return newfilename;
+		}
+
+		public void setNewfilename(String newfilename) {
+			this.newfilename = newfilename;
+		}
 
 		public int getDel() {
 			return del;

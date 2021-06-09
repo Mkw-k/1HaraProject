@@ -26,4 +26,9 @@ public class ReplyServiceImpl implements ReplyService {
 	public void readCount(int replyseq) {
 		dao.readCount(replyseq);
 	}
+
+	@Override
+	public boolean insertreply(replyDto dto) {
+		return dao.insertreply(dto);
+	}
 }

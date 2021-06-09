@@ -23,13 +23,18 @@
 </select>
 
 <!-- <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH, USERPIC)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, 0)
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH, USERPIC, NEWUSERPIC)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, #{userpic}, #{newuserpic})
 </insert> -->
+
+<insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, AUTH, BIRTH, DETAILADDRESS, ADDRESS, USERPIC, NEWUSERPIC)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, 1, #{birth}, #{detailaddress}, #{address}, #{userpic}, #{newuserpic})
+</insert>
 
 <select id="login" parameterType="bit.com.a.dto.MemberDto"
 	resultType="bit.com.a.dto.MemberDto">
-	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, BIRTH
+	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, BIRTH, NEWUSERPIC
 	FROM MEMBER
 	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 </select>
@@ -65,11 +70,11 @@
 	SET NAME=#{name}, EMAIL=#{email}, ADDRESS=#{address}, DETAILADDRESs=#{detailaddress}, BIRTH=#{birth}
 	WHERE MEMBERID=#{memberid}
 	</update>
-
+<!-- 
 	<insert parameterType="bit.com.a.dto.MemberDto" id="addmember">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1) 
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, USERPIC, AUTH)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, #{userpic} 1) 
 	</insert>
-
+ -->
 
 </mapper>

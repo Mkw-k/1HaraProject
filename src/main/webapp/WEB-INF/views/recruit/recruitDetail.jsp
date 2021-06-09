@@ -1,3 +1,5 @@
+<%@page import="bit.com.a.dto.ResumeDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
@@ -6,7 +8,13 @@
 <%
 RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
 
-%>    
+%>
+
+<%
+List<ResumeDto> resumelist =(List<ResumeDto>) request.getAttribute("resumelist");
+System.out.println("resumelist" +resumelist);
+%>
+
 <!DOCTYPE html>
 <html>
 
@@ -19,11 +27,19 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
   <!-- 전체 공통 스크립트 임포트 -->
   <c:import url="script.jsp" charEncoding="utf-8"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <!-- <link rel="stylesheet" href="static/csss/bootstrap.css" media="all"> -->
+
   <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
   <!-- 카카오맵스 -->
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=685fcbb766340d7c8812f4e0a29a6661&libraries=services"></script>
-  
-  
+
+
+  <!-- 입사지원 모달 -->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 <style type="text/css">
 .star-on {
   color: gray;
@@ -35,6 +51,27 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
 
 </head>
 
+<style>
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+</style>
+
 <body>
 
 
@@ -45,31 +82,114 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <h3 class="">${dto.companyname}&nbsp; &nbsp;&nbsp;<a style="color:red" class="btn btn-secondary red" href="">
-          <i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
-          </a><br>${dto.jobTitle}</h3>
+          <h3 class="">${dto.companyname}&nbsp; &nbsp;&nbsp;
+          	
+          		<c:choose>
+          		<c:when test="${dto.favoriteCom >0 }">
+          					<a style="color:red" class="btn btn-secondary red" href="javascript:dropFavoriteCom(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
+          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
+          		</c:when>
+          		<c:otherwise>
+          					<a class="btn btn-secondary red" href="javascript:comFavorite(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
+          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
+          		</c:otherwise>
+          	</c:choose>
+          	
+         
+          
+          <br>${dto.jobTitle}</h3>
         </div>
         <div class="col-md-4 text-right" style="">
-         
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">입사지원</button>
+
+
           	<c:choose>
           		<c:when test="${dto.favoriteJob >0 }">
           					<a style="color:red" class="btn btn-secondary" href="javascript:dropFavoriteJob(${dto.jobSeq }, '${login.memberid }')">
 				          <i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
-				          </a>          		
+				          </a>
           		</c:when>
           		<c:otherwise>
           					<a class="btn btn-secondary" href="javascript:jobFavorite(${dto.jobSeq }, '${login.memberid }')">
 				            <i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
-				            </a>  
+				            </a>
           		</c:otherwise>
           	</c:choose>
-          	
-          <a class="btn btn-secondary" href="#">입사지원</a>
+
+
+
           <a class="btn btn-secondary" href="javascript:updateRecruit(${dto.jobSeq })">수정하기</a>
           <a class="btn btn-secondary" href="javascript:deleteRecruit(${dto.jobSeq })">삭제</a>
           </div>
        </div>
-          <hr class="mb-12">
+
+
+
+
+
+								 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								  <div class="modal-dialog" role="document" style="width: -webkit-fill-available;">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <h5 class="modal-title" id="exampleModalLabel" style="width: 700px;">입사지원</h5>
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">×</span>
+								        </button>
+								      </div>
+								      <div class="modal-body">
+								       <table>
+								       <colgroup>
+								       <col width="400"><col width="50">
+											<tr><td colspan="2">이력서list</td></tr>
+										<%
+										for(int i=0; i<resumelist.size(); i++){
+										%>
+
+											<tr>
+											<td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a></td>
+											<td><button type="button" class="btn btn-primary" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>')">지원하기</button></td>
+											</tr>
+										<%
+										}
+										%>
+
+									</table>
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
       <div class="row">
 
@@ -94,7 +214,7 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
 						    ${item}
 			</c:forTokens>
           </span>
-          
+
           </li>
           <li>채용인원&nbsp; &nbsp; &nbsp; ${dto.jobVolumn }</li>
           <li>급여&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font>${dto.salary }&nbsp;만원</font>
@@ -122,7 +242,7 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-				<div class="editor" >    	
+				<div class="editor" >
 	              	${dto.jobContent }  </div>
 		</div>
       </div>
@@ -132,7 +252,9 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
     <div class="container">
       <div class="row">
         <div class="col-md-4 bg-light border-right" style="">
-          <dl class="info_period"> 남은기간 <p> 남은 시간 타이머 </p>
+          <dl class="info_period">
+            <dt>남은시간</dt>
+            <dd><em id="timeDeal"></em></dd>
             <dt>시작일</dt>
             <dd>${dto.jobStart }</dd>
             <dt class="end">마감일</dt>
@@ -145,7 +267,7 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
             <a class="btn btn-secondary" href="#">입사지원</a>
           </div>
         </div>
-        <div class="text-primary" style=""> 마감일은 기업의 사정에 따라 조기 마감될수 있습니다. 
+        <div class="text-primary" style=""> 마감일은 기업의 사정에 따라 조기 마감될수 있습니다.
         <a class="btn btn-secondary" href="recuruitlist.do">목록으로</a>
         </div>
       </div>
@@ -162,12 +284,12 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
     <div class="container">
       <div class="row">
         <div class="col-md-4 bg-light border-right" style="">
-          <dl class="info_period"> 
-          
-          	<p>담당자 및 근무지</p> 
+          <dl class="info_period">
+
+          	<p>담당자 및 근무지</p>
             <dt id="keyword1">${dto.area1Name } ${dto.area2Name } ${dto.detailAdress1 } ${dto.detailAdress2 }</dt>
             <dd>
-            
+
             	<p style="margin-top:-12px">
 			    <em class="link">
 			       <!--  <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
@@ -176,11 +298,11 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
 			    </em>
 			</p>
 			<div id="map" style="width:100%;height:350px;"></div>
-				            
-	        
-	            
-            
-            
+
+
+
+
+
             </dd>
           </dl>
         </div>
@@ -188,7 +310,7 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
           <div> 담당자명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgName }</div>
           <div> 담당자연락처&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgPhone }</div>
           <div> 담당자이메일주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgEmail }</div>
-          
+
         </div>
         <div class="text-primary" style=""> 담당자 정보 수정을 원하시면 버튼을 클릭하세요 &nbsp;&nbsp;&nbsp;
         <a class="btn btn-secondary" href="javascript:mgUpdate()">담당자 정보수정</a>
@@ -221,8 +343,11 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
   <!-- 카카오맵스 -->
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  
+
   <script type="text/javascript">
+  
+
+  
 function deleteRecruit(jobSeq) {
 	location.href="deleteRecruit.do?jobSeq="+jobSeq;
 }
@@ -231,9 +356,9 @@ function updateRecruit(jobseq) {
 }
 function mgUpdate() {
 	$("#_mgData *").remove(); //내부 요소만 삭제
-	
+
 	var app = "";
-	
+
 	app +=  "<form  id='_mgFrm'  method='get'>"+
 			"<input type='text' id='sample6_postcode' placeholder='우편번호'>"+
 			"<input type='button' onclick='sample6_execDaumPostcode()' value='우편번호 찾기'><br>"+
@@ -247,55 +372,55 @@ function mgUpdate() {
        		"<input type='datetime-local' value='"+"${dto.jobStart }"+"' name='jobStart' class='form-control' id='_jobStart' placeholder='공고시작일' required=''>"+
      		"<input type='datetime-local' value='"+"${dto.jobEnd }"+"' name='jobEnd' class='form-control' id='_jobEnd' placeholder='공고종료일' required=''>";
     app += "<button type='button' value='수정하기' onclick='mgUpdateAf()'>수정하기</button>";
-     		
+
      		$("#_mgData").append(app);
-     		
+
      var start = "${dto.jobStart}";
      var end = "${dto.jobEnd}";
-     
+
      start = start.replace(" ", "T");
      end = end.replace(" ", "T");
      alert(start);
      alert(end);
-     
+
      $("#_jobStart").val(start);
      $("#_jobEnd").val(end);
-     
-     
+
+
 }
 
 
 
 function mgUpdateAf() {
-	
-	
-	
+
+
+
 	$("#_mgFrm").attr("action", "mgDetailUpdate.do").submit();
-	
+
 	location.reload();
 }
 </script>
 
 
 <script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
-    };  
+    };
 
-// 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); 
+// 지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption);
 
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
-var dAdress = '${dto.area1Name }'+' '+ '${dto.area2Name }'+' '+ '${dto.detailAdress1 }'; 
+var dAdress = '${dto.area1Name }'+' '+ '${dto.area2Name }'+' '+ '${dto.detailAdress1 }';
 
 // 주소로 좌표를 검색합니다
 geocoder.addressSearch(dAdress, function(result, status) {
 
-    // 정상적으로 검색이 완료됐으면 
+    // 정상적으로 검색이 완료됐으면
      if (status === kakao.maps.services.Status.OK) {
 
         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -314,8 +439,8 @@ geocoder.addressSearch(dAdress, function(result, status) {
 
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
-    } 
-});    
+    }
+});
 
 
 
@@ -353,7 +478,7 @@ function sample6_execDaumPostcode() {
                 }
                 // 조합된 참고항목을 해당 필드에 넣는다.
                 document.getElementById("sample6_extraAddress").value = extraAddr;
-            
+
             } else {
                 document.getElementById("sample6_extraAddress").value = '';
             }
@@ -367,30 +492,95 @@ function sample6_execDaumPostcode() {
     }).open();
 }
 
+
+
+function comFavorite(jobSeq, companyId, memberid) {
+	//alert("회사좋아요 등록");
+	//alert(companyId);
+	//alert(memberid);
+	location.href = "favoriteCom.do?jobSeq="+jobSeq+"&companyId="+companyId+"&memberid="+memberid;
+}
+
+function dropFavoriteCom(jobSeq, companyId, memberid) {
+	//alert("회사좋아요 해제");
+	//alert(companyId);
+	//alert(memberid);
+
+	location.href = "dropFavoriteCom.do?jobSeq="+jobSeq+"&companyId="+companyId+"&memberid="+memberid;
+
+	//setTimeout("location.reload()", 15);
+
+	//location.href = "RecruitDetail.do?jobseq=" +jobSeq;
+}
+
+
+  
+  
+
 function jobFavorite(jobSeq, memberid) {
 	//alert("즐겨찾기등록");
 	//alert(jobSeq);
 	//alert(memberid);
-	
+
 	location.href = "favoriteJob.do?jobSeq="+jobSeq+"&memberid="+memberid;
-	
+
 	//setTimeout("location.reload()", 15);
-	
-	//location.href = "RecruitDetail.do?jobseq=" +jobSeq; 
-	 
+
+	//location.href = "RecruitDetail.do?jobseq=" +jobSeq;
+
 }
 
 function dropFavoriteJob(jobSeq, memberid) {
 	//alert("즐겨찾기해제");
 	//alert(jobSeq);
 	//alert(memberid);
-	
+
 	location.href = "dropFavoriteJob.do?jobSeq="+jobSeq+"&memberid="+memberid;
-	
+
 	//setTimeout("location.reload()", 15);
-	
-	//location.href = "RecruitDetail.do?jobseq=" +jobSeq; 
+
+	//location.href = "RecruitDetail.do?jobseq=" +jobSeq;
 }
+
+function jobApply(jobseq, memberid, resumeseq) {
+	alert("jobApply");
+	alert(jobseq);
+	alert(memberid);
+	alert(resumeseq);
+
+	location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
+
+}
+
+function CountDownTimer(dt, id) {
+    var end = new Date(dt);
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+        	
+            clearInterval(timer);
+            document.getElementById(id).innerHTML = '타임딜 종료됨';
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var hours = Math.floor((distance % _day) / _hour);
+        var minutes = Math.floor((distance % _hour) / _minute);
+        var seconds = Math.floor((distance % _minute) / _second);
+        document.getElementById(id).innerHTML = days + '일 ';
+        document.getElementById(id).innerHTML += hours + '시간 ';
+        document.getElementById(id).innerHTML += minutes + '분 ';
+        document.getElementById(id).innerHTML += seconds + '초';
+    }
+    timer = setInterval(showRemaining, 1000);
+}
+CountDownTimer('${dto.jobEnd}', 'timeDeal'); // 2020-12-06 오후10시 50분까지
+ 	
 
 </script>
 
@@ -398,7 +588,7 @@ function dropFavoriteJob(jobSeq, memberid) {
 
 <script>BalloonEditor
 	.create( document.querySelector( '.editor' ), {
-		
+
 		toolbar: {
 			items: [
 				'heading',
@@ -443,19 +633,19 @@ function dropFavoriteJob(jobSeq, memberid) {
 			]
 		},
 		licenseKey: '',
-		
-		
+
+
 	} )
 	.then( editor => {
 		window.editor = editor;
-		
+
 		//읽기전용으로 셋팅 (디테일페이지에서 사용)
 		editor.isReadOnly = true;
-		
+
 		//editor.setData();
-		
-		
-		
+
+
+
 	} )
 	.catch( error => {
 		console.error( 'Oops, something went wrong!' );
@@ -463,11 +653,11 @@ function dropFavoriteJob(jobSeq, memberid) {
 		console.warn( 'Build id: x1h6xk4rd95i-65gjhojljtvk' );
 		console.error( error );
 	} );
-  
-  
-  
+
+
+
   </script>
-	
+
 
 </body>
 </html>
