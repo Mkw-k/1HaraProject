@@ -20,33 +20,47 @@ public class BuspageController {
 	BuspageService service;
 	
 	
+	@RequestMapping(value = "pwdcheck.do", method = RequestMethod.GET)
+	public String pwdcheck(){
+	
+		return "busMypage/pwdcheck";
+		
+	}
+	
+	
 	/*마이페이지*/
 	@RequestMapping(value = "buspage.do", method = RequestMethod.GET)
 	public String buspage(){
 	
 	
-	
-	return "buspage";	
+	return "busMypage/buspage";	
 	
 	}
 	
 	 /* 회원정보수정페이지*/
 	
 	@RequestMapping(value = "buspageUpdate.do", method = RequestMethod.GET)
-	public String buspageUpdate(BusinessDto dto) throws Exception {
+	public String buspageUpdate(BusinessDto dto) {
 	
-		return "buspageupdate";
+		return "busMypage/buspageupdate";
 	}
 	
 	
 	@RequestMapping(value = "buspageUpdateAf.do", method = RequestMethod.GET)
-	public String buspageUpdateAf(BusinessDto dto) throws Exception {
-		
-		service.updateBuspage(dto);
-		
+	public String buspageUpdateAf(BusinessDto dto){
+	
 		System.out.println(dto.toString());
+	
+	
+		boolean b = service.updateBuspage(dto);
+		if(b) {
+			System.out.println("업데이트 성공");
+		}else {
+			System.out.println("업데이트 실패");
+		}
 		
-		return "buspage";
+		
+		return "busMypage/buspage";
 	}
 	
 	

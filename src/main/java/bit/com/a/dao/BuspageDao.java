@@ -5,7 +5,7 @@ import bit.com.a.dto.CompanyDto;
 
 public interface BuspageDao {
 
-	void updateBuspage(BusinessDto dto);
+	boolean updateBuspage(BusinessDto dto);
 
 	String getbuspage(BusinessDto dto);
 

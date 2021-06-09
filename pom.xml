@@ -40,10 +40,10 @@
        <version>1.7.25</version>
    </dependency>
 
-   <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
-      <version>2.5</version>
+    <dependency>
+       <groupId>javax.servlet</groupId>
+       <artifactId>javax.servlet-api</artifactId>
+       <version>3.1.0</version>       
    </dependency>
    <dependency>
       <groupId>javax.servlet.jsp</groupId>
@@ -420,8 +420,8 @@
        <artifactId>jsoup</artifactId>
        <version>1.13.1</version>
    </dependency>
-
-
+ 
+ 	
 
   </dependencies>
 
