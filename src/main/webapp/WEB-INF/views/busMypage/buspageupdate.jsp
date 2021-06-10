@@ -43,14 +43,15 @@
     	</tr>
  		
  		<tr>
-     		<th>회사 이미지: </th>
-    		<td><input type="text" name="filename" value="${login.filename }" readonly="readonly"></td>
-    	</tr>
-    	   	
-    	<tr>
-     		<th>변경할 회사 이미지: </th>
-    		<td><input type="file" name="newfilename" value="${login.newfilename }"></td>
-    	</tr>  	
+			<th>파일 업로드</th>
+			<td style="text-align: left;">
+			<!-- 기존의 파일 -->
+			<input type="hidden" name="newfilename" value="${login.newfilename}">
+			<input type="text" name="filename" value="${login.filename}"  readonly="readonly">
+			<!-- 수정할 파일 -->
+			<input type="file" name="fileload" id="_fileload" style="width: 400px">		
+			</td>
+		</tr>
     	
     </table>
     	
@@ -69,6 +70,19 @@ $("#busBtn").click(function () {
 	}
 });
 
+$("#pwd").keyup(function(){
+    var pwd=$(this).val();
+    // 비밀번호 검증할 정규 표현식
+    var reg=/^.{8,}$/;
+    if(reg.test(pwd)){//정규표현식을 통과 한다면
+                $("#pwdRegErr").hide();
+                successState("#pwd");
+    }else{//정규표현식을 통과하지 못하면
+                $("#pwdRegErr").show();
+                errorState("#pwd");
+    }
+});
+
 
 $("#pwdch").keyup(function(){
     var rePwd=$(this).val();
@@ -83,5 +97,21 @@ $("#pwdch").keyup(function(){
     }
 });
 
-
+// 이미지 업로드  
+$('#img').on('change', function() {
+	alert($('#img').val());
+     ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+     	//배열에 추출한 확장자가 존재하는지 체크
+        if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+             resetFormElement($(this)); //폼 초기화
+             window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+           } else {
+                file = $('#img').prop("files")[0];
+                blobURL = window.URL.createObjectURL(file);
+                $('#image_preview img').attr('src', blobURL);
+                $('#image_preview').slideDown(); //업로드한 이미지 미리보기 
+                $(this).slideUp(); //파일 양식 감춤
+            }
+});
+ 
 </script>
