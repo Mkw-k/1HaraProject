@@ -39,5 +39,13 @@
 	SET MEMBERID=#{memberid}, COMPANYNAME=#{companyname},COMADDRESS=#{comaddress}, ADDRESSDETAIL=#{addressdetail}, PWD=#{pwd}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}
 	WHERE MEMBERID=#{memberid}
 	</update>
+	
+	<select id="getMyrecruitList" parameterType="java.lang.String" resultType="bit.com.a.dto.RecruitDto">
+		SELECT JOBSEQ, JOBTITLE
+		FROM JOB
+		WHERE COMPANYID=#{memberid}
+	</select>
+	
+	
 
   </mapper>

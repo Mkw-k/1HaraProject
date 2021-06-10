@@ -3,6 +3,8 @@ package bit.com.a.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import bit.com.a.dto.BusinessDto;
 import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.PdsDto;
+import bit.com.a.dto.RecruitDto;
 import bit.com.a.service.BuspageService;
 import bit.com.a.util.PdsUtil;
 
@@ -118,9 +121,11 @@ public class BuspageController {
 	
 	//TODO 기업 마이페이지 공고현황 이동
 	@RequestMapping(value = "myRecruitList.do", method = RequestMethod.GET)
-	public String myRecruitList(Model model) {
+	public String myRecruitList(Model model, String memberid) {
 		
+		List<RecruitDto> mylist = service.getMyrecruitList(memberid);
 		
+		model.addAttribute("mylist", mylist);
 
 		return "busMypage/myrecruitList";
 	}

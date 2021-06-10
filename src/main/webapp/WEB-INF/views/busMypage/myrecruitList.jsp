@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="bit.com.a.dto.RecruitDto"%>
+<%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -51,6 +53,10 @@
 
 body {
   font-family: "Noto Sans KR", sans-serif !important;
+}
+
+td{
+ text-align: center;
 }
 </style>        
 
@@ -176,7 +182,7 @@ body {
                         <i class="iconset ico-home">홈</i>
                         <span>마이페이지(기업)</span>
                         <span>회원정보 관리</span>
-                        <em>내 정보수정 / 성명변경</em>
+                        <em>공고현황</em>
                     </div>
                     <script type="text/javascript" defer="defer">
                         function openMyCustomMenu() {
@@ -964,6 +970,9 @@ function f_empPgmList(resultObj){
  <!-- 인증일자로부터 7일이 지나지 않았을때 보여줌 -->
  <!-- 인증일자로부터 7일이 지나지 않았을때 보여줌 -->
  <!-- 인증만료일이 다갈올대 보여줌-->
+ 
+ <% List<RecruitDto> mylist =(List<RecruitDto>) request.getAttribute("mylist"); %>
+ 
 				<!-- contents -->
 				<section id="contents" class="mypage">
 					<div class="tit-util">
@@ -976,81 +985,30 @@ function f_empPgmList(resultObj){
 					<div class="mypage-idv-wrap">
 						<div class="idv-sec01" style="border: 1px solid #ffffff;">
 							<div class="con-top">
-								<div class="tit-area"><span>${login.memberid}</span> 님, 반갑습니다.
-
-								<a href = "buspageUpdate.do?memberid=${memberid}" class="button">회원정보수정</a></div>
-
-
+								<div class="tit-area"><span>MY공고내역</span>
+								
 								<div class="con-resume">
 									<table>
 										
 										<colgroup>
+											<col style="width:50px">
+											<col style="width:300px">
 											<col style="width:100px">
-											<col>
-											<col style="width:120px">
-											<col style="width:140px">
 										</colgroup>
 										<tbody>			
-										<c:if test="${login.filename ne null}">	 	
-										<img alt="" src ="./upload/${login.filename}">
-			    						</c:if> 	
-			    						
 			    						<tr>
-								     		<!-- <th>이미지:</th> -->
-								     		<th>	
-								     	 <img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 100px;"
-								     	  src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
-								     		</th>
-								     	
+								     		<th>공고번호 </th>
+								     		<td style="text-align: center;">공고제목</td>
+								     		<td>지원현황</td>
+								     	</tr>
+								     	<% for(int i=0; i<mylist.size();i++){ %>
 								     	<tr>
-								     		<th>아이디: </th>
-								     		<td>${login.memberid }</td>
+								     		<th><a href="RecruitDetail.do?jobseq=<%=mylist.get(i).getJobSeq() %>&memberid=${login.memberid}"><%=mylist.get(i).getJobSeq() %></a> </th>
+								     		<td><a href="RecruitDetail.do?jobseq=<%=mylist.get(i).getJobSeq() %>&memberid=${login.memberid}"><%=mylist.get(i).getJobTitle() %></a></td>
+								     		<td><button onclick="applyList()">지원현황</button></td>
 								     	</tr>
 								     	
-								    	<tr>
-								    		<th>회사 이름: </th>
-								    		<td>${login.companyname }</td>
-								    	</tr>
-								    	
-								    	<tr>
-								    		<th>비밀번호: </th>
-								    		<td>${login.pwd }</td>
-								    	</tr>
-								    	    	
-								    	<tr>
-								    		<th>주소: </th>
-								    		<td>${business.comaddress }</td>
-								    	</tr>
-								    	
-								    	<tr>
-								    		<th>상세 주소 : </th>
-								    		<td>${business.addressdetail }</td>
-								    	</tr>
-								 		
-								    	<tr>
-								    		<th>대표자명 : </th>
-								    		<td>${login.name }</td>
-								    	</tr>
- 		
-			    						<tr>
-												<th scope="row">이메일</th>
-												<td>
-														${login.email}
-												</td>
-												
-										</tr>
-											<tr>
-												<th scope="row">주소</th>
-												<td colspan="3">
-													<div>
-
-															${login.comaddress}<br>
-															${login.addressdetail}
-
-
-													</div>
-												</td>
-											</tr>
+								    	<%} %>
 										
 										</tbody>
 									</table>
@@ -1274,5 +1232,16 @@ window.onscroll = function sticky() {
   }
 } 
 </script>
+
+
+<script type="text/javascript">
+function applyList() {
+	
+}
+
+
+
+</script>
+
 </body>
 </html>

@@ -1,7 +1,10 @@
 package bit.com.a.dao;
 
+import java.util.List;
+
 import bit.com.a.dto.BusinessDto;
 import bit.com.a.dto.CompanyDto;
+import bit.com.a.dto.RecruitDto;
 
 public interface BuspageDao {
 
@@ -9,6 +12,6 @@ public interface BuspageDao {
 
 	BusinessDto getbuspage(BusinessDto dto);
 
-	
+	public List<RecruitDto> getMyrecruitList(String memberid);
 
 }
