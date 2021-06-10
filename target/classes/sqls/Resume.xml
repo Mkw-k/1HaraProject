@@ -271,4 +271,49 @@ FROM RESUME
 WHERE RESUMESEQ=#{resumeseq}
 </select>
 
+<insert id="writeHigh" parameterType="bit.com.a.dto.Resume_HighschoolDto">
+INSERT
+INTO HIGHSCHOOL (HIGHSCHOOLSEQ, RESUMESEQ, HIGHSCHOOL, HIGH_STR_STATUS, HIGH_END)
+VALUES (HIGHSCHOOL_SEQ.NEXTVAL, #{resumeseq}, #{highschool}, #{high_str_status}, #{high_end})
+</insert>
+
+<insert id="writeUni" parameterType="bit.com.a.dto.Resume_UniversityVo">
+INSERT
+INTO UNIVERSITY (UNIVERSITYSEQ, RESUMESEQ, UNIVERSITY, UNIV_STATUS, UNIV_STR, UNIV_STR_STATUS,
+				UNIV_END, UNIV_END_STATUS, UNIV_MAJOR_FIELD, UNIV_MAJOR, UNIV_NIGHT, UNIV_GRADE, UNIV_GRADE_BASE, UNIV_PAPER  )
+			VALUES (UNIVERSITY_SEQ.NEXTVAL, #{resumeseq},
+					#{university, jdbcType=VARCHAR}, #{univ_status, jdbcType=VARCHAR}, #{univ_str, jdbcType=VARCHAR}, #{univ_str_status, jdbcType=VARCHAR}, #{univ_end, jdbcType=VARCHAR}, #{univ_end_status, jdbcType=VARCHAR}, #{univ_major_field, jdbcType=VARCHAR},
+					#{univ_major, jdbcType=VARCHAR}, #{univ_night, jdbcType=VARCHAR}, #{univ_grade, jdbcType=VARCHAR}, #{univ_grade_base, jdbcType=VARCHAR}, #{univ_paper, jdbcType=VARCHAR} )
+
+</insert>
+
+<update id="updateHigh" parameterType="bit.com.a.dto.Resume_HighschoolDto">
+UPDATE HIGHSCHOOL
+SET HIGHSCHOOL=#{highschool}, HIGH_STR=#{high_str}, HIGH_STR_STATUS=#{high_str_status}, HIGH_END=#{high_end}, HIGH_END_STATUS=#{high_end_status}
+WHERE RESUMESEQ=#{resumeseq}
+
+</update>
+
+<update id="updateUni" parameterType="bit.com.a.dto.Resume_UniversityVo">
+UPDATE UNIVERSITY
+SET UNIVERSITY=#{university}, UNIV_STATUS=#{univ_status}, UNIV_STR=#{univ_str}, UNIV_STR_STATUS=#{univ_str_status},
+      UNIV_END=#{univ_end}, UNIV_END_STATUS=#{univ_end_status}, UNIV_MAJOR_FIELD=#{univ_major_field}, UNIV_MAJOR=#{univ_major}, UNIV_NIGHT=#{univ_night}, UNIV_GRADE=#{univ_grade}, UNIV_GRADE_BASE=#{univ_grade_base}, UNIV_PAPER=#{univ_paper}
+WHERE RESUMESEQ=#{resumeseq}
+
+</update>
+
+<select id="getHighDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.Resume_HighschoolDto">
+SELECT HIGHSCHOOLSEQ, RESUMESEQ, HIGHSCHOOL, HIGH_STR, HIGH_STR_STATUS, HIGH_END, HIGH_END_STATUS
+FROM HIGHSCHOOL
+WHERE RESUMESEQ=#{seq}
+</select>
+
+<select id="getUniDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.Resume_UniversityVo">
+SELECT UNIVERSITYSEQ, RESUMESEQ, UNIVERSITY, UNIV_STATUS, UNIV_STR, UNIV_STR_STATUS,
+      UNIV_END, UNIV_END_STATUS, UNIV_MAJOR_FIELD, UNIV_MAJOR, UNIV_NIGHT, UNIV_GRADE, UNIV_GRADE_BASE, UNIV_PAPER
+FROM UNIVERSITY
+WHERE RESUMESEQ=#{seq}
+</select>
+
+
 </mapper>

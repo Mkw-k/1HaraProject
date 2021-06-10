@@ -1,10 +1,11 @@
+<%@page import="bit.com.a.dto.Resume_UniversityVo"%>
+<%@page import="bit.com.a.dto.Resume_HighschoolDto"%>
 <%@page import="bit.com.a.dto.Resume_AwardVo"%>
 <%@page import="bit.com.a.dto.Resume_LanguageVo"%>
 <%@page import="bit.com.a.dto.Resume_AwardDto"%>
 <%@page import="bit.com.a.dto.Resume_ActivityVo"%>
 <%@page import="bit.com.a.dto.Resume_licenseVo"%>
 <%@page import="bit.com.a.dto.Resume_CareerVo"%>
-<%@page import="bit.com.a.dto.Resume_EduVo"%>
 <%@page import="java.util.List"%>
 <%@page import="bit.com.a.dto.MemberDto"%>
 <%@page import="bit.com.a.dto.ResumeDto"%>
@@ -62,7 +63,8 @@
 
 <%
 ResumeDto dto =(ResumeDto)request.getAttribute("dto");
-List<Resume_EduVo> edulist =(List<Resume_EduVo>)request.getAttribute("edulist");
+Resume_HighschoolDto highdto =(Resume_HighschoolDto)request.getAttribute("highdto");
+List<Resume_UniversityVo> edulist =(List<Resume_UniversityVo>)request.getAttribute("unilist");
 List<Resume_CareerVo> calist =(List<Resume_CareerVo>)request.getAttribute("calist");
 List<Resume_licenseVo> liclist =(List<Resume_licenseVo>)request.getAttribute("liclist");
 List<Resume_ActivityVo> actlist =(List<Resume_ActivityVo>)request.getAttribute("actlist");
@@ -194,32 +196,13 @@ System.out.println(_gender);
 								<div class="dashboard">
 									<ul>
 										<li><strong>학력사항</strong>
-										<%  
-										int p = 0;
-										for(int j=0 ; j< edulist.size(); j++){ %>
-										<% if(edulist.get(j).getUniversity()==null || edulist.get(j).getUniversity().equals("")){
-										}else{
-										%>
-											<p class="txt"><%=edulist.get(j).getUniv_status() %> <%=edulist.get(j).getUniv_end_status() %></p></li>
-											
-										<%		
-											p = p+1;
-											}
-										}
-										%>
 										
-										<% if(p==0){
-											for(int i=0; i< edulist.size(); i++){ %> 
-										<% if(edulist.get(i).getUniversity()==null || edulist.get(i).getUniversity().equals("")){
+										<% if(highdto.getHighschool()==null || highdto.getHighschool().equals(""))  {%>
+											<p class="txt"><%=unilist.get(0).getUniv_status() %> <%=unilist.get(0).getUniv_end_status() %></p></li>
+										<%} else{ %>	
+											<p class="txt">고등학교 <%=highdto.getHigh_end_status()%></p></li>
 											
-											%>
-											<p class="txt"><%=edulist.get(i).getHighschool() %> <%=edulist.get(i).getHigh_end_status() %></p></li>
-										<%	
-												}
-											}
-										}
 										
-										%>
 										<li><strong>경력사항</strong>
 										<%if(calist == null || calist.isEmpty()){ %>
 											<p class="txt">신입</p>
@@ -277,14 +260,13 @@ System.out.println(_gender);
 										</tr>
 									</thead>
 									<tbody>
-									<%	if(edulist!=null && !edulist.isEmpty()){
+									<%	if(unilist!=null && !unilist.isEmpty()){
 									
-										for(int i=0 ; i<edulist.size(); i++){
+										for(int i=0 ; i<unilist.size(); i++){
 											
-										if(edulist.get(i).getUniversity()==null || edulist.get(i).getUniversity().equals("")){
+										if(unilist.get(i).getUniversity()==null || unilist.get(i).getUniversity().equals("")){
 									} else{
 										%>
-									
 										<tr>
 											<td class="lineup_center" rowspan="1"><%=edulist.get(i).getUniv_str()%>
 												~ <%=edulist.get(i).getUniv_end()%></td>
@@ -299,33 +281,17 @@ System.out.println(_gender);
 									}
 									%>
 									
-									<%  
-										int pp = 0;
 									
-										if(edulist!=null && !edulist.isEmpty()){
-										
-										for(int i=0; i<edulist.size(); i++){
-										if(pp==0){	
-										if(edulist.get(i).getHighschool()==null || edulist.get(i).getHighschool().equals("")){ 
-									
-									} else{
-										
-										%>
-										
 										<tr>
-											<td class="lineup_center" rowspan="1"><%=edulist.get(i).getHigh_str()%>
-												~ <%=edulist.get(i).getHigh_end()%></td>
+											<td class="lineup_center" rowspan="1"><%=highlist.getHigh_str()%>
+												~ <%=highlist.getHigh_end()%></td>
 											<td class="lineup_center" rowspan="1">졸업</td>
-											<td><%=edulist.get(i).getHighschool()%></td>
+											<td><%=highlist.getHighschool()%></td>
 											<td>문과계열</td>
 											<td class="lineup_center">-</td>
 										</tr>
 
-									<% 		pp=pp+1; } 
-												}
-											}
-										}
-									%>
+									
 									</tbody>
 								</table>
 							</div>
@@ -487,7 +453,7 @@ System.out.println(_gender);
 								<div class="my_letter_view">
 									<% if(dto.getResume_intro_title()==null || dto.getResume_intro_content()==null){
 										
-									} else {%>
+									} else { %>
 									<p class="intit"><%=dto.getResume_intro_title() %></p>
 									<div class="intxt">
 										<%=dto.getResume_intro_content() %>
