@@ -101,7 +101,7 @@ System.out.println("resumelist" +resumelist);
         </div>
         <div class="col-md-4 text-right" style="">
 
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">입사지원</button>
+          <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
 
 
           	<c:choose>
@@ -264,7 +264,7 @@ System.out.println("resumelist" +resumelist);
         <div class="col-md-8 bg-light" style="">
           <div> 지원방법&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일하라 입사지원 </div>
           <div>
-            <a class="btn btn-secondary" href="#">입사지원</a>
+            <a class="btn btn-secondary" href="#" id="_apply">입사지원</a>
           </div>
         </div>
         <div class="text-primary" style=""> 마감일은 기업의 사정에 따라 조기 마감될수 있습니다.
@@ -562,10 +562,24 @@ function CountDownTimer(dt, id) {
     function showRemaining() {
         var now = new Date();
         var distance = end - now;
+		
+        
+       var dEnd = end.getDate();
+       var dNow = now.getDate();
+       var leftDay = dEnd - dNow;
+       
+       if(distance == 86400000){
+    	   alert("이타이밍임 : " + distance); 	
+        	
+        }
+        
+        
         if (distance < 0) {
         	
             clearInterval(timer);
-            document.getElementById(id).innerHTML = '타임딜 종료됨';
+            document.getElementById(id).innerHTML = '공고 기한이 만료되었습니다';
+            //$("#_apply").hide();
+            //location.reload();
             return;
         }
         var days = Math.floor(distance / _day);

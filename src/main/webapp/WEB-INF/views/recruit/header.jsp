@@ -85,7 +85,7 @@ white{
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Separated link</a>
               </div>
-            </div><a class="btn btn-secondary mr-1" href="#">로그인</a>
+            </div><a class="btn btn-secondary mr-1" href="login1.do">로그인</a>
           </li>
         </ul>
       </div>
