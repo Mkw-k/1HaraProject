@@ -343,7 +343,7 @@ hr {
                         <div class="col-lg-4 col-md-4 col-sm-12 p-0">
                             <select class="form-control search-slt" name="careerStart" style="font-size: 12pt">
                                 <option disabled="disabled">경력시작</option>
-                                <option value="0">무관</option>
+                                <option value="100">무관</option>
                                 <option value="1">신입</option>
                                 <option value="2">1년</option>
                                 <option value="3">2년</option>
@@ -360,7 +360,7 @@ hr {
                             <h3>~</h3>
                             <select class="form-control search-slt" name="careerEnd" style="font-size: 12pt">
                                 <option disabled="disabled">경력끝</option>
-                                <option value="0">무관</option>
+                                <option value="100">무관</option>
                                 <option value="1">신입</option>
                                 <option value="2">1년</option>
                                 <option value="3">2년</option>
