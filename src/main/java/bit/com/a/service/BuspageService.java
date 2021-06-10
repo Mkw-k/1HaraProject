@@ -9,7 +9,7 @@ public interface BuspageService {
 	// 뿌려주는곳
 	public String getbuspage(BusinessDto dto);
 	
-	void updateBuspage(BusinessDto dto);
+	boolean updateBuspage(BusinessDto dto);
 
 
 

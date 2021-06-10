@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import bit.com.a.dto.BbsParam;
+import bit.com.a.dto.BusinessDto;
+import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 import bit.com.a.dto.ResumeDto;
@@ -398,7 +400,7 @@ public class RecruitController {
 
 
 
-//TODO디테일 창으로 이동
+//TODO 디테일 창으로 이동
    @RequestMapping(value = "RecruitDetail.do", method = RequestMethod.GET)
    public String RecruitDetail(int jobseq, Model model, String memberid) {
       model.addAttribute("doc_title", "채용공고");
@@ -427,6 +429,17 @@ public class RecruitController {
       String jobFavoriteCount = IjobFavoriteCount + "";
 
       dto.setFavoriteJob(jobFavoriteCount);
+      
+      
+      //검색용 파라미터 dto설정
+      param.setCompanyId(dto.getCompanyId());
+      param.setMemberid(memberid);
+
+      //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
+      int IcomFavoriteCount = service.getComFavorite(param);
+      String comFavoriteCount = IcomFavoriteCount + "";
+
+      dto.setFavoriteCom(comFavoriteCount);
 
       System.out.println("변경된 Dto :"+dto.toString());
 
@@ -969,6 +982,94 @@ public class RecruitController {
 		}
 
 
+		//TODO 회사 좋아요 추가
+		@RequestMapping(value = "favoriteCom.do", method = {RequestMethod.GET, RequestMethod.POST})
+		public String favoriteCom(RecruitParam param, Model model)throws Exception {
+
+			System.out.println("공고 즐겨찾기 메서드 실행");
+			
+			System.out.println("좋아요 파람:"+param.toString());
+		  boolean b = service.favoriteCom(param);
 
 
+		  if(b) {
+			  	System.out.println("회사 좋아요! 성공");
+
+			}else {
+				System.out.println("회사 좋아요! 실패");
+
+			}
+
+			model.addAttribute("jobseq", param.getJobSeq());
+		  	model.addAttribute("memberid", param.getMemberid());
+
+		  	return "redirect:/RecruitDetail.do";
+		}
+
+		
+		
+		//TODO 회사 좋아요기 해제
+		@RequestMapping(value = "dropFavoriteCom.do", method = {RequestMethod.GET, RequestMethod.POST})
+		public String dropFavoriteCom(RecruitParam param, Model model)throws Exception {
+
+			System.out.println("공고 즐겨찾기 해제 메서드 실행");
+
+		  boolean b = service.dropFavoriteCom(param);
+
+
+		  if(b) {
+			  	System.out.println("회사 좋아요! 해제 성공");
+
+
+			}else {
+				System.out.println("회사 좋아요! 해제 실패");
+
+			}
+
+		    int jobseq = Integer.parseInt(param.getJobSeq());
+		  	
+		    model.addAttribute("jobseq", jobseq);
+		  	model.addAttribute("memberid", param.getMemberid());
+
+
+
+		  return "redirect:/RecruitDetail.do";
+		}
+		
+		
+		//TODO 프리미엄회원 결제창으로 이동
+		@RequestMapping(value = "priMember.do", method = RequestMethod.GET)
+		public String priMember(Model model, BusinessDto dto) {
+			model.addAttribute("doc_title", "채용공고");
+			
+			System.out.println("들어온 데이터 :" + dto.toString());
+			
+			model.addAttribute("dto", dto);
+
+			return "recruit/payment";
+		}
+
+		//TODO 프리미엄회원 결제창으로 이동
+		@RequestMapping(value = "priMemberAf.do", method = RequestMethod.GET)
+		public String priMemberAf(Model model, BusinessDto dto) {
+			model.addAttribute("doc_title", "채용공고");
+			
+			System.out.println("AF들어온 데이터 :" + dto.toString());
+			
+			boolean b = service.priMemberAf(dto);
+			
+			if(b) {
+			  	System.out.println("프리미엄 등록 성공");
+
+			}else {
+				System.out.println("프리미엄 등록 실패");
+
+			}
+			
+
+			return "redirect:/recuruitlist.do";
+		}
+				
+				
+				
 }

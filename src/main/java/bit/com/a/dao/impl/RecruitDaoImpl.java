@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import bit.com.a.dao.RecruitDao;
 import bit.com.a.dto.BbsParam;
+import bit.com.a.dto.BusinessDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 
@@ -145,6 +146,26 @@ public class RecruitDaoImpl implements RecruitDao{
 	@Override
 	public List<RecruitDto> getCalendarList_1() {
 		return session.selectList(ns + "getCalendarList_1");
+	}
+
+	@Override
+	public boolean favoriteCom(RecruitParam param) {
+		return session.insert(ns+"favoriteCom", param)>0?true:false;
+	}
+
+	@Override
+	public int getComFavorite(RecruitParam param) {
+		return session.selectOne(ns+"getComFavorite", param);
+	}
+
+	@Override
+	public boolean dropFavoriteCom(RecruitParam param) {
+		return session.delete(ns+"dropFavoriteCom", param)>0?true:false;
+	}
+
+	@Override
+	public boolean priMemberAf(BusinessDto dto) {
+		return session.update(ns+"priMemberAf", dto)>0?true:false;
 	}
 
 

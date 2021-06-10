@@ -22,23 +22,28 @@ import bit.com.a.service.ReplyService;
   @Autowired JobtalkService service;
   @Autowired ReplyService replyservice;
  
-  @RequestMapping(value = "Jobtalklist.do", method = RequestMethod.GET) 
-  public String jobtalklist(Model model, JobtalkParam param) { 
-	  model.addAttribute("doc_title", "글목록");
+  
+  @ResponseBody
+  @RequestMapping(value = "JobtalkListData.do", method = RequestMethod.GET) 
+  public List<JobtalkDto> jobtalklistData(JobtalkParam param) { 
 	// paging 처리 
 		  int sn = param.getPage(); 
 		  int start = sn * 10 + 1; // 1 11 
 		  int end = (sn + 1) * 10; // 10 20
 	 
-		  param.setStart(start); param.setEnd(end);
-	 
+		  param.setStart(start); 
+		  param.setEnd(end);
 		  List<JobtalkDto> list = service.getJobtalklist(param); 
-		  model.addAttribute("jobtalklist", list);
-	  
+		  System.out.println("리스트 : " + list.toString());
+	  return list; 
+  }
+
+  @RequestMapping(value = "Jobtalklist.do", method = RequestMethod.GET) 
+  public String jobtalklist(Model model) { 
 	  
 	  return "jobtalk/jobtalklist"; 
   }
-
+  
 	/*
 	 * @ResponseBody
 	 * 
@@ -52,7 +57,6 @@ import bit.com.a.service.ReplyService;
   @RequestMapping(value = "JobtalklistCount.do", method = RequestMethod.GET)
   public int JobtalklistCount(JobtalkParam param) { 
 	  int count = service.getJobtalkCount(param); 
-	  
 	  return count; 
   }
  
@@ -78,10 +82,9 @@ import bit.com.a.service.ReplyService;
   @RequestMapping(value = "Jobtalkdetail.do", method = {RequestMethod.GET, RequestMethod.POST}) 
   public String Jobtalkdetail(int jobtalkseq, Model model) {
   model.addAttribute("doc_title", "상세글 보기");
- 
-  service.readCount(jobtalkseq); // 조회수 증가
- 
+
   JobtalkDto job = service.getJobtalk(jobtalkseq);
+  service.readCount(jobtalkseq); // 조회수 증가
   System.out.println("job : " + job);
   
   model.addAttribute("jobtalk", job);
@@ -96,12 +99,12 @@ import bit.com.a.service.ReplyService;
   @RequestMapping(value = "Jobtalkdelete.do", method = {RequestMethod.GET, RequestMethod.POST}) 
   public String deleteJobtalk(int jobtalkseq, Model model) {
 	  	service.deleteJobtalk(jobtalkseq); 
-  		return "redirect:/jobtalklist.do"; 
+  		return "redirect:/Jobtalklist.do"; 
   }
  
   @RequestMapping(value = "Jobtalkupdate.do", method = {RequestMethod.GET, RequestMethod.POST}) 
   public String Jobtalkupdate(int jobtalkseq, Model model){
-	  model.addAttribute("doc_title", "글수정"); 
+	  model.addAttribute("doc_title", "질문수정"); 
 	  JobtalkDto job = service.getJobtalk(jobtalkseq); 
 	  model.addAttribute("job", job); 
 	  return "jobtalk/jobtalkupdate"; 
