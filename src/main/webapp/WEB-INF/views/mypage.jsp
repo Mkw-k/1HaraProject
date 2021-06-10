@@ -1598,7 +1598,7 @@ function f_empPgmList(resultObj){
 											<tr>
 												<th scope="row">연락처</th>
 												<td>
-															010-7143-****
+															${login.phonenum }
 												</td>
 												<th scope="row" class="un-str">문자메시지 수신</th>
 												<td>

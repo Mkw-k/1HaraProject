@@ -28,13 +28,13 @@
 </insert> -->
 
 <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, AUTH, BIRTH, DETAILADDRESS, ADDRESS, USERPIC, NEWUSERPIC<!--  PHONENUM -->)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, 1, #{birth}, #{detailaddress}, #{address}, #{userpic}, #{newuserpic}<!-- , #{phonenum} --> )
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, AUTH, BIRTH, DETAILADDRESS, ADDRESS, USERPIC, NEWUSERPIC,  PHONENUM)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, 1, #{birth}, #{detailaddress}, #{address}, #{userpic}, #{newuserpic}, #{phonenum}  )
 </insert>
 
 <select id="login" parameterType="bit.com.a.dto.MemberDto"
 	resultType="bit.com.a.dto.MemberDto">
-	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, BIRTH, NEWUSERPIC
+	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, BIRTH, NEWUSERPIC, PHONENUM
 	FROM MEMBER
 	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 </select>
@@ -67,7 +67,7 @@
 	<!-- 회원정보 수정 -->
 	<update id="updateMypage">
 	UPDATE MEMBER
-	SET NAME=#{name}, EMAIL=#{email}, ADDRESS=#{address}, DETAILADDRESs=#{detailaddress}, BIRTH=#{birth}, PHONENUM=#{phonenum}
+	SET NAME=#{name}, EMAIL=#{email}, ADDRESS=#{address}, DETAILADDRESs=#{detailaddress}, PHONENUM=#{phonenum}, USERPIC=#{userpic}, NEWUSERPIC=#{newuserpic}
 	WHERE MEMBERID=#{memberid}
 	</update>
 <!-- 
