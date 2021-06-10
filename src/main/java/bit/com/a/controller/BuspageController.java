@@ -116,5 +116,14 @@ public class BuspageController {
 		return "busMypage/buspage";
 	}
 	
+	//TODO 기업 마이페이지 공고현황 이동
+	@RequestMapping(value = "myRecruitList.do", method = RequestMethod.GET)
+	public String myRecruitList(Model model) {
+		
+		
+
+		return "busMypage/myrecruitList";
+	}
+	
 	
 }
