@@ -194,18 +194,31 @@ System.out.println(_gender);
 								<div class="dashboard">
 									<ul>
 										<li><strong>학력사항</strong>
-										<%-- <% for(int i=0; i< edulist.size(); i++){ %> --%>
-										<% if(edulist.get(0).getUniversity()==null || edulist.get(0).getUniversity().equals("")){
-											if(edulist.get(0).getHighschool()==null || edulist.get(0).getHighschool().equals("")){
-											}else{
-											%>
-											<p class="txt"><%=edulist.get(0).getHighschool() %> <%=edulist.get(0).getHigh_end_status() %></p></li>
-										<% }
-										} else {
-										for(int j=0 ; j<edulist.size(); j++){ %>
+										<%  
+										int p = 0;
+										for(int j=0 ; j< edulist.size(); j++){ %>
+										<% if(edulist.get(j).getUniversity()==null || edulist.get(j).getUniversity().equals("")){
+										}else{
+										%>
 											<p class="txt"><%=edulist.get(j).getUniv_status() %> <%=edulist.get(j).getUniv_end_status() %></p></li>
-										<%		}
+											
+										<%		
+											p = p+1;
 											}
+										}
+										%>
+										
+										<% if(p==0){
+											for(int i=0; i< edulist.size(); i++){ %> 
+										<% if(edulist.get(i).getUniversity()==null || edulist.get(i).getUniversity().equals("")){
+											
+											%>
+											<p class="txt"><%=edulist.get(i).getHighschool() %> <%=edulist.get(i).getHigh_end_status() %></p></li>
+										<%	
+												}
+											}
+										}
+										
 										%>
 										<li><strong>경력사항</strong>
 										<%if(calist == null || calist.isEmpty()){ %>
@@ -265,10 +278,13 @@ System.out.println(_gender);
 									</thead>
 									<tbody>
 									<%	if(edulist!=null && !edulist.isEmpty()){
-										if(edulist.get(0).getUniversity()==null || edulist.get(0).getUniversity().equals("")){
+									
+										for(int i=0 ; i<edulist.size(); i++){
+											
+										if(edulist.get(i).getUniversity()==null || edulist.get(i).getUniversity().equals("")){
 									} else{
-										
-									for(int i=0 ; i<edulist.size(); i++){ %>
+										%>
+									
 										<tr>
 											<td class="lineup_center" rowspan="1"><%=edulist.get(i).getUniv_str()%>
 												~ <%=edulist.get(i).getUniv_end()%></td>
@@ -280,14 +296,20 @@ System.out.println(_gender);
 										</tr>
 									<% 		} 
 										}
-									
+									}
 									%>
 									
-									<%  if(edulist!=null && !edulist.isEmpty()){
-										if(edulist.get(0).getHighschool()==null || edulist.get(0).getHighschool().equals("")){ 
+									<%  
+										int pp = 0;
+									
+										if(edulist!=null && !edulist.isEmpty()){
+										
+										for(int i=0; i<edulist.size(); i++){
+										if(pp==0){	
+										if(edulist.get(i).getHighschool()==null || edulist.get(i).getHighschool().equals("")){ 
 									
 									} else{
-										for(int i=0; i<edulist.size(); i++){
+										
 										%>
 										
 										<tr>
@@ -299,10 +321,10 @@ System.out.println(_gender);
 											<td class="lineup_center">-</td>
 										</tr>
 
-									<% 		} 
+									<% 		pp=pp+1; } 
+												}
+											}
 										}
-									}
-									}
 									%>
 									</tbody>
 								</table>

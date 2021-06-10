@@ -521,11 +521,75 @@ SELECT JOBSEQ, JOBTITLE, JOBCONTENT,
 		  MEMBERID = #{memberid} 
 </select>
 
+<!-- 즐겨찾기 삭제 : 공고 -->
 <delete id="dropFavoriteJob" parameterType="bit.com.a.dto.RecruitParam">
    DELETE FROM JOBFAVORITE
   WHERE JOBSEQ = #{jobSeq} and 
 		MEMBERID = #{memberid} 
 
 </delete>
+
+
+<!-- 회사 좋아요 등록 기능 : 회사아이디 + 멤버아이디와 완전히 동일한 데이터(즐겨찾기 이미 되있음)가 있으면 동작안함 -->
+<insert id="favoriteCom" parameterType="bit.com.a.dto.RecruitParam">
+	<if test="companyId != null and companyId != '' and 
+			memberid != null and memberid != ''">
+		
+		DECLARE
+
+		comId varchar2(50);
+		memid varchar2(50);
+		existCom number(10);
+		
+		BEGIN
+		
+		comId := #{companyId};
+		memid := #{memberid};
+		
+		select count(*) 
+		into existCom
+		from COMFAVORITE
+		WHERE COMPANYID = comId and  MEMBERID = memid;
+		
+		IF <![CDATA[existCom<=0]]> then
+		INSERT INTO COMFAVORITE (CFSEQ, COMPANYID, MEMBERID)
+				VALUES(COMFAVORITE_SEQ.NEXTVAL, comId, memid);
+		
+		ELSE
+		
+		dbms_output.put_line('이미 즐겨찾기 하셨습니다');
+		
+		END IF;
+		
+		END;
+		
+	</if>
+</insert> 
+
+<!-- 회사 좋아요 내역 가져오기 -->
+<select id="getComFavorite" resultType="Integer" parameterType="bit.com.a.dto.RecruitParam">
+	SELECT NVL(COUNT(*),0)
+	FROM COMFAVORITE
+	WHERE COMPANYID = #{companyId} and 
+		  MEMBERID = #{memberid} 
+</select>
+
+
+<!-- 회사 좋아요 삭제 : 회사 -->
+<delete id="dropFavoriteCom" parameterType="bit.com.a.dto.RecruitParam">
+   DELETE FROM COMFAVORITE
+  WHERE COMPANYID = #{companyId} and 
+		MEMBERID = #{memberid} 
+
+</delete>
+
+<update id="priMemberAf" parameterType="bit.com.a.dto.BusinessDto">
+ 	 UPDATE BUSINESS
+	 SET ISPREMIUM = 1 
+	 WHERE MEMBERID = #{memberid}
+
+</update>
+	 
+
 
 </mapper>
