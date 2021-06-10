@@ -51,27 +51,17 @@
 	<li>
 		<a href="javaScript:detailBtn('${login.memberid }')">기업 상세정보 보기</a>
 	</li>
-	
-	
-	<li>
-		<a href="pwdcheck.do">기업 정보 수정</a>
-	</li>
 
-	<li>
-		<a href=""></a>
-	</li>
-
-</ul>  
-
+<li>
 <h2>기업 정보</h2>
-   <table border="1">
+   <table border="">
      	
      	<tr>
-     		<th>이미지:</th>
-     		<td>	
-     	 <img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 160px;"
+     		<!-- <th>이미지:</th> -->
+     		<th>	
+     	 <img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 100px;"
      	  src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
-     		</td>
+     		</th>
      	
      	<tr>
      		<th>아이디: </th>
@@ -90,12 +80,12 @@
     	    	
     	<tr>
     		<th>주소: </th>
-    		<td>${login.comaddress }</td>
+    		<td>${business.comaddress }</td>
     	</tr>
     	
     	<tr>
     		<th>상세 주소 : </th>
-    		<td>${login.addressdetail }</td>
+    		<td>${business.addressdetail }</td>
     	</tr>
  		
     	<tr>
@@ -118,108 +108,19 @@
     	</tr>  	 --%>
     	
     </table>
+</li>
+	
+	<li>
+		<a href="pwdcheck.do">기업 정보 수정</a>
+	</li>
 
-<h2>기업 상세 정보</h2>
-  
-  
-	<ul style="border-bottom: 10px"; class="ulli" >
-		<li class="ulli">
-			<img alt="" src="./image/comyear4.PNG" width="70px" height="70px"><br>
-			<strong>창업 년도</strong><br>
-			<span>${company.comyear }</span>
-		</li>
-		
-		<li class="ulli">
-			<img alt="" src="./image/companytype.PNG" width="70px" height="70px"><br>
-			<strong>기업 형태</strong><br>
-			<span>${company.companytype }</span>
-		</li>
-		
-		<li class="ulli">
-			<img alt="" src="./image/totalsale2.PNG" width="70px" height="70px"><br>
-			<strong>매출액</strong><br>
-			<span>${company.totalsale }</span>
-		</li>
-	
-		<li class="ulli">
-			<img alt="" src="./image/emp2.PNG" width="70px" height="70px"><br>
-			<strong>사원수</strong><br>
-			<span>${company.empcount } 명</span>
-		</li>
-	
-		<li class="ulli">
-			<img alt="" src="./image/a.PNG" width="70px" height="70px"><br>
-			<strong>회사 복지</strong><br>
-			<span>${company.mainservice } </span>
-		</li>
-	
-	
-	</ul>
-	
-<br><br>
+	<li>
+		<a href=""></a>
+	</li>
+
+</ul>  
 
 
-
-<table>
-	
-	<tr>
-		<th>대표자 명</th>
-		<td>${company.ceoname }</td>
-	</tr>
-	
-	<tr>
-		<th>회사아아디</th>
-		<td>${company.memberid }</td>
-	</tr>
-	
-	<tr>
-		<th>회사 위치</th>
-		<td>${login.comaddress }</td>
-	</tr>
-	
-	<tr>
-		<th>사업자 번호</th>
-		<td>${company.companynum }</td>
-	</tr>
-	
-	<tr >
-		<th>주요 업무 :</th>
-		<td>${company.content }</td>
-	</tr>
-
-	<tr>
-		<th>회사 이미지</th>
-		<td>${company.comimage }</td>
-	</tr>
-	
-	<tr>
-		<th>평균 연봉</th>
-		<td>${company.salaryavg }</td>
-	</tr>
-	
-	<tr>
-		<th>초봉</th>
-		<td>${company.salarystart }</td>
-	</tr>
-
-	<tr>
-		<th>입사자 수</th>
-		<td>${company.joinner } 명</td>
-	</tr>
-	
-	<tr>
-		<th>퇴사자 수</th>
-		<td>${company.retiree } 명</td>
-	</tr>
-	
-	<tr>
-		<th>웹사이트 주소</th>
-		<td><a href="javascript:btnweb()">${company.website }</a></td>
-	</tr>
-	
-</table>
-  
-  
 
   
 <script>

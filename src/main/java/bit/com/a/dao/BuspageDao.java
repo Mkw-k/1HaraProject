@@ -7,7 +7,7 @@ public interface BuspageDao {
 
 	boolean updateBuspage(BusinessDto dto);
 
-	String getbuspage(BusinessDto dto);
+	BusinessDto getbuspage(BusinessDto dto);
 
 	
 
