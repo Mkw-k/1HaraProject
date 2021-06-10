@@ -530,7 +530,7 @@ List<FAQDto> companylist =(List<FAQDto>) request.getAttribute("companylist");
 
 <nav class="faqnav" style="height: auto;">
   <ul style="display: flex;margin-right: 180px;">
-    <li><a href="memberFAQ.do" class="nav-links">개발자 FAQ</a></li>
+    <li><a href="memberFAQ.do" class="nav-links">지원자 FAQ</a></li>
     <li style="background-color: #2186eb"  class="nav-links">기업 FAQ</li>
      <li><a href="commonFAQ.do"  class="nav-links">일반 FAQ</a></li>
   </ul>

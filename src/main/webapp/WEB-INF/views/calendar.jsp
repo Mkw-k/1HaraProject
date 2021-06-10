@@ -1,4 +1,4 @@
-<%@page import="bit.com.a.dto.RecruitDto"%>
+<%-- <%@page import="bit.com.a.dto.RecruitDto"%>
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="bit.com.a.dto.CalendarParam"%>
@@ -69,13 +69,13 @@ if(objlist != null){
 	list = (List<RecruitDto>)objlist;
 }
 
-CalendarParam cal = (CalendarParam)request.getAttribute("cal");
+/* CalendarParam cal = (CalendarParam)request.getAttribute("cal"); */
 
 // 요일
-int dayOfWeek = cal.getDayOfWeek();
+/* int dayOfWeek = cal.getDayOfWeek();
 int lastDayOfMonth = cal.getLastDay();
 int year = cal.getYear();
-int month = cal.getMonth();
+int month = cal.getMonth(); */
 
 
 //<< year--
@@ -145,19 +145,19 @@ String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, mont
          for(int i = 1;i <= lastDayOfMonth; i++){
             if( (i + dayOfWeek - 1) % 7 == 1){   // 일요일
             %>
-               <td class="sunday"><%=UtilEx.callist(year, month, i) %>&nbsp;<%--=UtilEx.showPen(year, month, i) --%>
+               <td class="sunday"><%=UtilEx.callist(year, month, i) %>&nbsp;=UtilEx.showPen(year, month, i)
                    <%=UtilEx.makeTable(year, month, i, list) %>
                </td>
             <%
             }else if( (i + dayOfWeek - 1) % 7 == 0){   // 토요일
                %>
-               <td class="satday"><%=UtilEx.callist(year, month, i) %>&nbsp;<%--=UtilEx.showPen(year, month, i) --%>
+               <td class="satday"><%=UtilEx.callist(year, month, i) %>&nbsp;=UtilEx.showPen(year, month, i)
                    <%=UtilEx.makeTable(year, month, i, list) %>
                </td>
                <%
             }else{   // 평일
                %>
-               <td class="otherday"><%=UtilEx.callist(year, month, i) %>&nbsp;<%--=UtilEx.showPen(year, month, i) --%>
+               <td class="otherday"><%=UtilEx.callist(year, month, i) %>&nbsp;=UtilEx.showPen(year, month, i)
                    <%=UtilEx.makeTable(year, month, i, list) %>
                </td>
                <%
@@ -177,4 +177,4 @@ String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, mont
          %>
       </tr>
    </table>
-</div>
+</div> --%>

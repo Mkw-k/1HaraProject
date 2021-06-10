@@ -1,11 +1,13 @@
 <!DOCTYPE html>
+<%@page import="bit.com.a.dto.RecruitDto"%>
+<%@page import="bit.com.a.dto.Resume_UniversityVo"%>
+<%@page import="bit.com.a.dto.Resume_HighschoolDto"%>
 <%@page import="bit.com.a.dto.MemberDto"%>
 <%@page import="bit.com.a.dto.Resume_LanguageVo"%>
 <%@page import="bit.com.a.dto.Resume_AwardVo"%>
 <%@page import="bit.com.a.dto.Resume_ActivityVo"%>
 <%@page import="bit.com.a.dto.Resume_licenseVo"%>
 <%@page import="bit.com.a.dto.Resume_CareerVo"%>
-<%@page import="bit.com.a.dto.Resume_EduVo"%>
 <%@page import="bit.com.a.dto.ResumeDto"%>
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
@@ -286,8 +288,12 @@ dt, dd {
 		<main>
 
 <%
+
+
+
 ResumeDto resumedto =(ResumeDto)request.getAttribute("resumedto");
-List<Resume_EduVo> edulist =(List<Resume_EduVo>)request.getAttribute("edulist");
+Resume_HighschoolDto highdto =(Resume_HighschoolDto)request.getAttribute("highdto");
+List<Resume_UniversityVo> unilist =(List<Resume_UniversityVo>)request.getAttribute("unilist");
 List<Resume_CareerVo> calist =(List<Resume_CareerVo>)request.getAttribute("calist");
 List<Resume_licenseVo> liclist =(List<Resume_licenseVo>)request.getAttribute("liclist");
 List<Resume_ActivityVo> actlist =(List<Resume_ActivityVo>)request.getAttribute("actlist");
@@ -297,11 +303,11 @@ List<Resume_LanguageVo> lanlist =(List<Resume_LanguageVo>)request.getAttribute("
 System.out.println(resumedto.toString());
 
 //학력사항 들어오는지 확인
-for(int i=0; i<edulist.size(); i++){
-if(edulist == null || edulist.isEmpty()){
+for(int i=0; i<unilist.size(); i++){
+if(unilist == null || unilist.isEmpty()){
 	System.out.println("경력없음");
 } else{
-	System.out.println(edulist.get(i));
+	System.out.println(unilist.get(i));
 }
 }
 
@@ -358,7 +364,6 @@ if(lanlist == null || lanlist.isEmpty()){
 }
 
 
-
 /* 로그인 세션 가져오기 */
 Object obj = session.getAttribute("login"); //세션으로 넘어오면 세션으로 
 MemberDto memdto = null;
@@ -408,11 +413,19 @@ System.out.println(_gender);
 								<div class="panel-body">
 									<article class="panel-body">
 										<figure class="text-center">
+										<%if(resumedto.getNewresumeimage()==null ||resumedto.getNewresumeimage().equals("")) { %>
+											<div class="select_img">
+												<img src="./image/profile2.png"
+													class="img-thumbnail img-circle img-responsive profileimg"
+													alt="" style="width: 200px; height: 200px;">
+											</div>
+										<%} else{ %>
 											<div class="select_img">
 												<img src="./upload/<%=resumedto.getNewresumeimage() %>"
 													class="img-thumbnail img-circle img-responsive profileimg"
 													alt="" style="width: 200px; height: 200px;">
 											</div>
+										<%} %>	
 											<input type="file" name="fileload"
 												style="width: 400px; margin-left: 500px;" id="resumeimg">
 											<input type="text" name="namefile" value="<%=resumedto.getResumeimage() %>" size="50" readonly="readonly">
@@ -673,7 +686,7 @@ System.out.println(_gender);
 																	</div>
 																	<div class="resume_input">
 																		<input type="text" id="highschool"
-																			name="highschool" value="<%=edulist.get(0).getHighschool() %>" class="box_input"
+																			name="highschool" value="<%=highdto.getHighschool() %>" class="box_input"
 																			maxlength="100" data-api_type="auto"
 																			data-api_id="school_high" data-min_len="2"
 																			autocomplete="off">
@@ -691,7 +704,7 @@ System.out.println(_gender);
 																			<div class="resume_input" style="display:">
 																				<input type="text"
 																					id="high_str"
-																					name="high_str" value="<%=edulist.get(0).getHigh_str() %>"
+																					name="high_str" value="<%=highdto.getHigh_str() %>"
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
 																					maxlength="" autocomplete="off">
@@ -699,7 +712,7 @@ System.out.println(_gender);
 																			</div>
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
-																		<% if( edulist.get(0).getHigh_str_status().equals("입학") ){ %>
+																		<% if( highdto.getHigh_str_status().equals("입학") ){ %>
 																				<select class="selectpicker" name="high_str_status" id="high_str_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="입학" selected="selected">입학</option>
@@ -724,7 +737,7 @@ System.out.println(_gender);
 																			<div class="resume_input box_period">
 																				<input type="text"
 																					id="high_end"
-																					name="high_end" value="<%=edulist.get(0).getHigh_end() %>"
+																					name="high_end" value="<%=highdto.getHigh_end() %>"
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
 																					maxlength="" autocomplete="off">
@@ -734,7 +747,7 @@ System.out.println(_gender);
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
 
-																		<% if( edulist.get(0).getHigh_end_status().equals("졸업") ){ %>
+																		<% if( highdto.getHigh_end_status().equals("졸업") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업" selected="selected">졸업</option>
@@ -746,7 +759,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																		<%} %>
-																		<% if( edulist.get(0).getHigh_end_status().equals("재학중") ){ %>
+																		<% if( highdto.getHigh_end_status().equals("재학중") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업">졸업</option>
@@ -758,7 +771,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																		<%} %>
-																		<% if( edulist.get(0).getHigh_end_status().equals("휴학중") ){ %>
+																		<% if( highdto.getHigh_end_status().equals("휴학중") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업">졸업</option>
@@ -770,7 +783,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																		<%} %>
-																		<% if( edulist.get(0).getHigh_str_status().equals("수료") ){ %>
+																		<% if( highdto.getHigh_str_status().equals("수료") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업">졸업</option>
@@ -782,7 +795,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																		<%} %>
-																		<% if( edulist.get(0).getHigh_end_status().equals("중퇴") ){ %>
+																		<% if( highdto.getHigh_end_status().equals("중퇴") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업">졸업</option>
@@ -794,7 +807,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																		<%} %>
-																		<% if( edulist.get(0).getHigh_end_status().equals("자퇴") ){ %>
+																		<% if( highdto.getHigh_end_status().equals("자퇴") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업">졸업</option>
@@ -806,7 +819,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																		<%} %>
-																		<% if( edulist.get(0).getHigh_end_status().equals("졸업예정") ){ %>
+																		<% if( highdto.getHigh_end_status().equals("졸업예정") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업">졸업</option>
@@ -844,12 +857,12 @@ System.out.println(_gender);
 															
 											
 															
-														<% if(edulist.get(0).getUniversity()==null || edulist.get(0).getUniversity().equals("")){
+														<% if(unilist==null || unilist.isEmpty()){
 															
 															
 														}else{
 															
-																for(int i=0; i<edulist.size();i++){ %>
+																for(int i=0; i<unilist.size();i++){ %>
 															<div id="tpl_row_1621990778" class="tpl_row"
 																data-tpl_id="tpl_university">
 																
@@ -863,7 +876,7 @@ System.out.println(_gender);
 																	</div>
 																	<div class="sri_select resume_select">
 
-																<% if( edulist.get(i).getUniv_status().equals("대학교(4년)")){ %>
+																<% if( unilist.get(i).getUniv_status().equals("대학교(4년)")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="univ_status" id="univ_status">
 																			<option value="대학교(4년)" selected="selected">대학교(4년)</option>
@@ -872,7 +885,7 @@ System.out.println(_gender);
 																			<option value="대학원(박사)">대학원(박사)</option>
 																		</select>
 																<% } %>	
-																<% if( edulist.get(i).getUniv_status().equals("대학(2,3년)")){ %>
+																<% if( unilist.get(i).getUniv_status().equals("대학(2,3년)")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="univ_status" id="univ_status">
 																			<option value="대학교(4년)">대학교(4년)</option>
@@ -881,7 +894,7 @@ System.out.println(_gender);
 																			<option value="대학원(박사)">대학원(박사)</option>
 																		</select>
 																<% } %>	
-																<% if( edulist.get(i).getUniv_status().equals("대학원(석사)")){ %>
+																<% if( unilist.get(i).getUniv_status().equals("대학원(석사)")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="univ_status" id="univ_status">
 																			<option value="대학교(4년)">대학교(4년)</option>
@@ -890,7 +903,7 @@ System.out.println(_gender);
 																			<option value="대학원(박사)">대학원(박사)</option>
 																		</select>
 																<% } %>	
-																<% if( edulist.get(i).getUniv_status().equals("대학원(박사)")){ %>
+																<% if( unilist.get(i).getUniv_status().equals("대학원(박사)")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="univ_status" id="univ_status">
 																			<option value="대학교(4년)">대학교(4년)</option>
@@ -909,7 +922,7 @@ System.out.println(_gender);
 																	</div>
 																	<div class="resume_input">
 																		<input type="text" id="university"
-																			name="university" value="<%=edulist.get(i).getUniversity() %>" class="box_input"
+																			name="university" value="<%=unilist.get(i).getUniversity() %>" class="box_input"
 																			maxlength="100" data-api_type="auto"
 																			data-api_id="school_univ" data-min_len="2"
 																			autocomplete="off">
@@ -926,7 +939,7 @@ System.out.println(_gender);
 																			<div class="resume_input">
 																				<input type="text"
 																					id="univ_str"
-																					name="univ_str" value="<%=edulist.get(i).getUniv_str() %>"
+																					name="univ_str" value="<%=unilist.get(i).getUniv_str() %>"
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
 																					maxlength="" autocomplete="off">
@@ -936,14 +949,14 @@ System.out.println(_gender);
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
 
-																			<% if( edulist.get(i).getUniv_str_status().equals("입학")){ %>
+																			<% if( unilist.get(i).getUniv_str_status().equals("입학")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_str_status" id="univ_str_status">
 																					<option value="입학" selected="selected">입학</option>
 																					<option value="편입">편입</option>
 																				</select>
 																			<% } %>
-																			<% if( edulist.get(i).getUniv_str_status().equals("편입")){ %>
+																			<% if( unilist.get(i).getUniv_str_status().equals("편입")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_str_status" id="univ_str_status">
 																					<option value="입학">입학</option>
@@ -960,7 +973,7 @@ System.out.println(_gender);
 																			<div class="resume_input box_period">
 																				<input type="text"
 																					id="univ_end"
-																					name="univ_end" value="<%=edulist.get(i).getUniv_end() %>"
+																					name="univ_end" value="<%=unilist.get(i).getUniv_end() %>"
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
 																					maxlength="" autocomplete="off">
@@ -970,7 +983,7 @@ System.out.println(_gender);
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
 																				
-																				<% if( edulist.get(i).getUniv_end_status().equals("졸업")){ %>
+																				<% if( unilist.get(i).getUniv_end_status().equals("졸업")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업" selected="selected">졸업</option>
@@ -982,7 +995,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																				<% } %>
-																				<% if( edulist.get(i).getUniv_end_status().equals("재학중")){ %>
+																				<% if( unilist.get(i).getUniv_end_status().equals("재학중")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업">졸업</option>
@@ -994,7 +1007,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																				<% } %>
-																				<% if( edulist.get(i).getUniv_end_status().equals("휴학중")){ %>
+																				<% if( unilist.get(i).getUniv_end_status().equals("휴학중")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업">졸업</option>
@@ -1006,7 +1019,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																				<% } %>
-																				<% if( edulist.get(i).getUniv_end_status().equals("수료")){ %>
+																				<% if( unilist.get(i).getUniv_end_status().equals("수료")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업">졸업</option>
@@ -1018,7 +1031,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																				<% } %>
-																				<% if( edulist.get(i).getUniv_end_status().equals("중퇴")){ %>
+																				<% if( unilist.get(i).getUniv_end_status().equals("중퇴")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업">졸업</option>
@@ -1030,7 +1043,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																				<% } %>
-																				<% if( edulist.get(i).getUniv_end_status().equals("자퇴")){ %>
+																				<% if( unilist.get(i).getUniv_end_status().equals("자퇴")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업">졸업</option>
@@ -1042,7 +1055,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																				<% } %>
-																				<% if( edulist.get(i).getUniv_end_status().equals("졸업예정")){ %>
+																				<% if( unilist.get(i).getUniv_end_status().equals("졸업예정")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업">졸업</option>
@@ -1119,7 +1132,7 @@ System.out.println(_gender);
 
 																		<div class="resume_input resume_bottom">
 																			<input type="text" id="univ_major"
-																				name="univ_major" value="<%=edulist.get(i).getUniv_major() %>" class="box_input"
+																				name="univ_major" value="<%=unilist.get(i).getUniv_major() %>" class="box_input"
 																				maxlength="50">
 																		</div>
 																		<button type="button" class="btn_edu_type btn_minor"
@@ -1130,14 +1143,14 @@ System.out.println(_gender);
 																<div class="resume_row">
 																	<div class="input_title">주/야간</div>
 																	<div class="sri_select resume_select resume_input_type">
-																	<% if( edulist.get(i).getUniv_night().equals("주간")){ %>
+																	<% if( unilist.get(i).getUniv_night().equals("주간")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="univ_night" id="univ_night">
 																			<option value="주간" selected="selected">주간</option>
 																			<option value="야간">야간</option>
 																		</select>
 																	<% } %>
-																	<% if( edulist.get(i).getUniv_night().equals("야간")){ %>
+																	<% if( unilist.get(i).getUniv_night().equals("야간")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="univ_night" id="univ_night">
 																			<option value="주간">주간</option>
@@ -1152,12 +1165,12 @@ System.out.println(_gender);
 																	<div class="area_grades">
 																		<div class="resume_input">
 																			<input type="text" id="univ_grade"
-																				name="univ_grade" value="<%=edulist.get(i).getUniv_grade() %>"
+																				name="univ_grade" value="<%=unilist.get(i).getUniv_grade() %>"
 																				class="box_input size_type3" maxlength="5"
 																				data-only-float="true">
 																		</div>
 																		<div class="sri_select resume_select">
-																		<% if( edulist.get(i).getUniv_grade_base().equals("4.5")){ %>
+																		<% if( unilist.get(i).getUniv_grade_base().equals("4.5")){ %>
 																			<select class="selectpicker"
 																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
 																				<option selected="selected">4.5</option>
@@ -1168,7 +1181,7 @@ System.out.println(_gender);
 																				<option>100</option>
 																			</select>
 																		<% } %>
-																		<% if( edulist.get(i).getUniv_grade_base().equals("4.0")){ %>
+																		<% if( unilist.get(i).getUniv_grade_base().equals("4.0")){ %>
 																			<select class="selectpicker"
 																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
 																				<option>4.5</option>
@@ -1179,7 +1192,7 @@ System.out.println(_gender);
 																				<option>100</option>
 																			</select>
 																		<% } %>
-																		<% if( edulist.get(i).getUniv_grade_base().equals("4.3")){ %>
+																		<% if( unilist.get(i).getUniv_grade_base().equals("4.3")){ %>
 																			<select class="selectpicker"
 																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
 																				<option>4.5</option>
@@ -1190,7 +1203,7 @@ System.out.println(_gender);
 																				<option>100</option>
 																			</select>
 																		<% } %>
-																		<% if( edulist.get(i).getUniv_grade_base().equals("5.0")){ %>
+																		<% if( unilist.get(i).getUniv_grade_base().equals("5.0")){ %>
 																			<select class="selectpicker"
 																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
 																				<option>4.5</option>
@@ -1201,7 +1214,7 @@ System.out.println(_gender);
 																				<option>100</option>
 																			</select>
 																		<% } %>
-																		<% if( edulist.get(i).getUniv_grade_base().equals("7.0")){ %>
+																		<% if( unilist.get(i).getUniv_grade_base().equals("7.0")){ %>
 																			<select class="selectpicker"
 																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
 																				<option>4.5</option>
@@ -1212,7 +1225,7 @@ System.out.println(_gender);
 																				<option>100</option>
 																			</select>
 																		<% } %>
-																		<% if( edulist.get(i).getUniv_grade_base().equals("100")){ %>
+																		<% if( unilist.get(i).getUniv_grade_base().equals("100")){ %>
 																			<select class="selectpicker"
 																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
 																				<option>4.5</option>
@@ -1239,7 +1252,7 @@ System.out.println(_gender);
 																			class="bar_title">학위논문 및 졸업작품<span
 																			class="valid_hidden"> 입력</span></label>
 																		<textarea id="univ_paper"
-																			name="univ_paper" class="box_textarea"><%=edulist.get(i).getUniv_paper() %></textarea>
+																			name="univ_paper" class="box_textarea"><%=unilist.get(i).getUniv_paper() %></textarea>
 																	</div>
 																</div>
 
@@ -2338,13 +2351,33 @@ System.out.println(_gender);
 																		data-tpl_id="tpl_introduce_item">
 																		<div class="item_title">
 																			<div class="input_wrap">
+																				<%if(resumedto.getResume_intro_title().equals("null")){ %>
+																				<input type="text" id="resume_intro_title" value=""
+																					name="resume_intro_title" class="input_type1"
+																					placeholder="자소서 제목" maxlength="100">
+																				
+																				<% } else { %>
 																				<input type="text" id="resume_intro_title" value="<%=resumedto.getResume_intro_title() %>"
 																					name="resume_intro_title" class="input_type1"
 																					placeholder="자소서 제목" maxlength="100">
+																			
+																				<% } %>
 																			</div>
 																		</div>
 
 																		<div class="item_txt">
+																			
+																			<%if(resumedto.getResume_intro_content().equals("null")){ %>
+																			<div class="textarea_wrap">
+																				<textarea id="resume_intro_content"
+																					name="resume_intro_content" class="textarea_type1"
+																					rows="1" cols="100" data-char-count="true"
+																					placeholder="자소서 내용" name="contents"
+																					onkeyup="javascript:fnChkByte(this,'4000')"></textarea>
+																				<!-- <span id="byteInfo">0</span> 4000bytes -->
+																			</div>
+																			
+																			<% }else{ %>
 																			<div class="textarea_wrap">
 																				<textarea id="resume_intro_content"
 																					name="resume_intro_content" class="textarea_type1"
@@ -2353,7 +2386,7 @@ System.out.println(_gender);
 																					onkeyup="javascript:fnChkByte(this,'4000')"><%=resumedto.getResume_intro_content() %></textarea>
 																				<!-- <span id="byteInfo">0</span> 4000bytes -->
 																			</div>
-
+																			<% } %>
 																			<div class="spellcheck" style="display: none;">
 																				<div class="item_spellcheck">
 																					<!-- 스펠링체크 -->
@@ -2382,7 +2415,7 @@ System.out.println(_gender);
 																	<div class="txt_total_length">
 																		<div class="txt_length">
 																			<span style="color: red;" id="byteInfo">0</span>
-																			4000bytes
+																			/4000bytes
 																		</div>
 																	</div>
 
@@ -2886,23 +2919,23 @@ $(document).ready(function(){
 <script type="text/javascript">
 $('document').ready(function() {
 	 var area0 = ["시/도 선택","서울","인천","대전","광주","대구","울산","부산","경기","강원","충북","충남","전북","전남","경북","경남","제주특별자치도","세종특별자치시"];
-	  var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
-	   var area2 = ["계양구","남동구","부평구","연수구","미추홀구","강화군","옹진군"];
-	   var area3 = ["대덕구","유성구"];
-	   var area4 = ["광산구"];
-	   var area5 = ["달서구","수성구","달성군"];
-	   var area6 = ["울주군"];
-	   var area7 = ["금정구","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","해운대구","기장군"];
-	   var area8 = ["고양시","과천시","광명시","광주시","구리시","군포시","김포시","남양주시","동두천시","부천시","성남시","수원시","시흥시","안산시","안성시","안양시","양주시","오산시","용인시","의왕시","의정부시","이천시","파주시","평택시","포천시","하남시","화성시","가평군","양평군","연천군","권선구","기흥구","단원구","덕양구","동안구","만안구","분당구","상록구","수정구","수지구","여주시","영통구","일산동구","일산서구","장안구","중원구","처인구","팔달구"];
-	   var area9 = ["강릉시","동해시","삼척시","속초시","원주시","춘천시","태백시","고성군","양구군","양양군","영월군","인제군","정선군","철원군","평창군","홍천군","화천군","횡성군"];
-	   var area10 = ["제천시","청주시","충주시","괴산군","단양군","보은군","영동군","옥천군","음성군","증평군","진천군","상당구","서원구","흥덕구","청원구"];
-	   var area11 = ["계룡시","공주시","논산시","보령시","서산시","아산시","천안시","금산군","부여군","서천군","예산군","청양군","태안군","홍성군","당진시","동남구","서북구"];
-	   var area12 = ["군산시","김제시","남원시","익산시","전주시","정읍시","고창군","무주군","부안군","순창군","완주군","임실군","장수군","진안군","완산구","덕진구"];
-	   var area13 = ["광양시","나주시","목포시","순천시","여수시","강진군","고흥군","곡성군","구례군","담양군","무안군","보성군","신안군","영광군","영암군","완도군","장성군","장흥군","진도군","함평군","해남군","화순군"];
-	   var area14 = ["경산시","경주시","구미시","김천시","문경시","상주시","안동시","영주시","영천시","포항시","고령군","군위군","봉화군","성주군","영덕군","영양군","예천군","울릉군","울진군","의성군","청도군","청송군","칠곡군"];
-	   var area15 = ["거제시","김해시","밀양시","사천시","양산시","진주시","창원시","통영시","거창군","남해군","산청군","의령군","창녕군","하동군","함안군","함양군","합천군","의창구","성산구","마산합포구","마산회원구","진해구"];
-	   var area16 = ["서귀포시","제주시"];
-	   var area17 = ["세종특별자치시"];
+	  var area1 = ["선택","강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
+	   var area2 = ["선택","계양구","남동구","부평구","연수구","미추홀구","강화군","옹진군"];
+	   var area3 = ["선택","대덕구","유성구"];
+	   var area4 = ["선택","광산구"];
+	   var area5 = ["선택","달서구","수성구","달성군"];
+	   var area6 = ["선택","울주군"];
+	   var area7 = ["선택","금정구","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","해운대구","기장군"];
+	   var area8 = ["선택","고양시","과천시","광명시","광주시","구리시","군포시","김포시","남양주시","동두천시","부천시","성남시","수원시","시흥시","안산시","안성시","안양시","양주시","오산시","용인시","의왕시","의정부시","이천시","파주시","평택시","포천시","하남시","화성시","가평군","양평군","연천군","권선구","기흥구","단원구","덕양구","동안구","만안구","분당구","상록구","수정구","수지구","여주시","영통구","일산동구","일산서구","장안구","중원구","처인구","팔달구"];
+	   var area9 = ["선택","강릉시","동해시","삼척시","속초시","원주시","춘천시","태백시","고성군","양구군","양양군","영월군","인제군","정선군","철원군","평창군","홍천군","화천군","횡성군"];
+	   var area10 = ["선택","제천시","청주시","충주시","괴산군","단양군","보은군","영동군","옥천군","음성군","증평군","진천군","상당구","서원구","흥덕구","청원구"];
+	   var area11 = ["선택","계룡시","공주시","논산시","보령시","서산시","아산시","천안시","금산군","부여군","서천군","예산군","청양군","태안군","홍성군","당진시","동남구","서북구"];
+	   var area12 = ["선택","군산시","김제시","남원시","익산시","전주시","정읍시","고창군","무주군","부안군","순창군","완주군","임실군","장수군","진안군","완산구","덕진구"];
+	   var area13 = ["선택","광양시","나주시","목포시","순천시","여수시","강진군","고흥군","곡성군","구례군","담양군","무안군","보성군","신안군","영광군","영암군","완도군","장성군","장흥군","진도군","함평군","해남군","화순군"];
+	   var area14 = ["선택","경산시","경주시","구미시","김천시","문경시","상주시","안동시","영주시","영천시","포항시","고령군","군위군","봉화군","성주군","영덕군","영양군","예천군","울릉군","울진군","의성군","청도군","청송군","칠곡군"];
+	   var area15 = ["선택","거제시","김해시","밀양시","사천시","양산시","진주시","창원시","통영시","거창군","남해군","산청군","의령군","창녕군","하동군","함안군","함양군","합천군","의창구","성산구","마산합포구","마산회원구","진해구"];
+	   var area16 = ["선택","서귀포시","제주시"];
+	   var area17 = ["선택","세종특별자치시"];
 
 	 
 
@@ -4085,23 +4118,23 @@ $('#carAdd').click(function(){
 	
 	$('document').ready(function() {
 		 var area0 = ["시/도 선택","서울","인천","대전","광주","대구","울산","부산","경기","강원","충북","충남","전북","전남","경북","경남","제주특별자치도","세종특별자치시"];
-		  var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
-		   var area2 = ["계양구","남동구","부평구","연수구","미추홀구","강화군","옹진군"];
-		   var area3 = ["대덕구","유성구"];
-		   var area4 = ["광산구"];
-		   var area5 = ["달서구","수성구","달성군"];
-		   var area6 = ["울주군"];
-		   var area7 = ["금정구","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","해운대구","기장군"];
-		   var area8 = ["고양시","과천시","광명시","광주시","구리시","군포시","김포시","남양주시","동두천시","부천시","성남시","수원시","시흥시","안산시","안성시","안양시","양주시","오산시","용인시","의왕시","의정부시","이천시","파주시","평택시","포천시","하남시","화성시","가평군","양평군","연천군","권선구","기흥구","단원구","덕양구","동안구","만안구","분당구","상록구","수정구","수지구","여주시","영통구","일산동구","일산서구","장안구","중원구","처인구","팔달구"];
-		   var area9 = ["강릉시","동해시","삼척시","속초시","원주시","춘천시","태백시","고성군","양구군","양양군","영월군","인제군","정선군","철원군","평창군","홍천군","화천군","횡성군"];
-		   var area10 = ["제천시","청주시","충주시","괴산군","단양군","보은군","영동군","옥천군","음성군","증평군","진천군","상당구","서원구","흥덕구","청원구"];
-		   var area11 = ["계룡시","공주시","논산시","보령시","서산시","아산시","천안시","금산군","부여군","서천군","예산군","청양군","태안군","홍성군","당진시","동남구","서북구"];
-		   var area12 = ["군산시","김제시","남원시","익산시","전주시","정읍시","고창군","무주군","부안군","순창군","완주군","임실군","장수군","진안군","완산구","덕진구"];
-		   var area13 = ["광양시","나주시","목포시","순천시","여수시","강진군","고흥군","곡성군","구례군","담양군","무안군","보성군","신안군","영광군","영암군","완도군","장성군","장흥군","진도군","함평군","해남군","화순군"];
-		   var area14 = ["경산시","경주시","구미시","김천시","문경시","상주시","안동시","영주시","영천시","포항시","고령군","군위군","봉화군","성주군","영덕군","영양군","예천군","울릉군","울진군","의성군","청도군","청송군","칠곡군"];
-		   var area15 = ["거제시","김해시","밀양시","사천시","양산시","진주시","창원시","통영시","거창군","남해군","산청군","의령군","창녕군","하동군","함안군","함양군","합천군","의창구","성산구","마산합포구","마산회원구","진해구"];
-		   var area16 = ["서귀포시","제주시"];
-		   var area17 = ["세종특별자치시"];
+		  var area1 = ["선택","강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
+		   var area2 = ["선택","계양구","남동구","부평구","연수구","미추홀구","강화군","옹진군"];
+		   var area3 = ["선택","대덕구","유성구"];
+		   var area4 = ["선택","광산구"];
+		   var area5 = ["선택","달서구","수성구","달성군"];
+		   var area6 = ["선택","울주군"];
+		   var area7 = ["선택","금정구","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","해운대구","기장군"];
+		   var area8 = ["선택","고양시","과천시","광명시","광주시","구리시","군포시","김포시","남양주시","동두천시","부천시","성남시","수원시","시흥시","안산시","안성시","안양시","양주시","오산시","용인시","의왕시","의정부시","이천시","파주시","평택시","포천시","하남시","화성시","가평군","양평군","연천군","권선구","기흥구","단원구","덕양구","동안구","만안구","분당구","상록구","수정구","수지구","여주시","영통구","일산동구","일산서구","장안구","중원구","처인구","팔달구"];
+		   var area9 = ["선택","강릉시","동해시","삼척시","속초시","원주시","춘천시","태백시","고성군","양구군","양양군","영월군","인제군","정선군","철원군","평창군","홍천군","화천군","횡성군"];
+		   var area10 = ["선택","제천시","청주시","충주시","괴산군","단양군","보은군","영동군","옥천군","음성군","증평군","진천군","상당구","서원구","흥덕구","청원구"];
+		   var area11 = ["선택","계룡시","공주시","논산시","보령시","서산시","아산시","천안시","금산군","부여군","서천군","예산군","청양군","태안군","홍성군","당진시","동남구","서북구"];
+		   var area12 = ["선택","군산시","김제시","남원시","익산시","전주시","정읍시","고창군","무주군","부안군","순창군","완주군","임실군","장수군","진안군","완산구","덕진구"];
+		   var area13 = ["선택","광양시","나주시","목포시","순천시","여수시","강진군","고흥군","곡성군","구례군","담양군","무안군","보성군","신안군","영광군","영암군","완도군","장성군","장흥군","진도군","함평군","해남군","화순군"];
+		   var area14 = ["선택","경산시","경주시","구미시","김천시","문경시","상주시","안동시","영주시","영천시","포항시","고령군","군위군","봉화군","성주군","영덕군","영양군","예천군","울릉군","울진군","의성군","청도군","청송군","칠곡군"];
+		   var area15 = ["선택","거제시","김해시","밀양시","사천시","양산시","진주시","창원시","통영시","거창군","남해군","산청군","의령군","창녕군","하동군","함안군","함양군","합천군","의창구","성산구","마산합포구","마산회원구","진해구"];
+		   var area16 = ["선택","서귀포시","제주시"];
+		   var area17 = ["선택","세종특별자치시"];
 
 		 
 
@@ -4215,7 +4248,7 @@ let str = '';
 function test(val) {
 	
 	alert(val);
-	str += val + ",";
+	str += val + " ";
 }
 
 
@@ -4250,7 +4283,7 @@ function addArea() {
 let bus = '';
 function selectbus(val) {
 	alert(val);
-	bus += val + ","
+	bus += val + " "
 }
 
 function addBus() {
@@ -4262,11 +4295,6 @@ function addBus() {
 
 </script>
 
-
-  
-	   
-	   
-	   
 
 <!-- 경력 지역선택시 -->	   
 <script type="text/javascript">

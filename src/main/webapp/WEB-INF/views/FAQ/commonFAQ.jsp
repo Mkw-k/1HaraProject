@@ -533,7 +533,7 @@ List<FAQDto> commonlist =(List<FAQDto>) request.getAttribute("commonlist");
 
 <nav class="faqnav" style="height: auto;">
   <ul style="display: flex;margin-right: 180px;">
-    <li><a href="memberFAQ.do" class="nav-links">개발자 FAQ</a></li>
+    <li><a href="memberFAQ.do" class="nav-links">지원자 FAQ</a></li>
     <li><a href="companyFAQ.do" class="nav-links">기업 FAQ</a></li>
     <li style="background-color: #2186eb" class="nav-links">일반 FAQ</li>
   </ul>
