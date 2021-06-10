@@ -16,6 +16,7 @@ public class MemberDto implements Serializable{
 	private String birth;						// 생년월일
 	private String userpic;
 	private String newuserpic;
+	private String phonenum;
 	
 	
 	public MemberDto() {
@@ -23,6 +24,8 @@ public class MemberDto implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
 
 	public MemberDto(String memberid, String pwd, String name, String email, String phonenum, int auth, String address,
 			String detailaddress, String birth, String userpic, String newuserpic) {
@@ -38,6 +41,22 @@ public class MemberDto implements Serializable{
 		this.birth = birth;
 		this.userpic = userpic;
 		this.newuserpic = newuserpic;
+	}
+
+
+
+	
+	
+
+	public String getPhonenum() {
+		return phonenum;
+	}
+
+
+
+
+	public void setPhonenum(String phonenum) {
+		this.phonenum = phonenum;
 	}
 
 

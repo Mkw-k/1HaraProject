@@ -338,6 +338,12 @@ System.out.println("resumelist" +resumelist);
       </div>
     </div>
   </div>
+  
+  
+  <button onclick="charchen()">charchen</button> 
+  
+  
+  
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" style=""></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
@@ -544,13 +550,76 @@ function dropFavoriteJob(jobSeq, memberid) {
 
 function jobApply(jobseq, memberid, resumeseq) {
 	alert("jobApply");
-	alert(jobseq);
-	alert(memberid);
-	alert(resumeseq);
-
+	//alert(jobseq);
+	//alert(memberid);
+	//alert(resumeseq);
+	
+	let endDate = '${dto.jobEnd}';
+	var reserve = charchen(endDate);
+	alert("이게 예약시간 : "+ reserve);
+	
+	if('${login.auth}' eq '1'){
+		var phone = '${login.phonenum}';
+	}
+	
+	  $.ajax({
+	        type : 'get',
+	        url : './reserveSendSms.do',
+	        data:{phonenum: phone, reserveDate : reserve			// 휴대폰 번호
+                },
+	       success:function(suc){
+				alert("성공");
+				alert(suc);
+				
+			},
+			error:function(){
+				alert('error');
+			}
+	    });  
+	    
 	location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
-
+	
+	
+	
 }
+    
+function charchen(endDate) {
+endDate = new Date(endDate);
+var rest = endDate - 86400000;
+var sendDate = getReserveDate(rest);
+sendDate = sendDate.slice(0, -2);
+alert(sendDate);
+
+return sendDate;
+}
+    
+
+
+function getReserveDate(rest)
+{
+    var date = new Date(rest);
+    var year = date.getFullYear().toString();
+
+    var month = date.getMonth() + 1;
+    month = month < 10 ? '0' + month.toString() : month.toString();
+
+    var day = date.getDate();
+    day = day < 10 ? '0' + day.toString() : day.toString();
+
+    var hour = date.getHours();
+    hour = hour < 10 ? '0' + hour.toString() : hour.toString();
+
+    var minites = date.getMinutes();
+    minites = minites < 10 ? '0' + minites.toString() : minites.toString();
+
+    var seconds = date.getSeconds();
+    seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
+
+    return year + month + day + hour + minites + seconds;
+}
+
+
+ 
 
 function CountDownTimer(dt, id) {
     var end = new Date(dt);
