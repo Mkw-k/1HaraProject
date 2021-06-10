@@ -752,7 +752,7 @@ margin-right : 450px;
 <ul>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="/zf_user/company-review-qst-and-ans"><span>취업톡톡</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="/zf_user/white-paper/office"><span>콘텐츠</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="resumeMain.do"><span>이력서관리</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="resumeMain.do?memberid=${login.memberid }"><span>이력서관리</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','jumpit')" href="https://www.jumpit.co.kr" target="_blank"><span class="icon icon_jumpit">점핏</span></a></li>
 </ul>
 </div>
@@ -810,6 +810,7 @@ margin-right : 450px;
 <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="regiclick.do" class="btn_sign signup"><span class="txt">회원가입</span></a>
 =======
 <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="mypage.do" class="btn_sign signup"><span class="txt">마이페이지</span></a>
+<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="buspage.do?memberid=${login.memberid }" class="btn_sign signup"><span class="txt">기업마이페이지</span></a>
 </div>
 </div>
 <div class="navi_total">

@@ -30,8 +30,8 @@
 INSERT
 INTO CAREER (CAREERSEQ, RESUMESEQ, PRE_COMNAME, PRE_STARTDATE, PRE_ENDDATE, PRE_STATUS, PRE_POSITION, PRE_BUSCODE, PRE_AREA, PRE_DEPT, PRE_SAL, PRE_JOBDETAIL, PRE_REASON)
 			VALUES (CAREER_SEQ.NEXTVAL, #{resumeseq},
-					#{pre_comname}, #{pre_startdate}, #{pre_enddate}, #{pre_status},
-					#{pre_position}, #{pre_buscode}, #{pre_area}, #{pre_dept}, #{pre_sal}, #{pre_jobdetail}, #{pre_reason})
+					#{pre_comname, jdbcType=VARCHAR}, #{pre_startdate, jdbcType=VARCHAR}, #{pre_enddate, jdbcType=VARCHAR}, #{pre_status, jdbcType=VARCHAR},
+					#{pre_position, jdbcType=VARCHAR}, #{pre_buscode, jdbcType=VARCHAR}, #{pre_area, jdbcType=VARCHAR}, #{pre_dept, jdbcType=VARCHAR}, #{pre_sal, jdbcType=VARCHAR}, #{pre_jobdetail, jdbcType=VARCHAR}, #{pre_reason, jdbcType=VARCHAR})
 
 
 </insert>
@@ -39,14 +39,14 @@ INTO CAREER (CAREERSEQ, RESUMESEQ, PRE_COMNAME, PRE_STARTDATE, PRE_ENDDATE, PRE_
 <insert id="writeLic" parameterType="bit.com.a.dto.Resume_licenseVo">
 INSERT
 INTO LICENSE (LICSEQ, RESUMESEQ, LIC_DATE, LIC_NAME, LIC_PUBLISHER, LIC_PASS )
-         VALUES (LICENSE_SEQ.NEXTVAL, #{resumeseq}, #{lic_date}, #{lic_name}, #{lic_publisher}, #{lic_pass}  )
+         VALUES (LICENSE_SEQ.NEXTVAL, #{resumeseq}, #{lic_date, jdbcType=VARCHAR}, #{lic_name, jdbcType=VARCHAR}, #{lic_publisher, jdbcType=VARCHAR}, #{lic_pass, jdbcType=VARCHAR}  )
 
 </insert>
 
 <insert id="writeAct" parameterType="bit.com.a.dto.Resume_ActivityVo">
 INSERT
 INTO ACTIVITY (ACTIVITYSEQ, RESUMESEQ, ACT_FIELD, ACT_ORG, ACT_STR, ACT_END, ACT_DETAIL )
-         VALUES (ACTIVITY_SEQ.NEXTVAL, #{resumeseq}, #{act_field}, #{act_org}, #{act_str}, #{act_end}, #{act_detail} )
+         VALUES (ACTIVITY_SEQ.NEXTVAL, #{resumeseq}, #{act_field, jdbcType=VARCHAR}, #{act_org, jdbcType=VARCHAR}, #{act_str, jdbcType=VARCHAR}, #{act_end, jdbcType=VARCHAR}, #{act_detail, jdbcType=VARCHAR} )
 
 </insert>
 
@@ -62,7 +62,7 @@ INTO AWARD (AWDSEQ, RESUMESEQ, AWD_NAME, AWD_DATE, AWD_ORG)
 <insert id="writeLan" parameterType="bit.com.a.dto.Resume_LanguageVo">
 INSERT
 INTO LANGUAGE (LANSEQ, RESUMESEQ, LAN_KIND, LAN_EXAM, LAN_SCORE, LAN_GRADE, LAN_PASS, LAN_DATE)
-         VALUES (LANGUAGE_SEQ.NEXTVAL, #{resumeseq}, #{lan_kind}, #{lan_exam}, #{lan_score}, #{lan_grade}, #{lan_pass}, #{lan_date})
+         VALUES (LANGUAGE_SEQ.NEXTVAL, #{resumeseq}, #{lan_kind, jdbcType=VARCHAR}, #{lan_exam, jdbcType=VARCHAR}, #{lan_score, jdbcType=VARCHAR}, #{lan_grade, jdbcType=VARCHAR}, #{lan_pass, jdbcType=VARCHAR}, #{lan_date, jdbcType=VARCHAR})
 
 </insert>
 
@@ -192,33 +192,33 @@ ORDER BY RESUMESEQ DESC
 
 <update id="updateCareer" parameterType="bit.com.a.dto.Resume_CareerVo">
 	UPDATE CAREER
-    SET PRE_COMNAME=#{pre_comname}, PRE_STARTDATE=#{pre_startdate}, PRE_ENDDATE=#{pre_enddate}, PRE_STATUS=#{pre_status}, PRE_POSITION=#{pre_position},
-    PRE_BUSCODE=#{pre_buscode}, PRE_AREA=#{pre_area}, PRE_DEPT=#{pre_dept}, PRE_SAL=#{pre_sal}, PRE_JOBDETAIL=#{pre_jobdetail}, PRE_REASON=#{pre_reason}
+    SET PRE_COMNAME=#{pre_comname, jdbcType=VARCHAR}, PRE_STARTDATE=#{pre_startdate, jdbcType=VARCHAR}, PRE_ENDDATE=#{pre_enddate, jdbcType=VARCHAR}, PRE_STATUS=#{pre_status, jdbcType=VARCHAR}, PRE_POSITION=#{pre_position, jdbcType=VARCHAR},
+    PRE_BUSCODE=#{pre_buscode, jdbcType=VARCHAR}, PRE_AREA=#{pre_area, jdbcType=VARCHAR}, PRE_DEPT=#{pre_dept, jdbcType=VARCHAR}, PRE_SAL=#{pre_sal, jdbcType=VARCHAR}, PRE_JOBDETAIL=#{pre_jobdetail, jdbcType=VARCHAR}, PRE_REASON=#{pre_reason, jdbcType=VARCHAR}
 WHERE RESUMESEQ=#{resumeseq}
 
 </update>
 
 <update id="updateLic" parameterType="bit.com.a.dto.Resume_licenseVo">
    UPDATE LICENSE
-    SET LIC_DATE=#{lic_date}, LIC_NAME=#{lic_name}, LIC_PUBLISHER=#{lic_publisher}, LIC_PASS=#{lic_pass}
+    SET LIC_DATE=#{lic_date, jdbcType=VARCHAR}, LIC_NAME=#{lic_name, jdbcType=VARCHAR}, LIC_PUBLISHER=#{lic_publisher, jdbcType=VARCHAR}, LIC_PASS=#{lic_pass, jdbcType=VARCHAR}
 WHERE RESUMESEQ=#{resumeseq}
 </update>
 
 <update id="updateAct" parameterType="bit.com.a.dto.Resume_ActivityVo">
    UPDATE ACTIVITY
-    SET ACT_FIELD=#{act_field}, ACT_ORG=#{act_org}, ACT_STR=#{act_str}, ACT_END=#{act_end}, ACT_DETAIL=#{act_detail}
+    SET ACT_FIELD=#{act_field, jdbcType=VARCHAR}, ACT_ORG=#{act_org, jdbcType=VARCHAR}, ACT_STR=#{act_str, jdbcType=VARCHAR}, ACT_END=#{act_end, jdbcType=VARCHAR}, ACT_DETAIL=#{act_detail, jdbcType=VARCHAR}
 WHERE RESUMESEQ=#{resumeseq}
 </update>
 
 <update id="updateAward" parameterType="bit.com.a.dto.Resume_AwardVo">
    UPDATE AWARD
-    SET AWD_NAME=#{awd_name}, AWD_DATE=#{awd_date}, AWD_ORG=#{awd_org}
+    SET AWD_NAME=#{awd_name, jdbcType=VARCHAR}, AWD_DATE=#{awd_date, jdbcType=VARCHAR}, AWD_ORG=#{awd_org, jdbcType=VARCHAR}
 WHERE RESUMESEQ=#{resumeseq}
 </update>
 
 <update id="updateLan" parameterType="bit.com.a.dto.Resume_LanguageVo">
    UPDATE LANGUAGE
-    SET LAN_KIND=#{lan_kind}, LAN_EXAM=#{lan_exam}, LAN_SCORE=#{lan_score}, LAN_GRADE=#{lan_grade}, LAN_PASS=#{lan_pass}, LAN_DATE=#{lan_date}
+    SET LAN_KIND=#{lan_kind}, LAN_EXAM=#{lan_exam, jdbcType=VARCHAR}, LAN_SCORE=#{lan_score, jdbcType=VARCHAR}, LAN_GRADE=#{lan_grade, jdbcType=VARCHAR}, LAN_PASS=#{lan_pass, jdbcType=VARCHAR}, LAN_DATE=#{lan_date, jdbcType=VARCHAR}
 WHERE RESUMESEQ=#{resumeseq}
 </update>
 
@@ -250,8 +250,8 @@ WHERE RESUMESEQ=#{resumeseq}
 
 <insert id="writeHigh" parameterType="bit.com.a.dto.Resume_HighschoolDto">
 INSERT
-INTO HIGHSCHOOL (HIGHSCHOOLSEQ, RESUMESEQ, HIGHSCHOOL, HIGH_STR_STATUS, HIGH_END)
-VALUES (HIGHSCHOOL_SEQ.NEXTVAL, #{resumeseq}, #{highschool}, #{high_str_status}, #{high_end})
+INTO HIGHSCHOOL (HIGHSCHOOLSEQ, RESUMESEQ, HIGHSCHOOL, HIGH_STR, HIGH_STR_STATUS, HIGH_END, HIGH_END_STATUS)
+VALUES (HIGHSCHOOL_SEQ.NEXTVAL, #{resumeseq}, #{highschool, jdbcType=VARCHAR}, #{high_str, jdbcType=VARCHAR}, #{high_str_status, jdbcType=VARCHAR}, #{high_end, jdbcType=VARCHAR}, #{high_end_status, jdbcType=VARCHAR})
 </insert>
 
 <insert id="writeUni" parameterType="bit.com.a.dto.Resume_UniversityVo">
@@ -266,15 +266,15 @@ INTO UNIVERSITY (UNIVERSITYSEQ, RESUMESEQ, UNIVERSITY, UNIV_STATUS, UNIV_STR, UN
 
 <update id="updateHigh" parameterType="bit.com.a.dto.Resume_HighschoolDto">
 UPDATE HIGHSCHOOL
-SET HIGHSCHOOL=#{highschool}, HIGH_STR=#{high_str}, HIGH_STR_STATUS=#{high_str_status}, HIGH_END=#{high_end}, HIGH_END_STATUS=#{high_end_status}
+SET HIGHSCHOOL=#{highschool, jdbcType=VARCHAR}, HIGH_STR=#{high_str, jdbcType=VARCHAR}, HIGH_STR_STATUS=#{high_str_status, jdbcType=VARCHAR}, HIGH_END=#{high_end, jdbcType=VARCHAR}, HIGH_END_STATUS=#{high_end_status, jdbcType=VARCHAR}
 WHERE RESUMESEQ=#{resumeseq}
 
 </update>
 
 <update id="updateUni" parameterType="bit.com.a.dto.Resume_UniversityVo">
 UPDATE UNIVERSITY
-SET UNIVERSITY=#{university}, UNIV_STATUS=#{univ_status}, UNIV_STR=#{univ_str}, UNIV_STR_STATUS=#{univ_str_status},
-      UNIV_END=#{univ_end}, UNIV_END_STATUS=#{univ_end_status}, UNIV_MAJOR_FIELD=#{univ_major_field}, UNIV_MAJOR=#{univ_major}, UNIV_NIGHT=#{univ_night}, UNIV_GRADE=#{univ_grade}, UNIV_GRADE_BASE=#{univ_grade_base}, UNIV_PAPER=#{univ_paper}
+SET UNIVERSITY=#{university, jdbcType=VARCHAR}, UNIV_STATUS=#{univ_status, jdbcType=VARCHAR}, UNIV_STR=#{univ_str, jdbcType=VARCHAR}, UNIV_STR_STATUS=#{univ_str_status, jdbcType=VARCHAR},
+      UNIV_END=#{univ_end, jdbcType=VARCHAR}, UNIV_END_STATUS=#{univ_end_status, jdbcType=VARCHAR}, UNIV_MAJOR_FIELD=#{univ_major_field, jdbcType=VARCHAR}, UNIV_MAJOR=#{univ_major, jdbcType=VARCHAR}, UNIV_NIGHT=#{univ_night, jdbcType=VARCHAR}, UNIV_GRADE=#{univ_grade, jdbcType=VARCHAR}, UNIV_GRADE_BASE=#{univ_grade_base, jdbcType=VARCHAR}, UNIV_PAPER=#{univ_paper, jdbcType=VARCHAR}
 WHERE RESUMESEQ=#{resumeseq}
 
 </update>

@@ -169,15 +169,24 @@ System.out.println(_gender);
 						<h2 class="blind">이력서 VIEW</h2>
 						<div class="section_profile">
 							<div class="area_title">
-								<h3 class="title">경영학과전공, 업무에 맞춤 인재 최은지입니다.</h3>
+								<h3 class="title"><%=dto.getResumetitle() %></h3>
 							</div>
 							<div class="personal_info case1">
 								<div class="box_photo">
+									<%if(dto.getNewresumeimage()==null || dto.getNewresumeimage().equals("")){ %>
+									<div class="inbox">
+										<img alt=""
+											src="./image/profile2.png"
+											border="0" width="100" height="140" />
+									</div>
+									<%} else{ %>
 									<div class="inbox">
 										<img alt=""
 											src="./upload/<%=dto.getNewresumeimage() %>"
 											border="0" width="100" height="140" />
 									</div>
+									
+									<% } %>
 								</div>
 								<div class="my_data">
 									<p class="myname">
@@ -196,13 +205,16 @@ System.out.println(_gender);
 								<div class="dashboard">
 									<ul>
 										<li><strong>학력사항</strong>
-										
-										<% if(highdto.getHighschool()==null || highdto.getHighschool().equals(""))  {%>
+										<% if(unilist.size()==0) {%>
+										<p class="txt">고등학교 <%=highdto.getHigh_end_status()%></p></li>
+										<% }else{ %>
+										<% for(int i=0; i<unilist.size();i++){ %>
+										<% if(unilist.get(0).getUniversity()!=null || !unilist.get(0).getUniversity().equals(""))  {%>
 										
 											<p class="txt"><%=unilist.get(0).getUniv_status() %> <%=unilist.get(0).getUniv_end_status() %></p></li>
 										<%} else{ %>	
 											<p class="txt">고등학교 <%=highdto.getHigh_end_status()%></p></li>
-										<%} %>	
+										<%} } }%>	
 										
 										<li><strong>경력사항</strong>
 										<%if(calist == null || calist.isEmpty()){ %>
@@ -452,7 +464,8 @@ System.out.println(_gender);
 							</div>
 							<div class="part_table">
 								<div class="my_letter_view">
-									<% if(dto.getResume_intro_title()==null || dto.getResume_intro_content()==null){
+									<% if(dto.getResume_intro_title()==null || dto.getResume_intro_content()==null ||
+									dto.getResume_intro_content().equals("null")||dto.getResume_intro_title().equals("null")){
 										
 									} else { %>
 									<p class="intit"><%=dto.getResume_intro_title() %></p>

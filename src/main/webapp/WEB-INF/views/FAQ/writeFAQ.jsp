@@ -313,7 +313,7 @@ a.box-btn:hover, a.border-btn:hover {
 							    <td style="text-align: left;">
 							        <select name="faqnum" onChange="getSelectValue();" id="fieldnum">
 							        	<option value="0">선택</option>
-							        	<option value="1">개발자</option>
+							        	<option value="1">지원자</option>
 							        	<option value="2">기업</option>
 							        	<option value="3">일반</option>
 							        </select>

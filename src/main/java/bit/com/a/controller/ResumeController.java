@@ -469,7 +469,7 @@ public class ResumeController {
 		List<Resume_AwardVo> awdlist = service.getAwdDetail(seq);
 		List<Resume_LanguageVo> lanlist = service.getlanDetail(seq);
 
-		model.addAttribute("dto", dto);
+		model.addAttribute("resumedto", dto);
 		model.addAttribute("highdto", highdto);
 		model.addAttribute("unilist", unilist);
 		model.addAttribute("calist", calist);
@@ -559,7 +559,11 @@ public class ResumeController {
 						+ highdto.toString());
 			}
 		}
-		if (unidto != null) {
+		
+		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"+unidto.toString());
+		// 학력사항 관련 테이블 update
+		if (unidto.getUniversity() == null) {
+		}else {
 			for (int i = 0; i < unidto.getUniversity().length; i++) {
 
 				if (unidto.getUniversity()[i] == null || unidto.getUniversity()[i].equals("")) {
@@ -591,10 +595,11 @@ public class ResumeController {
 			}
 		}
 		// 경력사항 관련 테이블 update
-		System.out.println(" careerdto.getPre_comname().length= " + careerdto.getPre_comname().length);
+
 		System.out.println(careerdto.toString());
 
-		if (careerdto != null) {
+		if (careerdto.getPre_comname() == null) {
+		}else {
 			for (int i = 0; i < careerdto.getPre_comname().length; i++) {
 
 				if (careerdto.getPre_comname()[i] == null || careerdto.getPre_comname()[i].equals("")) {
@@ -626,7 +631,8 @@ public class ResumeController {
 
 		// 자격증관련 사항 테이블 update
 		System.out.println(licdto.toString());
-		if (licdto != null) {
+		if (licdto.getLic_name() == null) {
+		} else {
 			for (int i = 0; i < licdto.getLic_name().length; i++) {
 
 				if (licdto.getLic_date()[i] == null || licdto.getLic_date()[i].equals("")) {
@@ -654,7 +660,8 @@ public class ResumeController {
 		}
 		// 대외활동관련 사항 테이블 update
 		System.out.println(actdto.toString());
-		if (actdto != null) {
+		if (actdto.getAct_str() == null) {
+		}else {
 			for (int i = 0; i < actdto.getAct_str().length; i++) {
 
 				if (actdto.getAct_str()[i] == null || actdto.getAct_str()[i].equals("")) {
@@ -680,8 +687,8 @@ public class ResumeController {
 		}
 		// 수상관련 사항 테이블 update
 		System.out.println(awarddto.toString());
-		if (awarddto != null) {
-
+		if (awarddto.getAwd_name() == null) {
+		} else {
 			for (int i = 0; i < awarddto.getAwd_name().length; i++) {
 
 				if (awarddto.getAwd_name()[i] == null || awarddto.getAwd_name()[i].equals("")) {
@@ -706,7 +713,8 @@ public class ResumeController {
 
 		//어학관련 사항 업데이트
 		System.out.println(landto.toString());
-		if (landto != null) {
+		if (landto.getLan_exam() == null) {
+		} else {
 			for (int i = 0; i < landto.getLan_exam().length; i++) {
 				if (landto.getLan_exam()[i] == null || landto.getLan_exam()[i].equals("")) {
 				} else {
