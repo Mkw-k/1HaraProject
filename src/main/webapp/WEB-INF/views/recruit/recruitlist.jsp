@@ -452,17 +452,7 @@ hr {
 
 
 <!-- 밑에 한줄 배경 -->
-<%--    <br><br><br>
 
-   <div class="container">
-      <div class="row">
-         <div class="col-12">
-         	<span><a href="javascript:priMember()">프리미엄회원결제</a></span>
-            <img alt="" src="<%=request.getContextPath() %>/image/개발자23.gif" style="width: 100%; height: 140px;">
-         </div>
-      </div>
-   </div>
-   <br><br> --%>
 
 
    <div class="container">
@@ -653,12 +643,6 @@ function createRecruitNew() {
    location.href = "createTest.do";
 }
 
-
-
-//결제페이지로 이동
-/* function priMember() {
-   location.href = "priMember.do?memberid="+'${login.memberid}'+"&companyname="+'${login.companyname}'+"&name="+'${login.name}'+"&comaddress="+'${login.comaddress}';
-} */
 
 
 

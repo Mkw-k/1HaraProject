@@ -59,6 +59,16 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.admin_member_forced_evictionCheck(dto);
 		
 	}
+
+	@Override
+	public MemberDto kakaoLogin(MemberDto dto) {
+		return memberDao.kakaoLogin(dto);
+	}
+
+	@Override
+	public String getKakaoPwd(String memberid) {
+		return memberDao.getKakaoPwd(memberid);
+	}
 	
 }
 

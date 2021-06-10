@@ -39,6 +39,22 @@
 	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 </select>
 
+<!-- 카카오로그인 -->
+<select id="kakaoLogin" parameterType="bit.com.a.dto.MemberDto"
+	resultType="bit.com.a.dto.MemberDto">
+	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, BIRTH
+	FROM MEMBER
+	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
+</select>
+
+<!-- 카카오로 로그인시 패스워드 가져오기 기존 가입되있는지 여부 확인용 및 로그인 용  -->
+<select id="getKakaoPwd" parameterType="java.lang.String"
+	resultType="java.lang.String">
+	SELECT PWD
+	FROM MEMBER
+	WHERE MEMBERID=#{memberid}
+</select>
+
 <!-- 회원탈퇴 -->
 <delete id="memberDelete">
 	DELETE FROM MEMBER

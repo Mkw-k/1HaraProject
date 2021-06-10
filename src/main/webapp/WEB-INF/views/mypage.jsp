@@ -1586,6 +1586,9 @@ function f_empPgmList(resultObj){
 					<div class="mypage-idv-wrap">
 						<div class="idv-sec01">
 							<div class="con-top">
+							<c:if test="${login.userpic ne null}">          
+                           <img src="./upload/${login.newuserpic}" style="width: 150px;height: 150px;">
+                        	</c:if>
 								<div class="tit-area"><span>${login.name}</span> 님, 반갑습니다.
 
 								<a href = "mypageUpdate.do" class="button">회원정보수정</a></div>

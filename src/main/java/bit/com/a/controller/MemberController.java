@@ -123,7 +123,9 @@ public class MemberController {
 		 return "login/memberRegi";
 
 		 }		 
-
+	
+	
+	//TODO 로그인 
 	@RequestMapping(value = "loginAf.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String loginAf(MemberDto dto, HttpServletRequest req, HttpServletResponse response,
 			@RequestParam(value="memberid", required=true) String userId,
@@ -142,7 +144,7 @@ public class MemberController {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
-
+			
 			return "redirect:/login1.do";
 
 		}
@@ -221,6 +223,50 @@ public class MemberController {
 	}
 
 
+	@ResponseBody
+	@RequestMapping(value = "/reservSendSms.do", method = RequestMethod.POST)
+
+	public String reservSendSms(HttpServletRequest request) throws Exception {
+
+		String api_key = "NCSLHXF31QIYUJCT";
+		String api_secret = "T4SG4WFRBS1BGK9J7TOWKLVYJ9NVEGUI";
+
+		Coolsms coolsms = new Coolsms(api_key, api_secret);
+
+		HashMap<String, String> set = new HashMap<String, String>();
+		set.put("to", (String) request.getParameter("to")); // 수신번호
+		set.put("from", "01059559878"); // 발신번호
+		set.put("text", "안녕하세요 일하라입니다"+ "스크랩하신 "+ "title" + "공고의 마감기한이 24시간 남았습니다" ); // 문자내용
+		set.put("type", "sms"); // 문자 타입
+
+		System.out.println(set);
+		
+		String datetime = "201401151230";
+		
+		set.put("datetime", datetime); // 예약전송시 날짜 설정    
+
+		JSONObject result = coolsms.send(set); // 보내기&전송결과받기
+
+		if ((boolean) result.get("status") == true) {
+			// 메시지 보내기 성공 및 전송결과 출력
+			System.out.println("성공");
+			System.out.println(result.get("group_id")); // 그룹아이디
+			System.out.println(result.get("result_code")); // 결과코드
+			System.out.println(result.get("result_message")); // 결과 메시지
+			System.out.println(result.get("success_count")); // 메시지아이디
+			System.out.println(result.get("error_count")); // 여러개 보낼시 오류난 메시지 수
+		} else {
+			// 메시지 보내기 실패
+			System.out.println("실패");
+			System.out.println(result.get("code")); // REST API 에러코드
+			System.out.println(result.get("message")); // 에러메시지
+		}
+
+		return "suc";
+	}
+
+	
+	
 	@RequestMapping(value = "loginProcess.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String loginProcess(@RequestParam String id, HttpServletRequest request) {
 
@@ -230,47 +276,85 @@ public class MemberController {
 		return "chat";
 	}
 
-
+	
+	//TODO 카카오 로그인 애프터 
 	@RequestMapping(value = "kakalogAf.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String kakalogAf(MemberDto dto, HttpServletRequest req) {
+	public String kakalogAf(String memberid, String name, String birth, HttpServletRequest req) {
 		System.out.println("카카오토크");
-		dto.setPwd("0000");
-
-		MemberDto login = service.login(dto);
-
+		System.out.println("넘어오는 값 : "+memberid+ name+ birth);
+		
+		System.out.println("kakalogAf 1/6");
+		
+		MemberDto dto = new MemberDto();
+		
+		dto.setMemberid(memberid);
+		dto.setName(name);
+		dto.setBirth(birth);
+		
+		System.out.println("kakalogAf 2/6");
+		
+		//카카오톡 로그인시 아이디가 있을수 있으므로 있으면 패스워드 가져오기 
+		String pwd = service.getKakaoPwd(memberid);
+		
+		System.out.println("kakalogAf 3/6");
+		
+		//만약에 아이디가 없다면 비번은 0000으로 셋팅 후 회원가입  
+		if(pwd == null) { 
+			dto.setPwd("0000");
+			dto.setAuth(1);
+			dto.setEmail(dto.getMemberid());
+			dto.setDetailaddress("정보를 수정해주세요");
+			dto.setAddress("정보를 수정해주세요");
+			dto.setUserpic("0000");
+			String newuserpic = new Date().getTime() + ".back";
+			dto.setNewuserpic(newuserpic);
+			
+			
+			
+			System.out.println("kakalogAf 4/6");
+			
+			boolean b = service.addmember(dto);
+			System.out.println("kakalogAf 5/6");
+			
+				if(b) {
+					System.out.println("회원 가입되었습니다 " + new Date());
+					System.out.println("kakao regi:" + dto.toString());
+				}else {
+					System.out.println("가입되지 않았습니다 " + new Date());
+					return "login/memberRegi";
+				}
+			
+			}
+		  //아이디가 있으면 기존 패스워드로 로그인 처리 
+		  else { 
+			  dto.setPwd(pwd); 
+			  System.out.println("kakalogAf 4/6");
+			  System.out.println("kakalogAf 5/6");
+			}
+		 
+		
+		//로그인 프로세스 진행
+		MemberDto login = service.kakaoLogin(dto);
+		System.out.println("kakalogAf 6/6");
+		
+		//로그인 성공시 
 		if (login != null) {
 			req.getSession().setAttribute("login", login);
 
 			System.out.println("kakao login:" + dto.toString());
 			return "redirect:/login.do";
 		}
+		//로그인 실패시 가입 시키기 
 		else {
 
-			dto.setPwd("0000");
-			dto.setAuth(1);
-			dto.setEmail("0000");
-			dto.setDetailaddress("0000");
-			dto.setAddress("0000");
-
-			boolean b = service.addmember(dto);
-
-			if (b) {
-				System.out.println("회원 가입되었습니다 " + new Date());
-				System.out.println("kakao regi:" + dto.toString());
-
-				return "redirect:/login.do";
-
-			}
-
-			else {
-				System.out.println("가입되지 않았습니다 " + new Date());
+				System.out.println("카카오 실패 " + new Date());
 				return "login/memberRegi";
 
 			}
 
 		}
 
-	}
+	
 
 	@RequestMapping(value = "searchidpwd.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String idpwdsearch(Model model, MemberDto mem) {

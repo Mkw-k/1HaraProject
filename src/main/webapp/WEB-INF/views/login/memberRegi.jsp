@@ -445,6 +445,9 @@
                 }
             }
        })
+       
+       
+       
        $("#enterBtn").click(function() {   /* 내가 작성한 번호와 인증번호를 비교한다 */
           alert($("#text").val());
           var userNum = $("#userNum").val();
@@ -464,6 +467,9 @@
           }
        });
      });
+    
+    
+    
     // 성공 상태로 바꾸는 함수
     function successState(sel){
         $(sel)

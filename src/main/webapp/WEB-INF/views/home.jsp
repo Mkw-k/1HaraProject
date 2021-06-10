@@ -752,6 +752,7 @@ margin-right : 450px;
 <ul>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="/zf_user/company-review-qst-and-ans"><span>취업톡톡</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="/zf_user/white-paper/office"><span>콘텐츠</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="resumeMain.do?memberid=${login.memberid }"><span>이력서관리</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','jumpit')" href="https://www.jumpit.co.kr" target="_blank"><span class="icon icon_jumpit">점핏</span></a></li>
 </ul>
 </div>
@@ -2487,6 +2488,9 @@ function login() {
 	$("#login-modal").modal();
 	$("#login-modal").removeClass("modal fade");
 	$("#login-modal").addClass("modal");
+	
+	
+
 
 }
 
@@ -2543,38 +2547,6 @@ window.onscroll = function sticky() {
   ChannelIO('boot', {
     "pluginKey": "9ec9cb05-626c-49ad-9fcf-67ccef29c08f"
   });
-
-
-
-
-
-  <!-- 685fcbb766340d7c8812f4e0a29a6661 -->
-
-  <!-- 자바스크립트 key를 입력하여 초기화해줌 -->
-  window.Kakao.init("8a32aafcf70137a891ba6d0b02c48e38");
-
-  function kakaoLogin() {
-  	window.Kakao.Auth.login({
-  		scope:'profile, account_email, birthday',
-  		success: function(authObj) {
-  			alert('success');
-  			console.log(authObj);
-  			window.Kakao.API.request({
-  				url: '',
-  				success: res => {
-  					const kakao_account = res.kakao_account;
-  					console.log(kakao_account);
-  					console.log("이름:"+kakao_account.profile.name);
-  					console.log("생일:"+kakao_account.birth);
-  					console.log("이메일:"+kakao_account.email);
-   					/* console.log("성별:"+kakao_account.gender);
-  					console.log("나이대:"+kakao_account.age_range);  */
-  				}
-
-  			});
-  		}
-  	});
-  }
 
   function f_logout() {
 	  location.href = "logout.do";
@@ -2761,14 +2733,14 @@ function kakaoLogin() {
            		type:"post",
            		url:"kakalogAf.do",
            		data: {memberid: email, name:name , birth:birth},
-           		dataType: "text",
            		success: function (data) {
-
-           		//	alert('카카오 로그인성공')
+           			$('#login-modal').modal('hide');
+           			//alert('카카오 로그인성공');
+           			location.reload();
            		},
            		error: function(){
-           			alert("birth:" + birth);
-           			alert('성공');
+           			//alert("birth:" + birth);
+           			alert('카카오 로그인 실패');
            		}
            	  })
 
