@@ -8,7 +8,7 @@
  	<link href="csss/components.css" rel="stylesheet" type="text/css">
  	<link href="csss/help.css" rel="stylesheet" type="text/css">
  	
- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>SS
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  	<script type="text/javascript" src="js/libs/member-find-jdpw.js"></script>
  	<!-- <script type="text/javascript" src="https://bam-cell.nr-data.net/1/03a1f7dfe5?a=443261373&amp;v=1209.f04e2b9&amp;to=YFJaMkNTDBIFAUJfWVkYeQVFWw0PSwZTUFdCW0xJWVcOEQAHRV0ZR1JKFV5cTwcNDFIbX1M%3D&amp;rst=981&amp;ck=1&amp;ref=https://www.saramin.co.kr/zf_user/helpdesk/person-find-id&amp;ap=79&amp;be=199&amp;fe=943&amp;dc=409&amp;af=err,xhr,stn,ins&amp;perf=%7B%22timing%22:%7B%22of%22:1622443572932,%22n%22:0,%22u%22:150,%22ue%22:150,%22f%22:1,%22dn%22:2,%22dne%22:2,%22c%22:2,%22s%22:7,%22ce%22:22,%22rq%22:22,%22rp%22:139,%22rpe%22:140,%22dl%22:176,%22di%22:408,%22ds%22:408,%22de%22:435,%22dc%22:943,%22l%22:943,%22le%22:945%7D,%22navigation%22:%7B%22ty%22:1%7D%7D&amp;fp=286&amp;fcp=286&amp;at=TBVZRAtJHxw%3D&amp;jsonp=NREUM.setToken"></script> --> 	<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
  	<!-- <script src="https://js-agent.newrelic.com/nr-1209.min.js"></script> -->
@@ -18,19 +18,35 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 </head>
-<body class="has_lnb"> 
-	<div id="sri_section" class="has_banner" taindex="-1">
+<body class="has_lnb">SS
+ 	<script type="text/javascript" src="js/libs/member-find-jdpw.js"></script>
+ 	<!-- <script type="text/javascript" src="https://bam-cell.nr-data.net/1/03a1f7dfe5?a=443261373&amp;v=1209.f04e2b9&amp;to=YFJaMkNTDBIFAUJfWVkYeQVFWw0PSwZTUFdCW0xJWVcOEQAHRV0ZR1JKFV5cTwcNDFIbX1M%3D&amp;rst=981&amp;ck=1&amp;ref=https://www.saramin.co.kr/zf_user/helpdesk/person-find-id&amp;ap=79&amp;be=199&amp;fe=943&amp;dc=409&amp;af=err,xhr,stn,ins&amp;perf=%7B%22timing%22:%7B%22of%22:1622443572932,%22n%22:0,%22u%22:150,%22ue%22:150,%22f%22:1,%22dn%22:2,%22dne%22:2,%22c%22:2,%22s%22:7,%22ce%22:22,%22rq%22:22,%22rp%22:139,%22rpe%22:140,%22dl%22:176,%22di%22:408,%22ds%22:408,%22de%22:435,%22dc%22:943,%22l%22:943,%22le%22:945%7D,%22navigation%22:%7B%22ty%22:1%7D%7D&amp;fp=286&amp;fcp=286&amp;at=TBVZRAtJHxw%3D&amp;jsonp=NREUM.setToken"></script> --> 	<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+ 	<!-- <script src="https://js-agent.newrelic.com/nr-1209.min.js"></script> -->
+ 	<script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-GR2XRGQ0FK&amp;l=dataLayer&amp;cx=c"></script>
+ 	<script type="text/javascript" async="" src="https://www.google-analytics.com/gtm/js?id=GTM-KN35GK2&amp;cid=2136607618.1621926723"></script>
+ 	<script type="text/javascript" async="" src="https://www.google-analytics.com/plugins/ua/linkid.js"></script>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+
+ 
+	<div id="sri_section" class="has_banner" taindex="-1" style="
+    padding-left: 500px;
+">
 	<div id="srch_wrap">
 	<div id="content">
     <div class="wrap_title_recruit">
         <h1 class="title_common">개인회원 아이디 찾기</h1>
     </div>
     <div class="help_find" id="person_find">
-        <ul class="tab_find">
+        <ul class="tab_find" style="
+    width: 970px;
+">
             <li class="on" id="find_cell"><a href="javascript:;" class="link_find">휴대폰 번호로 찾기</a></li>
             <li id="find_mail"><a href="javascript:;" class="link_find">이메일 주소로 찾기</a></li>
         </ul>
-        <div class="cont_find">
+        <div class="cont_find" style="
+    width: 960px;
+">
             <form action="idsearch.do" method="post" id="find_form">
                 <input type="hidden" id="confirm_complete" name="confirm_complete" value="n">
                 <input type="hidden" id="confirm_send" name="confirm_send" value="n">
@@ -104,7 +120,9 @@
             </form>
         </div>
 
-        <div class="find_method">
+        <div class="find_method" style="
+    width: 962px;
+">
     <a href="/zf_user/auth" class="btn_basic_type01 btn_login" title="로그인 바로가기">로그인</a>
         <a href="/zf_user/helpdesk/person-find-password" class="btn_basic_type01 btn_pwd" title="비밀번호 찾기 바로가기">비밀번호 찾기</a>
         <a href="/zf_user/member/registration?type=p" class="btn_basic_type04" title="회원가입 바로가기">회원가입</a>
@@ -604,9 +622,206 @@ var setReload = function(flag) {
     document.getElementById('quick_apply_layer').setAttribute('reload', flag);
 };
 
-
-
 </script>
+
+
+
+<script type="text/javascript">
+//핸드폰인증
+var count = 0; /* 문자 중복을 막기 위한 인증번호 */
+
+$(document).ready(function() {
+
+   $("#send").click(function() {
+
+      var number = Math.floor(Math.random() * 1000000) + 100000;
+         if(number>1000000){
+            number = number - 100000;
+         }
+
+         $("#text").val(number);      /* 난수로 생성된 인증번호를 hidden name : text 에 숨긴다 */
+
+      // 인증번호 입력란 생성
+			$("<input>", {type:'text', id:"userNum", name:"userNum", size:"30px", placeholder:"인증번호 6자리를 입력하세요."}).appendTo('#phone_authNumber');
+			$("<input>", {type:'button', "class":"btn btn-primary", id:"phoneNumBtn", name:"phoneNumBtn", disabled:"disabled", value:"인증하기"}).appendTo('#phone_authNumber');
+			$("<p></p>", {id:'time'}).appendTo('#phone_authNumber');
+
+
+		var display = $('#time');
+    var leftSec = 180;	//인증 남은시간(초)
+
+    // 이미 타이머가 작동중이면 중지
+    if (isRunning){
+    	clearInterval(timer);
+    	display.html("");
+    	startTimer(leftSec, display);
+    }else{
+    	startTimer(leftSec, display);
+    	}
+      var to = $("#to").val();
+
+      if(to == "" || to == null){
+         alert("빈칸이나 공백을 채워주세요");
+      }
+
+      else {
+      var con_test = confirm("해당번호로 인증문자를 발송하시겠습니까?");   /* 문자를 보낼껀지 물어본다 */
+
+         if(con_test == true){
+
+            if(count < 3){      /* 추후 데이터베이스에 컬럼 값을 확인하여 count 값을 비교 할 예정 */
+
+              $.ajax({
+                  url:"sendSms.do",
+                  type:"post",
+                  data:{to: $("#to").val(),			// 휴대폰 번호
+                       text: $("#text").val()				// 인증번호
+                       },
+                success:function(){
+                  alert("해당 휴대폰으로 인증번호를 발송했습니다");
+                  count++;
+
+                  alert(count);
+                  }
+                 /*  error(){
+
+                  } */
+
+               });
+            } else {
+               alert("휴대폰 인증 그만하세요")
+            }
+
+         }
+            else if(con_test == false){
+
+            }
+        }
+   })
+   $("#enterBtn").click(function() {   /* 내가 작성한 번호와 인증번호를 비교한다 */
+      alert($("#text").val());
+      var userNum = $("#userNum").val();
+
+      var sysNum = $("#text").val();
+
+      if(userNum == null || userNum == ""){
+         alert("휴대폰으로 발송된 인증번호를 입력해주세요");
+      }
+      else{
+         if(userNum.trim() == sysNum.trim()){
+             alert("성공");
+          }
+          else {
+             alert("실패");
+          }
+      }
+   });
+ });
+// 성공 상태로 바꾸는 함수
+function successState(sel){
+    $(sel)
+    .parent()
+    .removeClass("has-error")
+    .addClass("has-success")
+    .find(".glyphicon")
+    .removeClass("glyphicon-remove")
+    .addClass("glyphicon-ok")
+    .show();
+
+    $("#myForm button[type=submit]")
+                .removeAttr("disabled");
+};
+// 에러 상태로 바꾸는 함수
+function errorState(sel){
+    $(sel)
+    .parent()
+    .removeClass("has-success")
+    .addClass("has-error")
+    .find(".glyphicon")
+    .removeClass("glyphicon-ok")
+    .addClass("glyphicon-remove")
+    .show();
+
+    $("#myForm button[type=submit]")
+                .attr("disabled","disabled");
+};
+
+/* 인증번호 입력값 없으면 인증하기 버튼 비활성화 */
+$(document).on("keyup","#authNum", function () {
+	if($('#authNum').val().length > 0) {
+		$('#authNumBtn').attr('disabled', false);
+	} else {
+		$('#authNumBtn').attr('disabled', true);
+	}
+});
+$(document).on("keyup","#phone_authNum", function () {
+	if($('#phone_authNum').val().length > 0) {
+		$('#send').attr('disabled', false);
+	} else {
+		$('#send').attr('disabled', true);
+	}
+});
+
+
+/* 인증번호 입력 타이머 */
+let timer = null;
+let isRunning = false;
+function startTimer(count, display) {
+
+	var minutes, seconds;
+    timer = setInterval(function () {
+    minutes = parseInt(count / 60, 10);
+    seconds = parseInt(count % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    display.html("인증 남은 시간 : "+minutes + ":" + seconds);
+
+    // 타이머 끝
+    if (--count < 0) {
+     clearInterval(timer);
+     alert("시간 초과. 본인 인증을 다시 진행해주세요.");
+     $('#authNum').remove();
+     $('#authNumBtn').remove();
+     $('#time').remove();
+     isRunning = false;
+    }
+}, 1000);
+     isRunning = true;
+}
+
+// 성공 상태로 바꾸는 함수
+function successState(sel){
+    $(sel)
+    .parent()
+    .removeClass("has-error")
+    .addClass("has-success")
+    .find(".glyphicon")
+    .removeClass("glyphicon-remove")
+    .addClass("glyphicon-ok")
+    .show();
+
+    $("#myForm button[type=submit]")
+                .removeAttr("disabled");
+};
+// 에러 상태로 바꾸는 함수
+function errorState(sel){
+    $(sel)
+    .parent()
+    .removeClass("has-success")
+    .addClass("has-error")
+    .find(".glyphicon")
+    .removeClass("glyphicon-ok")
+    .addClass("glyphicon-remove")
+    .show();
+
+    $("#myForm button[type=submit]")
+                .attr("disabled","disabled");
+};
+</script>
+
+
 
 </body>
 </html>
