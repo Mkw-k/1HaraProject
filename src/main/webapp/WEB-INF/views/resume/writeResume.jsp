@@ -1581,7 +1581,7 @@ dt, dd {
 																	<div id="desire_apply_work_stat"
 																		class="area_task_input resume_input">
 
-																		<input type="text" id="desiredjobtype" name="desiredjobtype"
+																		<input type="text" id="jobtypes" name="desiredjobtype"
 																			value="" maxlength="50" class="box_input">
 																		<div>
 																			<ul>
@@ -3445,8 +3445,8 @@ alert("iscompleted");
 
 	document.getElementById('resumeStatus').value = 'NO';
 	alert(document.getElementById('resumeStatus').value);
-		
-	/* $("#resumewrite").submit(); */
+	
+	 $("#resumewrite").submit(); 
 	
 }
 </script>
@@ -3598,10 +3598,10 @@ $("#complete").click(function () {
 	    return false;
 	}
 	
-    else if($("#desiredjobtype").val().trim() == ""){
+    else if($("#jobtypes").val().trim() == ""){
     	
         alert('희망 근무 형태 사항을 입력해 주십시오');
-        $("#desiredjobtype").focus();
+        $("#jobtypes").focus();
         
         return false;
         

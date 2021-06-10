@@ -15,6 +15,7 @@ index.jsp
 
 <a href="home.do">home</a>
 
+
 <a href="mypage.do">mypage</a>
 
 <a href="FAQ.do">FAQ</a>
