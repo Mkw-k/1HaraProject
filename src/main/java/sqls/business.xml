@@ -12,7 +12,7 @@
 
 	<insert id="addmember" parameterType="bit.com.a.dto.BusinessDto">
 		INSERT INTO BUSINESS(MEMBERID, PWD, COMPANYNAME, NAME, COMADDRESS, ADDRESSDETAIL, FILENAME, NEWFILENAME, AUTH)
-		VALUES(#{memberid}, #{pwd}, #{companyname}, #{name}, #{comaddress}, #{addressdetail},#{filename}, #{newfilename}, 2)
+		VALUES(#{memberid}, #{pwd}, #{companyname}, #{name}, #{comaddress}, #{addressdetail}, #{filename}, #{newfilename}, 2)
 	</insert>
 
 	<select id="login" parameterType="bit.com.a.dto.BusinessDto" resultType="bit.com.a.dto.BusinessDto">
@@ -34,11 +34,10 @@
 	</select>
 
 	<!-- 회원정보 수정 -->
-	<update id="updateBuspage">
+	<update id="updateBuspage"  parameterType="bit.com.a.dto.BusinessDto">
 	UPDATE BUSINESS
-	SET COMPANYID=#{companyid}, NAME=#{name},COMADDRESS=#{comaddress}, ADDRESSDETAIL=#{addressdetail}, PWD=#{pwd}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}
+	SET MEMBERID=#{memberid}, COMPANYNAME=#{companyname},COMADDRESS=#{comaddress}, ADDRESSDETAIL=#{addressdetail}, PWD=#{pwd}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}
 	WHERE MEMBERID=#{memberid}
 	</update>
-
 
   </mapper>

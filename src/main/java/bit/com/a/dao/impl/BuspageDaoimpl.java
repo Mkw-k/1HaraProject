@@ -18,9 +18,9 @@ public class BuspageDaoimpl implements BuspageDao {
 	private static final String namespace = "Business.";
 
 	@Override
-	public void updateBuspage(BusinessDto dto) {
+	public boolean updateBuspage(BusinessDto dto) {
 		
-		sqlSession.update(namespace + "updateBuspage", dto);
+		return sqlSession.update(namespace + "updateBuspage", dto)>0? true:false;
 	}
 
 	

@@ -44,6 +44,15 @@
 <link href="csss/top.css" rel="stylesheet" type="text/css">
 <link href="csss/common.css" rel="stylesheet" type="text/css">
         <link href="csss/reset.css" rel="stylesheet" type="text/css">
+        
+        
+<style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+  font-family: "Noto Sans KR", sans-serif !important;
+}
+</style>        
 
 
 </head>
@@ -76,8 +85,7 @@
 						<ul>
 							
 								<!-- 개인 -->
-								<li><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지
-										홈</a></li>
+								<li><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지 홈</a></li>
 								<li><a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do">회원정보관리</a></li>
 								<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">구직신청관리</a></li>
 								<li><a href="#" onclick="worknet.popup.popCenterSuppAgree(); return false;" target="_blank" title="새창">고객지원</a></li>
@@ -100,13 +108,13 @@
 				<!-- 20201022 추가 -->
 				
 				<!-- //20201022 추가 -->
-<!-- 				<div class="font-control"> -->
-<!-- 					<p>글자크기</p> -->
-<!-- 					<button type="button" class="big">글자 크게 하기</button> -->
-<!-- 					<button type="button" class="small">글자 작게 하기</button> -->
-<!-- 					<button type="button" class="reset">글자 초기화</button> -->
-<!-- 				</div> -->
-				<!--// 공통 -->
+<!--<div class="font-control"> -->
+<!--<p>글자크기</p> -->
+<!--<button type="button" class="big">글자 크게 하기</button> -->
+<!--<button type="button" class="small">글자 작게 하기</button> -->
+<!--<button type="button" class="reset">글자 초기화</button> -->
+<!--</div> -->
+<!--// 공통 -->
 			</div>
 		</div>
 	</div>
@@ -848,13 +856,13 @@
 						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
 					</li>
 					<li>
-						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustInfoView.do" target="_self">회원정보 수정(성명변경)</a>
+						<a href="mypageUpdate.do" target="_self">회원정보 수정(성명변경)</a>
 					</li>
 					<li>
 						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a>
 					</li>
 					<li>
-						<a href="/indivMemberSrv/custInfoAdmin/deleteIndivCustView.do" target="_self">회원탈퇴</a>
+						<a href="mypageUpdate.do" target="_self">회원탈퇴</a>
 					</li>
 				</ul>
 			</div>

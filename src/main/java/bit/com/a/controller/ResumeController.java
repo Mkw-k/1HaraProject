@@ -173,9 +173,9 @@ public class ResumeController {
 		//학력사항 관련 테이블 insert
 		
 		System.out.println("11111111111111111111111111111111111111111111111111111111111111111111111111111"+edudto.toString());
-		for (int i = 0; i < edudto.getUniversity().length; i++) {
-
-			if( edudto.getUniversity()[i] == null || edudto.getUniversity()[i].equals("")) {
+		
+	
+			if( edudto.getHighschool() == null || edudto.getHighschool().equals("")) {
 			} else {
 			
 			Resume_EduVo eduvo = new Resume_EduVo();
@@ -187,7 +187,24 @@ public class ResumeController {
 			eduvo.setHigh_end(edudto.getHigh_end());
 			eduvo.setHigh_end_status(edudto.getHigh_end_status());
 			
+			boolean b = service.writeEdu(eduvo);
+			boolean c = service.updateProgress(resumeseq);
+			System.out.println(b);
+			System.out.println(c);
 			
+			
+			for (int i = 0; i < edudto.getUniversity().length; i++) {
+				
+			if( edudto.getUniversity()[i] == null || edudto.getUniversity()[i].equals("")) {
+			} else {
+				
+			eduvo.setResumeseq(resumeseq);
+			eduvo.setHighschool(edudto.getHighschool());
+			eduvo.setHigh_str(edudto.getHigh_str());
+			eduvo.setHigh_str_status(edudto.getHigh_str_status());
+			eduvo.setHigh_end(edudto.getHigh_end());
+			eduvo.setHigh_end_status(edudto.getHigh_end_status());
+				
 			eduvo.setUniversity(edudto.getUniversity()[i]);
 			eduvo.setUniv_status(edudto.getUniv_status()[i]);
 			eduvo.setUniv_str(edudto.getUniv_str()[i]);
@@ -200,15 +217,18 @@ public class ResumeController {
 			eduvo.setUniv_grade(edudto.getUniv_grade()[i]);
 			eduvo.setUniv_grade_base(edudto.getUniv_grade_base()[i]);
 			eduvo.setUniv_paper(edudto.getUniv_paper()[i]);
+			
 			System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222" + eduvo.toString());
 
-			boolean b = service.writeEdu(eduvo);
-			boolean c = service.updateProgress(resumeseq);
-			System.out.println(b);
-			System.out.println(c);
+			boolean d = service.writeEdu(eduvo);
+			boolean e = service.updateProgress(resumeseq);
+			System.out.println(d);
+			System.out.println(e);
+			
 			}
+			}
+	
 		}
-		
 		//경력사항 관련 테이블 INSERT
 		System.out.println(" careerdto.getPre_comname().length= " + careerdto.getPre_comname().length);
 		System.out.println(careerdto.toString());
@@ -229,6 +249,7 @@ public class ResumeController {
 			carvo.setPre_dept(careerdto.getPre_dept()[i]);
 			carvo.setPre_sal(careerdto.getPre_sal()[i]);
 			carvo.setPre_jobdetail(careerdto.getPre_jobdetail()[i]);
+			carvo.setPre_reason(careerdto.getPre_reason()[i]);
 			
 			System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333333333" + carvo.toString());
 			
@@ -403,22 +424,27 @@ public class ResumeController {
 		//이력서 리스트
 
 		boolean c = service.deleteEduResume(seq);
+		System.out.println(c);
 		boolean d = service.deleteCareerResume(seq);
+		System.out.println(d);
 		boolean e = service.deleteLicenseResume(seq);
+		System.out.println(e);
 		boolean f = service.deleteActivityResume(seq);
+		System.out.println(f);
 		boolean g = service.deleteAwardResume(seq);
+		System.out.println(g);
 		boolean h = service.deleteLanResume(seq);
-		
+		System.out.println(h);
 		boolean b = service.deleteResume(seq);
 
 		
 		System.out.println(b);
-		System.out.println(c);
-		System.out.println(d);
-		System.out.println(e);
-		System.out.println(f);
-		System.out.println(g);
-		System.out.println(h);
+		
+	
+		
+		
+	
+		
 		
 		//이력서 리스트
 		List<ResumeDto> resumelist = service.getresume(memberid);
@@ -610,6 +636,7 @@ public class ResumeController {
 			carvo.setPre_dept(careerdto.getPre_dept()[i]);
 			carvo.setPre_sal(careerdto.getPre_sal()[i]);
 			carvo.setPre_jobdetail(careerdto.getPre_jobdetail()[i]);
+			carvo.setPre_reason(careerdto.getPre_reason()[i]);
 			
 			System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333333333" + carvo.toString());
 			

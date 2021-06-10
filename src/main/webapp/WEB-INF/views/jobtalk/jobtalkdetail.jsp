@@ -44,7 +44,7 @@
 	 	<div class="side-navigation">
 			<h2 class="skip">선배에게 질문하기 세부메뉴</h2>
 			<div class="navi-top-area">
-				<a href="/User/Qstn/QstnWrite" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
+				<a href="Jobtalkwrite.do" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
 				<div class="myInfoSec">
 					<a href="/User/Qstn/MainProfile" class="myInfo">
 						<!-- [Dev] 프로필 랜덤 이미지 파일명 : random_1 ~ random_20, 이미지 없음 : random_default -->
@@ -83,22 +83,21 @@
 					<strong class="sideNavTit no-link">
 						<a href="javascript:void()">나의그룹</a>
 					</strong>
-					<button type="button" class="select-tooltip qnaSpA">
-						<span class="skip">나의그룹 설명 보기</span>
-					</button>
-					<ul class="sideNavList">
-									<li><a href="/User/Qstn/QstnBizGroup?GroupCode=1000100">웹프로그래머</a></li>
-									<li><a href="/User/Qstn/QstnBizGroup?GroupCode=1000101">응용프로그래머</a></li>
-									<li><a href="/User/Qstn/QstnBizGroup?GroupCode=1000109">빅데이터·AI(인공지능)</a></li>
-									<li><a href="/User/Qstn/QstnUnivGroup?GroupCode=C0033">김포대학</a></li>
-						<!-- [Dev] 신규 아이콘 : 클래스 icnNew 추가 -->
-					</ul>
-
-					<div class="tooltip-layer qnaSpB">
-						<p class="txt">나의그룹은 기본 이력서의 학력(대학교, 대학원), 경력으로 자동 설정되며<br>답변활동 또는 질문등록 시 매칭조건으로 활용됩니다.</p>
-						<button type="button" class="btn-tooltip-close qnaSpB"><span class="skip">닫기</span></button>
-					</div>
 				</div>
+				<c:choose>
+					<c:when test="${jobtalk.memberid==login.memberid }">
+						<div class="sideNavLow">
+							<strong class="sideNavTit">
+								<a id="devLeftMenuEntireTag" href="Jobtalkupdate.do?jobtalkseq=${jobtalk.jobtalkseq }" data-tab="3" class="">질문수정</a>
+							</strong>
+						</div>
+						<div class="sideNavLow">
+							<strong class="sideNavTit">
+								<a id="devLeftMenuEntireTag" href="Jobtalkdelete.do?jobtalkseq=${jobtalk.jobtalkseq }" data-tab="3" class="">질문삭제</a>
+							</strong>
+						</div>
+					</c:when>
+				</c:choose>
 			<div class="sideNavLow devRecentVisitGroup" style="display:none;">
 				<strong class="sideNavTit"><a href="javascript:void();">최근 본 그룹</a></strong>
 				<ul class="sideNavList boxList"></ul>
