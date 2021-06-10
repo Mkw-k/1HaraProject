@@ -107,12 +107,16 @@
             <span id="pwdRegErr" class="help-block">8글자 이상 입력하세요.</span>
             <span class="glyphicon glyphicon-ok form-control-feedback"></span>
         </div>
+   
+   
         <div class="form-group has-feedback">
             <label class="control-label" for="rePwd">비밀번호 재확인</label>
             <input class="form-control" type="password" name="rePwd" id="rePwd"/>
             <span id="rePwdErr" class="help-block">비밀번호와 일치하지 않습니다. 다시 입력해 주세요.</span>
             <span class="glyphicon glyphicon-ok form-control-feedback"></span>
         </div>
+   
+   
         <div class="form-group has-feedback"> 
   			<label class="control-label" for="name">이름</label> 
   			<input type="text" class="form-control" id="name" name="name" placeholder=""> 

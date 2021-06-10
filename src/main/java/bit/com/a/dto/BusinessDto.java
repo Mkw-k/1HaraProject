@@ -149,13 +149,13 @@ public class BusinessDto implements Serializable{
 			this.auth = auth;
 		}
 
-
 		@Override
 		public String toString() {
 			return "BusinessDto [memberid=" + memberid + ", companyname=" + companyname + ", name=" + name
 					+ ", comaddress=" + comaddress + ", pwd=" + pwd + ", addressdetail=" + addressdetail + ", del="
-					+ del + ", auth=" + auth + "]";
+					+ del + ", filename=" + filename + ", newfilename=" + newfilename + ", auth=" + auth + "]";
 		}
+
 
 
 		
