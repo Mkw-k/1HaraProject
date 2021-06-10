@@ -67,7 +67,7 @@
 	<!-- 회원정보 수정 -->
 	<update id="updateMypage">
 	UPDATE MEMBER
-	SET NAME=#{name}, EMAIL=#{email}, ADDRESS=#{address}, DETAILADDRESs=#{detailaddress}, PHONENUM=#{phonenum}, USERPIC=#{userpic}, NEWUSERPIC=#{newuserpic}
+	SET NAME=#{name}, EMAIL=#{email}, ADDRESS=#{address}, DETAILADDRESS=#{detailaddress}, PHONENUM=#{phonenum}, USERPIC=#{userpic}, NEWUSERPIC=#{newuserpic}
 	WHERE MEMBERID=#{memberid}
 	</update>
 <!-- 

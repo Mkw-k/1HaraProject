@@ -90,6 +90,8 @@ public class RecruitDto implements Serializable{
     private String mgEmail;
     //즐겨찾기여부 (디테일 페이지 들어갔을때) 
     private String favoriteJob;
+    //좋아요 여부 (회사 좋아요)
+    private String favoriteCom;
 
 
     //
@@ -111,11 +113,12 @@ public class RecruitDto implements Serializable{
 
 
 
+
 public RecruitDto(int jobSeq, String companyId, String jobTitle, String jobContent, String area1Name,
 			String area2Name, int jobVolumn, int salary, String jobStart, String jobEnd, String emp_Type,
 			String education, String career_Type, String career_Desc, int readcount, String regdate, int del,
 			String companyname, String eduname, String emp_name, int rnum, String buscode, String detailAdress1,
-			String detailAdress2, String mgName, String mgPhone, String mgEmail, String favoriteJob,
+			String detailAdress2, String mgName, String mgPhone, String mgEmail, String favoriteJob, String favoriteCom,
 			List<String> busname, String certifyUpdate) {
 		super();
 		this.jobSeq = jobSeq;
@@ -146,9 +149,11 @@ public RecruitDto(int jobSeq, String companyId, String jobTitle, String jobConte
 		this.mgPhone = mgPhone;
 		this.mgEmail = mgEmail;
 		this.favoriteJob = favoriteJob;
+		this.favoriteCom = favoriteCom;
 		this.busname = busname;
 		this.certifyUpdate = certifyUpdate;
 	}
+
 
 
 
@@ -164,9 +169,10 @@ public RecruitDto(int jobSeq, String companyId, String jobTitle, String jobConte
 				+ ", readcount=" + readcount + ", regdate=" + regdate + ", del=" + del + ", companyname=" + companyname
 				+ ", eduname=" + eduname + ", emp_name=" + emp_name + ", rnum=" + rnum + ", buscode=" + buscode
 				+ ", detailAdress1=" + detailAdress1 + ", detailAdress2=" + detailAdress2 + ", mgName=" + mgName
-				+ ", mgPhone=" + mgPhone + ", mgEmail=" + mgEmail + ", favoriteJob=" + favoriteJob + ", busname="
-				+ busname + ", certifyUpdate=" + certifyUpdate + "]";
+				+ ", mgPhone=" + mgPhone + ", mgEmail=" + mgEmail + ", favoriteJob=" + favoriteJob + ", favoriteCom="
+				+ favoriteCom + ", busname=" + busname + ", certifyUpdate=" + certifyUpdate + "]";
 	}
+
 
 
 
@@ -182,9 +188,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setJobSeq(int jobSeq) {
 		this.jobSeq = jobSeq;
 	}
+
 
 
 
@@ -200,9 +208,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
+
 
 
 
@@ -218,9 +228,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setJobTitle(String jobTitle) {
 		this.jobTitle = jobTitle;
 	}
+
 
 
 
@@ -236,9 +248,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setJobContent(String jobContent) {
 		this.jobContent = jobContent;
 	}
+
 
 
 
@@ -254,9 +268,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setArea1Name(String area1Name) {
 		this.area1Name = area1Name;
 	}
+
 
 
 
@@ -272,9 +288,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setArea2Name(String area2Name) {
 		this.area2Name = area2Name;
 	}
+
 
 
 
@@ -290,9 +308,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setJobVolumn(int jobVolumn) {
 		this.jobVolumn = jobVolumn;
 	}
+
 
 
 
@@ -308,9 +328,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
+
 
 
 
@@ -326,9 +348,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setJobStart(String jobStart) {
 		this.jobStart = jobStart;
 	}
+
 
 
 
@@ -344,9 +368,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setJobEnd(String jobEnd) {
 		this.jobEnd = jobEnd;
 	}
+
 
 
 
@@ -362,9 +388,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setEmp_Type(String emp_Type) {
 		this.emp_Type = emp_Type;
 	}
+
 
 
 
@@ -380,9 +408,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setEducation(String education) {
 		this.education = education;
 	}
+
 
 
 
@@ -398,9 +428,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setCareer_Type(String career_Type) {
 		this.career_Type = career_Type;
 	}
+
 
 
 
@@ -416,9 +448,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setCareer_Desc(String career_Desc) {
 		this.career_Desc = career_Desc;
 	}
+
 
 
 
@@ -434,9 +468,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
 	}
+
 
 
 
@@ -452,9 +488,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+
 
 
 
@@ -470,9 +508,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setDel(int del) {
 		this.del = del;
 	}
+
 
 
 
@@ -488,9 +528,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setCompanyname(String companyname) {
 		this.companyname = companyname;
 	}
+
 
 
 
@@ -506,9 +548,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setEduname(String eduname) {
 		this.eduname = eduname;
 	}
+
 
 
 
@@ -524,9 +568,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setEmp_name(String emp_name) {
 		this.emp_name = emp_name;
 	}
+
 
 
 
@@ -542,9 +588,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setRnum(int rnum) {
 		this.rnum = rnum;
 	}
+
 
 
 
@@ -560,9 +608,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setBuscode(String buscode) {
 		this.buscode = buscode;
 	}
+
 
 
 
@@ -578,9 +628,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setDetailAdress1(String detailAdress1) {
 		this.detailAdress1 = detailAdress1;
 	}
+
 
 
 
@@ -596,9 +648,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setDetailAdress2(String detailAdress2) {
 		this.detailAdress2 = detailAdress2;
 	}
+
 
 
 
@@ -614,9 +668,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setMgName(String mgName) {
 		this.mgName = mgName;
 	}
+
 
 
 
@@ -632,9 +688,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setMgPhone(String mgPhone) {
 		this.mgPhone = mgPhone;
 	}
+
 
 
 
@@ -650,9 +708,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setMgEmail(String mgEmail) {
 		this.mgEmail = mgEmail;
 	}
+
 
 
 
@@ -668,9 +728,31 @@ public int getJobSeq() {
 
 
 
+
 	public void setFavoriteJob(String favoriteJob) {
 		this.favoriteJob = favoriteJob;
 	}
+
+
+
+
+
+
+
+	public String getFavoriteCom() {
+		return favoriteCom;
+	}
+
+
+
+
+
+
+
+	public void setFavoriteCom(String favoriteCom) {
+		this.favoriteCom = favoriteCom;
+	}
+
 
 
 
@@ -686,9 +768,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setBusname(List<String> busname) {
 		this.busname = busname;
 	}
+
 
 
 
@@ -704,9 +788,11 @@ public int getJobSeq() {
 
 
 
+
 	public void setCertifyUpdate(String certifyUpdate) {
 		this.certifyUpdate = certifyUpdate;
 	}
+
 
 
 

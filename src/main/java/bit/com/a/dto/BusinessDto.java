@@ -35,6 +35,7 @@ public class BusinessDto implements Serializable{
 		private String filename;
 		private String newfilename;
 		private int auth;
+		private String phonenum;
 		
 		
 		public BusinessDto() {
@@ -149,13 +150,22 @@ public class BusinessDto implements Serializable{
 			this.auth = auth;
 		}
 
+		
+		public String getPhonenum() {
+			return phonenum;
+		}
+
+		public void setPhonenum(String phonenum) {
+			this.phonenum = phonenum;
+		}
 
 		@Override
 		public String toString() {
 			return "BusinessDto [memberid=" + memberid + ", companyname=" + companyname + ", name=" + name
 					+ ", comaddress=" + comaddress + ", pwd=" + pwd + ", addressdetail=" + addressdetail + ", del="
-					+ del + ", auth=" + auth + "]";
+					+ del + ", filename=" + filename + ", newfilename=" + newfilename + ", auth=" + auth + "]";
 		}
+
 
 
 		

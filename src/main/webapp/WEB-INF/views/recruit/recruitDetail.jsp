@@ -82,9 +82,22 @@ System.out.println("resumelist" +resumelist);
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <h3 class="">${dto.companyname}&nbsp; &nbsp;&nbsp;<a style="color:red" class="btn btn-secondary red" href="">
-          <i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
-          </a><br>${dto.jobTitle}</h3>
+          <h3 class="">${dto.companyname}&nbsp; &nbsp;&nbsp;
+          	
+          		<c:choose>
+          		<c:when test="${dto.favoriteCom >0 }">
+          					<a style="color:red" class="btn btn-secondary red" href="javascript:dropFavoriteCom(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
+          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
+          		</c:when>
+          		<c:otherwise>
+          					<a class="btn btn-secondary red" href="javascript:comFavorite(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
+          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
+          		</c:otherwise>
+          	</c:choose>
+          	
+         
+          
+          <br>${dto.jobTitle}</h3>
         </div>
         <div class="col-md-4 text-right" style="">
 
@@ -239,7 +252,9 @@ System.out.println("resumelist" +resumelist);
     <div class="container">
       <div class="row">
         <div class="col-md-4 bg-light border-right" style="">
-          <dl class="info_period"> 남은기간 <p> 남은 시간 타이머 </p>
+          <dl class="info_period">
+            <dt>남은시간</dt>
+            <dd><em id="timeDeal"></em></dd>
             <dt>시작일</dt>
             <dd>${dto.jobStart }</dd>
             <dt class="end">마감일</dt>
@@ -330,6 +345,9 @@ System.out.println("resumelist" +resumelist);
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
   <script type="text/javascript">
+  
+
+  
 function deleteRecruit(jobSeq) {
 	location.href="deleteRecruit.do?jobSeq="+jobSeq;
 }
@@ -474,6 +492,31 @@ function sample6_execDaumPostcode() {
     }).open();
 }
 
+
+
+function comFavorite(jobSeq, companyId, memberid) {
+	//alert("회사좋아요 등록");
+	//alert(companyId);
+	//alert(memberid);
+	location.href = "favoriteCom.do?jobSeq="+jobSeq+"&companyId="+companyId+"&memberid="+memberid;
+}
+
+function dropFavoriteCom(jobSeq, companyId, memberid) {
+	//alert("회사좋아요 해제");
+	//alert(companyId);
+	//alert(memberid);
+
+	location.href = "dropFavoriteCom.do?jobSeq="+jobSeq+"&companyId="+companyId+"&memberid="+memberid;
+
+	//setTimeout("location.reload()", 15);
+
+	//location.href = "RecruitDetail.do?jobseq=" +jobSeq;
+}
+
+
+  
+  
+
 function jobFavorite(jobSeq, memberid) {
 	//alert("즐겨찾기등록");
 	//alert(jobSeq);
@@ -508,6 +551,36 @@ function jobApply(jobseq, memberid, resumeseq) {
 	location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
 
 }
+
+function CountDownTimer(dt, id) {
+    var end = new Date(dt);
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+        	
+            clearInterval(timer);
+            document.getElementById(id).innerHTML = '타임딜 종료됨';
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var hours = Math.floor((distance % _day) / _hour);
+        var minutes = Math.floor((distance % _hour) / _minute);
+        var seconds = Math.floor((distance % _minute) / _second);
+        document.getElementById(id).innerHTML = days + '일 ';
+        document.getElementById(id).innerHTML += hours + '시간 ';
+        document.getElementById(id).innerHTML += minutes + '분 ';
+        document.getElementById(id).innerHTML += seconds + '초';
+    }
+    timer = setInterval(showRemaining, 1000);
+}
+CountDownTimer('${dto.jobEnd}', 'timeDeal'); // 2020-12-06 오후10시 50분까지
+ 	
 
 </script>
 

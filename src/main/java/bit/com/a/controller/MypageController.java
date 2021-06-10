@@ -46,38 +46,44 @@ public class MypageController {
    
    @RequestMapping(value = "mypageUpdateAf.do", method = {RequestMethod.GET,RequestMethod.POST})
    public String mypageUpdateAf(MemberDto dto, @RequestParam(value = "fileload", required = false) MultipartFile fileload,
-			HttpServletRequest req) throws Exception {
-      
+			String filename, HttpServletRequest req) throws Exception {
+	  
+	  System.out.println("fileload" + fileload);
 	  System.out.println("memberupdate:" + dto.toString());
+	  dto.setUserpic(fileload.getOriginalFilename());
 	  
-	  String userpic = fileload.getOriginalFilename();
-	  dto.setUserpic(userpic);
-	  
-	  //upload 경로 설정
-	  //server(tomcat)
+	// 파일 경로
 	  String fupload = req.getServletContext().getRealPath("/upload");
-
-	  //폴더에 올리는 법
-	  //String fupload = "d:\\tmp";
-	  System.out.println("fupload:"+fupload);
-	  String newuserpic = PdsUtil.getNewFileName(dto.getUserpic());
-	  dto.setNewuserpic(newuserpic);
-
-	  File file = new File(fupload + "/" + newuserpic);
+	
+	// 수정할 파일이 있음
+	if(dto.getUserpic() != null && !dto.getUserpic().equals("")) {
+		System.out.println("있음?");
+		String f = dto.getUserpic();
+		String newfilename = PdsUtil.getNewFileName(f);
+		dto.setUserpic(f);
+		dto.setNewuserpic(newfilename);  
+		File file = new File(fupload + "/" + newfilename);	
+		System.out.println(newfilename);
+		try {
+			// 실제 업로드
+			FileUtils.writeByteArrayToFile(file, fileload.getBytes());
+		
+			// db 갱신
+			service.updateMypage(dto);
+		
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	else {
+		System.out.println("fail");
+		dto.setUserpic(filename);
+		
+		service.updateMypage(dto);
+	}
 	  
-	  try {
-			 FileUtils.writeByteArrayToFile(file, fileload.getBytes());
-			 service.updateMypage(dto);
-			 return "mypage";
-      
-	  }catch(IOException e) {
-		  e.printStackTrace();
-		  System.out.println("가입되지않았습니다" + new Date());
-	  }
-      
-      System.out.println(dto.toString());
-      return "mypage";
-  
+	return "redirect:/mypage.do";	  
       
    }
 

@@ -42,7 +42,10 @@ public class CompanyController {
 		
 		
 		model.addAttribute("company", dto);
+		
+	
 		service.companywrite(dto);
+		
 		
 		System.out.println("dto : "+dto.toString());
 		
@@ -64,7 +67,7 @@ public class CompanyController {
 		model.addAttribute("company",dto);
 		System.out.println("af투스트링" + dto.toString());
 		
-		return "company/companywrite";
+		return "company/companyupdate";
 	}
 
 		

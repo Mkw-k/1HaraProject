@@ -125,7 +125,9 @@ body {
 
 
 			<div class="link-special">
-				<a href="/jobyoung/main.do">청년</a> <a href="/woman/main/main.do">여성</a> <a href="/senior/main/main.do">장년</a>
+				<a href="/jobyoung/main.do">청년</a> 
+				<a href="/woman/main/main.do">여성</a> 
+				<a href="/senior/main/main.do">장년</a>
 			</div>
 		</div>
 	</div>
@@ -141,8 +143,7 @@ body {
 								<a href="/empInfo/empInfoSrch/list/dtlEmpSrchMain.do">채용정보 홈</a>
 							</p>
 							<p>
-								<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?moreCon=more">채용정보
-									상세검색</a>
+								<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?moreCon=more">채용정보 상세검색</a>
 							</p>
 							<p>
 								<a href="/empInfo/empInfoSrch/calendar/empCalendarMonth.do">채용캘린더</a>
@@ -740,8 +741,7 @@ body {
                             </div>
                         </li>
                         <li>
-                            <a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">e-채용마당 서비스
-                            </a>
+                            <a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">e-채용마당 서비스</a>
                             <button class="btn-show">e-채용마당 서비스 메뉴 닫기</button>
                             <div class="depth3">
                                 <ul>
@@ -1060,7 +1060,7 @@ body {
                 
                 
                 <section id="contents" class="mypage">
-                 	<form id="registForm" name="registForm" action="mypageUpdateAf.do" method="post"  enctype="multipart/form-data">
+                 	<form id="registForm" name="registForm" action ="mypageUpdateAf.do" method="post"  enctype="multipart/form-data">
                         <input type="hidden" id="checkAddr" name="checkAddr" value="">
                         <input type="hidden" id="regionCd" name="regionCd" value="28245">
                         <input type="hidden" id="strtnmCd" name="strtnmCd" value="282453155006">
@@ -1172,7 +1172,7 @@ body {
                                         <th scope="row">휴대전화</th>
                                         <td>
                                             <div class="tel-wrap mt05">
-                                                <select id="hp1" name= title="휴대전화 앞자리 선택" pil="PF_MPNO">
+                                                <select id="hp1" name= title="휴대전화 앞자리 선택">
                                                     <option value="">선택</option>
                                                     <option value="010" selected="selected">010</option>
                                                     <option value="011">011</option>
@@ -1182,11 +1182,11 @@ body {
                                                     <option value="019">019</option>
                                                 </select>
                                                 <span>-</span>
-                                                <input type="text" class="input-text" id="hp2" title="휴대전화 중간자리 입력" onkeydown="worknet.checkForm.onlyNumber()" maxlength="4" pil="PF_MPNO">
+                                                <input type="text" class="input-text" id="hp2" title="휴대전화 중간자리 입력" maxlength="4" >
                                                 <span>-</span>
-                                                <input type="text" class="input-text" id="hp3" title="휴대전화 뒷자리 입력" onkeydown="worknet.checkForm.onlyNumber()" maxlength="4" pil="PF_MPNO">
+                                                <input type="text" class="input-text" id="hp3" title="휴대전화 뒷자리 입력"  maxlength="4" >
                                             
-                                            	<input type="hidden" class="input-text" id="allphonenum" name="phonenum" title="번호 합친거"  onkeydown="worknet.checkForm.onlyNumber()" maxlength="4" pil="PF_MPNO">
+                                            	<input type="hidden" class="input-text" id="allphonenum" name="phonenum" title="번호 합친거"   maxlength="4" >
                                             </div>
                                         </td>
                                     </tr>
@@ -1277,7 +1277,7 @@ body {
                         <!-- //20170602 네이버,소셜 로그인 연동 간편 로그인 추가 -->
                         <div class="btn-group">
                             <a href="mypage.do" class="button navy">취소</a>
-                            <button type="submit" onclick="submitFunc()" class="button blue">확인</button>             
+                            <button type="button" onclick="submitFunc()" class="button blue">확인</button>             
                             <a href="memberDelete.do" class="button navy">탈퇴하라!</a>
                         </div>
                         <div>
@@ -1371,8 +1371,12 @@ body {
             
             function submitFunc() {
             	alert('클릭');
-				let phone =$('#hp1').val() + $('#hp2').val() + $('#hp3').val();  
-				$('phonenum').val() = phone;
+            	let num1 = $('#hp1').val();
+            	let num2 = $('#hp2').val();
+            	let num3 = $('#hp3').val();
+				let phone = num1 + num2 + num3; 
+				$('#allphonenum').val(phone);
+				alert(phone);
 				$('#registForm').submit();
             }
             

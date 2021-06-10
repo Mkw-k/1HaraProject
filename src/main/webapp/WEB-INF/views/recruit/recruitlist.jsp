@@ -25,6 +25,9 @@ CRUD
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- 푸터 css -->
+<link href="csss/footer.css" rel="stylesheet" type="text/css">
+
 <style type="text/css">
 .createRecruitBtn{
    cursor: pointer;
@@ -36,8 +39,135 @@ padding:20px;
 height: 150px;
 } */
 
-
 </style>
+
+
+
+<!-- 폰트스타일  -->
+<style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+  font-family: "Noto Sans KR", sans-serif !important;
+}
+</style>
+
+<!-- 버튼 모달 -->
+<style type="text/css">
+
+
+* {box-sizing: border-box}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+  background-color: #ccc;
+  color: black;
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+  background-color: #f44336;
+}
+
+/* Add padding and center-align text to the container */
+.container {
+  padding: 16px;
+  text-align: center;
+}
+
+.foota {
+width:2000px;
+}
+
+.con{
+border-top-left-radius: 2em; border-top-right-radius: 2em; border-bottom-right-radius: 2em; border-bottom-left-radius: 2em;
+
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* The Modal Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+
+
+}
+
+/* Change styles for cancel button and delete button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .deletebtn {
+    width: 100%;
+  }
+}
+</style>
+
+
 
 </head>
 <body>
@@ -49,7 +179,9 @@ height: 150px;
 <div class="container-fluid">
       <div class="row">
          <div class="col-12">
-            <img alt="" src="<%=request.getContextPath() %>/image/개발자23.gif" style="width: 100%; height: 140px;">
+         	<div style="text-align : center;">
+            <img alt="" src="<%=request.getContextPath() %>/image/찾잡.png" style="width: 60%; height: 60%;">
+            </div>
          </div>
       </div>
    </div>
@@ -58,8 +190,9 @@ height: 150px;
 
 
 
+
 <!-- 프론트 작업중 다중 셀렉트 박스  -->
-   <div class="container">
+   <div class="container con" style="border: groove;">
       <div class="header clearfix">
          <nav>
             <ul class="nav nav-pills float-right">
@@ -68,7 +201,11 @@ height: 150px;
                <li class="nav-item"><a class="nav-link" href="home.do">메인으로</a></li>
             </ul>
          </nav>
-         <h3 class="text-muted">채용공고 게시판</h3>
+
+		<h3 class="text-muted" style="
+    margin-left: 250px;
+">채용공고 게시판</h3>
+
          <div class="m-5"></div>
       </div>
 
@@ -77,7 +214,7 @@ height: 150px;
 <form action="#" id="_frmFormSearch" name="dataForm" method="post" novalidate="novalidate">
    <input type="hidden"  id="_page" >
       <div class="py-5">
-         <div class="container">
+         <div class="container" style="border: ridge;">
 
             <div class="row">
                <div class="col-md-12">
@@ -89,11 +226,12 @@ height: 150px;
 
                   </ul>
 
+<!-- 다중이 중중이 시작 -->
                   <div class="tab-content mt-2">
                      <div class="tab-pane fade active show" id="tabone"
                         role="tabpanel">
                         <div class="py-5">
-                           <div class="container">
+                           <div class="container" style="border: outset;">
                               <div class="row">
 
                                  <div class="col-md-4">
@@ -183,8 +321,9 @@ height: 150px;
 							</div>
 
 							<p>
-								<button type="button" id="deleteResult">삭제하기</button>
+								<button class="deletebtn" type="button" id="deleteResult" style="width: 120px;">선택 초기화</button>
 							</p>
+
 
                   </div>
                </div>
@@ -194,25 +333,17 @@ height: 150px;
 
 
 
-
-
-
-
-
-
-
-
+	경력 / 학력  <br>
 
    <section class="search-sec">
     <div class="container">
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-12 p-0">
                             <select class="form-control search-slt" name="careerStart" style="font-size: 12pt">
                                 <option disabled="disabled">경력시작</option>
-                                <option value="0">무관</option>
+                                <option value="100">무관</option>
                                 <option value="1">신입</option>
                                 <option value="2">1년</option>
                                 <option value="3">2년</option>
@@ -229,7 +360,7 @@ height: 150px;
                             <h3>~</h3>
                             <select class="form-control search-slt" name="careerEnd" style="font-size: 12pt">
                                 <option disabled="disabled">경력끝</option>
-                                <option value="0">무관</option>
+                                <option value="100">무관</option>
                                 <option value="1">신입</option>
                                 <option value="2">1년</option>
                                 <option value="3">2년</option>
@@ -281,6 +412,9 @@ height: 150px;
 
 </form>
 </div>
+
+
+
    <!-- /container -->
 
 
@@ -314,16 +448,21 @@ height: 150px;
       </div>
    </div> -->
 
-   <br><br><br>
+
+
+
+<!-- 밑에 한줄 배경 -->
+<%--    <br><br><br>
 
    <div class="container">
       <div class="row">
          <div class="col-12">
+         	<span><a href="javascript:priMember()">프리미엄회원결제</a></span>
             <img alt="" src="<%=request.getContextPath() %>/image/개발자23.gif" style="width: 100%; height: 140px;">
          </div>
       </div>
    </div>
-   <br><br>
+   <br><br> --%>
 
 
    <div class="container">
@@ -331,7 +470,7 @@ height: 150px;
 
 
          <table class="table table-hover col-sm-12 " style="" id="table">
-            <thead>
+            <thead class="thead-dark">
                <tr>
                   <th>#</th>
 
@@ -365,12 +504,139 @@ height: 150px;
    </div>
 
 
-   <div class="container" style="">
+   <!-- <div class="container" style="">
       <footer class="footer">
          <p>© 1hara Corp. 2021</p>
       </footer>
-   </div>
+   </div> -->
 
+
+<!-- FOOTER -->
+
+<div id="footer">
+      	<div class="top-area">
+		<div class="inner-wrap">
+			<div class="link">
+				<a href="#1" class="bg-logo-ei" onclick="fn_moelToken('https://www.ei.go.kr/ei/eih/cm/hm/main.do');">고용보험</a>
+				<a href="#2" class="bg-logo-hrd" onclick="fn_moelToken('http://www.hrd.go.kr');">직업훈련포털 HRD-Net</a>
+			</div>
+
+
+			<div class="right">
+				<div class="visit">
+					일평균 방문자수 <em>144,970</em>명
+				</div>
+
+				<div class="link-select">
+					<button type="button" class="btn-link-open">패밀리 및 유관기관 사이트</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="familySite-area" style="display: block;">
+		<ul>
+			<li>
+				<strong>패밀리사이트</strong>
+				<a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do" title="새창 열림" target="_blank">지역워크넷</a>
+				<a href="/ilmoa/jobSearch/retrieveIlmoaJobDetailSearchByMain.do" title="새창 열림" target="_blank">정부지원일자리</a>
+				<a href="#1" title="새창 열림" onclick="f_moveUrl('EI')">고용보험</a>
+				<a href="#2" title="새창 열림" onclick="f_moveUrl('HRD')">직업능력개발훈련</a>
+			    <a href="#3" title="새창 열림" onclick="f_moveUrl('WT')">장애인고용포털</a>
+				<a href="http://www.eps.go.kr" title="새창 열림" target="_blank">외국인고용</a>
+				<a href="#4" title="새창 열림" onclick="f_moveUrl('CM')">사이버진로교육센터</a>
+			</li>
+			<li>
+				<strong>정부기관</strong>
+				<a href="http://www.moel.go.kr" title="새창 열림" target="_blank">고용노동부</a>
+				<a href="http://www.moef.go.kr" title="새창 열림" target="_blank">기획재정부</a>
+				<a href="http://www.moe.go.kr" title="새창 열림" target="_blank">교육부</a>
+				<a href="http://www.msit.go.kr" title="새창 열림" target="_blank">과학기술정보통신부</a>
+				<a href="http://www.mofa.go.kr" title="새창 열림" target="_blank">외교부</a>
+				<a href="http://www.unikorea.go.kr" title="새창 열림" target="_blank">통일부</a>
+				<a href="http://www.moj.go.kr" title="새창 열림" target="_blank">법무부</a>
+				<a href="http://www.mnd.go.kr" title="새창 열림" target="_blank">국방부</a>
+				<a href="http://www.mois.go.kr" title="새창 열림" target="_blank">행정안전부</a>
+				<a href="http://www.mcst.go.kr" title="새창 열림" target="_blank">문화체육관광부</a>
+				<a href="http://www.mafra.go.kr" title="새창 열림" target="_blank">농림축산식품부</a>
+				<a href="http://www.motie.go.kr" title="새창 열림" target="_blank">산업통상자원부</a>
+				<a href="http://www.mohw.go.kr" title="새창 열림" target="_blank">보건복지부</a>
+				<a href="http://www.me.go.kr" title="새창 열림" target="_blank">환경부</a>
+				<a href="http://www.mogef.go.kr" title="새창 열림" target="_blank">여성가족부</a>
+				<a href="http://www.molit.go.kr" title="새창 열림" target="_blank">국토교통부</a>
+				<a href="http://www.mof.go.kr" title="새창 열림" target="_blank">해양수산부</a>
+				<a href="http://www.mpm.go.kr" title="새창 열림" target="_blank">인사혁신처</a>
+				<a href="http://www.moleg.go.kr" title="새창 열림" target="_blank">법제처</a>
+				<a href="http://www.mpva.go.kr" title="새창 열림" target="_blank">국가보훈처</a>
+				<a href="http://www.mfds.go.kr" title="새창 열림" target="_blank">식품의약품안전처</a>
+				<a href="http://www.ftc.go.kr" title="새창 열림" target="_blank">공정거래위원회</a>
+				<a href="http://www.fsc.go.kr" title="새창 열림" target="_blank">금융위원회</a>
+				<a href="http://www.acrc.go.kr" title="새창 열림" target="_blank">국민권익위원회</a>
+				<a href="http://www.kcc.go.kr" title="새창 열림" target="_blank">방송통신위원회</a>
+			</li>
+			<li>
+				<strong>유관기관</strong>
+				<a href="http://www.kcomwel.or.kr" title="새창 열림" target="_blank">근로복지공단</a>
+				<a href="http://www.hrdkorea.or.kr" title="새창 열림" target="_blank">한국산업인력공단</a>
+				<a href="http://www.kosha.or.kr" title="새창 열림" target="_blank">안전보건공단</a>
+				<a href="http://www.kead.or.kr" title="새창 열림" target="_blank">장애인고용공단</a>
+				<a href="http://www.socialenterprise.or.kr" title="새창 열림" target="_blank">한국사회적기업진흥원</a>
+				<a href="http://www.kopo.ac.kr" title="새창 열림" target="_blank">한국폴리텍대학</a>
+				<a href="http://www.koreatech.ac.kr" title="새창 열림" target="_blank">한국기술교육대학교</a>
+				<a href="http://www.kli.re.kr" title="새창 열림" target="_blank">한국노동연구원</a>
+				<!-- <a href="http://news.joins.com/retirement?cloc=joongang|home|subsection5" title="새창 열림" target="_blank">중앙일보 반퇴시대 </a> -->
+			</li>
+		</ul>
+	</div>
+
+
+<!-- 푸터미들 -->
+
+			<div class="middle-area">
+				<div class="inner-wrap">
+					<div class="link-footer">
+						<a href="info.do">일하라 소개</a>
+						<a href="infoyakgwan.do">이용약관</a>
+						<a href="infomember.do"><b>개인정보처리방침</b></a>
+						<a href="infoemail.do">이메일주소무단수집거부</a>
+						<a href="infowebaccess.do">웹접근성정책</a>
+						<a href="infocopyright.do">저작권정책 및 제휴문의</a>
+						<a href="infobanner.do">배너 가져가기</a>
+					</div>
+				</div>
+			</div>
+
+		<div class="bottom-area">
+			<div class="inner-wrap">
+				<div class="link-logo">
+					<a href="http://www.moel.go.kr/" class="bg-logo-moel" target="_blank" title="새창 열림">고용노동부</a>
+					<a href="http://www.keis.or.kr/" class="bg-logo-keis" target="_blank" title="새창 열림">한국고용정보원</a>
+				</div>
+
+				<div class="info">
+					<address class="address">
+						서울특별시 마포구 신수동 63-14 비트캠프 신촌센터
+					</address>
+					<p class="copy">
+						Copyright © 2021 <span class="bg-txt-moel">고용노동부</span> <span class="bg-txt-keis">한국고용정보원</span> all rights reserved.
+					</p>
+					<p class="txt">
+						일하라 이용문의 1haramaster@keis.or.kr 1577-7114(유료)
+					</p>
+				</div>
+				<img src="./static/images/mainlogo.png" style="width: 130px;">
+				<div class="etc">
+					<a href="/images/useInfo/certification_kor2015.jpg" target="_blank" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; var remote = window.open('https://www.eprivacy.or.kr/front/certifiedSiteMark/certifiedSiteMarkPopup.do?certCmd=E&amp;certNum=2021-E-R001','EPRIVACY','width=527,height=720'); remote.focus(); return false;" title="새창"><img src="./static/images/brn-epriavcy.png" alt="개인정보보호우수사이트 인증서"></a>
+								<a href="/html/wauMark2020_worknet.html" onclick="try { latte.getEvent(event).stop(); } catch (ex) {};window.open(this.href,'mark2020','width=605,height=850,scrollbars=no');return false;" title="새창" target="_blank" style="margin-top:-3px"><img src="./static/images/brn-wa-2019.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)"></a>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- ==============FOOTER================= -->
 
 
 <script type="text/javascript">
@@ -385,6 +651,11 @@ function createRecruit() {
 //작성목록으로 이동(New)
 function createRecruitNew() {
    location.href = "createTest.do";
+}
+
+//결제페이지로 이동
+function priMember() {
+   location.href = "priMember.do?memberid="+'${login.memberid}'+"&companyname="+'${login.companyname}'+"&name="+'${login.name}'+"&comaddress="+'${login.comaddress}';
 }
 
 //댓글달때 화살표 만들어주는기능(댓글이 필요없으므로 삭제예정)
@@ -837,7 +1108,7 @@ $(document).on("change", ".list_col3" , function(){
       app = "<span class=arrBusdata id=selectedBuscode"+cnt+">"+busname+
            "<input name='buscode' type='hidden' value='"+buscode+"'>"+
            "<a onclick='delSelBuscode("+cnt+","+count+")'>"+
-           "<img alt='왜안뜨지' src='ma.jpg' style='width:30px; height:30px;'>"+
+           "<img alt='왜안뜨지' src='checkbox.png' style='width:15px; height:15px;'>"+
            "</a>"+"</span>"+"&nbsp;&nbsp;";
 
 
