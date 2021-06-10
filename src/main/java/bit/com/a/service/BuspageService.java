@@ -7,7 +7,7 @@ public interface BuspageService {
 	
 	
 	// 뿌려주는곳
-	public String getbuspage(BusinessDto dto);
+	public BusinessDto getbuspage(BusinessDto dto);
 	
 	boolean updateBuspage(BusinessDto dto);
 

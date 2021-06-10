@@ -102,6 +102,7 @@ public class BusinessController {
 
 	  BusinessDto login = service.login(dto); 
 	  if(login != null && !login.getMemberid().equals("")) {
+		  System.out.println("login id="+login.getMemberid());
 		  req.getSession().setAttribute("login", login); 
 		  // req.getSession().setMaxInactiveInterval(60 * 60 * 24);
 	  

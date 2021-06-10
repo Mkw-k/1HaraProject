@@ -16,7 +16,7 @@
 	</insert>
 
 	<select id="login" parameterType="bit.com.a.dto.BusinessDto" resultType="bit.com.a.dto.BusinessDto">
-		SELECT MEMBERID, PWD, COMPANYNAME, NAME, AUTH , COMADDRESS, NEWFILENAME
+		SELECT MEMBERID, PWD, COMPANYNAME, NAME, AUTH , COMADDRESS, NEWFILENAME , EMAIL
 		FROM BUSINESS
 		WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 	</select>
@@ -28,7 +28,7 @@
 	</delete>
 
 	<select id="getBuspage" parameterType="java.lang.String" resultType="bit.com.a.dto.BusinessDto">
-	SELECT MEMBERID,COMPANYNAME,PWD,COMADDRESS,ADDRESSDETAIL,DEL,AUTH,NAME,FILENAME, NEWFILENAME
+	SELECT MEMBERID,COMPANYNAME,PWD,COMADDRESS,ADDRESSDETAIL,AUTH,NAME,FILENAME, NEWFILENAME
 	FROM BUSINESS
 	WHERE MEMBERID=#{memberid}
 	</select>
