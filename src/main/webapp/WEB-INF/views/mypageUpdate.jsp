@@ -1237,10 +1237,10 @@ body {
                                         </th>
                                         <td>
                                             <div class="email-wrap mt05">
-                                                <input type="text" name="email" id="email1" value="corsa94" maxlength="40" class="input-text" title="이메일 주소 입력" pil="PF_EMAIL">
-                                                <span>@</span>
-                                                <input type="text" id="email2" name="email2" maxlength="40" value="naver.com" class="input-text" title="이메일 도메인 입력" pil="PF_EMAIL">
-                                                <select nname="emailList" onchange="f_selectEmailValue(this.value);" title="이메일 도메인 선택">
+                                                <input type="text" name="email" id="email1" maxlength="40" class="input-text" title="이메일 주소 입력" pil="PF_EMAIL">
+                                                <span name="email">@</span>
+                                                <input type="text" id="email2" name="email" maxlength="40" value="naver.com" class="input-text" title="이메일 도메인 입력" pil="PF_EMAIL">
+                                                <select name="email" onchange="f_selectEmailValue(this.value);" title="이메일 도메인 선택">
                                                     <option value="chol.com">chol.com</option>
                                                     <option value="dreamwiz.com">dreamwiz.com</option>
                                                     <option value="daum.net">daum.net</option>

@@ -396,40 +396,45 @@
 
 
     <dependency>
-       <groupId>javax.mail</groupId>
-       <artifactId>mail</artifactId>
-       <version>1.4</version>
-   </dependency>
-   <!-- 휴대폰 인증 -->
-     <dependency>
-       <groupId>net.nurigo</groupId>
-       <artifactId>javaSDK</artifactId>
+    	<groupId>javax.mail</groupId>
+    	<artifactId>mail</artifactId>
+    	<version>1.4</version>
+	</dependency>
+	<!-- 휴대폰 인증 -->
+  	<dependency>
+  	  <groupId>net.nurigo</groupId>
+  	  <artifactId>javaSDK</artifactId>
       <version>2.2</version>
-   </dependency>
+	</dependency>
 
-   <dependency>
-       <groupId>net.coobird</groupId>
-       <artifactId>thumbnailator</artifactId>
-       <version>0.4.8</version>
-   </dependency>
-
-
-   <!-- 크롤링 -->
-   <dependency>
-       <groupId>org.jsoup</groupId>
-       <artifactId>jsoup</artifactId>
-       <version>1.13.1</version>
-   </dependency>
+	<dependency>
+	    <groupId>net.coobird</groupId>
+	    <artifactId>thumbnailator</artifactId>
+	    <version>0.4.8</version>
+	</dependency>
 
 
+	<!-- 크롤링 -->
+	<dependency>
+	    <groupId>org.jsoup</groupId>
+	    <artifactId>jsoup</artifactId>
+	    <version>1.13.1</version>
+	</dependency>
 
-  </dependencies>
+	<!-- 쿼리문출력 -->
+	<dependency>
+	    <groupId>org.lazyluke</groupId>
+	    <artifactId>log4jdbc-remix</artifactId>
+	    <version>0.2.7</version>
+	</dependency>
+
+</dependencies>
 
   <repositories>
-     <repository>
-      <id>codelds</id>      <!-- ojdbc6 와 함께 추가 -->
-      <url>https://code.lds.org/nexus/content/groups/main-repo</url>
-   </repository>
+  	<repository>
+		<id>codelds</id>		<!-- ojdbc6 와 함께 추가 -->
+		<url>https://code.lds.org/nexus/content/groups/main-repo</url>
+	</repository>
   </repositories>
 
 </project>

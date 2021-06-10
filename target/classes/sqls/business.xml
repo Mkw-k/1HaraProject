@@ -12,7 +12,7 @@
 
 	<insert id="addmember" parameterType="bit.com.a.dto.BusinessDto">
 		INSERT INTO BUSINESS(MEMBERID, PWD, COMPANYNAME, NAME, COMADDRESS, ADDRESSDETAIL, FILENAME, NEWFILENAME, AUTH)
-		VALUES(#{memberid}, #{pwd}, #{companyname}, #{name}, #{comaddress}, #{addressdetail},#{filename}, #{newfilename}, 2)
+		VALUES(#{memberid}, #{pwd}, #{companyname}, #{name}, #{comaddress}, #{addressdetail}, #{filename}, #{newfilename}, 2)
 	</insert>
 
 	<select id="login" parameterType="bit.com.a.dto.BusinessDto" resultType="bit.com.a.dto.BusinessDto">

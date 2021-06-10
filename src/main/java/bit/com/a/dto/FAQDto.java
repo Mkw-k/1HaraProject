@@ -24,7 +24,7 @@ FAQNUM NUMBER,                 --키워드
 
 CONSTRAINT FAQ_FK1 FOREIGN KEY (MEMBERID)
 REFERENCES MEMBER(MEMBERID)
-)
+) 
  */
 public class FAQDto implements Serializable{
 	private int faqseq;

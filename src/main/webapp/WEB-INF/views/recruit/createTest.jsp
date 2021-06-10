@@ -163,8 +163,8 @@
                 <div class="col-md-4 mb-3"> <label for="state">경력사항</label> 
                 	<select class="custom-select d-block w-100" name="career_Type">
                     	<option class="hidden"  selected disabled>경력구분</option>
-                        <option value="0"
-                        <c:if test="${dto.career_Type == 0}">selected</c:if>>무관</option>
+                        <option value="100"
+                        <c:if test="${dto.career_Type == 100}">selected</c:if>>무관</option>
                         <option value="1"
                         <c:if test="${dto.career_Type == 1}">selected</c:if>>신입</option>
                         <option value="2"
