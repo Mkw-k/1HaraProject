@@ -761,12 +761,54 @@ margin-right : 450px;
 <svg class="icon" aria-hidden="true"><use xlink:href="#svg_gnb_search"></use></svg>
 <span>궁금한 정보를 검색해보세요</span>
 </button>
-<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="javascript:login()" class="btn_sign signin"><span class="txt">로그인</span></a>
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+
+<!-- 누구누구님 안녕하세요 -->
+<ul class="navbar-nav">
+ <li class="nav-item">
+<c:choose>
+       <c:when test="${login.memberid ne null }">
+            		<c:choose>
+            			 <c:when test="${login.auth == 1}">
+             				 <p><b>[개인🧑]${login.name }</b>님</p>
+             	 		 </c:when>
+
+             			<c:when test="${login.auth == 2}">
+             				<p><b>[사원👨‍💼]${login.name }</b>님</p>
+    		 			</c:when>
+
+    					<c:otherwise>
+             				<p><b>[관리자👨‍✈️]]${login.name }</b>님</p>
+    					</c:otherwise>
+    				</c:choose>			
+            	 </c:when> 
+         	</c:choose>  
+      </li>
+ </ul>      
+ 
+
+<!-- 로그인 로그아웃 란 -->
+<c:choose>
+	<c:when test="${empty login}">
+		<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="javascript:login()" class="btn_sign signin"><span class="txt">로그인</span></a>
+	</c:when>
+<c:otherwise>
+
+<c:choose>
+	<c:when test="${login.auth==1 || login.auth==3}">
+		<a href="logout.do" class="btn_sign signin"><span class="txt">로그아웃</span></a>
+	</c:when>
+	<c:otherwise>
+		<a href="logout.do" class="btn_sign signin"><span class="txt">로그아웃</span></a>
+	</c:otherwise>
+</c:choose>
+</c:otherwise>
+</c:choose>
+
+ 
+
 <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="regiclick.do" class="btn_sign signup"><span class="txt">회원가입</span></a>
 =======
-<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="/zf_user/member/registration/join" class="btn_sign signup"><span class="txt">회원가입</span></a>
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 0ef5c8e119374e1aa0263c1d35cf3a49c46b5c61
+<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="mypage.do" class="btn_sign signup"><span class="txt">마이페이지</span></a>
 </div>
 </div>
 <div class="navi_total">
@@ -1489,12 +1531,62 @@ margin-right : 450px;
         <div class="wrap_my_area">
             <div class="top_login" style="display:block">
                 <input type="hidden" id="top_login_tab" name="top_login_tab" value="p">
+                
+                
+                	<ul>
+ 						<li>
+					<c:choose>
+     					  <c:when test="${login.memberid ne null }">
+            		<c:choose>
+            			 <c:when test="${login.auth == 1}">
+            			 	<img src="./upload/${login.userpic}">
+             				 <p><b>[개인🧑]${login.name }</b>님 안녕하세요.</p>
+             	 		 </c:when>
+
+             			<c:when test="${login.auth == 2}">
+             				<p><b>[사원👨‍💼]${login.name }</b>님 안녕하세요.</p>
+    		 			</c:when>
+    					<c:otherwise>
+             				<p><b>[관리자👨‍✈️]]${login.name }</b>님 안녕하세요.</p>
+    					</c:otherwise>
+    				</c:choose>			
+            	 </c:when> 
+         	</c:choose>  
+      </li>
+ </ul>      
+                
+              <!--  -->
+                
+				<c:choose>
+					<c:when test="${empty login}">
                 <ul class="area_login">
-                    <li class="on"><button type="button" id="login_tab_person" class="track_event" data-track_event="login|pc_main_per|tab_per"><strong>개인회원</strong> 로그인</button></li>
-                    <li><button type="button" id="login_tab_company" class="track_event" data-track_event="login|pc_main_com|tab_com"><strong>기업회원</strong> 로그인</button></li>
+                    <li class="on"><button type="button" id="login_tab_person" class="track_event" data-track_event="login|pc_main_per|tab_per"><strong>로그인 ✔</strong></button></li>
                 </ul>
+                </c:when>
+				<c:otherwise>
+				
+				
+				<c:choose>
+					<c:when test="${login.auth==1 || login.auth==3}">
+						<ul class="area_login">
+                    	<li class="on"><button type="button" id="login_tab_person" class="track_event" data-track_event="login|pc_main_per|tab_per"><strong>로그아웃</strong></button></li>
+                		</ul>
+					</c:when>
+				<c:otherwise>
+						<ul class="area_login">
+                    	<li class="on"><button type="button" id="login_tab_person" class="track_event" data-track_event="login|pc_main_per|tab_per"><strong>로그아웃</strong></button></li>
+               			 </ul>
+				</c:otherwise>
+				</c:choose>
+				</c:otherwise>
+				</c:choose>
+               
+
+                
+                
+                
                 <a href="/zf_user/helpdesk/idpw-find" class="link_id_password track_event" data-track_event="login|pc_main_per|find|">아이디/비번찾기</a>
-                <a href="/zf_user/member/registration/join" onclick="return false;" class="link_join track_event" data-track_event="login|pc_main_per|join|">회원가입</a>
+                <a href="regiclick.do" onclick="return false;" class="link_join track_event" data-track_event="login|pc_main_per|join|">회원가입</a>
             </div>
             <div class="area_recom recruit_card" style="display : block">
                 <div class="top">
@@ -1543,8 +1635,8 @@ margin-right : 450px;
                     <input type="hidden" id="login_tab" name="login_tab" value="p">
                     <fieldset>
                         <ul class="btn_logins">
-                            <li class="on"><button type="button" id="login_layer_tab_person" class="track_event" data-track_event="login|pc_main_per|tab_per">개인회원 로그인</button></li>
-                            <li class=""><button type="button" id="login_layer_tab_company" class="track_event" data-track_event="login|pc_main_com|tab_com">기업회원 로그인</button></li>
+                            <li class="on"><button type="button" id="login_layer_tab_person" class="track_event" data-track_event="login|pc_main_per|tab_per">로그인</button></li>
+                            
                         </ul>
                         <div class="area_login">
                             <div class="sns_login" id="wrap_sns_login">
@@ -1581,7 +1673,7 @@ margin-right : 450px;
                                 <a href="/zf_user/applicant/rater/login-form" class="link_rater track_event" data-track_event="" style="display: none;">협업자 로그인</a>
                             </div>
                             <div class="wrap_join_find">
-                                <a href="/zf_user/member/registration/join" onclick="return false;" class="link_join login_layer_link_join track_event" data-track_event="login|pc_main_per|join|">회원가입</a>
+                                <a href="regiclick.do" onclick="return false;" class="link_join login_layer_link_join track_event" data-track_event="login|pc_main_per|join|">회원가입</a>
                                 <a href="/zf_user/helpdesk/idpw-find" class="link_id_password login_layer_link_id_password track_event" data-track_event="login|pc_main_per|find|">아이디/비번찾기</a>
                             </div>
                             <button type="button" class="btn_layer_close"><span class="blind">닫기</span></button>
