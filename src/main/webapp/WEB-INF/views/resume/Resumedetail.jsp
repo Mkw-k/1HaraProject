@@ -64,7 +64,7 @@
 <%
 ResumeDto dto =(ResumeDto)request.getAttribute("dto");
 Resume_HighschoolDto highdto =(Resume_HighschoolDto)request.getAttribute("highdto");
-List<Resume_UniversityVo> edulist =(List<Resume_UniversityVo>)request.getAttribute("unilist");
+List<Resume_UniversityVo> unilist =(List<Resume_UniversityVo>)request.getAttribute("unilist");
 List<Resume_CareerVo> calist =(List<Resume_CareerVo>)request.getAttribute("calist");
 List<Resume_licenseVo> liclist =(List<Resume_licenseVo>)request.getAttribute("liclist");
 List<Resume_ActivityVo> actlist =(List<Resume_ActivityVo>)request.getAttribute("actlist");
@@ -74,11 +74,11 @@ List<Resume_LanguageVo> lanlist =(List<Resume_LanguageVo>)request.getAttribute("
 System.out.println(dto.toString());
 
 //학력사항 들어오는지 확인
-for(int i=0; i<edulist.size(); i++){
-if(edulist == null || edulist.isEmpty()){
+for(int i=0; i<unilist.size(); i++){
+if(unilist == null || unilist.isEmpty()){
 	System.out.println("경력없음");
 } else{
-	System.out.println(edulist.get(i));
+	System.out.println(unilist.get(i));
 }
 }
 
@@ -198,10 +198,11 @@ System.out.println(_gender);
 										<li><strong>학력사항</strong>
 										
 										<% if(highdto.getHighschool()==null || highdto.getHighschool().equals(""))  {%>
+										
 											<p class="txt"><%=unilist.get(0).getUniv_status() %> <%=unilist.get(0).getUniv_end_status() %></p></li>
 										<%} else{ %>	
 											<p class="txt">고등학교 <%=highdto.getHigh_end_status()%></p></li>
-											
+										<%} %>	
 										
 										<li><strong>경력사항</strong>
 										<%if(calist == null || calist.isEmpty()){ %>
@@ -268,13 +269,13 @@ System.out.println(_gender);
 									} else{
 										%>
 										<tr>
-											<td class="lineup_center" rowspan="1"><%=edulist.get(i).getUniv_str()%>
-												~ <%=edulist.get(i).getUniv_end()%></td>
-											<td class="lineup_center" rowspan="1"><%=edulist.get(i).getUniv_end_status()%></td>
-											<td><%=edulist.get(i).getUniversity()%></td>
-											<td><%=edulist.get(i).getUniv_major()%></td>
-											<td class="lineup_center"><%=edulist.get(i).getUniv_grade()%>
-												/ <%=edulist.get(i).getUniv_grade_base()%></td>
+											<td class="lineup_center" rowspan="1"><%=unilist.get(i).getUniv_str()%>
+												~ <%=unilist.get(i).getUniv_end()%></td>
+											<td class="lineup_center" rowspan="1"><%=unilist.get(i).getUniv_end_status()%></td>
+											<td><%=unilist.get(i).getUniversity()%></td>
+											<td><%=unilist.get(i).getUniv_major()%></td>
+											<td class="lineup_center"><%=unilist.get(i).getUniv_grade()%>
+												/ <%=unilist.get(i).getUniv_grade_base()%></td>
 										</tr>
 									<% 		} 
 										}
@@ -283,10 +284,10 @@ System.out.println(_gender);
 									
 									
 										<tr>
-											<td class="lineup_center" rowspan="1"><%=highlist.getHigh_str()%>
-												~ <%=highlist.getHigh_end()%></td>
+											<td class="lineup_center" rowspan="1"><%=highdto.getHigh_str()%>
+												~ <%=highdto.getHigh_end()%></td>
 											<td class="lineup_center" rowspan="1">졸업</td>
-											<td><%=highlist.getHighschool()%></td>
+											<td><%=highdto.getHighschool()%></td>
 											<td>문과계열</td>
 											<td class="lineup_center">-</td>
 										</tr>

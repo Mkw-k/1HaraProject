@@ -25,16 +25,6 @@
 </select>
 
 
-<insert id="writeEdu" parameterType="bit.com.a.dto.Resume_EduVo">
-INSERT
-INTO RESUME_EDU (EDUCATIONSEQ, RESUMESEQ, HIGHSCHOOL, HIGH_STR, HIGH_STR_STATUS, HIGH_END, HIGH_END_STATUS, UNIVERSITY, UNIV_STATUS, UNIV_STR, UNIV_STR_STATUS,
-				UNIV_END, UNIV_END_STATUS, UNIV_MAJOR_FIELD, UNIV_MAJOR, UNIV_NIGHT, UNIV_GRADE, UNIV_GRADE_BASE, UNIV_PAPER  )
-			VALUES (RESUME_EDU_SEQ.NEXTVAL, #{resumeseq},
-					#{highschool}, #{high_str}, #{high_str_status}, #{high_end}, #{high_end_status},
-					#{university, jdbcType=VARCHAR}, #{univ_status, jdbcType=VARCHAR}, #{univ_str, jdbcType=VARCHAR}, #{univ_str_status, jdbcType=VARCHAR}, #{univ_end, jdbcType=VARCHAR}, #{univ_end_status, jdbcType=VARCHAR}, #{univ_major_field, jdbcType=VARCHAR},
-					#{univ_major, jdbcType=VARCHAR}, #{univ_night, jdbcType=VARCHAR}, #{univ_grade, jdbcType=VARCHAR}, #{univ_grade_base, jdbcType=VARCHAR}, #{univ_paper, jdbcType=VARCHAR} )
-</insert>
-
 
 <insert  id="writeCareer" parameterType="bit.com.a.dto.Resume_CareerVo">
 INSERT
@@ -97,12 +87,6 @@ WHERE RESUMESEQ=#{seq}
 </select>
 
 
-<select id="getEduDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.Resume_EduVo">
-SELECT EDUCATIONSEQ, RESUMESEQ, HIGHSCHOOL, HIGH_STR, HIGH_STR_STATUS, HIGH_END, HIGH_END_STATUS, UNIVERSITY, UNIV_STATUS, UNIV_STR, UNIV_STR_STATUS,
-      UNIV_END, UNIV_END_STATUS, UNIV_MAJOR_FIELD, UNIV_MAJOR, UNIV_NIGHT, UNIV_GRADE, UNIV_GRADE_BASE, UNIV_PAPER
-FROM RESUME_EDU
-WHERE RESUMESEQ=#{seq}
-</select>
 
 <select id="getCareerDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.Resume_CareerVo">
 SELECT CAREERSEQ, RESUMESEQ, PRE_COMNAME, PRE_STARTDATE, PRE_ENDDATE, PRE_STATUS, PRE_POSITION, PRE_BUSCODE, PRE_AREA, PRE_DEPT, PRE_SAL, PRE_JOBDETAIL, PRE_REASON
@@ -205,13 +189,6 @@ ORDER BY RESUMESEQ DESC
  WHERE RESUMESEQ=#{resumeseq}
 </update>
 
-<update id="updateEdu" parameterType="bit.com.a.dto.Resume_EduVo">
-UPDATE RESUME_EDU
-SET HIGHSCHOOL=#{highschool}, HIGH_STR=#{high_str}, HIGH_STR_STATUS=#{high_str_status}, HIGH_END=#{high_end}, HIGH_END_STATUS=#{high_end_status}, UNIVERSITY=#{university}, UNIV_STATUS=#{univ_status}, UNIV_STR=#{univ_str}, UNIV_STR_STATUS=#{univ_str_status},
-      UNIV_END=#{univ_end}, UNIV_END_STATUS=#{univ_end_status}, UNIV_MAJOR_FIELD=#{univ_major_field}, UNIV_MAJOR=#{univ_major}, UNIV_NIGHT=#{univ_night}, UNIV_GRADE=#{univ_grade}, UNIV_GRADE_BASE=#{univ_grade_base}, UNIV_PAPER=#{univ_paper}
-WHERE RESUMESEQ=#{resumeseq}
-
-</update>
 
 <update id="updateCareer" parameterType="bit.com.a.dto.Resume_CareerVo">
 	UPDATE CAREER

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+<%@page import="bit.com.a.dto.Resume_UniversityVo"%>
+<%@page import="bit.com.a.dto.Resume_HighschoolDto"%>
 <%@page import="bit.com.a.dto.MemberDto"%>
 <%@page import="bit.com.a.dto.Resume_LanguageVo"%>
 <%@page import="bit.com.a.dto.Resume_AwardVo"%>
 <%@page import="bit.com.a.dto.Resume_ActivityVo"%>
 <%@page import="bit.com.a.dto.Resume_licenseVo"%>
 <%@page import="bit.com.a.dto.Resume_CareerVo"%>
-<%@page import="bit.com.a.dto.Resume_EduVo"%>
 <%@page import="bit.com.a.dto.ResumeDto"%>
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
@@ -286,8 +287,9 @@ dt, dd {
 		<main>
 
 <%
-ResumeDto resumedto =(ResumeDto)request.getAttribute("resumedto");
-List<Resume_EduVo> edulist =(List<Resume_EduVo>)request.getAttribute("edulist");
+ResumeDto resumedto =(ResumeDto)request.getAttribute("dto");
+Resume_HighschoolDto highdto =(Resume_HighschoolDto)request.getAttribute("highdto");
+List<Resume_UniversityVo> unilist =(List<Resume_UniversityVo>)request.getAttribute("unilist");
 List<Resume_CareerVo> calist =(List<Resume_CareerVo>)request.getAttribute("calist");
 List<Resume_licenseVo> liclist =(List<Resume_licenseVo>)request.getAttribute("liclist");
 List<Resume_ActivityVo> actlist =(List<Resume_ActivityVo>)request.getAttribute("actlist");
@@ -297,11 +299,11 @@ List<Resume_LanguageVo> lanlist =(List<Resume_LanguageVo>)request.getAttribute("
 System.out.println(resumedto.toString());
 
 //학력사항 들어오는지 확인
-for(int i=0; i<edulist.size(); i++){
-if(edulist == null || edulist.isEmpty()){
+for(int i=0; i<unilist.size(); i++){
+if(unilist == null || unilist.isEmpty()){
 	System.out.println("경력없음");
 } else{
-	System.out.println(edulist.get(i));
+	System.out.println(unilist.get(i));
 }
 }
 
@@ -356,7 +358,6 @@ if(lanlist == null || lanlist.isEmpty()){
 	System.out.println(lanlist.get(0));
 }
 }
-
 
 
 /* 로그인 세션 가져오기 */
@@ -673,7 +674,7 @@ System.out.println(_gender);
 																	</div>
 																	<div class="resume_input">
 																		<input type="text" id="highschool"
-																			name="highschool" value="<%=edulist.get(0).getHighschool() %>" class="box_input"
+																			name="highschool" value="<%=highdto.getHighschool() %>" class="box_input"
 																			maxlength="100" data-api_type="auto"
 																			data-api_id="school_high" data-min_len="2"
 																			autocomplete="off">
@@ -691,7 +692,7 @@ System.out.println(_gender);
 																			<div class="resume_input" style="display:">
 																				<input type="text"
 																					id="high_str"
-																					name="high_str" value="<%=edulist.get(0).getHigh_str() %>"
+																					name="high_str" value="<%=highdto.getHigh_str() %>"
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
 																					maxlength="" autocomplete="off">
@@ -699,7 +700,7 @@ System.out.println(_gender);
 																			</div>
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
-																		<% if( edulist.get(0).getHigh_str_status().equals("입학") ){ %>
+																		<% if( highdto.getHigh_str_status().equals("입학") ){ %>
 																				<select class="selectpicker" name="high_str_status" id="high_str_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="입학" selected="selected">입학</option>
@@ -724,7 +725,7 @@ System.out.println(_gender);
 																			<div class="resume_input box_period">
 																				<input type="text"
 																					id="high_end"
-																					name="high_end" value="<%=edulist.get(0).getHigh_end() %>"
+																					name="high_end" value="<%=highdto.getHigh_end() %>"
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
 																					maxlength="" autocomplete="off">
@@ -734,7 +735,7 @@ System.out.println(_gender);
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
 
-																		<% if( edulist.get(0).getHigh_end_status().equals("졸업") ){ %>
+																		<% if( highdto.getHigh_end_status().equals("졸업") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업" selected="selected">졸업</option>
@@ -746,7 +747,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																		<%} %>
-																		<% if( edulist.get(0).getHigh_end_status().equals("재학중") ){ %>
+																		<% if( highdto.getHigh_end_status().equals("재학중") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업">졸업</option>
@@ -758,7 +759,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																		<%} %>
-																		<% if( edulist.get(0).getHigh_end_status().equals("휴학중") ){ %>
+																		<% if( highdto.getHigh_end_status().equals("휴학중") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업">졸업</option>
@@ -770,7 +771,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																		<%} %>
-																		<% if( edulist.get(0).getHigh_str_status().equals("수료") ){ %>
+																		<% if( highdto.getHigh_str_status().equals("수료") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업">졸업</option>
@@ -782,7 +783,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																		<%} %>
-																		<% if( edulist.get(0).getHigh_end_status().equals("중퇴") ){ %>
+																		<% if( highdto.getHigh_end_status().equals("중퇴") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업">졸업</option>
@@ -794,7 +795,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																		<%} %>
-																		<% if( edulist.get(0).getHigh_end_status().equals("자퇴") ){ %>
+																		<% if( highdto.getHigh_end_status().equals("자퇴") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업">졸업</option>
@@ -806,7 +807,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																		<%} %>
-																		<% if( edulist.get(0).getHigh_end_status().equals("졸업예정") ){ %>
+																		<% if( highdto.getHigh_end_status().equals("졸업예정") ){ %>
 																				<select class="selectpicker" name="high_end_status" id="high_end_status"
 																					style="width: 107.22222px; height: 50.22222px;">
 																					<option value="졸업">졸업</option>
@@ -844,12 +845,12 @@ System.out.println(_gender);
 															
 											
 															
-														<% if(edulist.get(0).getUniversity()==null || edulist.get(0).getUniversity().equals("")){
+														<% if(unilist.get(0).getUniversity()==null || unilist.get(0).getUniversity().equals("")){
 															
 															
 														}else{
 															
-																for(int i=0; i<edulist.size();i++){ %>
+																for(int i=0; i<unilist.size();i++){ %>
 															<div id="tpl_row_1621990778" class="tpl_row"
 																data-tpl_id="tpl_university">
 																
@@ -863,7 +864,7 @@ System.out.println(_gender);
 																	</div>
 																	<div class="sri_select resume_select">
 
-																<% if( edulist.get(i).getUniv_status().equals("대학교(4년)")){ %>
+																<% if( unilist.get(i).getUniv_status().equals("대학교(4년)")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="univ_status" id="univ_status">
 																			<option value="대학교(4년)" selected="selected">대학교(4년)</option>
@@ -872,7 +873,7 @@ System.out.println(_gender);
 																			<option value="대학원(박사)">대학원(박사)</option>
 																		</select>
 																<% } %>	
-																<% if( edulist.get(i).getUniv_status().equals("대학(2,3년)")){ %>
+																<% if( unilist.get(i).getUniv_status().equals("대학(2,3년)")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="univ_status" id="univ_status">
 																			<option value="대학교(4년)">대학교(4년)</option>
@@ -881,7 +882,7 @@ System.out.println(_gender);
 																			<option value="대학원(박사)">대학원(박사)</option>
 																		</select>
 																<% } %>	
-																<% if( edulist.get(i).getUniv_status().equals("대학원(석사)")){ %>
+																<% if( unilist.get(i).getUniv_status().equals("대학원(석사)")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="univ_status" id="univ_status">
 																			<option value="대학교(4년)">대학교(4년)</option>
@@ -890,7 +891,7 @@ System.out.println(_gender);
 																			<option value="대학원(박사)">대학원(박사)</option>
 																		</select>
 																<% } %>	
-																<% if( edulist.get(i).getUniv_status().equals("대학원(박사)")){ %>
+																<% if( unilist.get(i).getUniv_status().equals("대학원(박사)")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="univ_status" id="univ_status">
 																			<option value="대학교(4년)">대학교(4년)</option>
@@ -909,7 +910,7 @@ System.out.println(_gender);
 																	</div>
 																	<div class="resume_input">
 																		<input type="text" id="university"
-																			name="university" value="<%=edulist.get(i).getUniversity() %>" class="box_input"
+																			name="university" value="<%=unilist.get(i).getUniversity() %>" class="box_input"
 																			maxlength="100" data-api_type="auto"
 																			data-api_id="school_univ" data-min_len="2"
 																			autocomplete="off">
@@ -926,7 +927,7 @@ System.out.println(_gender);
 																			<div class="resume_input">
 																				<input type="text"
 																					id="univ_str"
-																					name="univ_str" value="<%=edulist.get(i).getUniv_str() %>"
+																					name="univ_str" value="<%=unilist.get(i).getUniv_str() %>"
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
 																					maxlength="" autocomplete="off">
@@ -936,14 +937,14 @@ System.out.println(_gender);
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
 
-																			<% if( edulist.get(i).getUniv_str_status().equals("입학")){ %>
+																			<% if( unilist.get(i).getUniv_str_status().equals("입학")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_str_status" id="univ_str_status">
 																					<option value="입학" selected="selected">입학</option>
 																					<option value="편입">편입</option>
 																				</select>
 																			<% } %>
-																			<% if( edulist.get(i).getUniv_str_status().equals("편입")){ %>
+																			<% if( unilist.get(i).getUniv_str_status().equals("편입")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_str_status" id="univ_str_status">
 																					<option value="입학">입학</option>
@@ -960,7 +961,7 @@ System.out.println(_gender);
 																			<div class="resume_input box_period">
 																				<input type="text"
 																					id="univ_end"
-																					name="univ_end" value="<%=edulist.get(i).getUniv_end() %>"
+																					name="univ_end" value="<%=unilist.get(i).getUniv_end() %>"
 																					class="expect_date box_input"
 																					data-dateformat="yymm" data-only-number="true"
 																					maxlength="" autocomplete="off">
@@ -970,7 +971,7 @@ System.out.println(_gender);
 																			<div class="sri_select resume_select period_select"
 																				style="display:">
 																				
-																				<% if( edulist.get(i).getUniv_end_status().equals("졸업")){ %>
+																				<% if( unilist.get(i).getUniv_end_status().equals("졸업")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업" selected="selected">졸업</option>
@@ -982,7 +983,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																				<% } %>
-																				<% if( edulist.get(i).getUniv_end_status().equals("재학중")){ %>
+																				<% if( unilist.get(i).getUniv_end_status().equals("재학중")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업">졸업</option>
@@ -994,7 +995,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																				<% } %>
-																				<% if( edulist.get(i).getUniv_end_status().equals("휴학중")){ %>
+																				<% if( unilist.get(i).getUniv_end_status().equals("휴학중")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업">졸업</option>
@@ -1006,7 +1007,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																				<% } %>
-																				<% if( edulist.get(i).getUniv_end_status().equals("수료")){ %>
+																				<% if( unilist.get(i).getUniv_end_status().equals("수료")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업">졸업</option>
@@ -1018,7 +1019,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																				<% } %>
-																				<% if( edulist.get(i).getUniv_end_status().equals("중퇴")){ %>
+																				<% if( unilist.get(i).getUniv_end_status().equals("중퇴")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업">졸업</option>
@@ -1030,7 +1031,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																				<% } %>
-																				<% if( edulist.get(i).getUniv_end_status().equals("자퇴")){ %>
+																				<% if( unilist.get(i).getUniv_end_status().equals("자퇴")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업">졸업</option>
@@ -1042,7 +1043,7 @@ System.out.println(_gender);
 																					<option value="졸업예정">졸업예정</option>
 																				</select>
 																				<% } %>
-																				<% if( edulist.get(i).getUniv_end_status().equals("졸업예정")){ %>
+																				<% if( unilist.get(i).getUniv_end_status().equals("졸업예정")){ %>
 																				<select class="selectpicker"
 																					style="width: 107.22222px; height: 50.22222px;" name="univ_end_status" id="univ_end_status">
 																					<option value="졸업">졸업</option>
@@ -1119,7 +1120,7 @@ System.out.println(_gender);
 
 																		<div class="resume_input resume_bottom">
 																			<input type="text" id="univ_major"
-																				name="univ_major" value="<%=edulist.get(i).getUniv_major() %>" class="box_input"
+																				name="univ_major" value="<%=unilist.get(i).getUniv_major() %>" class="box_input"
 																				maxlength="50">
 																		</div>
 																		<button type="button" class="btn_edu_type btn_minor"
@@ -1130,14 +1131,14 @@ System.out.println(_gender);
 																<div class="resume_row">
 																	<div class="input_title">주/야간</div>
 																	<div class="sri_select resume_select resume_input_type">
-																	<% if( edulist.get(i).getUniv_night().equals("주간")){ %>
+																	<% if( unilist.get(i).getUniv_night().equals("주간")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="univ_night" id="univ_night">
 																			<option value="주간" selected="selected">주간</option>
 																			<option value="야간">야간</option>
 																		</select>
 																	<% } %>
-																	<% if( edulist.get(i).getUniv_night().equals("야간")){ %>
+																	<% if( unilist.get(i).getUniv_night().equals("야간")){ %>
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="univ_night" id="univ_night">
 																			<option value="주간">주간</option>
@@ -1152,12 +1153,12 @@ System.out.println(_gender);
 																	<div class="area_grades">
 																		<div class="resume_input">
 																			<input type="text" id="univ_grade"
-																				name="univ_grade" value="<%=edulist.get(i).getUniv_grade() %>"
+																				name="univ_grade" value="<%=unilist.get(i).getUniv_grade() %>"
 																				class="box_input size_type3" maxlength="5"
 																				data-only-float="true">
 																		</div>
 																		<div class="sri_select resume_select">
-																		<% if( edulist.get(i).getUniv_grade_base().equals("4.5")){ %>
+																		<% if( unilist.get(i).getUniv_grade_base().equals("4.5")){ %>
 																			<select class="selectpicker"
 																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
 																				<option selected="selected">4.5</option>
@@ -1168,7 +1169,7 @@ System.out.println(_gender);
 																				<option>100</option>
 																			</select>
 																		<% } %>
-																		<% if( edulist.get(i).getUniv_grade_base().equals("4.0")){ %>
+																		<% if( unilist.get(i).getUniv_grade_base().equals("4.0")){ %>
 																			<select class="selectpicker"
 																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
 																				<option>4.5</option>
@@ -1179,7 +1180,7 @@ System.out.println(_gender);
 																				<option>100</option>
 																			</select>
 																		<% } %>
-																		<% if( edulist.get(i).getUniv_grade_base().equals("4.3")){ %>
+																		<% if( unilist.get(i).getUniv_grade_base().equals("4.3")){ %>
 																			<select class="selectpicker"
 																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
 																				<option>4.5</option>
@@ -1190,7 +1191,7 @@ System.out.println(_gender);
 																				<option>100</option>
 																			</select>
 																		<% } %>
-																		<% if( edulist.get(i).getUniv_grade_base().equals("5.0")){ %>
+																		<% if( unilist.get(i).getUniv_grade_base().equals("5.0")){ %>
 																			<select class="selectpicker"
 																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
 																				<option>4.5</option>
@@ -1201,7 +1202,7 @@ System.out.println(_gender);
 																				<option>100</option>
 																			</select>
 																		<% } %>
-																		<% if( edulist.get(i).getUniv_grade_base().equals("7.0")){ %>
+																		<% if( unilist.get(i).getUniv_grade_base().equals("7.0")){ %>
 																			<select class="selectpicker"
 																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
 																				<option>4.5</option>
@@ -1212,7 +1213,7 @@ System.out.println(_gender);
 																				<option>100</option>
 																			</select>
 																		<% } %>
-																		<% if( edulist.get(i).getUniv_grade_base().equals("100")){ %>
+																		<% if( unilist.get(i).getUniv_grade_base().equals("100")){ %>
 																			<select class="selectpicker"
 																				style="width: 107.22222px; height: 50.22222px;" name="univ_grade_base" id="univ_grade_base">
 																				<option>4.5</option>
@@ -1239,7 +1240,7 @@ System.out.println(_gender);
 																			class="bar_title">학위논문 및 졸업작품<span
 																			class="valid_hidden"> 입력</span></label>
 																		<textarea id="univ_paper"
-																			name="univ_paper" class="box_textarea"><%=edulist.get(i).getUniv_paper() %></textarea>
+																			name="univ_paper" class="box_textarea"><%=unilist.get(i).getUniv_paper() %></textarea>
 																	</div>
 																</div>
 
