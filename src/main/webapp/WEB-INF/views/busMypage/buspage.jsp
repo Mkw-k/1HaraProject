@@ -111,7 +111,7 @@
 </li>
 	
 	<li>
-		<a href="pwdcheck.do">기업 정보 수정</a>
+		<a href="pwdcheck.do?memberid=${login.memberid}">기업 정보 수정</a>
 	</li>
 
 	<li>

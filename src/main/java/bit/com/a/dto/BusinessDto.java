@@ -35,7 +35,7 @@ public class BusinessDto implements Serializable{
 		private String filename;
 		private String newfilename;
 		private int auth;
-		
+		private String email;
 		
 		public BusinessDto() {
 			super();
@@ -55,6 +55,14 @@ public class BusinessDto implements Serializable{
 			this.filename = filename;
 			this.newfilename = newfilename;
 			this.auth = auth;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
 		}
 
 		public String getMemberid() {

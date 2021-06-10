@@ -1110,12 +1110,12 @@ body {
                         <p class="img-area">
                             <i class="ico-circle-gray tool"></i>
                         </p>
-                        <img src="${login.userpic}"/>
+                        <img src="${login.filename}"/>
                         
                         
                         <p class="txt">
-                       <!--      일하라는 회원님의 개인정보를 신중히 취급하며, 회원님의 동의 없이 기재하신 회원정보를 공개하지 않습니다.
-                            <br> -->
+                            일하라는 회원님의 개인정보를 신중히 취급하며, 회원님의 동의 없이 기재하신 회원정보를 공개하지 않습니다.
+                            <br>
                             회원님의 정보 가운데 변경된 내용이나 설정 변경이 필요한 경우에는 아래에서 수정해주시기 바랍니다.
                         </p>
                     </div>
@@ -1161,13 +1161,13 @@ body {
         	<label class="control-label" for="registrationNum">주소</label>
         		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
 				<input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" readonly="readonly" value="우편번호 찾기"><br>
-				<input type="text" class="form-control" id="sample6_address" name="address" placeholder="주소"><br>
-				<input type="text" class="form-control" id="sample6_detailAddress" name="detailaddress" placeholder="상세주소"><br>
+				<input type="text" class="form-control" id="sample6_address" name="comaddress" placeholder="주소"><br>
+				<input type="text" class="form-control" id="sample6_detailAddress" name="addressdetail" placeholder="상세주소"><br>
 				<input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목"><br>
         </div>
                                         </td>
                                     </tr>
-                                 <!--    <tr>
+                                    <tr>
                                         <th scope="row" rowspan="2">연락처<span class="font-orange" title="필수입력">
                                                 *</span>
                                         </th>
@@ -1210,8 +1210,8 @@ body {
                                                 <input type="text" class="input-text" id="telno3" name="telno3" title="전화번호 뒷자리 입력" onkeydown="worknet.checkForm.onlyNumber()" maxlength="4" value="1486" pil="PF_TELNO">
                                             </div>
                                         </td>
-                                    </tr> -->
-                                    <!-- <tr>
+                                    </tr>
+                                    <tr>
                                         <th scope="row">휴대전화</th>
                                         <td>
                                             <div class="tel-wrap mt05">
@@ -1230,17 +1230,17 @@ body {
                                                 <input type="text" class="input-text" id="hp3" name="hp3" title="휴대전화 뒷자리 입력" onkeydown="worknet.checkForm.onlyNumber()" maxlength="4" value="1082" pil="PF_MPNO">
                                             </div>
                                         </td>
-                                    </tr> -->
+                                    </tr>
                                     <tr>
                                         <th scope="row" colspan="2">
                                             <span class="label">이메일</span>
                                         </th>
                                         <td>
                                             <div class="email-wrap mt05">
-                                                <input type="text" name="email" id="email1" maxlength="40" class="input-text" title="이메일 주소 입력" pil="PF_EMAIL">
+                                                <input type="text" name="email" id="email1" style="width:150" class="input-text" title="이메일 주소 입력" pil="PF_EMAIL">
                                                 <span name="email">@</span>
                                                 <input type="text" id="email2" name="email" maxlength="40" value="naver.com" class="input-text" title="이메일 도메인 입력" pil="PF_EMAIL">
-                                                <select name="email" onchange="f_selectEmailValue(this.value);" title="이메일 도메인 선택">
+                                                 <select name="email" onchange="f_selectEmailValue(this.value);" title="이메일 도메인 선택">
                                                     <option value="chol.com">chol.com</option>
                                                     <option value="dreamwiz.com">dreamwiz.com</option>
                                                     <option value="daum.net">daum.net</option>
@@ -1263,7 +1263,7 @@ body {
                                                     <option value="moel.go.kr">moel.go.kr</option>
                                                     <option value="korea.kr">korea.kr</option>
                                                     <option value="기타(직접입력)" selected="selected">기타(직접입력)</option>
-                                                </select>
+                                                </select>  
                                             </div>
                                         </td>
                                     </tr>
@@ -1344,8 +1344,8 @@ body {
                         <!-- //20170602 네이버,소셜 로그인 연동 간편 로그인 추가 -->
                         <div class="btn-group">
                             <a href="mypage.do" class="button navy">취소</a>
-                            <button type="button" onclick="location.href='mypageUpdateAf.do'" class="button blue">확인</button>             
-                            <a href="memberDelete.do" class="button navy">탈퇴하라!</a>
+                            <button type="button" onclick="location.href='buspage.do'" class="button blue">확인</button>             
+                            <a href="businessDelete.do" class="button navy">탈퇴하라!</a>
                         </div>
                         <div>
                             <input type="hidden" name="_csrf" value="276c2a08-bf52-456d-bf52-4689a4010d1f">

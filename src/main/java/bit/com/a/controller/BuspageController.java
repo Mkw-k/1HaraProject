@@ -45,7 +45,7 @@ public class BuspageController {
 	dto = service.getbuspage(dto);
 	model.addAttribute("business", dto);
 		
-	return "busMypage/buspage";	
+	return "busMypage/buspage2";	
 	
 	}
 	
@@ -53,10 +53,10 @@ public class BuspageController {
 	
 	@RequestMapping(value = "buspageUpdate.do", method = RequestMethod.GET)
 	public String buspageUpdate(Model model, BusinessDto dto) {
-		
+		System.out.println("memberid="+dto.getMemberid());
 		dto = service.getbuspage(dto);
 		model.addAttribute("business", dto);
-		return "busMypage/buspageupdate";
+		return "busMypage/buspageupdate2";
 	}
 	
 	
