@@ -1970,7 +1970,7 @@ margin-right : 450px;
 		                        <div>
 		                         <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br>자료실</a>
-		                          <a href="mypage.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>마이페이지</a>
+		                          <a href="buspage.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>마이페이지</a>
 		                        </div>
 		                        <div>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>이력서관리</a>
