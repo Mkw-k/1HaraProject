@@ -3,7 +3,7 @@ package bit.com.a.dto;
 import java.io.Serializable;
 
 /*
- * DROP TABLE FAQ
+ * DROP TABLE FAQ 
 CASCADE CONSTRAINTS;
 
 DROP SEQUENCE FAQ_SEQ ;

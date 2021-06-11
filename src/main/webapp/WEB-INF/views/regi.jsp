@@ -4,30 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>login</title>
-
-<style type="text/css">
-
-</style>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<title>Insert title here</title>
 </head>
 <body>
 
-<h1>개인회원 아이디 찾기</h1>
-
-회원정보에 등록된 정보로 아이디를 찾을 수 있습니다.
-<br>
-
+	
 <div id="contents"> 
 <form action="#" method="post">
-	  이름 : <input type="text" id="name" name="name"/> 
-	<br><br>
-
       받는사람 : <input type="text" id="to" name="to"/>   <!-- 인증번호 받을사람 휴대폰 번호 -->
     <input type="button" id="send" value="전송"/><br> <!-- 문자보내는 전송버튼 -->
-    
-    <br>
-    
      인증번호 :    <input type="text" id="userNum">   <!-- 인증번호 입력창 -->
   <input type="button" id="enterBtn" value="확인">   <!-- 인증번호와 내가 입력창에 입력한 인증번호 비교하는 창 -->
   
@@ -36,8 +21,6 @@
  
 </form>  
     </div>
-    
-    
   <script>
   var count = 0; /* 문자 중복을 막기 위한 인증번호 */
    
@@ -112,5 +95,6 @@
     });
   });
   </script>
+
 </body>
 </html>
