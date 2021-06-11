@@ -22,11 +22,15 @@ System.out.println("resumelist" +resumelist);
   <!-- CK-editor -->
 <link rel="stylesheet" href="ckeditor5/sample/styles.css">
 <script src="ckeditor5/build/ckeditor.js"></script>
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- 전체 공통 스크립트 임포트 -->
-  <c:import url="script.jsp" charEncoding="utf-8"/>
+ 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  
+ <!-- 전체 공통 스크립트 임포트 -->
+  <c:import url="script.jsp" charEncoding="utf-8"/> 
+  
   <!-- <link rel="stylesheet" href="static/csss/bootstrap.css" media="all"> -->
 
   <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
@@ -34,10 +38,7 @@ System.out.println("resumelist" +resumelist);
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=685fcbb766340d7c8812f4e0a29a6661&libraries=services"></script>
 
 
-  <!-- 입사지원 모달 -->
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
 
 
 <style type="text/css">
@@ -76,7 +77,6 @@ System.out.println("resumelist" +resumelist);
 
 
 <c:import url="header.jsp" charEncoding="utf-8"/>
-
 
  <div class="py-0 pt-3">
     <div class="container">
@@ -148,7 +148,7 @@ System.out.println("resumelist" +resumelist);
 
 											<tr>
 											<td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a></td>
-											<td><button type="button" class="btn btn-primary" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>')">지원하기</button></td>
+											<td><button type="button" class="btn btn-primary" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>', '${login.phonenum}')">지원하기</button></td>
 											</tr>
 										<%
 										}
@@ -325,12 +325,50 @@ System.out.println("resumelist" +resumelist);
       </div>
     </div>
   </div>
+  
+  
+  
+  
+  
+  
   <div class="py-5">
     <div class="container">
-      <div class="row"> 인기기업 HOT10 <div class="col-md-12"> 옆으로 넘어가는 슬라이딩 </div>
+      <div class="row"> 인기기업 HOT10 
+      <div class="col-md-12">
+      
+      
+
+
+         <table class="table table-hover col-sm-12 " style="" id="table">
+            <thead class="thead-dark">
+               <tr>
+                  <th>#</th>
+
+                  <th>회사명</th>
+
+                  <th>공고제목</th>
+                  <th>지원자격(학력·경력)</th>
+                  <th>채용인원</th>
+                  <th>근무조건</th>
+                  <th>마감일·등록일</th>
+               </tr>
+            </thead>
+
+
+         </table>
+         <p></p>
+  
+       
+       </div>
       </div>
     </div>
   </div>
+  
+  
+  
+  
+  
+  
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -344,13 +382,125 @@ System.out.println("resumelist" +resumelist);
   
   
   
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" style=""></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" style=""></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
   <!-- 카카오맵스 -->
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-  <script type="text/javascript">
+
+
+<script>
+getTop10List();
+
+//5단 검색바 사용 검색할 경우
+function getTop10List() {
+   
+    $.ajax({
+         type : 'get',
+         url : './getTop10List.do',
+         error: function(xhr, status, error){
+             alert("에러발생");
+         },
+         success:function(list){
+ 			//alert('success');
+ 			//alert(list);
+
+ 			$(".list_col").remove();
+
+ 			var memberid = '<c:out value="${login.memberid}"/>';
+
+ 			$.each(list, function(i, val){
+ 				//alert(val.jobSeq);
+ 				let app = "<tr class= 'list_col'>"
+ 							+"<td>" + val.rnum +"</td>";
+
+ 							if(val.del==0){
+
+ 								"<td>"
+								+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname+"</a>"
+							    + "</td>"
+ 								/* let empT = "";
+ 								if(val.empType == 3){
+ 									empT = "정규직";
+ 								} */
+ 								app +="<td>"
+ 									+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname + "</a>"
+ 									+ "</td>"
+ 									+"<td style='text-align:left'>"
+ 									//+ arrow(val.depth)
+ 									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
+ 									+"</td>"
+ 									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
+ 									+"<td>" + val.jobVolumn + "</td>"
+ 									+"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
+ 									+"<td>" + val.jobEnd +"<br>"+val.regdate+ "&nbsp;&nbsp;"
+ 									+"<input type='button' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"+ "</td>";
+ 							}
+
+ 							else{
+ 								app += "<td style='text-align:left' colspan='6'>"
+ 										+"<font color='#ff0000'>********* 이 글은 작성자에 의해서 삭제되었습니다</font>"
+ 										+"</td>";
+ 							}
+
+ 							+"</tr>";
+
+ 					$("#table").append(app);
+ 			});
+ 		},
+ 		error:function(){
+ 			alert('error');
+ 		}
+     });
+
+}
+
+
+
+function jobApply(jobseq, memberid, resumeseq, phonenum) {
+	alert("jobApply");
+	//alert(jobseq);
+	//alert(memberid);
+	//alert(resumeseq);
+	alert(phonenum);
+	
+	alert($('#test2').val());
+	
+	let endDate = '${dto.jobEnd}';
+	var reserve = charchen(endDate);
+	alert("이게 예약시간 : "+ reserve);
+	
+	if('${login.auth}' == '1'){
+		var phone = '01026074128';
+	}
+
+
+	$.ajax({
+        url : "./reserveSendSms.do",
+        type : "get",
+        data: {"phonenum": phone, "reserveDate" : reserve},
+        success:function(list){
+           alert('success');
+           //alert(list);
+		},
+        error:function(){
+           alert('error');
+        }
+
+      });	
+ 
+    
+    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
+	
+}
+
+
+</script>
+
+
+
+<script type="text/javascript">
   
 
   
@@ -548,78 +698,6 @@ function dropFavoriteJob(jobSeq, memberid) {
 	//location.href = "RecruitDetail.do?jobseq=" +jobSeq;
 }
 
-function jobApply(jobseq, memberid, resumeseq) {
-	alert("jobApply");
-	//alert(jobseq);
-	//alert(memberid);
-	//alert(resumeseq);
-	
-	let endDate = '${dto.jobEnd}';
-	var reserve = charchen(endDate);
-	alert("이게 예약시간 : "+ reserve);
-	
-	if('${login.auth}' eq '1'){
-		var phone = '${login.phonenum}';
-	}
-	
-	  $.ajax({
-	        type : 'get',
-	        url : './reserveSendSms.do',
-	        data:{phonenum: phone, reserveDate : reserve			// 휴대폰 번호
-                },
-	       success:function(suc){
-				alert("성공");
-				alert(suc);
-				
-			},
-			error:function(){
-				alert('error');
-			}
-	    });  
-	    
-	location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
-	
-	
-	
-}
-    
-function charchen(endDate) {
-endDate = new Date(endDate);
-var rest = endDate - 86400000;
-var sendDate = getReserveDate(rest);
-sendDate = sendDate.slice(0, -2);
-alert(sendDate);
-
-return sendDate;
-}
-    
-
-
-function getReserveDate(rest)
-{
-    var date = new Date(rest);
-    var year = date.getFullYear().toString();
-
-    var month = date.getMonth() + 1;
-    month = month < 10 ? '0' + month.toString() : month.toString();
-
-    var day = date.getDate();
-    day = day < 10 ? '0' + day.toString() : day.toString();
-
-    var hour = date.getHours();
-    hour = hour < 10 ? '0' + hour.toString() : hour.toString();
-
-    var minites = date.getMinutes();
-    minites = minites < 10 ? '0' + minites.toString() : minites.toString();
-
-    var seconds = date.getSeconds();
-    seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
-
-    return year + month + day + hour + minites + seconds;
-}
-
-
- 
 
 function CountDownTimer(dt, id) {
     var end = new Date(dt);
@@ -664,6 +742,56 @@ function CountDownTimer(dt, id) {
 }
 CountDownTimer('${dto.jobEnd}', 'timeDeal'); // 2020-12-06 오후10시 50분까지
  	
+
+
+	
+	
+	
+	
+	
+	
+	
+
+    
+function charchen(endDate) {
+endDate = new Date(endDate);
+var rest = endDate - 86400000;
+var sendDate = getReserveDate(rest);
+sendDate = sendDate.slice(0, -2);
+alert(sendDate);
+
+return sendDate;
+}
+    
+
+
+function getReserveDate(rest)
+{
+    var date = new Date(rest);
+    var year = date.getFullYear().toString();
+
+    var month = date.getMonth() + 1;
+    month = month < 10 ? '0' + month.toString() : month.toString();
+
+    var day = date.getDate();
+    day = day < 10 ? '0' + day.toString() : day.toString();
+
+    var hour = date.getHours();
+    hour = hour < 10 ? '0' + hour.toString() : hour.toString();
+
+    var minites = date.getMinutes();
+    minites = minites < 10 ? '0' + minites.toString() : minites.toString();
+
+    var seconds = date.getSeconds();
+    seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
+
+    return year + month + day + hour + minites + seconds;
+}
+
+
+ 
+
+
 
 </script>
 

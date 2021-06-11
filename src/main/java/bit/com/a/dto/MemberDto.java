@@ -16,7 +16,7 @@ public class MemberDto implements Serializable{
 	private String birth;						// 생년월일
 	private String userpic;
 	private String newuserpic;
-	private String phonenum;
+	
 	
 	
 	public MemberDto() {
@@ -24,34 +24,59 @@ public class MemberDto implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	
 
-	public MemberDto(String memberid, String pwd, String name, String email, String phonenum, int auth, String address,
-			String detailaddress, String birth, String userpic, String newuserpic) {
-		super();
-		this.memberid = memberid;
-		this.pwd = pwd;
-		this.name = name;
-		this.email = email;
-		this.phonenum = phonenum; 
-		this.auth = auth;
-		this.address = address;
-		this.detailaddress = detailaddress;
-		this.birth = birth;
-		this.userpic = userpic;
-		this.newuserpic = newuserpic;
+
+	public String getMemberid() {
+		return memberid;
 	}
 
 
 
-	
-	
+	public void setMemberid(String memberid) {
+		this.memberid = memberid;
+	}
+
+
+
+	public String getPwd() {
+		return pwd;
+	}
+
+
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
 
 	public String getPhonenum() {
 		return phonenum;
 	}
-
 
 
 
@@ -61,50 +86,10 @@ public class MemberDto implements Serializable{
 
 
 
-
-	public String getMemberid() {
-		return memberid;
-	}
-
-
-	public void setMemberid(String memberid) {
-		this.memberid = memberid;
-	}
-
-
-	public String getPwd() {
-		return pwd;
-	}
-
-
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
-
-
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
 	public int getAuth() {
 		return auth;
 	}
+
 
 
 	public void setAuth(int auth) {
@@ -112,9 +97,11 @@ public class MemberDto implements Serializable{
 	}
 
 
+
 	public String getAddress() {
 		return address;
 	}
+
 
 
 	public void setAddress(String address) {
@@ -122,9 +109,11 @@ public class MemberDto implements Serializable{
 	}
 
 
+
 	public String getDetailaddress() {
 		return detailaddress;
 	}
+
 
 
 	public void setDetailaddress(String detailaddress) {
@@ -132,26 +121,29 @@ public class MemberDto implements Serializable{
 	}
 
 
+
 	public String getBirth() {
 		return birth;
 	}
 
 
+
 	public void setBirth(String birth) {
 		this.birth = birth;
 	}
-	
+
+
 
 	public String getUserpic() {
 		return userpic;
 	}
 
 
+
 	public void setUserpic(String userpic) {
 		this.userpic = userpic;
 	}
-	
-	
+
 
 
 	public String getNewuserpic() {
@@ -159,29 +151,37 @@ public class MemberDto implements Serializable{
 	}
 
 
+
 	public void setNewuserpic(String newuserpic) {
 		this.newuserpic = newuserpic;
 	}
 
 
-	
-	 public String getPhonenum() { 
-		 return phonenum; 
-		 }
-	 
-	 
-	 public void setPhonenum(String phonenum) { 
-		 this.phonenum = phonenum; 
-		 }
+
+	public MemberDto(String memberid, String pwd, String name, String email, String phonenum, int auth, String address,
+			String detailaddress, String birth, String userpic, String newuserpic) {
+		super();
+		this.memberid = memberid;
+		this.pwd = pwd;
+		this.name = name;
+		this.email = email;
+		this.phonenum = phonenum;
+		this.auth = auth;
+		this.address = address;
+		this.detailaddress = detailaddress;
+		this.birth = birth;
+		this.userpic = userpic;
+		this.newuserpic = newuserpic;
+	}
 
 
-	
-	 @Override public String toString() { return "MemberDto [memberid=" + memberid  + ", pwd=" + pwd + ", name=" + name + ", email=" + email + 
-			 ", phonenum=" + phonenum + ", auth=" + auth + ", address=" + address +
-			 ", detailaddress=" + detailaddress + ", birth=" + birth + ", userpic=" + userpic + ", newuserpic=" + newuserpic + "]"; 
-	 }
-	 
 
+	@Override
+	public String toString() {
+		return "MemberDto [memberid=" + memberid + ", pwd=" + pwd + ", name=" + name + ", email=" + email
+				+ ", phonenum=" + phonenum + ", auth=" + auth + ", address=" + address + ", detailaddress="
+				+ detailaddress + ", birth=" + birth + ", userpic=" + userpic + ", newuserpic=" + newuserpic + "]";
+	}
 
 	
 }

@@ -8,7 +8,7 @@ public interface MypageDao {
 		
 		//뿌려주는것 
 	
-		public String getMypage(MemberDto dto);
+		public MemberDto getMypage(String memberid);
 		
 		public void updateMypage(MemberDto dto);
 		

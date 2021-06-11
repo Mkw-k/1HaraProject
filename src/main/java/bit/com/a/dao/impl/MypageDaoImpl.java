@@ -25,9 +25,9 @@ public class MypageDaoImpl implements MypageDao {
 		
 		//1. 회원정보 뿌려주는곳 
 		@Override
-		public String getMypage(MemberDto dto) {
+		public MemberDto getMypage(String memberid) {
 			
-			return sqlSession.selectOne(namespace+"getMypage", dto);	 //괄호안에 쿼리구문입력하기
+			return sqlSession.selectOne(namespace+"getMypage", memberid);	 //괄호안에 쿼리구문입력하기
 		}
 
 
