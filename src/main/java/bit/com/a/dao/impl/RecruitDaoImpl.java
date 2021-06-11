@@ -168,6 +168,12 @@ public class RecruitDaoImpl implements RecruitDao{
 		return session.update(ns+"priMemberAf", dto)>0?true:false;
 	}
 
+	@Override
+	public List<RecruitDto> getCalendarSearchList(Map<String, Object> map) {
+		return session.selectList(ns+"getCalendarSearchList", map);
+	}
+
+
 
 
 

@@ -101,7 +101,7 @@ System.out.println("resumelist" +resumelist);
         </div>
         <div class="col-md-4 text-right" style="">
 
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">입사지원</button>
+          <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
 
 
           	<c:choose>
@@ -264,7 +264,7 @@ System.out.println("resumelist" +resumelist);
         <div class="col-md-8 bg-light" style="">
           <div> 지원방법&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일하라 입사지원 </div>
           <div>
-            <a class="btn btn-secondary" href="#">입사지원</a>
+            <a class="btn btn-secondary" href="#" id="_apply">입사지원</a>
           </div>
         </div>
         <div class="text-primary" style=""> 마감일은 기업의 사정에 따라 조기 마감될수 있습니다.
@@ -338,6 +338,12 @@ System.out.println("resumelist" +resumelist);
       </div>
     </div>
   </div>
+  
+  
+  <button onclick="charchen()">charchen</button> 
+  
+  
+  
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" style=""></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
@@ -544,13 +550,76 @@ function dropFavoriteJob(jobSeq, memberid) {
 
 function jobApply(jobseq, memberid, resumeseq) {
 	alert("jobApply");
-	alert(jobseq);
-	alert(memberid);
-	alert(resumeseq);
-
+	//alert(jobseq);
+	//alert(memberid);
+	//alert(resumeseq);
+	
+	let endDate = '${dto.jobEnd}';
+	var reserve = charchen(endDate);
+	alert("이게 예약시간 : "+ reserve);
+	
+	if('${login.auth}' eq '1'){
+		var phone = '${login.phonenum}';
+	}
+	
+	  $.ajax({
+	        type : 'get',
+	        url : './reserveSendSms.do',
+	        data:{phonenum: phone, reserveDate : reserve			// 휴대폰 번호
+                },
+	       success:function(suc){
+				alert("성공");
+				alert(suc);
+				
+			},
+			error:function(){
+				alert('error');
+			}
+	    });  
+	    
 	location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
-
+	
+	
+	
 }
+    
+function charchen(endDate) {
+endDate = new Date(endDate);
+var rest = endDate - 86400000;
+var sendDate = getReserveDate(rest);
+sendDate = sendDate.slice(0, -2);
+alert(sendDate);
+
+return sendDate;
+}
+    
+
+
+function getReserveDate(rest)
+{
+    var date = new Date(rest);
+    var year = date.getFullYear().toString();
+
+    var month = date.getMonth() + 1;
+    month = month < 10 ? '0' + month.toString() : month.toString();
+
+    var day = date.getDate();
+    day = day < 10 ? '0' + day.toString() : day.toString();
+
+    var hour = date.getHours();
+    hour = hour < 10 ? '0' + hour.toString() : hour.toString();
+
+    var minites = date.getMinutes();
+    minites = minites < 10 ? '0' + minites.toString() : minites.toString();
+
+    var seconds = date.getSeconds();
+    seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
+
+    return year + month + day + hour + minites + seconds;
+}
+
+
+ 
 
 function CountDownTimer(dt, id) {
     var end = new Date(dt);
@@ -562,10 +631,24 @@ function CountDownTimer(dt, id) {
     function showRemaining() {
         var now = new Date();
         var distance = end - now;
+		
+        
+       var dEnd = end.getDate();
+       var dNow = now.getDate();
+       var leftDay = dEnd - dNow;
+       
+       if(distance == 86400000){
+    	   alert("이타이밍임 : " + distance); 	
+        	
+        }
+        
+        
         if (distance < 0) {
         	
             clearInterval(timer);
-            document.getElementById(id).innerHTML = '타임딜 종료됨';
+            document.getElementById(id).innerHTML = '공고 기한이 만료되었습니다';
+            //$("#_apply").hide();
+            //location.reload();
             return;
         }
         var days = Math.floor(distance / _day);

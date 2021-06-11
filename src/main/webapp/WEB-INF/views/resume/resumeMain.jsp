@@ -637,7 +637,17 @@ System.out.println("param" +param);
 								<%for(int i=0; i<param.size();i++){ %>	
 									<tr>
 										<td><a href="RecruitDetail.do?jobseq=<%=param.get(i).getJobseq()%>&memberid=${login.memberid}"><%=param.get(i).getJobtitle() %></a></td>
+										
+										
+										<% if(param.get(i).getResumetitle()==null){%>
+										<td><p>삭제된 이력서입니다</p></td>
+										
+										<% } else {%>
+										
 										<td><a href="Resumedetail.do?seq=<%=param.get(i).getResumeseq()%>"><%=param.get(i).getResumetitle() %></a></td>
+										
+										<% } %>
+										
 										<td><%=param.get(i).getApplydate() %></td>
 										<td><img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;"></td>
 									</tr>

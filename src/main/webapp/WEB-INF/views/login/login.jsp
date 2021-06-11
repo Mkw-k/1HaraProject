@@ -372,7 +372,9 @@ function kakaoLogin() {
            		dataType: "text",
            		success: function (data) {
 
-           		//	alert('카카오 씨발 로그인성공')
+           		//alert('카카오 씨발 로그인성공');
+           		location.reload();
+           		
            		},
            		error: function(){
            			alert("birth:" + birth);

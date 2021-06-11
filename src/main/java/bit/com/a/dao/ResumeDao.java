@@ -8,8 +8,9 @@ import bit.com.a.dto.ApplyDto;
 import bit.com.a.dto.Resume_ActivityVo;
 import bit.com.a.dto.Resume_AwardVo;
 import bit.com.a.dto.Resume_CareerVo;
-import bit.com.a.dto.Resume_EduVo;
+import bit.com.a.dto.Resume_HighschoolDto;
 import bit.com.a.dto.Resume_LanguageVo;
+import bit.com.a.dto.Resume_UniversityVo;
 import bit.com.a.dto.Resume_licenseVo;
 
 
@@ -22,7 +23,7 @@ public interface ResumeDao {
 	
 	int getseq(String resumetitle);
 
-	boolean writeEdu(Resume_EduVo eduvo);
+	/* boolean writeEdu(Resume_EduVo eduvo); */
 	
 	boolean writeCareer(Resume_CareerVo carvo);
 	
@@ -40,7 +41,7 @@ public interface ResumeDao {
 	
 	ResumeDto getResumeDetail(int seq);
 	
-	List<Resume_EduVo> getEduDetail(int seq);
+	/* List<Resume_EduVo> getEduDetail(int seq); */
 	
 	List<Resume_CareerVo> getCareerDetail(int seq);
 	
@@ -74,7 +75,7 @@ public interface ResumeDao {
 	
 	void updateResume(ResumeDto dto);
 	
-	boolean updateEdu(Resume_EduVo eduvo);
+	/* boolean updateEdu(Resume_EduVo eduvo); */
 	
 	boolean updateCareer(Resume_CareerVo carvo);
 	
@@ -93,4 +94,17 @@ public interface ResumeDao {
 	String getJobtitle(int jobseq);
 	
 	String getResumeTitle(int resumeseq);
+	
+	boolean writeHigh(Resume_HighschoolDto highdto);
+	
+	boolean writeUni(Resume_UniversityVo univo);
+	
+	
+	boolean updateHigh(Resume_HighschoolDto highdto);
+	
+	boolean updateUni(Resume_UniversityVo univo);
+	
+	Resume_HighschoolDto getHighDetail(int seq);
+	
+	List<Resume_UniversityVo> getUniDetail(int seq);
 }

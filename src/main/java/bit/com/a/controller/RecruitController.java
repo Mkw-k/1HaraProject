@@ -328,7 +328,7 @@ public class RecruitController {
    }
 
 //TODO채용공고 작성 After(DB에 입력)
-   @RequestMapping(value = "recuruitcreateAf.do", method = RequestMethod.POST)
+   @RequestMapping(value = "recuruitcreateAf.do", method = {RequestMethod.GET, RequestMethod.POST})
    public String recuruitcreateAf(RecruitDto dto, Model model, HttpServletRequest req) {
       model.addAttribute("doc_title", "채용공고");
 
@@ -429,8 +429,8 @@ public class RecruitController {
       String jobFavoriteCount = IjobFavoriteCount + "";
 
       dto.setFavoriteJob(jobFavoriteCount);
-      
-      
+
+
       //검색용 파라미터 dto설정
       param.setCompanyId(dto.getCompanyId());
       param.setMemberid(memberid);
@@ -640,17 +640,181 @@ public class RecruitController {
 			return list;
 		}
 
-		//TODO 5단검색 캘린더 
+		//TODO 5단검색 캘린더
 		@RequestMapping(value = "calendarlist1.do",  method = {RequestMethod.GET, RequestMethod.POST})
-		String calendarlist1(Model model, RecruitParam param, HttpSession session) {
+		String calendarlist1(Model model, RecruitParam param, HttpSession session, HttpServletRequest req) {
 
+				String page = req.getParameter("page");
+				System.out.println("이게 페이지 : "+ page);
+				//넘어온값 확인
+				System.out.println("넘어온값 : "+param.toString());
+
+				//해시맵 생성
+				Map<String, Object> map = new HashMap<String, Object>();
+
+				//paging 처리
+				int sn = param.getPage();
+				int start = sn * 5 + 1; 	//1  11
+				int end = (sn + 1) * 5; 	//10 20
+
+				System.out.println("start ="+start);
+				System.out.println("end ="+end);
+				param.setStart(start);
+				param.setEnd(end);
+
+				//1. 직무코드 받아오기
+				String arrBuscode[] = null;
+
+				if(param.getBuscode() != null) {
+					System.out.println(param.getBuscode().toString() );
+					String buscode = param.getBuscode();
+					System.out.println("이게버스코드:"+buscode);
+
+					//띄어쓰기 기준으로 잘랐음 buscode도 실제 buscode임
+					arrBuscode = buscode.split(",");
+
+					//확인
+					for (String item : arrBuscode) {
+						System.out.println(item.toString());
+					}
+					//직무코드 넣기
+				}
+				map.put("arrBusi", arrBuscode);
+
+				//2. 지역코드 받아오기
+				String arrAreacode[] = null;
+
+				if(param.getArea2name() != null) {
+					String areaname = param.getArea2name();
+					System.out.println("이게지역이름:"+areaname);
+
+					//배열에 ,기준으로 잘라서 담기 (지역네임)
+					 arrAreacode = areaname.split(",");
+
+					//확인
+					for (String item : arrAreacode) {
+						System.out.println(item.toString());
+					}
+					//지역코드 넣기
+				}
+				map.put("arrAreacode", arrAreacode);
+
+				String search = param.getSearch();
+				String choice = param.getChoice();
+
+				System.out.println("서치 + 초이스 : " +search+", " + choice);
+				System.out.println("결과값 : "+param.toString());
+				//디티오 넣기
+				map.put("param", param);
+				//choice 넣기(검색범주선택)
+				map.put("choice", choice);
+				//search 넣기(검색어)
+				map.put("search", search);
+
+				String education = "0";
+				if(param.getEducation() != null && !param.getEducation().equals("")) {
+					 education = param.getEducation();
+				}
+				map.put("education", education);
+
+				String CareerStart = "0";
+				if(param.getCareerStart() != null && !param.getCareerStart().equals("")) {
+					 CareerStart = param.getCareerStart();
+				}
+				map.put("CareerStart", CareerStart);
+
+				String CareerEnd = "0";
+				if(param.getCareerEnd() != null && !param.getCareerEnd().equals("")) {
+					CareerEnd = param.getCareerEnd();
+				}
+				map.put("CareerEnd", CareerEnd);
+
+				//최종결과 리스트로 받기
+				List<RecruitDto> list = service.getCalendarSearchList(map);
+
+				System.out.println("결과:"+list.toString());
+
+
+			Calendar cal = Calendar.getInstance();
+
+
+			int year = param.getYear();
+			int month = param.getMonth();
+			int day = param.getDay();
+
+			if(month == 0) {
+				year--;
+				month = 12;
+			}
+			else if(month == 13) {
+				year++;
+				month = 1;
+			}
+			else if(month < 0) {	// 처음 들어온 경우 여기로 들어 와서 연월일을 현재 날짜로 셋팅한다
+				year = cal.get(Calendar.YEAR);
+				month = cal.get(Calendar.MONTH) + 1;
+				if(day < 0) {
+					day = cal.get(Calendar.DATE);
+				}
+			}
+			cal.set(year, month - 1, 1);	// 요일을 구하기 위한 설정
+
+			// 요일
+			int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+			// 마지막 날짜
+			int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+			// 셋팅된 날짜를 다시 넘겨주기 위한 set
+			param.setYear(year);
+			param.setMonth(month);
+			param.setDay(day);
+			param.setDayOfWeek(dayOfWeek);
+			param.setLastDay(lastDay);
+
+			// 로그인 정보
+			//String id = ((MemberDto)session.getAttribute("login")).getId();
+			// 날짜 취득
+			String yyyymmdd = UtilEx.yyyymmdd(param.getYear(), param.getMonth(), param.getDay());
+
+			// DB에서 그달의 일정을 모두 취득하기 위한 Dto
+			RecruitDto fcal = new RecruitDto();
+			fcal.setJobStart(yyyymmdd);
+			System.out.println(fcal.toString());
+
+
+			// Db로부터 일정들을 취득한다
+			//List<RecruitDto> list1 = service.getCalendarList(fcal);
+			//System.out.println(list1.toString());
+
+			// 짐싸!
+			model.addAttribute("flist", list);	// 일정목록을 포장
+			model.addAttribute("cal", param);	// 설정된 날짜를 포장
+
+			return "recruit/recruitcalendar";
+		}
+
+		//기존 캘린더
+		@RequestMapping(value = "calendarlist2.do",  method = {RequestMethod.GET, RequestMethod.POST})
+		String calendarlist2(Model model, RecruitParam param, HttpSession session, HttpServletRequest req) {
+
+			String page = req.getParameter("page");
+			System.out.println("이게 페이지 : "+ page);
 			//넘어온값 확인
 			System.out.println("넘어온값 : "+param.toString());
 
 			//해시맵 생성
 			Map<String, Object> map = new HashMap<String, Object>();
 
-			
+			//paging 처리
+			int sn = param.getPage();
+			int start = sn * 5 + 1; 	//1  11
+			int end = (sn + 1) * 5; 	//10 20
+
+			System.out.println("start ="+start);
+			System.out.println("end ="+end);
+			param.setStart(start);
+			param.setEnd(end);
+
 			//1. 직무코드 받아오기
 			String arrBuscode[] = null;
 
@@ -723,7 +887,6 @@ public class RecruitController {
 
 			System.out.println("결과:"+list.toString());
 
-			
 			Calendar cal = Calendar.getInstance();
 
 
@@ -772,76 +935,15 @@ public class RecruitController {
 
 
 			// Db로부터 일정들을 취득한다
-			//List<RecruitDto> list1 = service.getCalendarList(fcal);
-			//System.out.println(list1.toString());
+			//List<RecruitDto> list = service.getCalendarList_1();
+			//System.out.println(fcal);
 			// 짐싸!
 			model.addAttribute("flist", list);	// 일정목록을 포장
 			model.addAttribute("cal", param);	// 설정된 날짜를 포장
 
 			return "recruit/recruitcalendar";
 		}
-		
-		//기존 캘린더
-		@RequestMapping(value = "calendarlist2.do",  method = {RequestMethod.GET, RequestMethod.POST})
-		String calendarlist2(Model model, RecruitParam param, HttpSession session) {		
-			
-			Calendar cal = Calendar.getInstance();
-			
-			
-			int year = param.getYear();
-			int month = param.getMonth();
-			int day = param.getDay();
-			
-			if(month == 0) {
-				year--;
-				month = 12;
-			}
-			else if(month == 13) {
-				year++;
-				month = 1;
-			}
-			else if(month < 0) {	// 처음 들어온 경우 여기로 들어 와서 연월일을 현재 날짜로 셋팅한다 
-				year = cal.get(Calendar.YEAR);
-				month = cal.get(Calendar.MONTH) + 1;
-				if(day < 0) {
-					day = cal.get(Calendar.DATE);
-				}
-			}		 
-			cal.set(year, month - 1, 1);	// 요일을 구하기 위한 설정
-					
-			// 요일
-			int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-			// 마지막 날짜
-			int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-			
-			// 셋팅된 날짜를 다시 넘겨주기 위한 set
-			param.setYear(year);
-			param.setMonth(month);
-			param.setDay(day);
-			param.setDayOfWeek(dayOfWeek);
-			param.setLastDay(lastDay);
-					
-			// 로그인 정보
-			//String id = ((MemberDto)session.getAttribute("login")).getId();
-			// 날짜 취득
-			String yyyymmdd = UtilEx.yyyymmdd(param.getYear(), param.getMonth(), param.getDay());
-			
-			// DB에서 그달의 일정을 모두 취득하기 위한 Dto
-			RecruitDto fcal = new RecruitDto();
-			fcal.setJobStart(yyyymmdd);
-			System.out.println(fcal.toString());
-			
-			
-			// Db로부터 일정들을 취득한다
-			List<RecruitDto> list = service.getCalendarList_1();
-			System.out.println(fcal);
-			// 짐싸!
-			model.addAttribute("flist", list);	// 일정목록을 포장
-			model.addAttribute("cal", param);	// 설정된 날짜를 포장
-			
-			return "recruit/recruitcalendar";
-		}
-		
+
 
 
 	//채용공고 리스트에 지역코드를 뿌려주는 코드 (지역1)
@@ -855,8 +957,8 @@ public class RecruitController {
 
 			return list;
 		}
-		
-		
+
+
 
 		//채용공고 리스트에 지역코드를 뿌려주는 코드 (지역2)
 		@ResponseBody
@@ -987,7 +1089,7 @@ public class RecruitController {
 		public String favoriteCom(RecruitParam param, Model model)throws Exception {
 
 			System.out.println("공고 즐겨찾기 메서드 실행");
-			
+
 			System.out.println("좋아요 파람:"+param.toString());
 		  boolean b = service.favoriteCom(param);
 
@@ -1006,8 +1108,8 @@ public class RecruitController {
 		  	return "redirect:/RecruitDetail.do";
 		}
 
-		
-		
+
+
 		//TODO 회사 좋아요기 해제
 		@RequestMapping(value = "dropFavoriteCom.do", method = {RequestMethod.GET, RequestMethod.POST})
 		public String dropFavoriteCom(RecruitParam param, Model model)throws Exception {
@@ -1027,7 +1129,7 @@ public class RecruitController {
 			}
 
 		    int jobseq = Integer.parseInt(param.getJobSeq());
-		  	
+
 		    model.addAttribute("jobseq", jobseq);
 		  	model.addAttribute("memberid", param.getMemberid());
 
@@ -1035,15 +1137,15 @@ public class RecruitController {
 
 		  return "redirect:/RecruitDetail.do";
 		}
-		
-		
+
+
 		//TODO 프리미엄회원 결제창으로 이동
 		@RequestMapping(value = "priMember.do", method = RequestMethod.GET)
 		public String priMember(Model model, BusinessDto dto) {
 			model.addAttribute("doc_title", "채용공고");
-			
+
 			System.out.println("들어온 데이터 :" + dto.toString());
-			
+
 			model.addAttribute("dto", dto);
 
 			return "recruit/payment";
@@ -1053,11 +1155,11 @@ public class RecruitController {
 		@RequestMapping(value = "priMemberAf.do", method = RequestMethod.GET)
 		public String priMemberAf(Model model, BusinessDto dto) {
 			model.addAttribute("doc_title", "채용공고");
-			
+
 			System.out.println("AF들어온 데이터 :" + dto.toString());
-			
+
 			boolean b = service.priMemberAf(dto);
-			
+
 			if(b) {
 			  	System.out.println("프리미엄 등록 성공");
 
@@ -1065,11 +1167,13 @@ public class RecruitController {
 				System.out.println("프리미엄 등록 실패");
 
 			}
-			
+
 
 			return "redirect:/recuruitlist.do";
 		}
-				
-				
-				
+		
+
+
+
+
 }

@@ -1164,7 +1164,7 @@ margin-right : 450px;
 			</div>
 		</form>
 
-<div class="table-wrap">
+<div class="table-wrap" style="">
 	<table class="board-list" id ="table" summary="이 표는 번호, 제목, 자료출처, 등록일, 조회 등 공지사항 목록에 대한 정보를 제공합니다.">
 		<caption>전체질문</caption>
 		<colgroup>

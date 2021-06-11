@@ -68,4 +68,8 @@ public interface RecruitService {
 
 	boolean priMemberAf(BusinessDto dto);
 
+	List<RecruitDto> getCalendarSearchList(Map<String, Object> map);
+
+	
+
 }

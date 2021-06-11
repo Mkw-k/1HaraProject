@@ -19,7 +19,6 @@ index.jsp
 
 <a href="FAQ.do">FAQ</a>
 
-
 <a href="pdslist.do">짜료씰</a>
 
 <a href="login1.do">로그인</a>
