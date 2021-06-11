@@ -1584,10 +1584,11 @@ margin-right : 450px;
 				</c:choose>
 
 
+                
+                
+                
+                <a href="searchidpwd.do" class="link_id_password track_event" data-track_event="login|pc_main_per|find|">아이디/비번찾기</a>
 
-
-
-                <a href="/zf_user/helpdesk/idpw-find" class="link_id_password track_event" data-track_event="login|pc_main_per|find|">아이디/비번찾기</a>
                 <a href="regiclick.do" onclick="return false;" class="link_join track_event" data-track_event="login|pc_main_per|join|">회원가입</a>
             </div>
             <div class="area_recom recruit_card" style="display : block">
@@ -1676,7 +1677,7 @@ margin-right : 450px;
                             </div>
                             <div class="wrap_join_find">
                                 <a href="regiclick.do" onclick="return false;" class="link_join login_layer_link_join track_event" data-track_event="login|pc_main_per|join|">회원가입</a>
-                                <a href="/zf_user/helpdesk/idpw-find" class="link_id_password login_layer_link_id_password track_event" data-track_event="login|pc_main_per|find|">아이디/비번찾기</a>
+                                <a href="searchidpw.do" class="link_id_password login_layer_link_id_password track_event" data-track_event="login|pc_main_per|find|">아이디/비번찾기</a>
                             </div>
                             <button type="button" class="btn_layer_close"><span class="blind">닫기</span></button>
                         </div>

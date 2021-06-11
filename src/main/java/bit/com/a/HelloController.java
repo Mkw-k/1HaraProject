@@ -122,7 +122,7 @@ public class HelloController {
 		@RequestMapping(value ="idsearch.do", method = RequestMethod.GET)
 		public String idsearch(Model model) {
 			logger.info("HelloController idsearch() " + new Date());
-			return "idsearch";
+			return "login/searchid";
 		}
 		
 		@RequestMapping(value ="member_info.do", method = RequestMethod.GET)
