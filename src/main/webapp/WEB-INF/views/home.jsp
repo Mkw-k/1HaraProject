@@ -891,8 +891,7 @@ margin-right : 450px;
 
 
  <!-- 메인 검색 창 -->
-<img class="fit-picture" src="ma2.jpg" style="
-    width: 400px;">
+
 
  <!-- 검색html -->
 

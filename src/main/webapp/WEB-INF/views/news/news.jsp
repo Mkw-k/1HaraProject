@@ -499,11 +499,27 @@ nav {
 
 <!-- ####################################################################################################### -->
 <!-- 본문 -->
+
+
+
+
+
 <main>
 <%
 List<NewsDto> list=(List<NewsDto>) request.getAttribute("list");
 System.out.println("list"+list.toString());
 %>
+
+<!-- 장식창 -->
+<section class="newsletter" style="background-image:url('기업뉴스.png'); align: center">
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+</div>
+</div>
+</div>
+</section>
+
 
 <div class="container">
 	<table class="list_table" style="width: 100%;border-left: solid;border-color: #2186eb;border-left-width: thin;border-bottom: solid;border-bottom-width: thin;border-bottom-color: #2186eb;">

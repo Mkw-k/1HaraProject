@@ -37,7 +37,7 @@ white{
       <img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" id="_logo" height="80" width="160" style="float:left; padding-right: 20px" >
      
     </a>
-    <div> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar19" style="">
+    <div class="container-fluid"> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar19" style="">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbar19">

@@ -40,19 +40,30 @@
 	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 </select>
 
-<!-- 아이디 찾기 -->
-<select id="findId" resultType="user">
+
+<!-- <select id="findId" resultType="user">
 		SELECT * 
 		FROM MEMBER 
 		WHERE name=#{name} and PHONENUMBER=#{phonenumber}
 </select>
 
-<!-- 비밀번호 찾기 -->
+비밀번호 찾기
 <select id="findPassword" resultType="user">
-		select * from users where id=#{id} and name=#{name} and phone=#{phone}
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBERID=#{id} AND NAME=#{name} AND PHONENUMBER=#{phone}
 </select>
 
-<!-- 비밀번호 찾고 비밀번호 수정 -->
+비밀번호 찾고 비밀번호 수정
+
+<update id="updatePassword">
+		UPDATE MEMBER
+		SET PWD=#{pwd} 
+		WHERE MEMBER=#{id}	
+		
+</update> -->
+
+
 
 
 <!-- 회원탈퇴 -->

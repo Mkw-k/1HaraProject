@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>일하라 이벤트</title>
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/punycode/1.4.1/punycode.min.js"></script>
 <script src="https://cdn.jotfor.ms/js/vendor/jquery-1.8.0.min.js?v=3.3.25375" type="text/javascript"></script>
@@ -41,9 +41,9 @@ if (window.JotForm && JotForm.accessible) $('input_14').setAttribute('tabindex',
     /*INIT-END*/
 	});
 
-   JotForm.prepareCalculationsOnTheFly([null,{"name":"input1","qid":"1","text":"[한정판] 작업능력 UP !! 일하라 굿즈 ~ ","type":"control_head"},{"name":"fullName2","qid":"2","text":"Full Name","type":"control_fullname"},{"name":"email3","qid":"3","subLabel":"example@example.com","text":"E-mail","type":"control_email"},{"name":"billingAddress","qid":"4","text":"Billing Address","type":"control_address"},{"name":"contactNumber","qid":"5","text":"Contact Number","type":"control_phone"},null,null,null,null,{"name":"shippingAdress","qid":"10","text":"Shipping Adress","type":"control_address"},{"name":"recipientsFull","qid":"11","text":"Recipient's Full Name","type":"control_fullname"},null,{"name":"submit","qid":"13","text":"Submit Order","type":"control_button"},{"name":"specialInstructions","qid":"14","text":"Special Instructions","type":"control_textarea"},{"name":"sendGift15","qid":"15","text":"Send Gift?","type":"control_radio"},null,{"name":"isShipping17","qid":"17","text":"Is shipping address same as billing address?","type":"control_radio"},{"name":"giftMessage","qid":"18","text":"Gift Message","type":"control_textarea"},{"name":"products","qid":"19","text":"Products","type":"control_paypalcomplete"},{"name":"paymentMethods","qid":"20","text":"Payment Methods","type":"control_paymentmethods"}]);
+   JotForm.prepareCalculationsOnTheFly([null,{"name":"input1","qid":"1","text":"[한정판] 작업능력 UP !! 일하라 굿즈 ~ ","type":"control_head"},{"name":"fullName2","qid":"2","text":"Full Name","type":"control_fullname"},{"name":"email3","qid":"3","subLabel":"example@example.com","text":"E-mail","type":"control_email"},{"name":"billingAddress","qid":"4","text":"Billing Address","type":"control_address"},{"name":"contactNumber","qid":"5","text":"Contact Number","type":"control_phone"},null,null,null,null,{"name":"shippingAdress","qid":"10","text":"Shipping Adress","type":"control_address"},{"name":"recipientsFull","qid":"11","text":"Recipient's Full Name","type":"control_fullname"},null,{"name":"submit","qid":"13","text":"드로우","type":"control_button"},{"name":"specialInstructions","qid":"14","text":"Special Instructions","type":"control_textarea"},{"name":"sendGift15","qid":"15","text":"Send Gift?","type":"control_radio"},null,{"name":"isShipping17","qid":"17","text":"Is shipping address same as billing address?","type":"control_radio"},{"name":"giftMessage","qid":"18","text":"Gift Message","type":"control_textarea"},{"name":"products","qid":"19","text":"Products","type":"control_paypalcomplete"},{"name":"paymentMethods","qid":"20","text":"Payment Methods","type":"control_paymentmethods"}]);
    setTimeout(function() {
-JotForm.paymentExtrasOnTheFly([null,{"name":"input1","qid":"1","text":"[한정판] 작업능력 UP !! 일하라 굿즈 ~ ","type":"control_head"},{"name":"fullName2","qid":"2","text":"Full Name","type":"control_fullname"},{"name":"email3","qid":"3","subLabel":"example@example.com","text":"E-mail","type":"control_email"},{"name":"billingAddress","qid":"4","text":"Billing Address","type":"control_address"},{"name":"contactNumber","qid":"5","text":"Contact Number","type":"control_phone"},null,null,null,null,{"name":"shippingAdress","qid":"10","text":"Shipping Adress","type":"control_address"},{"name":"recipientsFull","qid":"11","text":"Recipient's Full Name","type":"control_fullname"},null,{"name":"submit","qid":"13","text":"Submit Order","type":"control_button"},{"name":"specialInstructions","qid":"14","text":"Special Instructions","type":"control_textarea"},{"name":"sendGift15","qid":"15","text":"Send Gift?","type":"control_radio"},null,{"name":"isShipping17","qid":"17","text":"Is shipping address same as billing address?","type":"control_radio"},{"name":"giftMessage","qid":"18","text":"Gift Message","type":"control_textarea"},{"name":"products","qid":"19","text":"Products","type":"control_paypalcomplete"},{"name":"paymentMethods","qid":"20","text":"Payment Methods","type":"control_paymentmethods"}]);}, 20); 
+JotForm.paymentExtrasOnTheFly([null,{"name":"input1","qid":"1","text":"[한정판] 작업능력 UP !! 일하라 굿즈 ~ ","type":"control_head"},{"name":"fullName2","qid":"2","text":"Full Name","type":"control_fullname"},{"name":"email3","qid":"3","subLabel":"example@example.com","text":"E-mail","type":"control_email"},{"name":"billingAddress","qid":"4","text":"Billing Address","type":"control_address"},{"name":"contactNumber","qid":"5","text":"Contact Number","type":"control_phone"},null,null,null,null,{"name":"shippingAdress","qid":"10","text":"Shipping Adress","type":"control_address"},{"name":"recipientsFull","qid":"11","text":"Recipient's Full Name","type":"control_fullname"},null,{"name":"submit","qid":"13","text":"드로우","type":"control_button"},{"name":"specialInstructions","qid":"14","text":"Special Instructions","type":"control_textarea"},{"name":"sendGift15","qid":"15","text":"Send Gift?","type":"control_radio"},null,{"name":"isShipping17","qid":"17","text":"Is shipping address same as billing address?","type":"control_radio"},{"name":"giftMessage","qid":"18","text":"Gift Message","type":"control_textarea"},{"name":"products","qid":"19","text":"Products","type":"control_paypalcomplete"},{"name":"paymentMethods","qid":"20","text":"Payment Methods","type":"control_paymentmethods"}]);}, 20); 
 </script>
 <link type="text/css" media="print" rel="stylesheet" href="https://cdn.jotfor.ms/css/printForm.css?3.3.25375">
 <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?themeRevisionID=5eb3b4ae85bd2e1e2966db96">
@@ -59,7 +59,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"input1","qid":"1","text":"[한정�
         <div class="form-header-group  header-large">
           <div class="header-text httal htvam">
             <h1 id="header_1" class="form-header" data-component="header">
-              [한정판] 작업능력 UP !! 일하라 굿즈 ~
+              [6월 이벤트] 🖥 작업능력 🆙 ~ ❕ 일하라 굿즈 응모
             </h1>
           </div>
         </div>
@@ -68,7 +68,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"input1","qid":"1","text":"[한정�
      
       
       <li class="form-line card-3col" data-type="control_paypalcomplete" id="id_19" data-payment="true">
-        <label class="form-label form-label-top" id="label_19" for="input_19"> Products </label>
+        <label class="form-label form-label-top" id="label_19" for="input_19"> 응모가능 굿즈 종류 </label>
         <div id="cid_19" class="form-input-wide" data-layout="full">
           <div data-wrapper-react="true">
             <div data-wrapper-react="true" class="product-container-wrapper">
@@ -353,22 +353,6 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"input1","qid":"1","text":"[한정�
                     </div>
                   </div>
                 </span>
-                <div class="payment_footer new_ui ">
-                  <div class="total_area">
-                    <div class="form-payment-total">
-                      <div id="total-text">Total</div>
-                      <div class="form-payment-price">
-                        <span data-wrapper-react="true">
-                          ₩
-                          <span id="payment_total">0.00</span>
-                          <span class="currency_abr">
-                            WON
-                          </span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -377,28 +361,27 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"input1","qid":"1","text":"[한정�
        <img src="ma.jpg">
   
       <li class="form-line" data-type="control_fullname" id="id_2">
-        <label class="form-label form-label-top" id="label_2" for="first_2"> Full Name </label>
+        <label class="form-label form-label-top" id="label_2" for="first_2"> 이름 </label>
         <div id="cid_2" class="form-input-wide" data-layout="full">
           <div data-wrapper-react="true">
             <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
               <input type="text" id="first_2" name="q2_fullName2[first]" class="form-textbox" size="10" value="" data-component="first" aria-labelledby="label_2 sublabel_2_first">
-              <label class="form-sub-label" for="first_2" id="sublabel_2_first" style="min-height:13px" aria-hidden="false"> First Name </label>
             </span>
             
           </div>
         </div>
       </li>
       <li class="form-line" data-type="control_email" id="id_3">
-        <label class="form-label form-label-top" id="label_3" for="input_3"> E-mail </label>
+        <label class="form-label form-label-top" id="label_3" for="input_3"> 이름 </label>
         <div id="cid_3" class="form-input-wide" data-layout="half">
           <span class="form-sub-label-container" style="vertical-align:top">
-            <input type="email" id="input_3" name="q3_email3" class="form-textbox validate[Email]" style="width:310px" size="310" value="" placeholder="ex: myname@example.com" data-component="email" aria-labelledby="label_3 sublabel_input_3">
-            <label class="form-sub-label" for="input_3" id="sublabel_input_3" style="min-height:13px" aria-hidden="false"> example@example.com </label>
+            <input type="email" id="input_3" name="q3_email3" class="form-textbox validate[Email]" style="width:310px" size="310" value="" placeholder="이메일 입력 @" data-component="email" aria-labelledby="label_3 sublabel_input_3">
+           
           </span>
         </div>
       </li>
       <li class="form-line" data-type="control_phone" id="id_5">
-        <label class="form-label form-label-top" id="label_5" for="input_5_full"> Contact Number </label>
+        <label class="form-label form-label-top" id="label_5" for="input_5_full"> 연락가능한 전화번호 </label>
         <div id="cid_5" class="form-input-wide" data-layout="half">
           <span class="form-sub-label-container" style="vertical-align:top">
             <input type="tel" id="input_5_full" name="q5_contactNumber[full]" data-type="mask-number" class="mask-phone-number form-textbox validate[Fill Mask]" style="width:310px" data-masked="true" value="" placeholder="(000) 000-0000" data-component="phone" aria-labelledby="label_5" im-insert="true" maskvalue="(###) ###-####">
@@ -408,177 +391,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"input1","qid":"1","text":"[한정�
       </li>
       
       
-      <li class="form-line form-field-hidden" style="display: none !important;" data-type="control_address" id="id_10">
-        <label class="form-label form-label-top" id="label_10" for="input_10_addr_line1"> Shipping Adress </label>
-        <div id="cid_10" class="form-input-wide" data-layout="full">
-          <div summary="" class="form-address-table jsTest-addressField">
-            <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
-              <span class="form-address-line form-address-street-line jsTest-address-lineField">
-                <span class="form-sub-label-container" style="vertical-align:top">
-                  <input type="text" id="input_10_addr_line1" name="q10_shippingAdress[addr_line1]" class="form-textbox form-address-line" value="" data-component="address_line_1" aria-labelledby="label_10 sublabel_10_addr_line1" required="">
-                  <label class="form-sub-label" for="input_10_addr_line1" id="sublabel_10_addr_line1" style="min-height:13px" aria-hidden="false"> Street Address </label>
-                </span>
-              </span>
-            </div>
-            <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
-              <span class="form-address-line form-address-street-line jsTest-address-lineField">
-                <span class="form-sub-label-container" style="vertical-align:top">
-                  <input type="text" id="input_10_addr_line2" name="q10_shippingAdress[addr_line2]" class="form-textbox form-address-line" value="" data-component="address_line_2" aria-labelledby="label_10 sublabel_10_addr_line2">
-                  <label class="form-sub-label" for="input_10_addr_line2" id="sublabel_10_addr_line2" style="min-height:13px" aria-hidden="false"> Street Address Line 2 </label>
-                </span>
-              </span>
-            </div>
-            <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
-              <span class="form-address-line form-address-city-line jsTest-address-lineField ">
-                <span class="form-sub-label-container" style="vertical-align:top">
-                  <input type="text" id="input_10_city" name="q10_shippingAdress[city]" class="form-textbox form-address-city" value="" data-component="city" aria-labelledby="label_10 sublabel_10_city" required="">
-                  <label class="form-sub-label" for="input_10_city" id="sublabel_10_city" style="min-height:13px" aria-hidden="false"> City </label>
-                </span>
-              </span>
-              <span class="form-address-line form-address-state-line jsTest-address-lineField ">
-                <span class="form-sub-label-container" style="vertical-align:top">
-                  <input type="text" id="input_10_state" name="q10_shippingAdress[state]" class="form-textbox form-address-state" value="" data-component="state" aria-labelledby="label_10 sublabel_10_state" required="">
-                  <label class="form-sub-label" for="input_10_state" id="sublabel_10_state" style="min-height:13px" aria-hidden="false"> State / Province </label>
-                </span>
-              </span>
-            </div>
-            <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
-              <span class="form-address-line form-address-zip-line jsTest-address-lineField ">
-                <span class="form-sub-label-container" style="vertical-align:top">
-                  <input type="text" id="input_10_postal" name="q10_shippingAdress[postal]" class="form-textbox form-address-postal" value="" data-component="zip" aria-labelledby="label_10 sublabel_10_postal" required="">
-                  <label class="form-sub-label" for="input_10_postal" id="sublabel_10_postal" style="min-height:13px" aria-hidden="false"> Postal / Zip Code </label>
-                </span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </li>
-      
-      <li class="form-line form-field-hidden" style="display: none !important;" data-type="control_fullname" id="id_11">
-        <label class="form-label form-label-top" id="label_11" for="first_11"> Recipient's Full Name </label>
-        <div id="cid_11" class="form-input-wide" data-layout="full">
-          <div data-wrapper-react="true">
-            <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
-              <input type="text" id="first_11" name="q11_recipientsFull[first]" class="form-textbox" size="10" value="" data-component="first" aria-labelledby="label_11 sublabel_11_first">
-              <label class="form-sub-label" for="first_11" id="sublabel_11_first" style="min-height:13px" aria-hidden="false"> First Name </label>
-            </span>
-            <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">
-              <input type="text" id="last_11" name="q11_recipientsFull[last]" class="form-textbox" size="15" value="" data-component="last" aria-labelledby="label_11 sublabel_11_last">
-              <label class="form-sub-label" for="last_11" id="sublabel_11_last" style="min-height:13px" aria-hidden="false"> Last Name </label>
-            </span>
-          </div>
-        </div>
-      </li>
-      <li class="form-line form-field-hidden" style="display: none !important;" data-type="control_textarea" id="id_18">
-        <label class="form-label form-label-top form-label-auto" id="label_18" for="input_18"> Gift Message </label>
-        <div id="cid_18" class="form-input-wide" data-layout="full">
-          <textarea id="input_18" class="form-textarea" name="q18_giftMessage" style="width:648px;height:163px" data-component="textarea" aria-labelledby="label_18"></textarea>
-        </div>
-      </li>
-      
-      <li class="form-line form-line-error" data-type="control_paymentmethods" id="id_20">
-        <label class="form-label form-label-top" id="label_20" for="input_20"> Payment Methods </label>
-        <div id="cid_20" class="form-input-wide" data-layout="full">
-          <div class="payment-methods-area">
-            <div data-wrapper-react="true" class="paypalcomplete-payment-wrapper" data-sandbox="enabled" data-currency="WON" data-auth-only="No" data-show-spb="true" data-show-card-fields="true">
-              <div id="paypal-commerce-platform-container">
-                <div class="paypal-toggle-buttons">
-                  <div class="paypal-toggle">
-                    <div id="paypal-card-fields">
-                      <div class="payment-method-container" data-id="paypal-card-fields">
-                        <input type="radio" class="form-radio" name="paypal-payment-method" data-id="paypal-card-fields" id="paypal-card-fields-input">
-                        <label for="paypal-card-fields-input">
-                          <span class="CC_ico">
-                          </span>ㅋ
-                          Debit or Credit Card
-                        </label>
-                      </div>
-                    </div>
-                    <div id="paypal-smart-buttons">
-                      <div class="payment-method-container" data-id="paypal-smart-buttons">
-                        <input type="radio" class="form-radio" name="paypal-payment-method" data-id="paypal-smart-buttons" id="paypal-smart-buttons-input">
-                        <label for="paypal-smart-buttons-input">  </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="paypal-toggle-content " render-paypal-type="">
-                  <div class="content-area">
-                    <div id="paypal-credit-card-fields">
-                      <div class="paypal-commerce-platform">
-                        <div class="paypal-content">
-                          <div id="payments-sdk__contingency-lightbox">
-                              </div><table class="form-address-table payment-form-table" style="border:0" cellpadding="0" cellspacing="0">
-                            <tbody>
-                              <tr>
-                                <td width="50%">
-                                  <span class="form-sub-label-container" style="vertical-align:top">
-                                    <input type="text" id="19_cc_firstName" name="q19_products[cc_firstName]" class="form-textbox cc_firstName" size="20" value="" data-component="cc_firstName">
-                                    <label class="form-sub-label" for="19_cc_firstName" id="sublabel_cc_firstName" style="min-height:13px;margin:0 0 3px 0" aria-hidden="false"> First Name </label>
-                                  </span>
-                                </td>
-                                <td width="50%">
-                                  <span class="form-sub-label-container" style="vertical-align:top">
-                                    <input type="text" id="19_cc_lastName" name="q19_products[cc_lastName]" class="form-textbox cc_lastName" size="20" value="" data-component="cc_lastName">
-                                    <label class="form-sub-label" for="19_cc_lastName" id="sublabel_cc_lastName" style="min-height:13px;margin:0 0 3px 0" aria-hidden="false"> Last Name </label>
-                                  </span>
-                                </td>
-                              </tr>
-                              <tr class="if_cc_field">
-                                <td width="50%">
-                                  <span class="form-sub-label-container" style="vertical-align:top">
-                                    <div class="form-textbox cc_numberMount cc_number">
-                                    </div>
-                                    <label class="form-sub-label" for="19_cc_number" id="sublabel_cc_number" style="min-height:13px;margin:0 0 3px 0" aria-hidden="false"> Credit Card Number </label>
-                                  </span>
-                                </td>
-                                <td width="50%">
-                                  <span class="form-sub-label-container" style="vertical-align:top">
-                                    <div class="form-textbox cc_ccvMount cc_ccv">
-                                    </div>
-                                    <label class="form-sub-label" for="19_cc_ccv" id="sublabel_cc_ccv" style="min-height:13px;margin:0 0 3px 0" aria-hidden="false"> Security Code </label>
-                                  </span>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td width="50%">
-                                  <span class="form-sub-label-container" style="vertical-align:top">
-                                    <div class="form-textbox cc_cardExpiryMount cc_card_expiry">
-                                    </div>
-                                    <label class="form-sub-label" for="19_cc_card_expiry" id="sublabel_cc_card_expiry" style="min-height:13px;margin:0 0 3px 0" aria-hidden="false"> Card Expiration </label>
-                                  </span>
-                                </td>
-                                <td width="50%">
-                                  </td></tr><tr style="display:none">
-                                    <td>
-                                      <input id="paypal_complete_dummy" style="display:none" class="form-validation-error">
-                                    </td>
-                                  </tr>
-                                
-                              
-                              
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                    <div id="paypal-spb-area">
-                      <p>Please click one of the PayPal options to complete payment and <b>submit</b> the form.</p>
-                      <div id="paypal-button-container" style="pointer-events:">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="paypal-paylater-messages" style="display:block;padding-top:12px">
-                    <div class="message-area" data-pp-amount="0">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <input type="hidden" id="input_20_payment_method" name="q20_paymentMethods[payment_method]" class="" value="" data-component="payment_method">
-          </div>
-        <div class="form-error-message"><img src="https://cdn.jotfor.ms/images/exclamation-octagon.png"> There is an error in PayPal connection. Please contact the form owner.<div class="form-error-arrow"><div class="form-error-arrow-inner"></div></div></div></div>
-      </li>
+     
       <li class="form-line" data-type="control_button" id="id_13">
         <div id="cid_13" class="form-input-wide" data-layout="full">
           <div data-align="center" class="form-buttons-wrapper form-buttons-center   jsTest-button-wrapperField">
