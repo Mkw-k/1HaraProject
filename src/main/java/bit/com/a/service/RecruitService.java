@@ -70,4 +70,6 @@ public interface RecruitService {
 
 	List<RecruitDto> getCalendarSearchList(Map<String, Object> map);
 
+	
+
 }
