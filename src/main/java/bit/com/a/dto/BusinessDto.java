@@ -4,20 +4,20 @@ import java.io.Serializable;
 
 public class BusinessDto implements Serializable{
 
-	/* CREATE TABLE "HR"."BUSINESS" 
-	   (	"COMPANYNAME" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
-		"BUSINESSID" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
-		"COMADDRESS" VARCHAR2(100 BYTE) NOT NULL ENABLE, 
-		"PWD" VARCHAR2(100 BYTE) NOT NULL ENABLE, 
-		"ADDRESSDETAIL" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
-		"PHONENUM" VARCHAR2(100 BYTE) NOT NULL ENABLE, 
-		"DEL" NUMBER(8,0) NOT NULL ENABLE, 
+	/* CREATE TABLE "HR"."BUSINESS"
+	   (	"COMPANYNAME" VARCHAR2(20 BYTE) NOT NULL ENABLE,
+		"BUSINESSID" VARCHAR2(20 BYTE) NOT NULL ENABLE,
+		"COMADDRESS" VARCHAR2(100 BYTE) NOT NULL ENABLE,
+		"PWD" VARCHAR2(100 BYTE) NOT NULL ENABLE,
+		"ADDRESSDETAIL" VARCHAR2(20 BYTE) NOT NULL ENABLE,
+		"PHONENUM" VARCHAR2(100 BYTE) NOT NULL ENABLE,
+		"DEL" NUMBER(8,0) NOT NULL ENABLE,
 		 CONSTRAINT "BUSINESS_PK" PRIMARY KEY ("BUSINESSID")
-	  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+	  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS
 	  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
 	  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
 	  TABLESPACE "USERS"  ENABLE
-	   ) SEGMENT CREATION IMMEDIATE 
+	   ) SEGMENT CREATION IMMEDIATE
 	  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
 	  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
 	  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
@@ -35,9 +35,13 @@ public class BusinessDto implements Serializable{
 		private String filename;
 		private String newfilename;
 		private int auth;
+
+		private String email;
+
 		private String phonenum;
-		
-		
+
+
+
 		public BusinessDto() {
 			super();
 			// TODO Auto-generated constructor stub
@@ -58,6 +62,14 @@ public class BusinessDto implements Serializable{
 			this.auth = auth;
 		}
 
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
 		public String getMemberid() {
 			return memberid;
 		}
@@ -66,8 +78,8 @@ public class BusinessDto implements Serializable{
 			this.memberid = memberid;
 		}
 
-		
-		
+
+
 		public String getCompanyname() {
 			return companyname;
 		}
@@ -150,7 +162,7 @@ public class BusinessDto implements Serializable{
 			this.auth = auth;
 		}
 
-		
+
 		public String getPhonenum() {
 			return phonenum;
 		}
@@ -168,5 +180,5 @@ public class BusinessDto implements Serializable{
 
 
 
-		
+
 }

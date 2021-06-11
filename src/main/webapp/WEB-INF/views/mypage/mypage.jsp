@@ -44,57 +44,57 @@
 <link href="csss/top.css" rel="stylesheet" type="text/css">
 <link href="csss/common.css" rel="stylesheet" type="text/css">
         <link href="csss/reset.css" rel="stylesheet" type="text/css">
-        
-        
+
+
 <style type="text/css">
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 body {
   font-family: "Noto Sans KR", sans-serif !important;
 }
-</style>        
+</style>
 
 
 </head>
 
  <body id="sub_layout">
-     
-     <div class="wrapper"> 
+
+     <div class="wrapper">
 <!--  -->
 <header id="header">
 	<div class="top-area">
 		<div class="inner-wrap">
 			<div class="link-out">
-				<a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do" target="_blank" title="새창 열림">지역일하라</a> 
+				<a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do" target="_blank" title="새창 열림">지역일하라</a>
 				<a href="/useInfo/empCenterInfo/useEmpIntroList.do" target="" title="새창">고용복지<sup></sup>센터</a>
 				<a href="#3" title="새창 열림" onclick="f_moveUrl('WT')">장애인고용포털</a>
 			</div>
 			<div class="util">
 				<!-- 로그인 전 -->
-				
+
 				<!--// 로그인 전 -->
 				<!-- 로그인 후 -->
 
 				<!-- S : 2018-09-28 추가 -->
-				
+
 					<div class="login-mypage">
-						<a href="#"> 
+						<a href="#">
 								<span>[개인]</span>
 							  ${login.name}님
 						</a>
 						<ul>
-							
+
 								<!-- 개인 -->
 								<li><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지 홈</a></li>
 								<li><a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do">회원정보관리</a></li>
 								<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">구직신청관리</a></li>
 								<li><a href="#" onclick="worknet.popup.popCenterSuppAgree(); return false;" target="_blank" title="새창">고객지원</a></li>
-							
-							
+
+
 						</ul>
 					</div>
 					<a href="#" onclick="f_logout();" class="font-blue">로그아웃</a>
-				
+
 				<!-- E : 2018-09-28 추가 -->
 				<!--// 로그인 후 -->
 
@@ -102,11 +102,11 @@ body {
 				<a href="#" class="worknet-chatbot-start-button-for-client">챗봇</a>
 				<a href="jobtalk.do">취업톡톡<img src="static/images/common/ico/ico-gnb-new.png" style="width:15px; height:15px" class="va-m" alt="new"></a>
 				<a href="/useInfo/worknetInfo/useWorknetGuide.do">이용안내</a>
-				<a href="info.do">고객센터</a> 
-				<a href="http://as82.kr/keis" target="_blank" title="새창">원격지원</a> 
+				<a href="info.do">고객센터</a>
+				<a href="http://as82.kr/keis" target="_blank" title="새창">원격지원</a>
 				<a href="/useInvite/worknetHomepgInvite/sitemap.do">사이트맵</a>
 				<!-- 20201022 추가 -->
-				
+
 				<!-- //20201022 추가 -->
 <!--<div class="font-control"> -->
 <!--<p>글자크기</p> -->
@@ -121,15 +121,15 @@ body {
 
 	<div class="middle-area">
 		<div class="inner-wrap">
-			
-				
+
+
 					<h1 class="top-logoWorknet">
 						<a href="home.do"><img src="static/images/common/bg/bg-top-logo.png" style="width:130px; height:60px" alt="일하라"></a>
 					</h1>
-				
-				
-			
-			
+
+
+
+
 			<form id="searchFrm" name="searchFrm" action="/wnSearch/unifSrch.do" method="post" onsubmit="return false">
 				<div class="header-search">
 					<div class="searc-area">
@@ -299,7 +299,7 @@ body {
 								<a href="/jobMain.do">직업·진로 홈</a>
 							</p>
 						</dd>
-						<!-- 화상상담 서비스 종료에 따른 주석처리(20210224) 
+						<!-- 화상상담 서비스 종료에 따른 주석처리(20210224)
 						<dd>
 							<p class="imgConslt"><a href="/consltJobCarpa/videoChatting/conslt/videoChattingConslt.do">화상상담 예약</a> <img src="/static/images/common/ico/ico-gnb-new.png" alt="new" style="vertical-align:-2px"></p>
 						</dd>
@@ -331,12 +331,12 @@ body {
 								<li><a href="/consltJobCarpa/jobData/retrieveCareerInfoList.do">전공진로 가이드</a></li>
 								<li><a href="/consltJobCarpa/srch/schdpt/dptFaqList.do">학과정보 FAQ</a></li>
 								<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=10&amp;catCd1=04&amp;catCd2=0401">학과정보동영상</a></li>
-							</ul> 
+							</ul>
 								<b><a href="/consltJobCarpa/jobConslt/jobConsltList.do">진로상담</a></b>
 							<ul>
 								<li><a href="/consltJobCarpa/jobConslt/jobConsltList.do">상담신청</a></li>
 								<li><a href="/consltJobCarpa/jobConslt/bestConsltList.do">상담 FAQ</a></li>
-							</ul> 
+							</ul>
 							<b><a href="/consltJobCarpa/jobData/retrieveJobInfoReportList.do">자료실</a></b>
 							<ul>
 								<li><a href="/consltJobCarpa/jobData/retrieveJobInfoReportList.do">직업진로정보서</a></li>
@@ -360,7 +360,7 @@ body {
 								</li>
 								<li>
 									<a href="/empSpt/empBlind/retrieveEmpNcs.do">NCS 기반 능력중심 채용</a>
-									
+
 								</li>
 								<li><a href="/empSpt/empGuide/empTrend/TargetGuide.do">대상별 취업가이드</a>
 								</li>
@@ -391,7 +391,7 @@ body {
 						<li>
 							<b><a href="/empSpt/empNews/retrieveEmpNewsList.do">뉴스</a></b>
 							<ul>
-								
+
 								<li><a href="/empSpt/exhibit/exhibit/exhibitList.do">공모전</a></li>
 								<li><a href="/empSpt/empEvent/retrieveEmpEventList.do">채용행사</a></li>
 								<li><a href="/empSpt/empExhibition/retrieveEmpExhibitionList.do">채용박람회</a></li>
@@ -402,7 +402,7 @@ body {
 								<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=05&amp;catCd1=02&amp;catCd2=0202">경력단절여성</a></li>
 								<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=04&amp;catCd1=02&amp;catCd2=0201">중장년층</a></li>
 							</ul>
-							
+
 						</li>
 					</ul>
 					<ul class="dir">
@@ -457,7 +457,7 @@ body {
 								<li><a href="/empSpt/empSptPgm/empAbility2/intro.do">취업능력향상(행복오름) 프로그램 II</a></li>
 							</ul>
 							<ul class="float-l overflow-hidden ml10">
-								
+
 								<li><a href="/empSpt/empSptPgm/oldReemp/intro.do">성장(성공장년) 프로그램</a></li>
 								<li><a href="/empSpt/empSptPgm/wmReemp/intro.do">경력단절여성 프로그램</a></li>
 								<li><a href="/empSpt/empSptPgm/maritalImmgrnt/intro.do">Wici(결혼이민여성)지원 프로그램</a></li>
@@ -599,8 +599,8 @@ body {
 </header>
     <!-- 헤더 -->
 
-    
-    
+
+
 
 
         <div class="container  bg-gray" id="container">
@@ -1575,6 +1575,8 @@ function f_empPgmList(resultObj){
 					<div class="mypage-idv-wrap">
 						<div class="idv-sec01">
 							<div class="con-top">
+
+
 								<c:if test="${login.userpic ne null}">	 		
 									<img src="./upload/${dto.newuserpic}" style="width: 150px;height: 150px;">
 								</c:if>
@@ -1591,15 +1593,15 @@ function f_empPgmList(resultObj){
 											<col style="width:120px">
 											<col style="width:140px">
 										</colgroup>
-										<tbody>			
-																	
+										<tbody>
+
 												<tr>
 													<th scope="row">프로필</th>
 													<td>
 														<img src="./upload/${dto.newuserpic}" style="width: 50px;height: 50px;">
 													</td>
 												</tr>
-												
+
 												<tr>
 													<th scope="row">이메일</th>
 													<td>
@@ -1978,7 +1980,7 @@ function f_empPgmList(resultObj){
 				<a href="http://www.acrc.go.kr" title="새창 열림" target="_blank">국민권익위원회</a>
 				<a href="http://www.kcc.go.kr" title="새창 열림" target="_blank">방송통신위원회</a>
 			</li>
-			
+
 			<li>
 				<strong>유관기관</strong>
 				<a href="http://www.kcomwel.or.kr" title="새창 열림" target="_blank">근로복지공단</a>

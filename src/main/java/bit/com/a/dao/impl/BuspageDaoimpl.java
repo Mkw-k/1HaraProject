@@ -1,5 +1,7 @@
 package bit.com.a.dao.impl;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import bit.com.a.dao.BuspageDao;
 import bit.com.a.dto.BusinessDto;
+import bit.com.a.dto.RecruitDto;
 
 @Repository
 public class BuspageDaoimpl implements BuspageDao {
@@ -26,9 +29,16 @@ public class BuspageDaoimpl implements BuspageDao {
 	
 	// 회원 정보 뿌려주는곳
 	@Override
-	public String getbuspage(BusinessDto dto) {
+	public BusinessDto getbuspage(BusinessDto dto) {
 		
 		return sqlSession.selectOne(namespace + "getBuspage", dto );
+	}
+
+
+	@Override
+	public List<RecruitDto> getMyrecruitList(String memberid) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace + "getMyrecruitList", memberid );
 	}
 	
 	

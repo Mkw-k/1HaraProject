@@ -3,6 +3,8 @@ package bit.com.a.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import bit.com.a.dto.BusinessDto;
 import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.PdsDto;
+import bit.com.a.dto.RecruitDto;
 import bit.com.a.service.BuspageService;
 import bit.com.a.util.PdsUtil;
 
@@ -40,21 +43,23 @@ public class BuspageController {
 	
 	/*마이페이지*/
 	@RequestMapping(value = "buspage.do", method = RequestMethod.GET)
-	public String buspage(Model model, CompanyDto dto){
+	public String buspage(Model model, BusinessDto dto){
 	
-			
-	model.addAttribute("company", dto);
+	dto = service.getbuspage(dto);
+	model.addAttribute("business", dto);
 		
-	return "busMypage/buspage";	
+	return "busMypage/buspage2";	
 	
 	}
 	
 	 /* 회원정보수정페이지*/
 	
 	@RequestMapping(value = "buspageUpdate.do", method = RequestMethod.GET)
-	public String buspageUpdate(BusinessDto dto) {
-	
-		return "busMypage/buspageupdate";
+	public String buspageUpdate(Model model, BusinessDto dto) {
+		System.out.println("memberid="+dto.getMemberid());
+		dto = service.getbuspage(dto);
+		model.addAttribute("business", dto);
+		return "busMypage/buspageupdate2";
 	}
 	
 	
@@ -112,6 +117,17 @@ public class BuspageController {
 		
 		*/
 		return "busMypage/buspage";
+	}
+	
+	//TODO 기업 마이페이지 공고현황 이동
+	@RequestMapping(value = "myRecruitList.do", method = RequestMethod.GET)
+	public String myRecruitList(Model model, String memberid) {
+		
+		List<RecruitDto> mylist = service.getMyrecruitList(memberid);
+		
+		model.addAttribute("mylist", mylist);
+
+		return "busMypage/myrecruitList";
 	}
 	
 	

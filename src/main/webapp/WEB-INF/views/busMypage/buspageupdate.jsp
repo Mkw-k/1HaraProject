@@ -29,12 +29,12 @@
     	
     	<tr>
     		<th>주소: </th>
-    		<td><input type="text" name="comaddress" value="${login.comaddress }"> (필수)</td>
+    		<td><input type="text" name="comaddress" value="${business.comaddress }"> (필수)</td>
     	</tr>
     	
     	<tr>
     		<th>상세 주소 : </th>
-    		<td><input type="text" name="addressdetail" value="${login.addressdetail }"> (필수)</td>
+    		<td><input type="text" name="addressdetail" value="${business.addressdetail }"> (필수)</td>
     	</tr>
  		
     	<tr>

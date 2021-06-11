@@ -37,7 +37,7 @@
 
 <update id="updateFAQ" parameterType="bit.com.a.dto.FAQDto">
 	UPDATE FAQ
-    SET QUESTION=#{question}, FAQANSWER=#{faqanswer}, REGDATE=SYSDATE, FILENAME=#{filename, jdbcType=VARCHAR}
+    SET QUESTION=#{question}, FAQANSWER=#{faqanswer}, REGDATE=SYSDATE, FILENAME=#{filename, jdbcType=VARCHAR}, FAQNUM=#{faqnum}
     WHERE FAQSEQ=#{faqseq}
 </update>
 

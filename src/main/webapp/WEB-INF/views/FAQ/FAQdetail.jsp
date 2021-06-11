@@ -338,7 +338,7 @@ System.out.println("dto" +dto.toString());
 							</tr> 
 							<tr>
 							    <th>답변</th>
-							    <td style="text-align: left;">
+							    <td style="text-align: left; height: 500px">
 							       ${dto.faqanswer }
 							    </td>
 							</tr>

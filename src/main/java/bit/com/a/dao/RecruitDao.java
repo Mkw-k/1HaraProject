@@ -70,4 +70,6 @@ public interface RecruitDao {
 
 	List<RecruitDto> getCalendarSearchList(Map<String, Object> map);
 
+	
+
 }

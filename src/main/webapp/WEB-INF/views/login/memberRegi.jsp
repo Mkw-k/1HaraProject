@@ -146,6 +146,7 @@
 
 
 
+
         <div class="form-group">
 			<label for="phonenumer" class="cols-sm-2 control-label">전화번호 (필수)</label>
 		<div class="cols-sm-10">
@@ -161,9 +162,10 @@
 	 	<div class="cols-sm-6" id="phone_authNumber">
 	 		<input type="text" id="phone_authNum" name="userNum" size="30px" placeholder="인증번호 6자리를 입력하세요.">
 	 		<input type='button' class="btn btn-primary" id="phone_authNumBtn" name="phoneNumBtn" value="인증하기">
-	 	
+
 		</div>
-		</div> 
+		</div>
+
 
         <div class="form-group">
 			<label for="email" class="cols-sm-2 control-label">이메일 (필수)</label>
@@ -445,22 +447,25 @@
        $("#phone_authNumBtn").click(function() {   /* 내가 작성한 번호와 인증번호를 비교한다 */
     	      alert($("#text").val());
     	      var userNum = $("#phone_authNum").val();
-    	      
-    	      var sysNum = $("#text").val();         
-    	      
+
+    	      var sysNum = $("#text").val();
+
     	      if(userNum == null || userNum == ""){
     	         alert("휴대폰으로 발송된 인증번호를 입력해주세요");
-    	      }     
-    	      else{     
+    	      }
+    	      else{
     	         if(userNum.trim() == sysNum.trim()){
     	             alert("성공");
     	          }
     	          else {
     	             alert("실패");
-    	          }          
+    	          }
     	      }
     	   });
      });
+
+
+
     // 성공 상태로 바꾸는 함수
     function successState(sel){
         $(sel)
