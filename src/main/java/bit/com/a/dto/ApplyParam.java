@@ -8,6 +8,11 @@ public class ApplyParam {
 	private String applydate;
 	private String resumetitle;
 	private String name;
+	private String birth;
+	private String address;
+	private String detailaddress;
+	private String phonenum;
+	private String email;
 	public int getApplyseq() {
 		return applyseq;
 	}
@@ -50,8 +55,41 @@ public class ApplyParam {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getBirth() {
+		return birth;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getDetailaddress() {
+		return detailaddress;
+	}
+	public void setDetailaddress(String detailaddress) {
+		this.detailaddress = detailaddress;
+	}
+	public String getPhonenum() {
+		return phonenum;
+	}
+	public void setPhonenum(String phonenum) {
+		this.phonenum = phonenum;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public ApplyParam() {
+		super();
+	}
 	public ApplyParam(int applyseq, int jobseq, String memberid, int resumeseq, String applydate, String resumetitle,
-			String name) {
+			String name, String birth, String address, String detailaddress, String phonenum, String email) {
 		super();
 		this.applyseq = applyseq;
 		this.jobseq = jobseq;
@@ -60,15 +98,21 @@ public class ApplyParam {
 		this.applydate = applydate;
 		this.resumetitle = resumetitle;
 		this.name = name;
-	}
-	public ApplyParam() {
-		super();
+		this.birth = birth;
+		this.address = address;
+		this.detailaddress = detailaddress;
+		this.phonenum = phonenum;
+		this.email = email;
 	}
 	@Override
 	public String toString() {
 		return "ApplyParam [applyseq=" + applyseq + ", jobseq=" + jobseq + ", memberid=" + memberid + ", resumeseq="
-				+ resumeseq + ", applydate=" + applydate + ", resumetitle=" + resumetitle + ", name=" + name + "]";
+				+ resumeseq + ", applydate=" + applydate + ", resumetitle=" + resumetitle + ", name=" + name
+				+ ", birth=" + birth + ", address=" + address + ", detailaddress=" + detailaddress + ", phonenum="
+				+ phonenum + ", email=" + email + "]";
 	}
+	
+	
 	
 	
 	

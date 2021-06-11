@@ -1007,8 +1007,8 @@ function f_empPgmList(resultObj){
 								     	</tr>
 								     	<% for(int i=0; i<applylist.size();i++){ %>
 								     	<tr>
-								     		<th><p>i</p></th>
-								     		<td><a href="RecruitDetail.do?jobseq=<%=applylist.get(i).getJobseq() %>&"><%=applylist.get(i).getResumetitle() %></a></td>
+								     		<th><p><%=i+1 %></p></th>
+								     		<td><a href="Resumedetail.do?seq=<%=applylist.get(i).getResumeseq() %>"><%=applylist.get(i).getResumetitle() %></a></td>
 								     		<td><%=applylist.get(i).getName() %></td>
 								     		<td><%=applylist.get(i).getApplydate() %></td>
 								     	</tr>

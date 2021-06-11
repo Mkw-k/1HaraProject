@@ -974,7 +974,7 @@ function f_empPgmList(resultObj){
  <% List<RecruitDto> mylist =(List<RecruitDto>) request.getAttribute("mylist"); %>
  
 				<!-- contents -->
-				<section id="contents" class="mypage">
+				<section id="contents" class="mypage" style="width: auto;">
 					<div class="tit-util">
 						<span class="hide-location" id="navi_1">마이페이지(기업)</span>
 						<span class="hide-location" id="navi_2">마이페이지(기업) 홈</span>
@@ -983,7 +983,7 @@ function f_empPgmList(resultObj){
 						</div>
 					</div>
 					<div class="mypage-idv-wrap">
-						<div class="idv-sec01" style="border: 1px solid #ffffff;">
+						<div class="idv-sec01" style="border: 1px solid #ffffff;" >
 							<div class="con-top">
 								<div class="tit-area"><span>MY공고내역</span>
 								
@@ -994,17 +994,23 @@ function f_empPgmList(resultObj){
 											<col style="width:50px">
 											<col style="width:300px">
 											<col style="width:100px">
+											<col style="width:100px">
+											<col style="width:100px">
 										</colgroup>
 										<tbody>			
 			    						<tr>
 								     		<th>공고번호 </th>
 								     		<td style="text-align: center;">공고제목</td>
+								     		<td>공고시작일</td>
+								     		<td>공고마감일</td>
 								     		<td>지원현황</td>
 								     	</tr>
 								     	<% for(int i=0; i<mylist.size();i++){ %>
 								     	<tr>
 								     		<th><a href="RecruitDetail.do?jobseq=<%=mylist.get(i).getJobSeq() %>&memberid=${login.memberid}"><%=mylist.get(i).getJobSeq() %></a> </th>
 								     		<td><a href="RecruitDetail.do?jobseq=<%=mylist.get(i).getJobSeq() %>&memberid=${login.memberid}"><%=mylist.get(i).getJobTitle() %></a></td>
+								     		<td><%=mylist.get(i).getJobStart() %></td>
+								     		<td><%=mylist.get(i).getJobEnd() %></td>
 								     		<td><button onclick="applyList('<%=mylist.get(i).getJobSeq() %>')">지원현황</button></td>
 								     	</tr>
 								     	
