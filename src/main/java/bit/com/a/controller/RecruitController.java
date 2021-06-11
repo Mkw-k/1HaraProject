@@ -328,7 +328,7 @@ public class RecruitController {
    }
 
 //TODO채용공고 작성 After(DB에 입력)
-   @RequestMapping(value = "recuruitcreateAf.do", method = RequestMethod.POST)
+   @RequestMapping(value = "recuruitcreateAf.do", method = {RequestMethod.GET, RequestMethod.POST})
    public String recuruitcreateAf(RecruitDto dto, Model model, HttpServletRequest req) {
       model.addAttribute("doc_title", "채용공고");
 
@@ -1172,27 +1172,7 @@ public class RecruitController {
 			return "redirect:/recuruitlist.do";
 		}
 		
-		//TODO 기업 마이페이지 공고현황 이동
-		@RequestMapping(value = "myRecruitList.do", method = RequestMethod.GET)
-		public String priMemberAf(Model model) {
-			model.addAttribute("doc_title", "채용공고");
-			
-			System.out.println("AF들어온 데이터 :" + dto.toString());
-			
-			boolean b = service.priMemberAf(dto);
-			
-			if(b) {
-			  	System.out.println("프리미엄 등록 성공");
-
-			}else {
-				System.out.println("프리미엄 등록 실패");
-
-			}
-			
-
-			return "redirect:/recuruitlist.do";
-		}
-				
+		
 				
 				
 }
