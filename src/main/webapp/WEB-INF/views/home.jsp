@@ -808,7 +808,7 @@ margin-right : 450px;
 
 <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="regiclick.do" class="btn_sign signup"><span class="txt">회원가입</span></a>
 =======
-<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="mypage.do" class="btn_sign signup"><span class="txt">마이페이지</span></a>
+<a href="mypage.do?memberid=${login.memberid }" class="btn_sign signup"><span class="txt">마이페이지</span></a>
 </div>
 </div>
 <div class="navi_total">

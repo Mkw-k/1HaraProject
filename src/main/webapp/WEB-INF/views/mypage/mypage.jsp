@@ -854,7 +854,7 @@ body {
 						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a>
 					</li>
 					<li>
-						<a href="mypageUpdate.do" target="_self">회원탈퇴</a>
+						<a href="memberDelete.do" target="_self">회원탈퇴</a>
 					</li>
 				</ul>
 			</div>
@@ -1576,7 +1576,7 @@ function f_empPgmList(resultObj){
 						<div class="idv-sec01">
 							<div class="con-top">
 								<c:if test="${login.userpic ne null}">	 		
-									<img src="./upload/${login.newuserpic}" style="width: 150px;height: 150px;">
+									<img src="./upload/${dto.newuserpic}" style="width: 150px;height: 150px;">
 								</c:if>
 								<div class="tit-area"><span>${login.name}</span> 님, 반갑습니다.
 									<a href = "mypageUpdate.do" class="button">회원정보수정</a>
@@ -1596,22 +1596,22 @@ function f_empPgmList(resultObj){
 												<tr>
 													<th scope="row">프로필</th>
 													<td>
-														<img src="./upload/${login.newuserpic}" style="width: 50px;height: 50px;">
+														<img src="./upload/${dto.newuserpic}" style="width: 50px;height: 50px;">
 													</td>
 												</tr>
 												
 												<tr>
 													<th scope="row">이메일</th>
 													<td>
-														${login.email}
+														${dto.email}
 													</td>
 												</tr>
 												<tr>
 													<th scope="row">주소</th>
 													<td colspan="3">
 														<div>
-															${login.address}<br>
-															${login.detailaddress}
+															${dto.address}<br>
+															${dto.detailaddress}
 														</div>
 													</td>
 												</tr>
@@ -1619,7 +1619,16 @@ function f_empPgmList(resultObj){
 													<th scope="row">생년월일</th>
 													<td colspan="3">
 														<div>
-															${login.birth}
+															${dto.birth}
+														</div>
+													</td>
+												</tr>
+												
+												<tr>
+													<th scope="row">전화번호</th>
+													<td colspan="3">
+														<div>
+															${dto.phonenum}
 														</div>
 													</td>
 												</tr>
