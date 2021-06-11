@@ -107,4 +107,6 @@ public interface ResumeDao {
 	Resume_HighschoolDto getHighDetail(int seq);
 	
 	List<Resume_UniversityVo> getUniDetail(int seq);
+	
+
 }

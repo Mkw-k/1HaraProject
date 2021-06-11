@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import bit.com.a.dto.ApplyDto;
+import bit.com.a.dto.ApplyParam;
 import bit.com.a.dto.BusinessDto;
 import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.PdsDto;
@@ -119,7 +121,7 @@ public class BuspageController {
 		return "busMypage/buspage";
 	}
 	
-	//TODO 기업 마이페이지 공고현황 이동
+	// 기업 마이페이지 공고현황 이동
 	@RequestMapping(value = "myRecruitList.do", method = RequestMethod.GET)
 	public String myRecruitList(Model model, String memberid) {
 		
@@ -128,6 +130,17 @@ public class BuspageController {
 		model.addAttribute("mylist", mylist);
 
 		return "busMypage/myrecruitList";
+	}
+	
+	// 기업 마이페이지 공고현황 이동
+	@RequestMapping(value = "goApplylist.do", method = RequestMethod.GET)
+	public String goApplylist(Model model, int jobseq) {
+		
+		List<ApplyParam> applylist = service.getApplylist(jobseq);
+		
+		model.addAttribute("applylist", applylist);
+
+		return "busMypage/applylist";
 	}
 	
 	

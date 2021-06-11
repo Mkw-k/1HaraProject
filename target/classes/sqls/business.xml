@@ -46,6 +46,12 @@
 		WHERE COMPANYID=#{memberid}
 	</select>
 	
-	
+	<select id="getApplylist" parameterType="java.lang.Integer" resultType="bit.com.a.dto.ApplyParam">
+		SELECT a.APPLYSEQ, a.MEMBERID, a.JOBSEQ, a.RESUMESEQ, a.APPLYDATE, r.RESUMETITLE, m.NAME
+		FROM APPLY a, JOB j, RESUME r, MEMBER m
+		WHERE a.JOBSEQ=j.JOBSEQ AND a.RESUMESEQ=r.RESUMESEQ AND a.MEMBERID=m.MEMBERID 
+		AND JOBSEQ=#{jobseq}
+		ORDERBY a.APPLYDATE DESC
+	</select>
 
   </mapper>
