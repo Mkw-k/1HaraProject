@@ -705,7 +705,7 @@ function getrecruitSearchList(pnum) {
  									+ "</td>"
  									+"<td style='text-align:left'>"
  									//+ arrow(val.depth)
- 									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
+ 									+"<a href='getDetailCompany.do?jobseq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
  									+"</td>"
  									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
  									+"<td>" + val.jobVolumn + "</td>"

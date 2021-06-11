@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import bit.com.a.dao.RecruitDao;
 import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.BusinessDto;
+import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 
@@ -171,6 +172,12 @@ public class RecruitDaoImpl implements RecruitDao{
 	@Override
 	public List<RecruitDto> getCalendarSearchList(Map<String, Object> map) {
 		return session.selectList(ns+"getCalendarSearchList", map);
+	}
+
+	@Override
+	public CompanyDto getCompany(int jobseq) {
+		
+		return session.selectOne(ns + "getDetailCompany",jobseq);
 	}
 
 

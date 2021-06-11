@@ -10,13 +10,12 @@ public class MemberDto implements Serializable{
 	private String email;
 	private String phonenum;
 	private int auth;							// 관리자인지 기업인인지 구분하는 번호 그리고 관리자
-	/* private int del; */							// 회원 탈퇴시 del번호를 변경해줘서 회원 탈퇴처리
 	private String address;						// 집주소
 	private String detailaddress;				// 집상세주소
 	private String birth;						// 생년월일
 	private String userpic;
 	private String newuserpic;
-	private String phonenum;
+
 	
 	
 	public MemberDto() {
@@ -43,21 +42,6 @@ public class MemberDto implements Serializable{
 		this.newuserpic = newuserpic;
 	}
 
-
-
-	
-	
-
-	public String getPhonenum() {
-		return phonenum;
-	}
-
-
-
-
-	public void setPhonenum(String phonenum) {
-		this.phonenum = phonenum;
-	}
 
 
 

@@ -321,7 +321,23 @@ System.out.println("resumelist" +resumelist);
   <div class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-12"> 기업정보(위치정보-지도포함) </div>
+        <div class="col-md-12">
+			<table>
+				<tr>
+					<th>사업</th><td>${com.content }</td>
+				</tr>
+				<tr>
+					<th>사원수</th><td>${com.empcount }</td>
+				</tr>
+				<tr>
+					<th>평균연봉</th><td>${com.salaryavg }</td>
+				</tr>
+			
+			
+			
+			</table>
+			
+		</div>
       </div>
     </div>
   </div>

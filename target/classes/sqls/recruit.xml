@@ -158,26 +158,6 @@
 
 </select>
 
-<!-- 글의 총수 -->
-<!-- <select id="getRecruitCount" parameterType="bit.com.a.dto.BbsParam" resultType="java.lang.Integer">
-   SELECT NVL(COUNT(*), 0) AS CNT
-    FROM JOB J, BUSINESS C
-   WHERE J.COMPANYID = C.MEMBERID
-
-   AND J.DEL =0
-
-   <if test="choice != null and choice != ''
-              and search != null and search != ''">
-      AND DEL=0
-      <if test="choice == 'title'">
-         AND J.JOBTITLE LIKE '%'||#{search}||'%'
-      </if>
-      <if test="choice == 'companyname'">
-         AND C.COMPANYNAME LIKE '%'||#{search}||'%'
-      </if>
-   </if>
-
-</select> -->
 
 <!-- 페이징 검색 리스트 가져오기 -->
 <select id="getRecruitPagingList" parameterType="bit.com.a.dto.BbsParam" resultType="bit.com.a.dto.RecruitDto">
@@ -379,6 +359,22 @@ WHERE J.COMPANYID = C.MEMBERID AND
      P.CAREER_TYPE = J.CAREER_TYPE AND
      T.EMP_TYPE = J.EMP_TYPE AND
      J.JOBSEQ = D.JOBSEQ AND
+     J.JOBSEQ = ${jobseq}
+</select>
+
+<!-- 기업상세정보 -->
+<select id="getDetailCompany" parameterType="Integer" resultType="bit.com.a.dto.CompanyDto">
+SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+               J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
+               J.EDUCATION , J.CAREER_TYPE, J.REGDATE, J.DEL, C.COMPANYNAME, P.CAREER_DESC,
+               E.EDUNAME, T.EMP_NAME, D.detailAdress1, D.detailAdress2, D.mgName, D.mgPhone, D.mgEmail, M.EMPCOUNT, M.CONTENT, M.SALARYAVG, M.COMIMAGE
+FROM JOB J, BUSINESS C, EDUCATION E, JOB_CAREERTYPE P, EMPLOYEE_TYPE T, MGDETAIL D, COMPANY M  
+WHERE J.COMPANYID = C.MEMBERID AND
+     J.EDUCATION = E.EDUCODE AND
+     P.CAREER_TYPE = J.CAREER_TYPE AND
+     T.EMP_TYPE = J.EMP_TYPE AND
+     J.JOBSEQ = D.JOBSEQ AND
+     C.MEMBERID = M.MEMBERID AND 
      J.JOBSEQ = ${jobseq}
 </select>
 

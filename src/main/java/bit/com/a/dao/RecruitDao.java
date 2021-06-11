@@ -5,6 +5,7 @@ import java.util.Map;
 
 import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.BusinessDto;
+import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 
@@ -69,6 +70,8 @@ public interface RecruitDao {
 	boolean priMemberAf(BusinessDto dto);
 
 	List<RecruitDto> getCalendarSearchList(Map<String, Object> map);
+
+	CompanyDto getCompany(int jobseq);
 
 	
 

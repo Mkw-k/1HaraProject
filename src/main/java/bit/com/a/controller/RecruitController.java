@@ -404,12 +404,15 @@ public class RecruitController {
    @RequestMapping(value = "RecruitDetail.do", method = RequestMethod.GET)
    public String RecruitDetail(int jobseq, Model model, String memberid) {
       model.addAttribute("doc_title", "채용공고");
-
+      
+    
+      
+      
       //디테일 데이터 받아오기
       System.out.println("seq:"+jobseq);
       RecruitDto dto = service.getRecruitListOne(jobseq);
       List<ResumeDto> resumelist = resumeservice.getresume(memberid);
-
+      
       System.out.println(dto.toString());
 
       //직무이름 받아오는 코드
@@ -448,6 +451,63 @@ public class RecruitController {
 
       return "recruit/recruitDetail";
    }
+   
+   
+ //TODO 기업 상세정보 가져오기 
+   @RequestMapping(value = "getDetailCompany.do", method = RequestMethod.GET)
+   public String getDetailCompany(int jobseq, Model model, String memberid) {
+      model.addAttribute("doc_title", "채용공고");
+      
+    
+      CompanyDto com = service.getCompany(jobseq);
+      model.addAttribute("com", com);
+      System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+com.toString());
+      //디테일 데이터 받아오기
+      System.out.println("seq:"+jobseq);
+      RecruitDto dto = service.getRecruitListOne(jobseq);
+      List<ResumeDto> resumelist = resumeservice.getresume(memberid);
+      
+      System.out.println(dto.toString());
+
+      //직무이름 받아오는 코드
+      List<String> list = service.getBsnameForDetail(jobseq);
+      System.out.println("직무이름 :"+ list.toString());
+
+      dto.setBusname(list);
+
+      //검색용 파라미터 dto설정
+      RecruitParam param = new RecruitParam();
+      String jobSeq = jobseq + "";
+      param.setJobSeq(jobSeq);
+      param.setMemberid(memberid);
+
+      //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
+      int IjobFavoriteCount = service.getJobFavorite(param);
+      String jobFavoriteCount = IjobFavoriteCount + "";
+
+      dto.setFavoriteJob(jobFavoriteCount);
+
+
+      //검색용 파라미터 dto설정
+      param.setCompanyId(dto.getCompanyId());
+      param.setMemberid(memberid);
+
+      //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
+      int IcomFavoriteCount = service.getComFavorite(param);
+      String comFavoriteCount = IcomFavoriteCount + "";
+
+      dto.setFavoriteCom(comFavoriteCount);
+
+      System.out.println("변경된 Dto :"+dto.toString());
+
+      model.addAttribute("dto", dto);
+      model.addAttribute("resumelist", resumelist);
+
+      return "recruit/recruitDetail";
+   }
+   
+   
+   
 
 //TODO디테일 수정시 데이터 가져가기 Ajax(컨트롤러에서 상세공고 데이터를 취득하여 업데이트 페이지로 이동)
       @RequestMapping(value = "RecruitUpdate.do", method = RequestMethod.GET)

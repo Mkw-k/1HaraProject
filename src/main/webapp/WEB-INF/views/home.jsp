@@ -786,31 +786,43 @@ margin-right : 450px;
       </li>
  </ul>
 
-
 <!-- 로그인 로그아웃 란 -->
 <c:choose>
-	<c:when test="${empty login}">
-		<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="javascript:login()" class="btn_sign signin"><span class="txt">로그인</span></a>
-	</c:when>
+   <c:when test="${empty login}">
+      <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="javascript:login()" class="btn_sign signin"><span class="txt">로그인</span></a>
+   </c:when>
 <c:otherwise>
 
 <c:choose>
-	<c:when test="${login.auth==1 || login.auth==3}">
-		<a href="logout.do" class="btn_sign signin"><span class="txt">로그아웃</span></a>
-	</c:when>
-	<c:otherwise>
-		<a href="logout.do" class="btn_sign signin"><span class="txt">로그아웃</span></a>
-	</c:otherwise>
+   <c:when test="${login.auth==1 || login.auth==3}">
+      <a href="logout.do" class="btn_sign signin"><span class="txt">로그아웃</span></a>
+   </c:when>
+   <c:otherwise>
+      <a href="logout.do" class="btn_sign signin"><span class="txt">로그아웃</span></a>
+   </c:otherwise>
 </c:choose>
 </c:otherwise>
 </c:choose>
 
 
+<c:if test="${login.memberid == null }">
+   <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="regiclick.do" class="btn_sign signup"><span class="txt">회원가입</span></a>
+</c:if>
 
-<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="regiclick.do" class="btn_sign signup"><span class="txt">회원가입</span></a>
-=======
-<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="mypage.do" class="btn_sign signup"><span class="txt">마이페이지</span></a>
+<c:if test="${login.auth == 1 || login.auth == 3 }">
+   <a href="mypage.do?memberid=${login.memberid }" class="btn_sign signup"><span class="txt">마이페이지</span></a>
+</c:if>
+
+<c:if test="${login.auth == 2 }">
 <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="buspage.do?memberid=${login.memberid }" class="btn_sign signup"><span class="txt">기업마이페이지</span></a>
+</c:if>
+
+
+
+
+
+
+
 </div>
 </div>
 <div class="navi_total">
