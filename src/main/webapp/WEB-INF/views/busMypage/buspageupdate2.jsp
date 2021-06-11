@@ -66,7 +66,7 @@ body {
 							
 						</ul>
 					</div>
-					<a href="#" onclick="f_logout();" class="font-blue">로그아웃</a>
+					<a href="#" onclick="f_logout();" class="font-blue">로그아웃</a></div>
 				
 				<!-- E : 2018-09-28 추가 -->
 				<!--// 로그인 후 -->

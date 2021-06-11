@@ -1,6 +1,9 @@
 package bit.com.a.service;
 
+import java.util.List;
+
 import bit.com.a.dto.BusinessDto;
+import bit.com.a.dto.RecruitDto;
 
 public interface BuspageService {
 
@@ -10,6 +13,8 @@ public interface BuspageService {
 	public BusinessDto getbuspage(BusinessDto dto);
 	
 	boolean updateBuspage(BusinessDto dto);
+
+	public List<RecruitDto> getMyrecruitList(String memberid);
 
 
 
