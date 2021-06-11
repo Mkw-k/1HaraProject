@@ -563,11 +563,13 @@ nav {
 	
 </table>
 </div>
-
-	<c:if test="${company.memberid } == ${login.memberid } ">
-   	  <a class="nav-link bgc" href="companyupdate.do?memberid=${company.memberid }" style="color:#2186eb">기업수정/등록</a>
+	<br>
+	<c:if test="${login.memberid } ">
+   	  <a  href="companyupdate.do?memberid=${company.memberid }" style="color:#2186eb">기업수정</a>
   	</c:if>
-
+	  
+	 <a href="recuruitlist.do">목록으로</a>
+	
 </form>
 <!-- //////////////////////////////////////////테이블 끝 -->
 
@@ -805,10 +807,19 @@ $("#searchBtn").click(function () {
 
 function btnweb() {	
 	var url = 'http://' + '${company.website }';
-	alert(url);
+//	var url = window.open('http://' + '${company.website }');
+	//alert(url);
 	
 	window.location.href = url;
 }
+
+
+
+
+
+
+
+
 
 
 </script>

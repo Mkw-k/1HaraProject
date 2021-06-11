@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import bit.com.a.dto.BbsParam;
+import bit.com.a.dto.BusinessDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 
@@ -27,7 +28,7 @@ public interface RecruitService {
 
    List<RecruitParam> buscode3ListData(int buscode);
 
-   List<RecruitDto> getCalendarList(RecruitDto rec);
+   List<RecruitDto> getCalendarList(RecruitParam param);
 
    List<String> getBsnameForDetail(int jobseq);
 
@@ -51,6 +52,24 @@ public interface RecruitService {
 
 	boolean mgDetailUpdate2(RecruitDto dto);
 
-	boolean favoriteJob(int jobSeq);
+	boolean favoriteJob(RecruitParam param);
+
+	int getJobFavorite(RecruitParam param);
+
+	boolean dropFavoriteJob(RecruitParam param);
+
+	List<RecruitDto> getCalendarList_1();
+
+	boolean favoriteCom(RecruitParam param);
+
+	int getComFavorite(RecruitParam param);
+
+	boolean dropFavoriteCom(RecruitParam param);
+
+	boolean priMemberAf(BusinessDto dto);
+
+	List<RecruitDto> getCalendarSearchList(Map<String, Object> map);
+
+	
 
 }

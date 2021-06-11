@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import bit.com.a.dto.ResumeDto;
+import bit.com.a.dto.ApplyDto;
 import bit.com.a.dto.Resume_ActivityVo;
 import bit.com.a.dto.Resume_AwardVo;
 import bit.com.a.dto.Resume_CareerVo;
-import bit.com.a.dto.Resume_EduVo;
+import bit.com.a.dto.Resume_HighschoolDto;
 import bit.com.a.dto.Resume_LanguageVo;
+import bit.com.a.dto.Resume_UniversityVo;
 import bit.com.a.dto.Resume_licenseVo;
 
 
@@ -18,7 +20,7 @@ public interface ResumeService {
 
 	int getseq(String resumetitle);
 
-	boolean writeEdu(Resume_EduVo eduvo);
+	/* boolean writeEdu(Resume_EduVo eduvo); */
 
 	boolean writeCareer(Resume_CareerVo carvo);
 
@@ -30,13 +32,13 @@ public interface ResumeService {
 
 	boolean writeLan(Resume_LanguageVo lanvo);
 
-	List<ResumeDto> getresume();
+	List<ResumeDto> getresume(String memberid);
 
 	int getTotalPage();
 
 	ResumeDto getResumeDetail(int seq);
 
-	List<Resume_EduVo> getEduDetail(int seq);
+	/* List<Resume_EduVo> getEduDetail(int seq); */
 
 	List<Resume_CareerVo> getCareerDetail(int seq);
 
@@ -62,7 +64,7 @@ public interface ResumeService {
 
 	boolean deleteLanResume(int seq);
 
-	List<ResumeDto> getNoresume();
+	List<ResumeDto> getNoresume(String memberid);
 
 	void upProgress(ResumeDto dto);
 
@@ -70,7 +72,7 @@ public interface ResumeService {
 
 	void updateResume(ResumeDto dto);
 
-	boolean updateEdu(Resume_EduVo eduvo);
+	/* boolean updateEdu(Resume_EduVo eduvo); */
 
 	boolean updateCareer(Resume_CareerVo carvo);
 
@@ -81,6 +83,26 @@ public interface ResumeService {
 	boolean updateAward(Resume_AwardVo awdvo);
 
 	boolean updateLan(Resume_LanguageVo lanvo);
+
+	boolean addApply(ApplyDto param);
+
+	List<ApplyDto> getApplyList(String memberid);
+
+	String getJobtitle(int jobseq);
+
+	String getResumeTitle(int resumeseq);
+
+	boolean writeHigh(Resume_HighschoolDto highdto);
+
+	boolean writeUni(Resume_UniversityVo univo);
+
+	boolean updateHigh(Resume_HighschoolDto highdto);
+
+	boolean updateUni(Resume_UniversityVo univo);
+
+	Resume_HighschoolDto getHighDetail(int seq);
+
+	List<Resume_UniversityVo> getUniDetail(int seq);
 
 	
 	

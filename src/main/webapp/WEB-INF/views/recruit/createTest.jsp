@@ -10,6 +10,9 @@
 <head>
 <meta charset="utf-8">
 <title>Checkout</title>
+<!-- CK-editor -->
+<link rel="stylesheet" href="ckeditor5/sample/styles.css">
+<script src="ckeditor5/build/ckeditor.js"></script>
 <!-- 전체 공통 스크립트 임포트 -->
 <c:import url="script.jsp" charEncoding="utf-8"/>
 <!-- PAGE settings 페이지네이션-->
@@ -18,9 +21,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 <!-- 외부css파일과 연결 -->
 <link rel="stylesheet" href="./css/wireframe.css">
-<!-- CK-editor -->
-<link rel="stylesheet" href="ckeditor5/sample/styles.css">
-<script src="ckeditor5/build/ckeditor.js"></script>
 
 
 <style type="text/css">
@@ -41,7 +41,8 @@
       <div class="row">
         <div class="text-center col-md-7 mx-auto"> <i class="fa d-block fa-bullseye fa-5x mb-4 text-info"></i>
           <h2><b style="	box-shadow: 0px 0px 4px  black;	text-shadow: 0px 0px 4px black;">채용공고 등록</b></h2>
-          <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+          <p class="lead">프리미엄 회원으로 등록을 원하시면 프리미엄 회원결제를 해주세요. <br>프리미엄 회원이 되시면 우선순위로 공고 최상단에 검색됩니다.</p>
+          <a>프리미엄 회원 등록하러가기</a>
         </div>
       </div>
     </div>
@@ -162,8 +163,8 @@
                 <div class="col-md-4 mb-3"> <label for="state">경력사항</label> 
                 	<select class="custom-select d-block w-100" name="career_Type">
                     	<option class="hidden"  selected disabled>경력구분</option>
-                        <option value="0"
-                        <c:if test="${dto.career_Type == 0}">selected</c:if>>무관</option>
+                        <option value="100"
+                        <c:if test="${dto.career_Type == 100}">selected</c:if>>무관</option>
                         <option value="1"
                         <c:if test="${dto.career_Type == 1}">selected</c:if>>신입</option>
                         <option value="2"
@@ -218,9 +219,7 @@
                <div class="row">
               <div class="col-md-12 mb-12">
 	               <p><label for="address">공고상세내역</label></p>
-	              	<div class="editor" ><h1>여기다가 쓰면 들어옴 </h1>
-	              							<span>띄어쓰기는 안댐</span><span>띄어쓰기는 안댐</span><span>띄어쓰기는 안댐</span>      
-											<img alt="" src="">       	
+	              	<div class="editor" >    	
 	              	${dto.jobContent }  </div>
 	              	
 	              	
@@ -235,27 +234,96 @@
         
         
         <!-- <div class="container"> -->
-        <div class="row">
-          <div class="col-md-12">
-            <h1 class="" id="_writeFrm2">입력내역2(직업분류입력)</h1>
-          </div>
-        </div>
-        
-         <div class="row" >
-          <span class="col-md-4" id="_buscodeList1">
-            	<p>직무분류1</p>
-            	<!-- 데이터들어오는자리 -->
-          </span>
-          <span class="col-md-4" id="_buscodeList2">
-            	<p>직무분류2</p>
-                <!-- 데이터들어오는자리 -->
-			</span>
-          <div class="col-md-4" style="" id="_buscodeList3">
-           	<p>직무분류3</p>
-                <!-- 데이터들어오는자리 -->
-				</div>
-			</div>
-			<p id="selectResult"></p>
+        <div class="py-5">
+         <div class="container">
+
+            <div class="row">
+               <div class="col-md-12">
+				  
+				  <c:if test="${dto.certifyUpdate == 'YES'}">
+                     <font style="color: red;">직무분류는 꼭 다시 선택해 주세요</font>
+                     </c:if>
+                     
+                        <div class="py-5">
+                           <div class="container">
+                              <div class="row">
+							
+                                 <div class="col-md-4">
+                                    <div class="form-group wrapper">
+                                       <label>대분류</label> <select class="form-control"
+                                          id="_buscodeList1" size="5" onfocus='this.size=5;'
+                                          onblur='this.size=5;' onchange='this.size=5; this.blur();'>
+
+
+                                       </select>
+                                    </div>
+
+                                 </div>
+
+                                 <div class="col-md-4">
+                                    <div class="form-group wrapper">
+                                       <label>중분류</label> <select class="form-control"
+                                          id="_buscodeList2" size="5" onfocus='this.size=5;'
+                                          onblur='this.size=5;' onchange='this.size=5; this.blur();'>
+
+
+                                       </select>
+                                    </div>
+
+                                 </div>
+
+                                 <div class="col-md-4">
+                                    <p>소분류</p>
+                                    <div id="_buscodeList3"
+                                       style="overflow: auto; width: 350px; height: 150px;">
+
+                                    </div>
+
+                                 </div>
+
+
+
+
+                              </div>
+                           </div>
+                        </div>
+                     
+
+							<div class="col-md-12">
+								<p id="selectResult"></p>
+							</div>
+
+							<p>
+								<button type="button" id="deleteResult">삭제하기</button>
+							</p>
+
+                  
+               </div>
+            </div>
+         </div>
+      </div>
+			
+			<%-- <c:choose> 
+          		<c:when test="${dto.certifyUpdate == 'YES'}">
+          			<p id="selectResult">
+          				<c:forEach var="name" items="${dto.}" varStatus="status">
+
+    						<p>${status.count} : <c:out value="${name}" /></p>
+
+						</c:forEach>
+
+          			</p>       		
+          		</c:when> 
+        	    <c:otherwise>
+          			<p id="selectResult"></p>
+          		</c:otherwise> 
+          	</c:choose>  --%>
+			
+			
+			
+			
+			
+			
      
         
         <div class="row">
@@ -398,12 +466,10 @@ function jobRegi() {
     	busData[i] = $("input[name='buscode']")[i].value;
     }
     
-    /* var data = CKEDITOR.instances.editor.getData();
-    $("#_jobContent").val(data);
-    alert($("#_jobContent").val(data)); */
+ 
     
-    alert($(".editor").html());
-    $("#_jobContent").val($(".editor").html());
+    //alert($(".editor").html());
+    //$("#_jobContent").val($(".editor").html());
     
     
     
@@ -512,286 +578,286 @@ function sample6_execDaumPostcode() {
 }
 
 
-//첫번째 BUSCODE1 DATA를 받아서 체크박스로 뿌려주는 코드 
+//첫번째 BUSCODE1 DATA를 받아서 체크박스로 뿌려주는 코드
 $(document).ready(function() {
-	
-	
+
+
 $.ajax({
-	url : "./buscodeListData.do", 
-	type : "get", 
-	success:function(list){
-		//alert('success');
-		//alert(list);
-		
-		//JSTL로 받아온 지역 정보의 대분류 네임이 서울이면 (일단 자바스크립트 변수로 변경) selected 조건을 줌 
-		var area1Name = '<c:out value="${dto.area1Name}"/>';
-		
-		$(".list_col1").remove();
-		
-		$.each(list, function(i, val){
+   url : "./buscodeListData.do",
+   type : "get",
+   success:function(list){
+      //alert('success');
+      //alert(list);
 
-			//alert(val.jobSeq);
+      //JSTL로 받아온 지역 정보의 대분류 네임이 서울이면 (일단 자바스크립트 변수로 변경) selected 조건을 줌
+      var area1Name = '<c:out value="${dto.area1Name}"/>';
 
-			//let app = "<input type='checkbox' class='list_col' name='buscode' value='"+val.buscode1+"' class='form-control'>"+val.buscodename1
-			let app = "<div>"+
-					"<input type='radio' class='list_col1' id='buscode1'"+ 
-					
-					"name='buscode1' value='"+val.buscode1+"'><label for='huey'>"+val.buscodename1+"</label>"+
-					"</div>";
-				
-				$("#_buscodeList1").append(app);
-		});
-	}, 
-	error:function(){
-		alert('error');
-	}
-	
+      $(".list_col1").remove();
+
+      $.each(list, function(i, val){
+
+         //alert(val.jobSeq);
+
+         //let app = "<input type='checkbox' class='list_col' name='buscode' value='"+val.buscode1+"' class='form-control'>"+val.buscodename1
+         let app = "<option value='"+val.buscode1+"'class='list_col1' name='buscode1' id='buscode1'>"+
+                 val.buscodename1+
+                 "</option>";
+
+         $("#_buscodeList1").append(app);
+      });
+   },
+   error:function(){
+      alert('error');
+   }
+
  }); // ajax
- 
-}); // document ready 
+
+}); // document ready
 
 
-//두번째 BUSCODE2 DATA를 받아서 체크박스로 뿌려주는 코드 
-$(document).on("change",".list_col1", function(){
-	
-	if($(this).is(":checked")){
+//두번째 BUSCODE2 DATA를 받아서 체크박스로 뿌려주는 코드
+$(document).on("change","#_buscodeList1", function(){
+
+   //alert('변경');
+   //alert( $(this).prop("selected"));
+
+    let buscode = $(this).find(":selected").val();
+     //alert(buscode);
+
+
         //alert("체크");
         //alert($(this).val());
-        let buscode = $(this).val();
-        
+
+
         $.ajax({
-        	url : "./buscode2ListData.do", 
-        	type : "get", 
-        	data: {"buscode":buscode}, 
-        	success:function(list){
-        		//alert('success');
-        		//alert(list);
-        		
-        		$(".list_col2").remove();		
-        		
-        		
-        		
-        		$.each(list, function(i, val){
-							let app = "<div>"+
-        					"<input type='radio' class='list_col2' id='buscode2' name='buscode2' value='"+val.buscode2+"'><label class='list_col2' for='huey'>"+val.buscodename2+"</label>"+
-        					"</div>";
-        				
-        				$("#_buscodeList2").append(app);
-        		});
-        	}, 
-        	error:function(){
-        		alert('error');
-        	}
-        	
+           url : "./buscode2ListData.do",
+           type : "get",
+           data: {"buscode":buscode},
+           success:function(list){
+              //alert('success');
+              //alert(list);
+
+              $(".list_col2").remove();
+
+
+
+              $.each(list, function(i, val){
+                     let app = "<option class='list_col2' id='buscode2' name='buscode2' value='"+val.buscode2+"'>"+
+                              val.buscodename2+
+                                "</option>";
+
+                  $("#_buscodeList2").append(app);
+              });
+           },
+           error:function(){
+              alert('error');
+           }
+
          });
-   
-    }
+
+
+
+    });
     /* else if($(this).is(":checked")==false){
         alert("체크 해제");
     } */
-	
-});
+
+
 
 
 let count = 1;
-//마지막 BUSCODE3 DATA를 받아서 체크박스로 뿌려주는 코드 
-$(document).on("change",".list_col2", function(){
-	
-	if($(this).is(":checked")){
-        //alert("체크");
+//마지막 BUSCODE3 DATA를 받아서 체크박스로 뿌려주는 코드
+$(document).on("change","#_buscodeList2", function(){
+
+
+      //alert("체크");
         //alert($(this).val());
-        let buscode = $(this).val();
-        
+
+        let buscode = $(this).find(":selected").val();
+        //alert(buscode);
+
         $.ajax({
-        	url : "./buscode2ListData.do", 
-        	type : "get", 
-        	data: {"buscode":buscode}, 
-        	success:function(list){
-        		//alert('success');
-        		//alert(list);
-        		
-        	
-        		//$("_buscodeList3 *").remove(); //내부 요소만 삭제 
-        		
-        		$(".list_col3").remove(); 
-        		
-        		//부모요소(id:_buscodeList3) 받아서 변수에 넣기 // 부모요소들 안에 있는 br태그들 변수에 넣기(var1) 
-        		var parent = document.getElementById('_buscodeList3');
-        		var var1   = parent.getElementsByTagName('br');
-				
-        		//br요소들 삭제 
-        		for(var i = var1.length; i--;) {
-        		    var1[i].parentNode.removeChild(var1[i]);
-        		}
-        		
-        		
-        		
-        		//기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 초기셋팅 
-        		var stackValue = $("input[name='buscode']").length;
-			    var stackData = new Array(stackValue);
-			     //alert(stackValue);
-			     
-				//stackData 배열에 name값이 buscode인 input태그의 value값을 반복문을 통해 모두 stackData배열에 넣어줌 (들어가는 값은 실제 buscode값)
-			     for(var i=0; i<stackValue; i++){                          
-			    	 stackData[i] = $("input[name='buscode']")[i].value;
-			     }
-			     //alert("길이"+stackData.length);
-			     
-			     
-			     /* $.each(stackData, function(i, data){
-			    	 alert("이게 값임"+data);
-			     }); */
-        		
-        		
-        		
-        		$.each(list, function(i, val){
-		        	let app = "";
-        			
-		        
-		        	
-				//value값 buscode로 바꿧음 (busname에서)
-		        		app += "<span class='list_col3'>"+
-					  	"<input type='checkbox' class='list_col3' name="+count+" id='buscode3data"+count+"' value='"+val.buscode+"' data-value='"+val.busname+"' class='form-control'>"+val.busname+
-					  	"</span>"; 
-							   	  
-						 if((i+1)%2==0){
-	        				app += "</br>";
-	        			}
-						 
-				$("#_buscodeList3").append(app);
-				
-        		
-				//기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 최종진행
-				//each반복문을 통해 현재 생성되는 list_col3의 아이디값을 buscodeTag 변수에 저장  
-				var buscodeTag ="buscode3data"+count;
-				
-				//stackData 배열에 들어가 있는값 (buscode)와 each문을 통해 들어와서 생성되는 input태그의 val.buscode의 값이 같으면 그 아이디의 속성조건을 checked로 변경
-				for(var i=0; i<stackValue; i++){                          
-			    	if(stackData[i] == val.buscode){
-			    		document.getElementById(buscodeTag).checked = true;
-			    	}
-			     }
-				
-				
-				
-				count+=1;
-				
-        		});
-        		
-        		
-        		
-        	}, 
-        	error:function(){
-        		alert('error');
-        	}
-        	
+           url : "./buscode2ListData.do",
+           type : "get",
+           data: {"buscode":buscode},
+           success:function(list){
+              //alert('success');
+              //alert(list);
+
+
+              //$("_buscodeList3 *").remove(); //내부 요소만 삭제
+
+              $(".list_col3").remove();
+
+              var parent = document.getElementById('_buscodeList3');
+              var var1   = parent.getElementsByTagName('br');
+
+              for(var i = var1.length; i--;) {
+                  var1[i].parentNode.removeChild(var1[i]);
+              }
+
+
+
+              //기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 초기셋팅
+              var stackValue = $("input[name='buscode']").length;
+             var stackData = new Array(stackValue);
+              //alert(stackValue);
+
+              for(var i=0; i<stackValue; i++){
+                 stackData[i] = $("input[name='buscode']")[i].value;
+              }
+              //alert("길이"+stackData.length);
+
+
+              $.each(list, function(i, val){
+                 let app = "";
+
+                 //stackname = 밑에태그 아이디.val (elements) 배열로 해야될듯
+
+                    app +=    "<div class='form-check mt-2 form-check-inline list_col3' id='buscodeList3'>"+
+                     "<input class='form-check-input list_col3' name="+count+" id='buscode3data"+count+"' value='"+val.buscode+"' data-value='"+val.busname+"' type='checkbox'>"+
+                     "<label class='form-check-label' for='exampleCheck1'>"+val.busname+
+                     "</label></div>";
+
+                     if((i+1)%2==0){
+                       app += "</br>";
+                    }
+
+            $("#_buscodeList3").append(app);
+
+
+            //기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 최종진행
+            var buscodeTag ="buscode3data"+count;
+
+            for(var i=0; i<stackValue; i++){
+                if(stackData[i] == val.buscode){
+                   document.getElementById(buscodeTag).checked = true;
+                }
+              }
+
+
+
+            count+=1;
+
+              });
+
+
+
+           },
+           error:function(){
+              alert('error');
+           }
+
          });
-   
-    }
+
     /* else if($(this).is(":checked")==false){
         alert("체크 해제");
     } */
-	
+
 });
 
 
 
 
 
-//span Tag에 동적 id를 주기 위한 인덱스용 넘버 
+//span Tag에 동적 id를 주기 위한 인덱스용 넘버
 let cnt = 1;
 
 var selectedBuscode = "";
 
-//소분류 체크박스가 변경될때 실행 
+//소분류 체크박스가 변경될때 실행
 $(document).on("change", ".list_col3" , function(){
-	//$(".list_col3").change(function(){
-	
+   //$(".list_col3").change(function(){
 
-	let app ="";
-	
-	
-	
-		//if($("input:checkbox['.list_col3']").is(":checked") == true){ 
-		//if($(this).is(":checked") == true){
-		if($(this).is(":checked") == true){
-		
-		//실제로 buscode가 들어옴 
-		let buscode = $(this).val();
-		var count = $(this).attr('name');
 
-		//데이터 밸류 값으로 busname값을 받아옴 
-		let busname = $(this).data("value");
-		alert("버스네임(데이터밸류네임):"+busname);
-		//alert(buscode);
-		
-		//밑에 stack에 만들어지는 input태그의 value 값은 buscode이다 
-		app = "<span class=arrBusdata id=selectedBuscode"+cnt+">"+busname+
-			  "<input name='buscode' type='hidden' value='"+buscode+"'>"+
-			  "<a onclick='delSelBuscode("+cnt+","+count+")'>"+
-			  "<img alt='왜안뜨지' src='ma.jpg' style='width:30px; height:30px;'>"+
-			  "</a>"+"</span>"+"&nbsp;&nbsp;";
-			  
+   let app ="";
 
-	  	var id = $(this).attr("id");
-		//alert(id);
-		let input = document.getElementById(id);
-		
-		$(this).removeData('code');
-		
-		 //HTML data 속성 사용
-		input.dataset.code = 'selectedBuscode'+cnt;
-		
-		//alert('datacode 생성: '+'selectedBuscode'+cnt);
-		
-		//alert('datacode 리얼: ' + $(this).data("code"));
-		
-		$("#selectResult").append(app);
-		cnt += 1;
-		
-	}
-	
-	
-	
-	//체크박스 해제가 될때 밑에 부분에 적재되있는 같은 데이터의 span태그도 삭제
-	else if($(this).is(":checked") == false){
-		//alert("위에 셀렉코드 : "+$(this).data("code"));
-		
-		//밑에 선택(스택)된 span Tag의 아이디 가져오기 
-		//->input tag의 data 속성 가져오기 (data-code) : data코드는 밑에 stack되는 span tag의 아이디 값과 동일함 
-		
-		selectedBuscode = $(this).data("code");
-		//alert('위에 셀렉코드 :'+ selectedBuscode);
-		
-		document.getElementById(selectedBuscode).remove();
-	}
-	
-	
+
+
+      //if($("input:checkbox['.list_col3']").is(":checked") == true){
+      //if($(this).is(":checked") == true){
+      if($(this).is(":checked") == true){
+
+      let buscode = $(this).val();
+      var count = $(this).attr('name');
+
+      //데이터 밸류 값으로 busname값을 받아옴
+      let busname = $(this).data("value");
+      //alert("버스네임(데이터밸류네임):"+busname);
+      //alert(buscode);
+
+      app = "<span class=arrBusdata id=selectedBuscode"+cnt+">"+busname+
+           "<input name='buscode' type='hidden' value='"+buscode+"'>"+
+           "<a onclick='delSelBuscode("+cnt+","+count+")'>"+
+           "<img alt='왜안뜨지' src='ma.jpg' style='width:30px; height:30px;'>"+
+           "</a>"+"</span>"+"&nbsp;&nbsp;";
+
+
+        var id = $(this).attr("id");
+      //alert(id);
+      let input = document.getElementById(id);
+
+      $(this).removeData('code');
+
+       //HTML data 속성 사용
+      input.dataset.code = 'selectedBuscode'+cnt;
+
+      //alert('datacode 생성: '+'selectedBuscode'+cnt);
+
+      //alert('datacode 리얼: ' + $(this).data("code"));
+
+      $("#selectResult").append(app);
+      cnt += 1;
+
+   }
+
+
+   //체크박스에서 체크 해제 했을때
+   //체크박스 해제가 될때 밑에 부분에 적재되있는 같은 데이터의 span태그도 삭제
+   //else{
+   else if($(this).is(":checked") == false){
+      //alert("위에 셀렉코드 : "+$(this).data("code"));
+      //data 속성 가져오기 (data-code)
+      selectedBuscode = $(this).data("code");
+      //alert('위에 셀렉코드 :'+ selectedBuscode);
+
+      document.getElementById(selectedBuscode).remove();
+   }
+
+
 });
 
 
-//밑에 쌓여있는 span태그에서 X버튼을 눌렀을때 위에 체크박스도 같이 체크 해제가 되도록 해주는 코드  
+//밑에 쌓여있는 span태그에서 X버튼을 눌렀을때 위에 체크박스도 같이 체크 해제가 되도록 해주는 코드
 function delSelBuscode(cnt, count) {
-	//alert(count);
-	
-	var spanid = "selectedBuscode"+cnt;
-	alert('밑에셀렉코드 :'+spanid);
-	
-	var buscodeTag ="buscode3data"+count;
-	//alert(buscodeTag);
-	
-	const spantag = document.getElementById(spanid);
-	//alert(spantag);
-	
-	//스판태그 삭제
-	document.getElementById(spanid).remove();
-	
-	//체크박스 체크해제
-	document.getElementById(buscodeTag).checked = false;
+   //alert(count);
+
+   var spanid = "selectedBuscode"+cnt;
+   //alert('밑에셀렉코드 :'+spanid);
+
+   var buscodeTag ="buscode3data"+count;
+   //alert(buscodeTag);
+
+   const spantag = document.getElementById(spanid);
+   //alert(spantag);
+
+   //스판태그 삭제
+   document.getElementById(spanid).remove();
+
+   //체크박스 체크해제
+   document.getElementById(buscodeTag).checked = false;
 
 
 }
 
+
+
+$("#deleteResult").click(function() {
+	//alert('선택함');
+	$(".arrBusdata").remove();
+	$( ".list_col3" ).prop("checked", false);
+
+});
 
 
 
@@ -850,11 +916,11 @@ function delSelBuscode(cnt, count) {
 	} )
 	.then( editor => {
 		window.editor = editor;
-
 		
+		//읽기전용으로 셋팅 (디테일페이지에서 사용)
+		//editor.isReadOnly = true;
 		
-		
-
+		//editor.setData();
 		
 		
 		
@@ -866,15 +932,14 @@ function delSelBuscode(cnt, count) {
 		console.error( error );
 	} );
   
-	//Assuming there is a <button id="submit">Submit</button> in your application.
-  document.querySelector( '#submit' ).addEventListener( 'click', () => {
-      /* const editorData = editor.getData();
-      
-      alert(editorData);
-      $("#_jobContent").val(editorData); */
-
-      // ...
-  } );
+  
+//내부 데이터를 겟하는 코드 
+  //Assuming there is a <button id="submit">Submit</button> in your application.
+    document.querySelector( '#submit' ).addEventListener( 'click', () => {
+    	const editorData = editor.getData();
+  		alert("이게 에디터 데이터 : "+editorData);
+	    $("#_jobContent").val(editorData);
+    } );
   
   
 	</script>

@@ -529,7 +529,7 @@ List<FAQDto> memlist =(List<FAQDto>) request.getAttribute("memlist");
 
 <nav class="faqnav" style="height: auto;">
   <ul style="display: flex; margin-right: 180px;">
-    <li style="background-color: #2186eb" class="nav-links">개발자 FAQ</li>
+    <li style="background-color: #2186eb" class="nav-links">지원자 FAQ</li>
     <li><a href="companyFAQ.do" class="nav-links">기업 FAQ</a></li>
     <li><a href="commonFAQ.do" class="nav-links">일반 FAQ</a></li>
   </ul>

@@ -59,7 +59,41 @@
 
 <div class="container" style="text-align: center;">
     <h3>기업회원</h3>
-    <form action="" method="post" id="myForm">
+    <form action="" method="post" id="myForm" enctype="multipart/form-data">
+    	  <!-- 프로필 사진 -->
+          <ul>
+			<li class="img" style="list-style: none; margin-left : 200px">
+              <div id="image_preview">
+                 <img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 160px;" src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
+              </div>
+              <h4 style="margin-left: 35px;">프로필 사진을 등록해주세요</h4>
+              <div class="f_box">
+                  <label for="img"></label>
+                  <input type="file" name="fileload" id="img">
+              </div>
+            </li>
+		  </ul>
+ 		  <script>
+                // 이미지 업로드  
+                $('#img').on('change', function() {
+                	alert($('#img').val());
+                     ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+                     	//배열에 추출한 확장자가 존재하는지 체크
+                        if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                             resetFormElement($(this)); //폼 초기화
+                             window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+                           } else {
+                                file = $('#img').prop("files")[0];
+                                blobURL = window.URL.createObjectURL(file);
+                                $('#image_preview img').attr('src', blobURL);
+                                $('#image_preview').slideDown(); //업로드한 이미지 미리보기 
+                                $(this).slideUp(); //파일 양식 감춤
+                            }
+                });
+                 
+ 		   </script>
+           <br><br>         	
+        <!-- 프로필사진 등록 끝나는 구간  -->
         <div class="form-group has-feedback">
             <label class="control-label" for="id">아이디</label>
             <input class="form-control" type="text" name="memberid" id="memberid"/>
@@ -73,12 +107,16 @@
             <span id="pwdRegErr" class="help-block">8글자 이상 입력하세요.</span>
             <span class="glyphicon glyphicon-ok form-control-feedback"></span>
         </div>
+   
+   
         <div class="form-group has-feedback">
             <label class="control-label" for="rePwd">비밀번호 재확인</label>
             <input class="form-control" type="password" name="rePwd" id="rePwd"/>
             <span id="rePwdErr" class="help-block">비밀번호와 일치하지 않습니다. 다시 입력해 주세요.</span>
             <span class="glyphicon glyphicon-ok form-control-feedback"></span>
         </div>
+   
+   
         <div class="form-group has-feedback"> 
   			<label class="control-label" for="name">이름</label> 
   			<input type="text" class="form-control" id="name" name="name" placeholder=""> 
@@ -110,12 +148,33 @@
 		       </div>
 		 </div>
          -->
-        <!-- <div class="form-group has-feedback">
+         
+         
+        <div class="form-group">
+			<label for="phonenumer" class="cols-sm-2 control-label">전화번호 (필수)</label>
+		<div class="cols-sm-10">
+		   <div class="input-group">
+			   <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+			   <input type="text" class="form-control" name="phonenum" id="to" placeholder="전화번호를 입력해주세요.(-는 빼고 적어주세요) ex)01011112222 " />
+			   <p id="phoneCheck" style="font-size: 12px"></p>
+			  	<input type="button" class="btn btn-secondary" id="send" name="phoneBtn" value="본인 인증">
+			   <input type="hidden" name="text" id="text">   인증번호를 히든으로 저장해서 보낸다
+		   </div>
+			   <br>
+		</div>
+	 	<div class="cols-sm-6" id="phone_authNumber">
+	 		<input type="text" id="phone_authNum" name="userNum" size="30px" placeholder="인증번호 6자리를 입력하세요.">
+	 		<input type='button' class="btn btn-primary" id="phone_authNumBtn" name="phoneNumBtn" value="인증하기">
+	 	
+		</div>
+		</div> 
+         
+        <div class="form-group has-feedback">
             <label class="control-label" for="email">이메일</label>
             <input class="form-control" type="text" name="email" id="email"/>
             <span id="emailErr" class="help-block">올바른 이메일 형식이 아닙니다. 다시 입력해 주세요.</span>
             <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-        </div> -->
+        </div>
         <button id="_btnRegi" class="btn btn-success" type="submit">가입</button>
     </form>
 </div>
@@ -190,153 +249,6 @@
             errorState("#rePwd");
         }
     });
-    $("#email").keyup(function(){
-        var email=$(this).val();
-        // 이메일 검증할 정규 표현식
-        var reg=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if(reg.test(email)){//정규표현식을 통과 한다면
-                    $("#emailErr").hide();
-                    successState("#email");
-                    $("#emailBtn").removeAttr("disabled");
-                    
-        }else{//정규표현식을 통과하지 못하면
-                    $("#emailErr").show();
-                    errorState("#email");
-        }
-    });
-    // 성공 상태로 바꾸는 함수
-    function successState(sel){
-        $(sel)
-        .parent()
-        .removeClass("has-error")
-        .addClass("has-success")
-        .find(".glyphicon")
-        .removeClass("glyphicon-remove")
-        .addClass("glyphicon-ok")
-        .show();
- 
-        $("#myForm button[type=submit]")
-                    .removeAttr("disabled");
-    };
-    // 에러 상태로 바꾸는 함수
-    function errorState(sel){
-        $(sel)
-        .parent()
-        .removeClass("has-success")
-        .addClass("has-error")
-        .find(".glyphicon")
-        .removeClass("glyphicon-ok")
-        .addClass("glyphicon-remove")
-        .show();
- 
-        $("#myForm button[type=submit]")
-                    .attr("disabled","disabled");
-    };
-    
-    /* 이메일 '본인 인증' 버튼 클릭 */
-
-    var authNum;		//인증번호 담아둘 전역변수
-    var authSuccess = false;	//인증 완료 했는지 true/false
-    var click = true;      // 중복클릭 방지   
-    $(function () {
-    	
-    	$("#emailBtn").click(function () {
-    		/* $("#emailBtn").removeAttr("disabled"); */
-    		alert('입력');
-    		if(click) {
-    			
-    			click = !click;
-    			
-    			setTimeout(function () {
-    				click = true;
-    			}, 180000);
-    		
-    			alert("본인 확인을 위한 이메일을 전송했습니다. 이메일 인증을 진행해주세요.")
-    			
-    			// 인증번호 입력란 생성
-    			$("<input>", {type:'text', id:"authNum", name:"authNum", size:"30px", placeholder:"인증번호 6자리를 입력하세요."}).appendTo('#authNumber');
-    			$("<input>", {type:'button', "class":"btn btn-primary", id:"authNumBtn", name:"authNumBtn", disabled:"disabled", value:"인증하기"}).appendTo('#authNumber');
-    			$("<p></p>", {id:'time'}).appendTo('#authNumber');
-    			
-    			var display = $('#time');
-    	    	var leftSec = 180;	//인증 남은시간(초)
-    	    	
-    	    	// 이미 타이머가 작동중이면 중지
-    	    	if (isRunning){
-    	    		clearInterval(timer);
-    	    		display.html("");
-    	    		startTimer(leftSec, display);
-    	    	}else{
-    	    	startTimer(leftSec, display);
-    	    	}
-    			
-    			$.ajax({
-    				type: "post",
-    				url: "member?param=auth",
-    				data: { "email":$("#email").val() },
-    				success:function(data){
-    					authNum = data.authNum;
-    					console.log('인증번호 6자리 : ' + authNum);
-    				},
-    				error:function(){
-    					alert('error');
-    				}			
-    			});
-    		} else {
-    			console.log("본인 인증 중");
-    		};
-    		
-    	});	
-    });
-    
-    function sample6_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
-                
-                } else {
-                    document.getElementById("sample6_extraAddress").value = '';
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
-            }
-        }).open();
-    }
-    
     /* 아이디 중복확인 버튼 클릭 */
     $(function () {
     	$("#chkIdBtn").click(function () {
@@ -375,7 +287,210 @@
     	});	
     });
     
-</script>    
+
+</script>   
+<script type="text/javascript">
+function sample6_execDaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var addr = ''; // 주소 변수
+            var extraAddr = ''; // 참고항목 변수
+
+            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                addr = data.roadAddress;
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                addr = data.jibunAddress;
+            }
+
+            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+            if(data.userSelectedType === 'R'){
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraAddr !== ''){
+                    extraAddr = ' (' + extraAddr + ')';
+                }
+                // 조합된 참고항목을 해당 필드에 넣는다.
+                document.getElementById("sample6_extraAddress").value = extraAddr;
+            
+            } else {
+                document.getElementById("sample6_extraAddress").value = '';
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('sample6_postcode').value = data.zonecode;
+            document.getElementById("sample6_address").value = addr;
+            // 커서를 상세주소 필드로 이동한다.
+            document.getElementById("sample6_detailAddress").focus();
+        }
+    }).open();
+}
+
+</script> 
+<script type="text/javascript">
+
+//핸드폰인증
+var count = 0; /* 문자 중복을 막기 위한 인증번호 */
+
+$(document).ready(function() {
+
+  $("#send").click(function() {
+
+     var number = Math.floor(Math.random() * 1000000) + 100000;
+        if(number>1000000){
+           number = number - 100000;
+        }
+
+        $("#text").val(number);      /* 난수로 생성된 인증번호를 hidden name : text 에 숨긴다 */
+
+	var display = $('#time');
+   var leftSec = 180;	//인증 남은시간(초)
+
+   // 이미 타이머가 작동중이면 중지
+   if (isRunning){
+   	clearInterval(timer);
+   	display.html("");
+   	startTimer(leftSec, display);
+   }else{
+   	startTimer(leftSec, display);
+   	}
+     var to = $("#to").val();
+
+     if(to == "" || to == null){
+        alert("빈칸이나 공백을 채워주세요");
+     }
+
+     else {
+     var con_test = confirm("해당번호로 인증문자를 발송하시겠습니까?");   /* 문자를 보낼껀지 물어본다 */
+
+        if(con_test == true){
+
+           if(count < 3){      /* 추후 데이터베이스에 컬럼 값을 확인하여 count 값을 비교 할 예정 */
+
+             $.ajax({
+                 url:"businesssendSms.do",
+                 type:"post",
+                 data:{to: $("#to").val(),			// 휴대폰 번호
+                      text: $("#text").val()				// 인증번호
+                      },
+               success:function(){
+                 alert("해당 휴대폰으로 인증번호를 발송했습니다");
+                 count++;
+
+                 alert(count);
+                 }
+                /*  error(){
+
+                 } */
+
+              });
+           } else {
+              alert("휴대폰 인증 그만하세요")
+           }
+
+        }
+           else if(con_test == false){
+
+           }
+       }
+     
+  });
+  $("#phone_authNumBtn").click(function() {   /* 내가 작성한 번호와 인증번호를 비교한다 */
+      alert($("#text").val());
+      var userNum = $("#phone_authNum").val();
+      
+      var sysNum = $("#text").val();         
+      
+      if(userNum == null || userNum == ""){
+         alert("휴대폰으로 발송된 인증번호를 입력해주세요");
+      }     
+      else{     
+         if(userNum.trim() == sysNum.trim()){
+             alert("성공");
+          }
+          else {
+             alert("실패");
+          }          
+      }
+   });
+  
+  
+  
+});
+  
+
+/* 인증번호 입력 타이머 */
+let timer = null;
+let isRunning = false;
+function startTimer(count, display) {
+
+	var minutes, seconds;
+   timer = setInterval(function () {
+   minutes = parseInt(count / 60, 10);
+   seconds = parseInt(count % 60, 10);
+
+   minutes = minutes < 10 ? "0" + minutes : minutes;
+   seconds = seconds < 10 ? "0" + seconds : seconds;
+
+   display.html("인증 남은 시간 : "+minutes + ":" + seconds);
+
+   // 타이머 끝
+   if (--count < 0) {
+    clearInterval(timer);
+    alert("시간 초과. 본인 인증을 다시 진행해주세요.");
+    $('#phone_authNum').remove();
+    $('#phone_authNumBtn').remove();
+    $('#time').remove();
+    isRunning = false;
+   }
+}, 1000);
+    isRunning = true;
+}
+
+// 성공 상태로 바꾸는 함수
+function successState(sel){
+   $(sel)
+   .parent()
+   .removeClass("has-error")
+   .addClass("has-success")
+   .find(".glyphicon")
+   .removeClass("glyphicon-remove")
+   .addClass("glyphicon-ok")
+   .show();
+
+   $("#myForm button[type=submit]")
+               .removeAttr("disabled");
+};
+// 에러 상태로 바꾸는 함수
+function errorState(sel){
+   $(sel)
+   .parent()
+   .removeClass("has-success")
+   .addClass("has-error")
+   .find(".glyphicon")
+   .removeClass("glyphicon-ok")
+   .addClass("glyphicon-remove")
+   .show();
+
+   $("#myForm button[type=submit]")
+               .attr("disabled","disabled");
+};
+
+
+</script>
+
  <!-- ==============FOOTER================= -->
       <footer class="main-footer">
       	<div id="footer">
@@ -422,51 +537,7 @@
 			</div>
 		</div>
 	</div>	
-       <!--  <div class="container">
-          <div class="row">
-            <div class="col-lg-3">
-              <h4 class="h6">About Us</h4>
-              
-              <p class="text-uppercase"><strong>1hara</strong><br>In line with the current situation of not being able to go to the gym The house is enough and comfortable to use The best home training community site in Korea.</p>
-              <hr class="d-block d-lg-none">
-            </div>
-            <div class="col-lg-3">
-              <h4 class="h6">고객센터</h4>
-              <p><strong>bit210324@gmail.com</strong></p>
-              <p>문의사항은 위 이메일 주소로 연락주시면 빠른 시일 내에 회신드리겠습니다. <br>If you have any inquiries, please contact us at the above email address and we will reply as soon as possible.</p>
-              <hr class="d-block d-lg-none">
-            </div>
-            <div class="col-lg-3">
-              <h4 class="h6">Contact</h4>
-              <p class="text-uppercase"><strong>Universal Ltd.</strong><br>TEL : 070-1234-5678<br>Newtown upon River <br>CONTACT FOR MORE INFOMATION<br>COMPANY: our job <br>BUSINESS LICENSE: 123-45-12345</p>
-              <hr class="d-block d-lg-none">
-            </div>
-            <div class="col-lg-3">
-            <h4 class="h6">제휴업체</h4>
-            <br>
-              <ul class="list-inline photo-stream">
-                <li class="list-inline-item"><a href="http://www.bansuksports.com/" target="_blank"><img src="images/bansuk_logo.jpg" alt="..." class="img-fluid"></a></li>
-                <li class="list-inline-item"><a href="http://melkinsports.com/" target="_blank"><img src="images/melkin_logo.png" alt="..." class="img-fluid"></a></li>
-                <li class="list-inline-item"><a href="http://www.myprotein.co.kr" target="_blank"><img src="images/myprotein_logo.jpg" alt="..." class="img-fluid"></a></li>
-                <li class="list-inline-item"><a href="https://www.rankingdak.com/" target="_blank"><img src="images/ranking_logo.png" alt="..." class="img-fluid"></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        <div class="copyrights">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-4 text-center-md">
-                <p>&copy; 2021. 1hara / Personal job</p>
-              </div>
-              <div class="col-lg-8 text-right text-center-md">
-                <p> Contect TEL : <a href="https://bootstrapious.com/snippets">070-1234-5678 </a> & FAX :  <a href="#">050-5678-1234</a></p>
-                Please do not remove the backlink to us unless you purchase the Attribution-free License at https://bootstrapious.com/donate. Thank you.
-              </div>
-            </div>
-          </div>
-        </div> -->
+       
    </footer>
       <!-- ==============FOOTER END================= -->
 

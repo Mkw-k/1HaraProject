@@ -37,11 +37,34 @@ public class Resume_CareerDto implements Serializable {
 	private String[] pre_dept;
 	private String[] pre_sal;
 	private String[] pre_jobdetail;
-	private List<Resume_CareerDto> list;
+	private String[] pre_reason;
 	
 	public Resume_CareerDto() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public Resume_CareerDto(int careerseq, int resumeseq, String[] pre_comname, String[] pre_startdate,
+			String[] pre_enddate, String[] pre_status, String[] pre_position, String[] pre_buscode, String[] pre_area,
+			String[] pre_dept, String[] pre_sal, String[] pre_jobdetail, String[] pre_reason) {
+		super();
+		this.careerseq = careerseq;
+		this.resumeseq = resumeseq;
+		this.pre_comname = pre_comname;
+		this.pre_startdate = pre_startdate;
+		this.pre_enddate = pre_enddate;
+		this.pre_status = pre_status;
+		this.pre_position = pre_position;
+		this.pre_buscode = pre_buscode;
+		this.pre_area = pre_area;
+		this.pre_dept = pre_dept;
+		this.pre_sal = pre_sal;
+		this.pre_jobdetail = pre_jobdetail;
+		this.pre_reason = pre_reason;
+	}
+
+
 
 	public int getCareerseq() {
 		return careerseq;
@@ -138,34 +161,16 @@ public class Resume_CareerDto implements Serializable {
 	public void setPre_jobdetail(String[] pre_jobdetail) {
 		this.pre_jobdetail = pre_jobdetail;
 	}
-	
-	
 
-	public List<Resume_CareerDto> getList() {
-		return list;
+	public String[] getPre_reason() {
+		return pre_reason;
 	}
 
-	public void setList(List<Resume_CareerDto> list) {
-		this.list = list;
+	public void setPre_reason(String[] pre_reason) {
+		this.pre_reason = pre_reason;
 	}
 
-	public Resume_CareerDto(int careerseq, int resumeseq, String[] pre_comname, String[] pre_startdate,
-			String[] pre_enddate, String[] pre_status, String[] pre_position, String[] pre_buscode, String[] pre_area,
-			String[] pre_dept, String[] pre_sal, String[] pre_jobdetail) {
-		super();
-		this.careerseq = careerseq;
-		this.resumeseq = resumeseq;
-		this.pre_comname = pre_comname;
-		this.pre_startdate = pre_startdate;
-		this.pre_enddate = pre_enddate;
-		this.pre_status = pre_status;
-		this.pre_position = pre_position;
-		this.pre_buscode = pre_buscode;
-		this.pre_area = pre_area;
-		this.pre_dept = pre_dept;
-		this.pre_sal = pre_sal;
-		this.pre_jobdetail = pre_jobdetail;
-	}
+
 
 	@Override
 	public String toString() {
@@ -174,10 +179,12 @@ public class Resume_CareerDto implements Serializable {
 				+ Arrays.toString(pre_enddate) + ", pre_status=" + Arrays.toString(pre_status) + ", pre_position="
 				+ Arrays.toString(pre_position) + ", pre_buscode=" + Arrays.toString(pre_buscode) + ", pre_area="
 				+ Arrays.toString(pre_area) + ", pre_dept=" + Arrays.toString(pre_dept) + ", pre_sal="
-				+ Arrays.toString(pre_sal) + ", pre_jobdetail=" + Arrays.toString(pre_jobdetail) + "]";
+				+ Arrays.toString(pre_sal) + ", pre_jobdetail=" + Arrays.toString(pre_jobdetail) + ", pre_reason="
+				+ Arrays.toString(pre_reason) + "]";
 	}
 
-
+	
+	
 	
 	
 }

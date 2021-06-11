@@ -10,4 +10,6 @@ public interface ReplyService {
 
 	void readCount(int replyseq);
 
+	boolean insertreply(replyDto dto);
+
 }

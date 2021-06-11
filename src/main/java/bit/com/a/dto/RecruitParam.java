@@ -4,34 +4,117 @@ import java.io.Serializable;
 
 public class RecruitParam implements Serializable{
 
+	private int year = -1;
+	private int month = -1;
+	private int day = -1;
+	private int lastDay; // 28 29 30 31
+	private int dayOfWeek;	// 요일
+
+	private int hour = 0;
+	private int min = 0;
+
 	private String buscode1;
 	private String buscodename1;
-	
+
 	private String buscode2;
 	private String buscodename2;
-	
+
 	private String buscode;
 	//buscode3 테이블은 name 변수명이 busname임
 	private String busname;
-	
-	private String area1name; 
-	private String area1code; 
-	private String area2name; 
-	private String area2code; 
-	
+
+	private String area1name;
+	private String area1code;
+	private String area2name;
+	private String area2code;
+
 	private String choice;
 	private String search;
 	private int page;
-	
+
 	private int start;
 	private int end;
-	
+
 	private String education;
 	private String careerStart;
 	private String careerEnd;
-	
+
+	private String memberid;
+	private String jobSeq;
+	private String companyId;
+
 	public RecruitParam() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+	public String getCompanyId() {
+		return companyId;
+	}
+
+
+
+	public void setCompanyId(String companyId) {
+		this.companyId = companyId;
+	}
+
+
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public void setDay(int day) {
+		this.day = day;
+	}
+
+	public int getLastDay() {
+		return lastDay;
+	}
+
+	public void setLastDay(int lastDay) {
+		this.lastDay = lastDay;
+	}
+
+	public int getDayOfWeek() {
+		return dayOfWeek;
+	}
+
+	public void setDayOfWeek(int dayOfWeek) {
+		this.dayOfWeek = dayOfWeek;
+	}
+
+	public int getHour() {
+		return hour;
+	}
+
+	public void setHour(int hour) {
+		this.hour = hour;
+	}
+
+	public int getMin() {
+		return min;
+	}
+
+	public void setMin(int min) {
+		this.min = min;
 	}
 
 	public String getBuscode1() {
@@ -178,19 +261,51 @@ public class RecruitParam implements Serializable{
 		this.careerEnd = careerEnd;
 	}
 
-	@Override
-	public String toString() {
-		return "RecruitParam [buscode1=" + buscode1 + ", buscodename1=" + buscodename1 + ", buscode2=" + buscode2
-				+ ", buscodename2=" + buscodename2 + ", buscode=" + buscode + ", busname=" + busname + ", area1name="
-				+ area1name + ", area1code=" + area1code + ", area2name=" + area2name + ", area2code=" + area2code
-				+ ", choice=" + choice + ", search=" + search + ", page=" + page + ", start=" + start + ", end=" + end
-				+ ", education=" + education + ", careerStart=" + careerStart + ", careerEnd=" + careerEnd + "]";
+	public String getMemberid() {
+		return memberid;
 	}
 
-	public RecruitParam(String buscode1, String buscodename1, String buscode2, String buscodename2, String buscode,
-			String busname, String area1name, String area1code, String area2name, String area2code, String choice,
-			String search, int page, int start, int end, String education, String careerStart, String careerEnd) {
+	public void setMemberid(String memberid) {
+		this.memberid = memberid;
+	}
+
+	public String getJobSeq() {
+		return jobSeq;
+	}
+
+	public void setJobSeq(String jobSeq) {
+		this.jobSeq = jobSeq;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "RecruitParam [year=" + year + ", month=" + month + ", day=" + day + ", lastDay=" + lastDay
+				+ ", dayOfWeek=" + dayOfWeek + ", hour=" + hour + ", min=" + min + ", buscode1=" + buscode1
+				+ ", buscodename1=" + buscodename1 + ", buscode2=" + buscode2 + ", buscodename2=" + buscodename2
+				+ ", buscode=" + buscode + ", busname=" + busname + ", area1name=" + area1name + ", area1code="
+				+ area1code + ", area2name=" + area2name + ", area2code=" + area2code + ", choice=" + choice
+				+ ", search=" + search + ", page=" + page + ", start=" + start + ", end=" + end + ", education="
+				+ education + ", careerStart=" + careerStart + ", careerEnd=" + careerEnd + ", memberid=" + memberid
+				+ ", jobSeq=" + jobSeq + ", companyId=" + companyId + "]";
+	}
+
+
+
+	public RecruitParam(int year, int month, int day, int lastDay, int dayOfWeek, int hour, int min, String buscode1,
+			String buscodename1, String buscode2, String buscodename2, String buscode, String busname, String area1name,
+			String area1code, String area2name, String area2code, String choice, String search, int page, int start,
+			int end, String education, String careerStart, String careerEnd, String memberid, String jobSeq,
+			String companyId) {
 		super();
+		this.year = year;
+		this.month = month;
+		this.day = day;
+		this.lastDay = lastDay;
+		this.dayOfWeek = dayOfWeek;
+		this.hour = hour;
+		this.min = min;
 		this.buscode1 = buscode1;
 		this.buscodename1 = buscodename1;
 		this.buscode2 = buscode2;
@@ -209,12 +324,16 @@ public class RecruitParam implements Serializable{
 		this.education = education;
 		this.careerStart = careerStart;
 		this.careerEnd = careerEnd;
+		this.memberid = memberid;
+		this.jobSeq = jobSeq;
+		this.companyId = companyId;
 	}
+
 	
+
 	
-	
-	
-	
-	
-	
+
+
+
+
 }

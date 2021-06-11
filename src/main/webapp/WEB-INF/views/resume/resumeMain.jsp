@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="bit.com.a.dto.ResumeParam"%>
+<%@page import="bit.com.a.dto.ApplyDto"%>
 <%@page import="bit.com.a.dto.ResumeDto"%>
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
@@ -527,8 +529,10 @@ nav {
 <%
 List<ResumeDto> resumelist =(List<ResumeDto>) request.getAttribute("resumelist");
 List<ResumeDto> resumeNolist =(List<ResumeDto>) request.getAttribute("resumeNolist");
+List<ResumeParam> param =(List<ResumeParam>) request.getAttribute("param");
 System.out.println("resumelist" +resumelist);
 System.out.println("resumeNolist" +resumeNolist);
+System.out.println("param" +param);
 
 
 %>
@@ -577,7 +581,7 @@ System.out.println("resumeNolist" +resumeNolist);
 						<li class="list-group-item"><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a>
 						<div>
 						<a href="updateResume.do?seq=<%=resumelist.get(i).getResumeseq()%>" class="box-btn">수정</a>
-						<a href="deleteResume.do?seq=<%=resumelist.get(i).getResumeseq()%>" class="box-btn">삭제</a>
+						<a href="deleteResume.do?seq=<%=resumelist.get(i).getResumeseq()%>&memberid=${login.memberid}" class="box-btn">삭제</a>
 						</div>
 						</li>
 					<% 	
@@ -601,11 +605,11 @@ System.out.println("resumeNolist" +resumeNolist);
 											value="<%=resumeNolist.get(i).getProgress() %>" max="100">
 											<span class="sr-only"></span>
 										</progress>
-										<a href="writeResume.do" class="box-btn">작성</a>
+										<a href="updateResume.do?seq=<%=resumeNolist.get(i).getResumeseq()%>" class="box-btn">작성</a>
+										<a href="deleteResume.do?seq=<%=resumeNolist.get(i).getResumeseq()%>" class="box-btn">삭제</a>
 									</div>
 								</li>
 							<%  
-							System.out.println("progress"+resumeNolist.get(i).getProgress());
 							}
 							%>	
 							</ul>
@@ -629,30 +633,28 @@ System.out.println("resumeNolist" +resumeNolist);
 								</thead>
 								<tbody
 									style="border-bottom: thin; border-color: #cccccc; border-bottom-style: solid;">
+									
+								<%for(int i=0; i<param.size();i++){ %>	
 									<tr>
-										<td>카카오</td>
-										<td>프로그래머의 자질을 갖춘 지원자 최은지</td>
-										<td>2021-01-01</td>
+										<td><a href="RecruitDetail.do?jobseq=<%=param.get(i).getJobseq()%>&memberid=${login.memberid}"><%=param.get(i).getJobtitle() %></a></td>
+										
+										
+										<% if(param.get(i).getResumetitle()==null){%>
+										<td><p>삭제된 이력서입니다</p></td>
+										
+										<% } else {%>
+										
+										<td><a href="Resumedetail.do?seq=<%=param.get(i).getResumeseq()%>"><%=param.get(i).getResumetitle() %></a></td>
+										
+										<% } %>
+										
+										<td><%=param.get(i).getApplydate() %></td>
 										<td><img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;"></td>
 									</tr>
-									<tr>
-										<td>네이버</td>
-										<td>프로그래머의 자질을 갖춘 지원자 최은지</td>
-										<td>2021-03-23</td>
-										<td><img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;"></td>
-									</tr>
-									<tr>
-										<td>라인</td>
-										<td>프로그래머의 자질을 갖춘 지원자 최은지</td>
-										<td>2021-04-30</td>
-										<td><img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;"></td>
-									</tr>
-									<tr>
-										<td>쿠팡</td>
-										<td>프로그래머의 자질을 갖춘 지원자 최은지</td>
-										<td>2021-05-25</td>
-										<td><img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;"></td>
-									</tr>
+								<%  
+								}
+								%>		
+									
 								</tbody>
 							</table>
 						</div>

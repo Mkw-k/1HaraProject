@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 
 import bit.com.a.dao.ResumeDao;
 import bit.com.a.dto.ResumeDto;
+import bit.com.a.dto.ApplyDto;
 import bit.com.a.dto.Resume_ActivityVo;
 import bit.com.a.dto.Resume_AwardVo;
 import bit.com.a.dto.Resume_CareerVo;
-import bit.com.a.dto.Resume_EduVo;
+import bit.com.a.dto.Resume_HighschoolDto;
 import bit.com.a.dto.Resume_LanguageVo;
+import bit.com.a.dto.Resume_UniversityVo;
 import bit.com.a.dto.Resume_licenseVo;
 import bit.com.a.service.ResumeService;
 
@@ -35,11 +37,10 @@ public class ResumeServiceImpl implements ResumeService {
 		return dao.getseq(resumetitle);
 	}
 
-	@Override
-	public boolean writeEdu(Resume_EduVo eduvo) {
-		// TODO Auto-generated method stub
-		return dao.writeEdu(eduvo);
-	}
+	/*
+	 * @Override public boolean writeEdu(Resume_EduVo eduvo) { // TODO
+	 * Auto-generated method stub return dao.writeEdu(eduvo); }
+	 */
 
 	@Override
 	public boolean writeCareer(Resume_CareerVo carvo) {
@@ -72,9 +73,9 @@ public class ResumeServiceImpl implements ResumeService {
 	}
 
 	@Override
-	public List<ResumeDto> getresume() {
+	public List<ResumeDto> getresume(String memberid) {
 		// TODO Auto-generated method stub
-		return dao.getresume();
+		return dao.getresume(memberid);
 	}
 
 	@Override
@@ -89,11 +90,10 @@ public class ResumeServiceImpl implements ResumeService {
 		return  dao.getResumeDetail(seq);
 	}
 
-	@Override
-	public List<Resume_EduVo> getEduDetail(int seq) {
-		// TODO Auto-generated method stub
-		return dao.getEduDetail(seq);
-	}
+	/*
+	 * @Override public List<Resume_EduVo> getEduDetail(int seq) { // TODO
+	 * Auto-generated method stub return dao.getEduDetail(seq); }
+	 */
 
 	@Override
 	public List<Resume_CareerVo> getCareerDetail(int seq) {
@@ -168,9 +168,9 @@ public class ResumeServiceImpl implements ResumeService {
 	}
 
 	@Override
-	public List<ResumeDto> getNoresume() {
+	public List<ResumeDto> getNoresume(String memberid) {
 		// TODO Auto-generated method stub
-		return dao.getNoresume();
+		return dao.getNoresume(memberid);
 	}
 
 	@Override
@@ -191,11 +191,10 @@ public class ResumeServiceImpl implements ResumeService {
 		 dao.updateResume(dto);
 	}
 
-	@Override
-	public boolean updateEdu(Resume_EduVo eduvo) {
-		// TODO Auto-generated method stub
-		return dao.updateEdu(eduvo);
-	}
+	/*
+	 * @Override public boolean updateEdu(Resume_EduVo eduvo) { // TODO
+	 * Auto-generated method stub return dao.updateEdu(eduvo); }
+	 */
 
 	@Override
 	public boolean updateCareer(Resume_CareerVo carvo) {
@@ -226,16 +225,71 @@ public class ResumeServiceImpl implements ResumeService {
 		// TODO Auto-generated method stub
 		return dao.updateLan(lanvo);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
+	@Override
+	public boolean addApply(ApplyDto param) {
+		// TODO Auto-generated method stub
+		return dao.addApply(param);
+	}
+
+	@Override
+	public List<ApplyDto> getApplyList(String memberid) {
+		// TODO Auto-generated method stub
+		return dao.getApplyList(memberid);
+	}
+
+	@Override
+	public String getJobtitle(int jobseq) {
+		// TODO Auto-generated method stub
+		return dao.getJobtitle(jobseq);
+	}
+
+	@Override
+	public String getResumeTitle(int resumeseq) {
+		// TODO Auto-generated method stub
+		return dao.getResumeTitle(resumeseq);
+	}
+
+	@Override
+	public boolean writeHigh(Resume_HighschoolDto highdto) {
+		// TODO Auto-generated method stub
+		return dao.writeHigh(highdto);
+	}
+
+	@Override
+	public boolean writeUni(Resume_UniversityVo univo) {
+		// TODO Auto-generated method stub
+		return dao.writeUni(univo);
+	}
+
+	@Override
+	public boolean updateHigh(Resume_HighschoolDto highdto) {
+		// TODO Auto-generated method stub
+		return dao.updateHigh(highdto);
+	}
+
+	@Override
+	public boolean updateUni(Resume_UniversityVo univo) {
+		// TODO Auto-generated method stub
+		return dao.updateUni(univo);
+	}
+
+	@Override
+	public Resume_HighschoolDto getHighDetail(int seq) {
+		// TODO Auto-generated method stub
+		return dao.getHighDetail(seq);
+	}
+
+	@Override
+	public List<Resume_UniversityVo> getUniDetail(int seq) {
+		// TODO Auto-generated method stub
+		return dao.getUniDetail(seq);
+	}
+	
+	
+	
+	
+	
+	
 	
 }

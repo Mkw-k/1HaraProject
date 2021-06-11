@@ -76,10 +76,6 @@ public class UtilEx {
 					str += "</a>";
 					str += "</li>";
 				}
-				System.out.println("날짜: " + dto.getJobStart());
-				System.out.println("=======================================================================");
-				System.out.println(dot3(dto.getJobTitle()));
-				System.out.println("=======================================================================");
 			}
 			str += "</ul>";
 

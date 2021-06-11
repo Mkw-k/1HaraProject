@@ -1,10 +1,11 @@
+<%@page import="bit.com.a.dto.Resume_UniversityVo"%>
+<%@page import="bit.com.a.dto.Resume_HighschoolDto"%>
 <%@page import="bit.com.a.dto.Resume_AwardVo"%>
 <%@page import="bit.com.a.dto.Resume_LanguageVo"%>
 <%@page import="bit.com.a.dto.Resume_AwardDto"%>
 <%@page import="bit.com.a.dto.Resume_ActivityVo"%>
 <%@page import="bit.com.a.dto.Resume_licenseVo"%>
 <%@page import="bit.com.a.dto.Resume_CareerVo"%>
-<%@page import="bit.com.a.dto.Resume_EduVo"%>
 <%@page import="java.util.List"%>
 <%@page import="bit.com.a.dto.MemberDto"%>
 <%@page import="bit.com.a.dto.ResumeDto"%>
@@ -62,7 +63,8 @@
 
 <%
 ResumeDto dto =(ResumeDto)request.getAttribute("dto");
-List<Resume_EduVo> edulist =(List<Resume_EduVo>)request.getAttribute("edulist");
+Resume_HighschoolDto highdto =(Resume_HighschoolDto)request.getAttribute("highdto");
+List<Resume_UniversityVo> unilist =(List<Resume_UniversityVo>)request.getAttribute("unilist");
 List<Resume_CareerVo> calist =(List<Resume_CareerVo>)request.getAttribute("calist");
 List<Resume_licenseVo> liclist =(List<Resume_licenseVo>)request.getAttribute("liclist");
 List<Resume_ActivityVo> actlist =(List<Resume_ActivityVo>)request.getAttribute("actlist");
@@ -72,11 +74,11 @@ List<Resume_LanguageVo> lanlist =(List<Resume_LanguageVo>)request.getAttribute("
 System.out.println(dto.toString());
 
 //학력사항 들어오는지 확인
-for(int i=0; i<edulist.size(); i++){
-if(edulist == null || edulist.isEmpty()){
+for(int i=0; i<unilist.size(); i++){
+if(unilist == null || unilist.isEmpty()){
 	System.out.println("경력없음");
 } else{
-	System.out.println(edulist.get(i));
+	System.out.println(unilist.get(i));
 }
 }
 
@@ -167,15 +169,24 @@ System.out.println(_gender);
 						<h2 class="blind">이력서 VIEW</h2>
 						<div class="section_profile">
 							<div class="area_title">
-								<h3 class="title">경영학과전공, 업무에 맞춤 인재 최은지입니다.</h3>
+								<h3 class="title"><%=dto.getResumetitle() %></h3>
 							</div>
 							<div class="personal_info case1">
 								<div class="box_photo">
+									<%if(dto.getNewresumeimage()==null || dto.getNewresumeimage().equals("")){ %>
 									<div class="inbox">
 										<img alt=""
-											src="https://www.saramin.co.kr/zf_user/persons/picture?idx=9101898|60cf721e06356913493a383c40a1ae4234142d14be82e071ef3c9965ad9ed950"
+											src="./image/profile2.png"
 											border="0" width="100" height="140" />
 									</div>
+									<%} else{ %>
+									<div class="inbox">
+										<img alt=""
+											src="./upload/<%=dto.getNewresumeimage() %>"
+											border="0" width="100" height="140" />
+									</div>
+									
+									<% } %>
 								</div>
 								<div class="my_data">
 									<p class="myname">
@@ -194,39 +205,42 @@ System.out.println(_gender);
 								<div class="dashboard">
 									<ul>
 										<li><strong>학력사항</strong>
-										<%for(int i=0 ; i<edulist.size(); i++){ %>
-											<p class="txt"><%=edulist.get(i).getUniv_status() %> <%=edulist.get(i).getUniv_end_status() %></p></li>
-										<%} %>
+										<% if(unilist.size()==0) {%>
+										<p class="txt">고등학교 <%=highdto.getHigh_end_status()%></p></li>
+										<% }else{ %>
+										<% for(int i=0; i<unilist.size();i++){ %>
+										<% if(unilist.get(0).getUniversity()!=null || !unilist.get(0).getUniversity().equals(""))  {%>
+										
+											<p class="txt"><%=unilist.get(0).getUniv_status() %> <%=unilist.get(0).getUniv_end_status() %></p></li>
+										<%} else{ %>	
+											<p class="txt">고등학교 <%=highdto.getHigh_end_status()%></p></li>
+										<%} } }%>	
+										
 										<li><strong>경력사항</strong>
 										<%if(calist == null || calist.isEmpty()){ %>
 											<p class="txt">신입</p>
 										<%  } else { %>
 										<p class="txt">경력</p>
 
-										<% } %>
+										<% }
+										%>
 
 										</li>
 										<li><strong>희망연봉</strong>
 											<p class="txt"><%=dto.getDesiredsalary() %></p></li>
-										<li><strong>희망근무지/근무형태</strong>
+										<li><strong>희망근무지</strong>
 											<p class="txt">
-												<%=dto.getDesiredarea1() %><br> <%=dto.getDesiredjobtype() %>
+												<%=dto.getDesiredarea1() %>
 											</p></li>
-										<li><strong>포트폴리오</strong>
+										 <li><strong>희망근무형태</strong>
 										<!-- 포트폴리오가 있으면 표시하고 없으면 -로 표시 -->
 											<p class="txt portfolio_txt">
-											<%if(dto.getPortfolio()!=null) {
-											dto.getPortfolio(); } else {
-												%>
-												-
-												<%
-											}
-											%>
+											<%=dto.getDesiredjobtype() %>
 											</p>
 											<div class="toolTip portfolio_tooltip" style="display:">
 												<span class="tail tail_top_right"></span>
 												<div class="toolTipCont txtLeft"></div>
-											</div></li>
+											</div></li> 
 									</ul>
 								</div>
 							</div>
@@ -259,27 +273,38 @@ System.out.println(_gender);
 										</tr>
 									</thead>
 									<tbody>
-									<%for(int i=0 ; i<edulist.size(); i++){ %>
+									<%	if(unilist!=null && !unilist.isEmpty()){
+									
+										for(int i=0 ; i<unilist.size(); i++){
+											
+										if(unilist.get(i).getUniversity()==null || unilist.get(i).getUniversity().equals("")){
+									} else{
+										%>
 										<tr>
-											<td class="lineup_center" rowspan="1"><%=edulist.get(i).getUniv_str()%>
-												~ <%=edulist.get(i).getUniv_end()%></td>
-											<td class="lineup_center" rowspan="1"><%=edulist.get(i).getUniv_end_status()%></td>
-											<td><%=edulist.get(i).getUniversity()%></td>
-											<td><%=edulist.get(i).getUniv_major()%></td>
-											<td class="lineup_center"><%=edulist.get(i).getUniv_grade()%>
-												/ <%=edulist.get(i).getUniv_grade_base()%></td>
+											<td class="lineup_center" rowspan="1"><%=unilist.get(i).getUniv_str()%>
+												~ <%=unilist.get(i).getUniv_end()%></td>
+											<td class="lineup_center" rowspan="1"><%=unilist.get(i).getUniv_end_status()%></td>
+											<td><%=unilist.get(i).getUniversity()%></td>
+											<td><%=unilist.get(i).getUniv_major()%></td>
+											<td class="lineup_center"><%=unilist.get(i).getUniv_grade()%>
+												/ <%=unilist.get(i).getUniv_grade_base()%></td>
 										</tr>
-
+									<% 		} 
+										}
+									}
+									%>
+									
+									
 										<tr>
-											<td class="lineup_center" rowspan="1"><%=edulist.get(0).getHigh_str()%>
-												~ <%=edulist.get(0).getHigh_end()%></td>
+											<td class="lineup_center" rowspan="1"><%=highdto.getHigh_str()%>
+												~ <%=highdto.getHigh_end()%></td>
 											<td class="lineup_center" rowspan="1">졸업</td>
-											<td><%=edulist.get(0).getHighschool()%></td>
+											<td><%=highdto.getHighschool()%></td>
 											<td>문과계열</td>
 											<td class="lineup_center">-</td>
 										</tr>
 
-									<% } %>
+									
 									</tbody>
 								</table>
 							</div>
@@ -439,10 +464,15 @@ System.out.println(_gender);
 							</div>
 							<div class="part_table">
 								<div class="my_letter_view">
+									<% if(dto.getResume_intro_title()==null || dto.getResume_intro_content()==null ||
+									dto.getResume_intro_content().equals("null")||dto.getResume_intro_title().equals("null")){
+										
+									} else { %>
 									<p class="intit"><%=dto.getResume_intro_title() %></p>
 									<div class="intxt">
 										<%=dto.getResume_intro_content() %>
 									</div>
+									<% } %>
 								</div>
 							</div>
 

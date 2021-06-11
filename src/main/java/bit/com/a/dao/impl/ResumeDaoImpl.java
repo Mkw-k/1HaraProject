@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import bit.com.a.dao.ResumeDao;
 import bit.com.a.dto.ResumeDto;
+import bit.com.a.dto.ApplyDto;
 import bit.com.a.dto.Resume_ActivityVo;
 import bit.com.a.dto.Resume_AwardVo;
 import bit.com.a.dto.Resume_CareerVo;
-import bit.com.a.dto.Resume_EduVo;
+import bit.com.a.dto.Resume_HighschoolDto;
 import bit.com.a.dto.Resume_LanguageVo;
+import bit.com.a.dto.Resume_UniversityVo;
 import bit.com.a.dto.Resume_licenseVo;
 
 
@@ -44,13 +46,12 @@ public class ResumeDaoImpl implements ResumeDao {
 
 
 
-	@Override
-	public boolean writeEdu(Resume_EduVo eduvo) {
-		// TODO Auto-generated method stub
-		int i = session.insert(ns + "writeEdu", eduvo);
-		
-        return i>0?true:false;	
-	}
+	/*
+	 * @Override public boolean writeEdu(Resume_EduVo eduvo) { // TODO
+	 * Auto-generated method stub int i = session.insert(ns + "writeEdu", eduvo);
+	 * 
+	 * return i>0?true:false; }
+	 */
 	
 	
 
@@ -105,9 +106,9 @@ public class ResumeDaoImpl implements ResumeDao {
 
 
 	@Override
-	public List<ResumeDto> getresume() {
+	public List<ResumeDto> getresume(String memberid) {
 		// TODO Auto-generated method stub
-		return session.selectList(ns + "getresume");	
+		return session.selectList(ns + "getresume", memberid);	
 	}
 
 
@@ -128,12 +129,11 @@ public class ResumeDaoImpl implements ResumeDao {
 
 
 
-	@Override
-	public List<Resume_EduVo> getEduDetail(int seq) {
-		// TODO Auto-generated method stub
-		return session.selectList(ns+"getEduDetail", seq);
-	}
-
+	/*
+	 * @Override public List<Resume_EduVo> getEduDetail(int seq) { // TODO
+	 * Auto-generated method stub return session.selectList(ns+"getEduDetail", seq);
+	 * }
+	 */
 
 
 	@Override
@@ -247,9 +247,9 @@ public class ResumeDaoImpl implements ResumeDao {
 
 
 	@Override
-	public List<ResumeDto> getNoresume() {
+	public List<ResumeDto> getNoresume(String memberid) {
 		// TODO Auto-generated method stub
-		return session.selectList(ns+"getNoresume");
+		return session.selectList(ns+"getNoresume", memberid);
 	}
 
 
@@ -279,14 +279,12 @@ public class ResumeDaoImpl implements ResumeDao {
 	}
 
 
-
-	@Override
-	public boolean updateEdu(Resume_EduVo eduvo) {
-		// TODO Auto-generated method stub
-		int i = session.insert(ns + "updateEdu", eduvo);
-		
-        return i>0?true:false;	
-	}
+	/*
+	 * @Override public boolean updateEdu(Resume_EduVo eduvo) { // TODO
+	 * Auto-generated method stub int i = session.insert(ns + "updateEdu", eduvo);
+	 * 
+	 * return i>0?true:false; }
+	 */
 
 
 
@@ -337,10 +335,93 @@ public class ResumeDaoImpl implements ResumeDao {
 		
         return i>0?true:false;	
 	}
-	
-	
-	
-	
+
+
+
+	@Override
+	public boolean addApply(ApplyDto param) {
+		// TODO Auto-generated method stub
+		int i = session.insert(ns + "addApply", param);
+		
+        return i>0?true:false;
+	}
+
+
+
+	@Override
+	public List<ApplyDto> getApplyList(String memberid) {
+		// TODO Auto-generated method stub
+		return session.selectList(ns+"getApplyList", memberid);
+	}
+
+
+
+	@Override
+	public String getJobtitle(int jobseq) {
+		// TODO Auto-generated method stub
+		return session.selectOne(ns+"getJobtitle", jobseq);
+	}
+
+
+
+	@Override
+	public String getResumeTitle(int resumeseq) {
+		// TODO Auto-generated method stub
+		return session.selectOne(ns+"getResumeTitle", resumeseq);
+	}
+
+
+
+	@Override
+	public boolean writeHigh(Resume_HighschoolDto highdto) {
+		int i = session.insert(ns + "writeHigh", highdto);
+		
+        return i>0?true:false;	
+	}
+
+
+
+	@Override
+	public boolean writeUni(Resume_UniversityVo univo) {
+		int i = session.insert(ns + "writeUni", univo);
+		
+        return i>0?true:false;	
+	}
+
+
+
+	@Override
+	public boolean updateHigh(Resume_HighschoolDto highdto) {
+		int i = session.insert(ns + "updateHigh", highdto);
+		
+        return i>0?true:false;	
+	}
+
+
+
+	@Override
+	public boolean updateUni(Resume_UniversityVo univo) {
+		// TODO Auto-generated method stub
+		int i = session.insert(ns + "updateUni", univo);
+		
+        return i>0?true:false;	
+	}
+
+
+
+	@Override
+	public Resume_HighschoolDto getHighDetail(int seq) {
+		// TODO Auto-generated method stub
+		return session.selectOne(ns+"getHighDetail", seq);
+	}
+
+
+
+	@Override
+	public List<Resume_UniversityVo> getUniDetail(int seq) {
+		// TODO Auto-generated method stub
+	    return session.selectList(ns+"getUniDetail", seq);
+	}
 	
 	
 	

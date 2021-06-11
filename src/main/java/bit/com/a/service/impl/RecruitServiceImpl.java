@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import bit.com.a.dao.RecruitDao;
 import bit.com.a.dto.BbsParam;
+import bit.com.a.dto.BusinessDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 import bit.com.a.service.RecruitService;
@@ -69,9 +70,9 @@ public class RecruitServiceImpl implements RecruitService{
 	}
 
 	@Override
-	public List<RecruitDto> getCalendarList(RecruitDto rec) {
+	public List<RecruitDto> getCalendarList(RecruitParam param) {
 
-		return dao.getCalendarList(rec);
+		return dao.getCalendarList(param);
 	}
 
 	@Override
@@ -125,9 +126,48 @@ public class RecruitServiceImpl implements RecruitService{
 	}
 
 	@Override
-	public boolean favoriteJob(int jobSeq) {
-		return dao.favoriteJob(jobSeq);
+	public boolean favoriteJob(RecruitParam param) {
+		return dao.favoriteJob(param);
 	}
 
+	@Override
+	public int getJobFavorite(RecruitParam param) {
+		return dao.getJobFavorite(param);
+	}
+
+	@Override
+	public boolean dropFavoriteJob(RecruitParam param) {
+		return dao.dropFavoriteJob(param);
+	}
+
+	@Override
+	public List<RecruitDto> getCalendarList_1() {
+		return dao.getCalendarList_1();
+	}
+
+	@Override
+	public boolean favoriteCom(RecruitParam param) {
+		return dao.favoriteCom(param);
+	}
+
+	@Override
+	public int getComFavorite(RecruitParam param) {
+		return dao.getComFavorite(param);
+	}
+
+	@Override
+	public boolean dropFavoriteCom(RecruitParam param) {
+		return dao.dropFavoriteCom(param);
+	}
+
+	@Override
+	public boolean priMemberAf(BusinessDto dto) {
+		return dao.priMemberAf(dto);
+	}
+
+	@Override
+	public List<RecruitDto> getCalendarSearchList(Map<String, Object> map) {
+		return dao.getCalendarSearchList(map);
+	}
 
 }

@@ -42,14 +42,17 @@ public class CompanyController {
 		
 		
 		model.addAttribute("company", dto);
+		
+	
 		service.companywrite(dto);
+		
 		
 		System.out.println("dto : "+dto.toString());
 		
 		System.out.println("아이디:" + dto.getMemberid() + "," + dto.getCompanyname());
 		if(dto.getMemberid().equals("") || dto.getCompanyname().equals("")){
 			/* return "company/companywrite"; */
-			return "company/companyupdate";
+			return "company/companywrite";
 		}
 		return "redirect:/recuruitlist.do";
 	}
@@ -64,7 +67,7 @@ public class CompanyController {
 		model.addAttribute("company",dto);
 		System.out.println("af투스트링" + dto.toString());
 		
-		return "company/companywrite";
+		return "company/companyupdate";
 	}
 
 		

@@ -23,16 +23,56 @@
 </select>
 
 <!-- <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH, USERPIC)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, 0)
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH, USERPIC, NEWUSERPIC)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, #{userpic}, #{newuserpic})
 </insert> -->
 
+<insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, AUTH, BIRTH, DETAILADDRESS, ADDRESS, USERPIC, NEWUSERPIC,  PHONENUM)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, 1, #{birth}, #{detailaddress}, #{address}, #{userpic}, #{newuserpic}, #{phonenum}  )
+</insert>
+
+<!-- 로그인 -->
 <select id="login" parameterType="bit.com.a.dto.MemberDto"
+	resultType="bit.com.a.dto.MemberDto">
+	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, BIRTH, NEWUSERPIC, PHONENUM
+	FROM MEMBER
+	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
+</select>
+
+
+<!-- 아이디 찾기 -->
+<select id="findId" resultType="user">
+		SELECT * 
+		FROM MEMBER 
+		WHERE name=#{name} and PHONENUMBER=#{phonenumber}
+</select>
+
+<!-- 비밀번호 찾기 -->
+<select id="findPassword" resultType="user">
+		select * from users where id=#{id} and name=#{name} and phone=#{phone}
+</select>
+
+<!-- 비밀번호 찾고 비밀번호 수정 -->
+
+
+
+<!-- 카카오로그인 -->
+<select id="kakaoLogin" parameterType="bit.com.a.dto.MemberDto"
 	resultType="bit.com.a.dto.MemberDto">
 	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, BIRTH
 	FROM MEMBER
 	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 </select>
+
+<!-- 카카오로 로그인시 패스워드 가져오기 기존 가입되있는지 여부 확인용 및 로그인 용  -->
+<select id="getKakaoPwd" parameterType="java.lang.String"
+	resultType="java.lang.String">
+	SELECT PWD
+	FROM MEMBER
+	WHERE MEMBERID=#{memberid}
+</select>
+
 
 <!-- 회원탈퇴 -->
 <delete id="memberDelete">
@@ -62,14 +102,14 @@
 	<!-- 회원정보 수정 -->
 	<update id="updateMypage">
 	UPDATE MEMBER
-	SET NAME=#{name}, EMAIL=#{email}, ADDRESS=#{address}, DETAILADDRESs=#{detailaddress}, BIRTH=#{birth}
+	SET NAME=#{name}, EMAIL=#{email}, ADDRESS=#{address}, DETAILADDRESS=#{detailaddress}, PHONENUM=#{phonenum}, USERPIC=#{userpic}, NEWUSERPIC=#{newuserpic}
 	WHERE MEMBERID=#{memberid}
 	</update>
-
+<!-- 
 	<insert parameterType="bit.com.a.dto.MemberDto" id="addmember">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1) 
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, USERPIC, AUTH)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, #{userpic} 1) 
 	</insert>
-
+ -->
 
 </mapper>
