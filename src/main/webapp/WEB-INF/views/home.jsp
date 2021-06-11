@@ -509,14 +509,14 @@ body{
  /* Icon */
   .bar {position: relative;}
 
-    .bar:before, 
+    .bar:before,
     .bar:after {
     content: "";
     position: absolute;
     }
 
-    .bar:before, 
-    .bar:after, 
+    .bar:before,
+    .bar:after,
     .bar {
     width: 24px;
     height: 3px;
@@ -525,15 +525,15 @@ body{
     display: block;
     }
 
-    .bar:before { bottom: 100%; } 
-    .bar:after { top: 100%; } 
-    .bar.active:after { top: 0; } 
-    .bar.active:before { bottom: -200%; } 
-    .bar.active { background-color: transparent; } 
-    .bar, .bar:before, .bar:after { transition: all .25s linear !important; } 
-    .bar.active:before,  .bar.active:after { transition-delay: .15s !important; } 
-    .bar.active:before { transform: rotate(45deg); } 
-    .bar.active:after { transform: rotate(-45deg); } 
+    .bar:before { bottom: 100%; }
+    .bar:after { top: 100%; }
+    .bar.active:after { top: 0; }
+    .bar.active:before { bottom: -200%; }
+    .bar.active { background-color: transparent; }
+    .bar, .bar:before, .bar:after { transition: all .25s linear !important; }
+    .bar.active:before,  .bar.active:after { transition-delay: .15s !important; }
+    .bar.active:before { transform: rotate(45deg); }
+    .bar.active:after { transform: rotate(-45deg); }
 
 .outside {
 width: 25%;
@@ -616,13 +616,13 @@ transform: translateX(0%);
 opacity: 1;
 }
 
-.in .menu li:nth-child(1) { transition-delay: 1s; } 
-.in .menu li:nth-child(2) { transition-delay: 1.15s; } 
-.in .menu li:nth-child(3) { transition-delay: 1.25s; } 
-.in .menu li:nth-child(4) { transition-delay: 1.35s; } 
-.in .menu li:nth-child(5) { transition-delay: 1.45s; } 
-.in .menu li:nth-child(6) { transition-delay: 1.55s; } 
-.in .menu li:nth-child(7) { transition-delay: 1.65s; } 
+.in .menu li:nth-child(1) { transition-delay: 1s; }
+.in .menu li:nth-child(2) { transition-delay: 1.15s; }
+.in .menu li:nth-child(3) { transition-delay: 1.25s; }
+.in .menu li:nth-child(4) { transition-delay: 1.35s; }
+.in .menu li:nth-child(5) { transition-delay: 1.45s; }
+.in .menu li:nth-child(6) { transition-delay: 1.55s; }
+.in .menu li:nth-child(7) { transition-delay: 1.65s; }
 
 /* Animation */
 
@@ -633,7 +633,7 @@ opacity: 1;
 
 /* Generated with Bounce.js. Edit at https://goo.gl/zdjCb0 */
 
-@-webkit-keyframes bounce { 
+@-webkit-keyframes bounce {
  0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   27.68% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   27.78% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -100, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -100, 0, 0, 1); }
@@ -658,7 +658,7 @@ opacity: 1;
   87.71% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.004, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.004, 0, 0, 1); }
   92.48% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   95.3% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); }
-  100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+  100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 }
 
 /* 모달 */
@@ -750,7 +750,7 @@ margin-right : 450px;
 <div class="navi_depth1 secondary">
 <span class="marker"><svg aria-hidden="true"><use xlink:href="#svg_gnb_more"></use></svg></span>
 <ul>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="/zf_user/company-review-qst-and-ans"><span>취업톡톡</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="Jobtalklist.do"><span>취업톡톡</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="/zf_user/white-paper/office"><span>콘텐츠</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="resumeMain.do?memberid=${login.memberid }"><span>이력서관리</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','jumpit')" href="https://www.jumpit.co.kr" target="_blank"><span class="icon icon_jumpit">점핏</span></a></li>
@@ -780,12 +780,12 @@ margin-right : 450px;
     					<c:otherwise>
              				<p><b>[관리자👨‍✈️]]${login.name }</b>님</p>
     					</c:otherwise>
-    				</c:choose>			
-            	 </c:when> 
-         	</c:choose>  
+    				</c:choose>
+            	 </c:when>
+         	</c:choose>
       </li>
- </ul>      
- 
+ </ul>
+
 
 <!-- 로그인 로그아웃 란 -->
 <c:choose>
@@ -805,7 +805,7 @@ margin-right : 450px;
 </c:otherwise>
 </c:choose>
 
- 
+
 
 <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="regiclick.do" class="btn_sign signup"><span class="txt">회원가입</span></a>
 =======
@@ -1533,8 +1533,8 @@ margin-right : 450px;
         <div class="wrap_my_area">
             <div class="top_login" style="display:block">
                 <input type="hidden" id="top_login_tab" name="top_login_tab" value="p">
-                
-                
+
+
                 	<ul>
  						<li>
 					<c:choose>
@@ -1551,23 +1551,23 @@ margin-right : 450px;
     					<c:otherwise>
              				<p><b>[관리자👨‍✈️]]${login.name }</b>님 안녕하세요.</p>
     					</c:otherwise>
-    				</c:choose>			
-            	 </c:when> 
-         	</c:choose>  
+    				</c:choose>
+            	 </c:when>
+         	</c:choose>
       </li>
- </ul>      
-                
+ </ul>
+
               <!--  -->
-                
+
 				<c:choose>
 					<c:when test="${empty login}">
                 <ul class="area_login">
-                    <li class="on"><button type="button" id="login_tab_person" class="track_event" data-track_event="login|pc_main_per|tab_per"><strong>로그인 ✔</strong></button></li>
+                    <li class="on"><button type="button" id="login_tab_person" class="track_event" onclick="loginpage()" data-track_event="login|pc_main_per|tab_per"><strong>로그인 ✔</strong></button></li>
                 </ul>
                 </c:when>
 				<c:otherwise>
-				
-				
+
+
 				<c:choose>
 					<c:when test="${login.auth==1 || login.auth==3}">
 						<ul class="area_login">
@@ -1582,11 +1582,11 @@ margin-right : 450px;
 				</c:choose>
 				</c:otherwise>
 				</c:choose>
-               
 
-                
-                
-                
+
+
+
+
                 <a href="/zf_user/helpdesk/idpw-find" class="link_id_password track_event" data-track_event="login|pc_main_per|find|">아이디/비번찾기</a>
                 <a href="regiclick.do" onclick="return false;" class="link_join track_event" data-track_event="login|pc_main_per|join|">회원가입</a>
             </div>
@@ -1637,8 +1637,8 @@ margin-right : 450px;
                     <input type="hidden" id="login_tab" name="login_tab" value="p">
                     <fieldset>
                         <ul class="btn_logins">
-                            <li class="on"><button type="button" id="login_layer_tab_person" class="track_event" data-track_event="login|pc_main_per|tab_per">로그인</button></li>
-                            
+                            <li class="on"><button type="button" id="login_layer_tab_person" onclick="loginpage()" class="track_event" data-track_event="login|pc_main_per|tab_per">로그인</button></li>
+
                         </ul>
                         <div class="area_login">
                             <div class="sns_login" id="wrap_sns_login">
@@ -1853,30 +1853,30 @@ margin-right : 450px;
     width: 400px;
 ">
 
-                
-                
+
+
             <div id="jquery-accordion-menu" class="jquery-accordion-menu">
-					
+
 					<ul>
 						<li class="active"><a href="#" style="font-size: 12pt;"><i class="fa fa-home"></i>NAVER</a><span class="jquery-accordion-menu-label">1 </span><li><a href="#" style="font-size: 12pt;"><i class="fa fa-glass"></i>KAKAO</a><span class="jquery-accordion-menu-label">2 </span></li></li>
 						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-glass"></i>KAKAO</a><span class="jquery-accordion-menu-label">2 </span></li>
 						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-file-image-o"></i>LINE </a><span class="jquery-accordion-menu-label">3 </span></li>
 						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-cog"></i>COUPANG </a><span class="jquery-accordion-menu-label">4 </span></li>
 						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-cog"></i>배달의 민족 </a><span class="jquery-accordion-menu-label">5 </span></li>
-						
-						
-						
-						
-						
+
+
+
+
+
 					</ul>
-					
+
 				</div></div>
             <div class="recomm_content" style="
     padding-top: 0px;
     padding-left: 0px;
     width: 400px;
 ">
-                
+
             <div id="carouselSample" class="carousel slide" data-ride="carousel">
 
 			    <!-- indicator(이동할 수 있는 바) -->
@@ -2040,11 +2040,11 @@ margin-right : 450px;
         <div class="wrap_my_area" style="
     width: 401px;
 ">
-            
-            
-            
-            
-            
+
+
+
+
+
         <div class="row" style="width: 450px;">
 		        <div>
 		            <div class="panel panel-primary">
@@ -2064,7 +2064,10 @@ margin-right : 450px;
 		                        <div>
 		                         <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br>자료실</a>
-		                          <a href="buspage.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>마이페이지</a>
+
+		                          <c:if test="${login.auth==1|| login.auth == 3 }">
+		                          		<a href="mypage.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>마이페이지</a>
+		                          </c:if>
 		                        </div>
 		                        <div>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>이력서관리</a>
@@ -2076,8 +2079,8 @@ margin-right : 450px;
 		            </div>
 		        </div>
 		    </div></div>
-        
-        
+
+
     </div>
 <div id="section_contents" class="cont_top">
     <div class="inner">
@@ -2106,7 +2109,7 @@ background-color: white;
 border: 0;
 padding: 22px;
 z-index: 10;"><span class="bar"></span></button>
-<div class="outside"> 
+<div class="outside">
   <div class="inside">
     <ul class="menu">
       <li><span class="fa fa-dashboard"></span>일하라 소개</li>
@@ -2126,15 +2129,15 @@ $(".close").click(function(){
 	  $(this).toggleClass('is-showing');
 	});
 </script>
-                
-                
+
+
             </div>
             <div class="recomm_content" style="
     padding-top: 0px;
     padding-left: 0px;
     width: 400px;
 ">
-                
+
             </div>
         </div>
         <div class="wrap_recomm company" style="display : none">
@@ -2246,11 +2249,11 @@ $(".close").click(function(){
         <div class="wrap_my_area" style="
     width: 401px;
 ">
-            
-            
-            
-            
-            
+
+
+
+
+
         <div class="row" style="width: 450px;">
 		        <div>
 		            <div class="panel panel-primary">
@@ -2282,23 +2285,23 @@ $(".close").click(function(){
 		            </div>
 		        </div>
 		    </div></div>
-        
-        
+
+
     </div>
 </div></div>
 
 
 		        </main></div>
-		     
+
 
          <!-- 구분선 -->
 
-		   
-		
 
 
-     
-	       	 
+
+
+
+
 
      	<!-- column2 end -->
 
@@ -2308,9 +2311,9 @@ $(".close").click(function(){
     <br class="clear">
 
    <!-- 메인 우측 광고 -->
-   
 
-  
+
+
 
 
 
@@ -2489,8 +2492,8 @@ function login() {
 	$("#login-modal").modal();
 	$("#login-modal").removeClass("modal fade");
 	$("#login-modal").addClass("modal");
-	
-	
+
+
 
 
 }
@@ -2751,6 +2754,13 @@ function kakaoLogin() {
       }
    });
 }
+
+function loginpage() {
+	location.href="login1.do";
+
+}
+
+
 </script>
 
 
