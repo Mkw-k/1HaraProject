@@ -107,4 +107,12 @@ public interface ResumeDao {
 	Resume_HighschoolDto getHighDetail(int seq);
 	
 	List<Resume_UniversityVo> getUniDetail(int seq);
+	
+	boolean deleteApply(int seq);
+	
+	boolean deleteHighResume(int seq);
+	
+	boolean deleteUniResume(int seq);
+	
+	boolean cancelApply(int seq);
 }

@@ -978,7 +978,7 @@ function f_empPgmList(resultObj){
 							<div class="con-top">
 								<div class="tit-area"><span>${login.memberid}</span> 님, 반갑습니다.
 
-								<a href = "buspageUpdate.do?memberid=${memberid}" class="button">회원정보수정</a></div>
+								<a href ="pwdcheck.do" class="button">회원정보수정</a></div>
 
 
 								<div class="con-resume">

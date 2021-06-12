@@ -10,10 +10,10 @@
 
     INSERT
     INTO RESUME (RESUMESEQ, MEMBERID,RESUMETITLE, RECRUIT_STATUS, RESUME_STATUS, RESUMEIMAGE, NEWRESUMEIMAGE,
-             RESUME_INTRO_TITLE, RESUME_INTRO_CONTENT, DESIREDSALARY, DESIREDJOBTYPE, DESIRED_STR, DESIRED_END, DESIREDAREA1, DESIREDJOB1, GENDER, PROGRESS)
+             RESUME_INTRO_TITLE, RESUME_INTRO_CONTENT, DESIREDSALARY, DESIREDJOBTYPE, DESIRED_STR, DESIRED_END, DESIREDAREA1, DESIREDJOB1, GENDER, PROGRESS, NAME, EMAIL, PHONENUM, ADDRESS, DETAILADDRESS, BIRTH)
     VALUES (RESUME_SEQ.NEXTVAL, #{memberid}, #{resumetitle}, #{recruit_status}, #{resume_status}, #{resumeimage}, #{newresumeimage},
           #{resume_intro_title}, #{resume_intro_content}, #{desiredsalary}, #{desiredjobtype},
-          #{desired_str}, #{desired_end}, #{desiredarea1}, #{desiredjob1}, #{gender} , 0)
+          #{desired_str}, #{desired_end}, #{desiredarea1}, #{desiredjob1}, #{gender} , 0, #{name}, #{email}, #{phonenum}, #{address}, #{detailaddress}, #{birth})
 
 </insert>
 
@@ -81,7 +81,7 @@ FROM RESUME
 
 
 <select id="getResumeDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.ResumeDto">
-SELECT RESUMESEQ, MEMBERID, RESUMETITLE, RECRUIT_STATUS, RESUME_STATUS, RESUMEIMAGE, NEWRESUMEIMAGE, RESUME_INTRO_TITLE, RESUME_INTRO_CONTENT, PORTFOLIO, NEWPORTFOLIO, DESIREDSALARY, DESIREDJOBTYPE, DESIRED_STR, DESIRED_END, DESIREDAREA1, DESIREDJOB1, GENDER
+SELECT RESUMESEQ, MEMBERID, RESUMETITLE, RECRUIT_STATUS, RESUME_STATUS, RESUMEIMAGE, NEWRESUMEIMAGE, RESUME_INTRO_TITLE, RESUME_INTRO_CONTENT, PORTFOLIO, NEWPORTFOLIO, DESIREDSALARY, DESIREDJOBTYPE, DESIRED_STR, DESIRED_END, DESIREDAREA1, DESIREDJOB1, GENDER, NAME, EMAIL, PHONENUM, ADDRESS, DETAILADDRESS, BIRTH
 FROM RESUME
 WHERE RESUMESEQ=#{seq}
 </select>
@@ -185,7 +185,8 @@ ORDER BY RESUMESEQ DESC
  UPDATE RESUME
  SET RESUMETITLE=#{resumetitle}, RECRUIT_STATUS=#{recruit_status}, RESUME_STATUS=#{resume_status}, RESUMEIMAGE=#{resumeimage}, NEWRESUMEIMAGE=#{newresumeimage},
              RESUME_INTRO_TITLE=#{resume_intro_title}, RESUME_INTRO_CONTENT=#{resume_intro_content}, DESIREDSALARY=#{desiredsalary},
-             DESIREDJOBTYPE=#{desiredjobtype}, DESIRED_STR=#{desired_str}, DESIRED_END=#{desired_end}, DESIREDAREA1=#{desiredarea1}, DESIREDJOB1=#{desiredjob1}, GENDER=#{gender}
+             DESIREDJOBTYPE=#{desiredjobtype}, DESIRED_STR=#{desired_str}, DESIRED_END=#{desired_end}, DESIREDAREA1=#{desiredarea1}, DESIREDJOB1=#{desiredjob1}, GENDER=#{gender},
+             NAME=#{name}, EMAIL=#{email}, PHONENUM=#{phonenum}, ADDRESS=#{address}, DETAILADDRESS=#{detailaddress}, BIRTH=#{birth}
  WHERE RESUMESEQ=#{resumeseq}
 </update>
 
@@ -291,6 +292,31 @@ SELECT UNIVERSITYSEQ, RESUMESEQ, UNIVERSITY, UNIV_STATUS, UNIV_STR, UNIV_STR_STA
 FROM UNIVERSITY
 WHERE RESUMESEQ=#{seq}
 </select>
+
+<delete id="deleteApply" parameterType="java.lang.Integer" >
+DELETE
+FROM APPLY
+WHERE RESUMESEQ=#{seq}
+</delete>
+
+
+<delete id="deleteHighResume" parameterType="java.lang.Integer" >
+DELETE
+FROM HIGHSCHOOL
+WHERE RESUMESEQ=#{seq}
+</delete>
+
+<delete id="deleteUniResume" parameterType="java.lang.Integer" >
+DELETE
+FROM UNIVERSITY
+WHERE RESUMESEQ=#{seq}
+</delete>
+
+<delete id="cancelApply" parameterType="java.lang.Integer" >
+DELETE
+FROM APPLY
+WHERE APPLYSEQ=#{seq}
+</delete>
 
 
 </mapper>

@@ -328,7 +328,7 @@ dt, dd {
 															이름 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text" id="user_nm" name="user_nm"
+															<input type="text" id="name" name="name"
 																class="box_input" value="${login.name }" maxlength="20"
 																data-only-word="true">
 																<input type="hidden" name="memberid" value="${login.memberid }">
@@ -338,7 +338,6 @@ dt, dd {
 
 															<select class="selectpicker" style="width: 207.22222px;"
 																name="recruit_status">
-																<option>구직상태</option>
 																<option value="구직중">구직중</option>
 																<option value="구직완료">구직완료</option>
 															</select>
@@ -351,7 +350,7 @@ dt, dd {
 															생년월일 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text" id="birth_dt" name="birth_dt"
+															<input type="text" id="birth" name="birth"
 																value="${login.birth }" class="box_input expect_date"
 																data-dateformat="yymmdd" data-only-number="true"
 																autocomplete="off">
@@ -388,8 +387,8 @@ dt, dd {
 															휴대폰 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text" id="user_cell" name="user_cell"
-																class="box_input max_length" value="${login.name }"
+															<input type="text" id="phonenum" name="phonenum"
+																class="box_input max_length" value="${login.phonenum }"
 																maxlength="11" data-only-number="true"
 																data-api_type="layer" data-api_id="basic_confirm_cell"
 																readonly>
@@ -407,7 +406,7 @@ dt, dd {
 
 														<div class="resume_address">
 															<div class="resume_input" style="display:">
-																<input type="text" id="new_address" name="new_address"
+																<input type="text" id="address" name="address"
 																	value="${login.address }" maxlength="40" readonly
 																	class="box_input old_address _searchArea">
 																<p class="txt_error"></p>
@@ -415,14 +414,10 @@ dt, dd {
 
 
 															<div class="resume_input resume_bottom" style="display:;">
-																<input type="text" id="new_address_details"
-																	name="new_address_details"
+																<input type="text" id="detailaddress"
+																	name="detailaddress"
 																	value="${login.detailaddress }" maxlength="50"
-																	class="box_input size_type5 _newAddress"> <input
-																	type="hidden" id="new_address_extra"
-																	name="new_address_extra"
-																	value="${login.detailaddress }">
-																<p class="txt_error"></p>
+																	class="box_input size_type5 _newAddress">
 															</div>
 
 														</div>
@@ -1386,7 +1381,6 @@ dt, dd {
 																	<div class="sri_select resume_select">
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lan_pass" id="lan_pass">
-																			<option>취득여부</option>
 																			<option value="취득(PASS)">취득(PASS)</option>
 																		</select>
 																	</div>
