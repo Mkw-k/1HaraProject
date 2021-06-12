@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import bit.com.a.dao.RecruitDao;
 import bit.com.a.dto.BbsParam;
+import bit.com.a.dto.BusinessDto;
+import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 
@@ -20,7 +22,7 @@ public class RecruitDaoImpl implements RecruitDao{
 
 	@Autowired
 	SqlSession session;
-	
+
 	String ns = "Recruit.";
 
 	@Override
@@ -71,10 +73,10 @@ public class RecruitDaoImpl implements RecruitDao{
 	public List<String> getBsnameForDetail(int jobseq) {
 		return session.selectList(ns+"getBsnameForDetail", jobseq);
 	}
-	
+
 	@Override
-	public List<RecruitDto> getCalendarList(RecruitDto rec) {
-		return session.selectList(ns+"getCalendarList", rec);
+	public List<RecruitDto> getCalendarList(RecruitParam param) {
+		return session.selectList(ns+"getCalendarList", param);
 	}
 
 	@Override
@@ -116,10 +118,86 @@ public class RecruitDaoImpl implements RecruitDao{
 	public int getRecruitCount(Map<String, Object> param) {
 		return session.selectOne(ns+"getRecruitCount", param);
 	}
-	
-	
 
-	
-	
-	
+	@Override
+	public boolean mgDetailUpdate(RecruitDto dto) {
+		return session.update(ns+"mgDetailUpdate", dto)>0?true:false;
+	}
+
+	@Override
+	public boolean mgDetailUpdate2(RecruitDto dto) {
+		return session.update(ns+"mgDetailUpdate2", dto)>0?true:false;
+	}
+
+	@Override
+	public boolean favoriteJob(RecruitParam param) {
+		return session.insert(ns+"favoriteJob", param)>0?true:false;
+	}
+
+	@Override
+	public int getJobFavorite(RecruitParam param) {
+		return session.selectOne(ns+"getJobFavorite", param);
+	}
+
+	@Override
+	public boolean dropFavoriteJob(RecruitParam param) {
+		return session.delete(ns+"dropFavoriteJob", param)>0?true:false;
+	}
+
+	@Override
+	public List<RecruitDto> getCalendarList_1() {
+		return session.selectList(ns + "getCalendarList_1");
+	}
+
+	@Override
+	public boolean favoriteCom(RecruitParam param) {
+		return session.insert(ns+"favoriteCom", param)>0?true:false;
+	}
+
+	@Override
+	public int getComFavorite(RecruitParam param) {
+		return session.selectOne(ns+"getComFavorite", param);
+	}
+
+	@Override
+	public boolean dropFavoriteCom(RecruitParam param) {
+		return session.delete(ns+"dropFavoriteCom", param)>0?true:false;
+	}
+
+	@Override
+	public boolean priMemberAf(BusinessDto dto) {
+		return session.update(ns+"priMemberAf", dto)>0?true:false;
+	}
+
+	@Override
+	public List<RecruitDto> getCalendarSearchList(Map<String, Object> map) {
+		return session.selectList(ns+"getCalendarSearchList", map);
+	}
+
+	@Override
+	public List<RecruitDto> getTop10List() {
+		return session.selectList(ns+"getTop10List");
+	}
+
+	@Override
+	public boolean favoriteJob2(RecruitParam param) {
+		return session.update(ns+"favoriteJob2", param)>0? true:false;
+	}
+
+	@Override
+	public boolean dropFavoriteJob2(RecruitParam param) {
+		return session.update(ns+"dropFavoriteJob2", param)>0?true:false;
+
+
+@Override
+	public CompanyDto getCompany(int jobseq) {
+
+		return session.selectOne(ns + "getDetailCompany",jobseq);
+	}
+
+
+
+
+
+
 }

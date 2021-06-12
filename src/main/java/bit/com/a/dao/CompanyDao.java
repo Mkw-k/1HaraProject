@@ -9,7 +9,9 @@ public interface CompanyDao {
 
 	CompanyDto getCompany(String companyid);
 
-	boolean companywrite(CompanyDto dto);  
+	boolean companywrite(CompanyDto dto);
+
+	boolean companyupdate(CompanyDto dto);  
 
 	
 

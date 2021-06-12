@@ -9,18 +9,22 @@
 	SELECT COMPANYNAME, ADDRESS, COMPANYNUM, CEONAME, DEL, COMPANYTYPE, COMPANYSEQ, MEMBERID, CONTENT, 
 	COMIMAGE, EMPCOUNT, SALARYAVG, SALARYSTART, COMYEAR, RETIREE, JOINNER, WEBSITE, MAINSERVICE, TOTALSALE
 	FROM COMPANY
-	WHERE MEMBERID=#{memberid}
+	WHERE MEMBERID=#{companyid}
 	</select>
 
 	<insert id="companywrite" parameterType="bit.com.a.dto.CompanyDto">
 	INSERT INTO COMPANY(COMPANYNAME, ADDRESS, COMPANYNUM, CEONAME, DEL, COMPANYTYPE, COMPANYSEQ, MEMBERID, CONTENT, 
-	COMIMAGE, EMPCOUNT, SALARYAVG, SALARYSTART, COMYEAR, RETIREE, JOINNER, WEBSITE, MAINSERVICE, TOTALSALE)
+	COMIMAGE, EMPCOUNT, SALARYAVG, SALARYSTART, COMYEAR, RETIREE, JOINNER, WEBSITE, MAINSERVICE, TOTALSALE, UPDATECOMPANYLIST)
 	VALUES(#{companyname}, #{address}, #{companynum}, #{ceoname}, 0, #{companytype}, COMPANY_SEQ.NEXTVAL , #{memberid} , #{content}, 
-	#{comimage, jdbcType=VARCHAR}, #{content} ,#{salaryavg} , #{salarystart}, #{comyear} , #{retiree} , #{joinner} , #{website}, #{mainservice}, #{totalsale} )
-		
-	
+	#{comimage, jdbcType=VARCHAR}, #{content} ,#{salaryavg} , #{salarystart}, #{comyear} , #{retiree} , #{joinner} , #{website}, #{mainservice}, #{totalsale}, #{updatecompanylist} )
 	</insert>
 	
+	<update id="companyupdate" parameterType="bit.com.a.dto.CompanyDto">
+		UPDATE COMPANY SET
+		COMPANYTYPE=#{companytype}, SALARYAVG=#{salaryavg}, SALARYSTART=#{salarystart}, COMYEAR=#{comyear}, CONTENT=#{content},
+		WEBSITE=#{website}, MAINSERVICE=#{mainservice}, TOTALSALE=#{totalsale},EMPCOUNT=#{empcount},RETIREE=#{retiree},JOINNER=#{joinner}   
+		WHERE MEMBERID=#{memberid}
+	</update>
 
 	
 </mapper>	

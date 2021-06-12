@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="RecruitReply">
+	
+	<!-- 채용공고 댓글 리스트 -->
+	<insert id="insertRecruitReply" parameterType="bit.com.a.dto.RecruitReplyDto">
+		INSERT INTO REPLYRECRUIT(REPLYRECRUITSEQ, JOBSEQ, REPLY_CONTENT, RDATE, MEMBERID, REPLY_COUNT)
+		VALUES(REPLYRECRUITSEQ_REPLYRECRUIT.NEXTVAL, #{jobseq}, #{reply_content}, #{rdate}, #{memberid}, SYSDATE, 0)
+	</insert>
+
+	<!-- 댓글 리스트 -->
+	<select id="readReply" resultType="bit.com.a.dto.RecruitReplyDto">
+    	SELECT REPLYRECRUITSEQ, JOBTALKSEQ, REPLY_CONTENT, MEMBERID, RDATE, REPLY_COUNT
+    	FROM REPLYRECRUIT
+    	WHERE REPLYRECRUITSEQ = #{jobseq}
+	</select>
+	
+	<!-- 댓글 총수 -->
+	<update id="reply_count" parameterType="java.lang.Integer">
+		UPDATE REPLYRECRUIT
+		SET REPLY_COUNT=REPLY_COUNT+1
+		WHERE REPLYRECRUITSEQ=#{replyrecruitseq}
+	</update>
+
+</mapper>
+

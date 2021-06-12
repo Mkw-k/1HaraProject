@@ -22,14 +22,23 @@
   <!-- 링크!  -->
 	<link href="csss/common.css" rel="stylesheet" type="text/css">
 	<link href="csss/reset.css" rel="stylesheet" type="text/css">
+	<title>Insert title here</title>
+	<link href="csss/common1.css" rel="stylesheet" type="text/css">
+	<link href="csss/gnb.css" rel="stylesheet" type="text/css">	
+	<link href="csss/view.css" rel="stylesheet" type="text/css">
+	<link href="csss/side_navigation.css" rel="stylesheet" type="text/css">
+	<link href="csss/star_style.css" rel="stylesheet" type="text/css">
 	<!-- 링크!  -->
   
   
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
+
   <!-- jQuery Modal -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-  <script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
+
   
   <!-- footer -->
 
@@ -42,7 +51,7 @@
  -->
   <!-- 검색 부트스트랩 -->
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
 <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 
  <!-- 전체 css -->
@@ -50,12 +59,11 @@
 <link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
 <!-- <script type="text/javascript" src="layout/scripts/jquery.min.js"></script> -->
 <script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
-
-<!-- 부트스트랩 -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+ <!-- 부트스트랩 -->
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
+ -->
 <!-- 링크!  -->
 <link href="csss/common.css" rel="stylesheet" type="text/css">
 <link href="csss/reset.css" rel="stylesheet" type="text/css">
@@ -420,64 +428,6 @@ section .section-title {
 .dropdown:hover .dropbtn {background-color: #2186eb;}
 
 
-
-</style>
-</head>
-<body>
-<div class="all">
-
-
-<!-- 제이쿼리 -->
-<script src="//https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- 네비바 -->
-<!-- carousel -->
-<link rel="stylesheet" href="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  
-<script src="//https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<!-- jQuery Modal -->
-<script src="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> 
-
-
-  <!-- 검색 부트스트랩 -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
-
- <!-- 전체 css -->
-<link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
-<script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
-<script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
-
-<!-- 부트스트랩 -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-
-<link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
-<!-- TO_BE CSS.. -->
-<link rel="stylesheet" href="static/css/import.css" media="all">
-<!-- footer -->
-
-<!-- 퀵메뉴 -->
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
-
-<!-- 랭킹 -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="csss/ranking.css" rel="stylesheet" type="text/css">
-
-<!-- 로그인 css -->
-<link href="csss/logincss.css" rel="stylesheet" type="text/css">
-
-
 <style type="text/css">
   
 /* 네비바 배경색 */
@@ -647,6 +597,11 @@ border-color: #2186eb;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+}
+
+.containerpagenumber {
+	width : 920px;
+	height : 50px;
 }
 
 .logoarea {
@@ -945,6 +900,7 @@ margin-right : 450px;
 </style>
 </head>
 <body>
+
 <div class="all">
 <header>
 		
@@ -1008,10 +964,9 @@ margin-right : 450px;
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <!-- Links -->
-  
   <div>
 	 <a href="home.do"><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
-	</div>
+  </div>
   
   <ul class="navbar-nav">
 <!-- Dropdown -->
@@ -1095,12 +1050,53 @@ margin-right : 450px;
 </nav>
 <br>
 
+<div class="side-navigation">
+	<h2 class="skip">선배에게 질문하기 세부메뉴</h2>
+	<div class="navi-top-area">
+		<a href="/User/Qstn/QstnWrite" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
+			<div class="myInfoSec">
+				<a href="/User/Qstn/MainProfile" class="myInfo">
+					<!-- [Dev] 프로필 랜덤 이미지 파일명 : random_1 ~ random_20, 이미지 없음 : random_default -->
+					<span class="proThumb">
+						<img onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'" src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_8.jpg" alt="프로필 이미지">
+					</span>
+					<dl class="infoBx">
+						<dt class="qnaSpA">
+							<span class="nickname">${login.name }</span> 
+							<span class="lvIcon">Lv.1</span>
+						</dt>
+						<dd>
+							<span>질문 0</span>
+							<span>답변 0 (채택 0)</span>
+						</dd>
+					</dl>
+				</a>
+				<button type="button" class="myPoint devMainCouponButton">
+					<span class="point qnaSpB">0</span><span class="btnCoupon qnaSpA">쿠폰교환</span>
+				</button>
+			</div>
+		</div>
+		<div class="navi-list-area">
+		<!-- [Dev] 메뉴 on : 클래스 active 추가 -->
+			<div class="sideNavLow">
+				<strong class="sideNavTit"><a id="devLeftMenuRequireTag" href="/User/Qstn/Index?MainType=1" data-tab="1" class="devLoginLayer " devalert="0">답변하기</a></strong>
+			</div>
+			<div class="sideNavLow">
+				<strong class="sideNavTit"><a id="devLeftMenuOwnerTag" href="/User/Qstn/Index?MainType=2" data-tab="2" class="devLoginLayer " devalert="0">나의질문</a></strong>
+			</div>
+			<div class="sideNavLow">
+				<strong class="sideNavTit"><a id="devLeftMenuEntireTag" href="/User/Qstn/Index?MainType=3" data-tab="3" class="">전체질문</a></strong>
+			</div>
+		</div>
+	</div>
 
+
+<div class="container">
 
 <section id="contents">
 
 	<div class="tit-util">
-		<h2 class="tit">공지사항</h2>
+		<h2 class="tit">취업톡톡</h2>
 		<div class="page-util">
 			<span class="hide-location" id="navi_1">고객센터</span>
 		    <span class="hide-location" id="navi_2">고객센터 게시판</span>
@@ -1116,148 +1112,117 @@ margin-right : 450px;
 			<dd>1hara의 새로운 소식을 알려드립니다.</dd>
 		</dl>
 	</div>
-
-	<form id="empBoardSrchVO" name="searchForm" action="/ntNewsData/ntMatter/retrieveNtMatterListPost.do" method="post" onsubmit="return f_checkForm(this);">
-		<input type="hidden" name="pageUnit" value="10">
-		<input type="hidden" name="srch" value="srch">
-		<input type="hidden" name="boardFlag" value="0">
-		<input type="hidden" name="jobyoung" value="">
-	
-		<input type="hidden" name="pageIndex" id="pageIndex1" value="1">
-		
-		
-		
-		
-		
-		
 		<div class="board-list-search">							
 			<div class="line">
 				<div class="float-l w480px">
-					<label for="startDt" class="label w60px">등록일</label>
-					<input type="text" id="startDt" name="startDt" title="등록일 시작 날짜 선택" class="datepicker hasDatepicker" readonly="readonly" value="2020.05.22" placeholder="yyyy.mm.dd" maxlength="10"><button type="button" class="ui-datepicker-trigger">등록일 시작 날짜 선택 버튼</button>
-					~
-					<input type="text" id="endDt" name="endDt" title="등록일 끝 날짜 선택" class="datepicker hasDatepicker" readonly="readonly" value="2021.05.21" placeholder="yyyy.mm.dd" maxlength="10"><button type="button" class="ui-datepicker-trigger">등록일 끝 날짜 선택 버튼</button>
-					
-					<button type="button" class="button ml05" onclick="document.searchForm.startDt.value='';document.searchForm.endDt.value='';">재설정</button>
+					<label for="startDt" class="label w60px">검색</label>
+					<select id="_choice" name="choice">
+						<option value="" selected="selected">선택</option>
+						<option value="title">제목</option>
+						<option value="content">내용</option>
+						<option value="writer">작성자</option>
+					</select>
+				<!-- 	<button type="button" class="button ml05" onclick="document.searchForm.startDt.value='';document.searchForm.endDt.value='';">재설정</button> -->
 				</div>
 			
 				<div class="float-l w390px">
 					<label for="searchText" class="label w60px">키워드</label>
-					<input type="search" id="searchText" name="searchText" placeholder="키워드를 입력하세요" class="input-text w300px" value="" maxlength="47">
+					<input type="search" id="_searchWord" name="search" placeholder="키워드를 입력하세요" class="input-text w300px" value="" maxlength="47">
 				</div>
 			</div>
 			
 			<div class="btn-group">
-				<button type="submit" class="button navy">검색</button>
+				<button type="button" id="btnSearch" class="button navy">검색</button>
 			</div>
 		</div>
-	<div>
-<input type="hidden" name="_csrf" value="f9429a24-06a6-4e86-9fb8-413ddf249c96">
-</div></form>
+		<div>
+			<input type="hidden" name="_csrf" value="f9429a24-06a6-4e86-9fb8-413ddf249c96">
+		</div>
 		
-	<form id="empBoardSrchVO1" name="listRangeForm" action="/ntNewsData/ntMatter/retrieveNtMatterListPost.do" method="post">
-	<input type="hidden" name="regDtm" value="">
-	<input type="hidden" name="srch" value="">
-	<input type="hidden" name="startDt" value="20200522">
-	<input type="hidden" name="endDt" value="20210521">
-	<input type="hidden" name="searchText" value="">
-	<input type="hidden" name="jobyoung" value="">	
-	<input type="hidden" name="pageIndex" id="pageIndex" value="1">
-		<div class="board-list-count mt40">
-			<div class="util">
-				<div class="range-view">
-					
-					<select name="pageUnit" id="pageUnit" title="보기 갯수" class="w100px">
-						<option value="10" selected="selected">10 개씩</option>
-						<option value="30">30 개씩</option>
-						<option value="50">50 개씩</option>
-					</select>
-					<button type="button" onclick="fn_search(1)" class="button gray">보기</button>
+		<form id="empBoardSrchVO1" name="listRangeForm" action="/ntNewsData/ntMatter/retrieveNtMatterListPost.do" method="post">
+			<input type="hidden" name="regDtm" value="">
+			<input type="hidden" name="srch" value="">
+			<input type="hidden" name="startDt" value="20200522">
+			<input type="hidden" name="endDt" value="20210521">
+			<input type="hidden" name="searchText" value="">
+			<input type="hidden" name="jobyoung" value="">	
+			<input type="hidden" name="pageIndex" id="pageIndex" value="1">
+			<div class="board-list-count mt40">
+				<div class="util">
+					<div class="range-view">			
+						<select name="pageUnit" id="pageUnit" title="보기 갯수" class="w100px">
+							<option value="10" selected="selected">10 개씩</option>
+							<option value="30">30 개씩</option>
+							<option value="50">50 개씩</option>
+						</select>
+						<button type="button" onclick="fn_search(1)" class="button gray">보기</button>
+					</div>
 				</div>
 			</div>
-		</div>
-	<div>
-<input type="hidden" name="_csrf" value="f9429a24-06a6-4e86-9fb8-413ddf249c96">
-</div></form>
+			<div>
+				<input type="hidden" name="_csrf" value="f9429a24-06a6-4e86-9fb8-413ddf249c96">
+			</div>
+		</form>
 
-	<div class="table-wrap">
-		<table class="board-list" summary="이 표는 번호, 제목, 자료출처, 등록일, 조회 등 공지사항 목록에 대한 정보를 제공합니다.">
-			<caption>공지사항 목록 표</caption>
-			<colgroup>
-				<col style="width:80px;">
-				<col>
-				<col style="width:120px;">
-				<col style="width:120px;">
-				<col style="width:100px;">
-			</colgroup>
-			<thead>
-				<tr>
-					<th scope="col">번호</th>
-					<th scope="col">제목</th>
-					<th scope="col">작성자</th>
-					<th scope="col">자료출처</th>
-					<th scope="col">등록일</th>
-					<th scope="col">조회</th>
-				</tr>
-			</thead>
-			<c:forEach var="notice" items="${noticelist }" varStatus="i">
-			<tbody>
-			
+<div class="table-wrap" style="">
+	<table class="board-list" id ="table" summary="이 표는 번호, 제목, 자료출처, 등록일, 조회 등 공지사항 목록에 대한 정보를 제공합니다.">
+		<caption>전체질문</caption>
+		<colgroup>
+			<col style="width:80px;">
+			<col>
+			<col style="width:120px;">
+			<col style="width:120px;">
+			<col style="width:100px;">
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">번호</th>
+				<th scope="col">제목</th>
+				<th scope="col">작성자</th>
+				<th scope="col">등록일</th>
+				<th scope="col">조회수</th>
+			</tr>
+		</thead>
+		
+		<%-- <c:forEach var="jobtalk" items="${jobtalklist }" varStatus="i">
+			<tbody>			
 				<tr>
 					<th>${i.count }</th>
 					<td class="a-l">
-						<a href="noticedetail.do?seq=${notice.noticeseq }">
-							${notice.title }
+						<a href="Jobtalkdetail.do?jobtalkseq=${jobtalk.jobtalkseq }">
+							${jobtalk.jobtalk_title }
 						</a>
 					</td>
-					<td>${notice.memberid }</td>
-					<td>${login.name }</td>
-					<td>${notice.regdate.substring(0,10)}</td>
-					<td>${notice.readcount}</td>
+					<td>${jobtalk.memberid}</td>
+					<td>${jobtalk.wdate.substring(0,10)}</td>
+					<td>${jobtalk.jobtalk_readcount}</td>
 				</tr>	
-				</tbody>
-			</c:forEach>
-		</table>
-	</div>
-	<div class="btn-group center">
+			</tbody>
+		</c:forEach> --%>
 		
-		<c:if test="${login.auth==3 }">
-			<a href="noticewrite.do" class="button navy">
-				글추가
-			</a>
-		</c:if>
+	</table>
+</div>
+	<div class="btn-group center">	
+		<a href="Jobtalkwrite.do" class="button navy">
+			질문하기
+		</a>
 	</div>
-	
-	
-		<nav class="pagination">
-			 <a href="#" class="control first" onclick="fn_search(1); return false;">first</a>&nbsp;<a href="#" class="control prev" onclick="fn_search(1); return false;">prev</a>&nbsp;<strong class="active">1</strong>&nbsp;<a href="#" onclick="fn_search(2); return false;">2</a>&nbsp;<a href="#" onclick="fn_search(3); return false;">3</a>&nbsp;<a href="#" onclick="fn_search(4); return false;">4</a>&nbsp;<a href="#" onclick="fn_search(5); return false;">5</a>&nbsp;<a href="#" onclick="fn_search(6); return false;">6</a>&nbsp;<a href="#" onclick="fn_search(7); return false;">7</a>&nbsp;<a href="#" onclick="fn_search(8); return false;">8</a>&nbsp;<a href="#" onclick="fn_search(9); return false;">9</a>&nbsp;<a href="#" onclick="fn_search(10); return false;">10</a>&nbsp;<a href="#" class="control next" onclick="fn_search(11); return false;">next</a>&nbsp;<a href="#" class="control last" onclick="fn_search(31); return false;">last</a>&nbsp;
-
+	<div class="containernumber">
+ 		<nav aria-label="Page navigation">
+			<ul class="pagination" id="pagination" style="justify-content:center;"></ul>
 		</nav>
-	
+	</div>	
+	 
 	<div class="manager-info">
 		<div class="left"><b class="font-bold">담당부서</b> : 워크넷팀</div>
 		<div class="right"><b class="font-bold">문의</b> : 1577-7114</div>
 	</div>
 </section>
-
-<%-- <div class="container">
-	<nav aria-label="Page navigation">
-		<ul class="pagination" id="pagination" style="justify-content:center;"></ul>
-	</nav>
-	<br><br>
-	
-	<c:choose>
-		<c:when test="${login.auth == 3}">
-			<button type="button" class="btn btn-info" id="btn_noticewrite">글쓰기</button>
-		</c:when>
-	</c:choose>
 </div>
- --%>
 
+</div>
 
 <br><br>
-
-
 <!-- <div id="footer">
       	<div class="top-area">
 		<div class="inner-wrap">
@@ -1427,65 +1392,66 @@ margin-right : 450px;
           </div>
         </div> -->
       <!-- ==============FOOTER END================= -->
-</div>
 
 <script>
 
-//getNoticeListData(0);
-getNoticeListCount();
+getJobtalkListData(0);
+getJobtalkListCount();
 
 //검색
 $("#btnSearch").click(function(){
-	//getNoticeListData(0);
-	getNoticeListCount();
+	getJobtalkListData(0);
+	getJobtalkListCount();
 });
 
-// Noticelist을 취득
-/* function getNoticeListData( pNumber ) {
-	
+function getJobtalkListData(pNumber) {
 	$.ajax({
-		url:"./noticelistData.do",
+		url:"./JobtalkListData.do",
 		type:"get",
 		data:{ page:pNumber, choice:$("#_choice").val(), search:$("#_searchWord").val() },
 		success:function( list ){
-		//	alert('success');
-		//	alert(list);
-		
+			alert('success');
+			alert(list);
+			//loadPage(count);
+			
 			$(".list_col").remove();
-		
-			$.each(list, function (i, val) {
-				let app = "<tr class='list_col'>"
-							+ "<td>" + (i + 1) + "</td>"
-							+ "<td class='_hover_tr' style='text-align:left'>"
-						 	+ getArrow( val.depth ); 	// 댓글이미지
-					if(val.del == 0){	// 삭제되지 않은 글	
-						app += "<a href='noticedetail.do?seq=" + val.noticeseq + "'>&nbsp;" + val.title + "</a>";
-					}else{				// 삭제된 글
-						app += "<font color='#ff0000'>* 이 글은 작성자에 의해서 삭제되었습니다 *</font>";
-					}
-					app += "</td>"
-						+ "<td>" + val.memberid + "</td>"
-						+ "<th>" + val.regdate.substring(0,10) + "</th>"
-						+ "<td>" + val.readcount + "</td>"
-						+ "</tr>";
-						
-				$("#_list_table").append(app);	
-				//alert(val.regdate);
-				//alert(val.notice_title);
-			});		
-		},
-		error:function(){
-			alert('error');
-		}
+			
+			$.each(list, function(i, val){
+			
+				let app ="<tr class='list_col'>" 
+							+ "<th>" + val.rnum  + "</th>";
+							
+							if(val.del == 0){
+								app +="<td class='a-1'>"
+									+"<a href='Jobtalkdetail.do?jobtalkseq=" + val.jobtalkseq +"'>" + val.jobtalk_title + "</a>"
+									+"</td>"
+									+"<td>" + val.memberid + "</td>"
+									+"<td>" + val.wdate.substring(0,10) + "</td>"
+									+"<td>" + val.jobtalk_readcount + "</td>";
+								
+							} else {
+								app += "<td style='text-align:left' colspan='6'>"
+										+"<font color='#ff0000'>********* 이 글은 작성자에 의해서 삭제되었습니다</font>"
+										+"</td>";
+							  }
+							app +=  "</tr>";
+							$("#table").append(app);
+				
+				});
+			
+			},
+			error:function(){
+				alert('error');
+			}		
 	});
-}
- */
+}	
+	
 
 // 글의 총수를 취득
-function getNoticeListCount() {
+function getJobtalkListCount() {
 	
 	$.ajax({
-		url:"./noticelistCount.do",
+		url:"./JobtalklistCount.do",
 		type:"get",
 		data:{ page:0, choice:$("#_choice").val(), search:$("#_searchWord").val() },
 		success:function( count ){
@@ -1513,10 +1479,10 @@ function loadPage( totalCount ) {
 		_totalPages++;
 	}
 	
-	/*  $("#pagination").twbsPagination('destroy'); */	// 페이지 갱신 : 페이징을 갱신해 줘야 번호가 재설정된다.
+	//$("#pagination").twbsPagination('destroy'); 	// 페이지 갱신 : 페이징을 갱신해 줘야 번호가 재설정된다.
 
 	$("#pagination").twbsPagination({
-	//	startPage: 1,
+		startPage: 1,
 		totalPages: _totalPages,
 		visiblePages: 10,
 		first:'<span sria-hidden="true">«</span>',
@@ -1526,32 +1492,10 @@ function loadPage( totalCount ) {
 		initiateStartPageClick:false,		// onPageClick 자동 실행되지 않도록 한다
 		onPageClick:function(event, page){
 			nowPage = page;
-		//	alert('nowPage:' + page);
-		//	 getNoticeListData( page - 1 );
+			alert('nowPage:' + page);
+		  getJobtalkListData( page - 1 );
 		}
 	});	
 }
-
-//댓글 이미지 처리
-function getArrow( depth ) {		
-	let rs = "<img src='./image/arrow.png' width='10px' height='10px'/>";
-	let nbsp = "&nbsp;&nbsp;&nbsp;&nbsp;";
-	
-	let ts = "";
-	for(i = 0;i < depth; i++) {
-		ts += nbsp;
-	}
-	
-	return depth==0?"":ts + rs;
-}
-
-// 공지사항 작성
-$("#btn_noticewrite").click(function(){
-	location.href="noticewrite.do";
-});
- 
-
-
-
 
 </script>

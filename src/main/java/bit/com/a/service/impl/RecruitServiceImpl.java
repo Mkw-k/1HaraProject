@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import bit.com.a.dao.RecruitDao;
 import bit.com.a.dto.BbsParam;
+import bit.com.a.dto.BusinessDto;
+import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 import bit.com.a.service.RecruitService;
@@ -67,11 +69,11 @@ public class RecruitServiceImpl implements RecruitService{
 	public List<String> getBsnameForDetail(int jobseq) {
 		return dao.getBsnameForDetail(jobseq);
 	}
-	
+
 	@Override
-	public List<RecruitDto> getCalendarList(RecruitDto rec) {
-		
-		return dao.getCalendarList(rec);
+	public List<RecruitDto> getCalendarList(RecruitParam param) {
+
+		return dao.getCalendarList(param);
 	}
 
 	@Override
@@ -113,6 +115,81 @@ public class RecruitServiceImpl implements RecruitService{
 	public int getRecruitCount(Map<String, Object> param) {
 		return dao.getRecruitCount(param);
 	}
-	
-	
+
+	@Override
+	public boolean mgDetailUpdate(RecruitDto dto) {
+		return dao.mgDetailUpdate(dto);
+	}
+
+	@Override
+	public boolean mgDetailUpdate2(RecruitDto dto) {
+		return dao.mgDetailUpdate2(dto);
+	}
+
+	@Override
+	public boolean favoriteJob(RecruitParam param) {
+		return dao.favoriteJob(param);
+	}
+
+	@Override
+	public int getJobFavorite(RecruitParam param) {
+		return dao.getJobFavorite(param);
+	}
+
+	@Override
+	public boolean dropFavoriteJob(RecruitParam param) {
+		return dao.dropFavoriteJob(param);
+	}
+
+	@Override
+	public List<RecruitDto> getCalendarList_1() {
+		return dao.getCalendarList_1();
+	}
+
+	@Override
+	public boolean favoriteCom(RecruitParam param) {
+		return dao.favoriteCom(param);
+	}
+
+	@Override
+	public int getComFavorite(RecruitParam param) {
+		return dao.getComFavorite(param);
+	}
+
+	@Override
+	public boolean dropFavoriteCom(RecruitParam param) {
+		return dao.dropFavoriteCom(param);
+	}
+
+	@Override
+	public boolean priMemberAf(BusinessDto dto) {
+		return dao.priMemberAf(dto);
+	}
+
+	@Override
+	public List<RecruitDto> getCalendarSearchList(Map<String, Object> map) {
+		return dao.getCalendarSearchList(map);
+	}
+
+	@Override
+	public List<RecruitDto> getTop10List() {
+		return dao.getTop10List();
+	}
+
+	@Override
+	public boolean favoriteJob2(RecruitParam param) {
+		return dao.favoriteJob2(param);
+	}
+
+	@Override
+	public boolean dropFavoriteJob2(RecruitParam param) {
+		return dao.dropFavoriteJob2(param);
+
+ 	@Override
+	public CompanyDto getCompany(int jobseq) {
+
+		return dao.getCompany(jobseq);
+
+	}
+
 }

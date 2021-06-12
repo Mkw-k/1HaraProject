@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Reply">
+	
+	<!-- 취업톡톡 댓글 입력 -->
+	<insert id="insertReply" parameterType="bit.com.a.dto.replyDto">
+		INSERT INTO REPLY(REPLYSEQ, JOBTALKSEQ, REPLY_CONTENT, REPLY_COUNT, MEMBERID, RDATE, DEL)
+		VALUES(REPLYSEQ_REPLY.NEXTVAL, #{jobtalkseq}, #{reply_content}, 0,  #{memberid}, SYSDATE, 0)		
+	</insert>
+	
+	<!-- 댓글 리스트 -->
+	<select id="readReply" resultType="bit.com.a.dto.replyDto">
+    	SELECT REPLYSEQ, JOBTALKSEQ, REPLY_CONTENT, MEMBERID, RDATE, REPLY_COUNT
+    	FROM REPLY 
+    	WHERE JOBTALKSEQ = #{jobtalkseq}
+	</select>
+	
+	<update id="reply_count" parameterType="java.lang.Integer">
+		UPDATE REPLY
+		SET REPLY_COUNT=REPLY_COUNT+1
+		WHERE REPLYSEQ=#{replyseq}
+	</update>
+
+</mapper>  

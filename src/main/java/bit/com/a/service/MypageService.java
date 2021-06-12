@@ -10,7 +10,7 @@ public interface MypageService {
 	
 		// 1. 뿌려주는곳
 	
-		public String getMypage(MemberDto dto);
+		public MemberDto getMypage(String memberid);
 		
 		public void updateMypage(MemberDto dto);
 	

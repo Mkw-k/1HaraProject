@@ -68,11 +68,11 @@ public class HelloController {
 		}
 
 
-		@RequestMapping(value = "musicplayer.do", method = RequestMethod.GET)
+		@RequestMapping(value = "testtest.do", method = RequestMethod.GET)
 		public String musicplayer(Model model) {
 			logger.info("HelloController home() " + new Date());
 
-			return "musicplayer";
+			return "testtest";
 		}
 
 
@@ -122,13 +122,19 @@ public class HelloController {
 		@RequestMapping(value ="idsearch.do", method = RequestMethod.GET)
 		public String idsearch(Model model) {
 			logger.info("HelloController idsearch() " + new Date());
-			return "idsearch";
+			return "login/searchid";
 		}
 		
 		@RequestMapping(value ="member_info.do", method = RequestMethod.GET)
 		public String member_info(Model model) {
 			logger.info("HelloController member_info() " + new Date());
 			return "member_info";
+		}
+		
+		@RequestMapping(value ="Maintest.do", method = RequestMethod.GET)
+		public String Maintest(Model model) {
+			logger.info("HelloController member_info() " + new Date());
+			return "Maintest";
 		}
 
 }

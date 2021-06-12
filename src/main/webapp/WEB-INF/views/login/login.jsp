@@ -87,7 +87,7 @@ function check(form){
            <input type="hidden" name="login_tab" value="p" id="login_tab">
            <div class="login_message">
                <h3>로그인이 필요한 서비스입니다.</h3>
-               <p>사람인 회원이 아니면, 지금
+               <p>일하라 회원이 아니면, 지금
                	<span><a href="regiclick.do">회원가입</a></span>을 해주세요.
                </p>
            </div>
@@ -111,7 +111,8 @@ function check(form){
                            <button class="btn_ly_close" type="button" onclick="jQuery('#wrap_autologin').hide()">닫기</button>
                          <span class="dsc_arr"></span>
                             <p class="dsc_txt">
-                               <strong>[개인회원 전용]</strong><br>
+                               <strong>[개인회원 전용]</strong>
+                               <br>
                                개인정보 보호를 위해 개인 PC에서만 이용해 주세요.
                            </p>
                      </div>
@@ -161,7 +162,7 @@ function check(form){
              <div class="login_banner_wrap">
              <div id="login" class="promotion-banner-box promotion-login" style="">
                	<a href="http://localhost:8090/sample10/ad.do" target="_blank">
-                	<img src="<%=request.getContextPath() %>/image/ma.jpg" alt="" >
+                	<img src="<%=request.getContextPath() %>/image/컨퍼런스.gif" alt="" >
                 </a>
              </div>
            </div>
@@ -371,7 +372,9 @@ function kakaoLogin() {
            		dataType: "text",
            		success: function (data) {
 
-           		//	alert('카카오 씨발 로그인성공')
+           		//alert('카카오 씨발 로그인성공');
+           		location.reload();
+           		
            		},
            		error: function(){
            			alert("birth:" + birth);
