@@ -554,7 +554,7 @@ function jobApply(jobseq, memberid, resumeseq) {
 	//alert(memberid);
 	//alert(resumeseq);
 	
-	let endDate = '${dto.jobEnd}';
+	/* let endDate = '${dto.jobEnd}';
 	var reserve = charchen(endDate);
 	alert("이게 예약시간 : "+ reserve);
 	
@@ -575,7 +575,7 @@ function jobApply(jobseq, memberid, resumeseq) {
 			error:function(){
 				alert('error');
 			}
-	    });  
+	    });   */
 	    
 	location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
 	

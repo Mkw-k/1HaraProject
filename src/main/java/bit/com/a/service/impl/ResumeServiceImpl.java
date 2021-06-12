@@ -285,6 +285,30 @@ public class ResumeServiceImpl implements ResumeService {
 		// TODO Auto-generated method stub
 		return dao.getUniDetail(seq);
 	}
+
+	@Override
+	public boolean deleteApply(int seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteApply(seq);
+	}
+
+	@Override
+	public boolean deleteHighResume(int seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteHighResume(seq);
+	}
+
+	@Override
+	public boolean deleteUniResume(int seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteUniResume(seq);
+	}
+
+	@Override
+	public boolean cancelApply(int seq) {
+		// TODO Auto-generated method stub
+		return dao.cancelApply(seq);
+	}
 	
 	
 	

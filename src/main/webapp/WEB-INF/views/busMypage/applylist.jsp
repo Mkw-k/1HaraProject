@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="bit.com.a.dto.ApplyParam"%>
+<%@page import="bit.com.a.dto.ApplyDto"%>
 <%@page import="bit.com.a.dto.RecruitDto"%>
 <%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -971,10 +973,10 @@ function f_empPgmList(resultObj){
  <!-- 인증일자로부터 7일이 지나지 않았을때 보여줌 -->
  <!-- 인증만료일이 다갈올대 보여줌-->
  
- <% List<RecruitDto> mylist =(List<RecruitDto>) request.getAttribute("mylist"); %>
+ <% List<ApplyParam> applylist =(List<ApplyParam>) request.getAttribute("applylist"); %>
  
 				<!-- contents -->
-				<section id="contents" class="mypage" style="width: auto;">
+				<section id="contents" class="mypage">
 					<div class="tit-util">
 						<span class="hide-location" id="navi_1">마이페이지(기업)</span>
 						<span class="hide-location" id="navi_2">마이페이지(기업) 홈</span>
@@ -983,7 +985,7 @@ function f_empPgmList(resultObj){
 						</div>
 					</div>
 					<div class="mypage-idv-wrap">
-						<div class="idv-sec01" style="border: 1px solid #ffffff;" >
+						<div class="idv-sec01" style="border: 1px solid #ffffff;">
 							<div class="con-top">
 								<div class="tit-area"><span>MY공고내역</span>
 								
@@ -995,23 +997,20 @@ function f_empPgmList(resultObj){
 											<col style="width:300px">
 											<col style="width:100px">
 											<col style="width:100px">
-											<col style="width:100px">
 										</colgroup>
 										<tbody>			
 			    						<tr>
-								     		<th>공고번호 </th>
-								     		<td style="text-align: center;">공고제목</td>
-								     		<td>공고시작일</td>
-								     		<td>공고마감일</td>
-								     		<td>지원현황</td>
+								     		<th>지원번호</th>
+								     		<td style="text-align: center;">이력서</td>
+								     		<td>지원자</td>
+								     		<td>지원일</td>
 								     	</tr>
-								     	<% for(int i=0; i<mylist.size();i++){ %>
+								     	<% for(int i=0; i<applylist.size();i++){ %>
 								     	<tr>
-								     		<th><a href="RecruitDetail.do?jobseq=<%=mylist.get(i).getJobSeq() %>&memberid=${login.memberid}"><%=mylist.get(i).getJobSeq() %></a> </th>
-								     		<td><a href="RecruitDetail.do?jobseq=<%=mylist.get(i).getJobSeq() %>&memberid=${login.memberid}"><%=mylist.get(i).getJobTitle() %></a></td>
-								     		<td><%=mylist.get(i).getJobStart() %></td>
-								     		<td><%=mylist.get(i).getJobEnd() %></td>
-								     		<td><button onclick="applyList('<%=mylist.get(i).getJobSeq() %>')">지원현황</button></td>
+								     		<th><p><%=i+1 %></p></th>
+								     		<td><a href="Resumedetail.do?seq=<%=applylist.get(i).getResumeseq() %>"><%=applylist.get(i).getResumetitle() %></a></td>
+								     		<td><%=applylist.get(i).getName() %></td>
+								     		<td><%=applylist.get(i).getApplydate() %></td>
 								     	</tr>
 								     	
 								    	<%} %>

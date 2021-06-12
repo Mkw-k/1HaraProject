@@ -621,7 +621,7 @@ System.out.println("param" +param);
 						<div class="bs-callout bs-callout-primary">
 							<table class="table" style="width: 1100px; text-align: center; margin-left: 400px;">
 							<colgroup>
-							<col width="350px"><col width="350px"><col width="200px"><col width="200px">
+							<col width="350px"><col width="350px"><col width="200px"><col width="100px"><col width="100px">
 							</colgroup>
 								<thead>
 									<tr>
@@ -629,6 +629,7 @@ System.out.println("param" +param);
 										<td>지원이력서</td>
 										<td>지원일</td>
 										<td>열람여부</td>
+										<td>지원취소</td>
 									</tr>
 								</thead>
 								<tbody
@@ -650,6 +651,7 @@ System.out.println("param" +param);
 										
 										<td><%=param.get(i).getApplydate() %></td>
 										<td><img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;"></td>
+										<td><a href="cancelApply.do?<%=param.get(i).getApplyseq() %>" class="box-btn">취소</a></td>
 									</tr>
 								<%  
 								}

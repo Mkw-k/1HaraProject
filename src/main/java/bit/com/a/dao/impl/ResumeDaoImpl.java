@@ -422,6 +422,45 @@ public class ResumeDaoImpl implements ResumeDao {
 		// TODO Auto-generated method stub
 	    return session.selectList(ns+"getUniDetail", seq);
 	}
+
+
+
+	@Override
+	public boolean deleteApply(int seq) {
+		// TODO Auto-generated method stub
+		int i = session.insert(ns + "deleteApply", seq);
+		
+        return i>0?true:false;	
+	}
+
+
+
+	@Override
+	public boolean deleteHighResume(int seq) {
+		// TODO Auto-generated method stub
+		int i = session.insert(ns + "deleteHighResume", seq);
+		
+        return i>0?true:false;	
+	}
+
+
+
+	@Override
+	public boolean deleteUniResume(int seq) {
+		// TODO Auto-generated method stub
+		int i = session.insert(ns + "deleteUniResume", seq);
+		
+        return i>0?true:false;	
+	}
+
+
+
+	@Override
+	public boolean cancelApply(int seq) {
+		int i = session.insert(ns + "cancelApply", seq);
+		
+        return i>0?true:false;	
+	}
 	
 	
 	

@@ -40,21 +40,19 @@
 	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 </select>
 
-
 <!-- 아이디 찾기 -->
-<select id="findId" resultType="user">
-		SELECT * 
-		FROM MEMBER 
-		WHERE name=#{name} and PHONENUMBER=#{phonenumber}
-</select>
+<!-- <select id="findId" resultType="user">
+      SELECT * 
+      FROM MEMBER 
+      WHERE name=#{name} and PHONENUMBER=#{phonenumber}
+</select> -->
 
 <!-- 비밀번호 찾기 -->
-<select id="findPassword" resultType="user">
-		select * from users where id=#{id} and name=#{name} and phone=#{phone}
-</select>
+<!-- <select id="findPassword" resultType="user">
+      select * from users where id=#{id} and name=#{name} and phone=#{phone}
+</select> -->
 
 <!-- 비밀번호 찾고 비밀번호 수정 -->
-
 
 
 <!-- 카카오로그인 -->
