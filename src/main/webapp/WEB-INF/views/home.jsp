@@ -498,350 +498,226 @@ margin-right : 450px;
 <link href="csss/headerDefa.css" rel="stylesheet" type="text/css">
 
 </head>
-<body id="sri_main"
-	onload="window.open('ad.do','','width=400px, height=400px, left=400px, top=200px, toolbar=0, status=yes, menubars=0, scrollbars=0, resizable=0, location=0, directories=0')">
+<body id="sri_main" onload="window.open('ad.do','','width=400px, height=400px, left=400px, top=200px, toolbar=0, status=yes, menubars=0, scrollbars=0, resizable=0, location=0, directories=0')">
 
-	<div id="skipnavigation">
-		<a href="#search">본문 바로가기</a>
-	</div>
+<div id="skipnavigation">
+<a href="#search">본문 바로가기</a>
+</div>
 
-	<header id="sri_header">
-		<div class="wrap_header">
-			<h1>
-				<a href="/" class="bi" aria-label="사람인"
-					onclick="pushDataLayer('ga_lead','main-gnb','global_menu','ci')">
-					<span class="wrap_img"> <svg class="img_bi"
-							aria-hidden="true">
-							<use xlink:href="#svg_saramin_ci"></use></svg>
-				</span>
-				</a>
-			</h1>
-			<img src="static/css/Animation.gif" class="bi_art_logo"
-				aria-label="내일이 더 즐거운 사람인"
-				onclick="pushDataLayer('ga_lead','main-gnb','global_menu','ci')">
-			<span class="blind">내일이 더 즐거운 사람인</span>
+<header id="sri_header">
+<div class="wrap_header">
+<h1>
+<a href="/" class="bi" aria-label="사람인" onclick="pushDataLayer('ga_lead','main-gnb','global_menu','ci')">
+<span class="wrap_img">
+<svg class="img_bi" aria-hidden="true"><use xlink:href="#svg_saramin_ci"></use></svg>
+</span>
+</a>
+</h1>
+<img src="static/css/Animation.gif" class="bi_art_logo" aria-label="내일이 더 즐거운 사람인" onclick="pushDataLayer('ga_lead','main-gnb','global_menu','ci')">
+<span class="blind">내일이 더 즐거운 사람인</span>
 
-			<div class="navigation">
-				<div class="navi_common">
-					<ul class="navi_depth1">
-						<li><a
-							onclick="pushDataLayer('ga_lead','main-gnb','menu','recruit')"
-							href="recuruitlist.do"><span>채용정보</span></a></li>
-						<li><a
-							onclick="pushDataLayer('ga_lead','main-gnb','menu','company_info')"
-							href="/zf_user/companylab"><span>기업정보</span></a></li>
-						<li><a
-							onclick="pushDataLayer('ga_lead','main-gnb','menu','status-list')"
-							href="/zf_user/member/suggest/status-list"><span>인재검색</span></a></li>
-						<li><a
-							onclick="pushDataLayer('ga_lead','main-gnb','menu','verification')"
-							href="/zf_user/memcom/preview/custom-guide"><span>검증면접</span></a></li>
-						<li><a
-							onclick="pushDataLayer('ga_lead','main-gnb','menu','acceptance')"
-							href="/zf_user/jobs/theme/it-headhunting"> <span
-								class="passkk0">50만원 받고</span> <span class="passkk1">합격ㅋㅋ</span>
-								<span class="passkk2"><svg class="img_bi"
-										aria-hidden="true">
-										<use xlink:href="#svg_gnb_passkk1"></use></svg></span> <span
-								class="passkk3"><svg class="img_bi" aria-hidden="true">
-										<use xlink:href="#svg_gnb_passkk2"></use></svg></span>
-						</a></li>
-					</ul>
-				</div>
-				<div class="navi_depth1 secondary">
-					<span class="marker"><svg aria-hidden="true">
-							<use xlink:href="#svg_gnb_more"></use></svg></span>
-					<ul>
-						<li><a
-							onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')"
-							href="Jobtalklist.do"><span>취업톡톡</span></a></li>
-						<li><a
-							onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')"
-							href="/zf_user/white-paper/office"><span>콘텐츠</span></a></li>
-						<li><a
-							onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')"
-							href="resumeMain.do?memberid=${login.memberid }"><span>이력서관리</span></a></li>
-						<li><a
-							onclick="pushDataLayer('ga_lead','main-gnb','menu','jumpit')"
-							href="https://www.jumpit.co.kr" target="_blank"><span
-								class="icon icon_jumpit">점핏</span></a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="utility">
-				<button id="search_open" class="btn_search" type="button"
-					onclick="pushDataLayer('ga_lead','main-gnb','global_menu','search')">
-					<svg class="icon" aria-hidden="true">
-						<use xlink:href="#svg_gnb_search"></use></svg>
-					<span>궁금한 정보를 검색해보세요</span>
-				</button>
+<div class="navigation">
+<div class="navi_common">
+<ul class="navi_depth1">
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','recruit')" href="recuruitlist.do"><span>채용정보</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','company_info')" href="/zf_user/companylab"><span>기업정보</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','status-list')" href="/zf_user/member/suggest/status-list"><span>인재검색</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','verification')" href="/zf_user/memcom/preview/custom-guide"><span>검증면접</span></a></li>
+<li>
+<a onclick="pushDataLayer('ga_lead','main-gnb','menu','acceptance')" href="/zf_user/jobs/theme/it-headhunting">
+<span class="passkk0">50만원 받고</span>
+<span class="passkk1">합격ㅋㅋ</span>
+<span class="passkk2"><svg class="img_bi" aria-hidden="true"><use xlink:href="#svg_gnb_passkk1"></use></svg></span>
+<span class="passkk3"><svg class="img_bi" aria-hidden="true"><use xlink:href="#svg_gnb_passkk2"></use></svg></span>
+</a>
+</li>
+</ul>
+</div>
+<div class="navi_depth1 secondary">
+<span class="marker"><svg aria-hidden="true"><use xlink:href="#svg_gnb_more"></use></svg></span>
+<ul>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="Jobtalklist.do"><span>취업톡톡</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="/zf_user/white-paper/office"><span>콘텐츠</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="resumeMain.do?memberid=${login.memberid }"><span>이력서관리</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','jumpit')" href="https://www.jumpit.co.kr" target="_blank"><span class="icon icon_jumpit">점핏</span></a></li>
+</ul>
+</div>
+</div>
+<div class="utility">
+<button id="search_open" class="btn_search" type="button" onclick="pushDataLayer('ga_lead','main-gnb','global_menu','search')">
+<svg class="icon" aria-hidden="true"><use xlink:href="#svg_gnb_search"></use></svg>
+<span>궁금한 정보를 검색해보세요</span>
+</button>
 
-				<!-- 누구누구님 안녕하세요 -->
-				<ul class="navbar-nav">
-					<li class="nav-item"><c:choose>
-							<c:when test="${login.memberid ne null }">
-								<c:choose>
-									<c:when test="${login.auth == 1}">
-										<p>
-											<b>[개인🧑]${login.name }</b>님
-										</p>
-									</c:when>
+<!-- 누구누구님 안녕하세요 -->
+<ul class="navbar-nav">
+ <li class="nav-item">
+<c:choose>
+       <c:when test="${login.memberid ne null }">
+            		<c:choose>
+            			 <c:when test="${login.auth == 1}">
+             				 <p><b>[개인🧑]${login.name }</b>님</p>
+             	 		 </c:when>
 
-									<c:when test="${login.auth == 2}">
-										<p>
-											<b>[사원👨‍💼]${login.name }</b>님
-										</p>
-									</c:when>
+             			<c:when test="${login.auth == 2}">
+             				<p><b>[사원👨‍💼]${login.name }</b>님</p>
+    		 			</c:when>
 
-									<c:otherwise>
-										<p>
-											<b>[관리자👨‍✈️]]${login.name }</b>님
-										</p>
-									</c:otherwise>
-								</c:choose>
-							</c:when>
-						</c:choose></li>
-				</ul>
+    					<c:otherwise>
+             				<p><b>[관리자👨‍✈️]]${login.name }</b>님</p>
+    					</c:otherwise>
+    				</c:choose>
+            	 </c:when>
+         	</c:choose>
+      </li>
+ </ul>
+
+<!-- 로그인 로그아웃 란 -->
+<c:choose>
+   <c:when test="${empty login}">
+      <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="javascript:login()" class="btn_sign signin"><span class="txt">로그인</span></a>
+   </c:when>
+<c:otherwise>
+
+<c:choose>
+   <c:when test="${login.auth==1 || login.auth==3}">
+      <a href="logout.do" class="btn_sign signin"><span class="txt">로그아웃</span></a>
+   </c:when>
+   <c:otherwise>
+      <a href="logout.do" class="btn_sign signin"><span class="txt">로그아웃</span></a>
+   </c:otherwise>
+</c:choose>
+</c:otherwise>
+</c:choose>
 
 
-				<!-- 로그인 로그아웃 란 -->
-				<c:choose>
-					<c:when test="${empty login}">
-						<a
-							onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')"
-							href="javascript:login()" class="btn_sign signin"><span
-							class="txt">로그인</span></a>
-					</c:when>
-					<c:otherwise>
-						<c:choose>
-							<c:when test="${login.auth==1 || login.auth==3}">
-								<a href="logout.do" class="btn_sign signin"><span
-									class="txt">로그아웃</span></a>
-							</c:when>
-							<c:otherwise>
-								<a href="logout.do" class="btn_sign signin"><span
-									class="txt">로그아웃</span></a>
-							</c:otherwise>
-						</c:choose>
-					</c:otherwise>
-				</c:choose>
+<c:if test="${login.memberid == null }">
+   <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="regiclick.do" class="btn_sign signup"><span class="txt">회원가입</span></a>
+</c:if>
+
+<c:if test="${login.auth == 1 || login.auth == 3 }">
+   <a href="mypage.do?memberid=${login.memberid }" class="btn_sign signup"><span class="txt">마이페이지</span></a>
+</c:if>
+
+<c:if test="${login.auth == 2 }">
+<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="buspage.do?memberid=${login.memberid }" class="btn_sign signup"><span class="txt">기업마이페이지</span></a>
+</c:if>
 
 
-				<c:if test="${login.memberid == null }">
-					<a
-						onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')"
-						href="regiclick.do" class="btn_sign signup"><span class="txt">회원가입</span></a>
-				</c:if>
-
-				<c:if test="${login.auth == 1 || login.auth == 3 }">
-					<a href="mypage.do?memberid=${login.memberid }"
-						class="btn_sign signup"><span class="txt">마이페이지</span></a>
-				</c:if>
-
-				<c:if test="${login.auth == 2 }">
-					<a
-						onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')"
-						href="buspage.do?memberid=${login.memberid }"
-						class="btn_sign signup"><span class="txt">기업마이페이지</span></a>
-				</c:if>
 
 
-			</div>
-		</div>
-		<div class="navi_total">
-			<button type="button" class="btn_menu"
-				onclick="pushDataLayer('ga_lead','main-gnb','total_menu','open')">
-				<svg aria-hidden="true">
-					<use xlink:href="#svg_gnb_total_off"></use>
-				</svg>
-				<svg aria-hidden="true">
-					<use xlink:href="#svg_gnb_total_on"></use>
-				</svg>
-				<span class="blind">전체메뉴</span>
-			</button>
-			<div id="sri_index">
-				<div class="inner">
-					<div class="menu">
-						<div class="depth_1">
-							<span><a
-								onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit')"
-								href="recruitlist.do">채용정보</a></span>
-							<ul class="depth_2">
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_area')"
-									href="recruitlist.do">지역별</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_job')"
-									href="/zf_user/jobs/list/job-category">직업별</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_hot100')"
-									href="/zf_user/jobs/hot100">HOT100</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_curation')"
-									href="/zf_user/curation">큐레이션</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_public')"
-									href="/zf_user/jobs/public/list">공채</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_upjong')"
-									href="/zf_user/upjikjong-recruit/select-upjikjong/recruitform_type/industrial">산업별</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_headhunting')"
-									href="/zf_user/jobs/list/headhunting">헤드헌팅</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_dispatch')"
-									href="/zf_user/jobs/list/dispatch">파견대행</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_theme')"
-									href="/zf_user/jobs/theme/main">채용관</a></li>
-							</ul>
-						</div>
-						<div class="depth_1">
-							<span><a
-								onclick="pushDataLayer('ga_lead','main-gnb','total_menu','companylab')"
-								href="/zf_user/companylab">기업정보</a></span>
-							<ul class="depth_2">
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','company_review')"
-									href="/zf_user/company-review">기업리뷰</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','company_interview')"
-									href="/zf_user/interview-review">면접후기</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','company_careerinfo')"
-									href="/zf_user/career-information/senior-list">직무인터뷰</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','company_salary')"
-									href="/zf_user/salaries/total-salary/list">연봉정보</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','company_certification')"
-									href="/zf_user/company-info/sri-certification?seq=377">기업큐레이션</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','company_roadmap')"
-									href="/zf_user/company-section/road-map">이직로드맵</a></li>
-							</ul>
-						</div>
-						<div class="depth_1">
-							<span><a
-								onclick="pushDataLayer('ga_lead','main-gnb','total_menu','talent_person')"
-								href="/zf_user/member/suggest/status-list">인재검색</a></span>
-							<ul class="depth_2">
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','talent_status-list')"
-									href="/zf_user/member/suggest/status-list">제안받은 현황<span
-										class="flag">개인</span></a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','talent_talent-pool')"
-									href="/zf_user/memcom/talent-pool/main">인재Pool 검색<span
-										class="flag">기업</span></a></li>
-							</ul>
-						</div>
-						<div class="depth_1">
-							<span><a
-								onclick="pushDataLayer('ga_lead','main-gnb','total_menu','verification')"
-								href="/zf_user/memcom/preview/custom-guide">검증면접</a></span>
-							<ul class="depth_2">
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','verification_preview')"
-									href="/zf_user/memcom/preview/guide?page_type=manual">preview
-										소개</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','verification_iam-ground')"
-									href="/zf_user/event/iam-ground-app/app-intro">아이엠그라운드 소개</a></li>
-							</ul>
-						</div>
-						<div class="depth_1">
-							<span><a
-								onclick="pushDataLayer('ga_lead','main-gnb','total_menu','acceptance')"
-								href="/zf_user/jobs/theme/it-headhunting">합격ㅋㅋ</a></span>
-						</div>
-						<div class="depth_1">
-							<span><a>사람인 서비스</a></span>
-							<ul class="depth_2">
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','resume-manage')"
-									href="/zf_user/resume/resume-manage">이력서 관리<span
-										class="flag">개인</span></a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit-manage')"
-									href="/zf_user/company/recruit-manage">공고·지원자 관리<span
-										class="flag">기업</span></a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','qst-and-ans')"
-									href="/zf_user/company-review-qst-and-ans">취준진담</a></li>
-								<li><a
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','contents')"
-									href="/zf_user/white-paper/office">콘텐츠<span class="flag">글자수세기</span></a></li>
-							</ul>
-							<ul class="depth_2">
-								<li><a target="_blank"
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','jumpit')"
-									href="https://www.jumpit.co.kr" class="icon icon_jumpit">점핏<svg
-											aria-hidden="true">
-											<use xlink:href="#svg_gnb_window_new"></use></svg></a></li>
-								<li><a target="_blank"
-									onclick="pushDataLayer('ga_lead','main-gnb','total_menu','otwojob')"
-									href="https://www.otwojob.com/main" class="icon icon_otwojob">오투잡<svg
-											aria-hidden="true">
-											<use xlink:href="#svg_gnb_window_new"></use></svg></a></li>
-							</ul>
-						</div>
-					</div>
-					<ul class="extra">
-						<li><a
-							onclick="pushDataLayer('ga_lead','main-gnb','total_menu','help')"
-							href="/zf_user/help/help-word/main">고객센터<span>공지/이벤트</span></a></li>
-						<li><a
-							onclick="pushDataLayer('ga_lead','main-gnb','total_menu','reclist_recommend')"
-							href="/zf_user/member/avatar/list">추천<span>채용공고</span></a></li>
-						<li><a
-							onclick="pushDataLayer('ga_lead','main-gnb','total_menu','products')"
-							href="/zf_user/service/products">상품 안내<span>유료서비스</span></a></li>
-						<li><a target="_blank"
-							onclick="pushDataLayer('ga_lead','main-gnb','total_menu','welounge')"
-							href="/zf_user/welounge/main">We.라운지<span>브랜딩</span></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</header>
-
-	<div class="all">
 
 
-		<!-- 메인 검색 창 -->
-		<img class="fit-picture" src="ma2.jpg" style="width: 400px;">
 
-		<!-- 검색html -->
+</div>
+</div>
+<div class="navi_total">
+<button type="button" class="btn_menu" onclick="pushDataLayer('ga_lead','main-gnb','total_menu','open')">
+<svg aria-hidden="true"><use xlink:href="#svg_gnb_total_off"></use></svg>
+<svg aria-hidden="true"><use xlink:href="#svg_gnb_total_on"></use></svg>
+<span class="blind">전체메뉴</span>
+</button>
+<div id="sri_index">
+<div class="inner">
+<div class="menu">
+<div class="depth_1">
+<span><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit')" href="recruitlist.do">채용정보</a></span>
+<ul class="depth_2">
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_area')" href="recruitlist.do">지역별</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_job')" href="/zf_user/jobs/list/job-category">직업별</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_hot100')" href="/zf_user/jobs/hot100">HOT100</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_curation')" href="/zf_user/curation">큐레이션</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_public')" href="/zf_user/jobs/public/list">공채</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_upjong')" href="/zf_user/upjikjong-recruit/select-upjikjong/recruitform_type/industrial">산업별</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_headhunting')" href="/zf_user/jobs/list/headhunting">헤드헌팅</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_dispatch')" href="/zf_user/jobs/list/dispatch">파견대행</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit_theme')" href="/zf_user/jobs/theme/main">채용관</a></li>
+</ul>
+</div>
+<div class="depth_1">
+<span><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','companylab')" href="/zf_user/companylab">기업정보</a></span>
+<ul class="depth_2">
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','company_review')" href="/zf_user/company-review">기업리뷰</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','company_interview')" href="/zf_user/interview-review">면접후기</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','company_careerinfo')" href="/zf_user/career-information/senior-list">직무인터뷰</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','company_salary')" href="/zf_user/salaries/total-salary/list">연봉정보</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','company_certification')" href="/zf_user/company-info/sri-certification?seq=377">기업큐레이션</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','company_roadmap')" href="/zf_user/company-section/road-map">이직로드맵</a></li>
+</ul>
+</div>
+<div class="depth_1">
+<span><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','talent_person')" href="/zf_user/member/suggest/status-list">인재검색</a></span>
+<ul class="depth_2">
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','talent_status-list')" href="/zf_user/member/suggest/status-list">제안받은 현황<span class="flag">개인</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','talent_talent-pool')" href="/zf_user/memcom/talent-pool/main">인재Pool 검색<span class="flag">기업</span></a></li>
+</ul>
+</div>
+<div class="depth_1">
+<span><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','verification')" href="/zf_user/memcom/preview/custom-guide">검증면접</a></span>
+<ul class="depth_2">
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','verification_preview')" href="/zf_user/memcom/preview/guide?page_type=manual">preview 소개</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','verification_iam-ground')" href="/zf_user/event/iam-ground-app/app-intro">아이엠그라운드 소개</a></li>
+</ul>
+</div>
+<div class="depth_1">
+<span><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','acceptance')" href="/zf_user/jobs/theme/it-headhunting">합격ㅋㅋ</a></span>
+</div>
+<div class="depth_1">
+<span><a>사람인 서비스</a></span>
+<ul class="depth_2">
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','resume-manage')" href="/zf_user/resume/resume-manage">이력서 관리<span class="flag">개인</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit-manage')" href="/zf_user/company/recruit-manage">공고·지원자 관리<span class="flag">기업</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','qst-and-ans')" href="/zf_user/company-review-qst-and-ans">취준진담</a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','contents')" href="/zf_user/white-paper/office">콘텐츠<span class="flag">글자수세기</span></a></li>
+</ul>
+<ul class="depth_2">
+<li><a target="_blank" onclick="pushDataLayer('ga_lead','main-gnb','total_menu','jumpit')" href="https://www.jumpit.co.kr" class="icon icon_jumpit">점핏<svg aria-hidden="true"><use xlink:href="#svg_gnb_window_new"></use></svg></a></li>
+<li><a target="_blank" onclick="pushDataLayer('ga_lead','main-gnb','total_menu','otwojob')" href="https://www.otwojob.com/main" class="icon icon_otwojob">오투잡<svg aria-hidden="true"><use xlink:href="#svg_gnb_window_new"></use></svg></a></li>
+</ul>
+</div>
+</div>
+<ul class="extra">
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','help')" href="/zf_user/help/help-word/main">고객센터<span>공지/이벤트</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','reclist_recommend')" href="/zf_user/member/avatar/list">추천<span>채용공고</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','products')" href="/zf_user/service/products">상품 안내<span>유료서비스</span></a></li>
+<li><a target="_blank" onclick="pushDataLayer('ga_lead','main-gnb','total_menu','welounge')" href="/zf_user/welounge/main">We.라운지<span>브랜딩</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</header>
+
+<div class="all">
 
 
-		<section style="padding: 0">
-			<form id="search_form_recruit" onsubmit="event.preventDefault()"
-				style="height: 400px; background-image: url('개발자23.gif');">
-				<div class="main_search" style="top: 160px;">
-					<div class="option option_keyword">
-						<label for="ipt_keyword_recruit" class="placeholder"
-							style="color: rgb(72, 118, 239);">일하라 주식회사</label> <input
-							id="ipt_keyword_recruit" type="text" class="key" maxlength="30"
-							placeholder="검색어를 입력해주세요" autocomplete="off">
-					</div>
-					<div class="option option_area">
-						<label for="ipt_area_recruit" class="placeholder">지역을
-							선택해주세요</label>
-						<button id="ipt_area_recruit" type="button" class="key">
-							<span class="filter_selected"></span>
-						</button>
-					</div>
-					<div class="option option_category">
-						<label for="ipt_category_recruit" class="placeholder">직업을
-							선택해주세요</label>
-						<button id="ipt_category_recruit" type="button" class="key">
-							<span class="filter_selected"></span>
-						</button>
-					</div>
-					<button type="button" id="btn_search_recruit" class="btn_search">
-						<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
-							viewBox="0 0 28 28" class="bg_search">
+ <!-- 메인 검색 창 -->
+<img class="fit-picture" src="ma2.jpg" style="
+    width: 400px;">
+
+ <!-- 검색html -->
+
+
+ <section style="padding: 0">
+ <form id="search_form_recruit" onsubmit="event.preventDefault()" style="height: 400px; background-image: url('개발자23.gif');">
+    <div class="main_search" style="top: 160px;">
+        <div class="option option_keyword">
+            <label for="ipt_keyword_recruit" class="placeholder" style="color: rgb(72, 118, 239);">일하라 주식회사</label>
+            <input id="ipt_keyword_recruit" type="text" class="key" maxlength="30" placeholder="검색어를 입력해주세요" autocomplete="off">
+        </div>
+        <div class="option option_area">
+            <label for="ipt_area_recruit" class="placeholder">지역을 선택해주세요</label>
+            <button id="ipt_area_recruit" type="button" class="key">
+                <span class="filter_selected"></span>
+            </button>
+        </div>
+        <div class="option option_category">
+            <label for="ipt_category_recruit" class="placeholder">직업을 선택해주세요</label>
+            <button id="ipt_category_recruit" type="button" class="key">
+                <span class="filter_selected"></span>
+            </button>
+        </div>
+        <button type="button" id="btn_search_recruit" class="btn_search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" class="bg_search">
                 <g fill="none" fill-rule="evenodd">
                     <path d="M0 0H28V28H0z"></path>
                     <circle cx="12.778" cy="12.778" r="9.778"

@@ -20,8 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 import bit.com.a.dto.ApplyDto;
 import bit.com.a.dto.ApplyParam;
 import bit.com.a.dto.BusinessDto;
-import bit.com.a.dto.CompanyDto;
-import bit.com.a.dto.PdsDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.service.BuspageService;
 import bit.com.a.util.PdsUtil;
