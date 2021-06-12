@@ -2,10 +2,10 @@ package bit.com.a.dto;
 
 import java.io.Serializable;
 
-public class replyDto implements Serializable{
+public class RecruitReplyDto implements Serializable {
 
-	private int replyseq;	// 댓글 번호
-	private int jobtalkseq; // 취업톡톡 번호
+	private int replyrecruitseq;	// 댓글 번호
+	private int jobseq; // 채용공고 번호
 	private String reply_content;
 	private String memberid;
 	private String rdate;
@@ -13,19 +13,21 @@ public class replyDto implements Serializable{
 	
 	
 	
-	
-	public replyDto() {
+	public RecruitReplyDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
+	
 
-	public replyDto(int replyseq, int jobtalkseq, String reply_content, String memberid, String rdate,
+	
+
+	public RecruitReplyDto(int replyrecruitseq, int jobseq, String reply_content, String memberid, String rdate,
 			int reply_count) {
 		super();
-		this.replyseq = replyseq;
-		this.jobtalkseq = jobtalkseq;
+		this.replyrecruitseq = replyrecruitseq;
+		this.jobseq = jobseq;
 		this.reply_content = reply_content;
 		this.memberid = memberid;
 		this.rdate = rdate;
@@ -33,30 +35,36 @@ public class replyDto implements Serializable{
 	}
 
 
+	
 
 
-	public int getReplyseq() {
-		return replyseq;
+
+	public int getReplyrecruitseq() {
+		return replyrecruitseq;
 	}
 
 
 
-	public void setReplyseq(int replyseq) {
-		this.replyseq = replyseq;
+
+
+
+	public void setReplyrecruitseq(int replyrecruitseq) {
+		this.replyrecruitseq = replyrecruitseq;
 	}
 
 
 
-	public int getJobtalkseq() {
-		return jobtalkseq;
+
+
+
+	public int getJobseq() {
+		return jobseq;
 	}
 
 
-
-	public void setJobtalkseq(int jobtalkseq) {
-		this.jobtalkseq = jobtalkseq;
+	public void setJobseq(int jobseq) {
+		this.jobseq = jobseq;
 	}
-
 
 
 	public String getReply_content() {
@@ -64,11 +72,9 @@ public class replyDto implements Serializable{
 	}
 
 
-
 	public void setReply_content(String reply_content) {
 		this.reply_content = reply_content;
 	}
-
 
 
 	public String getMemberid() {
@@ -76,17 +82,14 @@ public class replyDto implements Serializable{
 	}
 
 
-
 	public void setMemberid(String memberid) {
 		this.memberid = memberid;
 	}
 
 
-
 	public String getRdate() {
 		return rdate;
 	}
-
 
 
 	public void setRdate(String rdate) {
@@ -102,13 +105,7 @@ public class replyDto implements Serializable{
 	public void setReply_count(int reply_count) {
 		this.reply_count = reply_count;
 	}
-
-
-
-	@Override
-	public String toString() {
-		return "replyDto [replyseq=" + replyseq + ", jobtalkseq=" + jobtalkseq + ", reply_content=" + reply_content
-				+ ", memberid=" + memberid + ", rdate=" + rdate + ", reply_count=" + reply_count + "]";
-	}
+	
+	
 	
 }

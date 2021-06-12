@@ -1,31 +1,37 @@
-package bit.com.a.dto;
+rrpackage bit.com.a.dto;
 
 import java.io.Serializable;
 
 public class MemberDto implements Serializable{
 
-   private String memberid;
-   private String pwd;
-   private String name;
-   private String email;
-   private String phonenum;
-   private int auth;                     // 관리자인지 기업인인지 구분하는 번호 그리고 관리자
-   /* private int del; */                     // 회원 탈퇴시 del번호를 변경해줘서 회원 탈퇴처리
-   private String address;                  // 집주소
-   private String detailaddress;            // 집상세주소
-   private String birth;                  // 생년월일
-   private String userpic;
-   private String newuserpic;
-   
-   
-   
+	private String memberid;
+	private String pwd;
+	private String name;
+	private String email;
+	private String phonenum;
+	private int auth;							// 관리자인지 기업인인지 구분하는 번호 그리고 관리자
+	private String address;						// 집주소
+	private String detailaddress;				// 집상세주소
+	private String birth;						// 생년월일
+	private String userpic;
+	private String newuserpic;
+
+
+
+	public MemberDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
    public MemberDto() {
       super();
       // TODO Auto-generated constructor stub
    }
 
-   
-   
+
+
 
    public MemberDto(String memberid, String pwd, String name, String email, String phonenum, int auth, String address,
          String detailaddress, String birth, String userpic, String newuserpic) {
@@ -34,7 +40,7 @@ public class MemberDto implements Serializable{
       this.pwd = pwd;
       this.name = name;
       this.email = email;
-      this.phonenum = phonenum; 
+      this.phonenum = phonenum;
       this.auth = auth;
       this.address = address;
       this.detailaddress = detailaddress;
@@ -45,10 +51,10 @@ public class MemberDto implements Serializable{
 
 
 
-   
-   
 
-   
+
+
+
 
    public String getMemberid() {
       return memberid;
@@ -128,7 +134,7 @@ public class MemberDto implements Serializable{
    public void setBirth(String birth) {
       this.birth = birth;
    }
-   
+
 
    public String getUserpic() {
       return userpic;
@@ -138,8 +144,8 @@ public class MemberDto implements Serializable{
    public void setUserpic(String userpic) {
       this.userpic = userpic;
    }
-   
-   
+
+
 
 
    public String getNewuserpic() {
@@ -152,24 +158,24 @@ public class MemberDto implements Serializable{
    }
 
 
-   
-    public String getPhonenum() { 
-       return phonenum; 
-       }
-    
-    
-    public void setPhonenum(String phonenum) { 
-       this.phonenum = phonenum; 
+
+    public String getPhonenum() {
+       return phonenum;
        }
 
 
-   
-    @Override public String toString() { return "MemberDto [memberid=" + memberid  + ", pwd=" + pwd + ", name=" + name + ", email=" + email + 
+    public void setPhonenum(String phonenum) {
+       this.phonenum = phonenum;
+       }
+
+
+
+    @Override public String toString() { return "MemberDto [memberid=" + memberid  + ", pwd=" + pwd + ", name=" + name + ", email=" + email +
           ", phonenum=" + phonenum + ", auth=" + auth + ", address=" + address +
-          ", detailaddress=" + detailaddress + ", birth=" + birth + ", userpic=" + userpic + ", newuserpic=" + newuserpic + "]"; 
+          ", detailaddress=" + detailaddress + ", birth=" + birth + ", userpic=" + userpic + ", newuserpic=" + newuserpic + "]";
     }
-    
 
 
-   
+
+
 }

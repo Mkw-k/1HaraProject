@@ -18,12 +18,12 @@ body {
 }
 </style>
 
- <style>
-                .disabledbutton {
-                    pointer-events: none;
-                    opacity: 0.4;
-                }
-            </style>
+<style>
+     .disabledbutton {
+                   		pointer-events: none;
+                   		opacity: 0.4;
+                	}
+</style>
         
 </head>
     
@@ -52,7 +52,7 @@ body {
 					<div class="login-mypage">
 						<a href="#"> 
 								<span>[개인]</span>
-							  ${login.name}님
+							  ${login.memberid}님
 						</a>
 						<ul>
 							
@@ -66,7 +66,7 @@ body {
 							
 						</ul>
 					</div>
-					<a href="#" onclick="f_logout();" class="font-blue">로그아웃</a></div>
+					<a href="logout.do" onclick="logout();" class="font-blue">로그아웃</a>
 				
 				<!-- E : 2018-09-28 추가 -->
 				<!--// 로그인 후 -->
@@ -80,28 +80,16 @@ body {
 				<a href="/useInvite/worknetHomepgInvite/sitemap.do">사이트맵</a>
 				<!-- 20201022 추가 -->
 				
-				<!-- //20201022 추가 -->
-<!-- 				<div class="font-control"> -->
-<!-- 					<p>글자크기</p> -->
-<!-- 					<button type="button" class="big">글자 크게 하기</button> -->
-<!-- 					<button type="button" class="small">글자 작게 하기</button> -->
-<!-- 					<button type="button" class="reset">글자 초기화</button> -->
-<!-- 				</div> -->
-				<!--// 공통 -->
+
 			</div>
 		</div>
 	</div>
 
 	<div class="middle-area">
 		<div class="inner-wrap">
-			
-				
-					<h1 class="top-logoWorknet">
-						<a href="/seekWantedMain.do"><img src="/static/images/common/bg/bg-top-logo.png" alt="일하라"></a>
-					</h1>
-				
-				
-			
+			<h1 class="top-logoWorknet">
+				<a href="/seekWantedMain.do"><img src="/static/images/common/bg/bg-top-logo.png" alt="일하라"></a>
+			</h1>
 			
 			<form id="searchFrm" name="searchFrm" action="/wnSearch/unifSrch.do" method="post" onsubmit="return false">
 				<div class="header-search">
@@ -120,17 +108,12 @@ body {
 					</div>
 
 					<a href="javascript:f_job_search()" class="button">일자리 검색</a>
-				</div>
-			<div>
-<input type="hidden" name="_csrf" value="40c07236-ce2a-46f9-b046-8fbf7137e0fa">
-</div></form>
-
-
-
-
-			<div class="link-special">
-				<a href="/jobyoung/main.do">청년</a> <a href="/woman/main/main.do">여성</a> <a href="/senior/main/main.do">장년</a>
 			</div>
+			<div>
+				<input type="hidden" name="_csrf" value="40c07236-ce2a-46f9-b046-8fbf7137e0fa">
+			</div>
+		</form>	
+
 		</div>
 	</div>
 
@@ -145,8 +128,7 @@ body {
 								<a href="/empInfo/empInfoSrch/list/dtlEmpSrchMain.do">채용정보 홈</a>
 							</p>
 							<p>
-								<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?moreCon=more">채용정보
-									상세검색</a>
+								<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?moreCon=more">채용정보 상세검색</a>
 							</p>
 							<p>
 								<a href="/empInfo/empInfoSrch/calendar/empCalendarMonth.do">채용캘린더</a>
@@ -209,16 +191,7 @@ body {
 										주변 채용정보
 								</a></li>
 								<li><a href="/empInfo/empInfoSrch/list/worldJobEmpSrchList.do">해외지역(K-Move)</a></li>
-								<!--
-								<li>
-									<br/>
-									<div class="a-l">
-										<a href="/event/eventContent.do?eventNo=533">
-										<img src="/static/images/event/workRenewal/workRenewalBann.png" alt="2020년 새로워진 워크넷 서비스! 20개 경품이 와르르~~ 3월23일(월)~4월24일(수)" />
-										</a>
-									</div>
-									</li>
-								 -->
+						
 							</ul></li>
 						<li><b><a href="/empInfo/themeEmp/themeEmpInfoSrchListForGnb.do">테마별</a></b>
 
@@ -229,36 +202,6 @@ body {
 										<span class="center"><a href="/empInfo/themeEmp/themeEmpInfoSrchListForGnb.do" class="button s-small round"><img src="/static/images/common/ico/ico-add-copy-sm.png" class="inline-block" alt="">&nbsp;바로가기</a></span>
 									</p>
 								</div>
-
-						<!-- 	<ul>
-								<li><a
-									href="/empInfo/empInfoSrch/list/openEmpSpecCalendarList.do?thisMenuId=M201400343">공채기업관</a></li>
-								<li><a href="/smallGiants/empInfoSrch/empInfoSrchList.do">청년친화강소기업</a></li>
-								<li><a
-									href="/smallGiants/empInfoSrch/empInfoSrchList.do?coGbCd=small">강소기업</a></li>
-								<li><a href="/empInfo/indRev/indRevMain.do">4차산업혁명 채용관
-										<img src="/static/images/common/ico/ico-gnb-new.png" alt="new">
-								</a></li>
-																		NCS 채용관 오픈 이후 런칭 대상
-																		<li><a href="#">NCS 채용관</a></li>
-								<li><a
-									href="/ilmoa/jobSearch/retrieveIlmoaJobDetailSearchByMain.do">정부지원일자리</a></li>
-								<li><a
-									href="/empInfo/tsjEmpInfo/retrieveTsjEmpAllSrchList.do">시간선택제
-										일자리</a></li>
-								<li><a href="/empInfo/subEmpHopeInfo/subEmpHopeSrchList.do">대체인력</a></li>
-								<li><a
-									href="/empInfo/empInfoSrch/list/retriveEnEmpSrchList.do">e-채용마당</a></li>
-								<li><a
-									href="/empInfo/themeEmp/themeEmpInfoSrchListForGnb.do">테마별 채용관</a></li>
-																		<li><a href="#" class="worknet-chatbot-start-button-for-client">워크넷 챗봇(시범)</a></li>
-							</ul>
-									<ul class="dir">
-										<li><a href="#" class="worknet-chatbot-start-button-for-client">워크넷 챗봇(시범)</a></li>
-									</ul>
-									 -->
-								<!-- <p class="eve_link"><a href="https://www.work.go.kr/event/eventContent.do?eventNo=530">[이벤트] 당신의 구직 테마는?</a></p> 20190903 추가 -->
-
 						</li>
 					</ul>
 				</div></li>
@@ -271,11 +214,7 @@ body {
 								<a href="/jobMain.do">직업·진로 홈</a>
 							</p>
 						</dd>
-						<!-- 화상상담 서비스 종료에 따른 주석처리(20210224) 
-						<dd>
-							<p class="imgConslt"><a href="/consltJobCarpa/videoChatting/conslt/videoChattingConslt.do">화상상담 예약</a> <img src="/static/images/common/ico/ico-gnb-new.png" alt="new" style="vertical-align:-2px"></p>
-						</dd>
-						 -->
+
 					</dl>
 
 					<ul>
@@ -449,10 +388,7 @@ body {
 								<li><a href="/empSpt/empSptPgm/hi/intro.do">Hi(고졸자취업지원) 프로그램</a></li>
 								<!-- <li><a href="/empSpt/empSptPgm/youngSporPgm/intro.do">청년지원 프로그램</a></li> 2019.6.17 사용안함-->
 								<li><a href="/empSpt/empSptPgm/youngSporPgmSec/intro.do">청년지원 프로그램(예비교육 이외)</a></li>
-								<!--
-								<li><a href="/jobyoung/jynEmpSptNew/jynEmpSptGuide.do?pageIndex=1&arrSearchData=&sortField=displayRank&setZzimBusiId=&busiId=201512170008&btnSearchTxt=&edubgCheckAll=Y&majorCheckAll=Y&coCheckAll=Y&specCheckAll=Y&onlineApplPossYn=all&empCheckAll=Y"
-								target="_blank" title="새창">중소기업탐방프로그램</a></li>
-								 -->
+								
 								 <li><a href="/empSpt/empSptPgm/empCamp/retriveNoticeSchList.do">일자리희망 프로그램(인별)</a></li>
 								 <li><a href="/empSpt/empSptPgm/age40EmpSptAblPgm/intro.do">40대 구직자취업역량강화프로그램(4U<sup>+</sup>)</a></li>
 							</ul>
@@ -511,12 +447,14 @@ body {
 						<dt>인재정보</dt>
 						<dd>
 							<p>
-								<a href="/psnInfo/psnInfoSrch/dtlPsnSrchMain.do">인재정보
-									홈</a>
+								<a href="/psnInfo/psnInfoSrch/dtlPsnSrchMain.do">
+									인재정보 홈
+								</a>
 							</p>
 							<p>
-								<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do">인재정보
-									상세검색</a>
+								<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do">
+									인재정보 상세검색
+								</a>
 							</p>
 						</dd>
 					</dl>
@@ -580,16 +518,12 @@ body {
 </header>
     <!-- 헤더 -->
 
-    
-    
-
-
         <div class="container  bg-gray" id="container">
             <div class="sub-util">
                 <div class="inner-wrap">
                     <div class="location">
                         <i class="iconset ico-home">홈</i>
-                        <span>마이페이지(개인)</span>
+                        <span>마이페이지(기업)</span>
                         <span>회원정보 관리</span>
                         <em>내 정보수정 / 성명변경</em>
                     </div>
@@ -609,12 +543,7 @@ body {
                         });
                     </script>
                     <div class="custom-menu">
-                        <div>
-                            <a href="#" id="myCustomMenu">나만의 맞춤메뉴(<span>0</span>)</a>
-                        </div>
-                        <span>
-                            <a href="javascript:void(0);" onclick="openMyCustomMenu();" title="새창열림">맞춤메뉴설정</a>
-                        </span>
+
                     </div>
                 </div>
             </div>
@@ -702,129 +631,14 @@ body {
                         });
                     }
                 </script>
-                <nav
-                    id="lnb">
-                    <!-- S : 2018-09-28 추가 -->
-                    <p class="tit">
-                        <a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지</a>
-                    </p>
-                    <!-- E : 2018-09-28 추가 -->
-                    <ul>
-                        <li>
-                            <a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">이력서관리·구직신청
-                            </a>
-                            <button class="btn-show">이력서관리·구직신청
-                                			 메뉴 닫기</button>
-                            <div class="depth3">
-                                <ul>
-                                    <li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveResumeRegTp.do" target="_self">이력서 등록</a></li>
-                                    <li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveSelfIntroRegIntro.do" target="_self">자기소개서 등록</a></li>
-                                    <li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeSelfIntroMng.do" target="_self">이력서·자기소개서 관리</a></li>
-                                    <li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeAtchFileMngList.do" target="_self">첨부파일 관리</a></li>
-                                    <li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">워크넷 구직신청</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">입사지원 관리
-                            </a>
-                            <button class="btn-show">입사지원 관리
-                                			 메뉴 닫기</button>
-                            <div class="depth3">
-                                <ul>
-                                    <li><a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">알선/입사지원 내역</a></li>
-                                    <li><a href="/indivMemberSrv/aplentMng/seekActvHist/seekActvHistList.do" target="_self">구직활동내역</a></li>
-                                    <li><a href="/indivMemberSrv/aplentMng/offerCo/offerCoList.do" target="_self">입사제안/스크랩한 기업</a></li>
-                                    <li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeReadList.do" target="_self">이력서 열람기업</a></li>
-                                    <li><a href="/indivMemberSrv/intrstInfo/mailToEmpList.do" target="_self">채용담당자와 한마디</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">나의 맞춤정보
-                            </a>
-                            <button class="btn-show">나의 맞춤정보
-                                			 메뉴 닫기</button>
-                            <div class="depth3">
-                                <ul>
-                                    <li>
-                                        <a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">맞춤채용 관리</a>
-                                    </li>
-                                    <li>
-                                        <a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do" target="_self">The Work AI추천</a>
-                                    </li>
-                                    <li>
-                                        <a href="#openPopup" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; keis.window.newWindow('/empInfo/customWorkSupportSrv/custSupportMain.do?loginAction=Y', 'pop', 1010, 780, 'yes'); return false;" target="_blank" title="새창">취업나침반</a>
-                                        <script type="text/javascript">
-                                            window.name = "mdmOpener";
-                                        </script>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">나의 관심정보
-                            </a>
-                            <button class="btn-show">나의 관심정보
-                                			 메뉴 닫기</button>
-                            <div class="depth3">
-                                <ul>
-                                    <li><a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">관심스크랩(찜)</a></li>
-                                    <li><a href="/indivMemberSrv/intrstInfo/seekEmpInfoSrchHist.do?srchType=3" target="_self">최근 본 채용공고</a></li>
-                                    <li><a href="/empInfo/empInfoSrch/calendar/myCalendarMonth.do" target="_blank">마이캘린더</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">e-채용마당 서비스
-                            </a>
-                            <button class="btn-show">e-채용마당 서비스
-                                			 메뉴 닫기</button>
-                            <div class="depth3">
-                                <ul>
-                                    <li><a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">지원서관리</a></li>
-                                    <li><a href="/eas/indivMemberSrv/employNotice/wNoInterest.do" target="_self">관심정보관리</a></li>
-                                    <li><a href="/eas/indivMemberSrv/employJudge/employJudgeList.do" target="_self">심사평가관리</a></li>
-                                    <li><a href="/empAgencySvc/empBoard/wBuBoardList.do" target="_self">채용게시판</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/indivMemberSrv/intrstInfo/joinResult.do" target="_self">온라인 신청관리
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/indivMemberSrv/myCustmadeSrvList.do" target="_self">고용복지 맞춤서비스
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 관리
-                            </a>
-                            <button class="btn-show">회원정보 관리
-                                			 메뉴 닫기</button>
-                            <div class="depth3">
-                                <ul>
-                                    <li><a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a></li>
-                                    <li><a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustInfoView.do" target="_self">회원정보 수정(성명변경)</a></li>
-                                    <li><a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a></li>
-                                    <li><a href="/indivMemberSrv/custInfoAdmin/deleteIndivCustView.do" target="_self">회원탈퇴</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
+
                 <script type="text/javascript">
                     // <![CDATA[
                     function trim(s) {
                         return s.replace(/(^[\s]*|[\s]*$)/g, '');
                     }
                     var webLogged = 'N';
-                    /**
-* 유효성검사를 수행한다.
-* @paras frm 폼
-* @return boolean 수행결과
-*
-* */
+
                     function f_checkForm(frm) {
                         var frm = document.registForm;
                         // 20131227 BDH 추가 : 주소 변수 셋팅
@@ -856,15 +670,7 @@ body {
                                 frm.juso1.focus();
                                 return false;
                             }
-                            /*2020.07.23 회원정보수정 공동주택일 경우 상세주소 필수 입력 로직 삭제 */
-                            /*if(trim(frm.commHouseYn.value) == 'Y')
-        {
-			if(trim(frm.juso2.value) == '') {           
-				alert("상세 주소을(를) 입력해 주세요.");
-				frm.juso2.focus();
-				return false;
-			}
-        }*/
+ 
                         }
                         var tel1 = document.getElementById("telno1");
                         var tel2 = document.getElementById("telno2");
@@ -969,12 +775,7 @@ body {
                         document.getElementById("commHouseYn").value = rsltObj[11];
                         $("input[name='addrType']").val("street");
                     }
-                    /**
-* 이메일 박스에 맞게 이메일을 표시한다.
-* @paras select 박스에 선택된 이메일
-* @return
-*
-* */
+
                     function f_selectEmailValue(value) {
                         if (value == '기타(직접입력)') {
                             document.getElementById("email2").readOnly = false;
@@ -1004,10 +805,7 @@ body {
                         document.getElementById("regionCd").value = '';
                         document.getElementById("dongNo").value = '';
                     }
-                    /**
-* 회원 유형에 따라 성명 변경을 위한 페이지를 다르게 호출 한다.
-*
-* */
+
                     function modifyCustNm() {
                         var pkgGbnParam = '';
                         var uri = '/indivMemberSrv/custInfoAdmin/modifyTotIndivCustNmForm.do';
@@ -1094,33 +892,10 @@ body {
                     }
                     // ]]>
                 </script>
+                
+                
                 <section id="contents" class="mypage">
-                    <div class="tit-util">
-                        <h2 class="tit" style="align:center;">내 정보수정 / 성명변경</h2>
-                        <span class="hide-location" id="navi_1">마이페이지(개인)</span>
-                        <span class="hide-location" id="navi_2">회원정보 관리</span>
-                        <span class="hide-location" id="navi_3">내 정보수정 / 성명변경</span>
-                        <div
-                            class="page-util"><!-- 기능 버튼 들어갈 예정 -->
-                        </div>
-                    </div>
-                    <div class="sub-visual-noline">
-                    	<!-- 프로필사진 들어가는곳  -->
-                    	
-                        <p class="img-area">
-                            <i class="ico-circle-gray tool"></i>
-                        </p>
-                        <img src="${login.filename}"/>
-                        
-                        
-                        <p class="txt">
-                            일하라는 회원님의 개인정보를 신중히 취급하며, 회원님의 동의 없이 기재하신 회원정보를 공개하지 않습니다.
-                            <br>
-                            회원님의 정보 가운데 변경된 내용이나 설정 변경이 필요한 경우에는 아래에서 수정해주시기 바랍니다.
-                        </p>
-                    </div>
-                    <h3 class="tit font-black">회원 로그인 정보</h3>
-                    <form id="registForm" name="registForm" action="UpdateMypageAf.do" method="post">
+                 	<form id="registForm" name="registForm" action ="buspageUpdateAf.do" method="post"  enctype="multipart/form-data">
                         <input type="hidden" id="checkAddr" name="checkAddr" value="">
                         <input type="hidden" id="regionCd" name="regionCd" value="28245">
                         <input type="hidden" id="strtnmCd" name="strtnmCd" value="282453155006">
@@ -1130,6 +905,57 @@ body {
                         <input type="hidden" name="detailAddr" id="detailAddr">
                         <input type="hidden" name="strtnmZipCd" id="strtnmZipCd">
                         <input type="hidden" name="strtnmBasicAddr" id="strtnmBasicAddr">
+                    	<div class="tit-util">
+                    	    <h2 class="tit" style="align:center;">내 정보수정 / 성명변경</h2>
+                    	    <span class="hide-location" id="navi_1">마이페이지(개인)</span>
+                    	    <span class="hide-location" id="navi_2">회원정보 관리</span>
+                    	    <span class="hide-location" id="navi_3">내 정보수정 / 성명변경</span>
+                    	    <div class="page-util"><!-- 기능 버튼 들어갈 예정 --></div>
+                    	</div>
+                    	<div class="sub-visual-noline">
+                    		<!-- 프로필사진 들어가는곳  -->
+                    	 <ul>
+ 						   <li class="img" style="list-style: none; margin-left : 200px">
+                                <div id="image_preview">
+                                	<c:choose>
+                                   	 	<c:when test="${login.filename == null }">
+                                   	 		<img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 160px;" src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
+                                		</c:when>
+                                		<c:otherwise>
+                                			<img src="./upload/${login.filename}" style="width: 150px;height: 150px;">
+                                		</c:otherwise>
+                                	</c:choose>
+                                </div>
+                                <h4 style="margin-left: 35px;">프로필 사진을 등록해주세요</h4>
+                                <div class="f_box">
+                                        <label for="img"></label>
+                                        <input type="file" name="fileload" id="img">
+                                </div>
+                            </li>
+						</ul>
+                       <script>
+                            // 이미지 업로드
+                            $('#img').on('change', function() {
+                            	alert($('#img').val());
+                            ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+                            //배열에 추출한 확장자가 존재하는지 체크
+                            if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                                resetFormElement($(this)); //폼 초기화
+                                window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+                            } else {
+                                file = $('#img').prop("files")[0];
+                                blobURL = window.URL.createObjectURL(file);
+                                $('#image_preview img').attr('src', blobURL);
+                                $('#image_preview').slideDown(); //업로드한 이미지 미리보기
+                                $(this).slideUp(); //파일 양식 감춤
+                            }
+                            });
+
+ 						</script>
+                    	<br><br>
+
+                    	</div>
+                    	<h3 class="tit font-black">회원 로그인 정보</h3>
                         <input type="hidden" name="strtnmDetailAddr" id="strtnmDetailAddr">
                         <div class="box-bluegray v2 myinfo-change mb50">
                             <div class="line">
@@ -1139,11 +965,11 @@ body {
                             <div class="line">
                                 <label for="username" class="label w140px">성명</label>
                                 <input type="text" value="${login.name}"  placeholder="${login.name}"  name="name" title="성명 입력" class="input-text w260px" pil="PF_PNM">
-                             
+                             	<input type="hidden" value="${login.memberid }" placeholder="${login.memberid}"  name="memberid" title="유저아이디" class="input-text w260px" pil="PF_PNM">
                             </div>
                         </div>
                         <h3 class="tit font-black">연락처 정보</h3>
-                        <div class="table-wrap mb50">
+                        
                             <table class="board-form">
                                 <caption>연락처 정보 입력</caption>
                                 <colgroup>
@@ -1158,194 +984,50 @@ body {
                                         </th>
                                         <td>
                                            <div class="form-group has-feedback">
-        	<label class="control-label" for="registrationNum">주소</label>
-        		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
-				<input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" readonly="readonly" value="우편번호 찾기"><br>
-				<input type="text" class="form-control" id="sample6_address" name="comaddress" placeholder="주소"><br>
-				<input type="text" class="form-control" id="sample6_detailAddress" name="addressdetail" placeholder="상세주소"><br>
-				<input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목"><br>
-        </div>
+        										<label class="control-label" for="registrationNum"></label>
+        										<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
+												<input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" readonly="readonly" value="우편번호 찾기"><br>
+												<input type="text" class="form-control" id="sample6_address" name="address" placeholder="주소"><br>
+												<input type="text" class="form-control" id="sample6_detailAddress" name="detailaddress" placeholder="상세주소"><br>
+												<!-- <input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목"><br> -->
+        									</div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row" rowspan="2">연락처<span class="font-orange" title="필수입력">
-                                                *</span>
-                                        </th>
-                                        <th scope="row">전화번호</th>
-                                        <td>
-                                            <div class="tel-wrap mt05 mb05">
-                                                <select id="telno1" name="telno1" title="전화번호 국번 선택" pil="PF_TELNO">
-                                                    <option value="">선택</option>
-                                                    <option value="02">02</option>
-                                                    <option value="031">031</option>
-                                                    <option value="032" selected="selected">032</option>
-                                                    <option value="033">033</option>
-                                                    <option value="041">041</option>
-                                                    <option value="042">042</option>
-                                                    <option value="043">043</option>
-                                                    <option value="044">044</option>
-                                                    <option value="050">050</option>
-                                                    <option value="051">051</option>
-                                                    <option value="052">052</option>
-                                                    <option value="053">053</option>
-                                                    <option value="054">054</option>
-                                                    <option value="055">055</option>
-                                                    <option value="061">061</option>
-                                                    <option value="062">062</option>
-                                                    <option value="063">063</option>
-                                                    <option value="064">064</option>
-                                                    <option value="070">070</option>
-                                                    <option value="080">080</option>
-                                                    <option value="0303">0303</option>
-                                                    <option value="0502">0502</option>
-                                                    <option value="0503">0503</option>
-                                                    <option value="0504">0504</option>
-                                                    <option value="0505">0505</option>
-                                                    <option value="0506">0506</option>
-                                                    <option value="0507">0507</option>
-                                                </select>
-                                                <span>-</span>
-                                                <input type="text" class="input-text" id="telno2" name="telno2" title="전화번호 중간자리 입력" onkeydown="worknet.checkForm.onlyNumber()" maxlength="4" value="548" pil="PF_TELNO">
-                                                <span>-</span>
-                                                <input type="text" class="input-text" id="telno3" name="telno3" title="전화번호 뒷자리 입력" onkeydown="worknet.checkForm.onlyNumber()" maxlength="4" value="1486" pil="PF_TELNO">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">휴대전화</th>
-                                        <td>
-                                            <div class="tel-wrap mt05">
-                                                <select id="hp1" name="hp1" title="휴대전화 앞자리 선택" pil="PF_MPNO">
-                                                    <option value="">선택</option>
-                                                    <option value="010" selected="selected">010</option>
-                                                    <option value="011">011</option>
-                                                    <option value="016">016</option>
-                                                    <option value="017">017</option>
-                                                    <option value="018">018</option>
-                                                    <option value="019">019</option>
-                                                </select>
-                                                <span>-</span>
-                                                <input type="text" class="input-text" id="hp2" name="hp2" title="휴대전화 중간자리 입력" onkeydown="worknet.checkForm.onlyNumber()" maxlength="4" value="2106" pil="PF_MPNO">
-                                                <span>-</span>
-                                                <input type="text" class="input-text" id="hp3" name="hp3" title="휴대전화 뒷자리 입력" onkeydown="worknet.checkForm.onlyNumber()" maxlength="4" value="1082" pil="PF_MPNO">
-                                            </div>
-                                        </td>
-                                    </tr>
+                                   
                                     <tr>
                                         <th scope="row" colspan="2">
                                             <span class="label">이메일</span>
                                         </th>
-                                        <td>
+                                        <td> 
                                             <div class="email-wrap mt05">
-                                                <input type="text" name="email" id="email1" style="width:150" class="input-text" title="이메일 주소 입력" pil="PF_EMAIL">
-                                                <span name="email">@</span>
-                                                <input type="text" id="email2" name="email" maxlength="40" value="naver.com" class="input-text" title="이메일 도메인 입력" pil="PF_EMAIL">
-                                                 <select name="email" onchange="f_selectEmailValue(this.value);" title="이메일 도메인 선택">
-                                                    <option value="chol.com">chol.com</option>
-                                                    <option value="dreamwiz.com">dreamwiz.com</option>
-                                                    <option value="daum.net">daum.net</option>
-                                                    <option value="empal.com">empal.com</option>
-                                                    <option value="freechal.com">freechal.com</option>
-                                                    <option value="gmail.com">gmail.com</option>
-                                                    <option value="hanmail.net">hanmail.net</option>
-                                                    <option value="hanmir.com">hanmir.com</option>
-                                                    <option value="hitel.net">hitel.net</option>
-                                                    <option value="hotmail.com">hotmail.com</option>
-                                                    <option value="korea.com">korea.com</option>
-                                                    <option value="nate.com">nate.com</option>
-                                                    <option value="naver.com">naver.com</option>
-                                                    <option value="orgio.com">orgio.com</option>
-                                                    <option value="paran.com">paran.com</option>
-                                                    <option value="sayclub.com">sayclub.com</option>
-                                                    <option value="shinbiro.com">shinbiro.com</option>
-                                                    <option value="yahoo.co.kr">yahoo.co.kr</option>
-                                                    <option value="yahoo.com">yahoo.com</option>
-                                                    <option value="moel.go.kr">moel.go.kr</option>
-                                                    <option value="korea.kr">korea.kr</option>
-                                                    <option value="기타(직접입력)" selected="selected">기타(직접입력)</option>
-                                                </select>  
+                                                <input type="text" style="width:400px" name="email" id="email1" maxlength="100" class="input-text" title="이메일 주소 입력" pil="PF_EMAIL",  placeholder="이메일 주소를 입력하세요. ex) example@gmail.com" />
                                             </div>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <h3 class="tit font-black">구직활동 및 입사지원정보 수신여부</h3>
+                        
+                       
                         <div class="table-wrap mb50">
                             <table class="board-form">
-                                <caption>구직활동 및 입사지원정보 수신여부 설정</caption>
+                              
                                 <colgroup>
                                     <col style="width:155px;">
                                     <col>
                                 </colgroup>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">휴대전화 문자서비스</th>
-                                        <td>
-                                            <div class="mt05 mb05">
-                                                <p class="mg00">휴대전화로 문자서비스를 받으시겠습니까?</p>
-                                                <label><input type="radio" name="smsRcvYn" id="smsRcvYn1" value="Y" checked="checked" onclick="fnOpenLatte('/indivMemberSrv/custInfoAdmin/PopReceiveAgree.do?returnFunction=smsReceiveAgreeRtn');">
-                                                    수신</label>
-                                                <label class="ml10"><input type="radio" name="smsRcvYn" id="smsRcvYn2" value="N">
-                                                    수신안함</label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">메일링서비스</th>
-                                        <td>
-                                            <div class="mt05 mb05">
-                                                <p class="mg00">고용노동부에서 제공하는 취업정보, 행사, 이벤트, 세미나, 박람회 등 새로운 소식을 받으시겠습니까?</p>
-                                                <label><input type="radio" name="mailsvcRcvYn" id="mailsvcRcvYn1" value="Y" onclick="fnOpenLatte('/indivMemberSrv/custInfoAdmin/PopReceiveAgree.do?returnFunction=mailReceiveAgreeRtn');">
-                                                    수신</label>
-                                                <label class="ml10"><input type="radio" name="mailsvcRcvYn" id="mailsvcRcvYn2" value="N" checked="checked">
-                                                    수신안함</label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                               
                             </table>
                         </div>
-                        <h3 class="tit font-black">사용자 통합관리시스템(One-ID) 공지 수신여부</h3>
-                        <div class="table-wrap mb50">
-                            <table class="board-form">
-                                <caption>사용자 통합관리시스템(One-ID) 공지 수신여부 설정</caption>
-                                <colgroup>
-                                    <col style="width:155px;">
-                                    <col>
-                                </colgroup>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">휴대전화 문자서비스</th>
-                                        <td>
-                                            <div class="mt05 mb05">
-                                                <label><input type="radio" name="imsSmsRcvYn" id="imsSmsRcvYn1" value="Y" onclick="fnOpenLatte('/indivMemberSrv/custInfoAdmin/PopImsSmsReceiveAgree.do?returnFunction=imsSmsReceiveAgreeRtn');">
-                                                    수신</label>
-                                                <label class="ml10"><input type="radio" name="imsSmsRcvYn" id="imsSmsRcvYn2" value="N" checked="checked">
-                                                    수신안함</label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">메일링서비스</th>
-                                        <td>
-                                            <div class="mt05 mb05">
-                                                <label><input type="radio" name="imsMailsvcRcvYn" id="imsMailsvcRcvYn1" value="Y" onclick="fnOpenLatte('/indivMemberSrv/custInfoAdmin/PopImsMailReceiveAgree.do?returnFunction=imsMailReceiveAgreeRtn');">
-                                                    수신</label>
-                                                <label class="ml10"><input type="radio" name="imsMailsvcRcvYn" id="imsMailsvcRcvYn2" value="N" checked="checked">
-                                                    수신안함</label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                     
+                            
+                         
+                       
                         <!-- 20170602 네이버,소셜 로그인 연동 간편 로그인 추가 -->
                         <!-- //20170602 네이버,소셜 로그인 연동 간편 로그인 추가 -->
-                        <div class="btn-group">
+                        <div class="btn-group" align="center">
                             <a href="mypage.do" class="button navy">취소</a>
-                            <button type="button" onclick="location.href='buspage.do'" class="button blue">확인</button>             
-                            <a href="businessDelete.do" class="button navy">탈퇴하라!</a>
+                            <button type="button" onclick="submitFunc()" id="busBtn" class="button blue">확인</button>             
+                            <a href="memberDelete.do" class="button navy">탈퇴하라!</a>
                         </div>
                         <div>
                             <input type="hidden" name="_csrf" value="276c2a08-bf52-456d-bf52-4689a4010d1f">
@@ -1362,9 +1044,9 @@ body {
                     </form>
                 </section>
                 <script type="text/javascript" src="/js/worknet.snsLogin.js"></script>
-                <script type="text/javascript">
+              <!--   <script type="text/javascript">
                     worknet.snsLogin.init("/member/bodyLogin.do", "/member/snsLoginProcess.do", "N");
-                </script>
+                </script> -->
                 <script>
                     // 우클릭 방지
                     $(document).ready(function () {
@@ -1387,6 +1069,36 @@ body {
             </script>
             
             <script type="text/javascript">
+
+            $("#busBtn").click(function () {
+            	
+            	alert("수정하러 간다잇~");
+            	$("#_busform").submit();
+            	}
+            });
+
+            $("#pwd").keyup(function(){
+                var pwd=$(this).val();
+                // 비밀번호 검증할 정규 표현식
+                var reg=/^.{8,}$/;
+                if(reg.test(pwd)){//정규표현식을 통과 한다면
+                            $("#pwdRegErr").hide();
+                            successState("#pwd");
+                }else{//정규표현식을 통과하지 못하면
+                            $("#pwdRegErr").show();
+                            errorState("#pwd");
+                }
+            });
+
+
+            $("#busBtn").click(function () {
+            	
+            	alert("수정하러 간다잇~");
+            	$("#registForm").submit();
+            	}
+            });
+-
+            
             function sample6_execDaumPostcode() {
                 new daum.Postcode({
                     oncomplete: function(data) {
@@ -1395,7 +1107,7 @@ body {
                         // 각 주소의 노출 규칙에 따라 주소를 조합한다.
                         // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                         var addr = ''; // 주소 변수
-                        var extraAddr = ''; // 참고항목 변수
+                   //     var extraAddr = ''; // 참고항목 변수
 
                         //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
                         if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
@@ -1405,26 +1117,26 @@ body {
                         }
 
                         // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                        if(data.userSelectedType === 'R'){
+              //          if(data.userSelectedType === 'R'){
                             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
                             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                                extraAddr += data.bname;
-                            }
-                            // 건물명이 있고, 공동주택일 경우 추가한다.
-                            if(data.buildingName !== '' && data.apartment === 'Y'){
-                                extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                            }
-                            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                            if(extraAddr !== ''){
-                                extraAddr = ' (' + extraAddr + ')';
-                            }
-                            // 조합된 참고항목을 해당 필드에 넣는다.
-                            document.getElementById("sample6_extraAddress").value = extraAddr;
+                //            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                 //               extraAddr += data.bname;
+             //               }
+              //              // 건물명이 있고, 공동주택일 경우 추가한다.
+               //             if(data.buildingName !== '' && data.apartment === 'Y'){
+                //                extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+              //              }
+              // /             // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+              //              if(extraAddr !== ''){
+              //                  extraAddr = ' (' + extraAddr + ')';
+               //             }
+               //             // 조합된 참고항목을 해당 필드에 넣는다.
+               //             document.getElementById("sample6_extraAddress").value = extraAddr;
                         
-                        } else {
-                            document.getElementById("sample6_extraAddress").value = '';
-                        }
+        //                } else {
+               //             document.getElementById("sample6_extraAddress").value = '';
+              //          }
 
                         // 우편번호와 주소 정보를 해당 필드에 넣는다.
                         document.getElementById('sample6_postcode').value = data.zonecode;
@@ -1434,11 +1146,10 @@ body {
                     }
                 }).open();
             }
-
-            </script>
+      
             
-           
+            </script>   
         </div>
-
+      
     </body>
 </html>

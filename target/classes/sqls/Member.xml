@@ -40,16 +40,17 @@
 	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 </select>
 
+
 <!-- 아이디 찾기 -->
 <!-- <select id="findId" resultType="user">
-      SELECT * 
-      FROM MEMBER 
-      WHERE name=#{name} and PHONENUMBER=#{phonenumber}
+		SELECT * 
+		FROM MEMBER 
+		WHERE name=#{name} and PHONENUMBER=#{phonenumber}
 </select> -->
 
 <!-- 비밀번호 찾기 -->
 <!-- <select id="findPassword" resultType="user">
-      select * from users where id=#{id} and name=#{name} and phone=#{phone}
+		select * from users where id=#{id} and name=#{name} and phone=#{phone}
 </select> -->
 
 <!-- 비밀번호 찾고 비밀번호 수정 -->
@@ -92,7 +93,7 @@
 
 	<!--  뿌려주는것 -->
 	<select id="getMypage" parameterType="java.lang.String" resultType="bit.com.a.dto.MemberDto">
-	SELECT NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH
+	SELECT NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, PHONENUM, USERPIC, NEWUSERPIC
 	FROM MEMBER
 	WHERE MEMBERID=#{memberid}
 	</select>

@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="ckeditor5/sample/styles.css">
 <script src="ckeditor5/build/ckeditor.js"></script>
 <!-- 전체 공통 스크립트 임포트 -->
-<c:import url="script.jsp" charEncoding="utf-8"/>
+ <c:import url="script.jsp" charEncoding="utf-8"/>
 <!-- PAGE settings 페이지네이션-->
 <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
 <!-- CSS dependencies -->
@@ -290,7 +290,9 @@
                      
 
 							<div class="col-md-12">
-								<p id="selectResult"></p>
+								<p id="selectResult">
+									${dto.busname}
+								</p>
 							</div>
 
 							<p>
@@ -858,6 +860,40 @@ $("#deleteResult").click(function() {
 	$( ".list_col3" ).prop("checked", false);
 
 });
+
+
+
+
+	var busname = '${dto.busname}';
+	var busnameArr = busname.split(',');
+	
+	alert(busnameArr[0]);
+	cnt = 1; 
+	count = 1; 
+	
+	
+	for(var i=0; i<busnameArr; i++){
+		let app = "<span class=arrBusdata id=selectedBuscode"+cnt+">"+busnameArr[i]+
+        "<input name='buscode' type='hidden' value='"+buscode+"'>"+
+        "<a onclick='delSelBuscode("+cnt+","+count+")'>"+
+        "<img alt='왜안뜨지' src='ma.jpg' style='width:30px; height:30px;'>"+
+        "</a>"+"</span>"+"&nbsp;&nbsp;";
+        
+        $("#selectResult").append(app);
+        cnt += 1 ;
+        count += 1;
+	}
+
+
+
+
+var busValue = $("input[name='buscode']").length;
+var busData = new Array(busValue);
+
+for(var i=0; i<busValue; i++){                          
+	busData[i] = $("input[name='buscode']")[i].value;
+}
+
 
 
 
