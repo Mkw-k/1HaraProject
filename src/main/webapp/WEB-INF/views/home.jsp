@@ -242,7 +242,7 @@ border-color: #2186eb;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-} 
+}
 .logoarea {
 	clear: both;
 }
@@ -2988,10 +2988,10 @@ margin-right : 450px;
 						data-track_event="main|Ads_scrap|prime_plus_fix_expand">
 						<span class="blind">스크랩</span>
 					</button>
-					<span class="recruit_func"> 
-						<span class="blind">공고 마감일</span> 
+					<span class="recruit_func">
+						<span class="blind">공고 마감일</span>
 						<span class="num_dday">D-4</span>
-					</span> 
+					</span>
 					<span class="bg"></span>
 				</div>
 			</li>
@@ -3198,41 +3198,41 @@ margin-right : 450px;
 					<button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand">
 						<span class="blind">스크랩</span>
 					</button>
-					<span class="recruit_func"> 
-						<span class="blind">공고 마감일</span> 
+					<span class="recruit_func">
+						<span class="blind">공고 마감일</span>
 						<span class="num_dday">D-5</span>
-					</span> 
+					</span>
 					<span class="bg"></span>
 				</div>
 			</li>
 			<li class="open" data-rec_idx="40255925">
 				<div class="box_product">
-					<a href="/zf_user/jobs/relay/pop-view?rec_idx=40255925" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|13" rel="sponsored, nofollow"></a> 
+					<a href="/zf_user/jobs/relay/pop-view?rec_idx=40255925" class="link_box track_event" data-track_event="main|Ads_click|prime_plus_fix_expand|13" rel="sponsored, nofollow"></a>
 						<span class="product_logo">
 							<img src="https://www.saraminbanner.co.kr/banner_logo//company/logo_banner/2020/08/qezwgm_7oq0-2rxefo_specialgold4969360logo.png"alt="롯데렌탈㈜" class="img"></span> <strong class="poduct_tit">롯데렌탈㈜</strong>
-							<em class="product_desc">2021년 각 부문 신입/경력사원 채용</em> 
+							<em class="product_desc">2021년 각 부문 신입/경력사원 채용</em>
 							<em class="product_desc open">
 								<span class="txt">2021년 각 부문</span>
 								<span class="txt">신입/경력사원 채용</span>
-							</em> 
+							</em>
 							<span class="wrap_desc">
 								<span class="txt_desc">2005년 설립 (16년차)</span>
-								<span class="txt_desc">사원수 1,111명 
+								<span class="txt_desc">사원수 1,111명
 									<span class="base_year">(2021년)</span>
 								</span>
-							</span> 
+							</span>
 							<span class="thumb_product">
 								<img data-src="https://www2.saraminbanner.co.kr/banner_logo/company/logo_banner/2021/05/qt89sf_4e4z-2rxefc_qonsfzejjl2rxefl.png" class="img" alt="" rel="nofollow">
 							</span>
 							<button class="img_main btn_scrap track_event" data-track_event="main|Ads_scrap|prime_plus_fix_expand">
 								<span class="blind">스크랩</span>
 							</button>
-							<span class="recruit_func"> 
+							<span class="recruit_func">
 								<span class="blind">공고
 									마감일
-								</span> 
+								</span>
 								<span class="num_dday">D-2</span>
-							</span> 
+							</span>
 							<span class="bg"></span>
 				</div>
 			</li>

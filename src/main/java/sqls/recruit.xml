@@ -653,7 +653,56 @@ SELECT JOBSEQ, JOBTITLE, JOBCONTENT,
 	 WHERE MEMBERID = #{memberid}
 
 </update>
-	 
 
+<select id="getTop10List" parameterType="bit.com.a.dto.RecruitDto" resultType="bit.com.a.dto.RecruitDto">
+SELECT DISTINCT RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+               J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
+               J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL,
+         	C.COMPANYNAME, E.EDUNAME, T.EMP_NAME, P.CAREER_DESC
+
+   FROM (SELECT ROW_NUMBER()OVER(ORDER BY JOBLIKE ASC)AS RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+               J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
+               J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME
+         FROM JOB J, BUSINESS C
+         WHERE J.COMPANYID = C.MEMBERID
+      <!-- AND J.DEL =0 -->
+         )J
+   <!-- 회사이름가져오기 -->
+   JOIN BUSINESS C
+   ON J.COMPANYID = C.MEMBERID
+   <!-- 학력조건 가져오기 -->
+   JOIN EDUCATION E
+    ON E.EDUCODE = J.EDUCATION
+   <!-- 고용타입가져오기 -->
+   JOIN EMPLOYEE_TYPE T
+   ON T.EMP_TYPE = J.EMP_TYPE
+   <!-- 경력타입가져오기 -->
+   JOIN JOB_CAREERTYPE P
+   ON P.CAREER_TYPE = J.CAREER_TYPE
+   <!-- 직종네임가져오기 -->
+   JOIN bscodstack K
+   ON J.JOBSEQ = K.JOBSEQ
+   
+   WHERE 1=1
+  
+   AND RNUM BETWEEN 1 AND 10
+   ORDER BY RNUM ASC
+  
+	
+</select>
+
+<update id="favoriteJob2" parameterType="bit.com.a.dto.RecruitParam">
+	 UPDATE JOB
+     SET JOBLIKE = JOBLIKE +1
+     WHERE JOBSEQ = #{jobseq}
+ 
+</update>
+	 
+<update id="dropFavoriteJob2" parameterType="bit.com.a.dto.RecruitParam">
+	 UPDATE JOB
+     SET JOBLIKE = JOBLIKE -1
+     WHERE JOBSEQ = #{jobseq}
+ 
+</update>
 
 </mapper>

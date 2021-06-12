@@ -224,10 +224,13 @@ public class MemberController {
 
 
 	@ResponseBody
-	@RequestMapping(value = "/reserveSendSms.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/reserveSendSms.do", method = RequestMethod.GET)
 
 	public String reservSendSms(HttpServletRequest request, String phonenum, String reserveDate) throws Exception {
 
+		System.out.println("들어옴~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		
+		
 		String api_key = "NCSLHXF31QIYUJCT";
 		String api_secret = "T4SG4WFRBS1BGK9J7TOWKLVYJ9NVEGUI";
 

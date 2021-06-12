@@ -70,6 +70,12 @@ public interface RecruitService {
 
 	List<RecruitDto> getCalendarSearchList(Map<String, Object> map);
 
+	List<RecruitDto> getTop10List();
+
+	boolean favoriteJob2(RecruitParam param);
+
+	boolean dropFavoriteJob2(RecruitParam param);
+
 	
 
 }

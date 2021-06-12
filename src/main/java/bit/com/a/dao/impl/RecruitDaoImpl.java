@@ -173,6 +173,21 @@ public class RecruitDaoImpl implements RecruitDao{
 		return session.selectList(ns+"getCalendarSearchList", map);
 	}
 
+	@Override
+	public List<RecruitDto> getTop10List() {
+		return session.selectList(ns+"getTop10List");
+	}
+
+	@Override
+	public boolean favoriteJob2(RecruitParam param) {
+		return session.update(ns+"favoriteJob2", param)>0? true:false;
+	}
+
+	@Override
+	public boolean dropFavoriteJob2(RecruitParam param) {
+		return session.update(ns+"dropFavoriteJob2", param)>0?true:false;
+	}
+
 
 
 

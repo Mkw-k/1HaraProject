@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.BusinessDto;
 import bit.com.a.dto.CompanyDto;
+import bit.com.a.dto.MemberDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 import bit.com.a.dto.ResumeDto;
+import bit.com.a.service.MypageService;
 import bit.com.a.service.RecruitService;
 import bit.com.a.service.ResumeService;
 import bit.com.a.util.UtilEx;
@@ -35,6 +37,8 @@ public class RecruitController {
    @Autowired
    RecruitService service;
 
+   @Autowired
+   MypageService Myservice;
    @Autowired
    ResumeService resumeservice;
 
@@ -404,7 +408,8 @@ public class RecruitController {
    @RequestMapping(value = "RecruitDetail.do", method = RequestMethod.GET)
    public String RecruitDetail(int jobseq, Model model, String memberid) {
       model.addAttribute("doc_title", "채용공고");
-
+      MemberDto mem = Myservice.getMypage(memberid);
+      
       //디테일 데이터 받아오기
       System.out.println("seq:"+jobseq);
       RecruitDto dto = service.getRecruitListOne(jobseq);
@@ -445,6 +450,7 @@ public class RecruitController {
 
       model.addAttribute("dto", dto);
       model.addAttribute("resumelist", resumelist);
+      model.addAttribute("mem", mem);
 
       return "recruit/recruitDetail";
    }
@@ -1037,7 +1043,7 @@ public class RecruitController {
 			System.out.println("공고 즐겨찾기 메서드 실행");
 
 		  boolean b = service.favoriteJob(param);
-
+		  boolean b2 = service.favoriteJob2(param);
 
 		  if(b) {
 			  	System.out.println("즐겨찾기 등록 성공");
@@ -1063,7 +1069,7 @@ public class RecruitController {
 			System.out.println("공고 즐겨찾기 해제 메서드 실행");
 
 		  boolean b = service.dropFavoriteJob(param);
-
+		  boolean b2 = service.dropFavoriteJob2(param);
 
 		  if(b) {
 			  	System.out.println("즐겨찾기 해제 성공");
@@ -1092,6 +1098,7 @@ public class RecruitController {
 
 			System.out.println("좋아요 파람:"+param.toString());
 		  boolean b = service.favoriteCom(param);
+		  
 
 
 		  if(b) {
@@ -1170,6 +1177,20 @@ public class RecruitController {
 
 
 			return "redirect:/recuruitlist.do";
+		}
+		
+		
+		//TODO 즐겨찾기가 가장 많은 TOP10 공고 불러오기 
+		@ResponseBody
+		@RequestMapping(value = "getTop10List.do", method = {RequestMethod.GET, RequestMethod.POST})
+		public List<RecruitDto> getTop10List()throws Exception {
+			
+			List<RecruitDto> list = service.getTop10List();
+			
+			
+			
+			return list;
+			
 		}
 		
 

@@ -170,4 +170,19 @@ public class RecruitServiceImpl implements RecruitService{
 		return dao.getCalendarSearchList(map);
 	}
 
+	@Override
+	public List<RecruitDto> getTop10List() {
+		return dao.getTop10List();
+	}
+
+	@Override
+	public boolean favoriteJob2(RecruitParam param) {
+		return dao.favoriteJob2(param);
+	}
+
+	@Override
+	public boolean dropFavoriteJob2(RecruitParam param) {
+		return dao.dropFavoriteJob2(param);
+	}
+
 }
