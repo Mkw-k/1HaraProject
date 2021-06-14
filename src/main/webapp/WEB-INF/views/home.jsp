@@ -521,8 +521,8 @@ margin-right : 450px;
 <ul class="navi_depth1">
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','recruit')" href="recuruitlist.do"><span>채용정보</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','company_info')" href="/zf_user/companylab"><span>기업정보</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','status-list')" href="/zf_user/member/suggest/status-list"><span>인재검색</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','verification')" href="/zf_user/memcom/preview/custom-guide"><span>검증면접</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','status-list')" href="newslist.do"><span>TODAY NEWS📈</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','verification')" href="pdslist.do"><span>자료실</span></a></li>
 <li>
 <a onclick="pushDataLayer('ga_lead','main-gnb','menu','acceptance')" href="/zf_user/jobs/theme/it-headhunting">
 <span class="passkk0">50만원 받고</span>
@@ -536,9 +536,9 @@ margin-right : 450px;
 <div class="navi_depth1 secondary">
 <span class="marker"><svg aria-hidden="true"><use xlink:href="#svg_gnb_more"></use></svg></span>
 <ul>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="Jobtalklist.do"><span>취업톡톡</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="/zf_user/white-paper/office"><span>콘텐츠</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="resumeMain.do?memberid=${login.memberid }"><span>이력서관리</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="Jobtalklist.do"><span>취업톡톡💬</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="FAQ.do"><span>FAQ</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents2')" href="notice.do"><span>공지사항</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','jumpit')" href="https://www.jumpit.co.kr" target="_blank"><span class="icon icon_jumpit">점핏</span></a></li>
 </ul>
 </div>
@@ -574,9 +574,9 @@ margin-right : 450px;
 
 <!-- 로그인 로그아웃 란 -->
 <c:choose>
-   <c:when test="${empty login}">
-      <a href="javascript:login()" class="btn_sign signin"><span class="txt">로그인</span></a>
-   </c:when>
+	<c:when test="${empty login}">
+		<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="javascript:login()" class="btn_sign signin"><span class="txt">로그인🔑</span></a>
+	</c:when>
 <c:otherwise>
 
 <c:choose>
@@ -646,14 +646,14 @@ margin-right : 450px;
 </ul>
 </div>
 <div class="depth_1">
-<span><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','talent_person')" href="/zf_user/member/suggest/status-list">인재검색</a></span>
+<span><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','talent_person')" href="/zf_user/member/suggest/status-list">TODAY NEWS📈</a></span>
 <ul class="depth_2">
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','talent_status-list')" href="/zf_user/member/suggest/status-list">제안받은 현황<span class="flag">개인</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','talent_talent-pool')" href="/zf_user/memcom/talent-pool/main">인재Pool 검색<span class="flag">기업</span></a></li>
 </ul>
 </div>
 <div class="depth_1">
-<span><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','verification')" href="/zf_user/memcom/preview/custom-guide">검증면접</a></span>
+<span><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','verification')" href="pdslist.do">자료실</a></span>
 <ul class="depth_2">
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','verification_preview')" href="/zf_user/memcom/preview/guide?page_type=manual">preview 소개</a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','verification_iam-ground')" href="/zf_user/event/iam-ground-app/app-intro">아이엠그라운드 소개</a></li>
@@ -668,7 +668,7 @@ margin-right : 450px;
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','resume-manage')" href="/zf_user/resume/resume-manage">이력서 관리<span class="flag">개인</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit-manage')" href="/zf_user/company/recruit-manage">공고·지원자 관리<span class="flag">기업</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','qst-and-ans')" href="/zf_user/company-review-qst-and-ans">취준진담</a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','contents')" href="/zf_user/white-paper/office">콘텐츠<span class="flag">글자수세기</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','contents')" href="/zf_user/white-paper/office">FAQ<span class="flag">글자수세기</span></a></li>
 </ul>
 <ul class="depth_2">
 <li><a target="_blank" onclick="pushDataLayer('ga_lead','main-gnb','total_menu','jumpit')" href="https://www.jumpit.co.kr" class="icon icon_jumpit">점핏<svg aria-hidden="true"><use xlink:href="#svg_gnb_window_new"></use></svg></a></li>
@@ -691,14 +691,13 @@ margin-right : 450px;
 
 
  <!-- 메인 검색 창 -->
-<img class="fit-picture" src="ma2.jpg" style="
-    width: 400px;">
+
 
  <!-- 검색html -->
 
 
  <section style="padding: 0">
- <form id="search_form_recruit" onsubmit="event.preventDefault()" style="height: 400px; background-image: url('개발자23.gif');">
+ <form id="search_form_recruit" onsubmit="event.preventDefault()" style="height: 400px; background-image: url('개발자23.gif'); margin-top: 0px;"">
     <div class="main_search" style="top: 160px;">
         <div class="option option_keyword">
             <label for="ipt_keyword_recruit" class="placeholder" style="color: rgb(72, 118, 239);">일하라 주식회사</label>
@@ -2186,132 +2185,113 @@ margin-right : 450px;
 			</div>
 
 
-			<br> <br> <br>
+<div id="section_contents" class="cont_top">
+    <div class="inner">
+        <div class="lpop_wrap layer_upgrade" style="display: none;">
+            <div class="layer_head"><strong class="blind">브라우저 지원범위 안내</strong></div>
+            <div class="layer_cont">
+                <a class="desc_upgrade" target="_blank" title="업그레이드 새창알림">
+                    원활한 서비스 이용을 위해<br>
+                    <strong>최신 익스플로러 브라우저</strong>로<br>
+                    <strong>업그레이드</strong> 해주세요
+                </a>
+            </div>
+            <button type="button" class="btn_close"><span class="blind">닫기</span></button>
+        </div>
+        <div class="wrap_recomm loading" style="display : block">
+            <div class="wrap_bigbox person" style="
+    width: 400px;
+">
 
 
-			<div id="section_contents" class="cont_top">
-				<div class="inner">
-					<div class="lpop_wrap layer_upgrade" style="display: none;">
-						<div class="layer_head">
-							<strong class="blind">브라우저 지원범위 안내</strong>
-						</div>
-						<div class="layer_cont">
-							<a class="desc_upgrade" target="_blank" title="업그레이드 새창알림">
-								원활한 서비스 이용을 위해<br> <strong>최신 익스플로러 브라우저</strong>로<br>
-								<strong>업그레이드</strong> 해주세요
-							</a>
-						</div>
-						<button type="button" class="btn_close">
-							<span class="blind">닫기</span>
-						</button>
-					</div>
-					<div class="wrap_recomm loading" style="display: block">
-						<div class="wrap_bigbox person" style="width: 400px;">
 
-							<div id="jquery-accordion-menu" class="jquery-accordion-menu">
-								<ul>
-									<li class="active"><a href="#" style="font-size: 12pt;"><i
-											class="fa fa-home"></i>NAVER</a><span
-										class="jquery-accordion-menu-label">1 </span>
-									<li><a href="#" style="font-size: 12pt;"><i
-											class="fa fa-glass"></i>KAKAO</a><span
-										class="jquery-accordion-menu-label">2 </span></li>
-									</li>
-									<li><a href="#" style="font-size: 12pt;"><i
-											class="fa fa-glass"></i>KAKAO</a><span
-										class="jquery-accordion-menu-label">2 </span></li>
-									<li><a href="#" style="font-size: 12pt;"><i
-											class="fa fa-file-image-o"></i>LINE </a><span
-										class="jquery-accordion-menu-label">3 </span></li>
-									<li><a href="#" style="font-size: 12pt;"><i
-											class="fa fa-cog"></i>COUPANG </a><span
-										class="jquery-accordion-menu-label">4 </span></li>
-									<li><a href="#" style="font-size: 12pt;"><i
-											class="fa fa-cog"></i>배달의 민족 </a><span
-										class="jquery-accordion-menu-label">5 </span></li>
-								</ul>
+            <div id="jquery-accordion-menu" class="jquery-accordion-menu">
 
-							</div>
-						</div>
-						<div class="recomm_content"
-							style="padding-top: 0px; padding-left: 0px; width: 400px;">
+					<ul>
+						<li class="active"><a href="#" style="font-size: 12pt;"><i class="fa fa-home"></i>NAVER</a><span class="jquery-accordion-menu-label">1 </span><li><a href="#" style="font-size: 12pt;"><i class="fa fa-glass"></i>KAKAO</a><span class="jquery-accordion-menu-label">2 </span></li></li>
+						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-glass"></i>KAKAO</a><span class="jquery-accordion-menu-label">2 </span></li>
+						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-file-image-o"></i>LINE </a><span class="jquery-accordion-menu-label">3 </span></li>
+						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-cog"></i>COUPANG </a><span class="jquery-accordion-menu-label">4 </span></li>
+						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-cog"></i>배달의 민족 </a><span class="jquery-accordion-menu-label">5 </span></li>
 
-							<div id="carouselSample" class="carousel slide"
-								data-ride="carousel">
 
-								<!-- indicator(이동할 수 있는 바) -->
-								<ol class="carousel-indicators">
-									<li data-target="#carouselSample" data-slide-to="0" class=""></li>
-									<li data-target="#carouselSample" data-slide-to="1" class=""></li>
-									<li data-target="#carouselSample" data-slide-to="2"
-										class="active"></li>
-								</ol>
 
-								<div class="carousel-inner">
-									<!-- first slide -->
-									<div class="carousel-item">
-										<img alt="first" class="d-block w-100"
-											src="/sample10/image/bm.png" height="300px" width="200px">
 
-										<!-- caption -->
-										<div class="carousel-caption d-none d-md-block"></div>
-									</div>
 
-									<!-- second slide -->
-									<div class="carousel-item active">
-										<img alt="second" class="d-block w-100"
-											src="/sample10/image/dg.png" height="300px" width="200px">
-										<!-- caption -->
-										<div class="carousel-caption d-none d-md-block"></div>
-									</div>
+					</ul>
 
-									<!-- third slide -->
-									<div class="carousel-item active">
-										<img alt="third" class="d-block w-100"
-											src="/sample10/image/cp.PNG" height="300px" width="200px">
+				</div></div>
+            <div class="recomm_content" style="
+    padding-top: 0px;
+    padding-left: 0px;
+    width: 400px;
+">
 
-										<!-- caption -->
-										<div class="carousel-caption d-none d-md-block"></div>
-									</div>
+            <div id="carouselSample" class="carousel slide" data-ride="carousel">
 
-									<!-- controller 부분 -->
-									<a class="carousel-control-prev" href="#carouselSample"
-										role="button" data-slide="prev"> <span
-										class="carousel-control-prev-icon" aria-hidden="true"></span>
-										<span class="sr-only">앞으로</span>
-									</a> <a class="carousel-control-next" href="#carouselSample"
-										role="button" data-slide="next"> <span
-										class="carousel-control-next-icon" aria-hidden="true"></span>
-										<span class="sr-only">다음으로</span>
-									</a>
+			    <!-- indicator(이동할 수 있는 바) -->
+			    <ol class="carousel-indicators">
+			        <li data-target="#carouselSample" data-slide-to="0" class="">
+			        </li><li data-target="#carouselSample" data-slide-to="1" class="">
+			        </li></ol>
 
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="wrap_recomm company" style="display: none">
-						<div class="wrap_bigbox company">
-							<div class="bigbox company"
-								style="width: 1595px; transform: translateX(-957px); transition: all 300ms ease 0s;">
-								<div class="slide type_hr">
-									<img
-										src="https://www.saraminbanner.co.kr/new/main/2020/08/qevl7q_6psk-1meg1l1_banner3.png">
-									<a
-										href="http://www.saramin.co.kr/zf_user/memcom/preview/guide?page_type=verify&amp;inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=top_box_type_banner_company&amp;inner_term=preview"
-										class="go_link" target=""></a>
-								</div>
-								<div class="slide type_rec_write">
-									<svg xmlns="http://www.w3.org/2000/svg" width="44" height="45"
-										viewBox="0 0 44 45" class="ic_write">
-                            <g fill="none" fill-rule="evenodd"
-											opacity=".7">
-                                <path fill="#FFF" fill-rule="nonzero"
-											d="M16 5v2H2v35h35V26h2v18H0V5h16z"
-											transform="translate(0 1)"></path>
-                                <path stroke="#FFF"
-											stroke-linecap="round" stroke-width="2"
-											d="M38.828 1.828l2.344 2.344c1.562 1.562 1.562 4.094 0 5.656L18 33h-8v-8L33.172 1.828c1.562-1.562 4.094-1.562 5.656 0zM30 5l8 8"
-											transform="translate(0 1)"></path>
+			    <div class="carousel-inner">
+			        <!-- first slide -->
+			        <div class="carousel-item">
+			            <img alt="first" class="d-block w-100" src="/sample10/image/bm.png" height="300px" width="200px">
+
+			            <!-- caption -->
+			            <div class="carousel-caption d-none d-md-block">
+
+			            </div>
+			        </div>
+
+			        <!-- second slide -->
+			        <div class="carousel-item active">
+			            <img alt="second" class="d-block w-100" src="/sample10/image/dg.png" height="300px" width="200px">
+
+			            <!-- caption -->
+			            <div class="carousel-caption d-none d-md-block">
+
+			            </div>
+			        </div>
+
+			        <!-- third slide -->
+			        <div class="carousel-item active">
+
+
+			            <!-- caption -->
+			            <div class="carousel-caption d-none d-md-block">
+
+			            </div>
+			        </div>
+
+			        <!-- controller 부분 -->
+			        <a class="carousel-control-prev" href="#carouselSample" role="button" data-slide="prev">
+			            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			            <span class="sr-only">앞으로</span>
+			          </a>
+
+			        <a class="carousel-control-next" href="#carouselSample" role="button" data-slide="next">
+			            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			            <span class="sr-only">다음으로</span>
+			          </a>
+
+			    </div>
+			</div></div>
+        </div>
+        <div class="wrap_recomm company" style="display : none">
+            <div class="wrap_bigbox company">
+                <div class="bigbox company" style="width: 1595px; transform: translateX(-957px); transition: all 300ms ease 0s;">
+                    <div class="slide type_hr">
+                        <img src="https://www.saraminbanner.co.kr/new/main/2020/08/qevl7q_6psk-1meg1l1_banner3.png">
+                        <a href="http://www.saramin.co.kr/zf_user/memcom/preview/guide?page_type=verify&amp;inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=top_box_type_banner_company&amp;inner_term=preview" class="go_link" target=""></a>
+                    </div>
+                    <div class="slide type_rec_write">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="44" height="45" viewBox="0 0 44 45" class="ic_write">
+                            <g fill="none" fill-rule="evenodd" opacity=".7">
+                                <path fill="#FFF" fill-rule="nonzero" d="M16 5v2H2v35h35V26h2v18H0V5h16z" transform="translate(0 1)"></path>
+                                <path stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M38.828 1.828l2.344 2.344c1.562 1.562 1.562 4.094 0 5.656L18 33h-8v-8L33.172 1.828c1.562-1.562 4.094-1.562 5.656 0zM30 5l8 8" transform="translate(0 1)"></path>
                             </g>
                         </svg>
 									<p class="desc1">
@@ -2421,125 +2401,118 @@ margin-right : 450px;
                                     </g>
                                 </g>
                             </svg>
-									</button>
-								</div>
-							</div>
-						</div>
-						<div class="recomm_content">
-							<div class="wrap_box_news company">
-								<div class="box_news company">
-									<div class="slide type2">
-										<div class="item">
-											<strong class="title">HR매거진</strong>
-											<p class="desc">논란을 줄이는 회사 문화 구축 방법</p>
-											<p class="desc2">바로가기</p>
-											<span class="wrap_thumb"> <img
-												src="//www.saraminimage.co.kr/sri/main/thumb/hr_1_l.jpg"
-												alt="HR매거진 이미지" class="thumb">
-											</span> <a
-												href="/zf_user/hr-magazine/view?hr_idx=810&amp;magazine_join_type=subject"
-												class="link"
-												onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'hr-magazine', ''], ['ga_lead', 'main', 'CONTENTS', 'hr-magazine'])"></a>
-										</div>
-										<div class="item">
-											<strong class="title">인재POOL</strong>
-											<p class="desc">딱 맞는 인재추천부터 입사제의를 제한없이 편리하게 이용해보세요.</p>
-											<p class="desc2">빠르게 인재구하기</p>
-											<span class="wrap_thumb"> <img
-												src="//www.saraminimage.co.kr/sri/main/thumb/rec_pool_1_l.jpg"
-												alt="인재POOL 이미지" class="thumb">
-											</span> <a href="/zf_user/memcom/talent-pool/main#/recommend"
-												class="link"
-												onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'talent-manage', ''], ['ga_lead', 'main', 'CONTENTS', 'talent-manage'])"></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="wrap_my_area" style="width: 401px;">
-						<div class="row" style="width: 450px;">
-							<div>
-								<div class="panel panel-primary">
-									<div class="panel-heading" style="width: 400px;">
-										<h3 class="panel-title">
-											<span class="glyphicon glyphicon-bookmark"></span> Quick
-											Shortcuts
-										</h3>
-									</div>
-									<div class="panel-body">
-										<div class="row" style="width: 400px;">
-											<div>
-												<a href="#" class="btn btn-light btn-lg" role="button"><span
-													class="glyphicon glyphicon-bookmark"></span> <br>10대기업</a>
-												<a href="calendarlist.do" class="btn btn-light btn-lg"
-													role="button"><span
-													class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
-												<a href="#" class="btn btn-light btn-lg" role="button"><span
-													class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
-											</div>
-											<div>
-												<a href="Jobtalklist.do" class="btn btn-light btn-lg"
-													role="button"><span class="glyphicon glyphicon-comment"></span>
-													<br>취업톡톡</a> <a href="#" class="btn btn-light btn-lg"
-													role="button"><span class="glyphicon glyphicon-file"></span>
-													<br>자료실</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="recomm_content">
+                <div class="wrap_box_news company">
+                    <div class="box_news company">
+                        <div class="slide type2">
+                            <div class="item">
+                                <strong class="title">HR매거진</strong>
+                                <p class="desc">논란을 줄이는 회사 문화 구축 방법</p>
+                                <p class="desc2">바로가기</p>
+                                <span class="wrap_thumb">
+                                    <img src="//www.saraminimage.co.kr/sri/main/thumb/hr_1_l.jpg" alt="HR매거진 이미지" class="thumb">
+                                </span>
+                                <a href="/zf_user/hr-magazine/view?hr_idx=810&amp;magazine_join_type=subject" class="link" onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'hr-magazine', ''], ['ga_lead', 'main', 'CONTENTS', 'hr-magazine'])"></a>
+                            </div>
+                            <div class="item">
+                                <strong class="title">인재POOL</strong>
+                                <p class="desc">딱 맞는 인재추천부터 입사제의를 제한없이 편리하게 이용해보세요.</p>
+                                <p class="desc2">빠르게 인재구하기</p>
+                                <span class="wrap_thumb">
+                                    <img src="//www.saraminimage.co.kr/sri/main/thumb/rec_pool_1_l.jpg" alt="인재POOL 이미지" class="thumb">
+                                </span>
+                                <a href="/zf_user/memcom/talent-pool/main#/recommend" class="link" onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'talent-manage', ''], ['ga_lead', 'main', 'CONTENTS', 'talent-manage'])"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_my_area" style="
+    width: 401px;
+">
 
-												<c:if test="${login.auth==1|| login.auth == 3 }">
-													<a href="mypage.do" class="btn btn-light btn-lg"
-														role="button"><span class="glyphicon glyphicon-user"></span>
-														<br>마이페이지</a>
-												</c:if>
-											</div>
-											<div>
-												<a href="#" class="btn btn-light btn-lg" role="button"><span
-													class="glyphicon glyphicon-user"></span> <br>이력서관리</a> <a
-													href="#" class="btn btn-light btn-lg" role="button"><span
-													class="glyphicon glyphicon-picture"></span> <br>취업뉴스</a> <a
-													href="#" class="btn btn-light btn-lg" role="button"><span
-													class="glyphicon glyphicon-tag"></span> <br>공지사항</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="section_contents" class="cont_top">
-					<div class="inner">
-						<div class="lpop_wrap layer_upgrade" style="display: none;">
-							<div class="layer_head">
-								<strong class="blind">브라우저 지원범위 안내</strong>
-							</div>
-							<div class="layer_cont">
-								<a class="desc_upgrade" target="_blank" title="업그레이드 새창알림">
-									원활한 서비스 이용을 위해<br> <strong>최신 익스플로러 브라우저</strong>로<br>
-									<strong>업그레이드</strong> 해주세요
-								</a>
-							</div>
-							<button type="button" class="btn_close">
-								<span class="blind">닫기</span>
-							</button>
-						</div>
-						<div class="wrap_recomm loading" style="display: block">
-							<div class="wrap_bigbox person" style="width: 400px;">
-								<button class="close"
-									style="position: absolute; top: 0; right: 0; background-color: white; border: 0; padding: 22px; z-index: 10;">
-									<span class="bar"></span>
-								</button>
-								<div class="outside">
-									<div class="inside">
-										<ul class="menu">
-											<li><span class="fa fa-dashboard"></span>일하라 소개</li>
-											<li><span class="fa fa-shopping-basket"></span>이용약관</li>
-											<li><span class="fa fa-shopping-cart"></span>개인정보처리방침</li>
-											<li><span class="fa fa-info-circle"></span>이메일주소무단수집거부</li>
-											<li><span class="fa fa-credit-card"></span>웹접근성정책</li>
-											<li><span class="fa fa-leaf"></span>배너가져가기</li>
-										</ul>
-									</div>
-								</div>
+
+
+
+
+        <div class="row" style="width: 450px;">
+		        <div>
+		            <div class="panel panel-primary">
+		                <div class="panel-heading" style="width: 400px;">
+		                    <h3 class="panel-title">
+		                        <span class="glyphicon glyphicon-bookmark"></span> Quick Shortcuts</h3>
+		                </div>
+		                <div class="panel-body">
+		                    <div class="row" style="
+    width: 400px;
+">
+		                        <div>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br>10대기업</a>
+		                          <a href="calendarlist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
+		                        </div>
+		                        <div>
+		                         <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡💬</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br>자료실</a>
+		                          <a href="mypage.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>마이페이지</a>
+		                        </div>
+		                        <div>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>이력서관리</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br>취업뉴스</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br>공지사항</a>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div></div>
+
+
+    </div>
+<div id="section_contents" class="cont_top">
+    <div class="inner">
+        <div class="lpop_wrap layer_upgrade" style="display: none;">
+            <div class="layer_head"><strong class="blind">브라우저 지원범위 안내</strong></div>
+            <div class="layer_cont">
+                <a class="desc_upgrade" target="_blank" title="업그레이드 새창알림">
+                    원활한 서비스 이용을 위해<br>
+                    <strong>최신 익스플로러 브라우저</strong>로<br>
+                    <strong>업그레이드</strong> 해주세요
+                </a>
+            </div>
+            <button type="button" class="btn_close"><span class="blind">닫기</span></button>
+        </div>
+        <div class="wrap_recomm loading" style="display : block">
+            <div class="wrap_bigbox person" style="
+    width: 400px;
+">
+
+
+
+<button class="close" style="position: absolute;
+top: 0;
+right: 0;
+background-color: white;
+border: 0;
+padding: 22px;
+z-index: 10;"><span class="bar"></span></button>
+<div class="outside">
+  <div class="inside">
+    <ul class="menu">
+      <li><span class="fa fa-dashboard"></span>일하라 소개</li>
+      <li><span class="fa fa-shopping-basket"></span>이용약관</li>
+      <li><span class="fa fa-shopping-cart"></span>개인정보처리방침</li>
+      <li><span class="fa fa-info-circle"></span>이메일주소무단수집거부</li>
+      <li><span class="fa fa-credit-card"></span>웹접근성정책</li>
+      <li><span class="fa fa-leaf"></span>배너가져가기</li>
+    </ul>
+  </div>
+</div>
 
 <script type="text/javascript">
 	$(".close").click(function(){
@@ -2688,92 +2661,96 @@ margin-right : 450px;
                                     </g>
                                 </g>
                             </svg>
-										</button>
-									</div>
-								</div>
-							</div>
-							<div class="recomm_content">
-								<div class="wrap_box_news company">
-									<div class="box_news company">
-										<div class="slide type2">
-											<div class="item">
-												<strong class="title">HR매거진</strong>
-												<p class="desc">논란을 줄이는 회사 문화 구축 방법</p>
-												<p class="desc2">바로가기</p>
-												<span class="wrap_thumb"> <img
-													src="//www.saraminimage.co.kr/sri/main/thumb/hr_1_l.jpg"
-													alt="HR매거진 이미지" class="thumb">
-												</span> <a
-													href="/zf_user/hr-magazine/view?hr_idx=810&amp;magazine_join_type=subject"
-													class="link"
-													onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'hr-magazine', ''], ['ga_lead', 'main', 'CONTENTS', 'hr-magazine'])"></a>
-											</div>
-											<div class="item">
-												<strong class="title">인재POOL</strong>
-												<p class="desc">딱 맞는 인재추천부터 입사제의를 제한없이 편리하게 이용해보세요.</p>
-												<p class="desc2">빠르게 인재구하기</p>
-												<span class="wrap_thumb"> <img
-													src="//www.saraminimage.co.kr/sri/main/thumb/rec_pool_1_l.jpg"
-													alt="인재POOL 이미지" class="thumb">
-												</span> <a href="/zf_user/memcom/talent-pool/main#/recommend"
-													class="link"
-													onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'talent-manage', ''], ['ga_lead', 'main', 'CONTENTS', 'talent-manage'])"></a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="wrap_my_area" style="width: 401px;">
-							<div class="row" style="width: 450px;">
-								<div>
-									<div class="panel panel-primary">
-										<div class="panel-heading" style="width: 400px;">
-											<h3 class="panel-title">
-												<span class="glyphicon glyphicon-bookmark"></span> Quick
-												Shortcuts
-											</h3>
-										</div>
-										<div class="panel-body">
-											<div class="row" style="width: 400px;">
-												<div>
-													<a href="#" class="btn btn-light btn-lg" role="button"><span
-														class="glyphicon glyphicon-bookmark"></span> <br>10대기업</a>
-													<a href="calendarlist.do" class="btn btn-light btn-lg"
-														role="button"><span
-														class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
-													<a href="#" class="btn btn-light btn-lg" role="button"><span
-														class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
-												</div>
-												<div>
-													<a href="Jobtalklist.do" class="btn btn-light btn-lg"
-														role="button"><span
-														class="glyphicon glyphicon-comment"></span> <br>취업톡톡</a>
-													<a href="#" class="btn btn-light btn-lg" role="button"><span
-														class="glyphicon glyphicon-file"></span> <br>자료실</a> <a
-														href="mypage.do" class="btn btn-light btn-lg"
-														role="button"><span class="glyphicon glyphicon-user"></span>
-														<br>마이페이지</a>
-												</div>
-												<div>
-													<a href="#" class="btn btn-light btn-lg" role="button"><span
-														class="glyphicon glyphicon-user"></span> <br>이력서관리</a> <a
-														href="#" class="btn btn-light btn-lg" role="button"><span
-														class="glyphicon glyphicon-picture"></span> <br>취업뉴스</a>
-													<a href="#" class="btn btn-light btn-lg" role="button"><span
-														class="glyphicon glyphicon-tag"></span> <br>공지사항</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</main>
-	</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="recomm_content">
+                <div class="wrap_box_news company">
+                    <div class="box_news company">
+                        <div class="slide type2">
+                            <div class="item">
+                                <strong class="title">HR매거진</strong>
+                                <p class="desc">논란을 줄이는 회사 문화 구축 방법</p>
+                                <p class="desc2">바로가기</p>
+                                <span class="wrap_thumb">
+                                    <img src="//www.saraminimage.co.kr/sri/main/thumb/hr_1_l.jpg" alt="HR매거진 이미지" class="thumb">
+                                </span>
+                                <a href="/zf_user/hr-magazine/view?hr_idx=810&amp;magazine_join_type=subject" class="link" onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'hr-magazine', ''], ['ga_lead', 'main', 'CONTENTS', 'hr-magazine'])"></a>
+                            </div>
+                            <div class="item">
+                                <strong class="title">인재POOL</strong>
+                                <p class="desc">딱 맞는 인재추천부터 입사제의를 제한없이 편리하게 이용해보세요.</p>
+                                <p class="desc2">빠르게 인재구하기</p>
+                                <span class="wrap_thumb">
+                                    <img src="//www.saraminimage.co.kr/sri/main/thumb/rec_pool_1_l.jpg" alt="인재POOL 이미지" class="thumb">
+                                </span>
+                                <a href="/zf_user/memcom/talent-pool/main#/recommend" class="link" onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'talent-manage', ''], ['ga_lead', 'main', 'CONTENTS', 'talent-manage'])"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_my_area" style="
+    width: 401px;
+">
+
+
+
+
+
+        <div class="row" style="width: 450px;">
+		        <div>
+		            <div class="panel panel-primary">
+		                <div class="panel-heading" style="width: 400px;">
+		                    <h3 class="panel-title">
+		                        <span class="glyphicon glyphicon-bookmark"></span> Quick Shortcuts</h3>
+		                </div>
+		                <div class="panel-body">
+		                    <div class="row" style="
+    width: 400px;
+">
+		                        <div>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br>10대기업</a>
+		                          <a href="calendarlist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
+		                        </div>
+		                        <div>
+		                         <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡💬</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br>자료실</a>
+		                          <a href="mypage.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>마이페이지</a>
+		                        </div>
+		                        <div>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>이력서관리</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br>취업뉴스</a>
+		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br>공지사항</a>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div></div>
+
+
+    </div>
+</div></div>
+
+
+		        </main></div>
+
+
+         <!-- 구분선 -->
+
+
+
+
+
+
+
+
+     	<!-- column2 end -->
+
 
 
 	<!-- 구분선 -->
