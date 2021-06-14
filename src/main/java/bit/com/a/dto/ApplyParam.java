@@ -13,6 +13,8 @@ public class ApplyParam {
 	private String detailaddress;
 	private String phonenum;
 	private String email;
+	private int companyread;
+	
 	public int getApplyseq() {
 		return applyseq;
 	}
@@ -85,11 +87,22 @@ public class ApplyParam {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
+	public int getCompanyread() {
+		return companyread;
+	}
+	public void setCompanyread(int companyread) {
+		this.companyread = companyread;
+	}
 	public ApplyParam() {
 		super();
 	}
+	
+	
 	public ApplyParam(int applyseq, int jobseq, String memberid, int resumeseq, String applydate, String resumetitle,
-			String name, String birth, String address, String detailaddress, String phonenum, String email) {
+			String name, String birth, String address, String detailaddress, String phonenum, String email,
+			int companyread) {
 		super();
 		this.applyseq = applyseq;
 		this.jobseq = jobseq;
@@ -103,14 +116,17 @@ public class ApplyParam {
 		this.detailaddress = detailaddress;
 		this.phonenum = phonenum;
 		this.email = email;
+		this.companyread = companyread;
 	}
 	@Override
 	public String toString() {
 		return "ApplyParam [applyseq=" + applyseq + ", jobseq=" + jobseq + ", memberid=" + memberid + ", resumeseq="
 				+ resumeseq + ", applydate=" + applydate + ", resumetitle=" + resumetitle + ", name=" + name
 				+ ", birth=" + birth + ", address=" + address + ", detailaddress=" + detailaddress + ", phonenum="
-				+ phonenum + ", email=" + email + "]";
+				+ phonenum + ", email=" + email + ", companyread=" + companyread + "]";
 	}
+	
+	
 	
 	
 	

@@ -39,7 +39,7 @@ public class RecruitController {
 
    @Autowired
    MypageService Myservice;
-   
+
    @Autowired
    ResumeService resumeservice;
 
@@ -460,13 +460,18 @@ public class RecruitController {
    @RequestMapping(value = "getDetailCompany.do", method = RequestMethod.GET)
    public String getDetailCompany(int jobseq, Model model, String memberid) {
       model.addAttribute("doc_title", "채용공고");
-      
+
       MemberDto mem = Myservice.getMypage(memberid);
 
 
+
       CompanyDto com = service.getCompany(jobseq);
-      //model.addAttribute("com", com);
-     // System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+com.toString());
+
+      if(com !=null) {
+      System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+com.toString());
+      }
+      model.addAttribute("com", com);
+
       //디테일 데이터 받아오기
       System.out.println("seq:"+jobseq);
       RecruitDto dto = service.getRecruitListOne(jobseq);
@@ -507,7 +512,7 @@ public class RecruitController {
 
       model.addAttribute("dto", dto);
       model.addAttribute("resumelist", resumelist);
-      model.addAttribute("mem", mem);
+		/* model.addAttribute("mem", mem); */
 
       return "recruit/recruitDetail";
    }

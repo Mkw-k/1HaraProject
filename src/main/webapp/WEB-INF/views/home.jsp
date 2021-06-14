@@ -749,8 +749,8 @@ margin-right : 450px;
 		<!-- 메인검색창 끝 -->
 
 
-		
-		
+
+
 		<!-- =========Login 클릭 시 Modal =========== -->
       <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" class="modal modal-center fade ">
         <div role="document" class="modal-dialog" style="margin: 0;">
@@ -763,75 +763,75 @@ margin-right : 450px;
             <!-- memberController - loginAf.do로 이동 -->
            <!--    <form action="loginAf.do" method="post" id="_frmFrom"> -->
              <!--     <input type="hidden" name="param" value="loginAf.do"> -->
-             
+
           <ul class="nav nav-pills">
             <li class="nav-item"> <a href="" class="nav-link active show" data-toggle="pill" data-target="#tabone">개인회원</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">기업회원</a> </li>
-            
+
           </ul>
           <div class="tab-content mt-2">
             <div class="tab-pane fade active show" id="tabone" role="tabpanel">
-              
-                           
+
+
               <form id="login_frm" name="login_frm" method="post" action="loginAf.do">
-            		<input type="hidden" name="page_url" value="">
-        			<input type="hidden" name="FrameKey" value="">
-        			<input type="hidden" name="login_tab" value="p" id="login_tab">
-        			
-              		<div class="form-group">
-              	    	<input id="memberid" type="text" placeholder="ID" name="memberid" class="form-control">
-              	  	</div>
-              	  	<div class="form-group">
-              	  	  <input id="pwd" type="password" name="pwd" placeholder="password" class="form-control">
-              	  	</div>
-              	  	<p class="text-center">
-              	  	  <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
-             	  	</p>
+                  <input type="hidden" name="page_url" value="">
+                 <input type="hidden" name="FrameKey" value="">
+                 <input type="hidden" name="login_tab" value="p" id="login_tab">
+
+                    <div class="form-group">
+                        <input id="memberid" type="text" placeholder="ID" name="memberid" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input id="pwd" type="password" name="pwd" placeholder="password" class="form-control">
+                      </div>
+                      <p class="text-center">
+                        <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
+                     </p>
               </form>
-            	  <a href="javascript:kakaoLogin()">
-					<img alt="" src="https://img.eduwill.net/Img2/Common/Join/new/btn-kakao-large.png">
-				  </a>
+                 <a href="javascript:kakaoLogin()">
+               <img alt="" src="https://img.eduwill.net/Img2/Common/Join/new/btn-kakao-large.png">
+              </a>
               <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
               <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
-              
-              
-              
+
+
+
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
-              
-                           
+
+
               <form id="login_frm" name="login_frm" method="post" action="businessloginAf.do">
-            		<input type="hidden" name="page_url" value="">
-        			<input type="hidden" name="FrameKey" value="">
-        			<input type="hidden" name="login_tab" value="p" id="login_tab">
-        		
-              		<div class="form-group">
-              	    	<input id="memberid" type="text" placeholder="ID" name="memberid" class="form-control">
-              	  	</div>
-              	  	<div class="form-group">
-              	  	  <input id="pwd" type="password" name="pwd" placeholder="password" class="form-control">
-              	  	</div>
-              	  	<p class="text-center">
-              	  	  <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
-             	  	</p>
+                  <input type="hidden" name="page_url" value="">
+                 <input type="hidden" name="FrameKey" value="">
+                 <input type="hidden" name="login_tab" value="p" id="login_tab">
+
+                    <div class="form-group">
+                        <input id="memberid" type="text" placeholder="ID" name="memberid" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input id="pwd" type="password" name="pwd" placeholder="password" class="form-control">
+                      </div>
+                      <p class="text-center">
+                        <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
+                     </p>
               </form>
-            	 
+
               <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
               <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
-              
+
             </div>
-           
+
           </div>
-             
+
             </div>
           </div>
         </div>
       </div>
 <!-- =======Login 클릭 시 Modal END =========-->
-		
-		
-		
-		
+
+
+
+
 
 		<!-- 본문 -->
 		<main>
@@ -4904,15 +4904,15 @@ $j('.wrap_member_info').hide();
 <!-- 자바스크립트 key를 입력하여 초기화해줌 -->
 Kakao.init('685fcbb766340d7c8812f4e0a29a6661');
 
-	
+
 function kakaoLogin() {
 	//alert('카카오로그인실행');
     Kakao.Auth.login({
-      scope:'profile, account_email, birthday',    
+      scope:'profile, account_email, birthday',
       success: function(authObj) {
          //alert('success');
          console.log(authObj);
-         
+
          Kakao.API.request({
             url: '/v2/user/me',
             success: res => {
@@ -4921,7 +4921,7 @@ function kakaoLogin() {
                let name = kakao_account.profile.nickname;
                let birth = kakao_account.birthday;
                let email = kakao_account.email
-               
+
                $.ajax({
            		type:"post",
            		url:"kakalogAf.do",

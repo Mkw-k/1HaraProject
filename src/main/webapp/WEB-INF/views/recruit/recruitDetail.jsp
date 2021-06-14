@@ -65,14 +65,15 @@ if(logincheck != null) {
 
   <!-- <link rel="stylesheet" href="static/csss/bootstrap.css" media="all"> -->
 
-  <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+ <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
   <!-- 카카오맵스 -->
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <!-- 카카오맵스 -->
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=685fcbb766340d7c8812f4e0a29a6661&libraries=services"></script>
 
-
-
+<!-- 테이블 -->
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
 
 <style type="text/css">
 .star-on {
@@ -104,34 +105,69 @@ if(logincheck != null) {
   text-align: left;
   vertical-align: middle;
 }
+
+p{
+ font-weight: bold;
+}
+
+.companydetail{
+display: flex;
+}
+
+.jobtitle{
+font-weight: bold;
+}
+
+
+.titles{
+margin-left: 370px;
+font-weight: bold;
+
+}
+
+.table .thead-dark th {
+    color: #fff;
+    background-color: #2186eb;
+    border-color: #eee;
+}
+
+
 </style>
+
+
 
 <body>
 
 
 <c:import url="header.jsp" charEncoding="utf-8"/>
 
- <div class="py-0 pt-3">
+ <div class="py-0 pt-3" style="background-color: #2186eb; color: white; height: 174px;">
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
-          <h3 class="">${dto.companyname}&nbsp; &nbsp;&nbsp;
+        <div class="col-md-10">
+	        <div>
+	          <p class="" style="color: #eee;">${dto.companyname}&nbsp; &nbsp;&nbsp;</p>
+			</div>
 
-          		<c:choose>
-          		<c:when test="${dto.favoriteCom >0 }">
-          					<a style="color:red" class="btn btn-secondary red" href="javascript:dropFavoriteCom(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
-          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
-          		</c:when>
-          		<c:otherwise>
-          					<a class="btn btn-secondary red" href="javascript:comFavorite(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
-          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
-          		</c:otherwise>
-          	</c:choose>
-			<br>
-          ${dto.jobTitle}
-         </h3>
+			<div>
+			  <h3 class="jobtitle">
+	          		<c:choose>
+	          		<c:when test="${dto.favoriteCom >0 }">
+	          					<a style="color:red" class="btn btn-secondary red" href="javascript:dropFavoriteCom(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
+	          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
+	          		</c:when>
+	          		<c:otherwise>
+	          					<a class="btn btn-secondary red" href="javascript:comFavorite(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
+	          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
+	          		</c:otherwise>
+	          	</c:choose>
+
+	          ${dto.jobTitle}
+	         </h3>
+	         </div>
+
         </div>
-        <div class="col-md-4 text-right" style="">
+        <div class="col-md-2 text-right" style="margin-top: 45px;">
 
 		 	<c:if test="${login.auth==1 }">
          		 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
@@ -167,68 +203,41 @@ if(logincheck != null) {
 
 
 
+			<!-- 입사지원 모달 -->
+			 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document" style="width: -webkit-fill-available;">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel" style="width: 700px;">입사지원</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">×</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			       <table>
+			       <colgroup>
+			       <col width="400"><col width="50">
+						<tr><td colspan="2">이력서list</td></tr>
+					<%
+					for(int i=0; i<resumelist.size(); i++){
+					%>
 
+						<tr>
+						<td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a></td>
+						<td><button type="button" class="btn btn-primary" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>', '${login.phonenum}')">지원하기</button></td>
+						</tr>
+					<%
+					}
+					%>
 
-								 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								  <div class="modal-dialog" role="document" style="width: -webkit-fill-available;">
-								    <div class="modal-content">
-								      <div class="modal-header">
-								        <h5 class="modal-title" id="exampleModalLabel" style="width: 700px;">입사지원</h5>
-								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								          <span aria-hidden="true">×</span>
-								        </button>
-								      </div>
-								      <div class="modal-body">
-								       <table>
-								       <colgroup>
-								       <col width="400"><col width="50">
-											<tr><td colspan="2">이력서list</td></tr>
-										<%
-										for(int i=0; i<resumelist.size(); i++){
-										%>
-
-											<tr>
-											<td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a></td>
-											<td><button type="button" class="btn btn-primary" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>', '${login.phonenum}')">지원하기</button></td>
-											</tr>
-										<%
-										}
-										%>
-
-									</table>
-								      </div>
-								      <div class="modal-footer">
-								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								      </div>
-								    </div>
-								  </div>
-								</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+				</table>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 
 
       </div>
@@ -236,29 +245,29 @@ if(logincheck != null) {
 
       </div>
     </div>
-  	<div class="">
+  	<div class="" style="margin-top: 20px;">
     	<div class="container">
       		<div class="row">
         		<div class="col-md-6">
-        		  <li>경력&nbsp; &nbsp; &nbsp; &nbsp; <font>${dto.career_Desc }</font>
+        		  <li class="companydetail"><p>경력</p>&nbsp; &nbsp; &nbsp; &nbsp; <font>${dto.career_Desc }</font>
           		  </li>
-          		  <li>학력&nbsp; &nbsp; &nbsp; &nbsp; <font>${dto.eduname }</font>
+          		  <li class="companydetail"><p>학력</p>&nbsp; &nbsp; &nbsp; &nbsp; <font>${dto.eduname }</font>
          		  </li>
         		</div>
         		<div class="col-md-6">
-        		  <li>근무형태&nbsp; &nbsp; &nbsp;&nbsp;<font>${dto.emp_name }</font>
+        		  <li class="companydetail"><p>근무형태</p>&nbsp; &nbsp; &nbsp;&nbsp;<font>${dto.emp_name }</font>
         		  </li>
-          		  <li>직군&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          		  <li class="companydetail"><p>직군</p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
           			<span>
           				<c:forTokens var="item" items="${dto.busname}" delims=":">
 						    ${item}
 						</c:forTokens>
           			</span>
           		</li>
-          		<li>채용인원&nbsp; &nbsp; &nbsp; ${dto.jobVolumn }</li>
-          		<li>급여&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font>${dto.salary }&nbsp;만원</font>
+          		<li class="companydetail"><p>채용인원</p>&nbsp; &nbsp; &nbsp; ${dto.jobVolumn }</li>
+          		<li class="companydetail"><p>급여</p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font>${dto.salary }&nbsp;만원</font>
           		</li>
-          		<li>근무지역&nbsp; &nbsp; &nbsp;&nbsp;<font>${dto.area1Name }&nbsp;${dto.area2Name }</font>
+          		<li class="companydetail"><p>근무지역</p>&nbsp; &nbsp; &nbsp;&nbsp;<font>${dto.area1Name }&nbsp;${dto.area2Name }</font>
           			<input type="hidden" id="regdate" value="${dto.regdate }">
           			<input type="hidden" id="regdate" value="${dto.buscode }">
           		</li>
@@ -288,7 +297,9 @@ if(logincheck != null) {
       </div>
     </div>
   </div>
+
   <div class="py-5">
+  <h3 class="titles">접수기간 및 방법</h3>
     <div class="container">
       <div class="row">
         <div class="col-md-4 bg-light border-right" style="">
@@ -299,12 +310,18 @@ if(logincheck != null) {
             <dd>${dto.jobStart }</dd>
             <dt class="end">마감일</dt>
             <dd>${dto.jobEnd }</dd>
+             <dd><c:if test="${login.auth==1 }">
+         		 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
+			</c:if></dd>
           </dl>
         </div>
         <div class="col-md-8 bg-light" style="">
-          <div> 지원방법&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일하라 입사지원 </div>
+          <div class="companydetail"> <p>지원방법</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일하라 입사지원 </div>
+          <div class="companydetail"> <p>담당자명</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgName }</div>
+          <div class="companydetail"> <p>담당자연락처</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgPhone }</div>
+          <div class="companydetail"> <p>담당자이메일주소</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgEmail }</div>
           <div>
-            <a class="btn btn-secondary" href="#" id="_apply">입사지원</a>
+           <!--  <a class="btn btn-secondary" href="#" id="_apply">입사지원</a> -->
           </div>
         </div>
         <div class="text-primary" style=""> 마감일은 기업의 사정에 따라 조기 마감될수 있습니다.
@@ -314,6 +331,7 @@ if(logincheck != null) {
     </div>
   </div>
   <div class="py-5">
+  <h3 class="titles">지원현황</h3>
     <div class="container">
       <div class="row">
         <div class="col-md-12"> 지원현황(선택) </div>
@@ -321,6 +339,7 @@ if(logincheck != null) {
     </div>
   </div>
   <div class="py-5">
+  <h3 class="titles">근무지</h3>
     <div class="container">
       <div class="row">
         <div class="col-md-4 bg-light border-right" style="">
@@ -342,9 +361,9 @@ if(logincheck != null) {
           </dl>
         </div>
         <div class="col-md-8 bg-light" style="" id="_mgData">
-          <div> 담당자명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgName }</div>
-          <div> 담당자연락처&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgPhone }</div>
-          <div> 담당자이메일주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgEmail }</div>
+          <div  class="companydetail"><p>사업</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${com.content }</div>
+          <div  class="companydetail"><p>사원수</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${com.empcount }</div>
+          <div  class="companydetail"><p>평균연봉</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${com.salaryavg }</div>
         </div>
         <div class="text-primary" style=""> 담당자 정보 수정을 원하시면 버튼을 클릭하세요 &nbsp;&nbsp;&nbsp;
         	<a class="btn btn-secondary" href="javascript:mgUpdate()">담당자 정보수정</a>
@@ -366,11 +385,11 @@ if(logincheck != null) {
 				<tr>
 					<th>평균연봉</th><td>${com.salaryavg }</td>
 				</tr>
-			
-			
-			
+
+
+
 			</table>
-			
+
 		</div>
       </div>
     </div>
@@ -545,7 +564,7 @@ function jobApply(jobseq, memberid, resumeseq, phonenum) {
 	//alert(jobseq);
 	//alert(memberid);
 	//alert(resumeseq);
-	alert(phonenum);
+	/* alert(phonenum);
 
 	alert($('#test2').val());
 
@@ -571,7 +590,7 @@ function jobApply(jobseq, memberid, resumeseq, phonenum) {
         }
 
       });
-
+ */
 
     location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
 
@@ -803,7 +822,7 @@ function CountDownTimer(dt, id) {
        var dNow = now.getDate();
        var leftDay = dEnd - dNow;
 
-  
+
 
 
         if (distance < 0) {
@@ -854,7 +873,7 @@ CountDownTimer('${dto.jobEnd}', 'timeDeal'); // 2020-12-06 오후10시 50분까�
 
 
 
-	
+
 
 
 function charchen(endDate) {

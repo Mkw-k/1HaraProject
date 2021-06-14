@@ -18,7 +18,6 @@ public class MemberDto implements Serializable{
 
 
 
-	
    public MemberDto() {
       super();
       // TODO Auto-generated constructor stub

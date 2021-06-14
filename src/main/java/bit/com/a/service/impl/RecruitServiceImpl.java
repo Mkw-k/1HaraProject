@@ -185,7 +185,7 @@ public class RecruitServiceImpl implements RecruitService{
 	public boolean dropFavoriteJob2(RecruitParam param) {
 		return dao.dropFavoriteJob2(param);
 	}
-
+	
  	@Override
 	public CompanyDto getCompany(int jobseq) {
 
