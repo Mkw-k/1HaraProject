@@ -67,8 +67,9 @@ if(logincheck != null) {
 
   <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
   <!-- 카카오맵스 -->
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <!-- 카카오맵스 -->
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=685fcbb766340d7c8812f4e0a29a6661&libraries=services"></script>
-
 
 
 
@@ -126,7 +127,7 @@ if(logincheck != null) {
           					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
           		</c:otherwise>
           	</c:choose>
-
+			<br>
           ${dto.jobTitle}
          </h3>
         </div>
@@ -467,8 +468,7 @@ if(logincheck != null) {
   <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" style=""></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
-  <!-- 카카오맵스 -->
-  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 
 
 
@@ -772,7 +772,7 @@ function dropFavoriteJob(jobSeq, memberid) {
 	//alert("즐겨찾기해제");
 	//alert(jobSeq);
 	//alert(memberid);
-	if('${login.memberid}' eq 'null'){
+	if('${login.memberid}' == 'null'){
 		alert('로그인해주십시오');
 		location.href="login1.do";
 	}
@@ -803,10 +803,7 @@ function CountDownTimer(dt, id) {
        var dNow = now.getDate();
        var leftDay = dEnd - dNow;
 
-       if(distance == 86400000){
-    	   alert("이타이밍임 : " + distance);
-
-        }
+  
 
 
         if (distance < 0) {

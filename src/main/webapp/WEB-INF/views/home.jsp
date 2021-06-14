@@ -575,7 +575,7 @@ margin-right : 450px;
 <!-- 로그인 로그아웃 란 -->
 <c:choose>
    <c:when test="${empty login}">
-      <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="javascript:login()" class="btn_sign signin"><span class="txt">로그인</span></a>
+      <a href="javascript:login()" class="btn_sign signin"><span class="txt">로그인</span></a>
    </c:when>
 <c:otherwise>
 
@@ -749,62 +749,89 @@ margin-right : 450px;
 		<!-- 메인검색창 끝 -->
 
 
+		
+		
 		<!-- =========Login 클릭 시 Modal =========== -->
-		<div id="login-modal" tabindex="-1" role="dialog"
-			aria-labelledby="login-modalLabel" class="modal modal-center fade ">
-			<div role="document" class="modal-dialog" style="margin: 0;">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 id="login-modalLabel" class="modal-title">1hara Login</h4>
-						<button type="button" data-dismiss="modal" aria-label="Close"
-							class="close">
-							<span aria-hidden="true"></span>x
-						</button>
-					</div>
-					<div class="modal-body">
-
-						<!-- memberController - loginAf.do로 이동 -->
-						<!--    <form action="loginAf.do" method="post" id="_frmFrom"> -->
-						<!--     <input type="hidden" name="param" value="loginAf.do"> -->
-						<form id="login_frm" name="login_frm" method="post"
-							action="loginAf.do">
-							<input type="hidden" name="page_url" value=""> <input
-								type="hidden" name="FrameKey" value=""> <input
-								type="hidden" name="login_tab" value="p" id="login_tab">
-
-							<ul class="tab_member_type">
-								<li class="t_per t_on"><a href="##">개인회원</a></li>
-								<li class="t_com"><a href="##">기업회원</a></li>
-							</ul>
-							<div class="form-group">
-								<input id="memberid" type="text" placeholder="ID"
-									name="memberid" class="form-control">
-							</div>
-							<div class="form-group">
-								<input id="pwd" type="password" name="pwd"
-									placeholder="password" class="form-control">
-							</div>
-							<p class="text-center">
-								<button class="btn btn-template-outlined" id="_btnLogin">
-									<i class="fa fa-sign-in"></i> Login
-								</button>
-							</p>
-						</form>
-
-						<a href="javascript:kakaoLogin()"> <img alt=""
-							src="https://img.eduwill.net/Img2/Common/Join/new/btn-kakao-large.png">
-						</a>
-
-						<p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
-						<p class="text-center text-muted">
-							<a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- =======Login 클릭 시 Modal END =========-->
+      <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" class="modal modal-center fade ">
+        <div role="document" class="modal-dialog" style="margin: 0;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 id="login-modalLabel" class="modal-title">1hara Login</h4>
+              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"></span>x</button>
+            </div>
+            <div class="modal-body">
+            <!-- memberController - loginAf.do로 이동 -->
+           <!--    <form action="loginAf.do" method="post" id="_frmFrom"> -->
+             <!--     <input type="hidden" name="param" value="loginAf.do"> -->
+             
+          <ul class="nav nav-pills">
+            <li class="nav-item"> <a href="" class="nav-link active show" data-toggle="pill" data-target="#tabone">개인회원</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">기업회원</a> </li>
+            
+          </ul>
+          <div class="tab-content mt-2">
+            <div class="tab-pane fade active show" id="tabone" role="tabpanel">
+              
+                           
+              <form id="login_frm" name="login_frm" method="post" action="loginAf.do">
+            		<input type="hidden" name="page_url" value="">
+        			<input type="hidden" name="FrameKey" value="">
+        			<input type="hidden" name="login_tab" value="p" id="login_tab">
+        			
+              		<div class="form-group">
+              	    	<input id="memberid" type="text" placeholder="ID" name="memberid" class="form-control">
+              	  	</div>
+              	  	<div class="form-group">
+              	  	  <input id="pwd" type="password" name="pwd" placeholder="password" class="form-control">
+              	  	</div>
+              	  	<p class="text-center">
+              	  	  <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
+             	  	</p>
+              </form>
+            	  <a href="javascript:kakaoLogin()">
+					<img alt="" src="https://img.eduwill.net/Img2/Common/Join/new/btn-kakao-large.png">
+				  </a>
+              <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
+              <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
+              
+              
+              
+            </div>
+            <div class="tab-pane fade" id="tabtwo" role="tabpanel">
+              
+                           
+              <form id="login_frm" name="login_frm" method="post" action="businessloginAf.do">
+            		<input type="hidden" name="page_url" value="">
+        			<input type="hidden" name="FrameKey" value="">
+        			<input type="hidden" name="login_tab" value="p" id="login_tab">
+        		
+              		<div class="form-group">
+              	    	<input id="memberid" type="text" placeholder="ID" name="memberid" class="form-control">
+              	  	</div>
+              	  	<div class="form-group">
+              	  	  <input id="pwd" type="password" name="pwd" placeholder="password" class="form-control">
+              	  	</div>
+              	  	<p class="text-center">
+              	  	  <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
+             	  	</p>
+              </form>
+            	 
+              <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
+              <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
+              
+            </div>
+           
+          </div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- =======Login 클릭 시 Modal END =========-->
+		
+		
+		
+		
 
 		<!-- 본문 -->
 		<main>
@@ -4871,31 +4898,30 @@ $j('.wrap_member_info').hide();
   }
 </script>
 
-	<script type="text/javascript">
+<script>
 <!-- d59485d594506fb0185f34b5e6b7b114 -->
 
 <!-- 자바스크립트 key를 입력하여 초기화해줌 -->
-$(document).ready(function(){
-   Kakao.init('8a32aafcf70137a891ba6d0b02c48e38');
-   Kakao.isInitialized();
-});
+Kakao.init('685fcbb766340d7c8812f4e0a29a6661');
 
+	
 function kakaoLogin() {
-   window.Kakao.Auth.login({
-      scope:'profile, account_email, birthday',
+	//alert('카카오로그인실행');
+    Kakao.Auth.login({
+      scope:'profile, account_email, birthday',    
       success: function(authObj) {
-     //    alert('success');
+         //alert('success');
          console.log(authObj);
-         window.Kakao.API.request({
+         
+         Kakao.API.request({
             url: '/v2/user/me',
             success: res => {
                const kakao_account = res.kakao_account;
                console.log(kakao_account);
-
                let name = kakao_account.profile.nickname;
                let birth = kakao_account.birthday;
                let email = kakao_account.email
-
+               
                $.ajax({
            		type:"post",
            		url:"kakalogAf.do",
@@ -4906,17 +4932,16 @@ function kakaoLogin() {
            			location.reload();
            		},
            		error: function(){
-           			//alert("birth:" + birth);
+           			alert("birth:" + birth);
            			alert('카카오 로그인 실패');
            		}
            	  })
-
             }
-
          });
       }
    });
 }
+
 
 function loginpage() {
 	location.href="login1.do";

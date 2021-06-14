@@ -1,4 +1,4 @@
-rrpackage bit.com.a.dto;
+package bit.com.a.dto;
 
 import java.io.Serializable;
 
@@ -18,13 +18,7 @@ public class MemberDto implements Serializable{
 
 
 
-	public MemberDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-
+	
    public MemberDto() {
       super();
       // TODO Auto-generated constructor stub
