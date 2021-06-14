@@ -844,15 +844,72 @@ System.out.println(_gender);
 																<div class="resume_row" style="display:">
 																	<div class="input_title">전공 계열</div>
 																	<div class="sri_select resume_select">
+																	<% if( highdto.getHigh_field().equals("문과계열") ){ %>
 																		<select class="selectpicker"
-																			style="width: 107.22222px; height: 50.22222px;">
-																			<option>문과계열</option>
+																			style="width: 107.22222px; height: 50.22222px;" name="high_field" id="high_field">
+																			<option selected="selected">문과계열</option>
 																			<option>이과계열</option>
 																			<option>전문(실업계)</option>
 																			<option>예체능계</option>
 																			<option>특성화/마이스터고</option>
 																			<option>특수목적고</option>
 																		</select>
+																		<% } %>
+																	<% if( highdto.getHigh_field().equals("이과계열") ){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="high_field" id="high_field">
+																			<option>문과계열</option>
+																			<option selected="selected">이과계열</option>
+																			<option>전문(실업계)</option>
+																			<option>예체능계</option>
+																			<option>특성화/마이스터고</option>
+																			<option>특수목적고</option>
+																		</select>
+																		<% } %>
+																		<% if( highdto.getHigh_field().equals("전문(실업계)") ){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="high_field" id="high_field">
+																			<option>문과계열</option>
+																			<option>이과계열</option>
+																			<option selected="selected">전문(실업계)</option>
+																			<option>예체능계</option>
+																			<option>특성화/마이스터고</option>
+																			<option>특수목적고</option>
+																		</select>
+																		<% } %>
+																		<% if( highdto.getHigh_field().equals("예체능계") ){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="high_field" id="high_field">
+																			<option>문과계열</option>
+																			<option>이과계열</option>
+																			<option>전문(실업계)</option>
+																			<option selected="selected">예체능계</option>
+																			<option>특성화/마이스터고</option>
+																			<option>특수목적고</option>
+																		</select>
+																		<% } %>
+																		<% if( highdto.getHigh_field().equals("특성화/마이스터고") ){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="high_field" id="high_field">
+																			<option>문과계열</option>
+																			<option>이과계열</option>
+																			<option>전문(실업계)</option>
+																			<option>예체능계</option>
+																			<option selected="selected">특성화/마이스터고</option>
+																			<option>특수목적고</option>
+																		</select>
+																		<% } %>
+																		<% if( highdto.getHigh_field().equals("특수목적고") ){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="high_field" id="high_field">
+																			<option>문과계열</option>
+																			<option>이과계열</option>
+																			<option>전문(실업계)</option>
+																			<option>예체능계</option>
+																			<option>특성화/마이스터고</option>
+																			<option selected="selected">특수목적고</option>
+																		</select>
+																		<% } %>
 																	</div>
 																</div>
 
@@ -4054,7 +4111,6 @@ function careerokCheck() {
 																	<div class="sri_select resume_select">
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lan_pass">
-																			<option>취득여부</option>
 																			<option value="취득(PASS)">취득(PASS)</option>
 																		</select>
 																	</div>

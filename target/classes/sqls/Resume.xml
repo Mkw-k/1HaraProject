@@ -20,7 +20,7 @@
 <select id="getseq" parameterType="java.lang.String" resultType="java.lang.Integer">
    SELECT RESUMESEQ
    FROM RESUME
-   WHERE RESUMETITLE = #{resumetitle}
+   WHERE RESUMETITLE = #{resumetitle} AND DESIREDJOBTYPE = #{desiredjobtype} AND DESIREDAREA1 =#{desiredarea1} AND DESIREDJOB1 = #{desiredjob1}
 
 </select>
 
@@ -122,43 +122,43 @@ WHERE RESUMESEQ=#{seq}
 <delete id="deleteResume" parameterType="java.lang.Integer" >
 DELETE
 FROM RESUME
-WHERE RESUMESEQ=#{seq}
+WHERE RESUMESEQ=#{resumeseq}
 </delete>
 
 <delete id="deleteEduResume" parameterType="java.lang.Integer" >
 DELETE
 FROM RESUME_EDU
-WHERE RESUMESEQ=#{seq}
+WHERE RESUMESEQ=#{resumeseq}
 </delete>
 
 <delete id="deleteCareerResume" parameterType="java.lang.Integer" >
 DELETE
 FROM CAREER
-WHERE RESUMESEQ=#{seq}
+WHERE RESUMESEQ=#{resumeseq}
 </delete>
 
 <delete id="deleteLicenseResume" parameterType="java.lang.Integer" >
 DELETE
 FROM LICENSE
-WHERE RESUMESEQ=#{seq}
+WHERE RESUMESEQ=#{resumeseq}
 </delete>
 
 <delete id="deleteActivityResume" parameterType="java.lang.Integer" >
 DELETE
 FROM ACTIVITY
-WHERE RESUMESEQ=#{seq}
+WHERE RESUMESEQ=#{resumeseq}
 </delete>
 
 <delete id="deleteAwardResume" parameterType="java.lang.Integer" >
 DELETE
 FROM AWARD
-WHERE RESUMESEQ=#{seq}
+WHERE RESUMESEQ=#{resumeseq}
 </delete>
 
 <delete id="deleteLanResume" parameterType="java.lang.Integer" >
 DELETE
 FROM LANGUAGE
-WHERE RESUMESEQ=#{seq}
+WHERE RESUMESEQ=#{resumeseq}
 </delete>
 
 <select id="getNoresume" parameterType="java.lang.String" resultType="bit.com.a.dto.ResumeDto">
@@ -171,13 +171,13 @@ ORDER BY RESUMESEQ DESC
 
 <update id="upProgress" parameterType="bit.com.a.dto.ResumeDto">
  UPDATE RESUME
- SET PROGRESS = 10
+ SET PROGRESS = PROGRESS + 20
  WHERE RESUMESEQ=#{resumeseq}
 </update>
 
 <update id="updateProgress" parameterType="java.lang.Integer">
  UPDATE RESUME
- SET PROGRESS = PROGRESS+10
+ SET PROGRESS = PROGRESS+20
  WHERE RESUMESEQ=#{resumeseq}
 </update>
 
@@ -225,12 +225,12 @@ WHERE RESUMESEQ=#{resumeseq}
 
 <insert id="addApply" parameterType="bit.com.a.dto.ResumeParam">
 INSERT
-INTO APPLY (APPLYSEQ, MEMBERID, JOBSEQ, RESUMESEQ, APPLYDATE)
-VALUES (APPLY_SEQ.NEXTVAL, #{memberid}, #{jobseq}, #{resumeseq}, SYSDATE)
+INTO APPLY (APPLYSEQ, MEMBERID, JOBSEQ, RESUMESEQ, APPLYDATE, COMPANYREAD)
+VALUES (APPLY_SEQ.NEXTVAL, #{memberid}, #{jobseq}, #{resumeseq}, SYSDATE, 0)
 </insert>
 
 <select id="getApplyList" parameterType="java.lang.String" resultType="bit.com.a.dto.ApplyDto">
-SELECT APPLYSEQ, MEMBERID, JOBSEQ, RESUMESEQ, APPLYDATE
+SELECT APPLYSEQ, MEMBERID, JOBSEQ, RESUMESEQ, APPLYDATE, COMPANYREAD
 FROM APPLY
 WHERE MEMBERID = #{memberid}
 ORDER BY APPLYDATE DESC
@@ -251,8 +251,9 @@ WHERE RESUMESEQ=#{resumeseq}
 
 <insert id="writeHigh" parameterType="bit.com.a.dto.Resume_HighschoolDto">
 INSERT
-INTO HIGHSCHOOL (HIGHSCHOOLSEQ, RESUMESEQ, HIGHSCHOOL, HIGH_STR, HIGH_STR_STATUS, HIGH_END, HIGH_END_STATUS)
-VALUES (HIGHSCHOOL_SEQ.NEXTVAL, #{resumeseq}, #{highschool, jdbcType=VARCHAR}, #{high_str, jdbcType=VARCHAR}, #{high_str_status, jdbcType=VARCHAR}, #{high_end, jdbcType=VARCHAR}, #{high_end_status, jdbcType=VARCHAR})
+INTO HIGHSCHOOL (HIGHSCHOOLSEQ, RESUMESEQ, HIGHSCHOOL, HIGH_STR, HIGH_STR_STATUS, HIGH_END, HIGH_END_STATUS, HIGH_FIELD)
+VALUES (HIGHSCHOOL_SEQ.NEXTVAL, #{resumeseq}, #{highschool, jdbcType=VARCHAR}, #{high_str, jdbcType=VARCHAR}, 
+#{high_str_status, jdbcType=VARCHAR}, #{high_end, jdbcType=VARCHAR}, #{high_end_status, jdbcType=VARCHAR}, #{high_field, jdbcType=VARCHAR})
 </insert>
 
 <insert id="writeUni" parameterType="bit.com.a.dto.Resume_UniversityVo">
@@ -267,7 +268,7 @@ INTO UNIVERSITY (UNIVERSITYSEQ, RESUMESEQ, UNIVERSITY, UNIV_STATUS, UNIV_STR, UN
 
 <update id="updateHigh" parameterType="bit.com.a.dto.Resume_HighschoolDto">
 UPDATE HIGHSCHOOL
-SET HIGHSCHOOL=#{highschool, jdbcType=VARCHAR}, HIGH_STR=#{high_str, jdbcType=VARCHAR}, HIGH_STR_STATUS=#{high_str_status, jdbcType=VARCHAR}, HIGH_END=#{high_end, jdbcType=VARCHAR}, HIGH_END_STATUS=#{high_end_status, jdbcType=VARCHAR}
+SET HIGHSCHOOL=#{highschool, jdbcType=VARCHAR}, HIGH_STR=#{high_str, jdbcType=VARCHAR}, HIGH_STR_STATUS=#{high_str_status, jdbcType=VARCHAR}, HIGH_END=#{high_end, jdbcType=VARCHAR}, HIGH_END_STATUS=#{high_end_status, jdbcType=VARCHAR}, HIGH_FIELD=#{high_field, jdbcType=VARCHAR}
 WHERE RESUMESEQ=#{resumeseq}
 
 </update>
@@ -281,7 +282,7 @@ WHERE RESUMESEQ=#{resumeseq}
 </update>
 
 <select id="getHighDetail" parameterType="java.lang.Integer" resultType="bit.com.a.dto.Resume_HighschoolDto">
-SELECT HIGHSCHOOLSEQ, RESUMESEQ, HIGHSCHOOL, HIGH_STR, HIGH_STR_STATUS, HIGH_END, HIGH_END_STATUS
+SELECT HIGHSCHOOLSEQ, RESUMESEQ, HIGHSCHOOL, HIGH_STR, HIGH_STR_STATUS, HIGH_END, HIGH_END_STATUS, HIGH_FIELD
 FROM HIGHSCHOOL
 WHERE RESUMESEQ=#{seq}
 </select>
@@ -296,20 +297,20 @@ WHERE RESUMESEQ=#{seq}
 <delete id="deleteApply" parameterType="java.lang.Integer" >
 DELETE
 FROM APPLY
-WHERE RESUMESEQ=#{seq}
+WHERE RESUMESEQ=#{resumeseq}
 </delete>
 
 
 <delete id="deleteHighResume" parameterType="java.lang.Integer" >
 DELETE
 FROM HIGHSCHOOL
-WHERE RESUMESEQ=#{seq}
+WHERE RESUMESEQ=#{resumeseq}
 </delete>
 
 <delete id="deleteUniResume" parameterType="java.lang.Integer" >
 DELETE
 FROM UNIVERSITY
-WHERE RESUMESEQ=#{seq}
+WHERE RESUMESEQ=#{resumeseq}
 </delete>
 
 <delete id="cancelApply" parameterType="java.lang.Integer" >
@@ -317,6 +318,13 @@ DELETE
 FROM APPLY
 WHERE APPLYSEQ=#{seq}
 </delete>
+
+<update id="updateReadCount" parameterType="java.lang.Integer">
+UPDATE APPLY
+SET COMPANYREAD = COMPANYREAD+1
+WHERE RESUMESEQ=#{resumeseq}
+
+</update>
 
 
 </mapper>

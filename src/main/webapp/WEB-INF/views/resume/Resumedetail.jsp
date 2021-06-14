@@ -201,7 +201,7 @@ System.out.println(_gender);
                         <div class="dashboard">
                            <ul>
                               <li><strong>학력사항</strong>
-                              <% if(unilist.size()==0) {%>
+                              <% if(unilist.size()==0 && highdto !=null) {%>
                               <p class="txt">고등학교 <%=highdto.getHigh_end_status()%></p></li>
                               <% }else{ %>
                               <% for(int i=0; i<unilist.size();i++){ %>
@@ -290,16 +290,16 @@ System.out.println(_gender);
                            }
                            %>
                            
-                           
+                           <% if(highdto != null){ %>
                               <tr>
                                  <td class="lineup_center" rowspan="1"><%=highdto.getHigh_str()%>
                                     ~ <%=highdto.getHigh_end()%></td>
                                  <td class="lineup_center" rowspan="1">졸업</td>
                                  <td><%=highdto.getHighschool()%></td>
-                                 <td>문과계열</td>
+                                 <td><%=highdto.getHigh_field() %></td>
                                  <td class="lineup_center">-</td>
                               </tr>
-
+							<% } %>
                            
                            </tbody>
                         </table>
@@ -423,30 +423,30 @@ System.out.println(_gender);
                            <tbody>
                               <% for(int i=0; i< lanlist.size();i++) {%>
                               <tr>
-                                 <td class="lineup_center"><%=lanlist.get(0).getLan_date() %></td>
+                                 <td class="lineup_center"><%=lanlist.get(i).getLan_date() %></td>
                                  <td class="lineup_center">어학시험</td>
-                                 <td><%=lanlist.get(0).getLan_exam() %></td>
-                                 <td><%=lanlist.get(0).getLan_kind() %></td>
-                                 <td class="lineup_center"><%=lanlist.get(0).getLan_score()%>/<%lanlist.get(0).getLan_grade(); %>/<%=lanlist.get(0).getLan_pass() %></td>
+                                 <td><%=lanlist.get(i).getLan_exam() %></td>
+                                 <td><%=lanlist.get(i).getLan_kind() %></td>
+                                 <td class="lineup_center"><%=lanlist.get(i).getLan_score()%>/<%lanlist.get(i).getLan_grade(); %>/<%=lanlist.get(i).getLan_pass() %></td>
                               </tr>
                               <% } %>
 
                               <% for(int i=0; i< liclist.size();i++) {%>
                               <tr>
-                                 <td class="lineup_center"><%=liclist.get(0).getLic_date() %></td>
+                                 <td class="lineup_center"><%=liclist.get(i).getLic_date() %></td>
                                  <td class="lineup_center">자격증/면허증</td>
-                                 <td><%=liclist.get(0).getLic_name() %></td>
-                                 <td><%=liclist.get(0).getLic_publisher() %></td>
-                                 <td class="lineup_center"><%=liclist.get(0).getLic_pass() %></td>
+                                 <td><%=liclist.get(i).getLic_name() %></td>
+                                 <td><%=liclist.get(i).getLic_publisher() %></td>
+                                 <td class="lineup_center"><%=liclist.get(i).getLic_pass() %></td>
                               </tr>
                               <% } %>
 
                               <% for(int i=0; i< awdlist.size();i++) {%>
                               <tr>
-                                 <td class="lineup_center"><%=awdlist.get(0).getAwd_date() %></td>
+                                 <td class="lineup_center"><%=awdlist.get(i).getAwd_date() %></td>
                                  <td class="lineup_center">수상내역/공모전</td>
-                                 <td><%=awdlist.get(0).getAwd_name() %></td>
-                                 <td><%=awdlist.get(0).getAwd_org() %></td>
+                                 <td><%=awdlist.get(i).getAwd_name() %></td>
+                                 <td><%=awdlist.get(i).getAwd_org() %></td>
                                  <td class="lineup_center">수상</td>
                               </tr>
                               <% } %>

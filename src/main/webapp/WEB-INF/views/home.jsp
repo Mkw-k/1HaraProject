@@ -750,60 +750,83 @@ margin-right : 450px;
 
 
 		<!-- =========Login 클릭 시 Modal =========== -->
-		<div id="login-modal" tabindex="-1" role="dialog"
-			aria-labelledby="login-modalLabel" class="modal modal-center fade ">
-			<div role="document" class="modal-dialog" style="margin: 0;">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 id="login-modalLabel" class="modal-title">1hara Login</h4>
-						<button type="button" data-dismiss="modal" aria-label="Close"
-							class="close">
-							<span aria-hidden="true"></span>x
-						</button>
-					</div>
-					<div class="modal-body">
-
-						<!-- memberController - loginAf.do로 이동 -->
-						<!--    <form action="loginAf.do" method="post" id="_frmFrom"> -->
-						<!--     <input type="hidden" name="param" value="loginAf.do"> -->
-						<form id="login_frm" name="login_frm" method="post"
-							action="loginAf.do">
-							<input type="hidden" name="page_url" value=""> <input
-								type="hidden" name="FrameKey" value=""> <input
-								type="hidden" name="login_tab" value="p" id="login_tab">
-
-							<ul class="tab_member_type">
-								<li class="t_per t_on"><a href="##">개인회원</a></li>
-								<li class="t_com"><a href="##">기업회원</a></li>
-							</ul>
-							<div class="form-group">
-								<input id="memberid" type="text" placeholder="ID"
-									name="memberid" class="form-control">
-							</div>
-							<div class="form-group">
-								<input id="pwd" type="password" name="pwd"
-									placeholder="password" class="form-control">
-							</div>
-							<p class="text-center">
-								<button class="btn btn-template-outlined" id="_btnLogin">
-									<i class="fa fa-sign-in"></i> Login
-								</button>
-							</p>
-						</form>
-
-						<a href="javascript:kakaoLogin()"> <img alt=""
-							src="https://img.eduwill.net/Img2/Common/Join/new/btn-kakao-large.png">
-						</a>
-
-						<p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
-						<p class="text-center text-muted">
-							<a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
+		<!-- =========Login 클릭 시 Modal =========== -->
+      <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" class="modal modal-center fade ">
+        <div role="document" class="modal-dialog" style="margin: 0;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 id="login-modalLabel" class="modal-title">1hara Login</h4>
+              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"></span>x</button>
+            </div>
+            <div class="modal-body">
+            <!-- memberController - loginAf.do로 이동 -->
+           <!--    <form action="loginAf.do" method="post" id="_frmFrom"> -->
+             <!--     <input type="hidden" name="param" value="loginAf.do"> -->
+             
+          <ul class="nav nav-pills">
+            <li class="nav-item"> <a href="" class="nav-link active show" data-toggle="pill" data-target="#tabone">개인회원</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">기업회원</a> </li>
+            
+          </ul>
+          <div class="tab-content mt-2">
+            <div class="tab-pane fade active show" id="tabone" role="tabpanel">
+              
+                           
+              <form id="login_frm" name="login_frm" method="post" action="loginAf.do">
+                  <input type="hidden" name="page_url" value="">
+                 <input type="hidden" name="FrameKey" value="">
+                 <input type="hidden" name="login_tab" value="p" id="login_tab">
+                 
+                    <div class="form-group">
+                        <input id="memberid" type="text" placeholder="ID" name="memberid" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input id="pwd" type="password" name="pwd" placeholder="password" class="form-control">
+                      </div>
+                      <p class="text-center">
+                        <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
+                     </p>
+              </form>
+                 <a href="javascript:kakaoLogin()">
+               <img alt="" src="https://img.eduwill.net/Img2/Common/Join/new/btn-kakao-large.png">
+              </a>
+              <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
+              <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
+              
+              
+              
+            </div>
+            <div class="tab-pane fade" id="tabtwo" role="tabpanel">
+              
+                           
+              <form id="login_frm" name="login_frm" method="post" action="businessloginAf.do">
+                  <input type="hidden" name="page_url" value="">
+                 <input type="hidden" name="FrameKey" value="">
+                 <input type="hidden" name="login_tab" value="p" id="login_tab">
+              
+                    <div class="form-group">
+                        <input id="memberid" type="text" placeholder="ID" name="memberid" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <input id="pwd" type="password" name="pwd" placeholder="password" class="form-control">
+                      </div>
+                      <p class="text-center">
+                        <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
+                     </p>
+              </form>
+                
+              <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
+              <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
+              
+            </div>
+           
+          </div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- =======Login 클릭 시 Modal END =========-->
 		<!-- =======Login 클릭 시 Modal END =========-->
 
 		<!-- 본문 -->

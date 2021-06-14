@@ -187,12 +187,12 @@ public class RecruitDaoImpl implements RecruitDao{
 	@Override
 	public boolean dropFavoriteJob2(RecruitParam param) {
 		return session.update(ns+"dropFavoriteJob2", param)>0?true:false;
+	}
 
-
-@Override
+	@Override
 	public CompanyDto getCompany(int jobseq) {
 
-		return session.selectOne(ns + "getDetailCompany",jobseq);
+		return session.selectOne(ns + "getCompany", jobseq);
 	}
 
 

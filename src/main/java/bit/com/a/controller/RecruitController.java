@@ -461,9 +461,14 @@ public class RecruitController {
       model.addAttribute("doc_title", "채용공고");
 
 
-      CompanyDto com = service.getCompany(jobseq);
-      model.addAttribute("com", com);
-      System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+com.toString());
+		
+      CompanyDto com = service.getCompany(jobseq); 
+	  
+      if(com !=null) {
+      System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+com.toString()); 
+      }
+      model.addAttribute("com", com); 
+      
       //디테일 데이터 받아오기
       System.out.println("seq:"+jobseq);
       RecruitDto dto = service.getRecruitListOne(jobseq);
@@ -504,7 +509,7 @@ public class RecruitController {
 
       model.addAttribute("dto", dto);
       model.addAttribute("resumelist", resumelist);
-      model.addAttribute("mem", mem);
+		/* model.addAttribute("mem", mem); */
 
       return "recruit/recruitDetail";
    }

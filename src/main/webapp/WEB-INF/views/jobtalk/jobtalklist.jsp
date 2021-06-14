@@ -126,7 +126,7 @@ td._hover_tr:hover {
 /* 메인css */
 
 nav { width:100%;height:80px; text-align:center;top:0;left:0;}
-.all {display:flex; flex-flow: row wrap; min-width:100px;}
+.all {display:block; flex-flow: row wrap; min-width:100px;}
 header {flex:1 1 100%; height:120px; background:white; }
 main {flex: 1 1 100%;height:1500px; background:gray;}
 footer{flex: 1 1 100%;height:200px;text-align:center;background:white;}
@@ -861,6 +861,7 @@ margin-right : 450px;
 /*search box css start here*/
 .search-sec{
     padding: 2rem;
+    height: 0px;
 }
 .search-slt{
     display: block;
@@ -899,9 +900,9 @@ margin-right : 450px;
 
 </style>
 </head>
-<body>
+<body style="background-color: white;">
 
-<div class="all">
+<div class="all" style="display: block;">
 <header>
 		
  <!-- 검색html -->
@@ -915,46 +916,6 @@ margin-right : 450px;
             
             <!--https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg-->
         </div>
-    </div>
-</section>
-<section class="search-sec">
-    <div class="container">
-        <form action="#" method="post" novalidate="novalidate">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" id="exampleFormControlSelect1" style="font-size: 12pt">
-                                <option>지역</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" id="exampleFormControlSelect1" style="font-size: 12pt">
-                                <option>분야</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <input type="text" class="form-control search-slt" placeholder="회사명" style="font-size: 12pt">
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <button type="button" class="btn btn-secondary wrn-btn">Search</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
     </div>
 </section>
 
@@ -1050,7 +1011,7 @@ margin-right : 450px;
 </nav>
 <br>
 
-<div class="side-navigation">
+<div class="side-navigation" style="padding-top: 50px;">
 	<h2 class="skip">선배에게 질문하기 세부메뉴</h2>
 	<div class="navi-top-area">
 		<a href="/User/Qstn/QstnWrite" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
@@ -1093,7 +1054,7 @@ margin-right : 450px;
 
 <div class="container">
 
-<section id="contents">
+<section id="contents" style="padding-top: 0px;padding-left: 100px;width: 1100px">
 
 	<div class="tit-util">
 		<h2 class="tit">취업톡톡</h2>
@@ -1112,29 +1073,6 @@ margin-right : 450px;
 			<dd>1hara의 새로운 소식을 알려드립니다.</dd>
 		</dl>
 	</div>
-		<div class="board-list-search">							
-			<div class="line">
-				<div class="float-l w480px">
-					<label for="startDt" class="label w60px">검색</label>
-					<select id="_choice" name="choice">
-						<option value="" selected="selected">선택</option>
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-						<option value="writer">작성자</option>
-					</select>
-				<!-- 	<button type="button" class="button ml05" onclick="document.searchForm.startDt.value='';document.searchForm.endDt.value='';">재설정</button> -->
-				</div>
-			
-				<div class="float-l w390px">
-					<label for="searchText" class="label w60px">키워드</label>
-					<input type="search" id="_searchWord" name="search" placeholder="키워드를 입력하세요" class="input-text w300px" value="" maxlength="47">
-				</div>
-			</div>
-			
-			<div class="btn-group">
-				<button type="button" id="btnSearch" class="button navy">검색</button>
-			</div>
-		</div>
 		<div>
 			<input type="hidden" name="_csrf" value="f9429a24-06a6-4e86-9fb8-413ddf249c96">
 		</div>
@@ -1176,11 +1114,11 @@ margin-right : 450px;
 		</colgroup>
 		<thead>
 			<tr>
-				<th scope="col">번호</th>
-				<th scope="col">제목</th>
-				<th scope="col">작성자</th>
-				<th scope="col">등록일</th>
-				<th scope="col">조회수</th>
+				<th scope="col" style="color: black;">번호</th>
+				<th scope="col" style="color: black;">제목</th>
+				<th scope="col" style="color: black;">작성자</th>
+				<th scope="col" style="color: black;">등록일</th>
+				<th scope="col" style="color: black;">조회수</th>
 			</tr>
 		</thead>
 		
