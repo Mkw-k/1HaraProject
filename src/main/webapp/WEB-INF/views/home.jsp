@@ -735,8 +735,8 @@ margin-right : 450px;
 <ul class="navi_depth1">
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','recruit')" href="recuruitlist.do"><span>채용정보</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','company_info')" href="/zf_user/companylab"><span>기업정보</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','status-list')" href="/zf_user/member/suggest/status-list"><span>인재검색</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','verification')" href="/zf_user/memcom/preview/custom-guide"><span>검증면접</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','status-list')" href="newslist.do"><span>TODAY NEWS📈</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','verification')" href="pdslist.do"><span>자료실</span></a></li>
 <li>
 <a onclick="pushDataLayer('ga_lead','main-gnb','menu','acceptance')" href="/zf_user/jobs/theme/it-headhunting">
 <span class="passkk0">50만원 받고</span>
@@ -750,8 +750,9 @@ margin-right : 450px;
 <div class="navi_depth1 secondary">
 <span class="marker"><svg aria-hidden="true"><use xlink:href="#svg_gnb_more"></use></svg></span>
 <ul>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="/zf_user/company-review-qst-and-ans"><span>취업톡톡</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="/zf_user/white-paper/office"><span>콘텐츠</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="Jobtalklist.do"><span>취업톡톡💬</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="FAQ.do"><span>FAQ</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents2')" href="notice.do"><span>공지사항</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','jumpit')" href="https://www.jumpit.co.kr" target="_blank"><span class="icon icon_jumpit">점핏</span></a></li>
 </ul>
 </div>
@@ -789,7 +790,7 @@ margin-right : 450px;
 <!-- 로그인 로그아웃 란 -->
 <c:choose>
 	<c:when test="${empty login}">
-		<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="javascript:login()" class="btn_sign signin"><span class="txt">로그인</span></a>
+		<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="javascript:login()" class="btn_sign signin"><span class="txt">로그인🔑</span></a>
 	</c:when>
 <c:otherwise>
 
@@ -846,14 +847,14 @@ margin-right : 450px;
 </ul>
 </div>
 <div class="depth_1">
-<span><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','talent_person')" href="/zf_user/member/suggest/status-list">인재검색</a></span>
+<span><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','talent_person')" href="/zf_user/member/suggest/status-list">TODAY NEWS📈</a></span>
 <ul class="depth_2">
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','talent_status-list')" href="/zf_user/member/suggest/status-list">제안받은 현황<span class="flag">개인</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','talent_talent-pool')" href="/zf_user/memcom/talent-pool/main">인재Pool 검색<span class="flag">기업</span></a></li>
 </ul>
 </div>
 <div class="depth_1">
-<span><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','verification')" href="/zf_user/memcom/preview/custom-guide">검증면접</a></span>
+<span><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','verification')" href="pdslist.do">자료실</a></span>
 <ul class="depth_2">
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','verification_preview')" href="/zf_user/memcom/preview/guide?page_type=manual">preview 소개</a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','verification_iam-ground')" href="/zf_user/event/iam-ground-app/app-intro">아이엠그라운드 소개</a></li>
@@ -868,7 +869,7 @@ margin-right : 450px;
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','resume-manage')" href="/zf_user/resume/resume-manage">이력서 관리<span class="flag">개인</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','recruit-manage')" href="/zf_user/company/recruit-manage">공고·지원자 관리<span class="flag">기업</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','qst-and-ans')" href="/zf_user/company-review-qst-and-ans">취준진담</a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','contents')" href="/zf_user/white-paper/office">콘텐츠<span class="flag">글자수세기</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','contents')" href="/zf_user/white-paper/office">FAQ<span class="flag">글자수세기</span></a></li>
 </ul>
 <ul class="depth_2">
 <li><a target="_blank" onclick="pushDataLayer('ga_lead','main-gnb','total_menu','jumpit')" href="https://www.jumpit.co.kr" class="icon icon_jumpit">점핏<svg aria-hidden="true"><use xlink:href="#svg_gnb_window_new"></use></svg></a></li>
@@ -897,7 +898,7 @@ margin-right : 450px;
 
 
  <section style="padding: 0">
- <form id="search_form_recruit" onsubmit="event.preventDefault()" style="height: 400px; background-image: url('개발자23.gif');">
+ <form id="search_form_recruit" onsubmit="event.preventDefault()" style="height: 400px; background-image: url('개발자23.gif'); margin-top: 0px;"">
     <div class="main_search" style="top: 160px;">
         <div class="option option_keyword">
             <label for="ipt_keyword_recruit" class="placeholder" style="color: rgb(72, 118, 239);">일하라 주식회사</label>
@@ -1880,8 +1881,7 @@ margin-right : 450px;
 			    <ol class="carousel-indicators">
 			        <li data-target="#carouselSample" data-slide-to="0" class="">
 			        </li><li data-target="#carouselSample" data-slide-to="1" class="">
-			        </li><li data-target="#carouselSample" data-slide-to="2" class="active">
-			    </li></ol>
+			        </li></ol>
 
 			    <div class="carousel-inner">
 			        <!-- first slide -->
@@ -1906,7 +1906,7 @@ margin-right : 450px;
 
 			        <!-- third slide -->
 			        <div class="carousel-item active">
-			            <img alt="third" class="d-block w-100" src="/sample10/image/cp.PNG" height="300px" width="200px">
+			            
 
 			            <!-- caption -->
 			            <div class="carousel-caption d-none d-md-block">
@@ -2059,7 +2059,7 @@ margin-right : 450px;
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
 		                        </div>
 		                        <div>
-		                         <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡</a>
+		                         <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡💬</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br>자료실</a>
 		                          <a href="mypage.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>마이페이지</a>
 		                        </div>
@@ -2265,7 +2265,7 @@ $(".close").click(function(){
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
 		                        </div>
 		                        <div>
-		                         <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡</a>
+		                         <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡💬</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br>자료실</a>
 		                          <a href="mypage.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>마이페이지</a>
 		                        </div>

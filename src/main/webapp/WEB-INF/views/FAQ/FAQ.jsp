@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-
-
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
 <%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -401,69 +400,15 @@ nav {
 </head>
 
 <body>
-<div class="all">
-<!-- 헤더가 있어야 위쪽을 가리지 않음 -->
-<header>
 
-</header>
+<!-- 헤더생성기 (붙여넣기전 코어태그 생성하세요)-->
+<c:import url="script.jsp" charEncoding="utf-8"/>
+ <c:import url="header.jsp" charEncoding="utf-8"/> 
+<!-- 헤더 생성기 끝 -->
 
-<!-- 네비바 -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 
-  
-  <div>
-	 <a href="home.do"><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
-	</div>
-  
-  <ul class="navbar-nav">
-<!-- Dropdown -->
-    <li class="nav-item dropdown" style="padding-top: 5px;">
-     <div class="dropdown">
-		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
-		  <div class="dropdown-content">
-		    <a href="#">채용공고</a>
-		    <a href="#">기업정보</a>
-		    <a href="#">취업톡톡</a>
-		    <a href="#">공채달력</a>
-		    <a href="#">자료실</a>
-		    <a href="notice.do">공지사항</a>
-		  </div>
-		</div>
-    </li>
 
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">취업톡톡</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
-    </li>
-    </ul>
-    
-   
-   <ul class="navbar-nav navbar-nav2" style="margin-left: 50px;">
-     <li class="nav-item">
-     <!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
-      <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
-    </li>
-  
 
-  </ul>
-</nav>
 <br>
 
  <!-- =========Login 클릭 시 Modal =========== -->

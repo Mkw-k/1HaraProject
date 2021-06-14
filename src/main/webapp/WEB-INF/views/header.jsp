@@ -34,7 +34,7 @@ white{
 
 
 <nav class="navbar navbar-expand-md sticky-top" style="text-shadow: white 0px 0px 0.2px; box-shadow: black 0px 0px 10px;" id="nav-main" ><a class="navbar-brand d-none d-md-block ml-3" href="home.do">
-      <img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" id="_logo" height="80" width="160" style="float:left; padding-right: 20px" >
+      <img alt="" src="<%=request.getContextPath() %>/image/흰로고다.gif" id="_logo" height="80" width="160" style="float:left; padding-right: 20px" >
      
     </a>
     <div class="container-fluid"> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar19" style="">
@@ -85,7 +85,7 @@ white{
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Separated link</a>
               </div>
-            </div><a class="btn btn-secondary mr-1" href="#">로그인</a>
+            </div><a class="btn" style="background-color: #000000; color: #fff !important;" href="#">로그인</a>
           </li>
         </ul>
       </div>
@@ -107,13 +107,13 @@ $(function() {
 	         //드랍다운 밑에 있는 a태그도 변경 
 	         $(".navbar li button a").addClass("text-dark");
 	         //이미지 변경 
-	         $("#_logo").attr("src", "<%=request.getContextPath() %>/image/1haraTran.gif");
+	         $("#_logo").attr("src", "<%=request.getContextPath() %>/image/흰 로고 반전.gif");
 	      } else {
 	         $(".sticky-top").removeClass("top-nav-collapse");
 	         $(".navbar a").removeClass("text-light");
 	         $(".navbar li button").removeClass("text-light");
 	         $(".navbar li button a").removeClass("text-dark");
-	         $("#_logo").attr("src", "<%=request.getContextPath() %>/image/logo5.gif");
+	         $("#_logo").attr("src", "<%=request.getContextPath() %>/image/흰로고다.gif");
 	      }
 	   });
 	});
