@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 
@@ -24,13 +24,13 @@
 	<link href="csss/reset.css" rel="stylesheet" type="text/css">
 	<title>Insert title here</title>
 	<link href="csss/common1.css" rel="stylesheet" type="text/css">
-	<link href="csss/gnb.css" rel="stylesheet" type="text/css">	
+	<link href="csss/gnb.css" rel="stylesheet" type="text/css">
 	<link href="csss/view.css" rel="stylesheet" type="text/css">
 	<link href="csss/side_navigation.css" rel="stylesheet" type="text/css">
 	<link href="csss/star_style.css" rel="stylesheet" type="text/css">
 	<!-- 링크!  -->
-  
-  
+
+
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
@@ -39,14 +39,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
-  
+
   <!-- footer -->
 
-  
+
 <!-- 네비바 -->
 <!-- carousel -->
 <!-- <link rel="stylesheet" href="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
- 
+
 <!-- <script src="//https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
  -->
   <!-- 검색 부트스트랩 -->
@@ -62,19 +62,19 @@
  <!-- 부트스트랩 -->
 <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
  -->
 <!-- 링크!  -->
 <link href="csss/common.css" rel="stylesheet" type="text/css">
 <link href="csss/reset.css" rel="stylesheet" type="text/css">
 <link href="csss/tables.css" rel="stylesheet" type="text/css">
-<!-- 링크!  -->    
-    
-    
+<!-- 링크!  -->
+
+
   <style type="text/css">
 /* 네비바 배경색 */
 .bg-dark {
-    background-color: white!important;    
+    background-color: white!important;
 }
 /* 네비바 글자색 */
 .navbar-dark .navbar-nav .nav-link {
@@ -126,7 +126,7 @@ td._hover_tr:hover {
 /* 메인css */
 
 nav { width:100%;height:80px; text-align:center;top:0;left:0;}
-.all {display:flex; flex-flow: row wrap; min-width:100px;}
+.all {display:block; flex-flow: row wrap; min-width:100px;}
 header {flex:1 1 100%; height:120px; background:white; }
 main {flex: 1 1 100%;height:1500px; background:gray;}
 footer{flex: 1 1 100%;height:200px;text-align:center;background:white;}
@@ -211,7 +211,7 @@ body{
    height: 38px;
    border-radius: 0;
  }
- 
+
  .btn-success {
 color: #fff;
 background-color: #2186eb;
@@ -243,7 +243,7 @@ border-color: #2186eb;
 .bgc{
  color: white;
  background-color: #2186eb;
- 
+
 }
 
 /* 검색 top margin */
@@ -379,7 +379,7 @@ section .section-title {
 .frontside .card .card-body img {
     width: 100%;
     height: 120px;
-    
+
 }
 
 .card-body {
@@ -395,7 +395,7 @@ section .section-title {
 .dropbtn {
   background-color: #2186eb;
   color: white;
-  padding: 8px; 
+  padding: 8px;
   font-size: 16px;
   border: none;
 }
@@ -429,10 +429,10 @@ section .section-title {
 
 
 <style type="text/css">
-  
+
 /* 네비바 배경색 */
 .bg-dark {
-    background-color: white!important;    
+    background-color: white!important;
 }
 /* 네비바 글자색 */
 .navbar-dark .navbar-nav .nav-link {
@@ -580,7 +580,7 @@ p{
    height: 38px;
    border-radius: 0;
  }
- 
+
  .btn-success {
 color: #fff;
 background-color: #2186eb;
@@ -616,7 +616,7 @@ border-color: #2186eb;
  color: #2186eb;
  background-color: #fff;
  font-size: 12pt;
- 
+
 }
 
 /* 검색 top margin */
@@ -752,7 +752,7 @@ section .section-title {
 .frontside .card .card-body img {
     width: 100%;
     height: 120px;
-    
+
 }
 
 .card-body {
@@ -768,7 +768,7 @@ section .section-title {
 .dropbtn {
   background-color: #2186eb;
   color: white;
-  padding: 8px; 
+  padding: 8px;
   font-size: 16px;
   border: none;
 }
@@ -861,6 +861,7 @@ margin-right : 450px;
 /*search box css start here*/
 .search-sec{
     padding: 2rem;
+    height: 0px;
 }
 .search-slt{
     display: block;
@@ -899,8 +900,9 @@ margin-right : 450px;
 
 </style>
 </head>
-<body>
+<body style="background-color: white;">
 
+<<<<<<< HEAD
 <!-- <div class="all">
 
 
@@ -908,15 +910,26 @@ margin-right : 450px;
 <header>
 		
  검색html
+=======
+<div class="all" style="display: block;">
+<header>
+
+ <!-- 검색html -->
+>>>>>>> d8ec9437902769692056210040f8be523b7edf9b
 
 <section style="padding: 0">
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                
+
             </div>
+<<<<<<< HEAD
             
             https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg
+=======
+
+            <!--https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg-->
+>>>>>>> d8ec9437902769692056210040f8be523b7edf9b
         </div>
     </div>
 </section>
@@ -931,7 +944,7 @@ margin-right : 450px;
   <div>
 	 <a href="home.do"><img alt="" src="/sample10/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
   </div>
-  
+
   <ul class="navbar-nav">
 <!-- Dropdown -->
     <li class="nav-item dropdown" style="padding-top: 5px;">
@@ -966,30 +979,30 @@ margin-right : 450px;
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
-    
+
     <li class="nav-item">
-            
-            	 
-         	   
+
+
+
         <div class="col-md-6">
            <div class="">
               <div class="login">
-              	
+
                        <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;">로그인</a>
                     <!--    <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
-                       
+
               </div>
 			</div>
-		</div>	
+		</div>
     </li>
     <li class="nav-item">
      	 <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
     </li>
     <li class="nav-item">
-    	
+
 	</li>
 	<li class="nav-item">
-			
+
 	</li>
   </ul>
 </nav>
@@ -1009,7 +1022,7 @@ margin-right : 450px;
 					</span>
 					<dl class="infoBx">
 						<dt class="qnaSpA">
-							<span class="nickname"></span> 
+							<span class="nickname"></span>
 							<span class="lvIcon">Lv.1</span>
 						</dt>
 						<dd>
@@ -1045,7 +1058,7 @@ margin-right : 450px;
     padding-bottom: 0px;
 ">
 
-<section id="contents">
+<section id="contents" style="padding-top: 0px;padding-left: 100px;width: 1100px">
 
 	<div class="tit-util">
 		<h2 class="tit">취업톡톡</h2>
@@ -1056,7 +1069,7 @@ margin-right : 450px;
 			<!-- 기능 버튼 들어갈 예정 -->
 		</div>
 	</div>
-	
+
 	<div class="sub-visual-noline">
 		<p class="img-area"><img src="static/images/img-UI-EWP-W02A01L.png" alt=""></p>
 		<dl class="ml20">
@@ -1064,44 +1077,21 @@ margin-right : 450px;
 			<dd>1hara의 새로운 소식을 알려드립니다.</dd>
 		</dl>
 	</div>
-		<div class="board-list-search">							
-			<div class="line">
-				<div class="float-l w480px">
-					<label for="startDt" class="label w60px">검색</label>
-					<select id="_choice" name="choice">
-						<option value="" selected="selected">선택</option>
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-						<option value="writer">작성자</option>
-					</select>
-				<!-- 	<button type="button" class="button ml05" onclick="document.searchForm.startDt.value='';document.searchForm.endDt.value='';">재설정</button> -->
-				</div>
-			
-				<div class="float-l w390px">
-					<label for="searchText" class="label w60px">키워드</label>
-					<input type="search" id="_searchWord" name="search" placeholder="키워드를 입력하세요" class="input-text w300px" value="" maxlength="47">
-				</div>
-			</div>
-			
-			<div class="btn-group">
-				<button type="button" id="btnSearch" class="button navy">검색</button>
-			</div>
-		</div>
 		<div>
 			<input type="hidden" name="_csrf" value="f9429a24-06a6-4e86-9fb8-413ddf249c96">
 		</div>
-		
+
 		<form id="empBoardSrchVO1" name="listRangeForm" action="/ntNewsData/ntMatter/retrieveNtMatterListPost.do" method="post">
 			<input type="hidden" name="regDtm" value="">
 			<input type="hidden" name="srch" value="">
 			<input type="hidden" name="startDt" value="20200522">
 			<input type="hidden" name="endDt" value="20210521">
 			<input type="hidden" name="searchText" value="">
-			<input type="hidden" name="jobyoung" value="">	
+			<input type="hidden" name="jobyoung" value="">
 			<input type="hidden" name="pageIndex" id="pageIndex" value="1">
 			<div class="board-list-count mt40">
 				<div class="util">
-					<div class="range-view">			
+					<div class="range-view">
 						<select name="pageUnit" id="pageUnit" title="보기 갯수" class="w100px">
 							<option value="10" selected="selected">10 개씩</option>
 							<option value="30">30 개씩</option>
@@ -1128,19 +1118,19 @@ margin-right : 450px;
 		</colgroup>
 		<thead>
 			<tr>
-				<th scope="col">번호</th>
-				<th scope="col">제목</th>
-				<th scope="col">작성자</th>
-				<th scope="col">등록일</th>
-				<th scope="col">조회수</th>
+				<th scope="col" style="color: black;">번호</th>
+				<th scope="col" style="color: black;">제목</th>
+				<th scope="col" style="color: black;">작성자</th>
+				<th scope="col" style="color: black;">등록일</th>
+				<th scope="col" style="color: black;">조회수</th>
 			</tr>
 		</thead>
-		
-		
-		
+
+
+
 	<tr class="list_col"><th>1</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=31">페이징이 될까요??안됄까요??</a></td><td>jacob</td><td>2021-06-09</td><td>5</td></tr><tr class="list_col"><th>2</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=30">사장이랑 뭐하고 놀아요?/</a></td><td>jacob</td><td>2021-06-09</td><td>2</td></tr><tr class="list_col"><th>3</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=29">공부가 뭐죠??</a></td><td>jacob</td><td>2021-06-09</td><td>1</td></tr><tr class="list_col"><th>4</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=28">ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</a></td><td>jacob</td><td>2021-06-09</td><td>2</td></tr><tr class="list_col"><th>5</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=27">후후후후후후후후후후</a></td><td>jacob</td><td>2021-06-09</td><td>1</td></tr><tr class="list_col"><th>6</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=26">돈벌고싶은데 어떤 기업이 돈제일 많이 벌어요??</a></td><td>jacob</td><td>2021-06-09</td><td>3</td></tr><tr class="list_col"><th>7</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=25">쿠우쿠우</a></td><td>jacob</td><td>2021-06-09</td><td>2</td></tr><tr class="list_col"><th>8</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=24">여기에 욕쓰지 말아주세요!!</a></td><td>jacob</td><td>2021-06-09</td><td>2</td></tr><tr class="list_col"><th>9</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=23">뭐가좋을까요?</a></td><td>jacob</td><td>2021-06-09</td><td>1</td></tr><tr class="list_col"><th>10</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=22">장난치지 마세요</a></td><td>jacob</td><td>2021-06-09</td><td>1</td></tr></table>
 </div>
-	<div class="btn-group center">	
+	<div class="btn-group center">
 		<a href="Jobtalkwrite.do" class="button navy">
 			질문하기
 		</a>
@@ -1149,8 +1139,8 @@ margin-right : 450px;
  		<nav aria-label="Page navigation">
 			<ul class="pagination" id="pagination" style="justify-content:center;"><li class="page-item first disabled"><a href="#" class="page-link"><span sria-hidden="true">«</span></a></li><li class="page-item prev disabled"><a href="#" class="page-link">이전</a></li><li class="page-item active"><a href="#" class="page-link">1</a></li><li class="page-item"><a href="#" class="page-link">2</a></li><li class="page-item next"><a href="#" class="page-link">다음</a></li><li class="page-item last"><a href="#" class="page-link"><span sria-hidden="true">»</span></a></li></ul>
 		</nav>
-	</div>	
-	 
+	</div>
+
 	<div class="manager-info">
 		<div class="left"><b class="font-bold">담당부서</b> : 일하라팀</div>
 		<div class="right"><b class="font-bold">문의</b> : 1577-71121</div>

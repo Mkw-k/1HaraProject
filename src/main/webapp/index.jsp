@@ -104,6 +104,7 @@ body{
 </head>
 <body>
 
+
 <!-- 메인 홈페이지 읽기 애니메이션 -->
 <div class="container">
          <div class="wrapper">
@@ -136,8 +137,6 @@ body{
 <script type="text/javascript">
 location.href="home.do";
 </script>
-
-
 
 
 </body>

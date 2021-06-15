@@ -236,21 +236,26 @@
 
 
 
-       <div class="form-group">
+
+        <div class="form-group">
 			<label for="phonenumer" class="cols-sm-2 control-label">전화번호 (필수)</label>
-			   <div class="cols-sm-10">
-			   		<div class="input-group">
-			             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-			             <input type="text" class="form-control" name="to" id="to" placeholder="전화번호를 입력해주세요.(-는 빼고 적어주세요) ex)01011112222 " />
-			             <p id="phoneCheck" style="font-size: 12px"></p>
-			             <input type="button" class="btn btn-secondary" id="send" name="phoneBtn" value="본인 인증">
-			             <input type="hidden" name="text" id="text">   인증번호를 히든으로 저장해서 보낸다
-			        </div>
-			        <br>
-			   </div>
-		       <div class="cols-sm-6" id="phone_authNumber">
-		       </div>
-		 </div>
+		<div class="cols-sm-10">
+		   <div class="input-group">
+			   <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+			   <input type="text" class="form-control" name="phonenum" id="to" placeholder="전화번호를 입력해주세요.(-는 빼고 적어주세요) ex)01011112222 " />
+			   <p id="phoneCheck" style="font-size: 12px"></p>
+			  	<input type="button" class="btn btn-secondary" id="send" name="phoneBtn" value="본인 인증">
+			   <input type="hidden" name="text" id="text">   인증번호를 히든으로 저장해서 보낸다
+		   </div>
+			   <br>
+		</div>
+	 	<div class="cols-sm-6" id="phone_authNumber">
+	 		<input type="text" id="phone_authNum" name="userNum" size="30px" placeholder="인증번호 6자리를 입력하세요.">
+	 		<input type='button' class="btn btn-primary" id="phone_authNumBtn" name="phoneNumBtn" value="인증하기">
+
+		</div>
+		</div>
+
 
         <div class="form-group">
 			<label for="email" class="cols-sm-2 control-label">이메일 (필수)</label>
@@ -478,12 +483,6 @@
 
              $("#text").val(number);      /* 난수로 생성된 인증번호를 hidden name : text 에 숨긴다 */
 
-          // 인증번호 입력란 생성
- 			$("<input>", {type:'text', id:"userNum", name:"userNum", size:"30px", placeholder:"인증번호 6자리를 입력하세요."}).appendTo('#phone_authNumber');
- 			$("<input>", {type:'button', "class":"btn btn-primary", id:"phoneNumBtn", name:"phoneNumBtn", disabled:"disabled", value:"인증하기"}).appendTo('#phone_authNumber');
- 			$("<p></p>", {id:'time'}).appendTo('#phone_authNumber');
-
-
  		var display = $('#time');
 	    var leftSec = 180;	//인증 남은시간(초)
 
@@ -535,25 +534,28 @@
                 }
             }
        })
-       $("#enterBtn").click(function() {   /* 내가 작성한 번호와 인증번호를 비교한다 */
-          alert($("#text").val());
-          var userNum = $("#userNum").val();
+       $("#phone_authNumBtn").click(function() {   /* 내가 작성한 번호와 인증번호를 비교한다 */
+    	      alert($("#text").val());
+    	      var userNum = $("#phone_authNum").val();
 
-          var sysNum = $("#text").val();
+    	      var sysNum = $("#text").val();
 
-          if(userNum == null || userNum == ""){
-             alert("휴대폰으로 발송된 인증번호를 입력해주세요");
-          }
-          else{
-             if(userNum.trim() == sysNum.trim()){
-                 alert("성공");
-              }
-              else {
-                 alert("실패");
-              }
-          }
-       });
+    	      if(userNum == null || userNum == ""){
+    	         alert("휴대폰으로 발송된 인증번호를 입력해주세요");
+    	      }
+    	      else{
+    	         if(userNum.trim() == sysNum.trim()){
+    	             alert("성공");
+    	          }
+    	          else {
+    	             alert("실패");
+    	          }
+    	      }
+    	   });
      });
+
+
+
     // 성공 상태로 바꾸는 함수
     function successState(sel){
         $(sel)

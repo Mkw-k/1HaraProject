@@ -14,11 +14,9 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import bit.com.a.dto.RecruitDto;
@@ -31,11 +29,12 @@ import bit.com.a.dto.Resume_AwardDto;
 import bit.com.a.dto.Resume_AwardVo;
 import bit.com.a.dto.Resume_CareerDto;
 import bit.com.a.dto.Resume_CareerVo;
-import bit.com.a.dto.Resume_EduDto;
-import bit.com.a.dto.Resume_EduVo;
+import bit.com.a.dto.Resume_HighschoolDto;
 import bit.com.a.dto.Resume_LanguageDto;
 import bit.com.a.dto.Resume_LanguageVo;
 import bit.com.a.dto.Resume_LicenseDto;
+import bit.com.a.dto.Resume_UniversityDto;
+import bit.com.a.dto.Resume_UniversityVo;
 import bit.com.a.dto.Resume_licenseVo;
 import bit.com.a.service.RecruitService;
 import bit.com.a.service.ResumeService;
@@ -44,46 +43,46 @@ import bit.com.a.util.PdsUtil;
 @Controller
 public class ResumeController {
 
-
 	@Autowired
 	ResumeService service;
-	
-	 @Autowired
-	 RecruitService recruitservice;
 
+	@Autowired
+	RecruitService recruitservice;
 
-	@RequestMapping(value = "resumeMain.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "resumeMain.do", method = { RequestMethod.GET, RequestMethod.POST })
 
+	//이력서 관리 메인페이지 이동
 	public String goResumeMain(Model model, String memberid) {
-		
+
 		System.out.println(memberid);
-		//이력서 리스트
+		// 이력서 리스트
 		List<ResumeDto> resumelist = service.getresume(memberid);
 		List<ResumeDto> resumeNolist = service.getNoresume(memberid);
 		List<ApplyDto> applylist = service.getApplyList(memberid);
-		System.out.println("7777777777777777777777777777777777777777777"+applylist);
+		System.out.println("#######################################" + applylist);
 		List<ResumeParam> param = new ArrayList<ResumeParam>();
-		
-		for(int i=0; i<applylist.size();i++) {
-			
+
+		for (int i = 0; i < applylist.size(); i++) {
+
 			ResumeParam pa = new ResumeParam();
-			
+
+			pa.setApplyseq(applylist.get(i).getApplyseq());
 			pa.setJobseq(applylist.get(i).getJobseq());
 			pa.setResumeseq(applylist.get(i).getResumeseq());
 			pa.setApplydate(applylist.get(i).getApplydate());
-			
+			pa.setCompanyread(applylist.get(i).getCompanyread());
+
 			int jobseq = applylist.get(i).getJobseq();
 			String jobtitle = service.getJobtitle(jobseq);
 			pa.setJobtitle(jobtitle);
-			
+
 			int resumeseq = applylist.get(i).getResumeseq();
 			String resumetitle = service.getResumeTitle(resumeseq);
 			pa.setResumetitle(resumetitle);
-			
+
 			param.add(pa);
 		}
-		
-		
+
 		model.addAttribute("resumelist", resumelist);
 		model.addAttribute("resumeNolist", resumeNolist);
 		model.addAttribute("param", param);
@@ -91,25 +90,22 @@ public class ResumeController {
 		return "resume/resumeMain";
 	}
 
-
-	@RequestMapping(value = "writeResume.do", method = {RequestMethod.GET, RequestMethod.POST})
+	//이력서 작성 페이지 이동
+	@RequestMapping(value = "writeResume.do", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public String writeResume() {
 
 		return "resume/writeResume";
 	}
 
-
-
+	//이력서 작성
 	@RequestMapping(value = "writeAfResume.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String writeAfResume(ResumeDto dto, Resume_EduDto edudto, Resume_CareerDto careerdto,
-			Resume_LicenseDto licdto, Resume_ActivityDto actdto, Resume_AwardDto awarddto, Resume_LanguageDto landto,
-			@RequestParam(value = "fileload", required = false) MultipartFile fileload, HttpServletRequest req,
-			Model model) throws Exception {
-
+	public String writeAfResume(ResumeDto dto, Resume_HighschoolDto highdto, Resume_UniversityDto unidto,
+			Resume_CareerDto careerdto, Resume_LicenseDto licdto, Resume_ActivityDto actdto, Resume_AwardDto awarddto,
+			Resume_LanguageDto landto, @RequestParam(value = "fileload", required = false) MultipartFile fileload,
+			HttpServletRequest req, Model model) throws Exception {
 
 		System.out.println("fileload : " + fileload);
-
 
 		if (!fileload.isEmpty()) {
 			System.out.println("안비었다");
@@ -148,7 +144,7 @@ public class ResumeController {
 				e.printStackTrace();
 			}
 
-		System.out.println(dto.toString());
+			System.out.println(dto.toString());
 
 		}
 
@@ -161,318 +157,309 @@ public class ResumeController {
 			service.writeResume(dto);
 			service.upProgress(dto);
 		}
-		
-		
-		//방금 작성한 이력서의 seq를 가져온다
-		int resumeseq = service.getseq(dto.getResumetitle());
+
+		// 방금 작성한 이력서의 seq를 가져온다
+		int resumeseq = service.getseq(dto);
+		boolean up = service.updateProgress(resumeseq);
 		System.out.println(resumeseq);
-		
-		
+		System.out.println("update progress =" + up);
 		System.out.println(dto.toString());
-		
-		//학력사항 관련 테이블 insert
-		
-		System.out.println("11111111111111111111111111111111111111111111111111111111111111111111111111111"+edudto.toString());
-		
-	
-			if( edudto.getHighschool() == null || edudto.getHighschool().equals("")) {
-			} else {
-			
-			Resume_EduVo eduvo = new Resume_EduVo();
 
-			eduvo.setResumeseq(resumeseq);
-			eduvo.setHighschool(edudto.getHighschool());
-			eduvo.setHigh_str(edudto.getHigh_str());
-			eduvo.setHigh_str_status(edudto.getHigh_str_status());
-			eduvo.setHigh_end(edudto.getHigh_end());
-			eduvo.setHigh_end_status(edudto.getHigh_end_status());
-			
-			boolean b = service.writeEdu(eduvo);
+		// 학력사항 관련 테이블 insert
+
+
+		if (highdto.getHighschool() == null || highdto.getHighschool().equals("")) {
+		} else {
+
+			highdto.setResumeseq(resumeseq);
+			boolean b = service.writeHigh(highdto);
 			boolean c = service.updateProgress(resumeseq);
 			System.out.println(b);
 			System.out.println(c);
-			
-			
-			for (int i = 0; i < edudto.getUniversity().length; i++) {
-				
-			if( edudto.getUniversity()[i] == null || edudto.getUniversity()[i].equals("")) {
+			System.out.println(
+					"11111111111111111111111111111111111111111111111111111111111111111111111111111" + highdto.toString());
+		}
+
+		for (int i = 0; i < unidto.getUniversity().length; i++) {
+
+			if (unidto.getUniversity()[i] == null || unidto.getUniversity()[i].equals("")) {
 			} else {
-				
-			eduvo.setResumeseq(resumeseq);
-			eduvo.setHighschool(edudto.getHighschool());
-			eduvo.setHigh_str(edudto.getHigh_str());
-			eduvo.setHigh_str_status(edudto.getHigh_str_status());
-			eduvo.setHigh_end(edudto.getHigh_end());
-			eduvo.setHigh_end_status(edudto.getHigh_end_status());
-				
-			eduvo.setUniversity(edudto.getUniversity()[i]);
-			eduvo.setUniv_status(edudto.getUniv_status()[i]);
-			eduvo.setUniv_str(edudto.getUniv_str()[i]);
-			eduvo.setUniv_str_status(edudto.getUniv_str_status()[i]);
-			eduvo.setUniv_end(edudto.getUniv_end()[i]);
-			eduvo.setUniv_end_status(edudto.getUniv_end_status()[i]);
-			eduvo.setUniv_major_field(edudto.getUniv_major_field()[i]);
-			eduvo.setUniv_major(edudto.getUniv_major()[i]);
-			eduvo.setUniv_night(edudto.getUniv_night()[i]);
-			eduvo.setUniv_grade(edudto.getUniv_grade()[i]);
-			eduvo.setUniv_grade_base(edudto.getUniv_grade_base()[i]);
-			eduvo.setUniv_paper(edudto.getUniv_paper()[i]);
-			
-			System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222" + eduvo.toString());
 
-			boolean d = service.writeEdu(eduvo);
-			boolean e = service.updateProgress(resumeseq);
-			System.out.println(d);
-			System.out.println(e);
-			
-			}
-			}
-	
-		}
-		//경력사항 관련 테이블 INSERT
-		System.out.println(" careerdto.getPre_comname().length= " + careerdto.getPre_comname().length);
-		System.out.println(careerdto.toString());
-		
-		for(int i=0; i<careerdto.getPre_comname().length; i++) {
+				Resume_UniversityVo univo = new Resume_UniversityVo();
 
-			if( careerdto.getPre_comname()[i] ==null || careerdto.getPre_comname()[i].equals("")) {
-			}else {
-			Resume_CareerVo carvo = new Resume_CareerVo();
-			carvo.setResumeseq(resumeseq);
-			carvo.setPre_comname(careerdto.getPre_comname()[i]);
-			carvo.setPre_startdate(careerdto.getPre_startdate()[i]);
-			carvo.setPre_enddate(careerdto.getPre_enddate()[i]);
-			carvo.setPre_status(careerdto.getPre_status()[i]);
-			carvo.setPre_position(careerdto.getPre_position()[i]);
-			carvo.setPre_buscode(careerdto.getPre_buscode()[i]);
-			carvo.setPre_area(careerdto.getPre_area()[i]);
-			carvo.setPre_dept(careerdto.getPre_dept()[i]);
-			carvo.setPre_sal(careerdto.getPre_sal()[i]);
-			carvo.setPre_jobdetail(careerdto.getPre_jobdetail()[i]);
-			carvo.setPre_reason(careerdto.getPre_reason()[i]);
-			
-			System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333333333" + carvo.toString());
-			
-			boolean b = service.writeCareer(carvo);
-			boolean c = service.updateProgress(resumeseq);
-			System.out.println(b);
-			System.out.println(c);
+				univo.setResumeseq(resumeseq);
+				univo.setUniversity(unidto.getUniversity()[i]);
+				univo.setUniv_status(unidto.getUniv_status()[i]);
+				univo.setUniv_str(unidto.getUniv_str()[i]);
+				univo.setUniv_str_status(unidto.getUniv_str_status()[i]);
+				univo.setUniv_end(unidto.getUniv_end()[i]);
+				univo.setUniv_end_status(unidto.getUniv_end_status()[i]);
+				univo.setUniv_major_field(unidto.getUniv_major_field()[i]);
+				univo.setUniv_major(unidto.getUniv_major()[i]);
+				univo.setUniv_night(unidto.getUniv_night()[i]);
+				univo.setUniv_grade(unidto.getUniv_grade()[i]);
+				univo.setUniv_grade_base(unidto.getUniv_grade_base()[i]);
+				univo.setUniv_paper(unidto.getUniv_paper()[i]);
+
+				System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222"
+						+ univo.toString());
+
+				boolean d = service.writeUni(univo);
+				boolean e = service.updateProgress(resumeseq);
+				System.out.println(d);
+				System.out.println(e);
+
 			}
-			
 		}
-		
-		//자격증관련 사항 테이블 INSERT
+
+		// 경력사항 관련 테이블 INSERT
+
+		for (int i = 0; i < careerdto.getPre_comname().length; i++) {
+
+			if (careerdto.getPre_comname()[i] == null || careerdto.getPre_comname()[i].equals("")) {
+			} else {
+				Resume_CareerVo carvo = new Resume_CareerVo();
+				carvo.setResumeseq(resumeseq);
+				carvo.setPre_comname(careerdto.getPre_comname()[i]);
+				carvo.setPre_startdate(careerdto.getPre_startdate()[i]);
+				carvo.setPre_enddate(careerdto.getPre_enddate()[i]);
+				carvo.setPre_status(careerdto.getPre_status()[i]);
+				carvo.setPre_position(careerdto.getPre_position()[i]);
+				carvo.setPre_buscode(careerdto.getPre_buscode()[i]);
+				carvo.setPre_area(careerdto.getPre_area()[i]);
+				carvo.setPre_dept(careerdto.getPre_dept()[i]);
+				carvo.setPre_sal(careerdto.getPre_sal()[i]);
+				carvo.setPre_jobdetail(careerdto.getPre_jobdetail()[i]);
+				carvo.setPre_reason(careerdto.getPre_reason()[i]);
+
+				System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333333333"
+						+ carvo.toString());
+
+				boolean b = service.writeCareer(carvo);
+				boolean c = service.updateProgress(resumeseq);
+				System.out.println(b);
+				System.out.println(c);
+			}
+
+		}
+
+		// 자격증관련 사항 테이블 INSERT
 		System.out.println(licdto.toString());
-		for(int i=0; i<licdto.getLic_name().length; i++) {
-			
-			
-			if( licdto.getLic_date()[i]==null||licdto.getLic_date()[i].equals("")) {
+		for (int i = 0; i < licdto.getLic_name().length; i++) {
+
+			if (licdto.getLic_date()[i] == null || licdto.getLic_date()[i].equals("")) {
 				System.out.println("널임");
 			} else {
-			
-			Resume_licenseVo licvo = new Resume_licenseVo();
-			licvo.setResumeseq(resumeseq);
-			/* licvo.setLic_type(licdto.getLic_type()[i]); */
-			licvo.setLic_date(licdto.getLic_date()[i]);
-			licvo.setLic_name(licdto.getLic_name()[i]);
-			licvo.setLic_publisher(licdto.getLic_publisher()[i]);
-			licvo.setLic_pass(licdto.getLic_pass()[i]);
-			
-			System.out.println("44444444444444444444444444444444444444444444444444444444444444444444444444444444444" + licvo.toString());
-			
-			boolean b = service.writeLic(licvo);
-			boolean c = service.updateProgress(resumeseq);
-			System.out.println(b);
-			System.out.println(c);
+
+				Resume_licenseVo licvo = new Resume_licenseVo();
+				licvo.setResumeseq(resumeseq);
+				/* licvo.setLic_type(licdto.getLic_type()[i]); */
+				licvo.setLic_date(licdto.getLic_date()[i]);
+				licvo.setLic_name(licdto.getLic_name()[i]);
+				licvo.setLic_publisher(licdto.getLic_publisher()[i]);
+				licvo.setLic_pass(licdto.getLic_pass()[i]);
+
+				System.out.println("44444444444444444444444444444444444444444444444444444444444444444444444444444444444"
+						+ licvo.toString());
+
+				boolean b = service.writeLic(licvo);
+				boolean c = service.updateProgress(resumeseq);
+				System.out.println(b);
+				System.out.println(c);
 			}
 		}
-		
-		//대외활동관련 사항 테이블 INSERT
+
+		// 대외활동관련 사항 테이블 INSERT
 		System.out.println(actdto.toString());
-		for(int i=0; i<actdto.getAct_str().length; i++) {
-			
-			
-			if( actdto.getAct_str()[i] ==null || actdto.getAct_str()[i].equals("")) {
+		for (int i = 0; i < actdto.getAct_str().length; i++) {
+
+			if (actdto.getAct_str()[i] == null || actdto.getAct_str()[i].equals("")) {
 			} else {
-			Resume_ActivityVo actvo = new Resume_ActivityVo();
-			actvo.setResumeseq(resumeseq);
-			actvo.setAct_field(actdto.getAct_field()[i]);
-			actvo.setAct_org(actdto.getAct_org()[i]);
-			actvo.setAct_str(actdto.getAct_str()[i]);
-			actvo.setAct_end(actdto.getAct_end()[i]);
-			actvo.setAct_detail(actdto.getAct_detail()[i]);
-			
-			System.out.println("55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555" + actvo.toString());
-			
-			boolean b = service.writeAct(actvo);
-			boolean c = service.updateProgress(resumeseq);
-			System.out.println(c);
+				Resume_ActivityVo actvo = new Resume_ActivityVo();
+				actvo.setResumeseq(resumeseq);
+				actvo.setAct_field(actdto.getAct_field()[i]);
+				actvo.setAct_org(actdto.getAct_org()[i]);
+				actvo.setAct_str(actdto.getAct_str()[i]);
+				actvo.setAct_end(actdto.getAct_end()[i]);
+				actvo.setAct_detail(actdto.getAct_detail()[i]);
+
+				System.out.println(
+						"55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+								+ actvo.toString());
+
+				boolean b = service.writeAct(actvo);
+				boolean c = service.updateProgress(resumeseq);
+				System.out.println(c);
 			}
 		}
-		
-		//수상관련 사항 테이블 INSERT
+
+		// 수상관련 사항 테이블 INSERT
 		System.out.println(awarddto.toString());
 		System.out.println(awarddto.getAwd_name().length);
-		
-		for(int i=0; i<awarddto.getAwd_name().length; i++) {
-			
-			if( awarddto.getAwd_name()[i] ==null || awarddto.getAwd_name()[i].equals("")) {
+
+		for (int i = 0; i < awarddto.getAwd_name().length; i++) {
+
+			if (awarddto.getAwd_name()[i] == null || awarddto.getAwd_name()[i].equals("")) {
 			} else {
-			Resume_AwardVo awdvo = new Resume_AwardVo();
-			awdvo.setResumeseq(resumeseq);
-			awdvo.setAwd_name(awarddto.getAwd_name()[i]);
-			awdvo.setAwd_date(awarddto.getAwd_date()[i]);
-			awdvo.setAwd_org(awarddto.getAwd_org()[i]);
-			
-			System.out.println("66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666" + awdvo.toString());
-			
-			boolean b = service.writeAward(awdvo);
-			boolean c = service.updateProgress(resumeseq);
-			System.out.println(b);
-			System.out.println(c);
+				Resume_AwardVo awdvo = new Resume_AwardVo();
+				awdvo.setResumeseq(resumeseq);
+				awdvo.setAwd_name(awarddto.getAwd_name()[i]);
+				awdvo.setAwd_date(awarddto.getAwd_date()[i]);
+				awdvo.setAwd_org(awarddto.getAwd_org()[i]);
+
+				System.out.println(
+						"66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666"
+								+ awdvo.toString());
+
+				boolean b = service.writeAward(awdvo);
+				boolean c = service.updateProgress(resumeseq);
+				System.out.println(b);
+				System.out.println(c);
 			}
 		}
-		
+
 		System.out.println(landto.toString());
-		
-		for(int i=0; i<landto.getLan_exam().length; i++) {
-			if( landto.getLan_exam()[i] ==null || landto.getLan_exam()[i].equals("")) {
+
+		for (int i = 0; i < landto.getLan_exam().length; i++) {
+			if (landto.getLan_exam()[i] == null || landto.getLan_exam()[i].equals("")) {
 			} else {
-			
-			Resume_LanguageVo lanvo = new Resume_LanguageVo();
-			lanvo.setResumeseq(resumeseq);
-			lanvo.setLan_kind(landto.getLan_kind()[i]);
-			lanvo.setLan_exam(landto.getLan_exam()[i]);
-			lanvo.setLan_score(landto.getLan_score()[i]);
-			lanvo.setLan_grade(landto.getLan_grade()[i]);
-			lanvo.setLan_pass(landto.getLan_pass()[i]);
-			lanvo.setLan_date(landto.getLan_date()[i]);
-			
-			System.out.println("7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777" + lanvo.toString());
-			
-			boolean b = service.writeLan(lanvo);
-			boolean c = service.updateProgress(resumeseq);
-			System.out.println(b);
-			System.out.println(c);
+
+				Resume_LanguageVo lanvo = new Resume_LanguageVo();
+				lanvo.setResumeseq(resumeseq);
+				lanvo.setLan_kind(landto.getLan_kind()[i]);
+				lanvo.setLan_exam(landto.getLan_exam()[i]);
+				lanvo.setLan_score(landto.getLan_score()[i]);
+				lanvo.setLan_grade(landto.getLan_grade()[i]);
+				lanvo.setLan_pass(landto.getLan_pass()[i]);
+				lanvo.setLan_date(landto.getLan_date()[i]);
+
+				System.out.println(
+						"7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777"
+								+ lanvo.toString());
+
+				boolean b = service.writeLan(lanvo);
+				boolean c = service.updateProgress(resumeseq);
+				System.out.println(b);
+				System.out.println(c);
+			}
 		}
-		}
-		
-		//이력서 리스트
+
+		// 이력서 리스트 불러오기
 		List<ResumeDto> resumelist = service.getresume(dto.getMemberid());
 		List<ResumeDto> resumeNolist = service.getNoresume(dto.getMemberid());
 		List<ApplyDto> applylist = service.getApplyList(dto.getMemberid());
-		System.out.println("7777777777777777777777777777777777777777777"+applylist);
+		System.out.println("##########################################" + applylist);
 		List<ResumeParam> param = new ArrayList<ResumeParam>();
-		
-		for(int i=0; i<applylist.size();i++) {
-			
+
+		for (int i = 0; i < applylist.size(); i++) {
+
 			ResumeParam pa = new ResumeParam();
-			
+
+			pa.setApplyseq(applylist.get(i).getApplyseq());
 			pa.setJobseq(applylist.get(i).getJobseq());
 			pa.setResumeseq(applylist.get(i).getResumeseq());
 			pa.setApplydate(applylist.get(i).getApplydate());
-			
+			pa.setCompanyread(applylist.get(i).getCompanyread());
+
 			int jobseq = applylist.get(i).getJobseq();
 			String jobtitle = service.getJobtitle(jobseq);
 			pa.setJobtitle(jobtitle);
-			
+
 			int resumeseqs = applylist.get(i).getResumeseq();
 			String resumetitle = service.getResumeTitle(resumeseqs);
 			pa.setResumetitle(resumetitle);
-			
+
 			param.add(pa);
 		}
-		
-		
+
 		model.addAttribute("resumelist", resumelist);
 		model.addAttribute("resumeNolist", resumeNolist);
 		model.addAttribute("param", param);
-		
+
 		return "resume/resumeMain";
 	}
-	
-	
-	
-	@RequestMapping(value = "Resumedetail.do", method = {RequestMethod.GET, RequestMethod.POST})
+
+	//이력서 상세 정보(디테일) 보기
+	@RequestMapping(value = "Resumedetail.do", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public String goResumeDetail(int seq, Model model) {
 
-		System.out.println("seq="+seq);
+		System.out.println("seq=" + seq);
 		ResumeDto dto = service.getResumeDetail(seq);
-		List<Resume_EduVo> edulist = service.getEduDetail(seq);
+		Resume_HighschoolDto highdto = service.getHighDetail(seq);
+		List<Resume_UniversityVo> unilist = service.getUniDetail(seq);
 		List<Resume_CareerVo> calist = service.getCareerDetail(seq);
 		List<Resume_licenseVo> liclist = service.getLicDetail(seq);
 		List<Resume_ActivityVo> actlist = service.getActDetail(seq);
 		List<Resume_AwardVo> awdlist = service.getAwdDetail(seq);
 		List<Resume_LanguageVo> lanlist = service.getlanDetail(seq);
-		
-		
+
 		model.addAttribute("dto", dto);
-		model.addAttribute("edulist", edulist);
+		model.addAttribute("highdto", highdto);
+		model.addAttribute("unilist", unilist);
 		model.addAttribute("calist", calist);
 		model.addAttribute("liclist", liclist);
 		model.addAttribute("actlist", actlist);
 		model.addAttribute("awdlist", awdlist);
 		model.addAttribute("lanlist", lanlist);
-		
+
 		return "resume/Resumedetail";
 	}
-	
-	@RequestMapping(value = "deleteResume.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String deleteResume(int seq, String memberid, Model model) {
-		
-		//이력서 리스트
 
-		boolean c = service.deleteEduResume(seq);
+	//이력서 삭제
+	@RequestMapping(value = "deleteResume.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String deleteResume(int resumeseq, String memberid, Model model) {
+
+
+		boolean c = service.deleteHighResume(resumeseq);
 		System.out.println(c);
-		boolean d = service.deleteCareerResume(seq);
+		boolean c2 = service.deleteUniResume(resumeseq);
+		System.out.println(c2);
+		boolean d = service.deleteCareerResume(resumeseq);
 		System.out.println(d);
-		boolean e = service.deleteLicenseResume(seq);
+		boolean e = service.deleteLicenseResume(resumeseq);
 		System.out.println(e);
-		boolean f = service.deleteActivityResume(seq);
+		boolean f = service.deleteActivityResume(resumeseq);
 		System.out.println(f);
-		boolean g = service.deleteAwardResume(seq);
+		boolean g = service.deleteAwardResume(resumeseq);
 		System.out.println(g);
-		boolean h = service.deleteLanResume(seq);
+		boolean h = service.deleteLanResume(resumeseq);
 		System.out.println(h);
-		boolean b = service.deleteResume(seq);
-
-		
+		boolean b = service.deleteResume(resumeseq);
 		System.out.println(b);
-		
-	
-		
-		
-	
-		
-		
-		//이력서 리스트
+		//지원내역 삭제
+		boolean q = service.deleteApply(resumeseq);
+
+		System.out.println("지원내역 삭제"+q);
+
+		// 이력서 리스트 불러오기
 		List<ResumeDto> resumelist = service.getresume(memberid);
 		List<ResumeDto> resumeNolist = service.getNoresume(memberid);
 		List<ApplyDto> applylist = service.getApplyList(memberid);
-		System.out.println("7777777777777777777777777777777777777777777"+applylist);
+		System.out.println("7777777777777777777777777777777777777777777" + applylist);
 		List<ResumeParam> param = new ArrayList<ResumeParam>();
-		
-		for(int i=0; i<applylist.size();i++) {
-			
+
+		for (int i = 0; i < applylist.size(); i++) {
+
 			ResumeParam pa = new ResumeParam();
-			
+
+			pa.setApplyseq(applylist.get(i).getApplyseq());
 			pa.setJobseq(applylist.get(i).getJobseq());
 			pa.setResumeseq(applylist.get(i).getResumeseq());
 			pa.setApplydate(applylist.get(i).getApplydate());
-			
+			pa.setCompanyread(applylist.get(i).getCompanyread());
+
 			int jobseq = applylist.get(i).getJobseq();
 			String jobtitle = service.getJobtitle(jobseq);
 			pa.setJobtitle(jobtitle);
-			
-			int resumeseq = applylist.get(i).getResumeseq();
-			String resumetitle = service.getResumeTitle(resumeseq);
+
+			int resumeseqs = applylist.get(i).getResumeseq();
+			String resumetitle = service.getResumeTitle(resumeseqs);
 			pa.setResumetitle(resumetitle);
-			
+
 			param.add(pa);
 		}
-		
-		
+
 		model.addAttribute("resumelist", resumelist);
 		model.addAttribute("resumeNolist", resumeNolist);
 		model.addAttribute("param", param);
@@ -480,24 +467,25 @@ public class ResumeController {
 		return "resume/resumeMain";
 
 	}
-	
-	@RequestMapping(value = "updateResume.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String updateResume(int seq, Model model) {
-		
-		//이력서 리스트
 
-		System.out.println("seq="+seq);
-		ResumeDto resumedto = service.getResumeDetail(seq);
-		List<Resume_EduVo> edulist = service.getEduDetail(seq);
+	//이력서 업데이트 페이지 넘어가기
+	@RequestMapping(value = "updateResume.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String updateResume(int seq, Model model) {
+
+		// 이력서 리스트
+		System.out.println("seq=" + seq);
+		ResumeDto dto = service.getResumeDetail(seq);
+		Resume_HighschoolDto highdto = service.getHighDetail(seq);
+		List<Resume_UniversityVo> unilist = service.getUniDetail(seq);
 		List<Resume_CareerVo> calist = service.getCareerDetail(seq);
 		List<Resume_licenseVo> liclist = service.getLicDetail(seq);
 		List<Resume_ActivityVo> actlist = service.getActDetail(seq);
 		List<Resume_AwardVo> awdlist = service.getAwdDetail(seq);
 		List<Resume_LanguageVo> lanlist = service.getlanDetail(seq);
-		
-		
-		model.addAttribute("resumedto", resumedto);
-		model.addAttribute("edulist", edulist);
+
+		model.addAttribute("resumedto", dto);
+		model.addAttribute("highdto", highdto);
+		model.addAttribute("unilist", unilist);
 		model.addAttribute("calist", calist);
 		model.addAttribute("liclist", liclist);
 		model.addAttribute("actlist", actlist);
@@ -508,307 +496,409 @@ public class ResumeController {
 
 	}
 	
+	//이력서 업데이트
 	@RequestMapping(value = "updateAfResume.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String updateAfResume(ResumeDto dto, Resume_EduDto edudto, Resume_CareerDto careerdto,
-			Resume_LicenseDto licdto, Resume_ActivityDto actdto, Resume_AwardDto awarddto, Resume_LanguageDto landto, 
-			String namefile,
+	public String updateAfResume(ResumeDto dto, Resume_HighschoolDto highdto, Resume_UniversityDto unidto,
+			Resume_CareerDto careerdto, Resume_LicenseDto licdto, Resume_ActivityDto actdto, Resume_AwardDto awarddto,
+			Resume_LanguageDto landto, String namefile,
 			@RequestParam(value = "fileload", required = false) MultipartFile fileload, HttpServletRequest req,
 			Model model) throws Exception {
 
 		System.out.println("fileload" + fileload);
 		dto.setResumeimage(fileload.getOriginalFilename());
 
-		
-		if(!fileload.isEmpty()) {
-	        // 파일 경로
-	        String fupload = req.getServletContext().getRealPath("/upload");
-	        
-	        // 수정할 파일이 있음
-	        if(dto.getResumeimage() != null && !dto.getResumeimage().equals("")) {
-	            
-	            String f = dto.getResumeimage();
-	            String newfilename = PdsUtil.getNewFileName(f);
-	            
-	            dto.setResumeimage(f);
-	            dto.setNewresumeimage(newfilename);
-	            
-	            File file = new File(fupload + "/" + newfilename);            
-	            System.out.println(newfilename);
-	            try {
-	                // 실제 업로드
-	                FileUtils.writeByteArrayToFile(file, fileload.getBytes());
-	                
-	                // db 경신
-	                service.updateResume(dto);
-	                System.out.println("파일이 있다");
-	                
-	            } catch (IOException e) {                
-	                e.printStackTrace();
-	            }            
-	        }
-	        else {    // 수정할 파일 없음
-	            
-	            // 기존의 파일명으로 설정
-	            dto.setResumeimage(namefile);
-	            System.out.println("파일이 없다");
-	            // DB
-	            service.updateResume(dto); 
-	            
-	        }
-	        }
-	        
-	        	else {
-	    			dto.setResumeimage("");
-	    			dto.setNewresumeimage("");
+		if (!fileload.isEmpty()) {
+			// 파일 경로
+			String fupload = req.getServletContext().getRealPath("/upload");
 
-	    			System.out.println("비었다");
-	    			service.updateResume(dto); 
-	    			service.upProgress(dto);
+			// 수정할 파일이 있음
+			if (dto.getResumeimage() != null && !dto.getResumeimage().equals("")) {
+
+				String f = dto.getResumeimage();
+				String newfilename = PdsUtil.getNewFileName(f);
+
+				dto.setResumeimage(f);
+				dto.setNewresumeimage(newfilename);
+
+				File file = new File(fupload + "/" + newfilename);
+				System.out.println(newfilename);
+				try {
+					// 실제 업로드
+					FileUtils.writeByteArrayToFile(file, fileload.getBytes());
+
+					// db 경신
+					service.updateResume(dto);
+					service.upProgress(dto);
+					System.out.println("파일이 있다");
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else { // 수정할 파일 없음
+
+				// 기존의 파일명으로 설정
+				dto.setResumeimage(namefile);
+				System.out.println("파일이 없다");
+				// DB
+				service.updateResume(dto);
+
 			}
-	        
-		
-		
-		//방금 작성한 이력서의 seq를 가져온다
-		int resumeseq = service.getseq(dto.getResumetitle());
+		}
+
+		else {
+			dto.setResumeimage("");
+			dto.setNewresumeimage("");
+
+			System.out.println("비었다");
+			service.updateResume(dto);
+			service.upProgress(dto);
+		}
+
+		// 방금 작성한 이력서의 seq를 가져온다
+		int resumeseq = service.getseq(dto);
 		System.out.println(resumeseq);
-		
-		
+
 		System.out.println(dto.toString());
-		
-		//학력사항 관련 테이블 insert
-		
-		System.out.println("11111111111111111111111111111111111111111111111111111111111111111111111111111"+edudto.toString());
-		
-		if(edudto.getUniversity()!=null) {
-		for (int i = 0; i < edudto.getUniversity().length; i++) {
 
-			if( edudto.getUniversity()[i] == null || edudto.getUniversity()[i].equals("")) {
+		// 학력사항 관련 테이블 update
+		if (highdto != null) {
+
+			if (highdto.getHighschool() == null || highdto.getHighschool().equals("")) {
 			} else {
-			
-			Resume_EduVo eduvo = new Resume_EduVo();
 
-			eduvo.setResumeseq(resumeseq);
-			eduvo.setHighschool(edudto.getHighschool());
-			eduvo.setHigh_str(edudto.getHigh_str());
-			eduvo.setHigh_str_status(edudto.getHigh_str_status());
-			eduvo.setHigh_end(edudto.getHigh_end());
-			eduvo.setHigh_end_status(edudto.getHigh_end_status());
-			
-			eduvo.setUniversity(edudto.getUniversity()[i]);
-			eduvo.setUniv_status(edudto.getUniv_status()[i]);
-			eduvo.setUniv_str(edudto.getUniv_str()[i]);
-			eduvo.setUniv_str_status(edudto.getUniv_str_status()[i]);
-			eduvo.setUniv_end(edudto.getUniv_end()[i]);
-			eduvo.setUniv_end_status(edudto.getUniv_end_status()[i]);
-			eduvo.setUniv_major_field(edudto.getUniv_major_field()[i]);
-			eduvo.setUniv_major(edudto.getUniv_major()[i]);
-			eduvo.setUniv_night(edudto.getUniv_night()[i]);
-			eduvo.setUniv_grade(edudto.getUniv_grade()[i]);
-			eduvo.setUniv_grade_base(edudto.getUniv_grade_base()[i]);
-			eduvo.setUniv_paper(edudto.getUniv_paper()[i]);
-			System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222" + eduvo.toString());
+				highdto.setResumeseq(resumeseq);
+				boolean b = service.updateHigh(highdto);
+				boolean c = service.updateProgress(resumeseq);
 
-			boolean b = service.updateEdu(eduvo);
-			boolean c = service.updateProgress(resumeseq);
-			System.out.println(b);
-			System.out.println(c);
+				System.out.println("11111111111111111111111111111111111111111111111111111111111111111111111111111"
+						+ highdto.toString());
 			}
 		}
+		
+		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"+unidto.toString());
+		
+		// 학력사항 관련 테이블 update
+		if (unidto.getUniversity() == null) {
+		}else {
+			for (int i = 0; i < unidto.getUniversity().length; i++) {
+
+				if (unidto.getUniversity()[i] == null || unidto.getUniversity()[i].equals("")) {
+				} else {
+
+					Resume_UniversityVo univo = new Resume_UniversityVo();
+					unidto.setResumeseq(resumeseq);
+					univo.setUniversity(unidto.getUniversity()[i]);
+					univo.setUniv_status(unidto.getUniv_status()[i]);
+					univo.setUniv_str(unidto.getUniv_str()[i]);
+					univo.setUniv_str_status(unidto.getUniv_str_status()[i]);
+					univo.setUniv_end(unidto.getUniv_end()[i]);
+					univo.setUniv_end_status(unidto.getUniv_end_status()[i]);
+					univo.setUniv_major_field(unidto.getUniv_major_field()[i]);
+					univo.setUniv_major(unidto.getUniv_major()[i]);
+					univo.setUniv_night(unidto.getUniv_night()[i]);
+					univo.setUniv_grade(unidto.getUniv_grade()[i]);
+					univo.setUniv_grade_base(unidto.getUniv_grade_base()[i]);
+					univo.setUniv_paper(unidto.getUniv_paper()[i]);
+					System.out
+							.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222"
+									+ univo.toString());
+
+					boolean b = service.updateUni(univo);
+					boolean c = service.updateProgress(resumeseq);
+					System.out.println(b);
+					System.out.println(c);
+				}
+			}
 		}
-		//경력사항 관련 테이블 INSERT
-		System.out.println(" careerdto.getPre_comname().length= " + careerdto.getPre_comname().length);
+		// 경력사항 관련 테이블 update
 		System.out.println(careerdto.toString());
-		
-		if(careerdto.getPre_comname()!=null) {
-		for(int i=0; i<careerdto.getPre_comname().length; i++) {
 
-			if( careerdto.getPre_comname()[i] ==null || careerdto.getPre_comname()[i].equals("")) {
-			}else {
-			Resume_CareerVo carvo = new Resume_CareerVo();
-			carvo.setResumeseq(resumeseq);
-			carvo.setPre_comname(careerdto.getPre_comname()[i]);
-			carvo.setPre_startdate(careerdto.getPre_startdate()[i]);
-			carvo.setPre_enddate(careerdto.getPre_enddate()[i]);
-			carvo.setPre_status(careerdto.getPre_status()[i]);
-			carvo.setPre_position(careerdto.getPre_position()[i]);
-			carvo.setPre_buscode(careerdto.getPre_buscode()[i]);
-			carvo.setPre_area(careerdto.getPre_area()[i]);
-			carvo.setPre_dept(careerdto.getPre_dept()[i]);
-			carvo.setPre_sal(careerdto.getPre_sal()[i]);
-			carvo.setPre_jobdetail(careerdto.getPre_jobdetail()[i]);
-			carvo.setPre_reason(careerdto.getPre_reason()[i]);
-			
-			System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333333333" + carvo.toString());
-			
-			boolean b = service.updateCareer(carvo);
-			boolean c = service.updateProgress(resumeseq);
-			System.out.println(b);
-			System.out.println(c);
+		if (careerdto.getPre_comname() == null) {
+		}else {
+			for (int i = 0; i < careerdto.getPre_comname().length; i++) {
+
+				if (careerdto.getPre_comname()[i] == null || careerdto.getPre_comname()[i].equals("")) {
+				} else {
+					Resume_CareerVo carvo = new Resume_CareerVo();
+					carvo.setResumeseq(resumeseq);
+					carvo.setPre_comname(careerdto.getPre_comname()[i]);
+					carvo.setPre_startdate(careerdto.getPre_startdate()[i]);
+					carvo.setPre_enddate(careerdto.getPre_enddate()[i]);
+					carvo.setPre_status(careerdto.getPre_status()[i]);
+					carvo.setPre_position(careerdto.getPre_position()[i]);
+					carvo.setPre_buscode(careerdto.getPre_buscode()[i]);
+					carvo.setPre_area(careerdto.getPre_area()[i]);
+					carvo.setPre_dept(careerdto.getPre_dept()[i]);
+					carvo.setPre_sal(careerdto.getPre_sal()[i]);
+					carvo.setPre_jobdetail(careerdto.getPre_jobdetail()[i]);
+					carvo.setPre_reason(careerdto.getPre_reason()[i]);
+
+					System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333333333"
+							+ carvo.toString());
+
+				    boolean b = service.deleteCareerResume(resumeseq); 
+					boolean c = service.writeCareer(carvo);
+					boolean d = service.updateProgress(resumeseq);
+					System.out.println(b);
+					System.out.println(c);
+					System.out.println(d);
+				}
 			}
 		}
-		}
-		
-		//자격증관련 사항 테이블 INSERT
+
+		// 자격증관련 사항 테이블 update
 		System.out.println(licdto.toString());
-		if(licdto.getLic_name()!=null) { 
-		for(int i=0; i<licdto.getLic_name().length; i++) {
-			
-			
-			if( licdto.getLic_date()[i]==null||licdto.getLic_date()[i].equals("")) {
-				System.out.println("널임");
-			} else {
-			
-			Resume_licenseVo licvo = new Resume_licenseVo();
-			licvo.setResumeseq(resumeseq);
-			/* licvo.setLic_type(licdto.getLic_type()[i]); */
-			licvo.setLic_date(licdto.getLic_date()[i]);
-			licvo.setLic_name(licdto.getLic_name()[i]);
-			licvo.setLic_publisher(licdto.getLic_publisher()[i]);
-			licvo.setLic_pass(licdto.getLic_pass()[i]);
-			
-			System.out.println("44444444444444444444444444444444444444444444444444444444444444444444444444444444444" + licvo.toString());
-			
-			boolean b = service.updateLic(licvo);
-			boolean c = service.updateProgress(resumeseq);
-			System.out.println(b);
-			System.out.println(c);
+		if (licdto.getLic_name() == null) {
+		} else {
+			for (int i = 0; i < licdto.getLic_name().length; i++) {
+
+				if (licdto.getLic_date()[i] == null || licdto.getLic_date()[i].equals("")) {
+					System.out.println("널임");
+				} else {
+
+					Resume_licenseVo licvo = new Resume_licenseVo();
+					licvo.setResumeseq(resumeseq);
+					/* licvo.setLic_type(licdto.getLic_type()[i]); */
+					licvo.setLic_date(licdto.getLic_date()[i]);
+					licvo.setLic_name(licdto.getLic_name()[i]);
+					licvo.setLic_publisher(licdto.getLic_publisher()[i]);
+					licvo.setLic_pass(licdto.getLic_pass()[i]);
+
+					System.out.println(
+							"44444444444444444444444444444444444444444444444444444444444444444444444444444444444"
+									+ licvo.toString());
+
+					boolean b = service.deleteLicenseResume(resumeseq);
+					boolean c = service.writeLic(licvo);
+					boolean d = service.updateProgress(resumeseq);
+					System.out.println(b);
+					System.out.println(c);
+					System.out.println(d);
+				}
 			}
 		}
-		}
-		//대외활동관련 사항 테이블 INSERT
+		// 대외활동관련 사항 테이블 update
 		System.out.println(actdto.toString());
-		if(actdto.getAct_str()!=null) { 
-		for(int i=0; i<actdto.getAct_str().length; i++) {
-			
-			
-			if( actdto.getAct_str()[i] ==null || actdto.getAct_str()[i].equals("")) {
-			} else {
-			Resume_ActivityVo actvo = new Resume_ActivityVo();
-			actvo.setResumeseq(resumeseq);
-			actvo.setAct_field(actdto.getAct_field()[i]);
-			actvo.setAct_org(actdto.getAct_org()[i]);
-			actvo.setAct_str(actdto.getAct_str()[i]);
-			actvo.setAct_end(actdto.getAct_end()[i]);
-			actvo.setAct_detail(actdto.getAct_detail()[i]);
-			
-			System.out.println("55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555" + actvo.toString());
-			
-			boolean b = service.updateAct(actvo);
-			boolean c = service.updateProgress(resumeseq);
-			System.out.println(b);
-			System.out.println(c);
+		if (actdto.getAct_str() == null) {
+		}else {
+			for (int i = 0; i < actdto.getAct_str().length; i++) {
+
+				if (actdto.getAct_str()[i] == null || actdto.getAct_str()[i].equals("")) {
+				} else {
+					Resume_ActivityVo actvo = new Resume_ActivityVo();
+					actvo.setResumeseq(resumeseq);
+					actvo.setAct_field(actdto.getAct_field()[i]);
+					actvo.setAct_org(actdto.getAct_org()[i]);
+					actvo.setAct_str(actdto.getAct_str()[i]);
+					actvo.setAct_end(actdto.getAct_end()[i]);
+					actvo.setAct_detail(actdto.getAct_detail()[i]);
+
+					System.out.println(
+							"55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+									+ actvo.toString());
+
+					boolean b = service.deleteActivityResume(resumeseq);
+					boolean c = service.writeAct(actvo);
+					boolean d = service.updateProgress(resumeseq);
+					System.out.println(b+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+					System.out.println(c);
+					System.out.println(d);
+				}
 			}
 		}
-		}
-		//수상관련 사항 테이블 INSERT
+		// 수상관련 사항 테이블 update
 		System.out.println(awarddto.toString());
-		if(awarddto.getAwd_name()!=null) { 
-			
-		for(int i=0; i<awarddto.getAwd_name().length; i++) {
-			
-			if( awarddto.getAwd_name()[i]==null || awarddto.getAwd_name()[i].equals("")) {
-			} else {
-			Resume_AwardVo awdvo = new Resume_AwardVo();
-			awdvo.setResumeseq(resumeseq);
-			awdvo.setAwd_name(awarddto.getAwd_name()[i]);
-			awdvo.setAwd_date(awarddto.getAwd_date()[i]);
-			awdvo.setAwd_org(awarddto.getAwd_org()[i]);
-			
-			System.out.println("66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666" + awdvo.toString());
-			
-			boolean b = service.updateAward(awdvo);
-			boolean c = service.updateProgress(resumeseq);
-			System.out.println(b);
-			System.out.println(c);
+		if (awarddto.getAwd_name() == null) {
+		} else {
+			for (int i = 0; i < awarddto.getAwd_name().length; i++) {
+
+				if (awarddto.getAwd_name()[i] == null || awarddto.getAwd_name()[i].equals("")) {
+				} else {
+					Resume_AwardVo awdvo = new Resume_AwardVo();
+					awdvo.setResumeseq(resumeseq);
+					awdvo.setAwd_name(awarddto.getAwd_name()[i]);
+					awdvo.setAwd_date(awarddto.getAwd_date()[i]);
+					awdvo.setAwd_org(awarddto.getAwd_org()[i]);
+
+					System.out.println(
+							"66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666"
+									+ awdvo.toString());
+
+					boolean b = service.deleteAwardResume(resumeseq); 
+					boolean c = service.writeAward(awdvo);
+					boolean d = service.updateProgress(resumeseq);
+					System.out.println(b);
+					System.out.println(c);
+					System.out.println(d);
+				}
 			}
 		}
+
+		//어학관련 사항 업데이트
+		System.out.println(landto.toString());
+		if (landto.getLan_exam() == null) {
+		} else {
+			for (int i = 0; i < landto.getLan_exam().length; i++) {
+				if (landto.getLan_exam()[i] == null || landto.getLan_exam()[i].equals("")) {
+				} else {
+
+					Resume_LanguageVo lanvo = new Resume_LanguageVo();
+					lanvo.setResumeseq(resumeseq);
+					lanvo.setLan_kind(landto.getLan_kind()[i]);
+					lanvo.setLan_exam(landto.getLan_exam()[i]);
+					lanvo.setLan_score(landto.getLan_score()[i]);
+					lanvo.setLan_grade(landto.getLan_grade()[i]);
+					lanvo.setLan_pass(landto.getLan_pass()[i]);
+					lanvo.setLan_date(landto.getLan_date()[i]);
+
+					System.out.println(
+							"7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777"
+									+ lanvo.toString());
+
+					boolean b = service.deleteLanResume(resumeseq); 
+					boolean c = service.writeLan(lanvo);
+					boolean d = service.updateProgress(resumeseq);
+					System.out.println(b);
+					System.out.println(c);
+					System.out.println(d);
+				}
+			}
 		}
 		
-		System.out.println(landto.toString());
-		if(landto.getLan_exam()!=null) { 
-		for(int i=0; i<landto.getLan_exam().length; i++) {
-			if( landto.getLan_exam()[i] ==null || landto.getLan_exam()[i].equals("")) {
-			} else {
-			
-			Resume_LanguageVo lanvo = new Resume_LanguageVo();
-			lanvo.setResumeseq(resumeseq);
-			lanvo.setLan_kind(landto.getLan_kind()[i]);
-			lanvo.setLan_exam(landto.getLan_exam()[i]);
-			lanvo.setLan_score(landto.getLan_score()[i]);
-			lanvo.setLan_grade(landto.getLan_grade()[i]);
-			lanvo.setLan_pass(landto.getLan_pass()[i]);
-			lanvo.setLan_date(landto.getLan_date()[i]);
-			
-			System.out.println("7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777" + lanvo.toString());
-			
-			boolean b = service.updateLan(lanvo);
-			boolean c = service.updateProgress(resumeseq);
-			System.out.println(b);
-			System.out.println(c);
-		}
-		}
-		}
-		//이력서 리스트
+		// 이력서 리스트 가져오기
 		List<ResumeDto> resumelist = service.getresume(dto.getMemberid());
 		List<ResumeDto> resumeNolist = service.getNoresume(dto.getMemberid());
 		List<ApplyDto> applylist = service.getApplyList(dto.getMemberid());
-		System.out.println("7777777777777777777777777777777777777777777"+applylist);
+		System.out.println("7777777777777777777777777777777777777777777" + applylist);
 		List<ResumeParam> param = new ArrayList<ResumeParam>();
-		
-		for(int i=0; i<applylist.size();i++) {
-			
+
+		for (int i = 0; i < applylist.size(); i++) {
+
 			ResumeParam pa = new ResumeParam();
-			
+
+			pa.setApplyseq(applylist.get(i).getApplyseq());
 			pa.setJobseq(applylist.get(i).getJobseq());
 			pa.setResumeseq(applylist.get(i).getResumeseq());
 			pa.setApplydate(applylist.get(i).getApplydate());
-			
+			pa.setCompanyread(applylist.get(i).getCompanyread());
+
 			int jobseq = applylist.get(i).getJobseq();
 			String jobtitle = service.getJobtitle(jobseq);
 			pa.setJobtitle(jobtitle);
-			
+
 			int resumeseqs = applylist.get(i).getResumeseq();
 			String resumetitle = service.getResumeTitle(resumeseqs);
 			pa.setResumetitle(resumetitle);
-			
+
 			param.add(pa);
 		}
-		
-		
+
 		model.addAttribute("resumelist", resumelist);
 		model.addAttribute("resumeNolist", resumeNolist);
 		model.addAttribute("param", param);
-		
+
 		return "resume/resumeMain";
 	}
-	
-	@RequestMapping(value = "jobApply.do", method = {RequestMethod.GET, RequestMethod.POST})
+
+	//공고 지원하기
+	@RequestMapping(value = "jobApply.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String getMyResume(int jobseq, int resumeseq, String memberid, Model model) {
-		
+
 		ApplyDto param = new ApplyDto();
-		
+
 		param.setJobseq(jobseq);
 		param.setMemberid(memberid);
 		param.setResumeseq(resumeseq);
-		
+
 		RecruitDto dto = recruitservice.getRecruitListOne(jobseq);
 		List<String> list = recruitservice.getBsnameForDetail(jobseq);
 		List<ResumeDto> resumelist = service.getresume(memberid);
-		
-	
-	    dto.setBusname(list);
-		//이력서 리스트
+
+		dto.setBusname(list);
+		// 이력서 리스트
 		boolean b = service.addApply(param);
-		
-		 model.addAttribute("dto", dto);
-		 model.addAttribute("resumelist", resumelist);
-		
+
+		model.addAttribute("dto", dto);
+		model.addAttribute("resumelist", resumelist);
+
 		return "recruit/recruitDetail";
 
 	}
 	
+	//이력서 삭제
+	@RequestMapping(value = "cancelApply.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String cancelApply(int seq, String memberid, Model model) {
 
+	
+		boolean c = service.cancelApply(seq);
+		System.out.println(c);
+		
+
+		// 이력서 리스트
+		List<ResumeDto> resumelist = service.getresume(memberid);
+		List<ResumeDto> resumeNolist = service.getNoresume(memberid);
+		List<ApplyDto> applylist = service.getApplyList(memberid);
+		System.out.println("7777777777777777777777777777777777777777777" + applylist);
+		List<ResumeParam> param = new ArrayList<ResumeParam>();
+
+		for (int i = 0; i < applylist.size(); i++) {
+
+			ResumeParam pa = new ResumeParam();
+
+			pa.setApplyseq(applylist.get(i).getApplyseq());
+			pa.setJobseq(applylist.get(i).getJobseq());
+			pa.setResumeseq(applylist.get(i).getResumeseq());
+			pa.setApplydate(applylist.get(i).getApplydate());
+			pa.setCompanyread(applylist.get(i).getCompanyread());
+
+			int jobseq = applylist.get(i).getJobseq();
+			String jobtitle = service.getJobtitle(jobseq);
+			pa.setJobtitle(jobtitle);
+
+			int resumeseq = applylist.get(i).getResumeseq();
+			String resumetitle = service.getResumeTitle(resumeseq);
+			pa.setResumetitle(resumetitle);
+
+			param.add(pa);
+		}
+
+		model.addAttribute("resumelist", resumelist);
+		model.addAttribute("resumeNolist", resumeNolist);
+		model.addAttribute("param", param);
+
+		return "resume/resumeMain";
+	}
+		
+		//기업 이력서 상세 정보(디테일) 보기
+		@RequestMapping(value = "Resumedetail2.do", method = { RequestMethod.GET, RequestMethod.POST })
+
+		public String Resumedetail2(int seq, Model model) {
+
+			System.out.println("seq=" + seq);
+			ResumeDto dto = service.getResumeDetail(seq);
+			Resume_HighschoolDto highdto = service.getHighDetail(seq);
+			List<Resume_UniversityVo> unilist = service.getUniDetail(seq);
+			List<Resume_CareerVo> calist = service.getCareerDetail(seq);
+			List<Resume_licenseVo> liclist = service.getLicDetail(seq);
+			List<Resume_ActivityVo> actlist = service.getActDetail(seq);
+			List<Resume_AwardVo> awdlist = service.getAwdDetail(seq);
+			List<Resume_LanguageVo> lanlist = service.getlanDetail(seq);
+
+			//열람여부 확인
+			boolean b = service.updateReadCount(seq);
+			System.out.println("기업 열람 여부 =" +b);
+			
+			model.addAttribute("dto", dto);
+			model.addAttribute("highdto", highdto);
+			model.addAttribute("unilist", unilist);
+			model.addAttribute("calist", calist);
+			model.addAttribute("liclist", liclist);
+			model.addAttribute("actlist", actlist);
+			model.addAttribute("awdlist", awdlist);
+			model.addAttribute("lanlist", lanlist);
+
+			return "resume/Resumedetail";
+		}
+			
 
 }
-	
-

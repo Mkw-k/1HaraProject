@@ -481,7 +481,7 @@ List<FAQDto> commonlist =(List<FAQDto>) request.getAttribute("commonlist");
 
 <nav class="faqnav navbar-nav" style="height: auto;">
   <ul style="display: flex; margin-right: 180px;">
-    <li><a href="memberFAQ.do" class="nav-links" >개발자</a></li>
+    <li><a href="memberFAQ.do" class="nav-links" >지원자</a></li>
     <li><a href="companyFAQ.do" class="nav-links">기업</a></li>
     <li><a href="commonFAQ.do" class="nav-links">일반</a></li>
   </ul>
@@ -498,11 +498,19 @@ List<FAQDto> commonlist =(List<FAQDto>) request.getAttribute("commonlist");
 					<ul>
 					
 					<%
+					if(memlist.size()>5){
 					for(int i=0; i<5; i++){
 						%>
 						<li><a href="FAQdetail.do?seq=<%=memlist.get(i).getFaqseq()%>"><%=UtilEx.dot03(memlist.get(i).getQuestion()) %></a></li>
 					<% 	
-					}			
+						}			
+					} else{ 
+					for(int i=0; i<memlist.size(); i++){
+						%>
+						<li><a href="FAQdetail.do?seq=<%=memlist.get(i).getFaqseq()%>"><%=UtilEx.dot03(memlist.get(i).getQuestion()) %></a></li>
+					<% 
+						}
+					}
 					%>
 					
 					</ul>
@@ -515,12 +523,20 @@ List<FAQDto> commonlist =(List<FAQDto>) request.getAttribute("commonlist");
 				  <div class="price-item">
 					<ul>
 							<%
+						if(companylist.size()>5){	
 						for(int i=0; i<5; i++){
 							%>
-							<li><a href="FAQdetail.do?seq=<%=memlist.get(i).getFaqseq()%>"><%=UtilEx.dot03(companylist.get(i).getQuestion()) %></a></li>
+							<li><a href="FAQdetail.do?seq=<%=companylist.get(i).getFaqseq()%>"><%=UtilEx.dot03(companylist.get(i).getQuestion()) %></a></li>
 						<% 	
 						}			
+					} else{ 
+					for(int i=0; i<companylist.size(); i++){
 						%>
+						<li><a href="FAQdetail.do?seq=<%=companylist.get(i).getFaqseq()%>"><%=UtilEx.dot03(companylist.get(i).getQuestion()) %></a></li>
+						<% 	
+						}
+					}
+					%>
 					</ul>
 				  </div>
 				  <a href="companyFAQ.do" class="box-btn">더보기</a>
@@ -531,12 +547,20 @@ List<FAQDto> commonlist =(List<FAQDto>) request.getAttribute("commonlist");
 				  <div class="price-item">
 					<ul>
 							<%
+						if(commonlist.size()>5){	
 						for(int i=0; i<5; i++){
 							%>
-							<li><a href="FAQdetail.do?seq=<%=memlist.get(i).getFaqseq()%>"><%=UtilEx.dot03(commonlist.get(i).getQuestion()) %></a></li>
+							<li><a href="FAQdetail.do?seq=<%=commonlist.get(i).getFaqseq()%>"><%=UtilEx.dot03(commonlist.get(i).getQuestion()) %></a></li>
 						<% 	
 						}			
+					} else{ 
+					for(int i=0; i<commonlist.size(); i++){
 						%>
+						<li><a href="FAQdetail.do?seq=<%=commonlist.get(i).getFaqseq()%>"><%=UtilEx.dot03(commonlist.get(i).getQuestion()) %></a></li>
+						<% 	
+						}
+					}
+					%>
 					</ul>
 				  </div>
 				  <a href="commonFAQ.do" class="box-btn">더보기</a>

@@ -92,13 +92,51 @@ public class RecruitDto implements Serializable{
     private String favoriteJob;
     //좋아요 여부 (회사 좋아요)
     private String favoriteCom;
-
-
-    //
+    
+    private String content;
+    private String salaryavg;
+    private String empcount;
+    private String comimage;
+    
+    
 
     private List<String> busname;
 
-    //수정하기 버튼을 눌러서 업데이트 페이지(작성페이지)로 이동했을때 수정하기로 들어온건지 그냥 작성하기로 들어온건지 체크해주는 변수
+    public String getComimage() {
+		return comimage;
+	}
+
+	public void setComimage(String comimage) {
+		this.comimage = comimage;
+	}
+
+	
+	
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getSalaryavg() {
+		return salaryavg;
+	}
+
+	public void setSalaryavg(String salaryavg) {
+		this.salaryavg = salaryavg;
+	}
+
+	public String getEmpcount() {
+		return empcount;
+	}
+
+	public void setEmpcount(String empcount) {
+		this.empcount = empcount;
+	}
+
+	//수정하기 버튼을 눌러서 업데이트 페이지(작성페이지)로 이동했을때 수정하기로 들어온건지 그냥 작성하기로 들어온건지 체크해주는 변수
     private String certifyUpdate;
 
 

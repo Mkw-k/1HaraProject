@@ -22,9 +22,9 @@ public class MypageServiceImpl implements MypageService {
 		
 		
 		@Override
-		public String getMypage(MemberDto dto) {
+		public MemberDto getMypage(String memberid) {
 			// TODO Auto-generated method stub
-			return dao.getMypage(dto);
+			return dao.getMypage(memberid);
 		}
 
 

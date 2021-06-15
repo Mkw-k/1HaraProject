@@ -420,7 +420,7 @@ String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, mont
 //5단 검색바 사용 검색할 경우
 $('#btnSearch').click(function() {
 	alert('클릭');
-	$('#_frmFormSearch').attr('action', 'calendarlist1.do').submit();
+	$('#_frmFormSearch').attr('action', 'calendarlist2.do').submit();
 	
 });
 

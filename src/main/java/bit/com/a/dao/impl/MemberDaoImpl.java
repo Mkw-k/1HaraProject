@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mysql.cj.Session;
+
 import bit.com.a.dao.MemberDao;
 import bit.com.a.dto.MemberDto;
 
@@ -50,6 +52,16 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public void admin_member_forced_evictionCheck(MemberDto dto) throws Exception {
 		sqlSession.delete(namespace + "admin_member_forced_evictionCheck", dto);
+	}
+
+	@Override
+	public MemberDto kakaoLogin(MemberDto dto) {
+		return sqlSession.selectOne(namespace+"kakaoLogin", dto);
+	}
+
+	@Override
+	public String getKakaoPwd(String memberid) {
+		return sqlSession.selectOne(namespace+"getKakaoPwd", memberid);
 	}
 	
 	//회원 인증 관련 메소드

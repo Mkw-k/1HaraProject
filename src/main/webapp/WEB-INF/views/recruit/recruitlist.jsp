@@ -469,7 +469,7 @@ hr {
                         <div class="col-lg-4 col-md-4 col-sm-12 p-0">
                             <select class="form-control search-slt" name="careerStart" style="font-size: 12pt">
                                 <option disabled="disabled">경력시작</option>
-                                <option value="0">무관</option>
+                                <option value="100">무관</option>
                                 <option value="1">신입</option>
                                 <option value="2">1년</option>
                                 <option value="3">2년</option>
@@ -486,7 +486,7 @@ hr {
                             <h3>~</h3>
                             <select class="form-control search-slt" name="careerEnd" style="font-size: 12pt">
                                 <option disabled="disabled">경력끝</option>
-                                <option value="0">무관</option>
+                                <option value="100">무관</option>
                                 <option value="1">신입</option>
                                 <option value="2">1년</option>
                                 <option value="3">2년</option>
@@ -578,17 +578,7 @@ hr {
 
 
 <!-- 밑에 한줄 배경 -->
-<%--    <br><br><br>
 
-   <div class="container">
-      <div class="row">
-         <div class="col-12">
-         	<span><a href="javascript:priMember()">프리미엄회원결제</a></span>
-            <img alt="" src="<%=request.getContextPath() %>/image/개발자23.gif" style="width: 100%; height: 140px;">
-         </div>
-      </div>
-   </div>
-   <br><br> --%>
 
 
    <div class="container">
@@ -775,10 +765,8 @@ function createRecruitNew() {
    location.href = "createTest.do";
 }
 
-//결제페이지로 이동
-function priMember() {
-   location.href = "priMember.do?memberid="+'${login.memberid}'+"&companyname="+'${login.companyname}'+"&name="+'${login.name}'+"&comaddress="+'${login.comaddress}';
-}
+
+
 
 //댓글달때 화살표 만들어주는기능(댓글이 필요없으므로 삭제예정)
 /*
@@ -839,7 +827,7 @@ function getrecruitSearchList(pnum) {
  									+ "</td>"
  									+"<td style='text-align:left'>"
  									//+ arrow(val.depth)
- 									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
+ 									+"<a href='getDetailCompany.do?jobseq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
  									+"</td>"
  									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
  									+"<td>" + val.jobVolumn + "</td>"

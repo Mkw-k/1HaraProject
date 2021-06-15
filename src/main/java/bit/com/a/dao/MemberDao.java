@@ -17,5 +17,9 @@ public interface MemberDao {
 	void memberDelete(MemberDto dto);
 	List<MemberDto> getMemberList();
 	void admin_member_forced_evictionCheck(MemberDto dto) throws Exception;
+
+	MemberDto kakaoLogin(MemberDto dto);
+
+	String getKakaoPwd(String memberid);
 	
 }

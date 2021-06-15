@@ -102,8 +102,8 @@
 				<strong class="sideNavTit"><a href="javascript:void();">최근 본 그룹</a></strong>
 				<ul class="sideNavList boxList"></ul>
 			</div>
+		</div>
 	</div>
-</div>
 
 		
 		
@@ -147,6 +147,7 @@
 							</div>
 						</div>	
 						</div>		
+			<!-- 댓글 -->			
 				<c:if test="${login.memberid != null }">
 					<div class="inputBox">
 						<div class="writeBoxWrap cmtWrite">
@@ -245,9 +246,8 @@
                 					</div>
                 				</li>
 					  		</ul>
-						
-					</div>
-			   	</div>
+						</div>
+			   		</div>
 			   	</c:forEach>  
                </div>
 			</div>
