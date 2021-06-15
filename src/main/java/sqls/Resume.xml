@@ -125,11 +125,6 @@ FROM RESUME
 WHERE RESUMESEQ=#{resumeseq}
 </delete>
 
-<delete id="deleteEduResume" parameterType="java.lang.Integer" >
-DELETE
-FROM RESUME_EDU
-WHERE RESUMESEQ=#{resumeseq}
-</delete>
 
 <delete id="deleteCareerResume" parameterType="java.lang.Integer" >
 DELETE
@@ -325,6 +320,18 @@ SET COMPANYREAD = COMPANYREAD+1
 WHERE RESUMESEQ=#{resumeseq}
 
 </update>
+
+<insert id="writePortfolio" parameterType="bit.com.a.dto.Resume_Portfolio">
+INSERT
+INTO PORTFOLIO (PORTFOLIOSEQ, MEMBERID, PORTFOLIONAME, NEWPORTFOLIONAME)
+VALUES (PORTFOLIO_SEQ.NEXTVAL, #{memberid}, #{portfolioname, jdbcType=VARCHAR}, #{newportfolioname, jdbcType=VARCHAR}) 
+</insert>
+
+<select id="getPortfolio" parameterType="java.lang.String" resultType="bit.com.a.dto.Resume_Portfolio">
+SELECT PORTFOLIOSEQ, MEMBERID, PORTFOLIONAME, NEWPORTFOLIONAME
+FROM PORTFOLIO
+WHERE MEMBERID=#{memberid}
+</select>
 
 
 </mapper>
