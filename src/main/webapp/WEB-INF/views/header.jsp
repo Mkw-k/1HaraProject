@@ -30,54 +30,41 @@ white{
 
 
 
-<style type="text/css">
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-
-body {
-  font-family: "Noto Sans KR", sans-serif !important;
-}
-</style>
-
-
-
 </head>
 
 
-<nav class="navbar navbar-expand-md sticky-top" style="text-shadow: white 0px 0px 0.2px; box-shadow: black 0px 0px 10px;" id="nav-main"><a class="navbar-brand d-none d-md-block ml-3" href="home.do">
-      <img alt="" src="/sample10/image/흰로고다.gif" id="_logo" height="80" width="160" style="float:left; padding-right: 20px">
-
+<nav class="navbar navbar-expand-md sticky-top" style="text-shadow: white 0px 0px 0.2px; box-shadow: black 0px 0px 10px;" id="nav-main" ><a class="navbar-brand d-none d-md-block ml-3" href="home.do">
+      <img alt="" src="<%=request.getContextPath() %>/image/흰로고다.gif" id="_logo" height="80" width="160" style="float:left; padding-right: 20px" >
+     
     </a>
-    <div class="container-fluid" style="margin-left: 120px;"> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar19" style="">
+    <div class="container-fluid"> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar19" style="">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbar19" style="
-    margin-right: 50px;
-">
+      <div class="collapse navbar-collapse" id="navbar19">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <div style="position: relative; text-align: right;">
+            <div class="btn-group">
               <button class="btn dropdown-toggle btn-link" data-toggle="dropdown"> 전체보기</button>
-              <div class="dropdown-menu" style="">
+              <div class="dropdown-menu" style=""> 
                 <a class="dropdown-item" href="#">Action</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Separated link</a>
               </div>
             </div>
           </li>
-
+          
 		<li class="nav-item">
-            <div style="position: relative;
-    text-align: right;">
+            <div class="btn-group">
               <button class="btn dropdown-toggle btn-link" data-toggle="dropdown"> 채용공고</button>
-              <div class="dropdown-menu">
+              <div class="dropdown-menu"> 
                 <a class="dropdown-item" href="recuruitlist.do">채용공고 목록으로</a>
                <!--  <div class="dropdown-divider"></div> -->
                 <a class="dropdown-item" href="javascript:createRecruitNew()">채용공고 작성 New</a>
               </div>
             </div>
           </li>
-
-
+          
+         
           <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">기업정보</a> </li>
           <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">취업톡톡</a> </li>
           <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">공채달력</a> </li>
@@ -91,13 +78,8 @@ body {
               <i class="fa fa-twitter fa-fw text-primary"></i>
             </a> </li>
           <li class="nav-item">
-            <div style="
-    position: relative;
-    text-align: right;
-    margin-left: 500px;
-    ">
-    		<div class="btn-group"> <!--  -->
-              <button class="btn dropdown-toggle  btn-link" data-toggle="dropdown">로그인해주세요</button>
+            <div class="btn-group">
+              <button class="btn dropdown-toggle btn-link " data-toggle="dropdown">로그인해주세요</button>
               <!-- <button class="btn dropdown-toggle btn-link " data-toggle="dropdown">이주영 님</button> -->
               <div class="dropdown-menu" style=""> <a class="dropdown-item" href="#">Action</a>
                 <div class="dropdown-divider"></div>
@@ -122,9 +104,9 @@ $(function() {
 	         $(".navbar a").addClass("text-light");
 	         //드랍다운색상 변경
 	         $(".navbar li button").addClass("text-light");
-	         //드랍다운 밑에 있는 a태그도 변경
+	         //드랍다운 밑에 있는 a태그도 변경 
 	         $(".navbar li button a").addClass("text-dark");
-	         //이미지 변경
+	         //이미지 변경 
 	         $("#_logo").attr("src", "<%=request.getContextPath() %>/image/흰 로고 반전.gif");
 	      } else {
 	         $(".sticky-top").removeClass("top-nav-collapse");
@@ -136,3 +118,5 @@ $(function() {
 	   });
 	});
 </script>
+
+

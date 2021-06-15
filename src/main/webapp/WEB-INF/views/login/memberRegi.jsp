@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,15 +52,102 @@
 </head>
 <body>
 
+
+
+
+
 <img alt="" src="image/1hara.gif">
 
 
+
+
+<div class="all">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <!-- Links -->
+  
+  
+  <div>
+	 <a href="home.do"><img alt="" src="/sample10/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
+	</div>
+  
+  <ul class="navbar-nav">
+<!-- Dropdown -->
+
+	 <li class="nav-item">
+            
+            	 
+         	   
+    </li>
+
+    <li class="nav-item dropdown" style="padding-top: 5px;">
+     <div class="dropdown">
+		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
+		  <div class="dropdown-content">
+		    <a href="#">채용공고</a>
+		    <a href="#">기업정보</a>
+		    <a href="jobtalk.do">취업톡톡</a>
+		    <a href="#">공채달력</a>
+		    <a href="#">자료실</a>
+		    <a href="notice.do">공지사항</a>
+		  </div>
+		</div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link bgc" href="recuruitlist.do" style="color:#2186eb">채용공고</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link bgc" href="jobtalk.do" style="color:#2186eb">취업톡톡</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
+    </li>
+
+
+
+
+
+    
+    <li class="nav-item">
+
+
+     	 <a class="nav-link bgc" href="resumeMain.do" style="color: #2186eb;background-color: #fff;">이력서관리</a>
+
+    </li>
+    <li class="nav-item">
+
+       
+   </li>
+   <li class="nav-item">
+         
+   </li>
+  </ul>
+</nav>
+<br>
+
+  
+</div>
+
 <div class="container" style="text-align: center;">
-    <h3>일반 회원</h3>
+
+
     <form method="post" id="myForm" enctype="multipart/form-data">
         <div class="form-group has-feedback">
 
         <!-- 프로필 사진 -->
+        
+        				<section style="width:400px; height:300px;">
+        				<h3>일반 회원</h3>
                           <ul>
  						   <li class="img" style="list-style: none; margin-left : 200px">
                                 <div id="image_preview">
@@ -72,6 +160,8 @@
                                 </div>
                             </li>
 						</ul>
+						</section>
+						
                        <script>
                             // 이미지 업로드
                             $('#img').on('change', function() {

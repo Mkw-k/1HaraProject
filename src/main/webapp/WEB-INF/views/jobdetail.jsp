@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko"><head>
         <title>[(주)알에프텍] 2021년 부문별 신입 및 경력사원 모집(오늘 마감) - 사람인</title>    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -124,6 +125,11 @@ googletag.cmd.push(function() {
   ga('send', 'pageview');
 
 </script><link rel="preload" href="https://adservice.google.co.kr/adsid/integrator.js?domain=www.saramin.co.kr" as="script"><script type="text/javascript" src="https://adservice.google.co.kr/adsid/integrator.js?domain=www.saramin.co.kr"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=www.saramin.co.kr" as="script"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=www.saramin.co.kr"></script><link rel="prefetch" href="https://1d61b8d2ed46c856496bd253d81a91bc.safeframe.googlesyndication.com/safeframe/1-0-38/html/container.html"><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-38/html/container.html"></head>
+
+<c:import url="script.jsp" charEncoding="utf-8"/>
+
+<c:import url="header.jsp" charEncoding="utf-8"/> 
+
 <body id="sri_layout_popup">
     <section id="sri_section">
         <div id="sri_wrap">

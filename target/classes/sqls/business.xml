@@ -33,12 +33,15 @@
 	WHERE MEMBERID=#{memberid}
 	</select>
 
+
+	
 	<!-- 회원정보 수정 -->
 	<update id="updateBuspage"  parameterType="bit.com.a.dto.BusinessDto">
 	UPDATE BUSINESS
-	SET MEMBERID=#{memberid}, COMPANYNAME=#{companyname},COMADDRESS=#{comaddress}, ADDRESSDETAIL=#{addressdetail}, PWD=#{pwd}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}
+	SET MEMBERID=#{memberid}, COMADDRESS=#{comaddress}, ADDRESSDETAIL=#{addressdetail}, PWD=#{pwd}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}
 	WHERE MEMBERID=#{memberid}
 	</update>
+	
 	
 	<select id="getMyrecruitList" parameterType="java.lang.String" resultType="bit.com.a.dto.RecruitDto">
 		SELECT JOBSEQ, JOBTITLE, JOBSTART, JOBEND

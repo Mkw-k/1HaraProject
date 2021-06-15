@@ -65,14 +65,15 @@ if(logincheck != null) {
 
   <!-- <link rel="stylesheet" href="static/csss/bootstrap.css" media="all"> -->
 
- <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css"> 
+ <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+  <!-- 카카오맵스 -->
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <!-- 카카오맵스 -->
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=685fcbb766340d7c8812f4e0a29a6661&libraries=services"></script>
 
 <!-- 테이블 -->
-<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> 
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> --> 
-
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
 
 <style type="text/css">
 .star-on {
@@ -147,7 +148,7 @@ font-weight: bold;
 	        <div>
 	          <p class="" style="color: #eee;">${dto.companyname}&nbsp; &nbsp;&nbsp;</p>
 			</div>
-			
+
 			<div>
 			  <h3 class="jobtitle">
 	          		<c:choose>
@@ -160,11 +161,11 @@ font-weight: bold;
 	          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
 	          		</c:otherwise>
 	          	</c:choose>
-	
+
 	          ${dto.jobTitle}
 	         </h3>
 	         </div>
-	         
+
         </div>
         <div class="col-md-2 text-right" style="margin-top: 45px;">
 
@@ -296,7 +297,7 @@ font-weight: bold;
       </div>
     </div>
   </div>
-  
+
   <div class="py-5">
   <h3 class="titles">접수기간 및 방법</h3>
     <div class="container">
@@ -384,11 +385,11 @@ font-weight: bold;
 				<tr>
 					<th>평균연봉</th><td>${com.salaryavg }</td>
 				</tr>
-			
-			
-			
+
+
+
 			</table>
-			
+
 		</div>
       </div>
     </div>
@@ -486,8 +487,7 @@ font-weight: bold;
   <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" style=""></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
-  <!-- 카카오맵스 -->
-  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 
 
 
@@ -791,7 +791,7 @@ function dropFavoriteJob(jobSeq, memberid) {
 	//alert("즐겨찾기해제");
 	//alert(jobSeq);
 	//alert(memberid);
-	if('${login.memberid}' eq 'null'){
+	if('${login.memberid}' == 'null'){
 		alert('로그인해주십시오');
 		location.href="login1.do";
 	}
@@ -822,10 +822,7 @@ function CountDownTimer(dt, id) {
        var dNow = now.getDate();
        var leftDay = dEnd - dNow;
 
-       if(distance == 86400000){
-    	   alert("이타이밍임 : " + distance);
 
-        }
 
 
         if (distance < 0) {
@@ -876,7 +873,7 @@ CountDownTimer('${dto.jobEnd}', 'timeDeal'); // 2020-12-06 오후10시 50분까�
 
 
 
-	
+
 
 
 function charchen(endDate) {
