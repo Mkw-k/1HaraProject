@@ -65,6 +65,8 @@ if(logincheck != null) {
   <!-- 카카오맵스 -->
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=685fcbb766340d7c8812f4e0a29a6661&libraries=services"></script>
 
+	<link href="csss/gnb.css" rel="stylesheet" type="text/css">
+	<link href="csss/view.css" rel="stylesheet" type="text/css">
 
   <!-- 입사지원 모달 -->
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -115,12 +117,11 @@ if(logincheck != null) {
       <div class="row">
         <div class="col-md-8">
           <h3 class="">${dto.companyname}&nbsp; &nbsp;&nbsp;
-          	
           		<c:choose>
-          		<c:when test="${dto.favoriteCom >0 }">
+          			<c:when test="${dto.favoriteCom >0 }">
           					<a style="color:red" class="btn btn-secondary red" href="javascript:dropFavoriteCom(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
           					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
-          		</c:when>
+          			</c:when>
           		<c:otherwise>
           					<a class="btn btn-secondary red" href="javascript:comFavorite(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
           					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
@@ -343,11 +344,11 @@ if(logincheck != null) {
   </div>
   
   <!-- 댓글 -->			
-				<c:if test="${login.memberid != null }">
+				 <c:if test="${login.memberid != null }">
 					<div class="inputBox">
 						<div class="writeBoxWrap cmtWrite">
-							<form action="replyinsert.do" method="post">
-								<input type="hidden" name="jobSeq" value="${dto.jobSeq}">
+							<form action="insertreplyRecruit.do" method="post">
+								<input type="hidden" name="jobSeq" value="${jobseq.jobSeq}">
 								<fieldset>
 									<div class="uiplaceholder">
 										<span class="ph">솔직하고 따뜻한 답변을 남겨주세요.<br>*휴대폰 번호, 메일 주소, 카카오톡 ID 등 개인정보가 포함된 내용은 비노출 처리 될 수 있습니다.</span>
@@ -374,11 +375,50 @@ if(logincheck != null) {
                			</ul>
 					</div>
 				</c:if>		
-  
-  
-  <button onclick="charchen()">charchen</button> 
-  
-  
+				<c:forEach var="row" items="${replylist}">
+				<input type="hidden" name="replyrecruitseq" value="${row.replyrecruitseq}">	
+				<input type="hidden" name="jobSeq" value="${row.jobSeq}">	
+				<div class="viewListWrap">
+                	<div class="headerWrap">
+                    	<div class="numBx">
+                           <span>답변 <span class="num">${row.reply_count}</span></span>
+                        </div>
+                    </div>
+					<div class="listWrap commonSecWrap">	
+   						 	<ul class="answerArea">
+                				<li>
+                					<div class="contSec devContSection" style="display: block;">
+                						<div class="writeBoxWrap cmtWrite">
+                							<div class="infoBx">
+                								<a href="mypage.do" class="my-profile">
+                									<span class="nickname">${row.memberid}</span>
+                								</a>
+                							</div>
+                							<p class="cont">${row.reply_content}</p>
+                							<div class="cellBx">
+                								<span class="cell devAnswerDate">${row.rdate.substring(0,10)}</span>
+                							</div>
+                							<div class="btnBx devComtRoot" data-answerno="205449">
+                            					<!-- 댓글, 좋아요 버튼 클릭시 클래스 active 추가 -->
+                            					<button type="button" class="btnCmt devBtnComtList active">댓글 <em>${row.reply_count}</em></button>
+                            					<button type="button" class="btnHeart qnaSpB devBtnAnswerLike ">0</button>
+                        					</div>
+                						</div>
+                						<div class="commentSec" style="display: block;">
+                							<div class="cmtArea">
+                								<div class="cmtList replyWrap">
+                									<ul class="cmtList replyWrap">
+                                						<!-- [Dev] 내 댓글일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 삭제만 노출 -->
+                            						</ul>          						
+                								</div>
+                							</div>	
+                						</div>
+                					</div>
+                				</li>
+					  		</ul>
+						</div>
+			   		</div>
+			   	</c:forEach>  
   
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" style=""></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>

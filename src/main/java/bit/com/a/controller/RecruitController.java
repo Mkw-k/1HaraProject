@@ -24,7 +24,9 @@ import bit.com.a.dto.BusinessDto;
 import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
+import bit.com.a.dto.RecruitReplyDto;
 import bit.com.a.dto.ResumeDto;
+import bit.com.a.service.RecruitReplyService;
 import bit.com.a.service.RecruitService;
 import bit.com.a.service.ResumeService;
 import bit.com.a.util.UtilEx;
@@ -38,6 +40,9 @@ public class RecruitController {
    @Autowired
    ResumeService resumeservice;
 
+   @Autowired
+   RecruitReplyService recruitservice;
+   
 //TODO채용공고 리스트로 이동
    @RequestMapping(value = "recuruitlist.do", method = RequestMethod.GET)
    public String recuruitlist(Model model) {
@@ -402,26 +407,26 @@ public class RecruitController {
 
 //TODO 디테일 창으로 이동
    @RequestMapping(value = "RecruitDetail.do", method = RequestMethod.GET)
-   public String RecruitDetail(int jobseq, Model model, String memberid) {
+   public String RecruitDetail(int jobSeq, Model model, String memberid) {
       model.addAttribute("doc_title", "채용공고");
 
       //디테일 데이터 받아오기
-      System.out.println("seq:"+jobseq);
-      RecruitDto dto = service.getRecruitListOne(jobseq);
+      System.out.println("seq:"+jobSeq);
+      RecruitDto dto = service.getRecruitListOne(jobSeq);
       List<ResumeDto> resumelist = resumeservice.getresume(memberid);
 
       System.out.println(dto.toString());
 
       //직무이름 받아오는 코드
-      List<String> list = service.getBsnameForDetail(jobseq);
+      List<String> list = service.getBsnameForDetail(jobSeq);
       System.out.println("직무이름 :"+ list.toString());
 
       dto.setBusname(list);
 
       //검색용 파라미터 dto설정
       RecruitParam param = new RecruitParam();
-      String jobSeq = jobseq + "";
-      param.setJobSeq(jobSeq);
+      String jobseq = jobSeq + "";
+      param.setJobSeq(jobseq);
       param.setMemberid(memberid);
 
       //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
@@ -445,6 +450,10 @@ public class RecruitController {
 
       model.addAttribute("dto", dto);
       model.addAttribute("resumelist", resumelist);
+      
+      
+      List<RecruitReplyDto> replylist = recruitservice.list(jobSeq);
+      model.addAttribute("replylist", replylist);
 
       return "recruit/recruitDetail";
    }
