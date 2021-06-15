@@ -901,10 +901,13 @@ margin-right : 450px;
 </head>
 <body>
 
-<div class="all">
+<!-- <div class="all">
+
+
+
 <header>
 		
- <!-- 검색html -->
+ 검색html
 
 <section style="padding: 0">
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
@@ -913,13 +916,13 @@ margin-right : 450px;
                 
             </div>
             
-            <!--https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg-->
+            https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg
         </div>
     </div>
 </section>
 
 
-</header>
+</header> -->
 
 
 
@@ -1149,8 +1152,8 @@ margin-right : 450px;
 	</div>	
 	 
 	<div class="manager-info">
-		<div class="left"><b class="font-bold">담당부서</b> : 워크넷팀</div>
-		<div class="right"><b class="font-bold">문의</b> : 1577-7114</div>
+		<div class="left"><b class="font-bold">담당부서</b> : 일하라팀</div>
+		<div class="right"><b class="font-bold">문의</b> : 1577-71121</div>
 	</div>
 </section>
 </div>

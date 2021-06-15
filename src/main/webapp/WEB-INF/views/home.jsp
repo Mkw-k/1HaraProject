@@ -1011,7 +1011,7 @@ margin-right : 450px;
             <div class="wrap_bigbox person">
                 <div class="bigbox person" style="width: 2233px; transform: translateX(-1595px); transition: all 300ms ease 0s;">
                     <div class="slide type_event">
-                        <img src="https://www.saraminbanner.co.kr/new/main/2021/03/qpqjor_pit8-2so1qt_A01.png">
+                        <img src="main-ad2.png">
                         <a href="https://www.saramin.co.kr/zf_user/curation?inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=top_box_type_banner_person&amp;inner_term=curation" class="go_link" target="_blank"></a>
                     </div>
                     <div class="slide type_company">
@@ -1144,7 +1144,7 @@ margin-right : 450px;
                             답변 99건+ 보러가기 </button>
                     </div>
                     <div class="slide type_event">
-                        <img src="https://www.saraminbanner.co.kr/new/main/2021/03/qq7cir_wudv-2so1qt_PC.png">
+                        <img src="main-ad2.png">
                         <a href="https://www.saramin.co.kr/zf_user/jobs/theme/jump-it?t_ref=main&amp;t_ref_content=platinum_fix_expand&amp;inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=top_box_type_banner_person&amp;inner_term=jumpit" class="go_link" target="_blank"></a>
                     </div>
                     <div class="slide type_event slide_active">
@@ -2107,12 +2107,12 @@ z-index: 10;"><span class="bar"></span></button>
 <div class="outside"> 
   <div class="inside">
     <ul class="menu">
-      <li><span class="fa fa-dashboard"></span>일하라 소개</li>
-      <li><span class="fa fa-shopping-basket"></span>이용약관</li>
-      <li><span class="fa fa-shopping-cart"></span>개인정보처리방침</li>
-      <li><span class="fa fa-info-circle"></span>이메일주소무단수집거부</li>
-      <li><span class="fa fa-credit-card"></span>웹접근성정책</li>
-      <li><span class="fa fa-leaf"></span>배너가져가기</li>
+      <li><span class="fa fa-dashboard"></span><a href="info.do">일하라 소개</a></li>
+      <li><span class="fa fa-shopping-basket"></span><a href="infoyakgwan.do">이용약관</a></li>
+      <li><span class="fa fa-shopping-cart"></span><a href="infomember.do">개인정보처리방침</a></li>
+      <li><span class="fa fa-info-circle"></span><a href="infoemail.do">이메일주소무단수집거부</a></li>
+      <li><span class="fa fa-credit-card"></span><a href="infowebaccess.do">웹접근성정책</a></li>
+      <li><span class="fa fa-leaf"></span><a href="infobanner.do">배너가져가기</a></li>
     </ul>
   </div>
 </div>
@@ -2132,6 +2132,10 @@ $(".close").click(function(){
     padding-left: 0px;
     width: 400px;
 ">
+
+<!--  -->
+
+<img src="main-ad.png" alt="아오좀 나와라" style="width:400px; height:368px;">
                 
             </div>
         </div>
