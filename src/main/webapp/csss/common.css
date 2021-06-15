@@ -918,7 +918,7 @@ p.reset {margin:0; padding:0;}
 
 
 /* button group */
-.btn-group {padding:30px 0 0 0;position:relative;text-align:right;}
+.btn-group {position:relative;text-align:right;}
 .btn-group:before, .btn-group:after {content:''; display:table;}
 .btn-group:after {clear:both;}
 .btn-group .left {float: left;}

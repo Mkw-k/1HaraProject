@@ -32,9 +32,9 @@ public class ResumeServiceImpl implements ResumeService {
 	}
 
 	@Override
-	public int getseq(String resumetitle) {
+	public int getseq(ResumeDto dto) {
 		// TODO Auto-generated method stub
-		return dao.getseq(resumetitle);
+		return dao.getseq(dto);
 	}
 
 	/*
@@ -284,6 +284,36 @@ public class ResumeServiceImpl implements ResumeService {
 	public List<Resume_UniversityVo> getUniDetail(int seq) {
 		// TODO Auto-generated method stub
 		return dao.getUniDetail(seq);
+	}
+
+	@Override
+	public boolean deleteApply(int seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteApply(seq);
+	}
+
+	@Override
+	public boolean deleteHighResume(int seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteHighResume(seq);
+	}
+
+	@Override
+	public boolean deleteUniResume(int seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteUniResume(seq);
+	}
+
+	@Override
+	public boolean cancelApply(int seq) {
+		// TODO Auto-generated method stub
+		return dao.cancelApply(seq);
+	}
+
+	@Override
+	public boolean updateReadCount(int seq) {
+		// TODO Auto-generated method stub
+		return dao.updateReadCount(seq);
 	}
 	
 	

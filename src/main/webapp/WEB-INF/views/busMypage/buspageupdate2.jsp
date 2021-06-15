@@ -18,12 +18,12 @@ body {
 }
 </style>
 
- <style>
-                .disabledbutton {
-                    pointer-events: none;
-                    opacity: 0.4;
-                }
-            </style>
+<style>
+     .disabledbutton {
+                   		pointer-events: none;
+                   		opacity: 0.4;
+                	}
+</style>
         
 </head>
     
@@ -66,7 +66,7 @@ body {
 							
 						</ul>
 					</div>
-					<a href="#" onclick="f_logout();" class="font-blue">로그아웃</a></div>
+					<a href="logout.do" onclick="logout();" class="font-blue">로그아웃</a>
 				
 				<!-- E : 2018-09-28 추가 -->
 				<!--// 로그인 후 -->
@@ -79,29 +79,16 @@ body {
 				<a href="http://as82.kr/keis" target="_blank" title="새창">원격지원</a> 
 				<a href="/useInvite/worknetHomepgInvite/sitemap.do">사이트맵</a>
 				<!-- 20201022 추가 -->
-				
-				<!-- //20201022 추가 -->
-<!-- 				<div class="font-control"> -->
-<!-- 					<p>글자크기</p> -->
-<!-- 					<button type="button" class="big">글자 크게 하기</button> -->
-<!-- 					<button type="button" class="small">글자 작게 하기</button> -->
-<!-- 					<button type="button" class="reset">글자 초기화</button> -->
-<!-- 				</div> -->
-				<!--// 공통 -->
+		
 			</div>
 		</div>
 	</div>
 
 	<div class="middle-area">
 		<div class="inner-wrap">
-			
-				
-					<h1 class="top-logoWorknet">
-						<a href="/seekWantedMain.do"><img src="/static/images/common/bg/bg-top-logo.png" alt="일하라"></a>
-					</h1>
-				
-				
-			
+			<h1 class="top-logoWorknet">
+				<a href="/seekWantedMain.do"><img src="/static/images/common/bg/bg-top-logo.png" alt="일하라"></a>
+			</h1>
 			
 			<form id="searchFrm" name="searchFrm" action="/wnSearch/unifSrch.do" method="post" onsubmit="return false">
 				<div class="header-search">
@@ -120,16 +107,19 @@ body {
 					</div>
 
 					<a href="javascript:f_job_search()" class="button">일자리 검색</a>
-				</div>
+			</div>
 			<div>
-<input type="hidden" name="_csrf" value="40c07236-ce2a-46f9-b046-8fbf7137e0fa">
-</div></form>
+				<input type="hidden" name="_csrf" value="40c07236-ce2a-46f9-b046-8fbf7137e0fa">
+			</div>
+		</form>	
 
 
 
 
 			<div class="link-special">
-				<a href="/jobyoung/main.do">청년</a> <a href="/woman/main/main.do">여성</a> <a href="/senior/main/main.do">장년</a>
+				<a href="/jobyoung/main.do">청년</a> 
+				<a href="/woman/main/main.do">여성</a> 
+				<a href="/senior/main/main.do">장년</a>
 			</div>
 		</div>
 	</div>
@@ -145,8 +135,7 @@ body {
 								<a href="/empInfo/empInfoSrch/list/dtlEmpSrchMain.do">채용정보 홈</a>
 							</p>
 							<p>
-								<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?moreCon=more">채용정보
-									상세검색</a>
+								<a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?moreCon=more">채용정보 상세검색</a>
 							</p>
 							<p>
 								<a href="/empInfo/empInfoSrch/calendar/empCalendarMonth.do">채용캘린더</a>
@@ -229,36 +218,6 @@ body {
 										<span class="center"><a href="/empInfo/themeEmp/themeEmpInfoSrchListForGnb.do" class="button s-small round"><img src="/static/images/common/ico/ico-add-copy-sm.png" class="inline-block" alt="">&nbsp;바로가기</a></span>
 									</p>
 								</div>
-
-						<!-- 	<ul>
-								<li><a
-									href="/empInfo/empInfoSrch/list/openEmpSpecCalendarList.do?thisMenuId=M201400343">공채기업관</a></li>
-								<li><a href="/smallGiants/empInfoSrch/empInfoSrchList.do">청년친화강소기업</a></li>
-								<li><a
-									href="/smallGiants/empInfoSrch/empInfoSrchList.do?coGbCd=small">강소기업</a></li>
-								<li><a href="/empInfo/indRev/indRevMain.do">4차산업혁명 채용관
-										<img src="/static/images/common/ico/ico-gnb-new.png" alt="new">
-								</a></li>
-																		NCS 채용관 오픈 이후 런칭 대상
-																		<li><a href="#">NCS 채용관</a></li>
-								<li><a
-									href="/ilmoa/jobSearch/retrieveIlmoaJobDetailSearchByMain.do">정부지원일자리</a></li>
-								<li><a
-									href="/empInfo/tsjEmpInfo/retrieveTsjEmpAllSrchList.do">시간선택제
-										일자리</a></li>
-								<li><a href="/empInfo/subEmpHopeInfo/subEmpHopeSrchList.do">대체인력</a></li>
-								<li><a
-									href="/empInfo/empInfoSrch/list/retriveEnEmpSrchList.do">e-채용마당</a></li>
-								<li><a
-									href="/empInfo/themeEmp/themeEmpInfoSrchListForGnb.do">테마별 채용관</a></li>
-																		<li><a href="#" class="worknet-chatbot-start-button-for-client">워크넷 챗봇(시범)</a></li>
-							</ul>
-									<ul class="dir">
-										<li><a href="#" class="worknet-chatbot-start-button-for-client">워크넷 챗봇(시범)</a></li>
-									</ul>
-									 -->
-								<!-- <p class="eve_link"><a href="https://www.work.go.kr/event/eventContent.do?eventNo=530">[이벤트] 당신의 구직 테마는?</a></p> 20190903 추가 -->
-
 						</li>
 					</ul>
 				</div></li>
@@ -511,12 +470,14 @@ body {
 						<dt>인재정보</dt>
 						<dd>
 							<p>
-								<a href="/psnInfo/psnInfoSrch/dtlPsnSrchMain.do">인재정보
-									홈</a>
+								<a href="/psnInfo/psnInfoSrch/dtlPsnSrchMain.do">
+									인재정보 홈
+								</a>
 							</p>
 							<p>
-								<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do">인재정보
-									상세검색</a>
+								<a href="/psnInfo/psnInfoSrch/dtlPsnSrch.do">
+									인재정보 상세검색
+								</a>
 							</p>
 						</dd>
 					</dl>
@@ -579,10 +540,6 @@ body {
 	</nav>
 </header>
     <!-- 헤더 -->
-
-    
-    
-
 
         <div class="container  bg-gray" id="container">
             <div class="sub-util">
@@ -743,8 +700,7 @@ body {
                         <li>
                             <a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">나의 맞춤정보
                             </a>
-                            <button class="btn-show">나의 맞춤정보
-                                			 메뉴 닫기</button>
+                            <button class="btn-show">나의 맞춤정보 메뉴 닫기</button>
                             <div class="depth3">
                                 <ul>
                                     <li>
@@ -763,7 +719,8 @@ body {
                             </div>
                         </li>
                         <li>
-                            <a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">나의 관심정보
+                            <a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">
+                            	나의 관심정보
                             </a>
                             <button class="btn-show">나의 관심정보
                                 			 메뉴 닫기</button>
@@ -776,10 +733,8 @@ body {
                             </div>
                         </li>
                         <li>
-                            <a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">e-채용마당 서비스
-                            </a>
-                            <button class="btn-show">e-채용마당 서비스
-                                			 메뉴 닫기</button>
+                            <a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">e-채용마당 서비스</a>
+                            <button class="btn-show">e-채용마당 서비스 메뉴 닫기</button>
                             <div class="depth3">
                                 <ul>
                                     <li><a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">지원서관리</a></li>
@@ -1094,33 +1049,10 @@ body {
                     }
                     // ]]>
                 </script>
+                
+                
                 <section id="contents" class="mypage">
-                    <div class="tit-util">
-                        <h2 class="tit" style="align:center;">내 정보수정 / 성명변경</h2>
-                        <span class="hide-location" id="navi_1">마이페이지(개인)</span>
-                        <span class="hide-location" id="navi_2">회원정보 관리</span>
-                        <span class="hide-location" id="navi_3">내 정보수정 / 성명변경</span>
-                        <div
-                            class="page-util"><!-- 기능 버튼 들어갈 예정 -->
-                        </div>
-                    </div>
-                    <div class="sub-visual-noline">
-                    	<!-- 프로필사진 들어가는곳  -->
-                    	
-                        <p class="img-area">
-                            <i class="ico-circle-gray tool"></i>
-                        </p>
-                        <img src="${login.filename}"/>
-                        
-                        
-                        <p class="txt">
-                            일하라는 회원님의 개인정보를 신중히 취급하며, 회원님의 동의 없이 기재하신 회원정보를 공개하지 않습니다.
-                            <br>
-                            회원님의 정보 가운데 변경된 내용이나 설정 변경이 필요한 경우에는 아래에서 수정해주시기 바랍니다.
-                        </p>
-                    </div>
-                    <h3 class="tit font-black">회원 로그인 정보</h3>
-                    <form id="registForm" name="registForm" action="UpdateMypageAf.do" method="post">
+                 	<form id="registForm" name="registForm" action ="buspageUpdateAf.do" method="post"  enctype="multipart/form-data">
                         <input type="hidden" id="checkAddr" name="checkAddr" value="">
                         <input type="hidden" id="regionCd" name="regionCd" value="28245">
                         <input type="hidden" id="strtnmCd" name="strtnmCd" value="282453155006">
@@ -1130,6 +1062,57 @@ body {
                         <input type="hidden" name="detailAddr" id="detailAddr">
                         <input type="hidden" name="strtnmZipCd" id="strtnmZipCd">
                         <input type="hidden" name="strtnmBasicAddr" id="strtnmBasicAddr">
+                    	<div class="tit-util">
+                    	    <h2 class="tit" style="align:center;">내 정보수정 / 성명변경</h2>
+                    	    <span class="hide-location" id="navi_1">마이페이지(개인)</span>
+                    	    <span class="hide-location" id="navi_2">회원정보 관리</span>
+                    	    <span class="hide-location" id="navi_3">내 정보수정 / 성명변경</span>
+                    	    <div class="page-util"><!-- 기능 버튼 들어갈 예정 --></div>
+                    	</div>
+                    	<div class="sub-visual-noline">
+                    		<!-- 프로필사진 들어가는곳  -->
+                    	 <ul>
+ 						   <li class="img" style="list-style: none; margin-left : 200px">
+                                <div id="image_preview">
+                                	<c:choose>
+                                   	 	<c:when test="${login.filename == null }">
+                                   	 		<img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 160px;" src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
+                                		</c:when>
+                                		<c:otherwise>
+                                			<img src="./upload/${login.filename}" style="width: 150px;height: 150px;">
+                                		</c:otherwise>
+                                	</c:choose>
+                                </div>
+                                <h4 style="margin-left: 35px;">프로필 사진을 등록해주세요</h4>
+                                <div class="f_box">
+                                        <label for="img"></label>
+                                        <input type="file" name="fileload" id="img">
+                                </div>
+                            </li>
+						</ul>
+                       <script>
+                            // 이미지 업로드
+                            $('#img').on('change', function() {
+                            	alert($('#img').val());
+                            ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+                            //배열에 추출한 확장자가 존재하는지 체크
+                            if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                                resetFormElement($(this)); //폼 초기화
+                                window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+                            } else {
+                                file = $('#img').prop("files")[0];
+                                blobURL = window.URL.createObjectURL(file);
+                                $('#image_preview img').attr('src', blobURL);
+                                $('#image_preview').slideDown(); //업로드한 이미지 미리보기
+                                $(this).slideUp(); //파일 양식 감춤
+                            }
+                            });
+
+ 						</script>
+                    	<br><br>
+          
+                    	</div>
+                    	<h3 class="tit font-black">회원 로그인 정보</h3>
                         <input type="hidden" name="strtnmDetailAddr" id="strtnmDetailAddr">
                         <div class="box-bluegray v2 myinfo-change mb50">
                             <div class="line">
@@ -1139,7 +1122,11 @@ body {
                             <div class="line">
                                 <label for="username" class="label w140px">성명</label>
                                 <input type="text" value="${login.name}"  placeholder="${login.name}"  name="name" title="성명 입력" class="input-text w260px" pil="PF_PNM">
-                             
+                             	<input type="hidden" value="${login.memberid }" placeholder="${login.memberid}"  name="memberid" title="유저아이디" class="input-text w260px" pil="PF_PNM">
+                            </div>
+                            <div class="line">
+                            	<label for="userpwd" class="label w140px">비밀 번호</label>
+                            	<input type="text" value="${login.pwd }" placeholder="${login.pwd }" name="pwd" title="비밀번호 입력" class="input-text w260px" pil="PF_PNM">
                             </div>
                         </div>
                         <h3 class="tit font-black">연락처 정보</h3>
@@ -1158,64 +1145,25 @@ body {
                                         </th>
                                         <td>
                                            <div class="form-group has-feedback">
-        	<label class="control-label" for="registrationNum">주소</label>
-        		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
-				<input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" readonly="readonly" value="우편번호 찾기"><br>
-				<input type="text" class="form-control" id="sample6_address" name="comaddress" placeholder="주소"><br>
-				<input type="text" class="form-control" id="sample6_detailAddress" name="addressdetail" placeholder="상세주소"><br>
-				<input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목"><br>
-        </div>
+        										<label class="control-label" for="registrationNum">주소</label>
+        										<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
+												<input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" readonly="readonly" value="우편번호 찾기"><br>
+												<input type="text" class="form-control" id="sample6_address" name="comaddress" placeholder="주소"><br>
+												<input type="text" class="form-control" id="sample6_detailAddress" name="addressdetail" placeholder="상세주소"><br>
+												<input type="hidden" class="form-control" id="sample6_extraAddress" placeholder="참고항목"><br>
+        									</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row" rowspan="2">연락처<span class="font-orange" title="필수입력">
                                                 *</span>
                                         </th>
-                                        <th scope="row">전화번호</th>
-                                        <td>
-                                            <div class="tel-wrap mt05 mb05">
-                                                <select id="telno1" name="telno1" title="전화번호 국번 선택" pil="PF_TELNO">
-                                                    <option value="">선택</option>
-                                                    <option value="02">02</option>
-                                                    <option value="031">031</option>
-                                                    <option value="032" selected="selected">032</option>
-                                                    <option value="033">033</option>
-                                                    <option value="041">041</option>
-                                                    <option value="042">042</option>
-                                                    <option value="043">043</option>
-                                                    <option value="044">044</option>
-                                                    <option value="050">050</option>
-                                                    <option value="051">051</option>
-                                                    <option value="052">052</option>
-                                                    <option value="053">053</option>
-                                                    <option value="054">054</option>
-                                                    <option value="055">055</option>
-                                                    <option value="061">061</option>
-                                                    <option value="062">062</option>
-                                                    <option value="063">063</option>
-                                                    <option value="064">064</option>
-                                                    <option value="070">070</option>
-                                                    <option value="080">080</option>
-                                                    <option value="0303">0303</option>
-                                                    <option value="0502">0502</option>
-                                                    <option value="0503">0503</option>
-                                                    <option value="0504">0504</option>
-                                                    <option value="0505">0505</option>
-                                                    <option value="0506">0506</option>
-                                                    <option value="0507">0507</option>
-                                                </select>
-                                                <span>-</span>
-                                                <input type="text" class="input-text" id="telno2" name="telno2" title="전화번호 중간자리 입력" onkeydown="worknet.checkForm.onlyNumber()" maxlength="4" value="548" pil="PF_TELNO">
-                                                <span>-</span>
-                                                <input type="text" class="input-text" id="telno3" name="telno3" title="전화번호 뒷자리 입력" onkeydown="worknet.checkForm.onlyNumber()" maxlength="4" value="1486" pil="PF_TELNO">
-                                            </div>
-                                        </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">휴대전화</th>
                                         <td>
                                             <div class="tel-wrap mt05">
-                                                <select id="hp1" name="hp1" title="휴대전화 앞자리 선택" pil="PF_MPNO">
+                                                <select id="hp1" name= title="휴대전화 앞자리 선택">
                                                     <option value="">선택</option>
                                                     <option value="010" selected="selected">010</option>
                                                     <option value="011">011</option>
@@ -1225,9 +1173,11 @@ body {
                                                     <option value="019">019</option>
                                                 </select>
                                                 <span>-</span>
-                                                <input type="text" class="input-text" id="hp2" name="hp2" title="휴대전화 중간자리 입력" onkeydown="worknet.checkForm.onlyNumber()" maxlength="4" value="2106" pil="PF_MPNO">
+                                                <input type="text" class="input-text" id="hp2" title="휴대전화 중간자리 입력" maxlength="4" >
                                                 <span>-</span>
-                                                <input type="text" class="input-text" id="hp3" name="hp3" title="휴대전화 뒷자리 입력" onkeydown="worknet.checkForm.onlyNumber()" maxlength="4" value="1082" pil="PF_MPNO">
+                                                <input type="text" class="input-text" id="hp3" title="휴대전화 뒷자리 입력"  maxlength="4" >
+                                            
+                                            	<input type="hidden" class="input-text" id="allphonenum" name="phonenum" title="번호 합친거"   maxlength="4" >
                                             </div>
                                         </td>
                                     </tr>
@@ -1235,35 +1185,9 @@ body {
                                         <th scope="row" colspan="2">
                                             <span class="label">이메일</span>
                                         </th>
-                                        <td>
+                                        <td> 
                                             <div class="email-wrap mt05">
-                                                <input type="text" name="email" id="email1" style="width:150" class="input-text" title="이메일 주소 입력" pil="PF_EMAIL">
-                                                <span name="email">@</span>
-                                                <input type="text" id="email2" name="email" maxlength="40" value="naver.com" class="input-text" title="이메일 도메인 입력" pil="PF_EMAIL">
-                                                 <select name="email" onchange="f_selectEmailValue(this.value);" title="이메일 도메인 선택">
-                                                    <option value="chol.com">chol.com</option>
-                                                    <option value="dreamwiz.com">dreamwiz.com</option>
-                                                    <option value="daum.net">daum.net</option>
-                                                    <option value="empal.com">empal.com</option>
-                                                    <option value="freechal.com">freechal.com</option>
-                                                    <option value="gmail.com">gmail.com</option>
-                                                    <option value="hanmail.net">hanmail.net</option>
-                                                    <option value="hanmir.com">hanmir.com</option>
-                                                    <option value="hitel.net">hitel.net</option>
-                                                    <option value="hotmail.com">hotmail.com</option>
-                                                    <option value="korea.com">korea.com</option>
-                                                    <option value="nate.com">nate.com</option>
-                                                    <option value="naver.com">naver.com</option>
-                                                    <option value="orgio.com">orgio.com</option>
-                                                    <option value="paran.com">paran.com</option>
-                                                    <option value="sayclub.com">sayclub.com</option>
-                                                    <option value="shinbiro.com">shinbiro.com</option>
-                                                    <option value="yahoo.co.kr">yahoo.co.kr</option>
-                                                    <option value="yahoo.com">yahoo.com</option>
-                                                    <option value="moel.go.kr">moel.go.kr</option>
-                                                    <option value="korea.kr">korea.kr</option>
-                                                    <option value="기타(직접입력)" selected="selected">기타(직접입력)</option>
-                                                </select>  
+                                                <input type="text" style="width:400px" name="email" id="email1" maxlength="100" class="input-text" title="이메일 주소 입력" pil="PF_EMAIL",  placeholder="이메일 주소를 입력하세요. ex) example@gmail.com" />
                                             </div>
                                         </td>
                                     </tr>
@@ -1343,9 +1267,9 @@ body {
                         <!-- 20170602 네이버,소셜 로그인 연동 간편 로그인 추가 -->
                         <!-- //20170602 네이버,소셜 로그인 연동 간편 로그인 추가 -->
                         <div class="btn-group">
-                            <a href="mypage.do" class="button navy">취소</a>
-                            <button type="button" onclick="location.href='buspage.do'" class="button blue">확인</button>             
-                            <a href="businessDelete.do" class="button navy">탈퇴하라!</a>
+                            <a href="buspage.do" class="button navy">취소</a>
+                            <button type="button" onclick="submitFunc()" class="button blue">확인</button>             
+                            <a href="memberDelete.do" class="button navy">탈퇴하라!</a>
                         </div>
                         <div>
                             <input type="hidden" name="_csrf" value="276c2a08-bf52-456d-bf52-4689a4010d1f">
@@ -1435,10 +1359,20 @@ body {
                 }).open();
             }
 
-            </script>
             
-           
+            function submitFunc() {
+            	alert('클릭');
+            	let num1 = $('#hp1').val();
+            	let num2 = $('#hp2').val();
+            	let num3 = $('#hp3').val();
+				let phone = num1 + num2 + num3; 
+				$('#allphonenum').val(phone);
+				alert(phone);
+				$('#registForm').submit();
+            }
+            
+            </script>   
         </div>
-
+        </div>
     </body>
 </html>

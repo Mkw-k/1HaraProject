@@ -158,26 +158,6 @@
 
 </select>
 
-<!-- 글의 총수 -->
-<!-- <select id="getRecruitCount" parameterType="bit.com.a.dto.BbsParam" resultType="java.lang.Integer">
-   SELECT NVL(COUNT(*), 0) AS CNT
-    FROM JOB J, BUSINESS C
-   WHERE J.COMPANYID = C.MEMBERID
-
-   AND J.DEL =0
-
-   <if test="choice != null and choice != ''
-              and search != null and search != ''">
-      AND DEL=0
-      <if test="choice == 'title'">
-         AND J.JOBTITLE LIKE '%'||#{search}||'%'
-      </if>
-      <if test="choice == 'companyname'">
-         AND C.COMPANYNAME LIKE '%'||#{search}||'%'
-      </if>
-   </if>
-
-</select> -->
 
 <!-- 페이징 검색 리스트 가져오기 -->
 <select id="getRecruitPagingList" parameterType="bit.com.a.dto.BbsParam" resultType="bit.com.a.dto.RecruitDto">
@@ -380,6 +360,14 @@ WHERE J.COMPANYID = C.MEMBERID AND
      T.EMP_TYPE = J.EMP_TYPE AND
      J.JOBSEQ = D.JOBSEQ AND
      J.JOBSEQ = ${jobseq}
+</select>
+
+<!-- 기업상세정보 -->
+<select id="getCompany" parameterType="Integer" resultType="bit.com.a.dto.CompanyDto">
+SELECT  M.EMPCOUNT, M.CONTENT, M.SALARYAVG, M.COMIMAGE
+FROM JOB J, COMPANY M  
+WHERE J.COMPANYID = M.MEMBERID AND
+     J.JOBSEQ = #{jobseq}
 </select>
 
 <select id="getBsnameForDetail" parameterType="Integer" resultType="String">
@@ -653,7 +641,71 @@ SELECT JOBSEQ, JOBTITLE, JOBCONTENT,
 	 WHERE MEMBERID = #{memberid}
 
 </update>
-	 
 
+<select id="getTop10List" parameterType="bit.com.a.dto.RecruitDto" resultType="bit.com.a.dto.RecruitDto">
+SELECT DISTINCT RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+               J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
+               J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL,
+         	C.COMPANYNAME, E.EDUNAME, T.EMP_NAME, P.CAREER_DESC
+
+   FROM (SELECT ROW_NUMBER()OVER(ORDER BY JOBLIKE ASC)AS RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+               J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
+               J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME
+         FROM JOB J, BUSINESS C
+         WHERE J.COMPANYID = C.MEMBERID
+      <!-- AND J.DEL =0 -->
+         )J
+   <!-- 회사이름가져오기 -->
+   JOIN BUSINESS C
+   ON J.COMPANYID = C.MEMBERID
+   <!-- 학력조건 가져오기 -->
+   JOIN EDUCATION E
+    ON E.EDUCODE = J.EDUCATION
+   <!-- 고용타입가져오기 -->
+   JOIN EMPLOYEE_TYPE T
+   ON T.EMP_TYPE = J.EMP_TYPE
+   <!-- 경력타입가져오기 -->
+   JOIN JOB_CAREERTYPE P
+   ON P.CAREER_TYPE = J.CAREER_TYPE
+   <!-- 직종네임가져오기 -->
+   JOIN bscodstack K
+   ON J.JOBSEQ = K.JOBSEQ
+   
+   WHERE 1=1
+  
+   AND RNUM BETWEEN 1 AND 10
+   ORDER BY RNUM ASC
+  
+	
+</select>
+
+<update id="favoriteJob2" parameterType="bit.com.a.dto.RecruitParam">
+	 UPDATE JOB
+     SET JOBLIKE = JOBLIKE +1
+     WHERE JOBSEQ = #{jobseq}
+ 
+</update>
+	 
+<update id="dropFavoriteJob2" parameterType="bit.com.a.dto.RecruitParam">
+	 UPDATE JOB
+     SET JOBLIKE = JOBLIKE -1
+     WHERE JOBSEQ = #{jobseq}
+ 
+</update>
+
+<!-- <select id="getCompany" parameterType="Integer" resultType="bit.com.a.dto.CompanyDto">
+SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+               J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
+               J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.DEL, C.COMPANYNAME, P.CAREER_DESC,
+               E.EDUNAME, T.EMP_NAME, D.detailAdress1, D.detailAdress2, D.mgName, D.mgPhone, D.mgEmail , M.content, C.companyname, M.empcount, M.salaryavg
+FROM JOB J, BUSINESS C, EDUCATION E, JOB_CAREERTYPE P, EMPLOYEE_TYPE T, MGDETAIL D , COMPANY M 
+WHERE J.COMPANYID = C.MEMBERID AND
+   C.MEMBERID = M.MEMBERID AND
+     J.EDUCATION = E.EDUCODE AND
+     P.CAREER_TYPE = J.CAREER_TYPE AND
+     T.EMP_TYPE = J.EMP_TYPE AND
+     J.JOBSEQ = D.JOBSEQ AND
+     J.JOBSEQ = #{jobseq}
+</select> -->
 
 </mapper>

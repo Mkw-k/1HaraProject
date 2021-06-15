@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import bit.com.a.dao.BuspageDao;
+import bit.com.a.dto.ApplyDto;
+import bit.com.a.dto.ApplyParam;
 import bit.com.a.dto.BusinessDto;
 import bit.com.a.dto.RecruitDto;
 
@@ -39,6 +41,13 @@ public class BuspageDaoimpl implements BuspageDao {
 	public List<RecruitDto> getMyrecruitList(String memberid) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace + "getMyrecruitList", memberid );
+	}
+
+
+	@Override
+	public List<ApplyParam> getApplylist(int jobseq) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace + "getApplylist", jobseq );
 	}
 	
 	
