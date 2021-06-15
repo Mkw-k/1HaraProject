@@ -13,12 +13,13 @@ public class replyDto implements Serializable{
 	
 	
 	
+	
 	public replyDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	
+
 
 	public replyDto(int replyseq, int jobtalkseq, String reply_content, String memberid, String rdate,
 			int reply_count) {
@@ -30,6 +31,7 @@ public class replyDto implements Serializable{
 		this.rdate = rdate;
 		this.reply_count = reply_count;
 	}
+
 
 
 
@@ -54,6 +56,7 @@ public class replyDto implements Serializable{
 	public void setJobtalkseq(int jobtalkseq) {
 		this.jobtalkseq = jobtalkseq;
 	}
+
 
 
 	public String getReply_content() {

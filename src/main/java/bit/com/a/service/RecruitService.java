@@ -5,6 +5,7 @@ import java.util.Map;
 
 import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.BusinessDto;
+import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 
@@ -76,6 +77,14 @@ public interface RecruitService {
 
 	boolean dropFavoriteJob2(RecruitParam param);
 
-	
+	CompanyDto getCompany(int jobseq);
+
+	String getPhonenum(String memberid);
+
+
+
+
+
+
 
 }

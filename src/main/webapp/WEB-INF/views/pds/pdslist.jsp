@@ -67,6 +67,9 @@
 
 <link href="csss/header.css" rel="stylesheet" type="text/css">
 
+
+
+
 <style type="text/css">
   
 /* 모달 */
@@ -356,6 +359,10 @@ table thead th {
 </style>
 </head>
 <body>
+
+
+
+
 <div class="all">
 <header>
 
@@ -480,13 +487,10 @@ table thead th {
 <!-- =======Login 클릭 시 Modal END =========-->
 
 <!-- 검색창 -->
-<section class="newsletter" style="padding-bottom: 50px;">
+<section class="newsletter" style="background-image:url('자료실.png');">
 <div class="container">
 <div class="row">
 <div class="col-sm-12">
-	<div class="content">
-		<h2 style="color:#fff;margin-bottom: 0px;">이력서 양식</h2>
-	</div>
 </div>
 </div>
 </div>

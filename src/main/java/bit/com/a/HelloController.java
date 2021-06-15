@@ -68,15 +68,6 @@ public class HelloController {
 		}
 
 
-		@RequestMapping(value = "testtest.do", method = RequestMethod.GET)
-		public String musicplayer(Model model) {
-			logger.info("HelloController home() " + new Date());
-
-			return "testtest";
-		}
-
-
-
 		@RequestMapping(value = "infomember.do", method = RequestMethod.GET)
 		public String infomember(Model model) {
 			logger.info("HelloController home() " + new Date());
@@ -136,5 +127,12 @@ public class HelloController {
 			logger.info("HelloController member_info() " + new Date());
 			return "Maintest";
 		}
+		
+		@RequestMapping(value ="musicplayer.do", method = RequestMethod.GET)
+		public String musicplayer(Model model) {
+			logger.info("HelloController member_info() " + new Date());
+			return "musicplayer";
+		}
+		
 
 }

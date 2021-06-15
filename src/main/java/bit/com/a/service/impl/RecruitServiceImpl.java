@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import bit.com.a.dao.RecruitDao;
 import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.BusinessDto;
+import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 import bit.com.a.service.RecruitService;
@@ -184,5 +185,20 @@ public class RecruitServiceImpl implements RecruitService{
 	public boolean dropFavoriteJob2(RecruitParam param) {
 		return dao.dropFavoriteJob2(param);
 	}
+
+ 	@Override
+	public CompanyDto getCompany(int jobseq) {
+
+		return dao.getCompany(jobseq);
+
+	}
+
+	@Override
+	public String getPhonenum(String memberid) {
+		return dao.getPhonenum(memberid);
+	}
+
+
+	
 
 }

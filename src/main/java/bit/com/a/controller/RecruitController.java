@@ -39,6 +39,7 @@ public class RecruitController {
 
    @Autowired
    MypageService Myservice;
+
    @Autowired
    ResumeService resumeservice;
 
@@ -407,9 +408,75 @@ public class RecruitController {
 //TODO 디테일 창으로 이동
    @RequestMapping(value = "RecruitDetail.do", method = RequestMethod.GET)
    public String RecruitDetail(int jobseq, Model model, String memberid) {
+     
+		model.addAttribute("doc_title", "채용공고");
+		  
+		 //MemberDto mem = Myservice.getMypage(memberid);
+
+		  //디테일 데이터 받아오기
+		  System.out.println("seq:"+jobseq);
+		  
+		  
+		  RecruitDto dto = service.getRecruitListOne(jobseq);
+		  List<ResumeDto> resumelist = resumeservice.getresume(memberid);
+
+		  System.out.println(dto.toString());
+
+		  //직무이름 받아오는 코드
+		  List<String> list = service.getBsnameForDetail(jobseq);
+		  System.out.println("직무이름 :"+ list.toString());
+
+		  dto.setBusname(list);
+
+		  //검색용 파라미터 dto설정
+		  RecruitParam param = new RecruitParam();
+		  String jobSeq = jobseq + "";
+		  param.setJobSeq(jobSeq);
+		  param.setMemberid(memberid);
+
+		  //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
+		  int IjobFavoriteCount = service.getJobFavorite(param);
+		  String jobFavoriteCount = IjobFavoriteCount + "";
+
+		  dto.setFavoriteJob(jobFavoriteCount);
+
+
+		  //검색용 파라미터 dto설정
+		  param.setCompanyId(dto.getCompanyId());
+		  param.setMemberid(memberid);
+
+		  //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
+		  int IcomFavoriteCount = service.getComFavorite(param);
+		  String comFavoriteCount = IcomFavoriteCount + "";
+
+		  dto.setFavoriteCom(comFavoriteCount);
+
+		  System.out.println("변경된 Dto :"+dto.toString());
+
+		  model.addAttribute("dto", dto);
+		  model.addAttribute("resumelist", resumelist);
+	
+
+      return "recruit/recruitDetail";
+   }
+
+
+ //TODO 기업 상세정보 가져오기
+   @RequestMapping(value = "getDetailCompany.do", method = RequestMethod.GET)
+   public String getDetailCompany(int jobseq, Model model, String memberid) {
       model.addAttribute("doc_title", "채용공고");
+
       MemberDto mem = Myservice.getMypage(memberid);
-      
+
+
+
+      CompanyDto com = service.getCompany(jobseq);
+
+      if(com !=null) {
+      System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+com.toString());
+      }
+      model.addAttribute("com", com);
+
       //디테일 데이터 받아오기
       System.out.println("seq:"+jobseq);
       RecruitDto dto = service.getRecruitListOne(jobseq);
@@ -450,10 +517,13 @@ public class RecruitController {
 
       model.addAttribute("dto", dto);
       model.addAttribute("resumelist", resumelist);
-      model.addAttribute("mem", mem);
+		/* model.addAttribute("mem", mem); */
 
       return "recruit/recruitDetail";
    }
+
+
+
 
 //TODO디테일 수정시 데이터 가져가기 Ajax(컨트롤러에서 상세공고 데이터를 취득하여 업데이트 페이지로 이동)
       @RequestMapping(value = "RecruitUpdate.do", method = RequestMethod.GET)
@@ -1098,7 +1168,7 @@ public class RecruitController {
 
 			System.out.println("좋아요 파람:"+param.toString());
 		  boolean b = service.favoriteCom(param);
-		  
+
 
 
 		  if(b) {
@@ -1178,21 +1248,39 @@ public class RecruitController {
 
 			return "redirect:/recuruitlist.do";
 		}
-		
-		
-		//TODO 즐겨찾기가 가장 많은 TOP10 공고 불러오기 
+
+
+		//TODO 즐겨찾기가 가장 많은 TOP10 공고 불러오기
 		@ResponseBody
 		@RequestMapping(value = "getTop10List.do", method = {RequestMethod.GET, RequestMethod.POST})
 		public List<RecruitDto> getTop10List()throws Exception {
-			
+
 			List<RecruitDto> list = service.getTop10List();
-			
-			
-			
+
+
+
 			return list;
-			
+
 		}
 		
+		
+		
+		//폰번호만 가져오기 
+		@ResponseBody
+		@RequestMapping(value = "getPhonenum.do", method = {RequestMethod.GET, RequestMethod.POST})
+		public String getPhonenum(String memberid) {
+			
+			String phonenumber = service.getPhonenum(memberid);
+			
+			System.out.println("폰번호 = "+ phonenumber);
+			
+			return phonenumber;
+		}
+					
+					
+					
+		
+
 
 
 

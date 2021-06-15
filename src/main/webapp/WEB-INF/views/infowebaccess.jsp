@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,11 @@
 </head>
 <body>
 
-웹 접근성
+<!-- 헤더생성기 (붙여넣기전 코어태그 생성하세요)-->
+<c:import url="script.jsp" charEncoding="utf-8"/>
+<c:import url="header.jsp" charEncoding="utf-8"/>  
+<!-- 헤더 생성기 끝 -->
+
 
 
 <section id="contents">
@@ -70,6 +75,10 @@
 	</div>
 
 </section>
+
+<br>
+
+ 
 
 </body>
 </html>

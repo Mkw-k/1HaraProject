@@ -44,81 +44,81 @@
 <link href="csss/top.css" rel="stylesheet" type="text/css">
 <link href="csss/common.css" rel="stylesheet" type="text/css">
         <link href="csss/reset.css" rel="stylesheet" type="text/css">
-        
-        
+
+
 <style type="text/css">
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 body {
   font-family: "Noto Sans KR", sans-serif !important;
 }
-</style>        
+</style>
 
 
 </head>
 
  <body id="sub_layout">
-     
-     <div class="wrapper"> 
+
+     <div class="wrapper">
 <!--  -->
 <header id="header">
 	<div class="top-area">
 		<div class="inner-wrap">
 			<div class="link-out">
-				<a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do" target="_blank" title="새창 열림">지역일하라</a> 
+				<a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do" target="_blank" title="새창 열림">지역일하라</a>
 				<a href="/useInfo/empCenterInfo/useEmpIntroList.do" target="" title="새창">고용복지<sup></sup>센터</a>
 				<a href="#3" title="새창 열림" onclick="f_moveUrl('WT')">장애인고용포털</a>
 			</div>
 			<div class="util">
 				<!-- 로그인 전 -->
-				
+
 				<!--// 로그인 전 -->
 				<!-- 로그인 후 -->
 
 				<!-- S : 2018-09-28 추가 -->
-				
+
 					<div class="login-mypage">
-						<a href="#"> 
+						<a href="#">
 								<span>[기업]</span>
 							  ${login.name}님
 						</a>
 						<ul>
-							
+
 								<!-- 개인 -->
 								<li><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지 홈</a></li>
 								<li><a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do">회원정보관리</a></li>
 								<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">구직신청관리</a></li>
 								<li><a href="#" onclick="worknet.popup.popCenterSuppAgree(); return false;" target="_blank" title="새창">고객지원</a></li>
-							
-							
+
+
 						</ul>
 					</div>
 					<a href="#" onclick="f_logout();" class="font-blue">로그아웃</a>
-						
+
 
 				<!-- 공통 -->
 				<a href="#" class="worknet-chatbot-start-button-for-client">챗봇</a>
 				<a href="jobtalk.do">취업톡톡<img src="static/images/common/ico/ico-gnb-new.png" style="width:15px; height:15px" class="va-m" alt="new"></a>
 				<a href="/useInfo/worknetInfo/useWorknetGuide.do">이용안내</a>
-				<a href="info.do">고객센터</a> 
-				<a href="http://as82.kr/keis" target="_blank" title="새창">원격지원</a> 
+				<a href="info.do">고객센터</a>
+				<a href="http://as82.kr/keis" target="_blank" title="새창">원격지원</a>
 				<a href="/useInvite/worknetHomepgInvite/sitemap.do">사이트맵</a>
-		
+
 			</div>
 		</div>
 	</div>
 
 	<div class="middle-area">
 		<div class="inner-wrap">
-			
-				
+
+
 					<h1 class="top-logoWorknet">
 						<a href="home.do"><img src="static/images/common/bg/bg-top-logo.png" style="width:130px; height:60px" alt="일하라"></a>
 					</h1>
-				
-				
-			
-	<!-- 		
+
+
+
+	<!--
 			<form id="searchFrm" name="searchFrm" action="/wnSearch/unifSrch.do" method="post" onsubmit="return false">
 				<div class="header-search">
 					<div class="searc-area">
@@ -152,21 +152,24 @@ body {
 
 	<nav id="gnb">
 		<ul>
-			<li><a href="companydetail.do?memberid=${login.memberid }" class="menu"><span>기업정보</span></a></li>
+
+			<li><a href="companywrite.do" class="menu"><span>기업정보등록</span></a></li>
+
+
+			<li><a href="companydetail.do?companyid=${login.memberid }" class="menu"><span>기업정보</span></a></li>
+
 			<li><a href="createTest.do" class="menu"><span>공고등록</span></a></li>
-			<li><a href="myRecruitList.do?memberid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
-			<li><a href="/jobMain.do" class="menu"><span></span></a>
-				
+			<li><a href="myRecruitList.do?companyid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
 		</ul>
-						
-				
-				
+
+
+
 	</nav>
 </header>
     <!-- 헤더 -->
 
-    
-    
+
+
 
 
         <div class="container  bg-gray" id="container">
@@ -940,7 +943,7 @@ function f_empPgmList(resultObj){
 		keis.window.newWindow("/member/popup/custInfoAgreeView.do", "PopInfoAgreeGuide", 868, 723, 'yes');
 	}
 
-	
+
 	//화면 호출시 조회
 	$(document).ready(function() {
 		empBoardStart();
@@ -978,66 +981,66 @@ function f_empPgmList(resultObj){
 							<div class="con-top">
 								<div class="tit-area"><span>${login.memberid}</span> 님, 반갑습니다.
 
-								<a href = "buspageUpdate.do?memberid=${memberid}" class="button">회원정보수정</a></div>
+								<a href = "pwdcheck.do?memberid=${memberid}" class="button">회원정보수정</a></div>
 
 
 								<div class="con-resume">
 									<table>
-										
+
 										<colgroup>
 											<col style="width:100px">
 											<col>
 											<col style="width:120px">
 											<col style="width:140px">
 										</colgroup>
-										<tbody>			
-										<c:if test="${login.filename ne null}">	 	
+										<tbody>
+										<c:if test="${login.filename ne null}">
 										<img alt="" src ="./upload/${login.filename}">
-			    						</c:if> 	
-			    						
+			    						</c:if>
+
 			    						<tr>
 								     		<!-- <th>이미지:</th> -->
-								     		<th>	
+								     		<th>
 								     	 <img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 100px;"
 								     	  src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
 								     		</th>
-								     	
+
 								     	<tr>
 								     		<th>아이디: </th>
 								     		<td>${login.memberid }</td>
 								     	</tr>
-								     	
+
 								    	<tr>
 								    		<th>회사 이름: </th>
 								    		<td>${login.companyname }</td>
 								    	</tr>
-								    	
+
 								    	<tr>
 								    		<th>비밀번호: </th>
 								    		<td>${login.pwd }</td>
 								    	</tr>
-								    	    	
+
 								    	<tr>
 								    		<th>주소: </th>
 								    		<td>${business.comaddress }</td>
 								    	</tr>
-								    	
+
 								    	<tr>
 								    		<th>상세 주소 : </th>
 								    		<td>${business.addressdetail }</td>
 								    	</tr>
-								 		
+
 								    	<tr>
 								    		<th>대표자명 : </th>
 								    		<td>${login.name }</td>
 								    	</tr>
- 		
+
 			    						<tr>
 												<th scope="row">이메일</th>
 												<td>
 														${login.email}
 												</td>
-												
+
 										</tr>
 											<tr>
 												<th scope="row">주소</th>
@@ -1051,22 +1054,22 @@ function f_empPgmList(resultObj){
 													</div>
 												</td>
 											</tr>
-										
+
 										</tbody>
 									</table>
 								</div>
 							</div>
 
 						</div>
-	
+
 
 						<br><br><br>
 						<div class="box-line v3 blue mt30" style="border-top-color: #ffffff;">
 							<div class="a-c">
 								<ul class="v1" style="margin-bottom: 10px;margin-right: 15px;">
-									
+
 								</ul>
-								
+
 							</div>
 						</div>
 
@@ -1109,7 +1112,7 @@ function f_empPgmList(resultObj){
 </div></form>
 </div>
 <br><br>
- 
+
 <!-- FOOTER -->
 
 <div id="footer">
@@ -1172,7 +1175,7 @@ function f_empPgmList(resultObj){
 				<a href="http://www.acrc.go.kr" title="새창 열림" target="_blank">국민권익위원회</a>
 				<a href="http://www.kcc.go.kr" title="새창 열림" target="_blank">방송통신위원회</a>
 			</li>
-			
+
 			<li>
 				<strong>유관기관</strong>
 				<a href="http://www.kcomwel.or.kr" title="새창 열림" target="_blank">근로복지공단</a>
@@ -1272,7 +1275,7 @@ window.onscroll = function sticky() {
   } else {
     nav[0].classList.remove("nav");
   }
-} 
+}
 </script>
 </body>
 </html>

@@ -315,7 +315,7 @@ dt, dd {
 												<h3 style="text-align: left">이력서 제목</h3>
 												<div class="resume_title" style="margin-top: 20px;">
 													<div class="resume_input">
-														<input type="text" id="title" name="resumetitle"
+														<input type="text" id="resumetitle" name="resumetitle"
 															class="resume_title_input" value="" maxlength="100">
 													</div>
 												</div>
@@ -328,7 +328,7 @@ dt, dd {
 															이름 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text" id="user_nm" name="user_nm"
+															<input type="text" id="name" name="name"
 																class="box_input" value="${login.name }" maxlength="20"
 																data-only-word="true">
 																<input type="hidden" name="memberid" value="${login.memberid }">
@@ -338,7 +338,6 @@ dt, dd {
 
 															<select class="selectpicker" style="width: 207.22222px;"
 																name="recruit_status">
-																<option>구직상태</option>
 																<option value="구직중">구직중</option>
 																<option value="구직완료">구직완료</option>
 															</select>
@@ -351,7 +350,7 @@ dt, dd {
 															생년월일 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text" id="birth_dt" name="birth_dt"
+															<input type="text" id="birth" name="birth"
 																value="${login.birth }" class="box_input expect_date"
 																data-dateformat="yymmdd" data-only-number="true"
 																autocomplete="off">
@@ -388,8 +387,8 @@ dt, dd {
 															휴대폰 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text" id="user_cell" name="user_cell"
-																class="box_input max_length" value="${login.name }"
+															<input type="text" id="phonenum" name="phonenum"
+																class="box_input max_length" value="${login.phonenum }"
 																maxlength="11" data-only-number="true"
 																data-api_type="layer" data-api_id="basic_confirm_cell"
 																readonly>
@@ -407,7 +406,7 @@ dt, dd {
 
 														<div class="resume_address">
 															<div class="resume_input" style="display:">
-																<input type="text" id="new_address" name="new_address"
+																<input type="text" id="address" name="address"
 																	value="${login.address }" maxlength="40" readonly
 																	class="box_input old_address _searchArea">
 																<p class="txt_error"></p>
@@ -415,14 +414,10 @@ dt, dd {
 
 
 															<div class="resume_input resume_bottom" style="display:;">
-																<input type="text" id="new_address_details"
-																	name="new_address_details"
+																<input type="text" id="detailaddress"
+																	name="detailaddress"
 																	value="${login.detailaddress }" maxlength="50"
-																	class="box_input size_type5 _newAddress"> <input
-																	type="hidden" id="new_address_extra"
-																	name="new_address_extra"
-																	value="${login.detailaddress }">
-																<p class="txt_error"></p>
+																	class="box_input size_type5 _newAddress">
 															</div>
 
 														</div>
@@ -628,7 +623,7 @@ dt, dd {
 																	<div class="sri_select resume_select">
 
 																		<select class="selectpicker"
-																			style="width: 107.22222px; height: 50.22222px;">
+																			style="width: 107.22222px; height: 50.22222px;" name="high_field" id="high_field">
 																			<option>문과계열</option>
 																			<option>이과계열</option>
 																			<option>전문(실업계)</option>
@@ -830,7 +825,7 @@ dt, dd {
 																	<div class="area_grades">
 																		<div class="resume_input">
 																			<input type="text" id="univ_grade"
-																				name="univ_grade" value="3.59"
+																				name="univ_grade" value=""
 																				class="box_input size_type3" maxlength="5"
 																				data-only-float="true">
 																		</div>
@@ -1386,7 +1381,6 @@ dt, dd {
 																	<div class="sri_select resume_select">
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lan_pass" id="lan_pass">
-																			<option>취득여부</option>
 																			<option value="취득(PASS)">취득(PASS)</option>
 																		</select>
 																	</div>
@@ -1582,7 +1576,7 @@ dt, dd {
 																		class="area_task_input resume_input">
 
 																		<input type="text" id="jobtypes" name="desiredjobtype"
-																			value="" maxlength="50" class="box_input">
+																			value="" maxlength="50" class="box_input" readonly="readonly">
 																		<div>
 																			<ul>
 																				<li class="menu"><a><img
@@ -1676,7 +1670,7 @@ dt, dd {
 																<div id="desire_area"
 																	class="area_task_input resume_input">
 																	<input type="text" id="Areas" name="desiredarea1"
-																		value="" maxlength="50" class="box_input">
+																		value="" maxlength="50" class="box_input" readonly="readonly">
 
 																	<div>
 
@@ -1709,7 +1703,7 @@ dt, dd {
 																<div id="desire_job_category"
 																	class="area_task_input resume_input">
 																	<input type="text" id="Buses" name="desiredjob1"
-																		value="" maxlength="50" class="box_input">
+																		value="" maxlength="50" class="box_input" >
 
 																	<div>
 
@@ -1754,7 +1748,7 @@ dt, dd {
 						</div>
 						</section>
 						
-						<button onclick="iscompleted()" id="incomplete">중간저장</button>
+						<button id="incomplete">중간저장</button>
 						<button id="complete">작성완료</button>
 						
 					</div>
@@ -2672,7 +2666,7 @@ function careerokCheck() {
 																	<div class="area_grades">
 																		<div class="resume_input">
 																			<input type="text" id="univ_grade"
-																				name="univ_grade" value="3.59"
+																				name="univ_grade" value=""
 																				class="box_input size_type3" maxlength="5"
 																				data-only-float="true">
 																		</div>
@@ -3179,7 +3173,6 @@ function careerokCheck() {
 																	<div class="sri_select resume_select">
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lan_pass">
-																			<option>취득여부</option>
 																			<option value="취득(PASS)">취득(PASS)</option>
 																		</select>
 																	</div>
@@ -3439,23 +3432,211 @@ function selectCareerArea(val) {
 
 </script>
 
+<!-- 중간저장 빈칸체크 -->
 <script type="text/javascript">
-function iscompleted() {
-alert("iscompleted");
+$("#incomplete").click(function () {
+alert("incomplete");
+document.getElementById('resumeStatus').value = 'NO';
+alert(document.getElementById('resumeStatus').value);
 
-	document.getElementById('resumeStatus').value = 'NO';
-	alert(document.getElementById('resumeStatus').value);
+if($("#resumetitle").val().trim() == ""){
 	
-	 $("#resumewrite").submit(); 
+    alert('이력서 제목을 입력해 주십시오');
+    $("#resumetitle").focus();
+    return false;
+}
+
+else if($("#university").val().trim() != ""){
+
+	
+	if($("#univ_str").val().trim() == ""){
+	   alert('대학관련 사항을 모두 입력해 주십시오');
+	   $("#univ_str").focus();
+	   return false;
+	}
+	if($("#univ_end").val().trim() == ""){
+	       alert('대학관련 사항을 모두 입력해 주십시오');
+	       $("#univ_end").focus();
+	       return false;
+	   	}
+	if($("#univ_major").val().trim() == ""){
+	       alert('대학관련 사항을 모두 입력해 주십시오');
+	       $("#univ_major").focus();
+	       return false;
+	   	}
+	if($("#univ_grade").val().trim() == ""){
+	       alert('대학관련 사항을 모두 입력해 주십시오');
+	       $("#univ_grade").focus();
+	       return false;
+	   	}
+	if($("#univ_paper").val().trim() == ""){
+	       alert('대학관련 사항을 모두 입력해 주십시오(논문없을시 없음 기입)');
+	       $("#univ_paper").focus();
+	       return false;
+	   	}
 	
 }
+
+else if($("#pre_comname").val().trim() != ""){
+	
+    
+	if($("#pre_startdate").val().trim() == ""){
+    alert('경력 관련 사항을 모두 입력해 주십시오');
+    $("#pre_startdate").focus();
+    return false;
+	}
+	if($("#pre_enddate").val().trim() == ""){
+		alert('경력 관련 사항을 모두 입력해 주십시오');
+        $("#pre_enddate").focus();
+        return false;
+    	}
+	if($("#pre_position").val().trim() == ""){
+		alert('경력 관련 사항을 모두 입력해 주십시오');
+        $("#pre_position").focus();
+        return false;
+    	}
+	if($("#pre_buscode").val().trim() == ""){
+		alert('경력 관련 사항을 모두 입력해 주십시오');
+        $("#pre_buscode").focus();
+        return false;
+    	}
+	if($("#pre_area").val().trim() == ""){
+		alert('경력 관련 사항을 모두 입력해 주십시오');
+        $("#pre_area").focus();
+        return false;
+    	}
+	if($("#pre_dept").val().trim() == ""){
+		alert('경력 관련 사항을 모두 입력해 주십시오');
+        $("#pre_dept").focus();
+        return false;
+    	}
+	if($("#pre_jobdetail").val().trim() == ""){
+		alert('경력 관련 사항을 모두 입력해 주십시오');
+        $("#pre_jobdetail").focus();
+        return false;
+    	}
+	
+}
+
+else if($("#act_org").val().trim() != ""){
+	
+    
+	if($("#act_org").val().trim() == ""){
+    alert('대외활동 관련 사항을 모두 입력해 주십시오');
+    $("#act_org").focus();
+    
+    return false;
+	}
+	if($("#act_str").val().trim() == ""){
+		alert('대외활동 관련 사항을 모두 입력해 주십시오');
+        $("#act_str").focus();
+        return false;
+    	}
+	if($("#act_end").val().trim() == ""){
+		alert('대외활동 관련 사항을 모두 입력해 주십시오');
+        $("#act_end").focus();
+        return false;
+    	}
+	if($("#act_detail").val().trim() == ""){
+		alert('대외활동 관련 사항을 모두 입력해 주십시오');
+        $("#act_detail").focus();
+        return false;
+    	}
+	
+	
+	
+}
+
+else if($("#lic_name").val().trim() != ""){
+	
+    
+	if($("#lic_publisher").val().trim() == ""){
+		alert('자격증 관련 사항을 모두 입력해 주십시오');
+        $("#lic_publisher").focus();
+        return false;
+    	}
+	if($("#lic_date").val().trim() == ""){
+        alert('자격증 관련 사항을 모두 입력해 주십시오');
+        $("#lic_date").focus();
+        return false;
+    	}
+}
+
+else if($("#lan_exam").val().trim() != ""){
+	
+	if($("#lan_score").val().trim() == ""){
+    alert('어학 관련 사항을 모두 입력해 주십시오');
+    $("#lan_score").focus();
+    return false;
+	}
+	if($("#lan_date").val().trim() == ""){
+		alert('어학 관련 사항을 모두 입력해 주십시오');
+        $("#lan_date").focus();
+        return false;
+    	}
+}
+
+else if($("#awd_name").val().trim() != ""){
+	
+	if($("#awd_date").val().trim() == ""){
+    alert('수상 관련 사항을 모두 입력해 주십시오');
+    $("#awd_date").focus();
+    return false;
+	}
+	if($("#awd_org").val().trim() == ""){
+		alert('수상 관련 사항을 모두 입력해 주십시오');
+        $("#awd_org").focus();
+        return false;
+    	}
+}
+
+/* else if($("#male").val().trim() == "" || $("#female").val().trim() ==""){
+	
+    alert('성별 사항을 입력해 주십시오');
+    $("#male").focus();
+    return false;
+} */
+
+else if($("#jobtypes").val().trim() == ""){
+	
+    alert('희망 근무 형태 사항을 입력해 주십시오');
+    $("#jobtypes").focus();
+    
+    return false;
+    
+}
+
+else if($("#Areas").val().trim() == ""){
+	
+    alert('희망 지역을 입력해 주십시오');
+    $("#Areas").focus();
+    
+    return false;
+}
+
+else if($("#Buses").val().trim() == ""){
+	
+    alert('희망 직종을 입력해 주십시오');
+    $("#Buses").focus();
+	
+    return false;
+}
+	
+});
 </script>
 
 <!-- 빈칸 체크 -->
 <script type="text/javascript">
 $("#complete").click(function () {
  
-    if($("#university").val().trim() != ""){
+ 	if($("#resumetitle").val().trim() == ""){
+		
+	    alert('이력서 제목을 입력해 주십시오');
+	    $("#resumetitle").focus();
+	    return false;
+	}
+ 	
+ 	else if($("#university").val().trim() != ""){
     	
     
     	if($("#univ_str").val().trim() == ""){
@@ -3527,12 +3708,13 @@ $("#complete").click(function () {
     	
     }
     
-    if($("#act_org").val().trim() != ""){
+    else if($("#act_org").val().trim() != ""){
     	
         
     	if($("#act_org").val().trim() == ""){
         alert('대외활동 관련 사항을 모두 입력해 주십시오');
         $("#act_org").focus();
+        
         return false;
     	}
     	if($("#act_str").val().trim() == ""){
@@ -3545,20 +3727,27 @@ $("#complete").click(function () {
             $("#act_end").focus();
             return false;
         	}
+    	if($("#act_detail").val().trim() == ""){
+    		alert('대외활동 관련 사항을 모두 입력해 주십시오');
+            $("#act_detail").focus();
+            return false;
+        	}
+    	
+    	
     	
     }
     
     else if($("#lic_name").val().trim() != ""){
     	
         
-    	if($("#lic_date").val().trim() == ""){
-        alert('자격증 관련 사항을 모두 입력해 주십시오');
-        $("#lic_date").focus();
-        return false;
-    	}
     	if($("#lic_publisher").val().trim() == ""){
     		alert('자격증 관련 사항을 모두 입력해 주십시오');
             $("#lic_publisher").focus();
+            return false;
+        	}
+    	if($("#lic_date").val().trim() == ""){
+            alert('자격증 관련 사항을 모두 입력해 주십시오');
+            $("#lic_date").focus();
             return false;
         	}
     }
@@ -3591,12 +3780,12 @@ $("#complete").click(function () {
         	}
     }
 	
-    else if($("#male").val().trim() == "" || $("#female").val().trim() ==""){
+    /* else if($("#male").val().trim() == "" || $("#female").val().trim() ==""){
 		
 	    alert('성별 사항을 입력해 주십시오');
 	    $("#male").focus();
 	    return false;
-	}
+	} */
 	
     else if($("#jobtypes").val().trim() == ""){
     	

@@ -1,3 +1,4 @@
+<%@page import="bit.com.a.dto.MemberDto"%>
 <%@page import="bit.com.a.dto.ResumeDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,6 +16,37 @@ List<ResumeDto> resumelist =(List<ResumeDto>) request.getAttribute("resumelist")
 System.out.println("resumelist" +resumelist);
 %>
 
+<%-- <%
+Object ologin = session.getAttribute("login");
+String logincheck = (String)(request.getAttribute("logincheck"));
+MemberDto mem = null;
+
+if(ologin == null){
+   %>
+   <script>
+   alert('로그인 해 주십시오');
+   location.href="login1.do"
+
+   </script>
+   <%
+}
+else{
+   mem = (MemberDto)ologin;
+   request.setAttribute("mem", mem);
+}
+
+
+if(logincheck != null) {
+	if(logincheck.equals("NO")) {
+%>
+		<script>
+			alert('아이디, 패드워드가 맞지 않습니다.');
+		</script>
+<%
+	}
+}
+%>
+ --%>
 <!DOCTYPE html>
 <html>
 
@@ -22,24 +54,26 @@ System.out.println("resumelist" +resumelist);
   <!-- CK-editor -->
 <link rel="stylesheet" href="ckeditor5/sample/styles.css">
 <script src="ckeditor5/build/ckeditor.js"></script>
-  
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- 
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  
+
  <!-- 전체 공통 스크립트 임포트 -->
-  <c:import url="script.jsp" charEncoding="utf-8"/> 
-  
+  <c:import url="script.jsp" charEncoding="utf-8"/>
+
   <!-- <link rel="stylesheet" href="static/csss/bootstrap.css" media="all"> -->
 
-  <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+ <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+  <!-- 카카오맵스 -->
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <!-- 카카오맵스 -->
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=685fcbb766340d7c8812f4e0a29a6661&libraries=services"></script>
 
-
- 
-
+<!-- 테이블 -->
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
 
 <style type="text/css">
 .star-on {
@@ -71,123 +105,143 @@ System.out.println("resumelist" +resumelist);
   text-align: left;
   vertical-align: middle;
 }
+
+p{
+ font-weight: bold;
+}
+
+.companydetail{
+display: flex;
+}
+
+.jobtitle{
+font-weight: bold;
+}
+
+
+.titles{
+margin-left: 370px;
+font-weight: bold;
+
+}
+
+.table .thead-dark th {
+    color: #fff;
+    background-color: #2186eb;
+    border-color: #eee;
+}
+
+.JobSumData{
+	font-weight: bold;
+}
+
 </style>
+
+
 
 <body>
 
 
 <c:import url="header.jsp" charEncoding="utf-8"/>
 
- <div class="py-0 pt-3">
+ <div class="py-0 pt-3" style="background-color: #2186eb; color: white; height: 174px;">
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
-          <h3 class="">${dto.companyname}&nbsp; &nbsp;&nbsp;
-          	
-          		<c:choose>
-          		<c:when test="${dto.favoriteCom >0 }">
-          					<a style="color:red" class="btn btn-secondary red" href="javascript:dropFavoriteCom(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
-          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
-          		</c:when>
-          		<c:otherwise>
-          					<a class="btn btn-secondary red" href="javascript:comFavorite(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
-          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
-          		</c:otherwise>
-          	</c:choose>
-          	
-         
-          
-          <br>${dto.jobTitle}</h3>
+        <div class="col-md-10">
+	        <div>
+	          <p class="" style="color: #eee;">${dto.companyname}&nbsp; &nbsp;&nbsp;</p>
+			</div>
+
+			<div>
+			  <h3 class="jobtitle">
+	           <c:if test="${login.auth==1}">
+	          	<c:choose>
+	          		<c:when test="${dto.favoriteCom >0 }">
+	          					<a style="color:red" class="btn btn-secondary red" href="javascript:dropFavoriteCom(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
+	          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
+	          		</c:when>
+	          		<c:otherwise>
+	          					<a class="btn btn-secondary red" href="javascript:comFavorite(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
+	          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
+	          		</c:otherwise>
+	          	</c:choose>
+				</c:if>
+	          ${dto.jobTitle}
+	         </h3>
+	         </div>
+
         </div>
-        <div class="col-md-4 text-right" style="">
+        <div class="col-md-2 text-right" style="margin-top: 45px;">
 
-          <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
-
+		 	<c:if test="${login.auth==1 }">
+         		 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
+			</c:if>
 
           	<c:choose>
-          		<c:when test="${dto.favoriteJob >0 }">
+          		<c:when test="${login.auth == 1 }">
+          			<c:choose>
+          				<c:when test="${dto.favoriteJob >0 }">
           					<a style="color:red" class="btn btn-secondary" href="javascript:dropFavoriteJob(${dto.jobSeq }, '${login.memberid }')">
-				          <i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
-				          </a>
-          		</c:when>
-          		<c:otherwise>
+				          		<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
+				          	</a>
+          				</c:when>
+          				<c:otherwise>
           					<a class="btn btn-secondary" href="javascript:jobFavorite(${dto.jobSeq }, '${login.memberid }')">
-				            <i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
+				         	   <i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
 				            </a>
-          		</c:otherwise>
+          				</c:otherwise>
+          			</c:choose>
+          		</c:when>
           	</c:choose>
 
-
-
-          <a class="btn btn-secondary" href="javascript:updateRecruit(${dto.jobSeq })">수정하기</a>
-          <a class="btn btn-secondary" href="javascript:deleteRecruit(${dto.jobSeq })">삭제</a>
+			<c:choose>
+				<c:when test="${login.auth == 2}">
+ 					<c:if test="${login.memberid == dto.companyId }">
+          				<a class="btn btn-secondary" href="javascript:updateRecruit(${dto.jobSeq })">수정하기</a>
+          				<a class="btn btn-secondary" href="javascript:deleteRecruit(${dto.jobSeq })">삭제</a>
+          			</c:if>
+          		</c:when>
+          	</c:choose>
           </div>
        </div>
 
 
 
+			<!-- 입사지원 모달 -->
+			 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document" style="width: -webkit-fill-available;">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel" style="width: 700px;">입사지원</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">×</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			       <table>
+			       <colgroup>
+			       <col width="400"><col width="50">
+						<tr><td colspan="2">이력서list</td></tr>
+					<%
+					for(int i=0; i<resumelist.size(); i++){
+					%>
 
+						<tr>
+						<td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a></td>
+						<td><button type="button" class="btn btn-primary" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>')">지원하기</button></td>
+						</tr>
+					<%
+					}
+					%>
 
-								 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								  <div class="modal-dialog" role="document" style="width: -webkit-fill-available;">
-								    <div class="modal-content">
-								      <div class="modal-header">
-								        <h5 class="modal-title" id="exampleModalLabel" style="width: 700px;">입사지원</h5>
-								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								          <span aria-hidden="true">×</span>
-								        </button>
-								      </div>
-								      <div class="modal-body">
-								       <table>
-								       <colgroup>
-								       <col width="400"><col width="50">
-											<tr><td colspan="2">이력서list</td></tr>
-										<%
-										for(int i=0; i<resumelist.size(); i++){
-										%>
-
-											<tr>
-											<td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a></td>
-											<td><button type="button" class="btn btn-primary" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>', '${login.phonenum}')">지원하기</button></td>
-											</tr>
-										<%
-										}
-										%>
-
-									</table>
-								      </div>
-								      <div class="modal-footer">
-								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								      </div>
-								    </div>
-								  </div>
-								</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+				</table>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 
 
       </div>
@@ -195,36 +249,34 @@ System.out.println("resumelist" +resumelist);
 
       </div>
     </div>
-  </div>
-  <div class="">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <li>경력&nbsp; &nbsp; &nbsp; &nbsp; <font>${dto.career_Desc }</font>
-          </li>
-          <li>학력&nbsp; &nbsp; &nbsp; &nbsp; <font>${dto.eduname }</font>
-          </li>
-        </div>
-        <div class="col-md-6">
-          <li>근무형태&nbsp; &nbsp; &nbsp;&nbsp;<font>${dto.emp_name }</font>
-          </li>
-          <li>직군&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          <span>
-          	<c:forTokens var="item" items="${dto.busname}" delims=":">
-						    ${item}
-			</c:forTokens>
-          </span>
-
-          </li>
-          <li>채용인원&nbsp; &nbsp; &nbsp; ${dto.jobVolumn }</li>
-          <li>급여&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font>${dto.salary }&nbsp;만원</font>
-          </li>
-          <li>근무지역&nbsp; &nbsp; &nbsp;&nbsp;<font>${dto.area1Name }&nbsp;${dto.area2Name }</font>
-          <input type="hidden" id="regdate" value="${dto.regdate }">
-          <input type="hidden" id="regdate" value="${dto.buscode }">
-          </li>
-        </div>
-      </div>
+  	<div class="" style="margin-top: 20px;">
+    	<div class="container">
+      		<div class="row">
+        		<div class="col-md-6">
+        		  <li class="companydetail"><p>경력</p>&nbsp; &nbsp; &nbsp; &nbsp; <font class="JobSumData">${dto.career_Desc }</font>
+          		  </li>
+          		  <li class="companydetail"><p>학력</p>&nbsp; &nbsp; &nbsp; &nbsp; <font class="JobSumData">${dto.eduname }</font>
+         		  </li>
+        		</div>
+        		<div class="col-md-6">
+        		  <li class="companydetail"><p>근무형태</p>&nbsp; &nbsp; &nbsp;&nbsp;<font class="JobSumData">${dto.emp_name }</font>
+        		  </li>
+          		  <li class="companydetail"><p>직군</p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          			<span>
+          				<c:forTokens var="item" items="${dto.busname}" delims=":">
+						    <font class="JobSumData">${item}</font>
+						</c:forTokens>
+          			</span>
+          		</li>
+          		<li class="companydetail"><p>채용인원</p>&nbsp; &nbsp; &nbsp; <font class="JobSumData">${dto.jobVolumn }</font></li>
+          		<li class="companydetail"><p>급여</p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class="JobSumData">${dto.salary }&nbsp;만원</font>
+          		</li>
+          		<li class="companydetail"><p>근무지역</p>&nbsp; &nbsp; &nbsp;&nbsp;<font class="JobSumData">${dto.area1Name }&nbsp;${dto.area2Name }</font>
+          			<input type="hidden" id="regdate" value="${dto.regdate }">
+          			<input type="hidden" id="regdate" value="${dto.buscode }">
+          		</li>
+        	</div>
+      	</div>
     </div>
   </div>
   <div class="">
@@ -243,12 +295,15 @@ System.out.println("resumelist" +resumelist);
       <div class="row">
         <div class="col-md-12">
 				<div class="editor" >
-	              	${dto.jobContent }  </div>
+	              	${dto.jobContent }
+	            </div>
 		</div>
       </div>
     </div>
   </div>
+
   <div class="py-5">
+  <h3 class="titles">접수기간 및 방법</h3>
     <div class="container">
       <div class="row">
         <div class="col-md-4 bg-light border-right" style="">
@@ -259,21 +314,26 @@ System.out.println("resumelist" +resumelist);
             <dd>${dto.jobStart }</dd>
             <dt class="end">마감일</dt>
             <dd>${dto.jobEnd }</dd>
+             <dd><c:if test="${login.auth==1 }">
+         		 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
+			</c:if></dd>
           </dl>
         </div>
         <div class="col-md-8 bg-light" style="">
-          <div> 지원방법&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일하라 입사지원 </div>
+          <div class="companydetail"> <p>지원방법</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일하라 입사지원 </div>
+          
           <div>
-            <a class="btn btn-secondary" href="#" id="_apply">입사지원</a>
+           <!--  <a class="btn btn-secondary" href="#" id="_apply">입사지원</a> -->
           </div>
         </div>
         <div class="text-primary" style=""> 마감일은 기업의 사정에 따라 조기 마감될수 있습니다.
-        <a class="btn btn-secondary" href="recuruitlist.do">목록으로</a>
+        	<a class="btn btn-secondary" href="recuruitlist.do">목록으로</a>
         </div>
       </div>
     </div>
   </div>
   <div class="py-5">
+  <h3 class="titles">지원현황</h3>
     <div class="container">
       <div class="row">
         <div class="col-md-12"> 지원현황(선택) </div>
@@ -281,6 +341,7 @@ System.out.println("resumelist" +resumelist);
     </div>
   </div>
   <div class="py-5">
+  <h3 class="titles">근무지</h3>
     <div class="container">
       <div class="row">
         <div class="col-md-4 bg-light border-right" style="">
@@ -298,22 +359,16 @@ System.out.println("resumelist" +resumelist);
 			    </em>
 			</p>
 			<div id="map" style="width:100%;height:350px;"></div>
-
-
-
-
-
             </dd>
           </dl>
         </div>
         <div class="col-md-8 bg-light" style="" id="_mgData">
-          <div> 담당자명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgName }</div>
-          <div> 담당자연락처&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgPhone }</div>
-          <div> 담당자이메일주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgEmail }</div>
-
+          <div class="companydetail"> <p>담당자명</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgName }</div>
+          <div class="companydetail"> <p>담당자연락처</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgPhone }</div>
+          <div class="companydetail"> <p>담당자이메일주소</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgEmail }</div>
         </div>
         <div class="text-primary" style=""> 담당자 정보 수정을 원하시면 버튼을 클릭하세요 &nbsp;&nbsp;&nbsp;
-        <a class="btn btn-secondary" href="javascript:mgUpdate()">담당자 정보수정</a>
+        	<a class="btn btn-secondary" href="javascript:mgUpdate()">담당자 정보수정</a>
         </div>
       </div>
     </div>
@@ -321,22 +376,38 @@ System.out.println("resumelist" +resumelist);
   <div class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-12"> 기업정보(위치정보-지도포함) </div>
+        <div class="col-md-12">
+			<table>
+				<tr>
+					<th>사업</th><td>${com.content }</td>
+				</tr>
+				<tr>
+					<th>사원수</th><td>${com.empcount }</td>
+				</tr>
+				<tr>
+					<th>평균연봉</th><td>${com.salaryavg }</td>
+				</tr>
+
+
+
+			</table>
+
+		</div>
       </div>
     </div>
   </div>
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
   <div class="py-5">
     <div class="container">
-      <div class="row"> 인기기업 HOT10 
+      <div class="row"> 인기기업 HOT10
       <div class="col-md-12">
-      
-      
+
+
 
 
          <table class="table table-hover col-sm-12 " style="" id="table">
@@ -357,18 +428,18 @@ System.out.println("resumelist" +resumelist);
 
          </table>
          <p></p>
-  
-       
+
+
        </div>
       </div>
     </div>
   </div>
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -376,17 +447,49 @@ System.out.println("resumelist" +resumelist);
       </div>
     </div>
   </div>
-  
-  
-  <button onclick="charchen()">charchen</button> 
-  
-  
-  
+
+  <!-- 댓글 -->
+				<c:if test="${login.memberid != null }">
+					<div class="inputBox">
+						<div class="writeBoxWrap cmtWrite">
+							<form action="replyinsert.do" method="post">
+								<input type="hidden" name="jobSeq" value="${dto.jobSeq}">
+								<fieldset>
+									<div class="uiplaceholder">
+										<span class="ph">솔직하고 따뜻한 답변을 남겨주세요.<br>*휴대폰 번호, 메일 주소, 카카오톡 ID 등 개인정보가 포함된 내용은 비노출 처리 될 수 있습니다.</span>
+										<textarea class="devTxtAreaAnswerWrite" name="reply_content" maxlength="1000" title="답변쓰기"></textarea>
+									</div>
+									<div class="btnWrap">
+                               			<div class="infoBx">
+                            	    	   <a href="/User/Qstn/MainProfile?Target=16755209" class="my-profile" target="_blank">
+                                    		   <span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_8.jpg" target="_blank" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
+                                    	  	   <span class="info">${login.memberid}</span>
+                                   	   	   	   <input type="hidden" name="memberid" value="${login.memberid}">
+                                   	   	   </a>
+                                   	   	 </div>
+                                  	  	 <span class="byte"><b id="count">0</b> / 1,000</span>
+                               	         <button type="submit" id="btnSubmit" class="btnSbm devBtnAnswerWrite">등록</button>
+                           	   		</div>
+								</fieldset>
+							</form>
+						</div>
+						<ul class="notice-box-wrap">
+                		    <li>답변을 등록하면 닉네임으로 질문자에게 전달됩니다.</li>
+                	   		<li>개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.</li>
+                  			<li>개인정보가 포함되거나 부적절한 답변은 비노출 또는 해당 서비스 이용 불가 처리될 수 있습니다.</li>
+               			</ul>
+					</div>
+				</c:if>
+
+  <input type="hidden" id="phonenumber">
+  <button onclick="charchen()">charchen</button>
+
+
+
   <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" style=""></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
-  <!-- 카카오맵스 -->
-  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 
 
 
@@ -395,7 +498,7 @@ getTop10List();
 
 //5단 검색바 사용 검색할 경우
 function getTop10List() {
-   
+
     $.ajax({
          type : 'get',
          url : './getTop10List.do',
@@ -458,42 +561,7 @@ function getTop10List() {
 
 
 
-function jobApply(jobseq, memberid, resumeseq, phonenum) {
-	alert("jobApply");
-	//alert(jobseq);
-	//alert(memberid);
-	//alert(resumeseq);
-	alert(phonenum);
-	
-	alert($('#test2').val());
-	
-	let endDate = '${dto.jobEnd}';
-	var reserve = charchen(endDate);
-	alert("이게 예약시간 : "+ reserve);
-	
-	if('${login.auth}' == '1'){
-		var phone = '01026074128';
-	}
 
-
-	$.ajax({
-        url : "./reserveSendSms.do",
-        type : "get",
-        data: {"phonenum": phone, "reserveDate" : reserve},
-        success:function(list){
-           alert('success');
-           //alert(list);
-		},
-        error:function(){
-           alert('error');
-        }
-
-      });	
- 
-    
-    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
-	
-}
 
 
 </script>
@@ -501,9 +569,9 @@ function jobApply(jobseq, memberid, resumeseq, phonenum) {
 
 
 <script type="text/javascript">
-  
 
-  
+
+
 function deleteRecruit(jobSeq) {
 	location.href="deleteRecruit.do?jobSeq="+jobSeq;
 }
@@ -670,8 +738,8 @@ function dropFavoriteCom(jobSeq, companyId, memberid) {
 }
 
 
-  
-  
+
+
 
 function jobFavorite(jobSeq, memberid) {
 	//alert("즐겨찾기등록");
@@ -690,12 +758,18 @@ function dropFavoriteJob(jobSeq, memberid) {
 	//alert("즐겨찾기해제");
 	//alert(jobSeq);
 	//alert(memberid);
-
+	if('${login.memberid}' == 'null'){
+		alert('로그인해주십시오');
+		location.href="login1.do";
+	}
+	else{
 	location.href = "dropFavoriteJob.do?jobSeq="+jobSeq+"&memberid="+memberid;
 
 	//setTimeout("location.reload()", 15);
 
 	//location.href = "RecruitDetail.do?jobseq=" +jobSeq;
+	}
+
 }
 
 
@@ -709,20 +783,17 @@ function CountDownTimer(dt, id) {
     function showRemaining() {
         var now = new Date();
         var distance = end - now;
-		
-        
+
+
        var dEnd = end.getDate();
        var dNow = now.getDate();
        var leftDay = dEnd - dNow;
-       
-       if(distance == 86400000){
-    	   alert("이타이밍임 : " + distance); 	
-        	
-        }
-        
-        
+
+
+
+
         if (distance < 0) {
-        	
+
             clearInterval(timer);
             document.getElementById(id).innerHTML = '공고 기한이 만료되었습니다';
             //$("#_apply").hide();
@@ -741,18 +812,37 @@ function CountDownTimer(dt, id) {
     timer = setInterval(showRemaining, 1000);
 }
 CountDownTimer('${dto.jobEnd}', 'timeDeal'); // 2020-12-06 오후10시 50분까지
- 	
 
 
-	
-	
-	
-	
-	
-	
-	
 
-    
+
+	/* let endDate = '${dto.jobEnd}';
+	var reserve = charchen(endDate);
+	alert("이게 예약시간 : "+ reserve);
+
+
+	  $.ajax({
+	        type : 'get',
+	        url : './reserveSendSms.do',
+	        data:{phonenum: phone, reserveDate : reserve			// 휴대폰 번호
+                },
+	       success:function(suc){
+				alert("성공");
+				alert(suc);
+
+			},
+			error:function(){
+				alert('error');
+			}
+	    });   */
+
+	//location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
+
+
+
+
+
+
 function charchen(endDate) {
 endDate = new Date(endDate);
 var rest = endDate - 86400000;
@@ -762,7 +852,7 @@ alert(sendDate);
 
 return sendDate;
 }
-    
+
 
 
 function getReserveDate(rest)
@@ -789,7 +879,77 @@ function getReserveDate(rest)
 }
 
 
+function jobApply(jobseq, memberid, resumeseq) {
+	
+	alert("jobApply");
+	//alert(jobseq);
+	//alert(memberid);
+	//alert(resumeseq);
+	// alert(phonenum);
+
+	let endDate = '${dto.jobEnd}';
+	var reserve = charchen(endDate);
+	alert("이게 예약시간 : "+ reserve);
+ 	
+	var phone = getPhonenum(memberid);
+	alert("이게 연락처"+phone);
+	
+	var title = '${dto.jobTitle}';
+	
+	
+	
+	$.ajax({
+        type : 'get',
+        url : './reserveSendSms.do',
+        data:{phonenum: phone, reserveDate : reserve, title : title },
+       success:function(suc){
+			alert("예약문자성공");
+			alert(suc);
+
+		},
+		error:function(){
+			alert('error');
+		}
+    }); 
+	
+	
+	
  
+    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
+
+}
+
+
+
+//회원 아이디로 전화번호를 가지고 올수 있는 메서드 
+function getPhonenum(memberid) {
+	var pnumber = "";
+	
+	 $.ajax({
+	     url : "./getPhonenum.do",
+	     type : "get",
+	     async: false, 
+	     data: {"memberid": memberid},
+	     success:function(phonenumber){
+	        alert('success');
+	        alert(phonenumber);
+	        phoneNum = phonenumber;
+	        $("#phonenumber").val(phonenumber);
+	        
+			},
+	     error:function(){
+	        alert('error');
+	     }
+
+	   });
+	 
+	 pnumber = phoneNum;
+	 
+	 return pnumber;
+	 
+}
+
+
 
 
 

@@ -30,10 +30,13 @@ public class MypageController {
    
    /*마이페이지*/
    @RequestMapping(value = "mypage.do", method = RequestMethod.GET)
-   public String mypage() throws Exception {
+   public String mypage(Model model, String memberid) throws Exception {
 
-      return "mypage";
-
+	  MemberDto dto = service.getMypage(memberid);
+	   
+	   model.addAttribute("dto", dto);
+	   
+      return "mypage/mypage";
    }
    
    /* 회원정보수정페이지*/
@@ -41,11 +44,11 @@ public class MypageController {
    @RequestMapping(value = "mypageUpdate.do", method = RequestMethod.GET)
    public String mypageUpdate() throws Exception {
 
-      return "mypageUpdate";
+      return "mypage/mypageUpdate";
    }
    
    @RequestMapping(value = "mypageUpdateAf.do", method = {RequestMethod.GET,RequestMethod.POST})
-   public String mypageUpdateAf(MemberDto dto, @RequestParam(value = "fileload", required = false) MultipartFile fileload,
+   public String mypageUpdateAf(MemberDto dto, Model model, @RequestParam(value = "fileload", required = false) MultipartFile fileload,
 			String filename, HttpServletRequest req) throws Exception {
 	  
 	  System.out.println("fileload" + fileload);
@@ -71,6 +74,7 @@ public class MypageController {
 			// db 갱신
 			service.updateMypage(dto);
 		
+			model.addAttribute("dto", dto);
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -82,8 +86,10 @@ public class MypageController {
 		
 		service.updateMypage(dto);
 	}
-	  
-	return "redirect:/mypage.do";	  
+	
+	
+	 
+	return "mypage/mypage";	  
       
    }
 
