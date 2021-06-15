@@ -545,54 +545,55 @@ transition: all .5s cubic-bezier(0,0.05,0,1.3);
 overflow: hidden;
 }
 
-  .in {
-  transform: translateX(0);
-  transition: 0;
-  }
+.in {
+transform: translateX(0);
+transition: 0;
+}
 
-  .inside {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: whitesmoke;
-  border-right: 1px solid rgba(255,255,255,0.2);
-  border-radius: 0 100% 100% 0;
-  transition: all .25s cubic-bezier(1,0.05,1,1.5);
-  transition-delay: .5s;
+.inside {
+position: absolute;
+top: 0;
+bottom: 0;
+margin: auto;
+display: block;
+width: 100%;
+height: 100%;
+background: whitesmoke;
+border-right: 1px solid rgba(255,255,255,0.2);
+border-radius: 0 100% 100% 0;
+transition: all .25s cubic-bezier(1,0.05,1,1.5);
+transition-delay: .5s;
 
-  }
+}
 
-  .in .inside {
-  border-radius: 0;
-  transition-delay: 0s;
+.in .inside {
+border-radius: 0;
+transition-delay: 0s;
 
-  }
+}
 
 /* material animation */
-  .inside:before {
-  content: "";
-  width: 2100px;
-  height: 2100px;
-  display: block;
-  background-color: white;
-  position: absolute;
-    top: -50%;
-    left: -100%;
-    z-index: -1;
-  transition: all .75s linear;
-  transition-delay: .15s;
-  transform: scale(0);
-  transform-origin: top right;
-  border-radius: 1000px;}
+.inside:before {
+content: "";
+width: 2100px;
+height: 2100px;
+display: block;
+background-color: white;
+position: absolute;
+  top: -50%;
+  left: -100%;
+  z-index: -1;
+transition: all .75s linear;
+transition-delay: .15s;
+transform: scale(0);
+transform-origin: top right;
+border-radius: 1000px;
+}
 
-    .outside.in .inside:before {
-    transform: scale(1);
+.outside.in .inside:before {
+transform: scale(1);
 
-    }
+}
 
 /* Menu */
 ul.menu {
@@ -998,7 +999,7 @@ margin-right : 450px;
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
               
-                           
+             
               <form id="login_frm" name="login_frm" method="post" action="businessloginAf.do">
             		<input type="hidden" name="page_url" value="">
         			<input type="hidden" name="FrameKey" value="">
