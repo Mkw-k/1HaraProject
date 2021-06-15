@@ -23,7 +23,7 @@
 		<h2 class="tit">이메일주소무단수집거부</h2>
 		<div class="page-util">
 			<span class="hide-location" id="navi_1">이용안내</span>
-			<span class="hide-location" id="navi_2">워크넷 정책</span>
+			<span class="hide-location" id="navi_2">일하라 정책</span>
 			<span class="hide-location" id="navi_3">이메일주소무단수집거부</span>
 			<!-- 기능 버튼 들어갈 예정 -->
 		</div>
@@ -42,9 +42,9 @@
 	</div>
 
 	<div class="manager-info">
-		<div class="left"><b class="font-bold">담당부서</b> : 워크넷팀</div>
-		<div class="right"><b class="font-bold">최종수정일</b> : 2018-08-20</div>
-		<div class="center"><b class="font-bold">문의</b> : 1577-7114</div>
+		<div class="left"><b class="font-bold">담당부서</b> : 일하라팀</div>
+		<div class="right"><b class="font-bold">최종수정일</b> : 2021-06-20</div>
+		<div class="center"><b class="font-bold">문의</b> : 1577-71112</div>
 	</div>
 
 </section>

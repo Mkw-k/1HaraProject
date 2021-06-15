@@ -753,7 +753,7 @@ margin-right : 450px;
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="Jobtalklist.do"><span>취업톡톡💬</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="FAQ.do"><span>FAQ</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents2')" href="notice.do"><span>공지사항</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','jumpit')" href="https://www.jumpit.co.kr" target="_blank"><span class="icon icon_jumpit">점핏</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents3')" href="calendars.do"><span>공채달력📅</span></a></li>
 </ul>
 </div>
 </div>
@@ -872,7 +872,7 @@ margin-right : 450px;
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','total_menu','contents')" href="/zf_user/white-paper/office">FAQ<span class="flag">글자수세기</span></a></li>
 </ul>
 <ul class="depth_2">
-<li><a target="_blank" onclick="pushDataLayer('ga_lead','main-gnb','total_menu','jumpit')" href="https://www.jumpit.co.kr" class="icon icon_jumpit">점핏<svg aria-hidden="true"><use xlink:href="#svg_gnb_window_new"></use></svg></a></li>
+<li><a target="_blank" onclick="pushDataLayer('ga_lead','main-gnb','total_menu','jumpit')" href="calendars.do" class="icon icon_jumpit">공채달력<svg aria-hidden="true"><use xlink:href="#svg_gnb_window_new"></use></svg></a></li>
 <li><a target="_blank" onclick="pushDataLayer('ga_lead','main-gnb','total_menu','otwojob')" href="https://www.otwojob.com/main" class="icon icon_otwojob">오투잡<svg aria-hidden="true"><use xlink:href="#svg_gnb_window_new"></use></svg></a></li>
 </ul>
 </div>
@@ -948,7 +948,7 @@ margin-right : 450px;
         <div role="document" class="modal-dialog" style="margin: 0;">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 id="login-modalLabel" class="modal-title">1hara Login</h4>
+              <h4 id="login-modalLabel" class="modal-title">일하라 로그인</h4>
               <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"></span>x</button>
             </div>
             <div class="modal-body">
@@ -978,7 +978,8 @@ margin-right : 450px;
               </form>
 
             	  <a href="javascript:kakaoLogin()">
-					<img alt="" src="https://img.eduwill.net/Img2/Common/Join/new/btn-kakao-large.png">
+					<img alt="이미지가 없습니다" src="https://img.eduwill.net/Img2/Common/Join/new/btn-kakao-large.png" style="
+    margin-left: 100px;">
 				  </a>
 
               <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
@@ -2099,7 +2100,7 @@ margin-right : 450px;
 <button class="close" style="position: absolute;
 top: 0;
 right: 0;
-background-color: white;
+background-color: #2186eb;
 border: 0;
 padding: 22px;
 z-index: 10;"><span class="bar"></span></button>
@@ -2361,7 +2362,7 @@ $(".close").click(function(){
 		<ul>
 			<li>
 				<strong>패밀리사이트</strong>
-				<a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do" title="새창 열림" target="_blank">지역워크넷</a>
+				<a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do" title="새창 열림" target="_blank">지역일하라</a>
 				<a href="/ilmoa/jobSearch/retrieveIlmoaJobDetailSearchByMain.do" title="새창 열림" target="_blank">정부지원일자리</a>
 				<a href="#1" title="새창 열림" onclick="f_moveUrl('EI')">고용보험</a>
 				<a href="#2" title="새창 열림" onclick="f_moveUrl('HRD')">직업능력개발훈련</a>

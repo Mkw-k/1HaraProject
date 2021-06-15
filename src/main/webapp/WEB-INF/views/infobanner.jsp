@@ -27,8 +27,8 @@
 		<h2 class="tit">일하라 BI</h2>
 		<div class="page-util">
 			<span class="hide-location" id="navi_1">이용안내</span>
-			<span class="hide-location" id="navi_2">워크넷 소개</span>
-			<span class="hide-location" id="navi_3">워크넷 BI</span>
+			<span class="hide-location" id="navi_2">일하라 소개</span>
+			<span class="hide-location" id="navi_3">일하라 BI</span>
 		</div>
 	</div>
 	
@@ -45,7 +45,7 @@
 
 	<div class="box-gray v3 pd25 mb40">
 		<strong>사용 예 </strong><br>
-		&lt;a href="/images/"&gt;&lt;img src="해당디렉토리명/배너명.gif" width="배너폭" height="배너높이" border="0" alt="워크넷 홈페이지로 이동합니다"&gt;&lt;/a&gt;<br><br>						
+		&lt;a href="/images/"&gt;&lt;img src="해당디렉토리명/배너명.gif" width="배너폭" height="배너높이" border="0" alt="일하라 홈페이지로 이동합니다"&gt;&lt;/a&gt;<br><br>						
 		<span class="font-red">※ 주의</span> : 해당 디렉토리는 이미지를 저장하는 디렉토리로 사용자가 직접 작성하시고 배너폭과 높이는 이미지 크기를 이용
 	</div>
 
@@ -71,81 +71,11 @@
 				</tr>								
 			</tbody>
 		</table>
-	</div>정보표입니다
-표표</caption>
-			<colgroup>
-				<col style="width:160px;">
-				<col>
-			</colgroup>
-			<tbody>
-				<tr>
-					<th scope="row" class="a-c">이미지 크기</th>
-					<td class="font-bold font-blue">180 x 45 <img src="/static/images/userguide/work_180_45.gif" alt="worknet 180 * 45 사이즈"></td>
-				</tr>
-				<tr>
-					<th scope="row" class="a-c">이미지 주소</th>
-					<td>img src="http://www.work.go.kr/ext/images/utility/work_180_45.gif" border="0"</td>
-				</tr>
-				<tr>
-					<th scope="row" class="a-c">링크 주소</th>
-					<td>a href="http://www.work.go.kr/"</td>
-				</tr>								
-			</tbody>
-		</table>
-	</div>
-
-	<div class="data-table bi-table mb40">
-		<table>
-			<caption>bi 정보표</caption>
-			<colgroup>
-				<col style="width:160px;">
-				<col>
-			</colgroup>
-			<tbody>
-				<tr>
-					<th scope="row" class="a-c">이미지 크기</th>
-					<td class="font-bold font-blue">260 x 44 <img src="/static/images/userguide/work_260_44.gif" alt="worknet 260 * 44 사이즈"></td>
-				</tr>
-				<tr>
-					<th scope="row" class="a-c">이미지 주소</th>
-					<td>img src="http://www.work.go.kr/ext/images/utility/work_260_44.gif" border="0"</td>
-				</tr>
-				<tr>
-					<th scope="row" class="a-c">링크 주소</th>
-					<td>a href="http://www.work.go.kr/"</td>
-				</tr>								
-			</tbody>
-		</table>
-	</div>
-
-	<div class="data-table bi-table mb40">
-		<table>
-			<caption>bi 정보표</caption>
-			<colgroup>
-				<col style="width:160px;">
-				<col>
-			</colgroup>
-			<tbody>
-				<tr>
-					<th scope="row" class="a-c">이미지 크기</th>
-					<td class="font-bold font-blue">280 x 50 <img src="/static/images/userguide/work_280_50.gif" alt="worknet 280 * 50 사이즈"></td>
-				</tr>
-				<tr>
-					<th scope="row" class="a-c">이미지 주소</th>
-					<td>img src="http://www.work.go.kr/ext/images/utility/work_280_50.gif" border="0"</td>
-				</tr>
-				<tr>
-					<th scope="row" class="a-c">링크 주소</th>
-					<td>a href="http://www.work.go.kr/"</td>
-				</tr>								
-			</tbody>
-		</table>
 	</div>
 
 </section>
 
 
-<c:import url="footer.jsp" charEncoding="utf-8"/>
 
 
 </body>

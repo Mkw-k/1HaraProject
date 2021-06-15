@@ -40,12 +40,12 @@
 			<img src="/static/images/userguide/img-UI-OPG-W12C01C-1.png" alt="">
 		</div>
 		<div class="info">
-			<div class="txt">본 정책의 목적은 워크넷 홈페이지를 통하여 제공되는 정보가 정보출처를 밝히지 않고,<br><strong class="font-blue2">무단사용, 변조, 상업적인 용도 등</strong>으로 사용되어 정보 이용자에게 피해를 끼치는 사례를 방지하기 위함입니다.</div>
+			<div class="txt">본 정책의 목적은 일하라 홈페이지를 통하여 제공되는 정보가 정보출처를 밝히지 않고,<br><strong class="font-blue2">무단사용, 변조, 상업적인 용도 등</strong>으로 사용되어 정보 이용자에게 피해를 끼치는 사례를 방지하기 위함입니다.</div>
 		</div>
 	</div>
 	<ul class="dot-list v1 lh26"><!-- class 수정 -->
 		<li>
-			워크넷에서 제공하는 콘텐츠는 저작권법에 의하여 보호받는 저작물로, 별도의 저작권 표시 또는 다른 출처를 명시한 경우를 제외하고는 원칙적으로 한국고용정보원에 저작권이 있으며, 저작권법 제 24조의 2(공공저작물의 자유이용)에 따라 별도의 이용 허락 없이 자유이용이 가능합니다.<br>
+			일하라에서 제공하는 콘텐츠는 저작권법에 의하여 보호받는 저작물로, 별도의 저작권 표시 또는 다른 출처를 명시한 경우를 제외하고는 원칙적으로 한국고용정보원에 저작권이 있으며, 저작권법 제 24조의 2(공공저작물의 자유이용)에 따라 별도의 이용 허락 없이 자유이용이 가능합니다.<br>
 			<div class="open_copyright">
 				단, 자유이용이 가능한 저작물은 <strong class="font-black">“공공저작물 자유이용허락 표시 기준(공공누리,KOGL)제 4유형:<br>출처표시, 비상업적 이용만 가능, 2차적 저작물 작성 금지”</strong>을 부착하여 개방하고 있으므로 공공누리<br>표시가 부착된 저작물인지를 확인한 이후에 자유이용하시기 바랍니다.<br>
 				자유이용의 경우에는 반드시 저작물의 출처를 구체적으로 표시하여야 합니다.<br>공공누리가 부착되지 않은 자료는 담당자와 사전에 협의한 이후에 사용하여 주시기 바랍니다.
@@ -68,8 +68,8 @@
 
 	<div class="manager-info">
 		<div class="left"><b class="font-bold">담당부서</b> : 일하라팀</div>
-		<div class="right"><b class="font-bold">최종수정일</b> : 2019-12-18</div>
-		<div class="center"><b class="font-bold">문의</b> : 1577-7114</div>
+		<div class="right"><b class="font-bold">최종수정일</b> : 2021-06-18</div>
+		<div class="center"><b class="font-bold">문의</b> : 1577-7112</div>
 	</div>
 
 </section>
