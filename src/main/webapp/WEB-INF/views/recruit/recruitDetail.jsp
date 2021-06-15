@@ -351,9 +351,8 @@ font-weight: bold;
 
             	<p style="margin-top:-12px">
 			    <em class="link">
-			       <!--  <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
-			            혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
-			        </a> -->
+		
+		
 			    </em>
 			</p>
 			<div id="map" style="width:100%;height:350px;"></div>
@@ -361,9 +360,9 @@ font-weight: bold;
           </dl>
         </div>
         <div class="col-md-8 bg-light" style="" id="_mgData">
-          <div  class="companydetail"><p>사업</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${com.content }</div>
+         <%--  <div  class="companydetail"><p>사업</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${com.content }</div>
           <div  class="companydetail"><p>사원수</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${com.empcount }</div>
-          <div  class="companydetail"><p>평균연봉</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${com.salaryavg }</div>
+          <div  class="companydetail"><p>평균연봉</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${com.salaryavg }</div> --%>
         </div>
         <div class="text-primary" style=""> 담당자 정보 수정을 원하시면 버튼을 클릭하세요 &nbsp;&nbsp;&nbsp;
         	<a class="btn btn-secondary" href="javascript:mgUpdate()">담당자 정보수정</a>
@@ -375,17 +374,18 @@ font-weight: bold;
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-			<table>
+			<table class="table table-hover col-sm-12 " >
 				<tr>
 					<th>사업</th><td>${com.content }</td>
 				</tr>
 				<tr>
+					<%-- <th><img alt="" src="./upload/${com.filename}"></th> --%>
 					<th>사원수</th><td>${com.empcount }</td>
 				</tr>
 				<tr>
 					<th>평균연봉</th><td>${com.salaryavg }</td>
 				</tr>
-
+				
 
 
 			</table>

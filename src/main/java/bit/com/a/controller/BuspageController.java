@@ -62,7 +62,7 @@ public class BuspageController {
 	}
 	
 	
-	@RequestMapping(value = "buspageUpdateAf.do",  method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "buspageUpdateAf.do",  method = RequestMethod.POST)
 	public String buspageUpdateAf( BusinessDto dto, 
 								   String filename,	// 기존의 파일 명,
 								   HttpServletRequest req,
@@ -115,7 +115,7 @@ public class BuspageController {
 		}
 		
 		*/
-		return "busMypage/buspage";
+		return "home";
 	}
 	
 	// 기업 마이페이지 공고현황 이동

@@ -36,11 +36,7 @@ body {
 <header id="header">
 	<div class="top-area">
 		<div class="inner-wrap">
-			<div class="link-out">
-				<a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do" target="_blank" title="새창 열림">지역워크넷</a> 
-				<a href="/useInfo/empCenterInfo/useEmpIntroList.do" target="" title="새창">고용복지<sup>+</sup>센터</a>
-				<a href="#3" title="새창 열림" onclick="f_moveUrl('WT')">장애인고용포털</a>
-			</div>
+	
 			<div class="util">
 				<!-- 로그인 전 -->
 				
@@ -51,35 +47,16 @@ body {
 				
 					<div class="login-mypage">
 						<a href="#"> 
-								<span>[개인]</span>
+								<span>[기업]</span>
 							  ${login.name}님
 						</a>
 						<ul>
-							
-								<!-- 개인 -->
-								<li><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지
-										홈</a></li>
-								<li><a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do">회원정보관리</a></li>
-								<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">구직신청관리</a></li>
-								<li><a href="#" onclick="worknet.popup.popCenterSuppAgree(); return false;" target="_blank" title="새창">고객지원</a></li>
-							
+			
 							
 						</ul>
 					</div>
 					<a href="logout.do" onclick="logout();" class="font-blue">로그아웃</a>
 				
-				<!-- E : 2018-09-28 추가 -->
-				<!--// 로그인 후 -->
-
-				<!-- 공통 -->
-				<a href="#" class="worknet-chatbot-start-button-for-client">챗봇</a>
-				<a href="/myJobLetter/myJobLetterCnfm.do">내일레터<img src="/static/images/common/ico/ico-gnb-new.png" class="va-m" alt="new"></a>
-				<a href="/useInfo/worknetInfo/useWorknetGuide.do">이용안내</a>
-				<a href="/custCenter/custCtrMain.do">고객센터</a> 
-				<a href="http://as82.kr/keis" target="_blank" title="새창">원격지원</a> 
-				<a href="/useInvite/worknetHomepgInvite/sitemap.do">사이트맵</a>
-				<!-- 20201022 추가 -->
-		
 			</div>
 		</div>
 	</div>
@@ -87,10 +64,10 @@ body {
 	<div class="middle-area">
 		<div class="inner-wrap">
 			<h1 class="top-logoWorknet">
-				<a href="/seekWantedMain.do"><img src="/static/images/common/bg/bg-top-logo.png" alt="일하라"></a>
+				<a href="home.do"><img src="/static/images/common/bg/bg-top-logo.png" alt="일하라"></a>
 			</h1>
 			
-			<form id="searchFrm" name="searchFrm" action="/wnSearch/unifSrch.do" method="post" onsubmit="return false">
+			<form id="searchFrm" name="searchFrm" hidden="" action="/wnSearch/unifSrch.do" method="post" onsubmit="return false">
 				<div class="header-search">
 					<div class="searc-area">
 						<input type="search" id="topQuery" name="topQuery" onclick="if(event.keyCode == '13'){goWnSearch();}" maxlength="50" onfocus="input_limit_string(this,'/kor,/eng,/d,/symbol6,/s');" class="input-text" autocomplete="off" title="검색어를 입력해주세요.">
@@ -265,115 +242,7 @@ body {
                         });
                     }
                 </script>
-             <!--    <nav
-                    id="lnb">
-                    S : 2018-09-28 추가
-                    <p class="tit">
-                        <a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지</a>
-                    </p>
-                    E : 2018-09-28 추가
-                    <ul>
-                        <li>
-                            <a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">이력서관리·구직신청
-                            </a>
-                            <button class="btn-show">이력서관리·구직신청
-                                			 메뉴 닫기</button>
-                            <div class="depth3">
-                                <ul>
-                                    <li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveResumeRegTp.do" target="_self">이력서 등록</a></li>
-                                    <li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveSelfIntroRegIntro.do" target="_self">자기소개서 등록</a></li>
-                                    <li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeSelfIntroMng.do" target="_self">이력서·자기소개서 관리</a></li>
-                                    <li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeAtchFileMngList.do" target="_self">첨부파일 관리</a></li>
-                                    <li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">워크넷 구직신청</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">입사지원 관리
-                            </a>
-                            <button class="btn-show">입사지원 관리
-                                			 메뉴 닫기</button>
-                            <div class="depth3">
-                                <ul>
-                                    <li><a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">알선/입사지원 내역</a></li>
-                                    <li><a href="/indivMemberSrv/aplentMng/seekActvHist/seekActvHistList.do" target="_self">구직활동내역</a></li>
-                                    <li><a href="/indivMemberSrv/aplentMng/offerCo/offerCoList.do" target="_self">입사제안/스크랩한 기업</a></li>
-                                    <li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeReadList.do" target="_self">이력서 열람기업</a></li>
-                                    <li><a href="/indivMemberSrv/intrstInfo/mailToEmpList.do" target="_self">채용담당자와 한마디</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">나의 맞춤정보
-                            </a>
-                            <button class="btn-show">나의 맞춤정보 메뉴 닫기</button>
-                            <div class="depth3">
-                                <ul>
-                                    <li>
-                                        <a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">맞춤채용 관리</a>
-                                    </li>
-                                    <li>
-                                        <a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do" target="_self">The Work AI추천</a>
-                                    </li>
-                                    <li>
-                                        <a href="#openPopup" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; keis.window.newWindow('/empInfo/customWorkSupportSrv/custSupportMain.do?loginAction=Y', 'pop', 1010, 780, 'yes'); return false;" target="_blank" title="새창">취업나침반</a>
-                                        <script type="text/javascript">
-                                            window.name = "mdmOpener";
-                                        </script>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">
-                            	나의 관심정보
-                            </a>
-                            <button class="btn-show">나의 관심정보
-                                			 메뉴 닫기</button>
-                            <div class="depth3">
-                                <ul>
-                                    <li><a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">관심스크랩(찜)</a></li>
-                                    <li><a href="/indivMemberSrv/intrstInfo/seekEmpInfoSrchHist.do?srchType=3" target="_self">최근 본 채용공고</a></li>
-                                    <li><a href="/empInfo/empInfoSrch/calendar/myCalendarMonth.do" target="_blank">마이캘린더</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">e-채용마당 서비스</a>
-                            <button class="btn-show">e-채용마당 서비스 메뉴 닫기</button>
-                            <div class="depth3">
-                                <ul>
-                                    <li><a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">지원서관리</a></li>
-                                    <li><a href="/eas/indivMemberSrv/employNotice/wNoInterest.do" target="_self">관심정보관리</a></li>
-                                    <li><a href="/eas/indivMemberSrv/employJudge/employJudgeList.do" target="_self">심사평가관리</a></li>
-                                    <li><a href="/empAgencySvc/empBoard/wBuBoardList.do" target="_self">채용게시판</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/indivMemberSrv/intrstInfo/joinResult.do" target="_self">온라인 신청관리
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/indivMemberSrv/myCustmadeSrvList.do" target="_self">고용복지 맞춤서비스
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 관리
-                            </a>
-                            <button class="btn-show">회원정보 관리
-                                			 메뉴 닫기</button>
-                            <div class="depth3">
-                                <ul>
-                                    <li><a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a></li>
-                                    <li><a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustInfoView.do" target="_self">회원정보 수정(성명변경)</a></li>
-                                    <li><a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a></li>
-                                    <li><a href="/indivMemberSrv/custInfoAdmin/deleteIndivCustView.do" target="_self">회원탈퇴</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </nav> -->
+        
                 <script type="text/javascript">
                     // <![CDATA[
                     function trim(s) {
@@ -417,15 +286,7 @@ body {
                                 frm.juso1.focus();
                                 return false;
                             }
-                            /*2020.07.23 회원정보수정 공동주택일 경우 상세주소 필수 입력 로직 삭제 */
-                            /*if(trim(frm.commHouseYn.value) == 'Y')
-        {
-			if(trim(frm.juso2.value) == '') {           
-				alert("상세 주소을(를) 입력해 주세요.");
-				frm.juso2.focus();
-				return false;
-			}
-        }*/
+     
                         }
                         var tel1 = document.getElementById("telno1");
                         var tel2 = document.getElementById("telno2");
@@ -751,7 +612,7 @@ body {
                                         </th>
                                         <td>
                                            <div class="form-group has-feedback">
-        										<label class="control-label" for="registrationNum">주소</label>
+        									
         										<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
 												<input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" readonly="readonly" value="우편번호 찾기"><br>
 												<input type="text" class="form-control" id="sample6_address" name="comaddress" placeholder="주소"><br>
