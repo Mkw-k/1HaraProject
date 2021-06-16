@@ -33,8 +33,7 @@ public class BuspageController {
 	BuspageService service;
 	
 	
-	@RequestMapping(value = "pwdcheck.do", method = RequestMethod.GET)
-	public String pwdcheck(){
+	@RequestMapping(value = "pwdcheck.do",  method = {RequestMethod.GET, RequestMethod.POST})	public String pwdcheck(){
 	
 		return "busMypage/pwdcheck";
 		
@@ -42,7 +41,7 @@ public class BuspageController {
 	
 	
 	/*마이페이지*/
-	@RequestMapping(value = "buspage.do", method = RequestMethod.GET)
+	@RequestMapping(value = "buspage.do",  method = {RequestMethod.GET, RequestMethod.POST})
 	public String buspage(Model model, BusinessDto dto){
 	
 	dto = service.getbuspage(dto);
@@ -54,7 +53,7 @@ public class BuspageController {
 	
 	 /* 회원정보수정페이지*/
 	
-	@RequestMapping(value = "buspageUpdate.do", method = RequestMethod.GET)
+	@RequestMapping(value = "buspageUpdate.do",   method = {RequestMethod.GET, RequestMethod.POST})
 	public String buspageUpdate(Model model, BusinessDto dto) {
 		System.out.println("memberid="+dto.getMemberid());
 		dto = service.getbuspage(dto);
@@ -63,7 +62,7 @@ public class BuspageController {
 	}
 	
 	
-	@RequestMapping(value = "buspageUpdateAf.do", method = RequestMethod.GET)
+	@RequestMapping(value = "buspageUpdateAf.do",  method = RequestMethod.POST)
 	public String buspageUpdateAf( BusinessDto dto, 
 								   String filename,	// 기존의 파일 명,
 								   HttpServletRequest req,
@@ -116,11 +115,11 @@ public class BuspageController {
 		}
 		
 		*/
-		return "busMypage/buspage";
+		return "home";
 	}
 	
 	// 기업 마이페이지 공고현황 이동
-	@RequestMapping(value = "myRecruitList.do", method = RequestMethod.GET)
+	@RequestMapping(value = "myRecruitList.do",  method = {RequestMethod.GET, RequestMethod.POST})
 	public String myRecruitList(Model model, String memberid) {
 		
 		List<RecruitDto> mylist = service.getMyrecruitList(memberid);
@@ -131,7 +130,7 @@ public class BuspageController {
 	}
 	
 	// 기업 마이페이지 공고현황 이동
-	@RequestMapping(value = "goApplylist.do", method = RequestMethod.GET)
+	@RequestMapping(value = "goApplylist.do",   method = {RequestMethod.GET, RequestMethod.POST})
 	public String goApplylist(Model model, int jobseq) {
 		
 		List<ApplyParam> applylist = service.getApplylist(jobseq);

@@ -25,7 +25,9 @@ import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.MemberDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
+import bit.com.a.dto.RecruitReplyDto;
 import bit.com.a.dto.ResumeDto;
+import bit.com.a.service.RecruitReplyService;
 import bit.com.a.service.MypageService;
 import bit.com.a.service.RecruitService;
 import bit.com.a.service.ResumeService;
@@ -39,8 +41,12 @@ public class RecruitController {
 
    @Autowired
    MypageService Myservice;
+
    @Autowired
    ResumeService resumeservice;
+
+   @Autowired
+   RecruitReplyService recruitservice;
 
 //TODO채용공고 리스트로 이동
    @RequestMapping(value = "recuruitlist.do", method = RequestMethod.GET)
@@ -407,49 +413,54 @@ public class RecruitController {
 //TODO 디테일 창으로 이동
    @RequestMapping(value = "RecruitDetail.do", method = RequestMethod.GET)
    public String RecruitDetail(int jobseq, Model model, String memberid) {
-      model.addAttribute("doc_title", "채용공고");
-      MemberDto mem = Myservice.getMypage(memberid);
 
-      //디테일 데이터 받아오기
-      System.out.println("seq:"+jobseq);
-      RecruitDto dto = service.getRecruitListOne(jobseq);
-      List<ResumeDto> resumelist = resumeservice.getresume(memberid);
+		model.addAttribute("doc_title", "채용공고");
 
-      System.out.println(dto.toString());
+		 //MemberDto mem = Myservice.getMypage(memberid);
 
-      //직무이름 받아오는 코드
-      List<String> list = service.getBsnameForDetail(jobseq);
-      System.out.println("직무이름 :"+ list.toString());
-
-      dto.setBusname(list);
-
-      //검색용 파라미터 dto설정
-      RecruitParam param = new RecruitParam();
-      String jobSeq = jobseq + "";
-      param.setJobSeq(jobSeq);
-      param.setMemberid(memberid);
-
-      //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
-      int IjobFavoriteCount = service.getJobFavorite(param);
-      String jobFavoriteCount = IjobFavoriteCount + "";
-
-      dto.setFavoriteJob(jobFavoriteCount);
+		  //디테일 데이터 받아오기
+		  System.out.println("seq:"+jobseq);
 
 
-      //검색용 파라미터 dto설정
-      param.setCompanyId(dto.getCompanyId());
-      param.setMemberid(memberid);
+		  RecruitDto dto = service.getRecruitListOne(jobseq);
+		  List<ResumeDto> resumelist = resumeservice.getresume(memberid);
 
-      //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
-      int IcomFavoriteCount = service.getComFavorite(param);
-      String comFavoriteCount = IcomFavoriteCount + "";
+		  System.out.println(dto.toString());
 
-      dto.setFavoriteCom(comFavoriteCount);
+		  //직무이름 받아오는 코드
+		  List<String> list = service.getBsnameForDetail(jobseq);
+		  System.out.println("직무이름 :"+ list.toString());
 
-      System.out.println("변경된 Dto :"+dto.toString());
+		  dto.setBusname(list);
 
-      model.addAttribute("dto", dto);
-      model.addAttribute("resumelist", resumelist);
+		  //검색용 파라미터 dto설정
+		  RecruitParam param = new RecruitParam();
+		  String jobSeq = jobseq + "";
+		  param.setJobSeq(jobSeq);
+		  param.setMemberid(memberid);
+
+		  //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
+		  int IjobFavoriteCount = service.getJobFavorite(param);
+		  String jobFavoriteCount = IjobFavoriteCount + "";
+
+		  dto.setFavoriteJob(jobFavoriteCount);
+
+
+		  //검색용 파라미터 dto설정
+		  param.setCompanyId(dto.getCompanyId());
+		  param.setMemberid(memberid);
+
+		  //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
+		  int IcomFavoriteCount = service.getComFavorite(param);
+		  String comFavoriteCount = IcomFavoriteCount + "";
+
+		  dto.setFavoriteCom(comFavoriteCount);
+
+		  System.out.println("변경된 Dto :"+dto.toString());
+
+		  model.addAttribute("dto", dto);
+		  model.addAttribute("resumelist", resumelist);
+
 
       return "recruit/recruitDetail";
    }
@@ -457,30 +468,37 @@ public class RecruitController {
 
  //TODO 기업 상세정보 가져오기
    @RequestMapping(value = "getDetailCompany.do", method = RequestMethod.GET)
-   public String getDetailCompany(int jobseq, Model model, String memberid) {
+   public String getDetailCompany(int jobSeq, Model model, String memberid) {
       model.addAttribute("doc_title", "채용공고");
 
+      MemberDto mem = Myservice.getMypage(memberid);
 
-      CompanyDto com = service.getCompany(jobseq);
-      model.addAttribute("com", com);
+
+
+      CompanyDto com = service.getCompany(jobSeq);
+
+      if(com !=null) {
       System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+com.toString());
+      }
+      model.addAttribute("com", com);
+
       //디테일 데이터 받아오기
-      System.out.println("seq:"+jobseq);
-      RecruitDto dto = service.getRecruitListOne(jobseq);
+      System.out.println("seq:"+jobSeq);
+      RecruitDto dto = service.getRecruitListOne(jobSeq);
       List<ResumeDto> resumelist = resumeservice.getresume(memberid);
 
       System.out.println(dto.toString());
 
       //직무이름 받아오는 코드
-      List<String> list = service.getBsnameForDetail(jobseq);
+      List<String> list = service.getBsnameForDetail(jobSeq);
       System.out.println("직무이름 :"+ list.toString());
 
       dto.setBusname(list);
 
       //검색용 파라미터 dto설정
       RecruitParam param = new RecruitParam();
-      String jobSeq = jobseq + "";
-      param.setJobSeq(jobSeq);
+      String jobseq = jobSeq + "";
+      param.setJobSeq(jobseq);
       param.setMemberid(memberid);
 
       //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
@@ -504,7 +522,13 @@ public class RecruitController {
 
       model.addAttribute("dto", dto);
       model.addAttribute("resumelist", resumelist);
-      model.addAttribute("mem", mem);
+
+
+
+      List<RecruitReplyDto> replylist = recruitservice.list(jobSeq);
+      model.addAttribute("replylist", replylist);
+
+		/* model.addAttribute("mem", mem); */
 
       return "recruit/recruitDetail";
    }
@@ -1100,7 +1124,7 @@ public class RecruitController {
 			System.out.println("공고 즐겨찾기 메서드 실행");
 
 		  boolean b = service.favoriteJob(param);
-		  boolean b2 = service.favoriteJob2(param);
+		  //boolean b2 = service.favoriteJob2(param);
 
 		  if(b) {
 			  	System.out.println("즐겨찾기 등록 성공");
@@ -1249,6 +1273,24 @@ public class RecruitController {
 			return list;
 
 		}
+
+
+
+		//폰번호만 가져오기
+		@ResponseBody
+		@RequestMapping(value = "getPhonenum.do", method = {RequestMethod.GET, RequestMethod.POST})
+		public String getPhonenum(String memberid) {
+
+			String phonenumber = service.getPhonenum(memberid);
+
+			System.out.println("폰번호 = "+ phonenumber);
+
+			return phonenumber;
+		}
+
+
+
+
 
 
 

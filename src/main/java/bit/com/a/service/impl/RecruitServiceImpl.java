@@ -184,6 +184,7 @@ public class RecruitServiceImpl implements RecruitService{
 	@Override
 	public boolean dropFavoriteJob2(RecruitParam param) {
 		return dao.dropFavoriteJob2(param);
+	}
 
  	@Override
 	public CompanyDto getCompany(int jobseq) {
@@ -191,5 +192,13 @@ public class RecruitServiceImpl implements RecruitService{
 		return dao.getCompany(jobseq);
 
 	}
+
+	@Override
+	public String getPhonenum(String memberid) {
+		return dao.getPhonenum(memberid);
+	}
+
+
+	
 
 }

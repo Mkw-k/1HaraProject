@@ -80,6 +80,10 @@ public interface RecruitDao {
 
 	CompanyDto getCompany(int jobseq);
 
+	String getPhonenum(String memberid);
+
+
+
 
 
 

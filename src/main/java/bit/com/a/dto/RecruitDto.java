@@ -93,12 +93,13 @@ public class RecruitDto implements Serializable{
     //좋아요 여부 (회사 좋아요)
     private String favoriteCom;
     
+    // 채용공고 디테일쪽 정보
     private String content;
     private String salaryavg;
     private String empcount;
     private String comimage;
     
-    //
+    
 
     private List<String> busname;
 
@@ -110,6 +111,8 @@ public class RecruitDto implements Serializable{
 		this.comimage = comimage;
 	}
 
+	
+	
 	public String getContent() {
 		return content;
 	}

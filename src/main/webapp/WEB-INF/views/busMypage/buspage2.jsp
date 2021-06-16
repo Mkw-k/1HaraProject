@@ -152,11 +152,15 @@ body {
 
 	<nav id="gnb">
 		<ul>
-			<li><a href="companydetail.do?memberid=${login.memberid }" class="menu"><span>기업정보</span></a></li>
-			<li><a href="createTest.do" class="menu"><span>공고등록</span></a></li>
-			<li><a href="myRecruitList.do?memberid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
-			<li><a href="/jobMain.do" class="menu"><span></span></a>
 
+			<li><a href="companywrite.do" class="menu"><span>기업정보등록</span></a></li>
+			<li><a href="buspageUpdate.do?companyid=${login.memberid }" class="menu"><span>기업정보 수정</span></a></li>
+
+			<li><a href="companydetail.do?companyid=${login.memberid }" class="menu"><span>기업정보</span></a></li>
+
+			<li><a href="createTest.do" class="menu"><span>공고등록</span></a></li>
+			<li><a href="myRecruitList.do?companyid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
+			
 		</ul>
 
 
@@ -1009,14 +1013,14 @@ function f_empPgmList(resultObj){
 
 								    	<tr>
 								    		<th>회사 이름: </th>
-								    		<td>${login.companyname }</td>
+								    		<td>${business.companyname }</td>
 								    	</tr>
 
-								    	<tr>
+								    <%-- 	<tr>
 								    		<th>비밀번호: </th>
 								    		<td>${login.pwd }</td>
 								    	</tr>
-
+ --%>
 								    	<tr>
 								    		<th>주소: </th>
 								    		<td>${business.comaddress }</td>
@@ -1033,24 +1037,13 @@ function f_empPgmList(resultObj){
 								    	</tr>
 
 			    						<tr>
-												<th scope="row">이메일</th>
+												<th >이메일</th>
 												<td>
 														${login.email}
 												</td>
 
 										</tr>
-											<tr>
-												<th scope="row">주소</th>
-												<td colspan="3">
-													<div>
-
-															${login.comaddress}<br>
-															${login.addressdetail}
-
-
-													</div>
-												</td>
-											</tr>
+											
 
 										</tbody>
 									</table>

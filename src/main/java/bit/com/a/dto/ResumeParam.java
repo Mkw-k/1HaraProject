@@ -7,6 +7,8 @@ public class ResumeParam {
 	private int resumeseq;
 	private String resumetitle;
 	private String applydate;
+	private int companyread;
+	
 	public int getApplyseq() {
 		return applyseq;
 	}
@@ -43,7 +45,18 @@ public class ResumeParam {
 	public void setApplydate(String applydate) {
 		this.applydate = applydate;
 	}
-	public ResumeParam(int applyseq, int jobseq, String jobtitle, int resumeseq, String resumetitle, String applydate) {
+	public int getCompanyread() {
+		return companyread;
+	}
+	public void setCompanyread(int companyread) {
+		this.companyread = companyread;
+	}
+	
+	public ResumeParam() {
+		super();
+	}
+	public ResumeParam(int applyseq, int jobseq, String jobtitle, int resumeseq, String resumetitle, String applydate,
+			int companyread) {
 		super();
 		this.applyseq = applyseq;
 		this.jobseq = jobseq;
@@ -51,15 +64,15 @@ public class ResumeParam {
 		this.resumeseq = resumeseq;
 		this.resumetitle = resumetitle;
 		this.applydate = applydate;
-	}
-	public ResumeParam() {
-		super();
+		this.companyread = companyread;
 	}
 	@Override
 	public String toString() {
 		return "ResumeParam [applyseq=" + applyseq + ", jobseq=" + jobseq + ", jobtitle=" + jobtitle + ", resumeseq="
-				+ resumeseq + ", resumetitle=" + resumetitle + ", applydate=" + applydate + "]";
+				+ resumeseq + ", resumetitle=" + resumetitle + ", applydate=" + applydate + ", companyread="
+				+ companyread + "]";
 	}
+	
 	
 	
 	

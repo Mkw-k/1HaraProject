@@ -10,6 +10,7 @@ import bit.com.a.dto.Resume_AwardVo;
 import bit.com.a.dto.Resume_CareerVo;
 import bit.com.a.dto.Resume_HighschoolDto;
 import bit.com.a.dto.Resume_LanguageVo;
+import bit.com.a.dto.Resume_Portfolio;
 import bit.com.a.dto.Resume_UniversityVo;
 import bit.com.a.dto.Resume_licenseVo;
 
@@ -21,7 +22,7 @@ public interface ResumeDao {
 	
 	boolean writeResume(ResumeDto dto);
 	
-	int getseq(String resumetitle);
+	int getseq(ResumeDto dto);
 
 	/* boolean writeEdu(Resume_EduVo eduvo); */
 	
@@ -55,7 +56,7 @@ public interface ResumeDao {
 	
 	boolean deleteResume(int seq);
 	
-	boolean deleteEduResume(int seq);
+	/* boolean deleteEduResume(int seq); */
 
 	boolean deleteCareerResume(int seq);
 
@@ -115,4 +116,10 @@ public interface ResumeDao {
 	boolean deleteUniResume(int seq);
 	
 	boolean cancelApply(int seq);
+	
+	boolean updateReadCount(int seq);
+	
+	boolean writePortfolio(Resume_Portfolio dto);
+	
+	List<Resume_Portfolio> getPortfolio(String memberid);
 }

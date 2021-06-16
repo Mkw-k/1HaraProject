@@ -158,11 +158,11 @@ td{
 
 	<nav id="gnb">
 		<ul>
-			<li><a href="companydetail.do?memberid=${login.memberid }" class="menu"><span>기업정보</span></a></li>
+			<li><a href="companywrite.do" class="menu"><span>기업정보등록</span></a></li>
+			<li><a href="companydetail.do?memberid=${login.memberid }" class="menu"><span>기업상세정보</span></a></li>
 			<li><a href="createTest.do" class="menu"><span>공고등록</span></a></li>
 			<li><a href="myRecruitList.do?memberid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
 			<li><a href="/jobMain.do" class="menu"><span></span></a>
-				
 		</ul>
 						
 				
