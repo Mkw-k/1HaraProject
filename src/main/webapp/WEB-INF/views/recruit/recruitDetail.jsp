@@ -166,8 +166,8 @@ font-weight: bold;
           					<a class="btn btn-secondary red" href="javascript:comFavorite(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
           					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
           		</c:otherwise>
-          	</c:choose>	
-             
+          	</c:choose>
+
           ${dto.jobTitle}
          </h3>
 
@@ -347,7 +347,7 @@ font-weight: bold;
         </div>
         <div class="col-md-8 bg-light" style="">
           <div class="companydetail"> <p>지원방법</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일하라 입사지원 </div>
-          
+
           <div>
            <!--  <a class="btn btn-secondary" href="#" id="_apply">입사지원</a> -->
           </div>
@@ -378,9 +378,8 @@ font-weight: bold;
 
             	<p style="margin-top:-12px">
 			    <em class="link">
-			       <!--  <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
-			            혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
-			        </a> -->
+
+
 			    </em>
 			</p>
 			<div id="map" style="width:100%;height:350px;"></div>
@@ -402,11 +401,12 @@ font-weight: bold;
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-			<table>
+			<table class="table table-hover col-sm-12 " >
 				<tr>
 					<th>사업</th><td>${com.content }</td>
 				</tr>
 				<tr>
+					<%-- <th><img alt="" src="./upload/${com.filename}"></th> --%>
 					<th>사원수</th><td>${com.empcount }</td>
 				</tr>
 				<tr>
@@ -450,6 +450,7 @@ font-weight: bold;
   </div>
 
   <!-- 댓글 -->
+<%-- <<<<<<< HEAD
 	<c:if test="${login.memberid != null }">
 			
 		<div class="inputBox">
@@ -481,17 +482,54 @@ font-weight: bold;
                   	<li>개인정보가 포함되거나 부적절한 답변은 비노출 또는 해당 서비스 이용 불가 처리될 수 있습니다.</li>
                	</ul>
 			</div>
-		</c:if>		
-				<c:forEach var="row" items="${replylist}">
+		</c:if>		 --%>
+<%-- 				<c:forEach var="row" items="${replylist}">
 				<input type="hidden" name="replyrecruitseq" value="${row.replyrecruitseq}">	
-			<%-- <input type="hidden" name="jobSeq" value="${row.jobSeq}"> --%>	
+			<input type="hidden" name="jobSeq" value="${row.jobSeq}">	
+=======
+				<c:if test="${login.memberid != null }">
+
+					<div class="inputBox">
+						<div class="writeBoxWrap cmtWrite">
+							<form action="insertreplyRecruit.do" method="post">
+								<input type="hidden" name="jobSeq" value="${dto.jobSeq}">
+								<fieldset>
+									<div class="uiplaceholder">
+										<span class="ph">솔직하고 따뜻한 답변을 남겨주세요.<br>*휴대폰 번호, 메일 주소, 카카오톡 ID 등 개인정보가 포함된 내용은 비노출 처리 될 수 있습니다.</span>
+										<textarea class="devTxtAreaAnswerWrite" name="reply_content" maxlength="1000" title="답변쓰기"></textarea>
+									</div>
+									<div class="btnWrap">
+                               			<div class="infoBx">
+                            	    	   <a href="/User/Qstn/MainProfile?Target=16755209" class="my-profile" target="_blank">
+                                    		   <span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_8.jpg" target="_blank" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
+                                    	  	   <span class="info">${login.memberid}</span>
+                                   	   	   	   <input type="hidden" name="memberid" value="${login.memberid}">
+                                   	   	   </a>
+                                   	   	 </div>
+                                  	  	 <span class="byte"><b id="count">0</b> / 1,000</span>
+                               	         <button type="submit" id="btnSubmit" class="btnSbm devBtnAnswerWrite">등록</button>
+                           	   		</div>
+								</fieldset>
+							</form>
+						</div>
+						<ul class="notice-box-wrap">
+                		    <li>답변을 등록하면 닉네임으로 질문자에게 전달됩니다.</li>
+                	   		<li>개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.</li>
+                  			<li>개인정보가 포함되거나 부적절한 답변은 비노출 또는 해당 서비스 이용 불가 처리될 수 있습니다.</li>
+               			</ul>
+					</div>
+				</c:if>
+				<c:forEach var="row" items="${replylist}">
+				<input type="hidden" name="replyrecruitseq" value="${row.replyrecruitseq}">
+				<input type="hidden" name="jobSeq" value="${row.jobSeq}">
+>>>>>>> 98b77e6c7f27189403dc19a4db68da89df83ceaf
 				<div class="viewListWrap">
                 	<div class="headerWrap">
                     	<div class="numBx">
                            <span>답변 <span class="num">${row.reply_count}</span></span>
                         </div>
                     </div>
-					<div class="listWrap commonSecWrap">	
+					<div class="listWrap commonSecWrap">
    						 	<ul class="answerArea">
                 				<li>
                 					<div class="contSec devContSection" style="display: block;">
@@ -516,17 +554,17 @@ font-weight: bold;
                 								<div class="cmtList replyWrap">
                 									<ul class="cmtList replyWrap">
                                 						<!-- [Dev] 내 댓글일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 삭제만 노출 -->
-                            						</ul>          						
+                            						</ul>
                 								</div>
-                							</div>	
+                							</div>
                 						</div>
                 					</div>
                 				</li>
 					  		</ul>
 						</div>
 			   		</div>
-			   	</c:forEach>  
-  
+			   	</c:forEach>
+ --%>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" style=""></script>
 
   <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" style=""></script> -->
@@ -953,7 +991,7 @@ function getReserveDate(rest)
 
 
 function jobApply(jobseq, memberid, resumeseq) {
-	
+
 	alert("jobApply");
 	//alert(jobseq);
 	//alert(memberid);
@@ -963,14 +1001,14 @@ function jobApply(jobseq, memberid, resumeseq) {
 	let endDate = '${dto.jobEnd}';
 	var reserve = charchen(endDate);
 	alert("이게 예약시간 : "+ reserve);
- 	
+
 	var phone = getPhonenum(memberid);
 	alert("이게 연락처"+phone);
-	
+
 	var title = '${dto.jobTitle}';
-	
-	
-	
+
+
+
 	$.ajax({
         type : 'get',
         url : './reserveSendSms.do',
@@ -983,43 +1021,43 @@ function jobApply(jobseq, memberid, resumeseq) {
 		error:function(){
 			alert('error');
 		}
-    }); 
-	
-	
-	
- 
+    });
+
+
+
+
     location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
 
 }
 
 
 
-//회원 아이디로 전화번호를 가지고 올수 있는 메서드 
+//회원 아이디로 전화번호를 가지고 올수 있는 메서드
 function getPhonenum(memberid) {
 	var pnumber = "";
-	
+
 	 $.ajax({
 	     url : "./getPhonenum.do",
 	     type : "get",
-	     async: false, 
+	     async: false,
 	     data: {"memberid": memberid},
 	     success:function(phonenumber){
 	        alert('success');
 	        alert(phonenumber);
 	        phoneNum = phonenumber;
 	        $("#phonenumber").val(phonenumber);
-	        
+
 			},
 	     error:function(){
 	        alert('error');
 	     }
 
 	   });
-	 
+
 	 pnumber = phoneNum;
-	 
+
 	 return pnumber;
-	 
+
 }
 
 

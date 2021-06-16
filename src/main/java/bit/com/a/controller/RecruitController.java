@@ -47,7 +47,7 @@ public class RecruitController {
 
    @Autowired
    RecruitReplyService recruitservice;
-   
+
 //TODO채용공고 리스트로 이동
    @RequestMapping(value = "recuruitlist.do", method = RequestMethod.GET)
    public String recuruitlist(Model model) {
@@ -426,8 +426,8 @@ public class RecruitController {
       //직무이름 받아오는 코드
       List<String> list = service.getBsnameForDetail(jobSeq);
       System.out.println("직무이름 :"+ list.toString());
-
 	 dto.setBusname(list);
+
 
 
       //검색용 파라미터 dto설정
@@ -524,8 +524,8 @@ public class RecruitController {
       model.addAttribute("dto", dto);
       model.addAttribute("resumelist", resumelist);
 
-      
-      
+
+
       List<RecruitReplyDto> replylist = recruitservice.list(jobSeq);
       model.addAttribute("replylist", replylist);
 
@@ -1274,24 +1274,24 @@ public class RecruitController {
 			return list;
 
 		}
-		
-		
-		
-		//폰번호만 가져오기 
+
+
+
+		//폰번호만 가져오기
 		@ResponseBody
 		@RequestMapping(value = "getPhonenum.do", method = {RequestMethod.GET, RequestMethod.POST})
 		public String getPhonenum(String memberid) {
-			
+
 			String phonenumber = service.getPhonenum(memberid);
-			
+
 			System.out.println("폰번호 = "+ phonenumber);
-			
+
 			return phonenumber;
 		}
-					
-					
-					
-		
+
+
+
+
 
 
 
