@@ -455,6 +455,11 @@ public class RecruitController {
       System.out.println("변경된 Dto :"+dto.toString());
 
       model.addAttribute("dto", dto);
+      
+      List<RecruitReplyDto> replylist = recruitservice.list(jobSeq);
+      
+      model.addAttribute("replylist", replylist);
+      
       model.addAttribute("resumelist", resumelist);
 
       return "recruit/recruitDetail";

@@ -1116,7 +1116,7 @@ margin-right : 450px;
 			<dd>1hara의 새로운 소식을 알려드립니다.</dd>
 		</dl>
 	</div>
-
+<!-- 	
 	<form id="empBoardSrchVO" name="searchForm" action="/ntNewsData/ntMatter/retrieveNtMatterListPost.do" method="post" onsubmit="return f_checkForm(this);">
 		<input type="hidden" name="pageUnit" value="10">
 		<input type="hidden" name="srch" value="srch">
@@ -1125,11 +1125,7 @@ margin-right : 450px;
 	
 		<input type="hidden" name="pageIndex" id="pageIndex1" value="1">
 		
-		
-		
-		
-		
-		
+	
 		<div class="board-list-search">							
 			<div class="line">
 				<div class="float-l w480px">
@@ -1150,11 +1146,12 @@ margin-right : 450px;
 			<div class="btn-group">
 				<button type="submit" class="button navy">검색</button>
 			</div>
-		</div>
+		</div> 
 	<div>
 <input type="hidden" name="_csrf" value="f9429a24-06a6-4e86-9fb8-413ddf249c96">
-</div></form>
-		
+</div>
+</form>
+-->		
 	<form id="empBoardSrchVO1" name="listRangeForm" action="/ntNewsData/ntMatter/retrieveNtMatterListPost.do" method="post">
 	<input type="hidden" name="regDtm" value="">
 	<input type="hidden" name="srch" value="">
@@ -1229,13 +1226,13 @@ margin-right : 450px;
 	</div>
 	
 	
-		<nav class="pagination">
+		<!-- <nav class="pagination">
 			 <a href="#" class="control first" onclick="fn_search(1); return false;">first</a>&nbsp;<a href="#" class="control prev" onclick="fn_search(1); return false;">prev</a>&nbsp;<strong class="active">1</strong>&nbsp;<a href="#" onclick="fn_search(2); return false;">2</a>&nbsp;<a href="#" onclick="fn_search(3); return false;">3</a>&nbsp;<a href="#" onclick="fn_search(4); return false;">4</a>&nbsp;<a href="#" onclick="fn_search(5); return false;">5</a>&nbsp;<a href="#" onclick="fn_search(6); return false;">6</a>&nbsp;<a href="#" onclick="fn_search(7); return false;">7</a>&nbsp;<a href="#" onclick="fn_search(8); return false;">8</a>&nbsp;<a href="#" onclick="fn_search(9); return false;">9</a>&nbsp;<a href="#" onclick="fn_search(10); return false;">10</a>&nbsp;<a href="#" class="control next" onclick="fn_search(11); return false;">next</a>&nbsp;<a href="#" class="control last" onclick="fn_search(31); return false;">last</a>&nbsp;
 
-		</nav>
+		</nav> -->
 	
 	<div class="manager-info">
-		<div class="left"><b class="font-bold">담당부서</b> : 워크넷팀</div>
+		<div class="left"><b class="font-bold">담당부서</b> : 1hara팀</div>
 		<div class="right"><b class="font-bold">문의</b> : 1577-7114</div>
 	</div>
 </section>
