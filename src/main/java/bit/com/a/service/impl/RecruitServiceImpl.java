@@ -193,4 +193,12 @@ public class RecruitServiceImpl implements RecruitService{
 
 	}
 
+	@Override
+	public String getPhonenum(String memberid) {
+		return dao.getPhonenum(memberid);
+	}
+
+
+	
+
 }
