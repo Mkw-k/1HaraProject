@@ -481,14 +481,14 @@ table thead th {
       </header>
       </div>
       </body>
-      
-      
+
+
 
 <!-- =======Login 클릭 시 Modal END =========-->
 
 <!-- 검색창 -->
-<section class="newsletter" style="background-image:url('자료실.png');">
-<div class="container">
+<section class="newsletter" style=" background-image:url('자료실1.PNG'); no-repeat; width: 2000px; ">
+<div class="container" >
 <div class="row">
 <div class="col-sm-12">
 </div>
