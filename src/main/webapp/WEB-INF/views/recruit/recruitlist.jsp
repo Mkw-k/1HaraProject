@@ -447,7 +447,7 @@ hr {
 							</div>
 
 							<p>
-								<button class="deletebtn" type="button" id="deleteResult" style="width: 120px;">선택 초기화</button>
+								<button class="deletebtn" type="button" id="deleteResult" style="width: 140px;">선택 초기화</button>
 							</p>
 
 

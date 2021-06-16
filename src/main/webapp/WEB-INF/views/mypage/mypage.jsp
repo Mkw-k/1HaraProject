@@ -1574,7 +1574,7 @@ function f_empPgmList(resultObj){
 					</div>
 					<div class="mypage-idv-wrap">
 						<div class="idv-sec01">
-							<div class="con-top">
+							<div class="con-top" style="height:320px;">
 
 
 								<c:if test="${login.userpic ne null}">	 		

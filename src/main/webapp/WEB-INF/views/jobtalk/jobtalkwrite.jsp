@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="agreecheckbox checkboxCommWrap">
                                     <input type="checkbox" id="lb_agreePoint" class="skip">
-                                    <label for="lb_agreePoint" class="lb_agreePoint qnaSpB">답변 채택 포인트 추가 (1,100원)<span class="info">잡코리아의 기본 포인트와 합해져 총 1,500P가 채택된 답변자에게 지급됩니다</span></label>
+                                    <label for="lb_agreePoint" class="lb_agreePoint qnaSpB">답변 채택 포인트 추가 (1,100원)<span class="info">일하라의 기본 포인트와 합해져 총 1,500P가 채택된 답변자에게 지급됩니다</span></label>
                                     <p class="txtLayer qnaSpA">답변 채택 포인트를 추가하면, 답변율과 정확도가 높아져요!
                                     	<button type="button" class="btn-txtLyer-close qnaSpB">
                                     		<span class="blind">닫기</span>

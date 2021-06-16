@@ -178,22 +178,167 @@ $(function() {
 
 
 
+
+
+
+
 <div class="container" style="text-align: center;">
 
 
-    <form method="post" id="myForm" enctype="multipart/form-data" style="border-style: outset; padding-right: 30px;padding-left: 30px;padding-top: 30px;padding-bottom: 30px;">
+<nav id="lnb">
+	<!-- S : 2018-09-28 추가 -->
+	<p class="tit"><a href="/indivMemberSrv/main/indivMemberSrvMain.do">회원가입</a></p>
+	<!-- E : 2018-09-28 추가 -->
+	<ul>
+		<li>
+			<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">이력서관리·구직신청</a>
+			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveResumeRegTp.do" target="_self">이력서 등록</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveSelfIntroRegIntro.do" target="_self">자기소개서 등록</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeSelfIntroMng.do" target="_self">이력서·자기소개서 관리</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeAtchFileMngList.do" target="_self">첨부파일 관리</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">워크넷 구직신청 </a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">입사지원 관리</a>
+			<button class="btn-show">입사지원 관리 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>
+					<li>
+						<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">알선/입사지원 내역</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/aplentMng/seekActvHist/seekActvHistList.do" target="_self">구직활동내역</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/aplentMng/offerCo/offerCoList.do" target="_self">입사제안/스크랩한 기업</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeReadList.do" target="_self">이력서 열람기업</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/intrstInfo/mailToEmpList.do" target="_self">채용담당자와 한마디</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">나의 맞춤정보</a>
+			<button class="btn-show">나의 맞춤정보 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>
+					<li>
+						<a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">맞춤채용 관리</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do" target="_self">The Work AI추천</a>
+					</li>
+					<li>
+					<a href="#openPopup" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; keis.window.newWindow('/empInfo/customWorkSupportSrv/custSupportMain.do?loginAction=Y', 'pop', 1010, 780, 'yes'); return false;" target="_blank" title="새창">취업나침반</a>
+						<script type="text/javascript">
+							window.name = "mdmOpener";
+						</script>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">나의 관심정보</a>
+			<button class="btn-show">나의 관심정보 메뉴 닫기</button>
+			<div class="depth3"><ul>
+					<li>
+						<a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">관심스크랩(찜)</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/intrstInfo/seekEmpInfoSrchHist.do?srchType=3" target="_self">최근 본 채용공고</a>
+					</li>
+					<li>
+						<a href="/empInfo/empInfoSrch/calendar/myCalendarMonth.do" target="_blank">마이캘린더</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">e-채용마당 서비스</a>
+			<button class="btn-show">e-채용마당 서비스 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>
+					<li>
+						<a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">지원서관리</a>
+					</li>
+					<li>
+						<a href="/eas/indivMemberSrv/employNotice/wNoInterest.do" target="_self">관심정보관리</a>
+					</li>
+					<li>
+						<a href="/eas/indivMemberSrv/employJudge/employJudgeList.do" target="_self">심사평가관리</a>
+					</li>
+					<li>
+						<a href="/empAgencySvc/empBoard/wBuBoardList.do" target="_self">채용게시판</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="/indivMemberSrv/intrstInfo/joinResult.do" target="_self">온라인 신청관리</a>
+		</li>
+		<li>
+			<a href="/indivMemberSrv/myCustmadeSrvList.do" target="_self">
+				고용복지 맞춤서비스
+			</a>
+		</li>
+		<li>
+			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 관리</a>
+			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>
+					<li class="curr">
+						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
+					</li>
+					<li>
+						<a href="mypageUpdate.do" target="_self">회원정보 수정(성명변경)</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a>
+					</li>
+					<li>
+						<a href="memberDelete.do" target="_self">회원탈퇴</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</nav>
+
+
+    <form method="post" id="myForm" enctype="multipart/form-data" style="border-style: outset;padding-right: 30px;padding-left: 30px;padding-top: 30px;padding-bottom: 30px;width: 466px;margin-left: 500px;">
         <div class="form-group has-feedback">
 
         <!-- 프로필 사진 -->
         
-        				<section style="width:400px;height:300px;margin-left: 300px; border-style: outset;">
-        				<h3>일반 회원</h3>
+        				<section style="width:400px;height: 236px;margin-left: 0px;border-style: outset;">
+        				<h3>회원 가입 (일반)</h3>
                           <ul>
- 						   <li class="img" style="list-style: none; margin-left : 200px">
-                                <div id="image_preview">
-                                    <img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 160px;" src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
+ 						   <li class="img" style="list-style: none;margin-left: 0px;">
+                                <div id="image_preview" style="
+    margin-left: 150px;
+">
+                                    <img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 160px;" src="unnamed.png" alt="프로필사진">
                                 </div>
-                                <h4 style="margin-left: 35px;">프로필 사진을 등록해주세요</h4>
+                                <h6 style="margin-left: 00px;margin-right: 0px;width: 400px;">여러분의 </h6><h6 style="margin-left: 00px;margin-right: 0px;width: 400px;">프로필 사진</h6>
                                 <div class="f_box">
                                         <label for="img"></label>
                                         <input type="file" name="fileload" id="img">
@@ -226,25 +371,28 @@ $(function() {
         <!-- 프로필사진 등록 끝나는 구간  -->
         
     
+    
+    
+    
 
             <label class="control-label" for="id">아이디</label>
           	<div class="input-group">
 			  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-			      <input type="text" class="form-control" name="memberid" id="memberid" placeholder="아이디를 입력하세요." />
-			 	  <input type="button" class="btn btn-secondary" name="chkIdBtn" id="chkIdBtn" value="중복확인"/>
+			      <input type="text" class="form-control" name="memberid" id="memberid" placeholder="아이디를 입력하세요.">
+			 	  <input type="button" class="btn btn-secondary" name="chkIdBtn" id="chkIdBtn" value="중복확인">
 			      <br>
 			      <p id="idCheck" style="font-size: 12px"></p>
 			</div>
         </div>
         <div class="form-group has-feedback">
             <label class="control-label" for="pwd">비밀번호</label>
-            <input class="form-control" type="password" name="pwd" id="pwd"/>
+            <input class="form-control" type="password" name="pwd" id="pwd">
             <span id="pwdRegErr" class="help-block">8글자 이상 입력하세요.</span>
             <span class="glyphicon glyphicon-ok form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
             <label class="control-label" for="rePwd">비밀번호 재확인</label>
-            <input class="form-control" type="password" name="rePwd" id="rePwd"/>
+            <input class="form-control" type="password" name="rePwd" id="rePwd">
             <span id="rePwdErr" class="help-block">비밀번호와 일치하지 않습니다. 다시 입력해 주세요.</span>
             <span class="glyphicon glyphicon-ok form-control-feedback"></span>
         </div>
@@ -264,7 +412,7 @@ $(function() {
         <div class="form-group has-feedback">
         	<label class="control-label" for="registrationNum">주소</label>
         		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
-				<input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" readonly="readonly" value="우편번호 찾기"><br>
+				<input type="button" class="btn btn-secondary" onclick="sample6_execDaumPostcode()" readonly="readonly" value="우편번호 찾기"><br>
 				<input type="text" class="form-control" id="sample6_address" name="address" placeholder="주소">
 				<input type="text" class="form-control" id="sample6_detailAddress" name="detailaddress" placeholder="상세주소">
 				<input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목">
@@ -284,7 +432,7 @@ $(function() {
 		<div class="cols-sm-10">
 		   <div class="input-group">
 			   <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-			   <input type="text" class="form-control" name="phonenum" id="to" placeholder="전화번호를 입력해주세요.(-는 빼고 적어주세요) ex)01011112222 " />
+			   <input type="text" class="form-control" name="phonenum" id="to" placeholder="전화번호를 입력해주세요.(-는 빼고 적어주세요) ex)01011112222 ">
 			   <p id="phoneCheck" style="font-size: 12px"></p>
 			  	<input type="button" class="btn btn-secondary" id="send" name="phoneBtn" value="본인 인증">
 			   <input type="hidden" name="text" id="text">   인증번호를 히든으로 저장해서 보낸다
@@ -293,7 +441,7 @@ $(function() {
 		</div>
 	 	<div class="cols-sm-6" id="phone_authNumber">
 	 		<input type="text" id="phone_authNum" name="userNum" size="30px" placeholder="인증번호 6자리를 입력하세요.">
-	 		<input type='button' class="btn btn-primary" id="phone_authNumBtn" name="phoneNumBtn" value="인증하기">
+	 		<input type="button" class="btn btn-primary" id="phone_authNumBtn" name="phoneNumBtn" value="인증하기">
 
 		</div>
 		</div>
@@ -304,7 +452,7 @@ $(function() {
 			   <div class="cols-sm-10">
 			   		<div class="input-group">
 			             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-			             <input type="text" class="form-control" name="email" id="email" placeholder="이메일 주소를 입력하세요. ex) example@gmail.com" />
+			             <input type="text" class="form-control" name="email" id="email" placeholder="이메일 주소를 입력하세요. ex) example@gmail.com">
 			             <p id="emailCheck" style="font-size: 12px"></p>
 			             <!-- <input type="button" class="btn btn-secondary" id="emailBtn" name="emailBtn" value="본인 인증" disabled="disabled"> -->
 			        </div>
