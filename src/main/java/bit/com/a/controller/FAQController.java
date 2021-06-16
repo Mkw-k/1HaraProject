@@ -19,14 +19,13 @@ import bit.com.a.dto.FAQDto;
 import bit.com.a.service.FAQservice;
 import bit.com.a.util.PdsUtil;
 
-
 @Controller
 public class FAQController {
 	
 	@Autowired
 	FAQservice service;
 
-	@RequestMapping(value = "FAQ.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "faq.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String goFAQ(Model model) {	
 	
 		List<FAQDto> mem = service.getmemberFAQ();
