@@ -1,3 +1,4 @@
+<%@page import="bit.com.a.dto.Resume_Portfolio"%>
 <%@page import="bit.com.a.dto.MemberDto"%>
 <%@page import="bit.com.a.dto.ResumeDto"%>
 <%@page import="java.util.List"%>
@@ -14,6 +15,9 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
 <%
 List<ResumeDto> resumelist =(List<ResumeDto>) request.getAttribute("resumelist");
 System.out.println("resumelist" +resumelist);
+
+List<Resume_Portfolio> portlist =(List<Resume_Portfolio>) request.getAttribute("portlist");
+System.out.println("portlist****************************************" +portlist);
 %>
 
 <%-- <%
@@ -131,6 +135,9 @@ font-weight: bold;
     border-color: #eee;
 }
 
+.applybtn{
+width: max-content;
+}
 
 </style>
 
@@ -208,7 +215,7 @@ font-weight: bold;
 			  <div class="modal-dialog" role="document" style="width: -webkit-fill-available;">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel" style="width: 700px;">입사지원</h5>
+			        <h5 class="modal-title" id="exampleModalLabel" style="width: 700px; color: black;">입사지원</h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">×</span>
 			        </button>
@@ -217,16 +224,38 @@ font-weight: bold;
 			       <table>
 			       <colgroup>
 			       <col width="400"><col width="50">
-						<tr><td colspan="2">이력서list</td></tr>
+						<tr><td colspan="2" style="color: black">이력서list</td></tr>
 					<%
 					for(int i=0; i<resumelist.size(); i++){
 					%>
 
 						<tr>
-						<td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a></td>
-						<td><button type="button" class="btn btn-primary" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>', '${login.phonenum}')">지원하기</button></td>
+						<td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a>
+							<input type="hidden" value="" id="portfolioseq">
+						</td>
+						<td><button type="button" class="btn btn-primary applybtn" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>', '${login.phonenum}')">지원하기</button></td>
 						</tr>
 					<%
+					}
+					%>
+					
+					<tr><td colspan="2" style="color: black">포트폴리오 첨부</td></tr>
+					<%
+					if(portlist != null){
+					for(int i=0; i<portlist.size(); i++){
+					%>
+
+						<tr>
+						<td style="color: black">
+						<select id="portseq" onchange="getportseq('<%=portlist.get(i).getPortfolioseq() %>')">
+						<option>첨부없음</option>
+						<option><%=portlist.get(i).getPortfolioname() %></option>
+						</select>
+						</td>
+						<td><button type="button" class="btn btn-primary">첨부</button></td>
+						</tr>
+					<%
+						}
 					}
 					%>
 
@@ -591,8 +620,8 @@ function jobApply(jobseq, memberid, resumeseq, phonenum) {
 
       });
  */
-
-    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
+ 	let portfolioseq = document.getElementById('portfolioseq').value;
+    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq+"&portfolioseq="+portfolioseq;
 
 }
 
@@ -990,6 +1019,15 @@ function getReserveDate(rest)
 
 
 
+  </script>
+  
+  <script type="text/javascript">
+  function getportseq(portseq) {
+	alert(portseq);
+	document.getElementById('portfolioseq').value = portseq;
+	
+}
+  
   </script>
 
 

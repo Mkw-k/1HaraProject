@@ -7,6 +7,7 @@ public class ApplyDto {
 	private String memberid;
 	private String applydate;
 	private int companyread;
+	private int portfolioseq;
 	
 	
 	public ApplyDto() {
@@ -74,7 +75,18 @@ public class ApplyDto {
 	}
 
 
-	public ApplyDto(int applyseq, int jobseq, int resumeseq, String memberid, String applydate, int companyread) {
+	public int getPortfolioseq() {
+		return portfolioseq;
+	}
+
+
+	public void setPortfolioseq(int portfolioseq) {
+		this.portfolioseq = portfolioseq;
+	}
+
+
+	public ApplyDto(int applyseq, int jobseq, int resumeseq, String memberid, String applydate, int companyread,
+			int portfolioseq) {
 		super();
 		this.applyseq = applyseq;
 		this.jobseq = jobseq;
@@ -82,15 +94,18 @@ public class ApplyDto {
 		this.memberid = memberid;
 		this.applydate = applydate;
 		this.companyread = companyread;
+		this.portfolioseq = portfolioseq;
 	}
 
 
 	@Override
 	public String toString() {
 		return "ApplyDto [applyseq=" + applyseq + ", jobseq=" + jobseq + ", resumeseq=" + resumeseq + ", memberid="
-				+ memberid + ", applydate=" + applydate + ", companyread=" + companyread + "]";
+				+ memberid + ", applydate=" + applydate + ", companyread=" + companyread + ", portfolioseq="
+				+ portfolioseq + "]";
 	}
 
+	
 	
 
 	

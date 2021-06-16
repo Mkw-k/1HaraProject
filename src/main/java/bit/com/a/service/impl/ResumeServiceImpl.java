@@ -327,6 +327,12 @@ public class ResumeServiceImpl implements ResumeService {
 		// TODO Auto-generated method stub
 		return dao.getPortfolio(memberid);
 	}
+
+	@Override
+	public String getPortfolioname(int portfolioseq) {
+		// TODO Auto-generated method stub
+		return dao.getPortfolioname(portfolioseq);
+	}
 	
 	
 	

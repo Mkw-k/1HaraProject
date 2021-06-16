@@ -119,6 +119,8 @@ public interface ResumeService {
 
 	List<Resume_Portfolio> getPortfolio(String memberid);
 
+	String getPortfolioname(int portfolioseq);
+
 	
 	
 	

@@ -16,8 +16,8 @@ index.jsp
 <a href="home.do">home</a>
 
 <a href="mypage.do">mypage</a>
--
-<a href="FAQ.do">FAQ</a>-
+
+<a href="FAQ.do">FAQ</a>
 
 <a href="pdslist.do">짜료씰</a>
 
@@ -44,6 +44,7 @@ index.jsp
 <a href="Maintest.do">개인정보관리</a>
 
 <a href="musicplayer.do">새로운헤더</a>
+
 
 
 </body>

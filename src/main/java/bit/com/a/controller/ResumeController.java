@@ -80,6 +80,11 @@ public class ResumeController {
 			int resumeseq = applylist.get(i).getResumeseq();
 			String resumetitle = service.getResumeTitle(resumeseq);
 			pa.setResumetitle(resumetitle);
+			
+			int portfolioseq = applylist.get(i).getPortfolioseq();
+			String portfolioname = service.getPortfolioname(portfolioseq);
+			System.out.println("portfolioname###################################"+portfolioname);
+			pa.setPortfolioname(portfolioname);
 
 			param.add(pa);
 		}
@@ -807,17 +812,19 @@ public class ResumeController {
 
 	//공고 지원하기
 	@RequestMapping(value = "jobApply.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String getMyResume(int jobseq, int resumeseq, String memberid, Model model) {
+	public String getMyResume(int jobseq, int resumeseq, String memberid, int portfolioseq, Model model) {
 
 		ApplyDto param = new ApplyDto();
 
 		param.setJobseq(jobseq);
 		param.setMemberid(memberid);
 		param.setResumeseq(resumeseq);
+		param.setPortfolioseq(portfolioseq);
 
 		RecruitDto dto = recruitservice.getRecruitListOne(jobseq);
 		List<String> list = recruitservice.getBsnameForDetail(jobseq);
 		List<ResumeDto> resumelist = service.getresume(memberid);
+		List<Resume_Portfolio> portlist = service.getPortfolio(memberid);
 
 		dto.setBusname(list);
 	
@@ -825,6 +832,7 @@ public class ResumeController {
 
 		model.addAttribute("dto", dto);
 		model.addAttribute("resumelist", resumelist);
+		model.addAttribute("portlist", portlist);
 
 		return "recruit/recruitDetail";
 

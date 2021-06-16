@@ -11,6 +11,7 @@ import bit.com.a.service.FAQservice;
 
 @Service
 public class FAQServiceImpl implements FAQservice {
+	
 	@Autowired
 	FAQDao dao;
 
