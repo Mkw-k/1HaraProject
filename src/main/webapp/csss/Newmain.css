@@ -27,7 +27,7 @@ textarea,
 p,
 blockquote,
 button,
-table {border-spacing:0;border-collapse:collapse;font-family:"Malgun Gothic",dotum,gulim,sans-serif;font-size:inherit;line-height:100%}
+table {border-spacing:0;border-collapse:collapse;line-height:100%}
 fieldset,
 img {border:0}
 address,

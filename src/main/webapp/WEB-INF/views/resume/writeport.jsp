@@ -1,11 +1,4 @@
 <!DOCTYPE html>
-<%@page import="bit.com.a.dto.Resume_Portfolio"%>
-<%@page import="bit.com.a.dto.ResumeParam"%>
-<%@page import="bit.com.a.dto.ApplyDto"%>
-<%@page import="bit.com.a.dto.ResumeDto"%>
-<%@page import="bit.com.a.util.UtilEx"%>
-<%@page import="bit.com.a.dto.FAQDto"%>
-<%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -58,112 +51,13 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link href="csss/header.css" rel="stylesheet" type="text/css">
-<link href="csss/resume.css" rel="stylesheet" type="text/css">
 
-<!-- 페이지네이션 -->
-<script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
 
 <style type="text/css">
   
 /* 모달 */
 #login-modal {
 margin-right : 450px;
-}
-
-.newsletter {
-padding: 80px 0;
-background: #2186eb;
-}
-
-.newsletter .content {
-max-width: 650px;
-margin: 0 auto;
-text-align: center;
-position: relative;
-z-index: 2; }
-.newsletter .content h2 {
-color: #243c4f;
-margin-bottom: 40px; }
-.newsletter .content .form-control {
-height: 50px;
-border-color: #ffffff;
-border-radius:0;
-}
-.newsletter .content.form-control:focus {
-box-shadow: none;
-border: 2px solid #243c4f;
-}
-.newsletter .content .btn {
-min-height: 50px; 
-border-radius:0;
-background: #243c4f;
-color: #fff;
-font-weight:600;
-}
-
-/* 3가지 FAQ링크 */
-
-
-:root {
-    font-size: 10px;
-}
-
-.faqnav ul {
-    padding: 0;
-    list-style-type: none;
-}
-
-.faqnav li {
-    width: 20rem;
-    height: 7rem;
-    font-size: 20px;
-    text-align: center;
-    line-height: 7rem;
-    font-family: sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-    transition: 0.3s;
-    margin: 8.5rem;
-    background-color: #eee;
-}
-
-.faqnav li::before,
-.faqnav li::after {
-    content: '';
-    position: absolute;
-    width: inherit;
-    height: inherit;
-    top: 0;
-    left: 0;
-    transition: 0.3s;
-}
-
-.faqnav li::before {
-    background-color: #eee;
-    z-index: -1;
-    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
-}
-
-.faqnav li::after {
-    background-color: #2186eb;
-    transform: translate(1.5rem, 1.5rem);
-    z-index: -2;
-}
-
-.faqnav li:hover {
-    transform: translate(1.5rem, 1.5rem);
-    color: black;
-    background-color: #2186eb;
-}
-
-.faqnav li:hover::before {
-    background-color: #2186eb;
-}
-
-.faqnav li:hover::after {
-    background-color: #eee;
-    transform: translate(-1.5rem, -1.5rem);
 }
 
 /* 테이블 css */
@@ -287,158 +181,9 @@ a.box-btn:hover, a.border-btn:hover {
 	background-color: #2186eb;
 }
 
-/* 네비바 반응형 */
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
+.faqtable{
+	border: 1px;
 }
-
-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  /* 요소의 최소 너비 지정, height 속성 무시
-    vh단위는 브라우저 안쪽 높이(window.innerHeight)을 기준으로
-    설정된다. 하지만 태블릿이나, 모바일의 경우에는 뷰 포트에 따라
-    맞춰짐*/
-  min-height: 8vh;
-  background-color: #504954;
-  font-family: "Poppins", sans-serif;
-}
-
-.logo {
-  color: rgb(226, 226, 226);
-  text-transform: uppercase;
-  /* 각 글자 2px씩 간격을 줌*/
-  letter-spacing: 2px;
-  font-size: 18px;
-}
-
-.nav-links {
-  width: 40%;
-  /* display: flex; */
-  justify-content: space-around;
-}
-
-.nav-links li {
-  list-style: none;
-}
-
-.nav-links a {
-  color: rgb(226, 226, 226);
-  text-decoration: none;
-  letter-spacing: 3px;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.burger {
-  display: none;
-  cursor: pointer;
-}
-
-.burger div {
-  width: 25px;
-  height: 3px;
-  background-color: rgb(226, 226, 226);
-  margin: 5px;
-  transition: all 0.3s ease;
-}
-
-@media screen and (max-width: 1024px) {
-  .nav-links {
-    width: 60%;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  body {
-    overflow-x: hidden;
-  }
-  .nav-links {
-    position: absolute;
-    top: 8vh;
-    right: 0;
-    height: 92vh;
-    background-color: #504954;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-    transform: translateX(100%);
-  }
-  .nav-links li {
-    opacity: 0;
-  }
-  .burger {
-    display: block;
-  }
-
-  .nav-active {
-    transform: translateX(0%);
-  }
-
-  @keyframes navLinkFade {
-    from {
-      opacity: 0;
-      transform: translateX(5px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-}
-
-.toggle .line1 {
-  transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.toggle .line2 {
-  opacity: 0;
-}
-
-.toggle .line3 {
-  transform: rotate(45deg) translate(-5px, -6px);
-}
-
-/* 이력서 탭 */
-
-.list-group-item{
-    display: flex;
-    justify-content: space-between;
-}
-
-.pendiv{
-	display:flex;
-}
-
-.list-group{
-    margin-left: 400px;
-}
-
-/* 모달 */
-
-<style>
-.modal {
-  text-align: center;
-}
-
-@media screen and (min-width: 768px) {
-  .modal:before {
-    display: inline-block;
-    vertical-align: middle;
-    content: " ";
-    height: 100%;
-  }
-}
-
-.modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
-}
- 
 </style>
 </head>
 
@@ -519,7 +264,7 @@ nav {
             <div class="modal-body">
             
             <!-- memberController - loginAf.do로 이동 -->
-              <form action="member" method="post">
+              <form action="member" method="post" enctype="multipart/form-data">
                  <input type="hidden" name="param" value="loginAf.do">
                 <div class="form-group">
                   <input id="email_modal" type="text" placeholder="ID" name="id" class="form-control">
@@ -549,187 +294,61 @@ nav {
 <main>
 
 
-<%
-//이력서 리스트
-List<ResumeDto> resumelist =(List<ResumeDto>) request.getAttribute("resumelist");
-//작성중 리스트
-List<ResumeDto> resumeNolist =(List<ResumeDto>) request.getAttribute("resumeNolist");
-//지원현황리스트
-List<ResumeParam> param =(List<ResumeParam>) request.getAttribute("param");
-//포트폴리오리스트
-List<Resume_Portfolio> portlist =(List<Resume_Portfolio>) request.getAttribute("portlist");
-System.out.println("resumelist" +resumelist);
-System.out.println("resumeNolist" +resumeNolist);
-System.out.println("param" +param);
-System.out.println("portlist" +portlist);
-%>
 
 
-<!-- 검색창 -->
-<section class="newsletter" style="padding-bottom: 10px;">
-<div class="container">
-<div class="row">
-<div class="col-sm-12">
-	<div class="content">
-		<h2 style="color:#fff">이력서 관리</h2>
-	</div>
-</div>
-</div>
-</div>
-</section>
-
-
-			<div id="navbar-example" style="display: list-item;">
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs" role="tablist" style="margin-left: 400px;">
-					<li class="nav-item"><a class="nav-link active"
-						data-toggle="tab" href="#completed" role="tab">이력서</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#writing" role="tab">작성중</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#portfolio" role="tab">포트폴리오 관리</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#applied" role="tab">지원 현황</a></li>
-					<li class="nav-item" style="margin-left: 700px;">
-						<div style="text-align: center;">
-							<a href="writeResume.do" class="box-btn">이력서 추가</a>
-						</div>
-					</li>
-					
-				</ul>
-
-				<!-- Tab panes {Fade}  -->
-				<div class="tab-content" style="height: 700px;">
-					<div class="tab-pane fade in active" id="completed" name="completed" role="tabpanel" style="width: 1500px;">
-						<div class="bs-callout bs-callout-primary">
-							<ul class="list-group">
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,800,900%7cRaleway:300,400,500,600,700" rel="stylesheet">
+<section class="pricing-area pt-100 pb-100" id="pricing" style="padding-top: 0px;">
+		<div class="container">
+			<div class="row">
+               
+               <div class="col-xl-12">
+				<div class="single-price">
+				  <div class="price-item">
+					<form name="frmForm" id="_frmForm" action="writeportfolio.do" method="post" enctype="multipart/form-data">
+ 
+							<table class="faqtable" border="1">
+							 <colgroup><col width="200px"><col width="auto"></colgroup>
+							 <tr>
+							    <th>아이디</th>
+							    <input type="hidden" name="memberid" value="${login.memberid }">
+							    <td style="text-align: left;">
+							      ${login.memberid }
+							    </td>
+							</tr>
 							
-						<%
-					for(int i=0; i<resumelist.size(); i++){
-						%>
-						<li class="list-group-item"><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a>
-						<div>
-						<a href="updateResume.do?seq=<%=resumelist.get(i).getResumeseq()%>" class="box-btn">수정</a>
-						<a href="deleteResume.do?resumeseq=<%=resumelist.get(i).getResumeseq()%>&memberid=${login.memberid}" class="box-btn">삭제</a>
-						</div>
-						</li>
-					<% 	
-					}			
-					%>
-								
-							</ul>
+							 
+							<tr>
+							    <th>파일 업로드</th>
+							    <td style="text-align: left;">
+							       <input type="file" name="fileload" style="width: 400px" id="FAQimg">
+							       <%--  <%=request.getRealPath("/") %> --%>
+							    </td>
+							</tr>
 							
-						</div>
-					</div>
-
-					<div class="tab-pane fade" id="writing" role="tabpanel">
-						<div class="bs-callout bs-callout-primary" id="certifications"
-							name="certifications" style="width: 1500px;">
-							<ul class="list-group">
 							
-							<%for(int i=0; i<resumeNolist.size();i++){ %>
-								<li class="list-group-item"><a href="Resumedetail.do?seq=<%=resumeNolist.get(i).getResumeseq()%>"><%=resumeNolist.get(i).getResumetitle() %></a>
-									<div class="pendiv">
-										<progress class="progress progress-striped progress-success"
-											value="<%=resumeNolist.get(i).getProgress() %>" max="100">
-											<span class="sr-only"></span>
-										</progress>
-										<a href="updateResume.do?seq=<%=resumeNolist.get(i).getResumeseq()%>" class="box-btn">작성</a>
-										<a href="deleteResume.do?seq=<%=resumeNolist.get(i).getResumeseq()%>&memberid=${login.memberid}" class="box-btn">삭제</a>
-									</div>
-								</li>
-							<%  
-							}
-							%>	
-							</ul>
-						</div>
-
-					</div>
-					
-					<div class="tab-pane fade" id="portfolio" role="tabpanel">
-						<div class="bs-callout bs-callout-primary" id="certifications"
-							name="certifications" style="width: 1500px;">
-						<ul class="list-group">
-							
-							<%for(int i=0; i<portlist.size();i++){ %>
-								<li class="list-group-item">
-								<%=portlist.get(i).getPortfolioname() %>
-								<a href="downport.do?seq=<%=portlist.get(i).getPortfolioseq()%>&filename=<%=portlist.get(i).getPortfolioname() %>&newfilename=<%=portlist.get(i).getNewportfolioname() %>" class="box-btn">다운로드</a>	
-								</li>
-								
-							<%  
-							}
-							%>	
-							</ul>
-							
-							<div style="float: right;">
-							<a href="writeport.do" class="box-btn">작성</a>
-							</div>
-							
-						</div>
-						
-					
-
-					</div>
-					
-					
-					<div class="tab-pane fade" id="applied" name="applied"
-						role="tabpanel">
-						<div class="bs-callout bs-callout-primary">
-							<table class="table" style="width: 1100px; text-align: center; margin-left: 400px;">
-							<colgroup>
-							<col width="350px"><col width="350px"><col width="200px"><col width="100px"><col width="100px">
-							</colgroup>
-								<thead>
-									<tr>
-										<td>지원공고</td>
-										<td>지원이력서</td>
-										<td>지원일</td>
-										<td>열람여부</td>
-										<td>지원취소</td>
-									</tr>
-								</thead>
-								<tbody
-									style="border-bottom: thin; border-color: #cccccc; border-bottom-style: solid;">
-									
-								<%for(int i=0; i<param.size();i++){ %>	
-									<tr>
-										<td><a href="RecruitDetail.do?jobseq=<%=param.get(i).getJobseq()%>&memberid=${login.memberid}"><%=param.get(i).getJobtitle() %></a></td>
-										
-										
-										<% if(param.get(i).getResumetitle()==null){%>
-										<td><p>삭제된 이력서입니다</p></td>
-										
-										<% } else {%>
-										
-										<td><a href="Resumedetail.do?seq=<%=param.get(i).getResumeseq()%>"><%=param.get(i).getResumetitle() %></a></td>
-										
-										<% } %>
-										
-										<td><%=param.get(i).getApplydate() %></td>
-										<td>
-										<% if(param.get(i).getCompanyread()>0 ) { %>
-										<img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;">
-										<% } %>
-										</td>
-										<td><a href="cancelApply.do?seq=<%=param.get(i).getApplyseq() %>&memberid=${login.memberid}" class="box-btn">취소</a></td>
-									</tr>
-								<%  
-								}
-								%>		
-									
-								</tbody>
+							<tr>
+							<td colspan="2">
+								<!-- <input type="submit" value="글쓰기" class="box-btn"> -->
+								<a href="#" class="box-btn" id="writeBtn" >글쓰기</a>
+							</td>
+							</tr> 
 							</table>
-						</div>
-					</div>
+							</form>
+				  </div>
+				 	
+			   </div>
+			   </div>
+            </div>
+		</div>
+	  </section>
 
-				</div>
-			</div>
 
 
 
 
-		</main>
+
+
+</main>
 <!-- ####################################################################################################### -->
 
 <!-- FOOTER -->
@@ -902,67 +521,16 @@ function login() {
 </script>
 
 <!-- Channel Plugin Scripts  -->
-<script>
-  (function() {
-    var w = window;
-    if (w.ChannelIO) {
-      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
-    }
-    var ch = function() {
-      ch.c(arguments);
-    };
-    ch.q = [];
-    ch.c = function(args) {
-      ch.q.push(args);
-    };
-    w.ChannelIO = ch;
-    function l() {
-      if (w.ChannelIOInitialized) {
-        return;
-      }
-      w.ChannelIOInitialized = true;
-      var s = document.createElement('script');
-      s.type = 'text/javascript';
-      s.async = true;
-      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
-      s.charset = 'UTF-8';
-      var x = document.getElementsByTagName('script')[0];
-      x.parentNode.insertBefore(s, x);
-    }
-    if (document.readyState === 'complete') {
-      l();
-    } else if (window.attachEvent) {
-      window.attachEvent('onload', l);
-    } else {
-      window.addEventListener('DOMContentLoaded', l, false);
-      window.addEventListener('load', l, false);
-    }
-  })();
-  ChannelIO('boot', {
-    "pluginKey": "9ec9cb05-626c-49ad-9fcf-67ccef29c08f"
-  });
-</script>
-<!-- End Channel Plugin -->
 
-<!-- 검색 -->
-<script>
-$("#searchBtn").click(function () {
+ 
+ <script>
+$("#writeBtn").click(function () {
     
-	alert("searchBtn click")
-	/* 검색어 */
-	let search = document.getElementById("_searchBtn").value;
+    // 제목, 내용
     
-    location.href = "searchFAQ.do?search=" + search;
+    $("#_frmForm").submit();
 });
 </script>
-
-<script>
-$(document).ready(function()
-{
-    $("[rel='tooltip']").tooltip();
-});
-</script>
-
 
 </body>
 </html>

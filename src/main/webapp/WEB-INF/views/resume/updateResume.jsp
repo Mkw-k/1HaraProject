@@ -1736,7 +1736,7 @@ System.out.println(_gender);
 												<div id="activity" class="resume_section blind_guide"
 													data-order_item="activity" data-except="y">
 													<div class="area_title">
-														<h3 class="title">대외활동</h3>
+														<h3 class="title">대외활동 원글</h3>
 													</div>
 
 													<div class="resume_write resume_write_add">
@@ -1984,7 +1984,7 @@ System.out.println(_gender);
 														<div class="area_add_btn">
 															<button type="button" class="btn_resume_add"
 																data-tpl_id="tpl_activity_item" id="actAdd">
-																<span>대외활동 추가</span>
+																<span>대외활동 수정</span>
 															</button>
 														</div>
 													</div>
@@ -1996,7 +1996,7 @@ System.out.println(_gender);
 												<div id="license" class="resume_section blind_guide"
 													data-order_item="license" data-except="y">
 													<div class="area_title">
-														<h3 class="title">자격증/어학/수상 내역</h3>
+														<h3 class="title">자격증/어학/수상 내역 원글</h3>
 													</div>
 
 													<div class="resume_write resume_write_add">
@@ -2351,7 +2351,7 @@ System.out.println(_gender);
 														<div class="area_add_btn">
 															<button type="button" class="btn_resume_add"
 																data-tpl_id="tpl_license_default" id="licAdd">
-																<span>자격증/어학/수상내역 추가</span>
+																<span>자격증/어학/수상내역 수정</span>
 															</button>
 														</div>
 													</div>

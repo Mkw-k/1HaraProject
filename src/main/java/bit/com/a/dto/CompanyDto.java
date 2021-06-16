@@ -23,25 +23,13 @@ public class CompanyDto {
 	private String mainservice;		// 주요서비스
 	private String totalsale;		// 총매출
 	
-	 private String updatecompanylist; // 변수
-	  
+
 
 
 	public CompanyDto() {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	
-	public String getUpdatecompanylist() {
-		return updatecompanylist;
-	}
-
-
-
-	public void setUpdatecompanylist(String updatecompanylist) {
-		this.updatecompanylist = updatecompanylist;
-	}
 
 
 public String getCompanyname() {
@@ -222,7 +210,7 @@ public String getCompanyname() {
 		this.website = website;
 		this.mainservice = mainservice;
 		this.totalsale = totalsale;
-		this.updatecompanylist = updatecompanylist;
+		
 	}
 
 
@@ -234,7 +222,7 @@ public String getCompanyname() {
 				+ companyseq + ", memberid=" + memberid + ", content=" + content + ", comimage=" + comimage
 				+ ", empcount=" + empcount + ", salaryavg=" + salaryavg + ", salarystart=" + salarystart + ", comyear="
 				+ comyear + ", retiree=" + retiree + ", joinner=" + joinner + ", website=" + website + ", mainservice="
-				+ mainservice + ", totalsale=" + totalsale + ", updatecompanylist=" + updatecompanylist + "]";
+				+ mainservice + ", totalsale=" + totalsale + "]";
 	}
 	
 	

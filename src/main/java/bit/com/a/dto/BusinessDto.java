@@ -35,9 +35,7 @@ public class BusinessDto implements Serializable{
 		private String filename;
 		private String newfilename;
 		private int auth;
-
 		private String email;
-
 		private String phonenum;
 
 

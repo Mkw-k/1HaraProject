@@ -46,7 +46,7 @@ public class MypageController {
 
       return "mypage/mypageUpdate";
    }
-   
+  // =================================================
    @RequestMapping(value = "mypageUpdateAf.do", method = {RequestMethod.GET,RequestMethod.POST})
    public String mypageUpdateAf(MemberDto dto, Model model, @RequestParam(value = "fileload", required = false) MultipartFile fileload,
 			String filename, HttpServletRequest req) throws Exception {

@@ -38,11 +38,7 @@ body {
 <header id="header">
 	<div class="top-area">
 		<div class="inner-wrap">
-			<div class="link-out">
-				<a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do" target="_blank" title="새창 열림">지역일하라</a>
-				<a href="/useInfo/empCenterInfo/useEmpIntroList.do" target="" title="새창">고용복지<sup></sup>센터</a>
-				<a href="#3" title="새창 열림" onclick="f_moveUrl('WT')">장애인고용포털</a>
-			</div>
+			
 			<div class="util">
 				<!-- 로그인 전 -->
 
@@ -56,27 +52,10 @@ body {
 								<span>[기업]</span>
 							  ${login.name}님
 						</a>
-						<ul>
-
-								<!-- 개인 -->
-								<li><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지 홈</a></li>
-								<li><a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do">회원정보관리</a></li>
-								<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">구직신청관리</a></li>
-								<li><a href="#" onclick="worknet.popup.popCenterSuppAgree(); return false;" target="_blank" title="새창">고객지원</a></li>
-
-
-						</ul>
+					
 					</div>
 					<a href="#" onclick="f_logout();" class="font-blue">로그아웃</a>
 
-
-				<!-- 공통 -->
-				<a href="#" class="worknet-chatbot-start-button-for-client">챗봇</a>
-				<a href="jobtalk.do">취업톡톡<img src="static/images/common/ico/ico-gnb-new.png" style="width:15px; height:15px" class="va-m" alt="new"></a>
-				<a href="/useInfo/worknetInfo/useWorknetGuide.do">이용안내</a>
-				<a href="info.do">고객센터</a>
-				<a href="http://as82.kr/keis" target="_blank" title="새창">원격지원</a>
-				<a href="/useInvite/worknetHomepgInvite/sitemap.do">사이트맵</a>
 
 			</div>
 		</div>
@@ -97,9 +76,7 @@ body {
 		<ul>
 			<li><a href="companydetail.do?companyid=${login.memberid }" class="menu"><span>기업정보</span></a></li>
 			<li><a href="createTest.do" class="menu"><span>공고등록</span></a></li>
-			<li><a href="myRecruitList.do?memberid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
-			<li><a href="/jobMain.do" class="menu"><span></span></a>
-
+			<li><a href="myRecruitList.do?memberid=${login.memberid }" class="menu"><span>공고현황</span></a></li>	
 		</ul>
 
 
@@ -109,17 +86,17 @@ body {
 <body>
 
 <br><br><br>
-<div align="center">
+
 <table>
-	<tr>
-		<th><strong>비밀번호를 입력해주세요</strong>
+	<tr align="center">
+		<th><strong >비밀번호를 입력해주세요</strong>
 		<input type="password" name="pwd" id="pwdval"  >
 		<button onclick="pwdch('${login.memberid }','${login.pwd}')">확인</button>
 		</th>
 
 	</tr>
 </table>
-</div>
+
 <br><br><br>
 </body>
 

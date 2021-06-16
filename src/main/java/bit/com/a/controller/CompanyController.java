@@ -63,11 +63,11 @@ public class CompanyController {
 		CompanyDto dto = service.getCompany(memberid);
 		System.out.println("아이디: "+dto.getMemberid());
 		
-		dto.setUpdatecompanylist("YES");
+		
 		model.addAttribute("company",dto);
 		System.out.println("af투스트링" + dto.toString());
 		
-		return "redirect:/recuruitlist.do";
+		return "company/companyupdate";
 	}
 
 		

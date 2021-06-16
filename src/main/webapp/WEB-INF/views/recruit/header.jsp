@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <head>
@@ -71,19 +72,20 @@ body {
               <button class="btn dropdown-toggle btn-link" data-toggle="dropdown"> 채용공고</button>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="recuruitlist.do">채용공고 목록으로</a>
-               <!--  <div class="dropdown-divider"></div> -->
+             	<c:if test="${login.auth==2 }">
                 <a class="dropdown-item" href="javascript:createRecruitNew()">채용공고 작성 New</a>
+                </c:if>
               </div>
             </div>
           </li>
 
 
-          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">기업정보</a> </li>
-          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">취업톡톡</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="FAQ.do">FAQ</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="Jobtalklist.do">취업톡톡</a> </li>
           <li class="nav-item font-weight-bold"> <a class="nav-link active" href="calendarlist1.do">공채달력</a> </li>
-          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">자료실</a> </li>
-          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">이력서관리</a> </li>
-          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">기업관리</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="pdslist.do">자료실</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="resumeMain.do?memberid=${login.memberid}">이력서관리</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="newslist.do">취업뉴스</a> </li>
 
         </ul>
         <ul class="navbar-nav">

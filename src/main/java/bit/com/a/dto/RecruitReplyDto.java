@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class RecruitReplyDto implements Serializable {
 
 	private int replyrecruitseq;	// 댓글 번호
-	private int jobseq; // 채용공고 번호
+	private int jobSeq; // 채용공고 번호
 	private String reply_content;
 	private String memberid;
 	private String rdate;
@@ -18,34 +18,20 @@ public class RecruitReplyDto implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	
-
-	
-
-	public RecruitReplyDto(int replyrecruitseq, int jobseq, String reply_content, String memberid, String rdate,
+	public RecruitReplyDto(int replyrecruitseq, int jobSeq, String reply_content, String memberid, String rdate,
 			int reply_count) {
 		super();
 		this.replyrecruitseq = replyrecruitseq;
-		this.jobseq = jobseq;
+		this.jobSeq = jobSeq;
 		this.reply_content = reply_content;
 		this.memberid = memberid;
 		this.rdate = rdate;
 		this.reply_count = reply_count;
 	}
 
-
-	
-
-
-
 	public int getReplyrecruitseq() {
 		return replyrecruitseq;
 	}
-
-
-
-
 
 
 	public void setReplyrecruitseq(int replyrecruitseq) {
@@ -54,18 +40,13 @@ public class RecruitReplyDto implements Serializable {
 
 
 
-
-
-
-	public int getJobseq() {
-		return jobseq;
+	public int getJobSeq() {
+		return jobSeq;
 	}
 
-
-	public void setJobseq(int jobseq) {
-		this.jobseq = jobseq;
+	public void setJobSeq(int jobSeq) {
+		this.jobSeq = jobSeq;
 	}
-
 
 	public String getReply_content() {
 		return reply_content;
@@ -76,16 +57,13 @@ public class RecruitReplyDto implements Serializable {
 		this.reply_content = reply_content;
 	}
 
-
 	public String getMemberid() {
 		return memberid;
 	}
 
-
 	public void setMemberid(String memberid) {
 		this.memberid = memberid;
 	}
-
 
 	public String getRdate() {
 		return rdate;
