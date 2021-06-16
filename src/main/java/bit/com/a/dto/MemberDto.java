@@ -42,13 +42,6 @@ public class MemberDto implements Serializable{
       this.newuserpic = newuserpic;
    }
 
-
-
-
-
-
-
-
    public String getMemberid() {
       return memberid;
    }
