@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,18 +49,145 @@
     		transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
     </style>
+    
+ <!-- 폰트 -->
+<style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+  font-family: "Noto Sans KR", sans-serif !important;
+}
+</style>
+
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+<!------ Ajax ---------->
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<!-- 부트스트랩 -->
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> 
+
+<!-- https://github.com/josecebe/twbs-pagination -->
+<script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
+    
+    
 </head>
 <body>
 
-<img alt="" src="image/1hara.gif">
+
+
+<!-- 상단바 -->
+<nav class="navbar navbar-expand-md sticky-top" style="text-shadow: white 0px 0px 0.2px; box-shadow: black 0px 0px 10px;" id="nav-main"><a class="navbar-brand d-none d-md-block ml-3" href="home.do">
+      <img alt="" src="/sample10/image/흰로고다.gif" id="_logo" height="80" width="160" style="float:left; padding-right: 20px">
+
+    </a>
+    <div class="container-fluid" style="margin-left: 120px;"> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar19" style="">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar19" style="
+    margin-right: 50px;
+">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <div style="position: relative; text-align: right;">
+              <button class="btn dropdown-toggle btn-link" data-toggle="dropdown"> 전체보기</button>
+              <div class="dropdown-menu" style="">
+                <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+              </div>
+            </div>
+          </li>
+
+		<li class="nav-item">
+            <div style="position: relative;
+    text-align: right;">
+              <button class="btn dropdown-toggle btn-link" data-toggle="dropdown"> 채용공고</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="recuruitlist.do">채용공고 목록으로</a>
+               <!--  <div class="dropdown-divider"></div> -->
+                <a class="dropdown-item" href="javascript:createRecruitNew()">채용공고 작성 New</a>
+              </div>
+            </div>
+          </li>
+
+
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">기업정보</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">취업톡톡</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">공채달력</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">자료실</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">이력서관리</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">기업관리</a> </li>
+
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item"> <a class="nav-link" href="#">
+              <i class="fa fa-twitter fa-fw text-primary"></i>
+            </a> </li>
+          <li class="nav-item">
+            <div style="
+    position: relative;
+    text-align: right;
+    margin-left: 500px;
+    ">
+    		<div class="btn-group"> <!--  -->
+              <button class="btn dropdown-toggle  btn-link" data-toggle="dropdown">로그인해주세요</button>
+              <!-- <button class="btn dropdown-toggle btn-link " data-toggle="dropdown">이주영 님</button> -->
+              <div class="dropdown-menu" style=""> <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+              </div>
+            </div><a class="btn" style="background-color: #000000; color: #fff !important;" href="#">로그인</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<script type="text/javascript">
+$(function() {
+	   $(window).scroll(function() {
+	      //ADD CLASS
+	      if ($(".navbar").offset().top > 90) {
+	         //바탕색상변경
+	    	 $(".sticky-top").addClass("top-nav-collapse");
+	         //폰트색상 변경
+	         $(".navbar a").addClass("text-light");
+	         //드랍다운색상 변경
+	         $(".navbar li button").addClass("text-light");
+	         //드랍다운 밑에 있는 a태그도 변경
+	         $(".navbar li button a").addClass("text-dark");
+	         //이미지 변경
+	         $("#_logo").attr("src", "<%=request.getContextPath() %>/image/흰 로고 반전.gif");
+	      } else {
+	         $(".sticky-top").removeClass("top-nav-collapse");
+	         $(".navbar a").removeClass("text-light");
+	         $(".navbar li button").removeClass("text-light");
+	         $(".navbar li button a").removeClass("text-dark");
+	         $("#_logo").attr("src", "<%=request.getContextPath() %>/image/흰로고다.gif");
+	      }
+	   });
+	});
+</script>
+<!-- 상단바 끝 -->
+
+
+
 
 
 <div class="container" style="text-align: center;">
-    <h3>일반 회원</h3>
-    <form method="post" id="myForm" enctype="multipart/form-data">
+
+
+    <form method="post" id="myForm" enctype="multipart/form-data" style="border-style: outset; padding-right: 30px;padding-left: 30px;padding-top: 30px;padding-bottom: 30px;">
         <div class="form-group has-feedback">
 
         <!-- 프로필 사진 -->
+        
+        				<section style="width:400px;height:300px;margin-left: 300px; border-style: outset;">
+        				<h3>일반 회원</h3>
                           <ul>
  						   <li class="img" style="list-style: none; margin-left : 200px">
                                 <div id="image_preview">
@@ -72,6 +200,8 @@
                                 </div>
                             </li>
 						</ul>
+						</section>
+						
                        <script>
                             // 이미지 업로드
                             $('#img').on('change', function() {
@@ -94,6 +224,8 @@
                     	<br><br>
 
         <!-- 프로필사진 등록 끝나는 구간  -->
+        
+    
 
             <label class="control-label" for="id">아이디</label>
           	<div class="input-group">

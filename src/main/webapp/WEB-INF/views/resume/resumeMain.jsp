@@ -581,7 +581,7 @@ System.out.println("param" +param);
 						<li class="list-group-item"><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a>
 						<div>
 						<a href="updateResume.do?seq=<%=resumelist.get(i).getResumeseq()%>" class="box-btn">수정</a>
-						<a href="deleteResume.do?seq=<%=resumelist.get(i).getResumeseq()%>&memberid=${login.memberid}" class="box-btn">삭제</a>
+						<a href="deleteResume.do?resumeseq=<%=resumelist.get(i).getResumeseq()%>&memberid=${login.memberid}" class="box-btn">삭제</a>
 						</div>
 						</li>
 					<% 	
@@ -606,7 +606,7 @@ System.out.println("param" +param);
 											<span class="sr-only"></span>
 										</progress>
 										<a href="updateResume.do?seq=<%=resumeNolist.get(i).getResumeseq()%>" class="box-btn">작성</a>
-										<a href="deleteResume.do?seq=<%=resumeNolist.get(i).getResumeseq()%>" class="box-btn">삭제</a>
+										<a href="deleteResume.do?seq=<%=resumeNolist.get(i).getResumeseq()%>&memberid=${login.memberid}" class="box-btn">삭제</a>
 									</div>
 								</li>
 							<%  
@@ -650,8 +650,12 @@ System.out.println("param" +param);
 										<% } %>
 										
 										<td><%=param.get(i).getApplydate() %></td>
-										<td><img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;"></td>
-										<td><a href="cancelApply.do?<%=param.get(i).getApplyseq() %>" class="box-btn">취소</a></td>
+										<td>
+										<% if(param.get(i).getCompanyread()>0 ) { %>
+										<img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;">
+										<% } %>
+										</td>
+										<td><a href="cancelApply.do?seq=<%=param.get(i).getApplyseq() %>&memberid=${login.memberid}" class="box-btn">취소</a></td>
 									</tr>
 								<%  
 								}

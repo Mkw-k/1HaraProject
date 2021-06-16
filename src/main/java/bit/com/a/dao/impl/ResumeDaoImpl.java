@@ -39,9 +39,9 @@ public class ResumeDaoImpl implements ResumeDao {
 
 
 	@Override
-	public int getseq(String resumetitle) {
+	public int getseq(ResumeDto dto) {
 		// TODO Auto-generated method stub
-		return session.selectOne(ns + "getseq", resumetitle);
+		return session.selectOne(ns + "getseq", dto);
 	}
 
 
@@ -458,6 +458,16 @@ public class ResumeDaoImpl implements ResumeDao {
 	@Override
 	public boolean cancelApply(int seq) {
 		int i = session.insert(ns + "cancelApply", seq);
+		
+        return i>0?true:false;	
+	}
+
+
+
+	@Override
+	public boolean updateReadCount(int seq) {
+		// TODO Auto-generated method stub
+		int i = session.insert(ns + "updateReadCount", seq);
 		
         return i>0?true:false;	
 	}

@@ -98,7 +98,7 @@ public class RecruitDto implements Serializable{
     private String empcount;
     private String comimage;
     
-    //
+    
 
     private List<String> busname;
 
@@ -110,6 +110,8 @@ public class RecruitDto implements Serializable{
 		this.comimage = comimage;
 	}
 
+	
+	
 	public String getContent() {
 		return content;
 	}

@@ -21,7 +21,7 @@ public interface ResumeDao {
 	
 	boolean writeResume(ResumeDto dto);
 	
-	int getseq(String resumetitle);
+	int getseq(ResumeDto dto);
 
 	/* boolean writeEdu(Resume_EduVo eduvo); */
 	
@@ -115,4 +115,6 @@ public interface ResumeDao {
 	boolean deleteUniResume(int seq);
 	
 	boolean cancelApply(int seq);
+	
+	boolean updateReadCount(int seq);
 }

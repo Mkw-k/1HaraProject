@@ -13,8 +13,6 @@
 <!-- CK-editor -->
 <link rel="stylesheet" href="ckeditor5/sample/styles.css">
 <script src="ckeditor5/build/ckeditor.js"></script>
-<!-- 전체 공통 스크립트 임포트 -->
- <c:import url="script.jsp" charEncoding="utf-8"/>
 <!-- PAGE settings 페이지네이션-->
 <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
 <!-- CSS dependencies -->
@@ -22,6 +20,11 @@
 <!-- 외부css파일과 연결 -->
 <link rel="stylesheet" href="./css/wireframe.css">
 
+<script src="assets/js/validation.js" style=""></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<!-- 전체 공통 스크립트 임포트 -->
+ <c:import url="script.jsp" charEncoding="utf-8"/>
 
 <style type="text/css">
 /* buscode selected 된거 쌓는곳 */
@@ -35,87 +38,52 @@
 <c:import url="header.jsp" charEncoding="utf-8"/>
 
 
-<body class="bg-light">
-  <div class="py-5">
+<body class="bg">
+  <div class="py-2">
     <div class="container">
       <div class="row">
-        <div class="text-center col-md-7 mx-auto"> <i class="fa d-block fa-bullseye fa-5x mb-4 text-info"></i>
-          <h2><b style="	box-shadow: 0px 0px 4px  black;	text-shadow: 0px 0px 4px black;">채용공고 등록</b></h2>
-          <p class="lead">프리미엄 회원으로 등록을 원하시면 프리미엄 회원결제를 해주세요. <br>프리미엄 회원이 되시면 우선순위로 공고 최상단에 검색됩니다.</p>
-          <a>프리미엄 회원 등록하러가기</a>
+        <div class="text-center col-md-7 mx-auto"> 
+          
         </div>
       </div>
     </div>
   </div>
  
-  <div class="py-5">
+ 
+  <div class="py-1" >
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
-          <ul class="nav nav-pills">
-            <li class="nav-item"> <a href="" class="nav-link active show" data-toggle="pill" data-target="#tabone">Tab 1</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">Tab 2</a> </li>
-            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">Tab 3</a> </li>
-          </ul>
-          <div class="tab-content mt-2">
-            <div class="tab-pane fade active show" id="tabone" role="tabpanel">
-              <p class="">Which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite.</p>
-            </div>
-            <div class="tab-pane fade" id="tabtwo" role="tabpanel">
-              <p class="">When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface.</p>
-            </div>
-            <div class="tab-pane fade" id="tabthree" role="tabpanel">
-              <p class="">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="py-5" >
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12" style="	margin-bottom: 20px;">
-          <div class="btn-group">
-            <button class="btn btn-primary dropdown-toggle" contenteditable="true" data-toggle="dropdown"> 전체내역</button>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="#_writeFrm1">입력내역1</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#_writeFrm2">입력내역2</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#_writeFrm3">입력내역3</a>
-              <div class="dropdown-divider"></div>
-            </div>
-          </div>
-          <a class="btn btn-light" href="#_writeFrm1">입력내역1</a>
-          <a class="btn btn-light" href="#_writeFrm2">입력내역2</a>
-          <a class="btn btn-light" href="#_writeFrm3" style="">입력내역3</a>
+        <div class="col-md-12" style="margin-bottom: 20px; border-style: outset;">
+        <br>
+        <p>프리미엄 회원으로 등록을 원하시면 프리미엄 회원결제를 해주세요. <br>프리미엄 회원이 되시면 우선순위로 공고 최상단에 검색됩니다.</p>
+          <a style="color: blue;">프리미엄 회원 등록하러가기🏅</a><br><br><br>
+          
         </div>
       </div>
     </div>
     <div class="">
       
       
-      <div class="container">
+      <div class="container" style="border-style: outset;">
         
           <div class="col-md-12 order-md-1">
             <form class="needs-validation" id="_recruitcrefrm" novalidate="" method="post">
-              <h1 class="" id="_writeFrm1">입력내역1(기본입력사항)</h1>
+              <h1 class="" id="_writeFrm1">기본입력사항</h1><br>
               <div class="row">
                 <div class="col-md-6 mb-3"> 
-                <label for="firstName">회사이름</label>
+                <label for="firstName">회사이름<font style="color: red;">*</font></label>
                   <input type="text" class="form-control" id="" placeholder="회사이름" value="${login.companyname }" required="" readonly="readonly">
                   <div class="invalid-feedback"> Valid first name is required. </div>
                 </div>
                 <div class="col-md-6 mb-3"> 
-                <label for="lastName">회사ID *</label>
+                <label for="lastName">회사ID<font style="color: red;">*</font></label>
                   <input type="text" name="companyId" class="form-control" id="_companyId" placeholder="회사ID *" value="${login.memberid }" readonly="readonly" required="">
                   <div class="invalid-feedback"> Valid last name is required. </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-4 mb-3"> 
-                <label for="country">고용형태</label> 
+                <label for="country">고용형태<font style="color: red;">*</font></label> 
           			<select class="custom-select d-block w-100" name="emp_Type">
                     	 <option class="hidden"  selected disabled>고용타입</option>
                     	<option value=1 <c:if test='${dto.education == 1}'>selected="selected" </c:if>> 아르바이트 </option>
@@ -124,7 +92,7 @@
                 	</select>
                   <div class="invalid-feedback"> Please select a valid country. </div>
                 </div>
-                <div class="col-md-4 mb-3"> <label for="state">학력사항</label> 
+                <div class="col-md-4 mb-3"> <label for="state">학력사항<font style="color: red;">*</font></label> 
                 	<select class="custom-select d-block w-100" name="education">
                     	<option class="hidden"  selected disabled>학력구분 *</option>
                         <option value="0"
@@ -160,7 +128,7 @@
                   	</select>
                   <div class="invalid-feedback"> Please provide a valid state. </div>
                 </div>
-                <div class="col-md-4 mb-3"> <label for="state">경력사항</label> 
+                <div class="col-md-4 mb-3"> <label for="state">경력사항<font style="color: red;">*</font></label> 
                 	<select class="custom-select d-block w-100" name="career_Type">
                     	<option class="hidden"  selected disabled>경력구분</option>
                         <option value="100"
@@ -197,18 +165,18 @@
                 <div class="invalid-feedback"> Please enter your shipping address. </div>
               </div> -->
               <div class="row">
-                <div class="col-md-6 mb-3"> <label for="country">채용인원</label>
+                <div class="col-md-6 mb-3"> <label for="country">채용인원<font style="color: red;">*</font></label>
                 <input type="number" name="jobVolumn" value="${dto.jobVolumn }" id="_jobVolumn" placeholder="채용인원(숫자로 입력) *" min="0" max="99" class="form-control">
                   <div class="invalid-feedback"> Please select a valid country. </div>
                 </div>
-                <div class="col-md-6 mb-3"> <label for="zip">급여</label>
+                <div class="col-md-6 mb-3"> <label for="zip">급여<font style="color: red;">*</font></label>
                   <input type="number" min="0" max="9999999" value="${dto.salary }" name="salary" class="form-control" id="_jobVolumn" placeholder="급여입력(0은 회사내규, 1은 면접후결정)" required="">
                   <div class="invalid-feedback"> Zip code required. </div>
                 </div>
                
                <br><br>
               
-              <div class="col-md-6 mb-3"> <label for="address">공고제목</label>
+              <div class="col-md-6 mb-3"> <label for="address">공고제목<font style="color: red;">*</font></label>
                 <input type="text" name="jobTitle" value="${dto.jobTitle }" class="form-control" id="_jobTitle" placeholder="공고제목입력" required="">
                 <div class="invalid-feedback"> Please enter your shipping address. </div>
               </div>
@@ -219,11 +187,11 @@
                <div class="row">
               <div class="col-md-12 mb-12">
 	               <p><label for="address">공고상세내역</label></p>
-	              	<div class="editor" >    	
-	              	${dto.jobContent }  </div>
+	              	<div class="editor">${dto.jobContent }</div>
 	              	
 	              	
-	              	<input type="hidden" name="jobContent" id="_jobContent">              	 
+	              	<input type="hidden" name="jobContent" id="_jobContent">
+	              	<a type="button" href="#_writeFrm2" class="btn btn-primary" style="float: right;">다음입력</a>              	 
 	              
               </div>
               </div>
@@ -236,7 +204,7 @@
         <!-- <div class="container"> -->
         <div class="py-5">
          <div class="container">
-
+			 <h1 class="" id="_writeFrm2">직무분류 및 근무지<font style="color: red;">*</font></h1>
             <div class="row">
                <div class="col-md-12">
 				  
@@ -296,7 +264,7 @@
 							</div>
 
 							<p>
-								<button type="button" id="deleteResult">삭제하기</button>
+								<button type="button" class="btn btn-info" id="deleteResult">삭제하기</button>
 							</p>
 
                   
@@ -338,8 +306,8 @@
 					<input type="text" name="area2Name" id="sample6_detailAddress" placeholder="상세주소" value="${dto.detailAdress2 }">
 					<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 			</div>
-         
-          	
+         	<br>
+          	<a type="button" href="#_writeFrm3" class="btn btn-primary" style="float: right;">다음입력</a>
           </div>
         </div>
         
@@ -347,15 +315,15 @@
         
         
         <div class="container">
-        <h4 class="mb-3" id="_writeFrm3">입력사항3</h4>
+        <h1 class="mb-3" id="_writeFrm3">담당자정보</h1><br>
     
        
         <div class="row">
-          <div class="col-md-6 mb-3"> <label for="cc-name">담당자명</label>
+          <div class="col-md-6 mb-3"> <label for="cc-name">담당자명<font style="color: red;">*</font></label>
             <input type="text" class="form-control" name="mgName" value="${dto.mgName }" id="_manager" placeholder="담당자명" > <small class="text-muted">Full name as displayed on card</small>
             <div class="invalid-feedback"> Name on card is required </div>
           </div>
-          <div class="col-md-6 mb-3"> <label for="cc-number">전화번호</label>
+          <div class="col-md-6 mb-3"> <label for="cc-number">전화번호<font style="color: red;">*</font></label>
             <input type="text" class="form-control" name="mgPhone" value="${dto.mgPhone }" id="_managerPhone" placeholder="담당자연락처" >
             <div class="invalid-feedback"> Credit card number is required </div>
           </div>
@@ -363,7 +331,7 @@
         
         <div class="row">
           <div class="col-md-12">
-            <div class="mb-3"> <label for="email">이메일&nbsp;<span class="text-muted">(Optional)</span></label>
+            <div class="mb-3"> <label for="email">이메일<font style="color: red;">*</font>&nbsp;<span class="text-muted">(Optional)</span></label>
               <input type="email" class="form-control" name="mgEmail" value="${dto.mgEmail }" id="_managerEmail" placeholder="you@example.com">
               <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
             </div>
@@ -371,11 +339,11 @@
         </div>
         
         <div class="row">
-          <div class="col-md-3 mb-3"> <label for="cc-expiration">공고시작일</label>
+          <div class="col-md-3 mb-3"> <label for="cc-expiration">공고시작일<font style="color: red;">*</font></label>
             <input type="datetime-local" value="${dto.jobStart }" name="jobStart" class="form-control" id="_jobStart" placeholder="공고시작일" required="">
             <div class="invalid-feedback"> Expiration date required </div>
           </div>
-          <div class="col-md-3 mb-3"> <label for="cc-expiration">공고종료일</label>
+          <div class="col-md-3 mb-3"> <label for="cc-expiration">공고종료일<font style="color: red;">*</font></label>
             <input type="datetime-local" value="${dto.jobEnd }" name="jobEnd" class="form-control" id="_jobEnd" placeholder="공고종료일" required="">
             <div class="invalid-feedback"> Security code required </div>
           </div>
@@ -390,11 +358,13 @@
         <div class="row">
          	<c:choose> 
           		<c:when test="${dto.certifyUpdate == 'YES'}">
-          			<div class="col-md-12"><a class="btn btn-secondary" href="javascript:jobUpdate();">수정하기</a></div>
+          			<br>
+          			<div class="col-md-12"><a class="btn btn-primary" href="javascript:jobUpdate();">수정하기</a></div>
           			<input type="hidden" value="${dto.jobSeq }" id="_jobSeq" name="jobSeq">          		
           		</c:when> 
         	    <c:otherwise>
-          			<div class="col-md-12"><a class="btn btn-secondary" id="submit" href="javascript:jobRegi();">작성하기</a></div>
+        	    	<br>
+          			<div class="col-md-12"><a class="btn btn-primary" id="submit" href="javascript:jobRegi();">작성하기</a></div>
           		</c:otherwise> 
           	</c:choose> 
           	
@@ -403,6 +373,7 @@
        
        
         <hr class="mb-4">
+        <input type="button" value="예약문자보내기" id="reserveSms" onclick="reseveSms()" name="jobSeq">
       </div>
     </div>
         
@@ -412,7 +383,8 @@
       
         <div class="row">
           <div class="col-md-12 my-4">
-            <div class="col-md-12 text-center d-md-flex align-items-center"> <i class="d-block fa fa-stop-circle fa-2x mr-md-5 text-primary"></i>
+            <div class="col-md-12 text-center d-md-flex align-items-center"> 
+            <img class="d-block fa fa-stop-circle fa-2x text-primary" src="./image/logo3.png"></img>
               <ul class="nav mx-md-auto d-flex justify-content-center">
                 <li class="nav-item"> <a class="nav-link active" href="#">Home</a> </li>
                 <li class="nav-item"> <a class="nav-link" href="#">Features</a> </li>
@@ -446,18 +418,28 @@
     
     
     </div>
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="assets/js/validation.js" style=""></script>
+
   </div>
   <!-- <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo> -->
-  
-  
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <script type="text/javascript">
 
 
+function reseveSms() {
+	 $.ajax({
+	        url : "./reserveSendSms.do",
+	        type : "get",
+	        data: {"phonenum": '01026074128', "reserveDate" : '202106122323'},
+	        success:function(list){
+	           alert('success');
+	           //alert(list);
+			},
+	        error:function(){
+	           alert('error');
+	        }
+
+	      });
+}
 
 function jobRegi() {
  
@@ -473,7 +455,7 @@ function jobRegi() {
     //alert($(".editor").html());
     //$("#_jobContent").val($(".editor").html());
     
-    
+   
     
    
     
@@ -858,7 +840,7 @@ $("#deleteResult").click(function() {
 	//alert('선택함');
 	$(".arrBusdata").remove();
 	$( ".list_col3" ).prop("checked", false);
-
+	
 });
 
 
@@ -956,7 +938,20 @@ for(var i=0; i<busValue; i++){
 		//읽기전용으로 셋팅 (디테일페이지에서 사용)
 		//editor.isReadOnly = true;
 		
-		//editor.setData();
+		var readyForm = "";
+		
+		if(${dto.jobContent == null}){
+			readyForm += "<div class='ck-blurred editor ck ck-content ck-editor__editable ck-rounded-corners ck-editor__editable_inline ck-read-only' lang='ko' dir='ltr' role='textbox' aria-label='리치 텍스트 편집기, main' contenteditable='false'><p><li><font>여기를 클릭하셔서 내부에 내용을 입력해주세요</font></li><li>모집부문</li>"+ 
+			"</p><figure class='table ck-widget ck-widget_with-selection-handle' contenteditable='false'><div class='ck ck-widget__selection-handle'><svg class='ck ck-icon' viewBox='0 0 16 16'><path d='M4 0v1H1v3H0V.5A.5.5 0 0 1 .5 0H4zm8 0h3.5a.5.5 0 0 1 .5.5V4h-1V1h-3V0zM4 16H.5a.5.5 0 0 1-.5-.5V12h1v3h3v1zm8 0v-1h3v-3h1v3.5a.5.5 0 0 1-.5.5H12z'></path><path fill-opacity='.256' d='M1 1h14v14H1z'></path><g class='ck-icon__selected-indicator'><path d='M7 0h2v1H7V0zM0 7h1v2H0V7zm15 0h1v2h-1V7zm-8 8h2v1H7v-1z'></path><path fill-opacity='.254' d='M1 1h14v14H1z'></path></g></svg></div><table><tbody><tr><td class='ck-editor__editable ck-editor__nested-editable' contenteditable='false'><span style='display:inline-block;'><strong>모집부문</strong></span></td><td class='ck-editor__editable ck-editor__nested-editable' contenteditable='false'><span style='display:inline-block;'><strong>담당업무</strong></span></td><td class='ck-editor__editable ck-editor__nested-editable' contenteditable='false'><span style='display:inline-block;'><strong>자격요건</strong></span></td><td class='ck-editor__editable ck-editor__nested-editable' contenteditable='false'><span style='display:inline-block;'><strong>인원</strong></span></td></tr><tr><td class='ck-editor__editable ck-editor__nested-editable' contenteditable='false'><span style='display:inline-block;'><strong>업무</strong></span></td><td class='ck-editor__editable ck-editor__nested-editable' contenteditable='false'><ul><li><span style='background-color:rgb(255,255,255);color:rgb(34,34,34);'></span></li><li><span style='background-color:rgb(255,255,255);color:rgb(34,34,34);'></span></li></ul></td><td class='ck-editor__editable ck-editor__nested-editable' contenteditable='false'><ul><li><span style='background-color:rgb(255,255,255);color:rgb(34,34,34);'>학력 : </span></li><li><span style='background-color:rgb(255,255,255);color:rgb(34,34,34);'>나이/성별 : </span></li><li><span style='background-color:rgb(255,255,255);color:rgb(34,34,34);'>경력 : </span></li></ul></td><td class='ck-editor__editable ck-editor__nested-editable' contenteditable='false'><p><br data-cke-filler='true'></p><p><span style='background-color:rgb(255,255,255);color:rgb(34,34,34);'>0명</span></p></td></tr></tbody></table><div class='ck ck-reset_all ck-widget__type-around'><div class='ck ck-widget__type-around__button ck-widget__type-around__button_before' title='Insert paragraph before block'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'><path d='M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038'></path></svg></div><div class='ck ck-widget__type-around__button ck-widget__type-around__button_after' title='Insert paragraph after block'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'><path d='M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038'></path></svg></div><div class='ck ck-widget__type-around__fake-caret'></div></div></figure><ul><li>근무조건<br>ㆍ근무형태 : <br>ㆍ근무일시 : <br>ㆍ급여 : <br>ㆍ근무지역 : <br>ㆍ인근전철 : <br><br data-cke-filler='true'></li><li>복리후생&nbsp;<br>ㆍ급여제도 : <br>ㆍ선물 : <br>ㆍ교육/생활 : <br><br data-cke-filler='true'></li><li>전형절차<br><br data-cke-filler='true'></li></ul><figure class='image ck-widget ck-widget_with-resizer' contenteditable='false'><img src='https://www.saraminimage.co.kr/recruit/bbs_recruit4/d8_s_210512_03.png' alt='전형절차'><div class='ck ck-reset_all ck-widget__type-around'><div class='ck ck-widget__type-around__button ck-widget__type-around__button_before' title='Insert paragraph before block'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'><path d='M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038'></path></svg></div><div class='ck ck-widget__type-around__button ck-widget__type-around__button_after' title='Insert paragraph after block'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'><path d='M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038'></path></svg></div><div class='ck ck-widget__type-around__fake-caret'></div></div><figcaption class='ck-editor__editable ck-editor__nested-editable ck-hidden ck-placeholder' data-placeholder='사진 설명을 입력하세요' contenteditable='false'><br data-cke-filler='true'></figcaption><div class='ck ck-reset_all ck-widget__resizer' style='display: none;'><div class='ck-widget__resizer__handle ck-widget__resizer__handle-top-left'></div><div class='ck-widget__resizer__handle ck-widget__resizer__handle-top-right'></div><div class='ck-widget__resizer__handle ck-widget__resizer__handle-bottom-right'></div><div class='ck-widget__resizer__handle ck-widget__resizer__handle-bottom-left'></div><div class='ck ck-size-view' style='display: none;'></div></div></figure><ul><li>제출서류<br>ㆍ자기소개서<br><br data-cke-filler='true'></li><li>지원서 접수<br>ㆍ접수기간 : <strong> 년 월 일 시 마감</strong><br>ㆍ접수방법 : <strong>일하라 입사지원</strong><br><br data-cke-filler='true'></li><li>문의사항<br>ㆍ담당자 : <br>ㆍ연락처 : <br><br data-cke-filler='true'></li><li>기타사항<br>ㆍ입사지원 서류에 허위사실이 발견될 경우, 채용확정 이후라도 채용이 취소될 수 있습니다.</li></ul></div>";
+			
+			editor.setData(readyForm);
+		}
+	
+		
+	
+		
+		
+		
 		
 		
 		
@@ -980,7 +975,7 @@ for(var i=0; i<busValue; i++){
   
 	</script>
   
-  
+
   
   
   

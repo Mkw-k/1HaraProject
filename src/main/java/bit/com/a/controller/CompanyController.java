@@ -67,7 +67,7 @@ public class CompanyController {
 		model.addAttribute("company",dto);
 		System.out.println("af투스트링" + dto.toString());
 		
-		return "company/companyupdate";
+		return "redirect:/recuruitlist.do";
 	}
 
 		
