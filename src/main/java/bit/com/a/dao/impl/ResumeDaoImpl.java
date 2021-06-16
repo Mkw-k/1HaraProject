@@ -14,6 +14,7 @@ import bit.com.a.dto.Resume_AwardVo;
 import bit.com.a.dto.Resume_CareerVo;
 import bit.com.a.dto.Resume_HighschoolDto;
 import bit.com.a.dto.Resume_LanguageVo;
+import bit.com.a.dto.Resume_Portfolio;
 import bit.com.a.dto.Resume_UniversityVo;
 import bit.com.a.dto.Resume_licenseVo;
 
@@ -187,16 +188,6 @@ public class ResumeDaoImpl implements ResumeDao {
 
 
 	@Override
-	public boolean deleteEduResume(int seq) {
-		// TODO Auto-generated method stub
-		int i = session.insert(ns + "deleteEduResume", seq);
-		
-        return i>0?true:false;	
-	}
-
-
-
-	@Override
 	public boolean deleteCareerResume(int seq) {
 		// TODO Auto-generated method stub
 		int i = session.insert(ns + "deleteCareerResume", seq);
@@ -219,7 +210,7 @@ public class ResumeDaoImpl implements ResumeDao {
 	@Override
 	public boolean deleteActivityResume(int seq) {
 		// TODO Auto-generated method stub
-		int i = session.insert(ns + "deleteResume", seq);
+		int i = session.insert(ns + "deleteActivityResume", seq);
 		
         return i>0?true:false;	
 	}
@@ -470,6 +461,24 @@ public class ResumeDaoImpl implements ResumeDao {
 		int i = session.insert(ns + "updateReadCount", seq);
 		
         return i>0?true:false;	
+	}
+
+
+
+	@Override
+	public boolean writePortfolio(Resume_Portfolio dto) {
+		// TODO Auto-generated method stub
+		int i = session.insert(ns + "writePortfolio", dto);
+		
+        return i>0?true:false;	
+	}
+
+
+
+	@Override
+	public List<Resume_Portfolio> getPortfolio(String memberid) {
+		// TODO Auto-generated method stub
+		return session.selectList(ns+"getPortfolio", memberid);
 	}
 	
 	
