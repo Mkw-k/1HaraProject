@@ -2692,9 +2692,7 @@ z-index: 10;"><span class="bar"></span></button>
                 </div>
             </div>
         </div>
-        <div class="wrap_my_area" style="
-    width: 401px;
-">
+        <div class="wrap_my_area" style="width: 401px;">
 
 
 
