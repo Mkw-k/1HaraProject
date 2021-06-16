@@ -452,6 +452,166 @@ body{
     -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
     box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
 }
+<<<<<<< HEAD
+
+ /* Icon */
+  .bar {position: relative;}
+
+    .bar:before,
+    .bar:after {
+    content: "";
+    position: absolute;
+    }
+
+    .bar:before,
+    .bar:after,
+    .bar {
+    width: 24px;
+    height: 3px;
+    background: black;
+    margin: 3px 0;
+    display: block;
+    }
+
+    .bar:before { bottom: 100%; }
+    .bar:after { top: 100%; }
+    .bar.active:after { top: 0; }
+    .bar.active:before { bottom: -200%; }
+    .bar.active { background-color: transparent; }
+    .bar, .bar:before, .bar:after { transition: all .25s linear !important; }
+    .bar.active:before,  .bar.active:after { transition-delay: .15s !important; }
+    .bar.active:before { transform: rotate(45deg); }
+    .bar.active:after { transform: rotate(-45deg); }
+
+.outside {
+width: 25%;
+min-width: 200px;
+max-width: 250px;
+height: 100%;
+transform: translateX(-101%);
+transition: all .5s cubic-bezier(0,0.05,0,1.3);
+overflow: hidden;
+}
+
+.in {
+transform: translateX(0);
+transition: 0;
+}
+
+.inside {
+position: absolute;
+top: 0;
+bottom: 0;
+margin: auto;
+display: block;
+width: 100%;
+height: 100%;
+background: whitesmoke;
+border-right: 1px solid rgba(255,255,255,0.2);
+border-radius: 0 100% 100% 0;
+transition: all .25s cubic-bezier(1,0.05,1,1.5);
+transition-delay: .5s;
+
+}
+
+.in .inside {
+border-radius: 0;
+transition-delay: 0s;
+
+}
+
+/* material animation */
+.inside:before {
+content: "";
+width: 2100px;
+height: 2100px;
+display: block;
+background-color: white;
+position: absolute;
+  top: -50%;
+  left: -100%;
+  z-index: -1;
+transition: all .75s linear;
+transition-delay: .15s;
+transform: scale(0);
+transform-origin: top right;
+border-radius: 1000px;
+}
+
+.outside.in .inside:before {
+transform: scale(1);
+
+}
+
+/* Menu */
+ul.menu {
+list-style: none;
+margin: 0;
+padding: 0;
+line-height: 2;
+}
+
+.menu li {
+background: whitesmoke;
+opacity: 0;
+padding: 12px 22px;
+border-bottom: 1px solid rgba(255,255,255,.5);
+color: gray;
+transition: all .25s linear;
+}
+
+.in .menu li {
+transform: translateX(0%);
+opacity: 1;
+}
+
+.in .menu li:nth-child(1) { transition-delay: 1s; }
+.in .menu li:nth-child(2) { transition-delay: 1.15s; }
+.in .menu li:nth-child(3) { transition-delay: 1.25s; }
+.in .menu li:nth-child(4) { transition-delay: 1.35s; }
+.in .menu li:nth-child(5) { transition-delay: 1.45s; }
+.in .menu li:nth-child(6) { transition-delay: 1.55s; }
+.in .menu li:nth-child(7) { transition-delay: 1.65s; }
+
+/* Animation */
+
+.in .inside {
+  -webkit-animation: bounce 1s both;
+}
+
+
+/* Generated with Bounce.js. Edit at https://goo.gl/zdjCb0 */
+
+@-webkit-keyframes bounce {
+ 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  27.68% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  27.78% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -100, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -100, 0, 0, 1); }
+  29.73% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -49.785, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -49.785, 0, 0, 1); }
+  31.61% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.659, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.659, 0, 0, 1); }
+  33.06% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -23.527, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -23.527, 0, 0, 1); }
+  34.43% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -30.089, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -30.089, 0, 0, 1); }
+  36.81% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -18.067, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -18.067, 0, 0, 1); }
+  39.2% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.115, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.115, 0, 0, 1); }
+  42.09% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -8.347, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -8.347, 0, 0, 1); }
+  46.79% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.013, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.013, 0, 0, 1); }
+  49.68% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2.316, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2.316, 0, 0, 1); }
+  54.38% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.002, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.002, 0, 0, 1); }
+  57.27% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.643, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.643, 0, 0, 1); }
+  62.05% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.007, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.007, 0, 0, 1); }
+  64.86% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.178, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.178, 0, 0, 1); }
+  69.64% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.002, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.002, 0, 0, 1); }
+  72.53% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.049, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.049, 0, 0, 1); }
+  77.23% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  80.12% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.014, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.014, 0, 0, 1); }
+  84.82% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  87.71% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.004, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.004, 0, 0, 1); }
+  92.48% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  95.3% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); }
+  100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+}
+
+=======
+>>>>>>> d8ec9437902769692056210040f8be523b7edf9b
 /* 모달 */
 #login-modal {
 margin-right : 450px;
@@ -763,7 +923,7 @@ margin-right : 450px;
            <!--    <form action="loginAf.do" method="post" id="_frmFrom"> -->
              <!--     <input type="hidden" name="param" value="loginAf.do"> -->
 
-          <ul class="nav nav-pills">
+          <ul class="nav nav-pills" style="margin-left: 0">
             <li class="nav-item"> <a href="" class="nav-link active show" data-toggle="pill" data-target="#tabone">개인회원</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">기업회원</a> </li>
 
@@ -787,8 +947,8 @@ margin-right : 450px;
                         <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
                      </p>
               </form>
-                 <a href="javascript:kakaoLogin()">
-               <img alt="" src="https://img.eduwill.net/Img2/Common/Join/new/btn-kakao-large.png">
+                 <a href="javascript:kakaoLogin()" >
+               <img alt="" src="https://img.eduwill.net/Img2/Common/Join/new/btn-kakao-large.png" style="margin: 0 auto;">
               </a>
               <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
               <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
@@ -797,7 +957,7 @@ margin-right : 450px;
 
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
-
+           
 
               <form id="login_frm" name="login_frm" method="post" action="businessloginAf.do">
                   <input type="hidden" name="page_url" value="">
@@ -2453,7 +2613,7 @@ margin-right : 450px;
 ">
 		                        <div>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br>10대기업</a>
-		                          <a href="calendarlist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
+		                          <a href="calendarlist1.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
 		                        </div>
 		                        <div>
@@ -2713,7 +2873,7 @@ z-index: 10;"><span class="bar"></span></button>
 ">
 		                        <div>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br>10대기업</a>
-		                          <a href="calendarlist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
+		                          <a href="calendarlist1.do.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
 		                        </div>
 		                        <div>

@@ -259,7 +259,11 @@
 
 							<div class="col-md-12">
 								<p id="selectResult">
-									${dto.busname}
+								  <c:if test="${dto.certifyUpdate == 'YES'}">
+								  	기존선택했던 직무분류 : ${dto.busname}<br>
+								  </c:if>
+								  
+									
 								</p>
 							</div>
 

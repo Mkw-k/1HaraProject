@@ -382,7 +382,6 @@ WHERE JOBSEQ = ${jobseq}
    UPDATE JOB
    SET READCOUNT = READCOUNT +1
    WHERE JOBSEQ = #{jobseq}
-
 </update>
 
 <!-- 삭제기능 -->
@@ -682,14 +681,14 @@ SELECT DISTINCT RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.ARE
 <update id="favoriteJob2" parameterType="bit.com.a.dto.RecruitParam">
 	 UPDATE JOB
      SET JOBLIKE = JOBLIKE +1
-     WHERE JOBSEQ = #{jobseq}
+     WHERE JOBSEQ = #{jobSeq}
  
 </update>
 	 
 <update id="dropFavoriteJob2" parameterType="bit.com.a.dto.RecruitParam">
 	 UPDATE JOB
      SET JOBLIKE = JOBLIKE -1
-     WHERE JOBSEQ = #{jobseq}
+     WHERE JOBSEQ = #{jobSeq}
  
 </update>
 
@@ -707,5 +706,13 @@ WHERE J.COMPANYID = C.MEMBERID AND
      J.JOBSEQ = D.JOBSEQ AND
      J.JOBSEQ = #{jobseq}
 </select> -->
+
+
+<select id="getPhonenum" parameterType="String" resultType="String">
+	SELECT PHONENUM 
+	FROM MEMBER
+	WHERE MEMBERID = #{memberid}
+
+</select>
 
 </mapper>

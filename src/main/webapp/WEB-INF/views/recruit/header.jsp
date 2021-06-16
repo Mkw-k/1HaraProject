@@ -80,7 +80,7 @@ body {
 
           <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">기업정보</a> </li>
           <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">취업톡톡</a> </li>
-          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">공채달력</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="calendarlist1.do">공채달력</a> </li>
           <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">자료실</a> </li>
           <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">이력서관리</a> </li>
           <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">기업관리</a> </li>

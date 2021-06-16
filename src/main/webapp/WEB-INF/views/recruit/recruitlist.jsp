@@ -291,6 +291,7 @@ hr {
 </head>
 
 <body>
+
 <c:import url="script.jsp" charEncoding="utf-8"/>
 
 <c:import url="header.jsp" charEncoding="utf-8"/> 
@@ -323,8 +324,7 @@ hr {
          </nav>
 
 		<h3 class="text-muted" style="
-    margin-left: 250px;
-">채용공고 게시판</h3>
+    margin-left: 250px;">채용공고 게시판</h3>
 
          <div class="m-5"></div>
       </div>
@@ -467,23 +467,7 @@ hr {
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-                            <select class="form-control search-slt" name="careerStart" style="font-size: 12pt">
-                                <option disabled="disabled">경력시작</option>
-                                <option value="100">무관</option>
-                                <option value="1">신입</option>
-                                <option value="2">1년</option>
-                                <option value="3">2년</option>
-                                <option value="4">3년</option>
-                                <option value="5">4년</option>
-                                <option value="6">5년</option>
-                                <option value="7">6년</option>
-                                <option value="8">7년</option>
-                                <option value="9">8년</option>
-                                <option value="10">9년</option>
-                                <option value="11">10년</option>
 
-                            </select>
-                            <h3>~</h3>
                             <select class="form-control search-slt" name="careerEnd" style="font-size: 12pt">
                                 <option disabled="disabled">경력끝</option>
                                 <option value="100">무관</option>
@@ -586,6 +570,8 @@ hr {
 
 
          <table class="table table-hover col-sm-12 " style="" id="table">
+             <col width="5%"><col width="10%"><col width="35%"><col width="15%">
+             <col width="5%"><col width="15%"><col width="15%">
             <thead class="thead-dark">
                <tr>
                   <th>#</th>
@@ -807,8 +793,16 @@ function getrecruitSearchList(pnum) {
  			$(".list_col").remove();
 
  			var memberid = '<c:out value="${login.memberid}"/>';
+ 			
 
  			$.each(list, function(i, val){
+ 				
+ 				var end = val.jobEnd;
+ 	 			var regdate = val.regdate;
+ 	 			end = end.substr(2,9);
+ 	 			regdate = regdate.substr(2,9);
+ 	 			
+ 	 			
  				//alert(val.jobSeq);
  				let app = "<tr class= 'list_col'>"
  							+"<td>" + val.rnum +"</td>";
@@ -832,8 +826,14 @@ function getrecruitSearchList(pnum) {
  									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
  									+"<td>" + val.jobVolumn + "</td>"
  									+"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
- 									+"<td>" + val.jobEnd +"<br>"+val.regdate+ "&nbsp;&nbsp;"
- 									+"<input type='button' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"+ "</td>";
+ 									+"<td>" + end +"<br>"+regdate;
+ 									  
+ 									if(val.companyId == '${login.memberid}'){
+ 								app += "<input type='button' class='btn btn-primary' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >" 	
+ 									}
+ 									
+ 								app += "</td>";
+ 									
  							}
 
  							else{

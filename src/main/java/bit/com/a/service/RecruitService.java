@@ -79,6 +79,11 @@ public interface RecruitService {
 
 	CompanyDto getCompany(int jobseq);
 
+	String getPhonenum(String memberid);
+
+
+
+
 
 
 
