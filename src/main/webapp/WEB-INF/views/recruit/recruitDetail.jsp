@@ -166,8 +166,8 @@ font-weight: bold;
           					<a class="btn btn-secondary red" href="javascript:comFavorite(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
           					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
           		</c:otherwise>
-          	</c:choose>	
-             
+          	</c:choose>
+
           ${dto.jobTitle}
          </h3>
 
@@ -345,7 +345,7 @@ font-weight: bold;
         </div>
         <div class="col-md-8 bg-light" style="">
           <div class="companydetail"> <p>지원방법</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일하라 입사지원 </div>
-          
+
           <div>
            <!--  <a class="btn btn-secondary" href="#" id="_apply">입사지원</a> -->
           </div>
@@ -377,9 +377,8 @@ font-weight: bold;
 
             	<p style="margin-top:-12px">
 			    <em class="link">
-			       <!--  <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
-			            혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
-			        </a> -->
+
+
 			    </em>
 			</p>
 			<div id="map" style="width:100%;height:350px;"></div>
@@ -401,11 +400,12 @@ font-weight: bold;
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-			<table>
+			<table class="table table-hover col-sm-12 " >
 				<tr>
 					<th>사업</th><td>${com.content }</td>
 				</tr>
 				<tr>
+					<%-- <th><img alt="" src="./upload/${com.filename}"></th> --%>
 					<th>사원수</th><td>${com.empcount }</td>
 				</tr>
 				<tr>
@@ -505,17 +505,17 @@ font-weight: bold;
                   			<li>개인정보가 포함되거나 부적절한 답변은 비노출 또는 해당 서비스 이용 불가 처리될 수 있습니다.</li>
                			</ul>
 					</div>
-				</c:if>		
+				</c:if>
 				<c:forEach var="row" items="${replylist}">
-				<input type="hidden" name="replyrecruitseq" value="${row.replyrecruitseq}">	
-				<input type="hidden" name="jobSeq" value="${row.jobSeq}">	
+				<input type="hidden" name="replyrecruitseq" value="${row.replyrecruitseq}">
+				<input type="hidden" name="jobSeq" value="${row.jobSeq}">
 				<div class="viewListWrap">
                 	<div class="headerWrap">
                     	<div class="numBx">
                            <span>답변 <span class="num">${row.reply_count}</span></span>
                         </div>
                     </div>
-					<div class="listWrap commonSecWrap">	
+					<div class="listWrap commonSecWrap">
    						 	<ul class="answerArea">
                 				<li>
                 					<div class="contSec devContSection" style="display: block;">
@@ -540,17 +540,17 @@ font-weight: bold;
                 								<div class="cmtList replyWrap">
                 									<ul class="cmtList replyWrap">
                                 						<!-- [Dev] 내 댓글일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 삭제만 노출 -->
-                            						</ul>          						
+                            						</ul>
                 								</div>
-                							</div>	
+                							</div>
                 						</div>
                 					</div>
                 				</li>
 					  		</ul>
 						</div>
 			   		</div>
-			   	</c:forEach>  
-  
+			   	</c:forEach>
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" style=""></script>
 
 
@@ -954,7 +954,7 @@ function getReserveDate(rest)
 
 
 function jobApply(jobseq, memberid, resumeseq) {
-	
+
 	alert("jobApply");
 	//alert(jobseq);
 	//alert(memberid);
@@ -964,14 +964,14 @@ function jobApply(jobseq, memberid, resumeseq) {
 	let endDate = '${dto.jobEnd}';
 	var reserve = charchen(endDate);
 	alert("이게 예약시간 : "+ reserve);
- 	
+
 	var phone = getPhonenum(memberid);
 	alert("이게 연락처"+phone);
-	
+
 	var title = '${dto.jobTitle}';
-	
-	
-	
+
+
+
 	$.ajax({
         type : 'get',
         url : './reserveSendSms.do',
@@ -984,43 +984,43 @@ function jobApply(jobseq, memberid, resumeseq) {
 		error:function(){
 			alert('error');
 		}
-    }); 
-	
-	
-	
- 
+    });
+
+
+
+
     location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
 
 }
 
 
 
-//회원 아이디로 전화번호를 가지고 올수 있는 메서드 
+//회원 아이디로 전화번호를 가지고 올수 있는 메서드
 function getPhonenum(memberid) {
 	var pnumber = "";
-	
+
 	 $.ajax({
 	     url : "./getPhonenum.do",
 	     type : "get",
-	     async: false, 
+	     async: false,
 	     data: {"memberid": memberid},
 	     success:function(phonenumber){
 	        alert('success');
 	        alert(phonenumber);
 	        phoneNum = phonenumber;
 	        $("#phonenumber").val(phonenumber);
-	        
+
 			},
 	     error:function(){
 	        alert('error');
 	     }
 
 	   });
-	 
+
 	 pnumber = phoneNum;
-	 
+
 	 return pnumber;
-	 
+
 }
 
 
