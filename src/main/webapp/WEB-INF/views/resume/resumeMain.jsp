@@ -678,14 +678,15 @@ System.out.println("portlist" +portlist);
 						<div class="bs-callout bs-callout-primary">
 							<table class="table" style="width: 1100px; text-align: center; margin-left: 400px;">
 							<colgroup>
-							<col width="350px"><col width="350px"><col width="200px"><col width="100px"><col width="100px">
+							<col width="350px"><col width="350px"><col width="100px"><col width="100px"><col width="100px"><col width="100px">
 							</colgroup>
 								<thead>
 									<tr>
 										<td>지원공고</td>
 										<td>지원이력서</td>
+										<td>포트폴리오</td>
 										<td>지원일</td>
-										<td>열람여부</td>
+										<td>기업열람여부</td>
 										<td>지원취소</td>
 									</tr>
 								</thead>
@@ -706,6 +707,11 @@ System.out.println("portlist" +portlist);
 										
 										<% } %>
 										
+										<% if(param.get(i).getPortfolioname()!=null){ %>
+										<td><%=param.get(i).getPortfolioname() %></td>
+										<%} else{%>
+										<td></td>
+										<%} %>
 										<td><%=param.get(i).getApplydate() %></td>
 										<td>
 										<% if(param.get(i).getCompanyread()>0 ) { %>

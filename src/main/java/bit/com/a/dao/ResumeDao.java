@@ -122,4 +122,6 @@ public interface ResumeDao {
 	boolean writePortfolio(Resume_Portfolio dto);
 	
 	List<Resume_Portfolio> getPortfolio(String memberid);
+	
+	String getPortfolioname(int portfolioseq);
 }

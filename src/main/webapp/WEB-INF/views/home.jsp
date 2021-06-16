@@ -537,8 +537,9 @@ margin-right : 450px;
 <span class="marker"><svg aria-hidden="true"><use xlink:href="#svg_gnb_more"></use></svg></span>
 <ul>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="Jobtalklist.do"><span>취업톡톡💬</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="FAQ.do"><span>FAQ</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="faq.do"><span>FAQ</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents2')" href="notice.do"><span>공지사항</span></a></li>
+<%-- <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents2')" href="resumeMain.do?memberid=${login.memberid }"><span>공지사항</span></a></li> --%>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','jumpit')" href="https://www.jumpit.co.kr" target="_blank"><span class="icon icon_jumpit">점핏</span></a></li>
 </ul>
 </div>

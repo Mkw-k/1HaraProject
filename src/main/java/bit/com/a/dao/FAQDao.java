@@ -14,3 +14,4 @@ public interface FAQDao {
 	boolean deleteFAQ(int seq);
 	List<FAQDto> getsearchFAQ(String search);
 }
+

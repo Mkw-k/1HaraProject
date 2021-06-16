@@ -27,6 +27,7 @@ import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 import bit.com.a.dto.RecruitReplyDto;
 import bit.com.a.dto.ResumeDto;
+import bit.com.a.dto.Resume_Portfolio;
 import bit.com.a.service.RecruitReplyService;
 import bit.com.a.service.MypageService;
 import bit.com.a.service.RecruitService;
@@ -414,18 +415,16 @@ public class RecruitController {
    @RequestMapping(value = "RecruitDetail.do", method = RequestMethod.GET)
    public String RecruitDetail(int jobseq, Model model, String memberid) {
 
+      //디테일 데이터 받아오기
+      System.out.println("seq:"+jobseq);
+      RecruitDto dto = service.getRecruitListOne(jobseq);
+      List<ResumeDto> resumelist = resumeservice.getresume(memberid);
+      List<Resume_Portfolio> portlist = resumeservice.getPortfolio(memberid);
+
+      System.out.println(dto.toString());
+      System.out.println(portlist.toString()+"0000000000000000000000000000000000000000000000000000");
+
 		model.addAttribute("doc_title", "채용공고");
-
-		 //MemberDto mem = Myservice.getMypage(memberid);
-
-		  //디테일 데이터 받아오기
-		  System.out.println("seq:"+jobseq);
-
-
-		  RecruitDto dto = service.getRecruitListOne(jobseq);
-		  List<ResumeDto> resumelist = resumeservice.getresume(memberid);
-
-		  System.out.println(dto.toString());
 
 		  //직무이름 받아오는 코드
 		  List<String> list = service.getBsnameForDetail(jobseq);
@@ -445,7 +444,6 @@ public class RecruitController {
 
 		  dto.setFavoriteJob(jobFavoriteCount);
 
-
 		  //검색용 파라미터 dto설정
 		  param.setCompanyId(dto.getCompanyId());
 		  param.setMemberid(memberid);
@@ -460,6 +458,7 @@ public class RecruitController {
 
 		  model.addAttribute("dto", dto);
 		  model.addAttribute("resumelist", resumelist);
+		  model.addAttribute("portlist", portlist);
 
 
       return "recruit/recruitDetail";
@@ -486,6 +485,7 @@ public class RecruitController {
       System.out.println("seq:"+jobSeq);
       RecruitDto dto = service.getRecruitListOne(jobSeq);
       List<ResumeDto> resumelist = resumeservice.getresume(memberid);
+      List<Resume_Portfolio> portlist = resumeservice.getPortfolio(memberid);
 
       System.out.println(dto.toString());
 
@@ -522,7 +522,7 @@ public class RecruitController {
 
       model.addAttribute("dto", dto);
       model.addAttribute("resumelist", resumelist);
-
+      model.addAttribute("portlist", portlist);
 
 
       List<RecruitReplyDto> replylist = recruitservice.list(jobSeq);
