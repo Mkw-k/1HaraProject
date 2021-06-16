@@ -53,10 +53,10 @@
   <div class="py-1" >
     <div class="container">
       <div class="row">
-        <div class="col-md-12" style="	margin-bottom: 20px;">
+        <div class="col-md-12" style="margin-bottom: 20px; border-style: outset;">
         <br>
         <p>프리미엄 회원으로 등록을 원하시면 프리미엄 회원결제를 해주세요. <br>프리미엄 회원이 되시면 우선순위로 공고 최상단에 검색됩니다.</p>
-          <a style="color: blue;">프리미엄 회원 등록하러가기</a><br><br><br>
+          <a style="color: blue;">프리미엄 회원 등록하러가기🏅</a><br><br><br>
           
         </div>
       </div>
@@ -64,7 +64,7 @@
     <div class="">
       
       
-      <div class="container">
+      <div class="container" style="border-style: outset;">
         
           <div class="col-md-12 order-md-1">
             <form class="needs-validation" id="_recruitcrefrm" novalidate="" method="post">
@@ -259,7 +259,11 @@
 
 							<div class="col-md-12">
 								<p id="selectResult">
-									${dto.busname}
+								  <c:if test="${dto.certifyUpdate == 'YES'}">
+								  	기존선택했던 직무분류 : ${dto.busname}<br>
+								  </c:if>
+								  
+									
 								</p>
 							</div>
 
@@ -975,7 +979,7 @@ for(var i=0; i<busValue; i++){
   
 	</script>
   
-  
+
   
   
   

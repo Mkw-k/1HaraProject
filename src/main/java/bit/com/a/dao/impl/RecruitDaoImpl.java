@@ -46,6 +46,7 @@ public class RecruitDaoImpl implements RecruitDao{
 
 	@Override
 	public RecruitDto getRecruitListOne(int jobseq) {
+		session.update(ns+"RecuReadcount", jobseq);
 		return session.selectOne(ns+"getRecruitListOne", jobseq);
 	}
 
@@ -195,9 +196,11 @@ public class RecruitDaoImpl implements RecruitDao{
 		return session.selectOne(ns + "getCompany", jobseq);
 	}
 
-
-
-
+@Override
+public String getPhonenum(String memberid) {
+	String phonenumber = session.selectOne(ns+"getPhonenum",memberid);
+	return phonenumber;
+}
 
 
 }

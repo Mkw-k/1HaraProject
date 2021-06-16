@@ -226,7 +226,7 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping(value = "/reserveSendSms.do", method = RequestMethod.GET)
 
-	public String reservSendSms(HttpServletRequest request, String phonenum, String reserveDate) throws Exception {
+	public String reservSendSms(HttpServletRequest request, String phonenum, String reserveDate, String title) throws Exception {
 
 		System.out.println("들어옴~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		
@@ -239,7 +239,7 @@ public class MemberController {
 		HashMap<String, String> set = new HashMap<String, String>();
 		set.put("to", phonenum); // 수신번호
 		set.put("from", "01059559878"); // 발신번호
-		set.put("text", "안녕하세요 일하라입니다"+ "스크랩하신 "+ "title" + "공고의 마감기한이 24시간 남았습니다" ); // 문자내용
+		set.put("text", "안녕하세요 일하라입니다"+ "스크랩하신 "+ title + "공고의 마감기한이 24시간 남았습니다" ); // 문자내용
 		set.put("type", "sms"); // 문자 타입
 
 		System.out.println(set);

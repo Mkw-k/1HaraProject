@@ -14,6 +14,7 @@ import bit.com.a.dto.Resume_AwardVo;
 import bit.com.a.dto.Resume_CareerVo;
 import bit.com.a.dto.Resume_HighschoolDto;
 import bit.com.a.dto.Resume_LanguageVo;
+import bit.com.a.dto.Resume_Portfolio;
 import bit.com.a.dto.Resume_UniversityVo;
 import bit.com.a.dto.Resume_licenseVo;
 import bit.com.a.service.ResumeService;
@@ -131,11 +132,10 @@ public class ResumeServiceImpl implements ResumeService {
 		return dao.deleteResume(seq);
 	}
 
-	@Override
-	public boolean deleteEduResume(int seq) {
-		// TODO Auto-generated method stub
-		return dao.deleteEduResume(seq);
-	}
+	/*
+	 * @Override public boolean deleteEduResume(int seq) { // TODO Auto-generated
+	 * method stub return dao.deleteEduResume(seq); }
+	 */
 
 	@Override
 	public boolean deleteCareerResume(int seq) {
@@ -152,13 +152,13 @@ public class ResumeServiceImpl implements ResumeService {
 	@Override
 	public boolean deleteActivityResume(int seq) {
 		// TODO Auto-generated method stub
-		return dao.deleteLicenseResume(seq);
+		return dao.deleteActivityResume(seq);
 	}
 
 	@Override
 	public boolean deleteAwardResume(int seq) {
 		// TODO Auto-generated method stub
-		return dao.deleteLicenseResume(seq);
+		return dao.deleteAwardResume(seq);
 	}
 
 	@Override
@@ -314,6 +314,18 @@ public class ResumeServiceImpl implements ResumeService {
 	public boolean updateReadCount(int seq) {
 		// TODO Auto-generated method stub
 		return dao.updateReadCount(seq);
+	}
+
+	@Override
+	public boolean writePortfolio(Resume_Portfolio dto) {
+		// TODO Auto-generated method stub
+		return dao.writePortfolio(dto);
+	}
+
+	@Override
+	public List<Resume_Portfolio> getPortfolio(String memberid) {
+		// TODO Auto-generated method stub
+		return dao.getPortfolio(memberid);
 	}
 	
 	

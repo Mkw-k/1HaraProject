@@ -33,6 +33,7 @@ import bit.com.a.dto.Resume_HighschoolDto;
 import bit.com.a.dto.Resume_LanguageDto;
 import bit.com.a.dto.Resume_LanguageVo;
 import bit.com.a.dto.Resume_LicenseDto;
+import bit.com.a.dto.Resume_Portfolio;
 import bit.com.a.dto.Resume_UniversityDto;
 import bit.com.a.dto.Resume_UniversityVo;
 import bit.com.a.dto.Resume_licenseVo;
@@ -59,7 +60,7 @@ public class ResumeController {
 		List<ResumeDto> resumelist = service.getresume(memberid);
 		List<ResumeDto> resumeNolist = service.getNoresume(memberid);
 		List<ApplyDto> applylist = service.getApplyList(memberid);
-		System.out.println("#######################################" + applylist);
+		List<Resume_Portfolio> portlist = service.getPortfolio(memberid);
 		List<ResumeParam> param = new ArrayList<ResumeParam>();
 
 		for (int i = 0; i < applylist.size(); i++) {
@@ -85,6 +86,7 @@ public class ResumeController {
 
 		model.addAttribute("resumelist", resumelist);
 		model.addAttribute("resumeNolist", resumeNolist);
+		model.addAttribute("portlist", portlist);
 		model.addAttribute("param", param);
 
 		return "resume/resumeMain";
@@ -348,7 +350,7 @@ public class ResumeController {
 		List<ResumeDto> resumelist = service.getresume(dto.getMemberid());
 		List<ResumeDto> resumeNolist = service.getNoresume(dto.getMemberid());
 		List<ApplyDto> applylist = service.getApplyList(dto.getMemberid());
-		System.out.println("##########################################" + applylist);
+		List<Resume_Portfolio> portlist = service.getPortfolio(dto.getMemberid());
 		List<ResumeParam> param = new ArrayList<ResumeParam>();
 
 		for (int i = 0; i < applylist.size(); i++) {
@@ -374,6 +376,7 @@ public class ResumeController {
 
 		model.addAttribute("resumelist", resumelist);
 		model.addAttribute("resumeNolist", resumeNolist);
+		model.addAttribute("portlist", portlist);
 		model.addAttribute("param", param);
 
 		return "resume/resumeMain";
@@ -436,7 +439,7 @@ public class ResumeController {
 		List<ResumeDto> resumelist = service.getresume(memberid);
 		List<ResumeDto> resumeNolist = service.getNoresume(memberid);
 		List<ApplyDto> applylist = service.getApplyList(memberid);
-		System.out.println("7777777777777777777777777777777777777777777" + applylist);
+		List<Resume_Portfolio> portlist = service.getPortfolio(memberid);
 		List<ResumeParam> param = new ArrayList<ResumeParam>();
 
 		for (int i = 0; i < applylist.size(); i++) {
@@ -462,6 +465,7 @@ public class ResumeController {
 
 		model.addAttribute("resumelist", resumelist);
 		model.addAttribute("resumeNolist", resumeNolist);
+		model.addAttribute("portlist", portlist);
 		model.addAttribute("param", param);
 
 		return "resume/resumeMain";
@@ -769,7 +773,7 @@ public class ResumeController {
 		List<ResumeDto> resumelist = service.getresume(dto.getMemberid());
 		List<ResumeDto> resumeNolist = service.getNoresume(dto.getMemberid());
 		List<ApplyDto> applylist = service.getApplyList(dto.getMemberid());
-		System.out.println("7777777777777777777777777777777777777777777" + applylist);
+		List<Resume_Portfolio> portlist = service.getPortfolio(dto.getMemberid());
 		List<ResumeParam> param = new ArrayList<ResumeParam>();
 
 		for (int i = 0; i < applylist.size(); i++) {
@@ -795,6 +799,7 @@ public class ResumeController {
 
 		model.addAttribute("resumelist", resumelist);
 		model.addAttribute("resumeNolist", resumeNolist);
+		model.addAttribute("portlist", portlist);
 		model.addAttribute("param", param);
 
 		return "resume/resumeMain";
@@ -815,7 +820,7 @@ public class ResumeController {
 		List<ResumeDto> resumelist = service.getresume(memberid);
 
 		dto.setBusname(list);
-		// 이력서 리스트
+	
 		boolean b = service.addApply(param);
 
 		model.addAttribute("dto", dto);
@@ -838,7 +843,7 @@ public class ResumeController {
 		List<ResumeDto> resumelist = service.getresume(memberid);
 		List<ResumeDto> resumeNolist = service.getNoresume(memberid);
 		List<ApplyDto> applylist = service.getApplyList(memberid);
-		System.out.println("7777777777777777777777777777777777777777777" + applylist);
+		List<Resume_Portfolio> portlist = service.getPortfolio(memberid);
 		List<ResumeParam> param = new ArrayList<ResumeParam>();
 
 		for (int i = 0; i < applylist.size(); i++) {
@@ -864,6 +869,7 @@ public class ResumeController {
 
 		model.addAttribute("resumelist", resumelist);
 		model.addAttribute("resumeNolist", resumeNolist);
+		model.addAttribute("portlist", portlist);
 		model.addAttribute("param", param);
 
 		return "resume/resumeMain";
@@ -899,6 +905,121 @@ public class ResumeController {
 
 			return "resume/Resumedetail";
 		}
+		
+		//포트폴리오 추가하기
+		@RequestMapping(value = "writeportfolio.do", method = { RequestMethod.GET, RequestMethod.POST })
+		public String writeportfolio(Resume_Portfolio dto, @RequestParam(value = "fileload", required = false) MultipartFile fileload,
+				HttpServletRequest req, Model model) {
+
+			System.out.println("fileload : " + fileload);
+			System.out.println(dto.toString());
+			
+			if(!fileload.isEmpty()) {
+				System.out.println("안비었다");
+	        // filename 취득
+	        String filename = fileload.getOriginalFilename();
+	        dto.setPortfolioname(filename);    // 원본 파일명을 설정
+	        
+	        // upload 경로 설정
+	        // server(tomcat)
+	        String fupload = req.getServletContext().getRealPath("/upload");
+	        
+	        // 폴더
+	        // String fupload = "d:\\tmp";
+	        
+	        System.out.println("fupload:" + fupload);
+	        System.out.println(dto.getPortfolioname());
+	        // 파일명 변경 처리
+	        String newfilename = PdsUtil.getNewFileName(dto.getPortfolioname());        
+	        dto.setNewportfolioname(newfilename);
+	        
+	        File file = new File(fupload + "/" + newfilename); 
+	        
+	        try {
+	            // 실제로 업로드 되는 부분
+	            FileUtils.writeByteArrayToFile(file, fileload.getBytes());
+	            
+	            // db에 저장
+	            service.writePortfolio(dto);
+	            
+	        } catch (IOException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+	        
+			}
+			
+			else {
+				dto.setPortfolioname("");
+				dto.setNewportfolioname("");
+				System.out.println("비었다");
+				service.writePortfolio(dto);
+			}
+	        
+
+			// 이력서 리스트
+			List<ResumeDto> resumelist = service.getresume(dto.getMemberid());
+			List<ResumeDto> resumeNolist = service.getNoresume(dto.getMemberid());
+			List<ApplyDto> applylist = service.getApplyList(dto.getMemberid());
+			List<Resume_Portfolio> portlist = service.getPortfolio(dto.getMemberid());
+			List<ResumeParam> param = new ArrayList<ResumeParam>();
+
+			for (int i = 0; i < applylist.size(); i++) {
+
+				ResumeParam pa = new ResumeParam();
+
+				pa.setApplyseq(applylist.get(i).getApplyseq());
+				pa.setJobseq(applylist.get(i).getJobseq());
+				pa.setResumeseq(applylist.get(i).getResumeseq());
+				pa.setApplydate(applylist.get(i).getApplydate());
+				pa.setCompanyread(applylist.get(i).getCompanyread());
+
+				int jobseq = applylist.get(i).getJobseq();
+				String jobtitle = service.getJobtitle(jobseq);
+				pa.setJobtitle(jobtitle);
+
+				int resumeseq = applylist.get(i).getResumeseq();
+				String resumetitle = service.getResumeTitle(resumeseq);
+				pa.setResumetitle(resumetitle);
+
+				param.add(pa);
+			}
+
+			model.addAttribute("resumelist", resumelist);
+			model.addAttribute("resumeNolist", resumeNolist);
+			model.addAttribute("portlist", portlist);
+			model.addAttribute("param", param);
+
+			return "resume/resumeMain";
+
+		}
+		
+		//이력서 작성 페이지 이동
+		@RequestMapping(value = "writeport.do", method = { RequestMethod.GET, RequestMethod.POST })
+
+		public String writeport() {
+
+			return "resume/writeport";
+		}
+		
+		 @RequestMapping(value = "downport.do", method = {RequestMethod.GET, RequestMethod.POST})
+	    public String fileDownload(String newfilename, String filename, int seq, HttpServletRequest req, Model model) {
+	        
+	        // 경로
+	        // server
+	        String fupload = req.getServletContext().getRealPath("/upload");
+	        
+	        // 폴더
+	    //    String fupload = "d:\\tmp";
+	        
+	        File downloadFile = new File(fupload + "/" + newfilename);
+	        
+	        model.addAttribute("downloadFile", downloadFile);
+	        model.addAttribute("originalFile", filename);
+	        model.addAttribute("seq", seq);
+	        
+	        return "ResumeDownloadView";
+	    }
 			
 
 }
