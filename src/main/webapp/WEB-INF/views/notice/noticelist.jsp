@@ -1092,6 +1092,7 @@ margin-right : 450px;
 
 
 <div class="container">
+
 <section id="contents">
 
 	<div class="tit-util">
@@ -1111,42 +1112,6 @@ margin-right : 450px;
 			<dd>1hara의 새로운 소식을 알려드립니다.</dd>
 		</dl>
 	</div>
-<!--
-	<form id="empBoardSrchVO" name="searchForm" action="/ntNewsData/ntMatter/retrieveNtMatterListPost.do" method="post" onsubmit="return f_checkForm(this);">
-		<input type="hidden" name="pageUnit" value="10">
-		<input type="hidden" name="srch" value="srch">
-		<input type="hidden" name="boardFlag" value="0">
-		<input type="hidden" name="jobyoung" value="">
-
-		<input type="hidden" name="pageIndex" id="pageIndex1" value="1">
-
-
-		<div class="board-list-search">
-			<div class="line">
-				<div class="float-l w480px">
-					<label for="startDt" class="label w60px">등록일</label>
-					<input type="text" id="startDt" name="startDt" title="등록일 시작 날짜 선택" class="datepicker hasDatepicker" readonly="readonly" value="2020.05.22" placeholder="yyyy.mm.dd" maxlength="10"><button type="button" class="ui-datepicker-trigger">등록일 시작 날짜 선택 버튼</button>
-					~
-					<input type="text" id="endDt" name="endDt" title="등록일 끝 날짜 선택" class="datepicker hasDatepicker" readonly="readonly" value="2021.05.21" placeholder="yyyy.mm.dd" maxlength="10"><button type="button" class="ui-datepicker-trigger">등록일 끝 날짜 선택 버튼</button>
-
-					<button type="button" class="button ml05" onclick="document.searchForm.startDt.value='';document.searchForm.endDt.value='';">재설정</button>
-				</div>
-
-				<div class="float-l w390px">
-					<label for="searchText" class="label w60px">키워드</label>
-					<input type="search" id="searchText" name="searchText" placeholder="키워드를 입력하세요" class="input-text w300px" value="" maxlength="47">
-				</div>
-			</div>
-
-			<div class="btn-group">
-				<button type="submit" class="button navy">검색</button>
-			</div>
-		</div>
-	<div>
-<input type="hidden" name="_csrf" value="f9429a24-06a6-4e86-9fb8-413ddf249c96">
-</div>
-</form>
--->
 	<form id="empBoardSrchVO1" name="listRangeForm" action="/ntNewsData/ntMatter/retrieveNtMatterListPost.do" method="post">
 	<input type="hidden" name="regDtm" value="">
 	<input type="hidden" name="srch" value="">
@@ -1155,22 +1120,10 @@ margin-right : 450px;
 	<input type="hidden" name="searchText" value="">
 	<input type="hidden" name="jobyoung" value="">
 	<input type="hidden" name="pageIndex" id="pageIndex" value="1">
-		<div class="board-list-count mt40">
-			<div class="util">
-				<div class="range-view">
-
-					<select name="pageUnit" id="pageUnit" title="보기 갯수" class="w100px">
-						<option value="10" selected="selected">10 개씩</option>
-						<option value="30">30 개씩</option>
-						<option value="50">50 개씩</option>
-					</select>
-					<button type="button" onclick="fn_search(1)" class="button gray">보기</button>
-				</div>
-			</div>
-		</div>
 	<div>
 <input type="hidden" name="_csrf" value="f9429a24-06a6-4e86-9fb8-413ddf249c96">
-</div></form>
+</div>
+</form>
 
 	<div class="table-wrap">
 		<table class="board-list" summary="이 표는 번호, 제목, 자료출처, 등록일, 조회 등 공지사항 목록에 대한 정보를 제공합니다.">
