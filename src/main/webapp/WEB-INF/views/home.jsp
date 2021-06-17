@@ -520,7 +520,7 @@ margin-right : 450px;
 <div class="navi_common">
 <ul class="navi_depth1">
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','recruit')" href="recuruitlist.do"><span>채용정보</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','company_info')" href="/zf_user/companylab"><span>기업정보</span></a></li>
+<!-- <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','company_info')" href="companylist.do"><span>기업정보</span></a></li> -->
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','status-list')" href="newslist.do"><span>TODAY NEWS📈</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','verification')" href="pdslist.do"><span>자료실</span></a></li>
 <li>
