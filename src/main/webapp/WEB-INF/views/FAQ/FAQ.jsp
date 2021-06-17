@@ -1,3 +1,4 @@
+<%@page import="bit.com.a.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
@@ -633,16 +634,18 @@ List<FAQDto> commonlist =(List<FAQDto>) request.getAttribute("commonlist");
 
 
 
+<%
+MemberDto mem = (MemberDto)request.getSession().getAttribute("login");
+%>
 
 
 
 
-
-
+<% if( mem.getAuth() == 3 ){ %> 
 <div style="text-align: center;margin-bottom: 300px;margin-top: -100px;">
 <a href="writeFAQ.do" class="box-btn" >글쓰기</a>
 </div>
-
+ <% } %> 
 
 
 

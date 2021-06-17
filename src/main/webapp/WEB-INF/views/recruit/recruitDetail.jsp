@@ -145,6 +145,35 @@ width: max-content;
 
 }
 
+
+
+
+ 
+/* 네비바 */
+.createRecruitBtn{
+	cursor: pointer;
+}
+/* .wrapper{
+width:200px;
+padding:20px;
+height: 150px;
+} */
+#nav-main{
+	height: 100 px;
+}
+nav.top-nav-collapse {
+   transition: all 300ms ease-in-out;
+   background-color: #036cde !important;
+   color: white !important;
+}
+white{
+	color: white !important;
+}
+
+.navbar-nav {
+   background-color: rgba( 255, 255, 255, 0 );
+  }
+
 </style>
 
 
@@ -152,7 +181,7 @@ width: max-content;
 <body>
 
 
-<c:import url="header.jsp" charEncoding="utf-8"/>
+
 
   <div class="py-0 pt-3" style="background-color: #2186eb; color: white; height: 174px;">
     <div class="container">
@@ -947,7 +976,13 @@ function jobApply(jobseq, memberid, resumeseq) {
 	// alert(phonenum);
 
 
-    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
+	portseq = document.getElementById('portfolioseq').value;
+	
+	if(portseq == ""){
+		portseq = 0;
+	}
+	
+    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq+"&portfolioseq="+portseq;
 
 }
 

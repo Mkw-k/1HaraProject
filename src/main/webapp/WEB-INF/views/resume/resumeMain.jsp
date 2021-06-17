@@ -590,9 +590,9 @@ System.out.println("portlist" +portlist);
 						href="#portfolio" role="tab">포트폴리오 관리</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#applied" role="tab">지원 현황</a></li>
-					<li class="nav-item" style="margin-left: 700px;">
+					<li class="nav-item" style="margin-left: 550px;">
 						<div style="text-align: center;">
-							<a href="writeResume.do" class="box-btn">이력서 추가</a>
+							<a href="writeResume.do" class="box-btn" style="background-color: #a3a3a3">이력서 추가</a>
 						</div>
 					</li>
 					
@@ -954,7 +954,7 @@ function login() {
 <script>
 $("#searchBtn").click(function () {
     
-	alert("searchBtn click")
+	alert("searchBtn click");
 	/* 검색어 */
 	let search = document.getElementById("_searchBtn").value;
     

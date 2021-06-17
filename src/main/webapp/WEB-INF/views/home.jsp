@@ -539,7 +539,6 @@ margin-right : 450px;
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="Jobtalklist.do"><span>취업톡톡💬</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="faq.do"><span>FAQ</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents2')" href="notice.do"><span>공지사항</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents2')" href="resumeMain.do?memberid=${login.memberid }"><span>이력서임시</span></a></li> 
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','jumpit')" href="https://www.jumpit.co.kr" target="_blank"><span class="icon icon_jumpit">점핏</span></a></li>
 </ul>
 </div>
@@ -598,6 +597,10 @@ margin-right : 450px;
 
 <c:if test="${login.auth == 1 || login.auth == 3 }">
    <a href="mypage.do?memberid=${login.memberid }" class="btn_sign signup"><span class="txt">마이페이지</span></a>
+</c:if>
+
+<c:if test="${login.auth == 3 }">
+<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="memberlist.do" class="btn_sign signup"><span class="txt">회원목록</span></a>
 </c:if>
 
 <c:if test="${login.auth == 2 }">
