@@ -27,7 +27,10 @@ import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 import bit.com.a.dto.RecruitReplyDto;
 import bit.com.a.dto.ResumeDto;
+import bit.com.a.dto.Resume_Portfolio;
 import bit.com.a.service.RecruitReplyService;
+import bit.com.a.service.BuspageService;
+import bit.com.a.service.CompanyService;
 import bit.com.a.service.MypageService;
 import bit.com.a.service.RecruitService;
 import bit.com.a.service.ResumeService;
@@ -47,6 +50,12 @@ public class RecruitController {
 
    @Autowired
    RecruitReplyService recruitservice;
+   
+   @Autowired
+   BuspageService bsService;
+   
+   @Autowired
+   CompanyService comservice;
 
 //TODO채용공고 리스트로 이동
    @RequestMapping(value = "recuruitlist.do", method = RequestMethod.GET)
@@ -414,60 +423,67 @@ public class RecruitController {
    @RequestMapping(value = "RecruitDetail.do", method = RequestMethod.GET)
    public String RecruitDetail(int jobseq, Model model, String memberid) {
 
-		model.addAttribute("doc_title", "채용공고");
+     model.addAttribute("doc_title", "채용공고");
 
-		 //MemberDto mem = Myservice.getMypage(memberid);
+		 RecruitDto dto = service.getRecruitListOne(jobseq);
 
-		  //디테일 데이터 받아오기
-		  //System.out.println("memberid:"+memberid);
+      List<ResumeDto> resumelist = null;
+      List<Resume_Portfolio> portlist = null;
 
-
-		  RecruitDto dto = service.getRecruitListOne(jobseq);
-		  
+      //로그인 시에만 이력서와 포트폴리오를 받아오도록
 		  if(memberid != null) {
-			  List<ResumeDto> resumelist = resumeservice.getresume(memberid);
-			  model.addAttribute("resumelist", resumelist);
+  			  resumelist = resumeservice.getresume(memberid);
+          portlist = resumeservice.getPortfolio(memberid);
+  			  model.addAttribute("resumelist", resumelist);
 		  }
 
-		  System.out.println(dto.toString());
-
-		  //직무이름 받아오는 코드
+      //직무이름 받아오는 코드
 		  List<String> list = service.getBsnameForDetail(jobseq);
 		  System.out.println("직무이름 :"+ list.toString());
 
-		  dto.setBusname(list);
 
 		  RecruitParam param = new RecruitParam();
-		 
+
 		  if(memberid != null) {
-		  //즐겨찾기 여부 검색용 파라미터 dto설정
-		  String jobSeq = jobseq + "";
-		  param.setJobSeq(jobSeq);
-		  param.setMemberid(memberid);
+      		  //즐겨찾기 여부 검색용 파라미터 dto설정
+      		  String jobSeq = jobseq + "";
+      		  param.setJobSeq(jobSeq);
+      		  param.setMemberid(memberid);
 
-		  //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
-		  int IjobFavoriteCount = service.getJobFavorite(param);
-		  String jobFavoriteCount = IjobFavoriteCount + "";
+      		  //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
+      		  int IjobFavoriteCount = service.getJobFavorite(param);
+      		  String jobFavoriteCount = IjobFavoriteCount + "";
 
-		  dto.setFavoriteJob(jobFavoriteCount);
-		  
-		  //검색용 파라미터 dto설정
-		  param.setCompanyId(dto.getCompanyId());
-		  param.setMemberid(memberid);
-		  
-		  //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
-		  int IcomFavoriteCount = service.getComFavorite(param);
-		  String comFavoriteCount = IcomFavoriteCount + "";
-		  dto.setFavoriteCom(comFavoriteCount);
-		  
+      		  dto.setFavoriteJob(jobFavoriteCount);
+
+      		  //검색용 파라미터 dto설정
+      		  param.setCompanyId(dto.getCompanyId());
+      		  param.setMemberid(memberid);
+
+      		  //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
+      		  int IcomFavoriteCount = service.getComFavorite(param);
+      		  String comFavoriteCount = IcomFavoriteCount + "";
+      		  dto.setFavoriteCom(comFavoriteCount);
+
 		  }
-
-
-
+		  
+		  
+		  BusinessDto bsdto = new BusinessDto();
+		  
+		  bsdto.setMemberid(dto.getCompanyId());
+		  bsdto = bsService.getbuspage(bsdto);
+		  
+		  model.addAttribute("bsdto", bsdto);
+		  
+		  String companyid = bsdto.getMemberid();
+		  CompanyDto com = comservice.getCompany(companyid);
+		  model.addAttribute("com", com);
+			
 		  System.out.println("변경된 Dto :"+dto.toString());
 
 		  model.addAttribute("dto", dto);
-		 
+		  model.addAttribute("resumelist", resumelist);
+		  model.addAttribute("portlist", portlist);
 
 
       return "recruit/recruitDetail";
@@ -494,6 +510,7 @@ public class RecruitController {
       System.out.println("seq:"+jobSeq);
       RecruitDto dto = service.getRecruitListOne(jobSeq);
       List<ResumeDto> resumelist = resumeservice.getresume(memberid);
+      List<Resume_Portfolio> portlist = resumeservice.getPortfolio(memberid);
 
       System.out.println(dto.toString());
 
@@ -530,7 +547,7 @@ public class RecruitController {
 
       model.addAttribute("dto", dto);
       model.addAttribute("resumelist", resumelist);
-
+      model.addAttribute("portlist", portlist);
 
 
       List<RecruitReplyDto> replylist = recruitservice.list(jobSeq);

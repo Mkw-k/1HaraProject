@@ -504,71 +504,40 @@ nav {
 
 <div>
 
-<table>
-	
-	<tr>
-		<th>대표자 명</th>
-		<td>${company.ceoname }</td>
-	</tr>
-	
-	<tr>
-		<th>회사아아디</th>
-		<td>${company.memberid }</td>
-	</tr>
-	
-	<tr>
-		<th>회사 위치</th>
-		<td>${login.comaddress }</td>
-	</tr>
-	
-	<tr hidden="">
-		<th>사업자 번호</th>
-		<td>${company.companynum }</td>
-	</tr>
-	
-	<tr >
-		<th>주요 업무 :</th>
-		<td>${company.content }</td>
-	</tr>
 
-	<tr>
-		<th>회사 이미지</th>
-		<td>${company.comimage }</td>
-	</tr>
-	
-	<tr>
-		<th>평균 연봉</th>
-		<td>${company.salaryavg }</td>
-	</tr>
-	
-	<tr>
-		<th>초봉</th>
-		<td>${company.salarystart }</td>
-	</tr>
+<div class="">
+    <div class="container">
+      <div class="row" >
+        <div class="col-md-6 bg-light">
+        	<img src="upload/${bsdto.newfilename}" alt="디폴트이미지" width="100%" >
+        </div>
+        <div class="col-md-6 bg-light" style="float: left;">
+          <ul>
+         	<li style=" list-style: none;"><span>대표자명</span>&nbsp;&nbsp;<span>${company.ceoname }</span></li>
+         	<li style=" list-style: none;"><span>회사아아디</span>&nbsp;&nbsp;<span>${company.memberid }</span></li>
+         	<li style=" list-style: none;"><span>회사위치</span>&nbsp;&nbsp;<span>${login.comaddress }</span></li>
+         	<li style=" list-style: none;"><span>주요업무</span>&nbsp;&nbsp;<span>${company.content }</span></li>
+         	<li style=" list-style: none;"><span>평균연봉</span>&nbsp;&nbsp;<span>${company.salaryavg }</span></li>
+         	<li style=" list-style: none;"><span>초봉</span>&nbsp;&nbsp;<span>${company.salarystart }</span></li>
+         	<li style=" list-style: none;"><span>입사자수</span>&nbsp;&nbsp;<span>${company.joinner } 명</span></li>
+         	<li style=" list-style: none;"><span>퇴사자수</span>&nbsp;&nbsp;<span>${company.retiree } 명</span></li>
+         	<li style=" list-style: none;"><span>웹사이트 주소</span>&nbsp;&nbsp;<span><a href="javascript:btnweb()">${company.website }</a></span></li>
+         	<li style=" list-style: none;"><span>기업형태</span>&nbsp;&nbsp;<span>${com.companytype }</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<tr>
-		<th>입사자 수</th>
-		<td>${company.joinner } 명</td>
-	</tr>
-	
-	<tr>
-		<th>퇴사자 수</th>
-		<td>${company.retiree } 명</td>
-	</tr>
-	
-	<tr>
-		<th>웹사이트 주소</th>
-		<td><a href="javascript:btnweb()">${company.website }</a></td>
-	</tr>
-	
-</table>
+
+
 </div>
 	<br>
 	<c:if test="${login.memberid } ">
    	  <a  href="companyupdate.do?memberid=${company.memberid }" style="color:#2186eb">기업수정</a>
   	</c:if>
 	  
-	 <a href="recuruitlist.do">목록으로</a>
+	 <a class="btn btn-primary" href="recuruitlist.do" style="color: white;">목록으로</a>
 	
 </form>
 <!-- //////////////////////////////////////////테이블 끝 -->

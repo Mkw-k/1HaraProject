@@ -747,7 +747,7 @@ body {
 						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeAtchFileMngList.do" target="_self">첨부파일 관리</a>
 					</li>
 					<li>
-						<a href="javascript:check()" target="_self">지원내역확인 </a>
+						<a href="javascript:check('${login.memberid}')" target="_self">지원내역확인 </a>
 					</li>
 				</ul>
 			</div>
@@ -1465,9 +1465,9 @@ function f_empPgmList(resultObj){
 							<!-- 기능 버튼 들어갈 예정 -->
 						</div>
 					</div>
-					<div class="mypage-idv-wrap">
+					<div class="mypage-idv-wrap" id="Area1">
 						<div class="idv-sec01">
-							<div class="con-top">
+							<div class="con-top" style="height:320px;">
 
 
 								<c:if test="${login.userpic ne null}">	 		
@@ -1928,38 +1928,24 @@ function login() {
 
 }
 
-/* 네비게이션고정 */
-var nav = document.getElementsByClassName("navigation");
-
-window.onscroll = function sticky() {
-  if(window.pageYOffset > nav[0].offsetTop) {
-    nav[0].classList.add("nav");
-  } else {
-    nav[0].classList.remove("nav");
-  }
-}
-
-
-
-
 </script>
 
 <script>
-$(document).ready(function() {
-	function check() {
+
+function check(memberid) {
 		alert('실행성공');
 		
 		$.ajax({
 			   url : "./getresumeData.do",
 			   type : "get",
-			   data : {"memberid" : '${login.memberid}'}
-			   success:function(list){
-
-			      $("mypage-idv-wrap *").remove();
+			   data : {"memberid" : memberid},
+			   success:function(param){
+					alert('성공');
+			      $("#Area1").empty();
 			      
-			      let app = "<table class='table list_col1' style='width: 1100px; text-align: center; margin-left: 400px;'>"+
+			      let app = "<table class='table table-striped list_col1' style='width: 100%; text-align: center;'>"+
 			    			"<colgroup>"+
-			  				"<col width='350px'><col width='350px'><col width='200px'><col width='100px'><col width='100px'>"+
+			  				"<col width='30%'><col width='30%><col width='20%'><col width='10%'><col width='10%'>"+
 			  				"</colgroup>"+
 			  				"<thead>"+
 			  				"<tr>"+
@@ -1970,36 +1956,38 @@ $(document).ready(function() {
 			  				"<td>지원취소</td>"+
 			  				"</tr>"+
 			  				"</thead>"+
-			  				"<tbody style='border-bottom: thin; border-color: #cccccc; border-bottom-style: solid;'>"; 
+			  				"<tbody style='border-bottom: thin; border-color: black; border-bottom-style: solid;'>"; 
 
-			      $.each(list, function(i, val){
+			      $.each(param, function(i, val){
 
 					app += "<tr>"+
-						   "<td><a href='RecruitDetail.do?jobseq='"+val.jobseq()+"'&memberid='+'${login.memberid}'+''>"+val.jobtitle+"</a></td>";
-						   if(val.resumetitle == null){
-							app += "<td><p>삭제된 이력서입니다</p></td>";
+						   "<td><a href='RecruitDetail.do?jobseq="+val.jobSeq+"&memberid="+memberid+"'>"+val.jobtitle+"</a></td>";
+						   if(val.resumetitle == null && val.resumetitle != ''){
+								app += "<td><p>삭제된 이력서입니다</p></td>";
 							}
 						   else{
-							app += "<td><a href='Resumedetail.do?seq='"+val.resumeseq+"''>"+val.resumetitle+"</a></td>";   
+								app += "<td><a href='Resumedetail.do?seq="+val.resumeseq+"'>"+val.resumetitle+"</a></td>";   
 						   }
 						   
 					app += "<td>"+val.applydate+"</td>"+
 						"<td>";
 						
 						if(val.companyread >0 ){
-						app += "<img alt='' src='./image/check.png' height='30px' width='30px' style='margin-left:0px;display:inline-flex;'>";
+							app += "<img alt='' src='./image/check.png' height='30px' width='30px' style='margin-left:0px;display:inline-flex;'>";
 						}
 						
 					app += "</td>"+
-						"<td><a href='cancelApply.do?seq='"+val.applyseq+"'&memberid='${login.memberid}'' class='box-btn'>취소</a></td>"+
-						"</tr>"+
-						"</tbody>"+
-						"</table>";				 
+						"<td><a href='cancelApply.do?seq="+val.applyseq+"&memberid="+memberid+"' class='box-btn'>취소</a></td>"+
+						"</tr>";
+								 
 
-			         $(".mypage-idv-wrap").append(app);
+			        
 			      });
 			      
-			      
+			      app += "</tbody>"+
+						 "</table>";	
+						 
+			      $("#Area1").append(app);
 			   },
 			   error:function(){
 			      alert('error');
@@ -2007,9 +1995,15 @@ $(document).ready(function() {
 
 			 }); // ajax
 
-})
-
 }
+
+
+
+		
+
+
+
+
 
 </script>
 

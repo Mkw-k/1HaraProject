@@ -520,7 +520,7 @@ margin-right : 450px;
 <div class="navi_common">
 <ul class="navi_depth1">
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','recruit')" href="recuruitlist.do"><span>채용정보</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','company_info')" href="/zf_user/companylab"><span>기업정보</span></a></li>
+<!-- <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','company_info')" href="companylist.do"><span>기업정보</span></a></li> -->
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','status-list')" href="newslist.do"><span>TODAY NEWS📈</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','verification')" href="pdslist.do"><span>자료실</span></a></li>
 <li>
@@ -537,8 +537,9 @@ margin-right : 450px;
 <span class="marker"><svg aria-hidden="true"><use xlink:href="#svg_gnb_more"></use></svg></span>
 <ul>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="Jobtalklist.do"><span>취업톡톡💬</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="FAQ.do"><span>FAQ</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="faq.do"><span>FAQ</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents2')" href="notice.do"><span>공지사항</span></a></li>
+<%-- <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents2')" href="resumeMain.do?memberid=${login.memberid }"><span>공지사항</span></a></li> --%>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','jumpit')" href="https://www.jumpit.co.kr" target="_blank"><span class="icon icon_jumpit">점핏</span></a></li>
 </ul>
 </div>
@@ -2453,7 +2454,7 @@ margin-right : 450px;
 ">
 		                        <div>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br>10대기업</a>
-		                          <a href="calendarlist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
+		                          <a href="calendarlist1.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
 		                        </div>
 		                        <div>
@@ -2692,9 +2693,7 @@ z-index: 10;"><span class="bar"></span></button>
                 </div>
             </div>
         </div>
-        <div class="wrap_my_area" style="
-    width: 401px;
-">
+        <div class="wrap_my_area" style="width: 401px;">
 
 
 
@@ -2713,7 +2712,7 @@ z-index: 10;"><span class="bar"></span></button>
 ">
 		                        <div>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br>10대기업</a>
-		                          <a href="calendarlist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
+		                          <a href="calendarlist1.do.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
 		                        </div>
 		                        <div>

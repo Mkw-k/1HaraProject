@@ -1,3 +1,4 @@
+<%@page import="bit.com.a.dto.Resume_Portfolio"%>
 <%@page import="bit.com.a.dto.MemberDto"%>
 <%@page import="bit.com.a.dto.ResumeDto"%>
 <%@page import="java.util.List"%>
@@ -17,6 +18,9 @@ if(request.getAttribute("resumelist") != null){
 	resumelist =(List<ResumeDto>) request.getAttribute("resumelist");
 }
 System.out.println("resumelist" +resumelist);
+
+List<Resume_Portfolio> portlist =(List<Resume_Portfolio>) request.getAttribute("portlist");
+System.out.println("portlist****************************************" +portlist);
 %>
 
 <%-- <%
@@ -132,8 +136,13 @@ font-weight: bold;
     border-color: #eee;
 }
 
+
+.applybtn{
+width: max-content;
+
 .JobSumData{
 	font-weight: bold;
+
 }
 
 </style>
@@ -213,7 +222,7 @@ font-weight: bold;
 			  <div class="modal-dialog" role="document" style="width: -webkit-fill-available;">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel" style="width: 700px;">입사지원</h5>
+			        <h5 class="modal-title" id="exampleModalLabel" style="width: 700px; color: black;">입사지원</h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">×</span>
 			        </button>
@@ -222,26 +231,47 @@ font-weight: bold;
 			       <table>
 			       <colgroup>
 			       <col width="400"><col width="50">
-						<tr><td colspan="2">이력서list</td></tr>
-						<%
-						if(request.getAttribute("resumelist") != null){
-						%>	
-							
-							
-							<%
-							for(int i=0; i<resumelist.size(); i++){
-							%>
-			
-								<tr>
-								<td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a></td>
-								<td><button type="button" class="btn btn-primary" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>')">지원하기</button></td>
-								</tr>
-							<%
-							}
-							
-						}	
-							%>
-							
+
+						<tr><td colspan="2" style="color: black">이력서list</td></tr>
+
+            <%
+            if(request.getAttribute("resumelist") != null){
+
+            %>
+                <%
+      					for(int i=0; i<resumelist.size(); i++){
+      					%>
+
+						<tr>
+					  <td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a><input type="hidden" value="" id="portfolioseq"></td>
+						<td><button type="button" class="btn btn-primary applybtn" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>')">지원하기</button></td>
+						</tr>
+      					<%
+      					}
+             }
+      					%>
+
+					<tr><td colspan="2" style="color: black">포트폴리오 첨부</td></tr>
+					<%
+					if(portlist != null){
+					for(int i=0; i<portlist.size(); i++){
+					%>
+
+						<tr>
+						<td style="color: black">
+						<select id="portseq" onchange="getportseq('<%=portlist.get(i).getPortfolioseq() %>')">
+						<option>첨부없음</option>
+						<option><%=portlist.get(i).getPortfolioname() %></option>
+						</select>
+						</td>
+						<td><button type="button" class="btn btn-primary">첨부</button></td>
+						</tr>
+					<%
+						}
+					}
+					%>
+
+
 				</table>
 			      </div>
 			      <div class="modal-footer">
@@ -322,9 +352,11 @@ font-weight: bold;
             <dd>${dto.jobStart }</dd>
             <dt class="end">마감일</dt>
             <dd>${dto.jobEnd }</dd>
-             <dd><c:if test="${login.auth==1 }">
-         		 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
-			</c:if></dd>
+             <dd>
+             	<c:if test="${login.auth==1 }">
+         			 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
+				</c:if>
+			</dd>
           </dl>
         </div>
         <div class="col-md-8 bg-light" style="">
@@ -354,7 +386,6 @@ font-weight: bold;
       <div class="row">
         <div class="col-md-4 bg-light border-right" style="">
           <dl class="info_period">
-
           	<p>담당자 및 근무지</p>
             <dt id="keyword1">${dto.area1Name } ${dto.area2Name } ${dto.detailAdress1 } ${dto.detailAdress2 }</dt>
             <dd>
@@ -382,51 +413,48 @@ font-weight: bold;
       </div>
     </div>
   </div>
+  
   <div class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
-			<table class="table table-hover col-sm-12 " >
-				<tr>
-					<th>사업</th><td>${com.content }</td>
-				</tr>
-				<tr>
-					<%-- <th><img alt="" src="./upload/${com.filename}"></th> --%>
-					<th>사원수</th><td>${com.empcount }</td>
-				</tr>
-				<tr>
-					<th>평균연봉</th><td>${com.salaryavg }</td>
-				</tr>
-
-
-
-			</table>
-
-		</div>
+        <div class="col-md-4 bg-light" >
+        	
+          <img src="upload/${bsdto.newfilename}" alt="디폴트이미지" width="100%" >
+        </div>
+        <div class="col-md-4 bg-light">
+          <ul>
+	          <li style=" list-style: none;"><h3>${com.companyname }</h3></li>
+	          <li style=" list-style: none;"><span>기업형태</span>&nbsp;&nbsp;<span>${com.companytype }</span></li>
+	          <li style=" list-style: none;"><span>업력</span>&nbsp;&nbsp;<span>${com.comyear }</span></li>
+	          <li style=" list-style: none;"><span>대표자명</span>&nbsp;&nbsp;<span>${com.ceoname }</span></li>
+	          <li style=" list-style: none;"><span>업종</span>&nbsp;&nbsp;<span>${com.content }</span></li>
+          </ul>
+        </div>
+        <div class="col-md-4 bg-light">
+	        <ul>
+	          <li style=" list-style: none;"></li><br><br>
+	          <li style=" list-style: none;"><span>직원수</span>&nbsp;&nbsp;<span>${com.empcount }</span></li>
+	          <li style=" list-style: none;"><span>총매출</span>&nbsp;&nbsp;<span>${com.totalsale }</span></li>
+	          <li style=" list-style: none;"><span>평균연봉</span>&nbsp;&nbsp;<span>${com.salaryavg }</span></li>
+	          <li style=" list-style: none;"><span>홈페이지주소</span>&nbsp;&nbsp;<span>${com.website }</span></li>
+	        </ul>
+        </div>
       </div>
     </div>
   </div>
-
-
-
-
-
-
+  
+  
+  
   <div class="py-5">
     <div class="container">
       <div class="row"> 인기기업 HOT10
       <div class="col-md-12">
-
-
-
-
          <table class="table table-hover col-sm-12 " style="" id="table">
             <thead class="thead-dark">
                <tr>
                   <th></th>
 
                   <th>회사명</th>
-
                   <th>공고제목</th>
                   <th>지원자격(학력·경력)</th>
                   <th>채용인원</th>
@@ -434,21 +462,12 @@ font-weight: bold;
                   <th>마감일·등록일</th>
                </tr>
             </thead>
-
- 
          </table>
          <p></p>
-
-
        </div>
       </div>
     </div>
   </div>
-
-
-
-
-
 
   <div class="py-5">
     <div class="container">
@@ -458,11 +477,10 @@ font-weight: bold;
     </div>
   </div>
 
-
-  <!-- 댓글 -->	
+  <!-- 댓글 -->
   				<div class="container">
 				<c:if test="${login.memberid != null }">
-					
+
 					<div class="inputBox">
 						<div class="writeBoxWrap cmtWrite">
 							<form action="insertreplyRecruit.do" method="post">
@@ -496,6 +514,7 @@ font-weight: bold;
 				<c:forEach var="row" items="${replylist}">
 				<input type="hidden" name="replyrecruitseq" value="${row.replyrecruitseq}">
 				<input type="hidden" name="jobSeq" value="${row.jobSeq}">
+
 				<div class="viewListWrap">
                 	<div class="headerWrap">
                     	<div class="numBx">
@@ -539,12 +558,10 @@ font-weight: bold;
 			   	</c:forEach>
 			   	</div>
 
-  
+
 
 
   <input type="hidden" id="phonenumber">
-  
-
 
 
 <script>
@@ -586,7 +603,7 @@ function getTop10List() {
  									+ "</td>"
  									+"<td style='text-align:left'>"
  									//+ arrow(val.depth)
- 									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
+ 									+"<a href='RecruitDetail.do?jobSeq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
  									+"</td>"
  									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
  									+"<td>" + val.jobVolumn + "</td>"
@@ -615,22 +632,29 @@ function getTop10List() {
 
 
 
+function jobApply(jobseq, memberid, resumeseq) {
+
+	   alert("jobApply");
+	   //alert(jobseq);
+	   //alert(memberid);
+	   //alert(resumeseq);
+	   // alert(phonenum);
 
 
+	   portseq = document.getElementById('portfolioseq').value;
+	   
+	    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq+"&portfolioseq="+portseq;
 
+	}
 </script>
 
-
-
 <script type="text/javascript">
-
-
 
 function deleteRecruit(jobSeq) {
 	location.href="deleteRecruit.do?jobSeq="+jobSeq;
 }
-function updateRecruit(jobseq) {
-	location.href ="RecruitUpdate.do?jobseq="+jobseq;
+function updateRecruit(jobSeq) {
+	location.href ="RecruitUpdate.do?jobSeq="+jobSeq;
 }
 function mgUpdate() {
 	$("#_mgData *").remove(); //내부 요소만 삭제
@@ -693,7 +717,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
-var dAdress = '${dto.area1Name }'+' '+ '${dto.area2Name }'+' '+ '${dto.detailAdress1 }';
+var dAdress = '${dto.area1Name }' + ' ' + '${dto.area2Name }' + ' ' + '${dto.detailAdress1 }';
 
 // 주소로 좌표를 검색합니다
 geocoder.addressSearch(dAdress, function(result, status) {
@@ -799,7 +823,7 @@ function jobFavorite(jobSeq, memberid) {
 	//alert("즐겨찾기등록");
 	//alert(jobSeq);
 	//alert(memberid);
-	
+
 	let endDate = '${dto.jobEnd}';
 	var reserve = charchen(endDate);
 	alert("이게 예약시간 : "+ reserve);
@@ -824,8 +848,8 @@ function jobFavorite(jobSeq, memberid) {
 			alert('error');
 		}
     });
-	
-	
+
+
 
 	location.href = "favoriteJob.do?jobSeq="+jobSeq+"&memberid="+memberid;
 
@@ -940,7 +964,7 @@ function jobApply(jobseq, memberid, resumeseq) {
 	//alert(resumeseq);
 	// alert(phonenum);
 
-	
+
     location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
 
 }
@@ -1052,6 +1076,68 @@ function getPhonenum(memberid) {
 	} );
 
 
+// 댓글 입력
+var processing = false;
+$('.devBtnComtWrite').click(function () {
+    if (processing === false) {
+        processing = true;
+        //비회원 체크 여부
+        if ($isLogin != 1) {
+            JKLoginLayer.open();
+            processing = false;
+            return false;
+        }
+
+        var $this = $(this);
+        var answerNo = $this.closest('li').find('.devComtRoot').data('answerno');
+        var cntnt = $this.closest('form').find('textarea').val();
+
+        if (typeof cntnt === 'undefined' || cntnt === '') {
+            alert('댓글 내용을 입력해 주세요.');
+            processing = false;
+            return false;
+        }
+
+        $.ajax({
+            url: '/User/Qstn/ComtWrite',
+            dataType: 'html',
+            method: 'POST',
+            data: {
+                answerNo: answerNo,
+                cntnt: cntnt,
+                qstnNo: $('#hdnQstnNo').val()
+            },
+            success: function (html) {
+                if (html !== '') {
+                    html = html.replace('&lt;', '<').replace('&gt;', '>');
+                    if ($this, html.match(/문자를 입력할 수 없습니다/) === null) {
+                        fncComtCountChange($this, 1);
+                        $this.closest('form').find('textarea').val('');
+                        $this.closest('div.qnaFormBx').addClass('case');
+                        $this.closest('.cmtWrite').siblings('.replyWrap').append(html);
+                    }
+                    else {
+                        fncComtCountChange($this, 0);
+                    }
+                }
+            },
+            complete: function () {
+                processing = false;
+            }
+        });
+    }
+});
+
+
+
+  </script>
+
+  <script type="text/javascript">
+  function getportseq(portseq) {
+	alert(portseq);
+	document.getElementById('portfolioseq').value = portseq;
+
+}
 
   </script>
 

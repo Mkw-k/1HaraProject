@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 
@@ -23,21 +23,21 @@
 	<link href="csss/common.css" rel="stylesheet" type="text/css">
 	<link href="csss/reset.css" rel="stylesheet" type="text/css">
 	<!-- 링크!  -->
-  
-  
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- jQuery Modal -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
   <script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
-  
+
   <!-- footer -->
 
-  
+
 <!-- 네비바 -->
 <!-- carousel -->
 <!-- <link rel="stylesheet" href="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
- 
+
 <!-- <script src="//https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
  -->
   <!-- 검색 부트스트랩 -->
@@ -60,13 +60,13 @@
 <link href="csss/common.css" rel="stylesheet" type="text/css">
 <link href="csss/reset.css" rel="stylesheet" type="text/css">
 <link href="csss/tables.css" rel="stylesheet" type="text/css">
-<!-- 링크!  -->    
-    
-    
+<!-- 링크!  -->
+
+
   <style type="text/css">
 /* 네비바 배경색 */
 .bg-dark {
-    background-color: white!important;    
+    background-color: white!important;
 }
 /* 네비바 글자색 */
 .navbar-dark .navbar-nav .nav-link {
@@ -203,7 +203,7 @@ body{
    height: 38px;
    border-radius: 0;
  }
- 
+
  .btn-success {
 color: #fff;
 background-color: #2186eb;
@@ -235,7 +235,7 @@ border-color: #2186eb;
 .bgc{
  color: white;
  background-color: #2186eb;
- 
+
 }
 
 /* 검색 top margin */
@@ -371,7 +371,7 @@ section .section-title {
 .frontside .card .card-body img {
     width: 100%;
     height: 120px;
-    
+
 }
 
 .card-body {
@@ -387,7 +387,7 @@ section .section-title {
 .dropbtn {
   background-color: #2186eb;
   color: white;
-  padding: 8px; 
+  padding: 8px;
   font-size: 16px;
   border: none;
 }
@@ -432,13 +432,13 @@ section .section-title {
 <!-- 네비바 -->
 <!-- carousel -->
 <link rel="stylesheet" href="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  
+
 <script src="//https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <!-- jQuery Modal -->
 <script src="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> 
+<link rel="stylesheet" href="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 
   <!-- 검색 부트스트랩 -->
@@ -464,7 +464,7 @@ section .section-title {
 <!-- 퀵메뉴 -->
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <!-- 랭킹 -->
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -479,10 +479,10 @@ section .section-title {
 
 
 <style type="text/css">
-  
+
 /* 네비바 배경색 */
 .bg-dark {
-    background-color: white!important;    
+    background-color: white!important;
 }
 /* 네비바 글자색 */
 .navbar-dark .navbar-nav .nav-link {
@@ -630,7 +630,7 @@ p{
    height: 38px;
    border-radius: 0;
  }
- 
+
  .btn-success {
 color: #fff;
 background-color: #2186eb;
@@ -655,7 +655,7 @@ border-color: #2186eb;
  color: #2186eb;
  background-color: #fff;
  font-size: 12pt;
- 
+
 }
 
 /* 검색 top margin */
@@ -791,7 +791,7 @@ section .section-title {
 .frontside .card .card-body img {
     width: 100%;
     height: 120px;
-    
+
 }
 
 .card-body {
@@ -807,7 +807,7 @@ section .section-title {
 .dropbtn {
   background-color: #2186eb;
   color: white;
-  padding: 8px; 
+  padding: 8px;
   font-size: 16px;
   border: none;
 }
@@ -942,7 +942,7 @@ margin-right : 450px;
 
 
 <header>
-		
+
  <!-- 검색html -->
 
 <section style="padding: 0">
@@ -951,13 +951,13 @@ margin-right : 450px;
             <div class="carousel-item active">
                 <img src="<%=request.getContextPath() %>/image/개발자메인로고.gif" class="d-block w-100" height="300">
             </div>
-            
+
             <!--https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg-->
         </div>
     </div>
 </section>
 <section class="search-sec">
-   
+
         <form action="#" method="post" novalidate="novalidate">
             <div class="row">
                 <div class="col-lg-8">
@@ -994,7 +994,7 @@ margin-right : 450px;
                 </div>
             </div>
         </form>
-    
+
 </section>
 
 </header>
@@ -1003,11 +1003,11 @@ margin-right : 450px;
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <!-- Links -->
-  
+
   <div>
 	 <a href="home.do"><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
 	</div>
-  
+
   <ul class="navbar-nav">
 <!-- Dropdown -->
     <li class="nav-item dropdown" style="padding-top: 5px;">
@@ -1042,16 +1042,16 @@ margin-right : 450px;
     <li class="nav-item">
       <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
     </li>
-    
+
     <li class="nav-item">
             <c:choose>
             	<c:when test="${login.memberid ne null }">
             		<c:choose>
             			 <c:when test="${login.auth == 1}">
              				 <p><b>${login.name }</b>님</p>
-             	 		 </c:when>	 
+             	 		 </c:when>
              			<%-- <%-- <c:when test="${login ne null }">
-         				<p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>	
+         				<p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>
          				</c:when> --%>
              			<%-- <c:when test="${login.auth == 3}">
              				<p><b>${login.name }</b>님</p>
@@ -1059,32 +1059,32 @@ margin-right : 450px;
     					<c:otherwise>
              				<p><b>${login.name }</b>님</p>
     					</c:otherwise>
-    				</c:choose>			
-            	 </c:when> 
-         	 </c:choose>  
+    				</c:choose>
+            	 </c:when>
+         	 </c:choose>
         <div class="col-md-6">
            <div class="">
               <div class="login">
               	<c:if test="${ empty login }">
                        <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
                     <!--    <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
-                </c:if>       
+                </c:if>
               </div>
 			</div>
-		</div>	
+		</div>
     </li>
     <li class="nav-item">
      	 <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
     </li>
     <li class="nav-item">
     	<c:if test="${login.auth==3}">
-    		<a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a> 
+    		<a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a>
 		</c:if>
 	</li>
 	<li class="nav-item">
-		<c:if test="${login.memberid ne null}">	
+		<c:if test="${login.memberid ne null}">
 			<a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
-		</c:if>	
+		</c:if>
 	</li>
   </ul>
 </nav>
@@ -1103,7 +1103,7 @@ margin-right : 450px;
 			<!-- 기능 버튼 들어갈 예정 -->
 		</div>
 	</div>
-	
+
 	<div class="sub-visual-noline">
 		<p class="img-area"><img src="static/images/img-UI-EWP-W02A01L.png" alt=""></p>
 		<dl class="ml20">
@@ -1111,57 +1111,54 @@ margin-right : 450px;
 			<dd>1hara의 새로운 소식을 알려드립니다.</dd>
 		</dl>
 	</div>
-
+<!--
 	<form id="empBoardSrchVO" name="searchForm" action="/ntNewsData/ntMatter/retrieveNtMatterListPost.do" method="post" onsubmit="return f_checkForm(this);">
 		<input type="hidden" name="pageUnit" value="10">
 		<input type="hidden" name="srch" value="srch">
 		<input type="hidden" name="boardFlag" value="0">
 		<input type="hidden" name="jobyoung" value="">
-	
+
 		<input type="hidden" name="pageIndex" id="pageIndex1" value="1">
-		
-		
-		
-		
-		
-		
-		<div class="board-list-search">							
+
+
+		<div class="board-list-search">
 			<div class="line">
 				<div class="float-l w480px">
 					<label for="startDt" class="label w60px">등록일</label>
 					<input type="text" id="startDt" name="startDt" title="등록일 시작 날짜 선택" class="datepicker hasDatepicker" readonly="readonly" value="2020.05.22" placeholder="yyyy.mm.dd" maxlength="10"><button type="button" class="ui-datepicker-trigger">등록일 시작 날짜 선택 버튼</button>
 					~
 					<input type="text" id="endDt" name="endDt" title="등록일 끝 날짜 선택" class="datepicker hasDatepicker" readonly="readonly" value="2021.05.21" placeholder="yyyy.mm.dd" maxlength="10"><button type="button" class="ui-datepicker-trigger">등록일 끝 날짜 선택 버튼</button>
-					
+
 					<button type="button" class="button ml05" onclick="document.searchForm.startDt.value='';document.searchForm.endDt.value='';">재설정</button>
 				</div>
-			
+
 				<div class="float-l w390px">
 					<label for="searchText" class="label w60px">키워드</label>
 					<input type="search" id="searchText" name="searchText" placeholder="키워드를 입력하세요" class="input-text w300px" value="" maxlength="47">
 				</div>
 			</div>
-			
+
 			<div class="btn-group">
 				<button type="submit" class="button navy">검색</button>
 			</div>
 		</div>
 	<div>
 <input type="hidden" name="_csrf" value="f9429a24-06a6-4e86-9fb8-413ddf249c96">
-</div></form>
-		
+</div>
+</form>
+-->
 	<form id="empBoardSrchVO1" name="listRangeForm" action="/ntNewsData/ntMatter/retrieveNtMatterListPost.do" method="post">
 	<input type="hidden" name="regDtm" value="">
 	<input type="hidden" name="srch" value="">
 	<input type="hidden" name="startDt" value="20200522">
 	<input type="hidden" name="endDt" value="20210521">
 	<input type="hidden" name="searchText" value="">
-	<input type="hidden" name="jobyoung" value="">	
+	<input type="hidden" name="jobyoung" value="">
 	<input type="hidden" name="pageIndex" id="pageIndex" value="1">
 		<div class="board-list-count mt40">
 			<div class="util">
 				<div class="range-view">
-					
+
 					<select name="pageUnit" id="pageUnit" title="보기 갯수" class="w100px">
 						<option value="10" selected="selected">10 개씩</option>
 						<option value="30">30 개씩</option>
@@ -1197,7 +1194,7 @@ margin-right : 450px;
 			</thead>
 			<c:forEach var="notice" items="${noticelist }" varStatus="i">
 			<tbody>
-			
+
 				<tr>
 					<th>${i.count }</th>
 					<td class="a-l">
@@ -1209,27 +1206,30 @@ margin-right : 450px;
 					<%-- <td>${login.name }</td> --%>
 					<td>${notice.regdate.substring(0,10)}</td>
 					<td>${notice.readcount}</td>
-				</tr>	
+				</tr>
 				</tbody>
 			</c:forEach>
 		</table>
 	</div>
 	<div class="btn-group center">
-		
+
 		<c:if test="${login.auth==3 }">
 			<a href="noticewrite.do" class="button navy">
 				글추가
 			</a>
 		</c:if>
 	</div>
-	
-	
-		<nav class="pagination">
+
+
+		<!-- <nav class="pagination">
 			 <a href="#" class="control first" onclick="fn_search(1); return false;">first</a>&nbsp;<a href="#" class="control prev" onclick="fn_search(1); return false;">prev</a>&nbsp;<strong class="active">1</strong>&nbsp;<a href="#" onclick="fn_search(2); return false;">2</a>&nbsp;<a href="#" onclick="fn_search(3); return false;">3</a>&nbsp;<a href="#" onclick="fn_search(4); return false;">4</a>&nbsp;<a href="#" onclick="fn_search(5); return false;">5</a>&nbsp;<a href="#" onclick="fn_search(6); return false;">6</a>&nbsp;<a href="#" onclick="fn_search(7); return false;">7</a>&nbsp;<a href="#" onclick="fn_search(8); return false;">8</a>&nbsp;<a href="#" onclick="fn_search(9); return false;">9</a>&nbsp;<a href="#" onclick="fn_search(10); return false;">10</a>&nbsp;<a href="#" class="control next" onclick="fn_search(11); return false;">next</a>&nbsp;<a href="#" class="control last" onclick="fn_search(31); return false;">last</a>&nbsp;
 
-		</nav>
-	
-	
+		</nav> -->
+
+	<div class="manager-info">
+		<div class="left"><b class="font-bold">담당부서</b> : 1hara팀</div>
+		<div class="right"><b class="font-bold">문의</b> : 1577-7114</div>
+	</div>
 </section>
 
 </div>
@@ -1247,7 +1247,7 @@ $("#btnSearch").click(function(){
 
 // Noticelist을 취득
 /* function getNoticeListData( pNumber ) {
-	
+
 	$.ajax({
 		url:"./noticelistData.do",
 		type:"get",
@@ -1255,15 +1255,15 @@ $("#btnSearch").click(function(){
 		success:function( list ){
 		//	alert('success');
 		//	alert(list);
-		
+
 			$(".list_col").remove();
-		
+
 			$.each(list, function (i, val) {
 				let app = "<tr class='list_col'>"
 							+ "<td>" + (i + 1) + "</td>"
 							+ "<td class='_hover_tr' style='text-align:left'>"
 						 	+ getArrow( val.depth ); 	// 댓글이미지
-					if(val.del == 0){	// 삭제되지 않은 글	
+					if(val.del == 0){	// 삭제되지 않은 글
 						app += "<a href='noticedetail.do?seq=" + val.noticeseq + "'>&nbsp;" + val.title + "</a>";
 					}else{				// 삭제된 글
 						app += "<font color='#ff0000'>* 이 글은 작성자에 의해서 삭제되었습니다 *</font>";
@@ -1273,11 +1273,11 @@ $("#btnSearch").click(function(){
 						+ "<th>" + val.regdate.substring(0,10) + "</th>"
 						+ "<td>" + val.readcount + "</td>"
 						+ "</tr>";
-						
-				$("#_list_table").append(app);	
+
+				$("#_list_table").append(app);
 				//alert(val.regdate);
 				//alert(val.notice_title);
-			});		
+			});
 		},
 		error:function(){
 			alert('error');
@@ -1288,7 +1288,7 @@ $("#btnSearch").click(function(){
 
 // 글의 총수를 취득
 function getNoticeListCount() {
-	
+
 	$.ajax({
 		url:"./noticelistCount.do",
 		type:"get",
@@ -1300,7 +1300,7 @@ function getNoticeListCount() {
 		},
 		error:function(){
 			alert('error');
-		}		
+		}
 	});
 }
 
@@ -1312,12 +1312,12 @@ function loadPage( totalCount ) {
 
 	let pageSize = 10;
 	let nowPage = 1;
-	
+
 	let _totalPages = totalCount / pageSize;
 	if(totalCount % pageSize > 0){
 		_totalPages++;
 	}
-	
+
 	/*  $("#pagination").twbsPagination('destroy'); */	// 페이지 갱신 : 페이징을 갱신해 줘야 번호가 재설정된다.
 
 	$("#pagination").twbsPagination({
@@ -1334,19 +1334,19 @@ function loadPage( totalCount ) {
 		//	alert('nowPage:' + page);
 		//	 getNoticeListData( page - 1 );
 		}
-	});	
+	});
 }
 
 //댓글 이미지 처리
-function getArrow( depth ) {		
+function getArrow( depth ) {
 	let rs = "<img src='./image/arrow.png' width='10px' height='10px'/>";
 	let nbsp = "&nbsp;&nbsp;&nbsp;&nbsp;";
-	
+
 	let ts = "";
 	for(i = 0;i < depth; i++) {
 		ts += nbsp;
 	}
-	
+
 	return depth==0?"":ts + rs;
 }
 
@@ -1354,7 +1354,7 @@ function getArrow( depth ) {
 $("#btn_noticewrite").click(function(){
 	location.href="noticewrite.do";
 });
- 
+
 
 
 

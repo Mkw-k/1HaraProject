@@ -32,7 +32,7 @@
 
 	<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled">
 		<ins id="aswift_0_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement">
-			<ins id="aswift_0_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;">
+			< ins id="aswift_0_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;">
 				<iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-2252464458280030&amp;output=html&amp;adk=1812271804&amp;adf=3025194257&amp;lmt=1622787209&amp;plat=1%3A32776%2C2%3A32776%2C9%3A32776%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1081344%2C32%3A32&amp;format=0x0&amp;url=https%3A%2F%2Fwww.jobkorea.co.kr%2FUser%2FQstn%2FAnswerWrite%3FQstnNo%3D42373&amp;ea=0&amp;flash=0&amp;pra=5&amp;wgl=1&amp;uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjkxLjAuNDQ3Mi43NyIsW11d&amp;dt=1622787209282&amp;bpp=2&amp;bdt=99&amp;idt=193&amp;shv=r20210601&amp;cbv=%2Fr20190131&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3Dd94760dfaac75f98-22c0eb6bcfc700d9%3AT%3D1620115996%3ART%3D1620115996%3AS%3DALNI_MamePeV-JAAiP2NmGq8YoCBEp_7iA&amp;nras=1&amp;correlator=1856056351134&amp;frm=20&amp;pv=2&amp;ga_vid=1073000281.1620115996&amp;ga_sid=1622787210&amp;ga_hid=459766479&amp;ga_fc=1&amp;u_tz=540&amp;u_his=9&amp;u_java=0&amp;u_h=1080&amp;u_w=1920&amp;u_ah=1040&amp;u_aw=1920&amp;u_cd=24&amp;u_nplug=3&amp;u_nmime=4&amp;adx=-12245933&amp;ady=-12245933&amp;biw=1235&amp;bih=937&amp;scr_x=0&amp;scr_y=13&amp;eid=31060956%2C21065725&amp;oid=3&amp;pvsid=707401245178408&amp;pem=229&amp;ref=https%3A%2F%2Fwww.jobkorea.co.kr%2FUser%2FQstn%2FIndex%3FMainType%3D1&amp;eae=2&amp;fc=1920&amp;brdim=-1920%2C-109%2C-1920%2C-109%2C1920%2C-109%2C1920%2C1040%2C1252%2C937&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=32768&amp;bc=31&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;dtd=221" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" allow="conversion-measurement 'src'" data-google-container-id="a!1" data-load-complete="true">
 				</iframe>
 			</ins>
@@ -104,10 +104,6 @@
 			</div>
 		</div>
 	</div>
-
-		
-		
-		
 		
 		<%-- <c:choose>
 						<c:when test="${jobtalk.memberid==login.memberid }">
@@ -147,109 +143,109 @@
 							</div>
 						</div>	
 						</div>		
-			<!-- 댓글 -->			
-				<c:if test="${login.memberid != null }">
-					<div class="inputBox">
-						<div class="writeBoxWrap cmtWrite">
-							<form action="replyinsert.do" method="post">
-								<input type="hidden" name="jobtalkseq" value="${jobtalk.jobtalkseq}">
-								<fieldset>
-									<div class="uiplaceholder">
-										<span class="ph">솔직하고 따뜻한 답변을 남겨주세요.<br>*휴대폰 번호, 메일 주소, 카카오톡 ID 등 개인정보가 포함된 내용은 비노출 처리 될 수 있습니다.</span>
-										<textarea class="devTxtAreaAnswerWrite" name="reply_content" maxlength="1000" title="답변쓰기"></textarea>
+						<!-- 댓글 -->			
+						<c:if test="${login.memberid != null }">
+							<div class="inputBox">
+								<div class="writeBoxWrap cmtWrite">
+									<form action="replyinsert.do" method="post">
+										<input type="hidden" name="jobtalkseq" value="${jobtalk.jobtalkseq}">
+											<fieldset>
+												<div class="uiplaceholder">
+													<span class="ph">솔직하고 따뜻한 답변을 남겨주세요.<br>*휴대폰 번호, 메일 주소, 카카오톡 ID 등 개인정보가 포함된 내용은 비노출 처리 될 수 있습니다.</span>
+													<textarea class="devTxtAreaAnswerWrite" name="reply_content" maxlength="1000" title="답변쓰기"></textarea>
+												</div>
+												<div class="btnWrap">
+                               						<div class="infoBx">
+                            	    	   				<a href="/User/Qstn/MainProfile?Target=16755209" class="my-profile" target="_blank">
+                                    		   				<span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_8.jpg" target="_blank" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
+                                    	  	   				<span class="info">${login.memberid}</span>
+                                   	   	   	   				<input type="hidden" name="memberid" value="${login.memberid}">
+                                   	   	   				</a>
+                                   	   	 			</div>	  	
+                                  	  	 			<span class="byte"><b id="count">0</b> / 1,000</span> 
+                               	         			<button type="submit" id="btnSubmit" class="btnSbm devBtnAnswerWrite">등록</button>
+                           	   					</div>
+											</fieldset>
+										</form>
 									</div>
-									<div class="btnWrap">
-                               			<div class="infoBx">
-                            	    	   <a href="/User/Qstn/MainProfile?Target=16755209" class="my-profile" target="_blank">
-                                    		   <span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_8.jpg" target="_blank" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
-                                    	  	   <span class="info">${login.memberid}</span>
-                                   	   	   	   <input type="hidden" name="memberid" value="${login.memberid}">
-                                   	   	   </a>
-                                   	   	 </div>	  	
-                                  	  	 <span class="byte"><b id="count">0</b> / 1,000</span> 
-                               	         <button type="submit" id="btnSubmit" class="btnSbm devBtnAnswerWrite">등록</button>
-                           	   		</div>
-								</fieldset>
-							</form>
-						</div>
-						<ul class="notice-box-wrap">
-                		    <li>답변을 등록하면 닉네임으로 질문자에게 전달됩니다.</li>
-                	   		<li>개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.</li>
-                  			<li>개인정보가 포함되거나 부적절한 답변은 비노출 또는 해당 서비스 이용 불가 처리될 수 있습니다.</li>
-               			</ul>
-					</div>
-				</c:if>		
-				</div>	
-				<c:forEach var="row" items="${replylist}">
-				<input type="hidden" name="replyseq" value="${row.replyseq}">	
-				<div class="viewListWrap">
-                	<div class="headerWrap">
-                    	<div class="numBx">
-                           <span>답변 <span class="num">${row.reply_count}</span></span>
-                        </div>
-                    </div>
-					<div class="listWrap commonSecWrap">	
-   						 	<ul class="answerArea">
-                				<li>
-                					<div class="contSec devContSection" style="display: block;">
-                						<div class="writeBoxWrap cmtWrite">
-                							<div class="infoBx">
-                								<a href="mypage.do" class="my-profile">
-                									<span class="nickname">${row.memberid}</span>
-                								</a>
-                							</div>
-                							<p class="cont">${row.reply_content}</p>
-                							<div class="cellBx">
-                								<span class="cell devAnswerDate">${row.rdate.substring(0,10)}</span>
-                							</div>
-                							<div class="btnBx devComtRoot" data-answerno="205449">
-                            					<!-- 댓글, 좋아요 버튼 클릭시 클래스 active 추가 -->
-                            					<button type="button" class="btnCmt devBtnComtList active">댓글 <em>${row.reply_count}</em></button>
-                            					<button type="button" class="btnHeart qnaSpB devBtnAnswerLike ">0</button>
-                        					</div>
-                						</div>
-                						<div class="commentSec" style="display: block;">
-                							<div class="cmtArea">
-                								<div class="cmtList replyWrap">
-                									<ul class="cmtList replyWrap">
-                                						<!-- [Dev] 내 댓글일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 삭제만 노출 -->
-                            						</ul>
-                            						<div class="writeBoxWrap cmtWrite case">
-   				 										<form id="" action="replyinsert.do" method="post">
-        													<fieldset>
-            													<legend>후배에게 답변하기 입력</legend>
-            														<div class="uiPlaceholder">
-                														<span class="ph ph_1" style="display: block;">댓글을 입력해주세요.</span>
-                														<span class="ph ph_2" style="display: none;">
-                   	 														· 개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.<br>
-                    														· 부적절한 댓글은 비노출 또는 서비스 이용 정지 사유가 될 수 있습니다.
-                														</span>
-			               				 								<textarea name="reply_content" maxlength="1000" title="답변쓰기"></textarea>
-           	 														</div>
-            														<div class="btnWrap">
-																		<div class="infoBx">
-																			<a href="/User/Qstn/MainProfile?Target=0" class="my-profile" target="_blank">
-																				<span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
-																				<span class="info">${login.memberid}</span>
-																				<input type="hidden" name="memberid" value="${login.memberid}">
-																			</a>
-																		</div>
-	                													<span class="byte"><b id="count">0</b> / 1,000</span>
-                														<button type="button" id="btnSubmit" class="btnSbm devBtnComtWrite">등록</button>
-            														</div>
-        													</fieldset>
-    													</form>
-													</div>                        						
+									<ul class="notice-box-wrap">
+                		    			<li>답변을 등록하면 닉네임으로 질문자에게 전달됩니다.</li>
+                	   					<li>개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.</li>
+                  						<li>개인정보가 포함되거나 부적절한 답변은 비노출 또는 해당 서비스 이용 불가 처리될 수 있습니다.</li>
+               					</ul>
+							</div>
+						</c:if>		
+					</div>	
+					<c:forEach var="row" items="${replylist}">
+						<input type="hidden" name="replyseq" value="${row.replyseq}">	
+						<div class="viewListWrap">
+                				<div class="headerWrap">
+                    				<div class="numBx">
+                           				<span>답변 <span class="num">${row.reply_count}</span></span>
+                        			</div>
+                    			</div>
+								<div class="listWrap commonSecWrap">	
+   								 	<ul class="answerArea">
+                						<li>
+                							<div class="contSec devContSection" style="display: block;">
+                								<div class="writeBoxWrap cmtWrite">
+                									<div class="infoBx">
+                										<a href="mypage.do" class="my-profile">
+                											<span class="nickname">${row.memberid}</span>
+                										</a>
+                									</div>
+                									<p class="cont">${row.reply_content}</p>
+                									<div class="cellBx">
+                										<span class="cell devAnswerDate">${row.rdate.substring(0,10)}</span>
+                									</div>
+                									<div class="btnBx devComtRoot" data-answerno="205449">
+                            							<!-- 댓글, 좋아요 버튼 클릭시 클래스 active 추가 -->
+                            							<button type="button" class="btnCmt devBtnComtList active">댓글 <em>${row.reply_count}</em></button>
+                            							<button type="button" class="btnHeart qnaSpB devBtnAnswerLike ">0</button>
+                        							</div>
                 								</div>
-                							</div>	
-                						</div>
-                					</div>
-                				</li>
-					  		</ul>
-						</div>
-			   		</div>
-			   	</c:forEach>  
-               </div>
+                								<div class="commentSec" style="display: block;">
+                									<div class="cmtArea">
+                										<div class="cmtList replyWrap">
+                											<ul class="cmtList replyWrap">
+                                							<!-- [Dev] 내 댓글일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 삭제만 노출 -->
+                            								</ul>
+                            								<div class="writeBoxWrap cmtWrite case">
+   				 												<form id="" action="replyinsert.do" method="post">
+        															<fieldset>
+            															<legend>후배에게 답변하기 입력</legend>
+            																<div class="uiPlaceholder">
+                																<span class="ph ph_1" style="display: block;">댓글을 입력해주세요.</span>
+                																<span class="ph ph_2" style="display: none;">
+                   	 																· 개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.<br>
+                    																· 부적절한 댓글은 비노출 또는 서비스 이용 정지 사유가 될 수 있습니다.
+                																</span>
+			               				 										<textarea name="reply_content" maxlength="1000" title="답변쓰기"></textarea>
+           	 																</div>
+            																<div class="btnWrap">
+																				<div class="infoBx">
+																					<a href="/User/Qstn/MainProfile?Target=0" class="my-profile" target="_blank">
+																						<span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
+																						<span class="info">${login.memberid}</span>
+																						<input type="hidden" name="memberid" value="${login.memberid}">
+																					</a>
+																				</div>
+	                															<span class="byte"><b id="count">0</b> / 1,000</span>
+                																<button type="button" id="btnSubmit" class="btnSbm devBtnComtWrite">등록</button>
+            																</div>
+        															</fieldset>
+    															</form>
+															</div>                        						
+                										</div>
+                									</div>	
+                								</div>
+                							</div>
+                						</li>
+					  				</ul>
+								</div>
+			   				</div>
+			   		</c:forEach>  
+               	</div>
 			</div>
 		</div>
 	</div>	
