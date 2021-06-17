@@ -230,11 +230,9 @@ body {
 <script type="text/javascript">
 
 function pwdch(memberid, pwd) {
-   alert(memberid);
+ 
    let pwdchk = document.getElementById('pwdval').value;
-   alert(pwdchk);
    if( pwdchk == pwd){
-      alert('성동');
       location.href="buspageUpdate.do?memberid="+memberid;
    }
    else{

@@ -140,7 +140,9 @@ body {
     </div>
 
 	    <div align="center">
+	    	<c:if test="${company.companytype ne null}">
 	    	<button id="companyBtn">수정하기</button>
+	    	</c:if>
 	    </div>
 
 </form>    
