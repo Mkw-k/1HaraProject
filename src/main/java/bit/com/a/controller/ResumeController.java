@@ -82,6 +82,7 @@ public class ResumeController {
 			String resumetitle = service.getResumeTitle(resumeseq);
 			pa.setResumetitle(resumetitle);
 			
+			
 			int portfolioseq = applylist.get(i).getPortfolioseq();
 			String portfolioname = service.getPortfolioname(portfolioseq);
 			System.out.println("portfolioname###################################"+portfolioname);
@@ -860,12 +861,17 @@ public class ResumeController {
 		param.setJobseq(jobseq);
 		param.setMemberid(memberid);
 		param.setResumeseq(resumeseq);
+		if(portfolioseq!=0) {
 		param.setPortfolioseq(portfolioseq);
-
+		List<Resume_Portfolio> portlist = service.getPortfolio(memberid);
+		model.addAttribute("portlist", portlist);
+		} else {
+			
+		}
 		RecruitDto dto = recruitservice.getRecruitListOne(jobseq);
 		List<String> list = recruitservice.getBsnameForDetail(jobseq);
 		List<ResumeDto> resumelist = service.getresume(memberid);
-		List<Resume_Portfolio> portlist = service.getPortfolio(memberid);
+		
 
 		dto.setBusname(list);
 	
@@ -873,7 +879,7 @@ public class ResumeController {
 
 		model.addAttribute("dto", dto);
 		model.addAttribute("resumelist", resumelist);
-		model.addAttribute("portlist", portlist);
+		
 
 		return "recruit/recruitDetail";
 
