@@ -43,6 +43,8 @@ public class MypageController {
    
    @RequestMapping(value = "mypageUpdate.do", method = RequestMethod.GET)
    public String mypageUpdate() throws Exception {
+	   
+
 
       return "mypage/mypageUpdate";
    }

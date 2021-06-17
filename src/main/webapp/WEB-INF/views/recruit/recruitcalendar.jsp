@@ -122,8 +122,9 @@ String nn = String.format("<a href='%s?year=%d&month=%d'>" + "<img src='./image/
 // 월별 일정
 String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, month);
 %>
+<c:import url="script.jsp" charEncoding="utf-8"/>
 
-
+<c:import url="header.jsp" charEncoding="utf-8"/> 
 
 <div class="container">
 		<div class="header clearfix">
@@ -260,24 +261,7 @@ String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, mont
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-                            <select class="form-control search-slt" name="careerStart" style="font-size: 12pt">
-                                <option disabled="disabled">경력시작</option>
-                                <option value="0">무관</option>
-                                <option value="1">신입</option>
-                                <option value="2">1년</option>
-                                <option value="3">2년</option>
-                                <option value="4">3년</option>
-                                <option value="5">4년</option>
-                                <option value="6">5년</option>
-                                <option value="7">6년</option>
-                                <option value="8">7년</option>
-                                <option value="9">8년</option>
-                                <option value="10">9년</option>
-                                <option value="11">10년</option>
-
-                            </select>
-                            <h3>~</h3>
-                            <select class="form-control search-slt" name="careerEnd" style="font-size: 12pt">
+                           <select class="form-control search-slt" name="careerEnd" style="font-size: 12pt">
                                 <option disabled="disabled">경력끝</option>
                                 <option value="0">무관</option>
                                 <option value="1">신입</option>
@@ -288,7 +272,7 @@ String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, mont
                                 <option value="6">5년</option>
                                 <option value="7">6년</option>
                                 <option value="8">7년</option>
-                                <option value="9">8년</option>
+                                <option value="9">8년</option> 
                                 <option value="10">9년</option>
                                 <option value="11">10년</option>
                             </select>
@@ -414,6 +398,10 @@ String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, mont
 		</tr>
 	</table>
 </div>
+
+
+
+
 
 <script>
 

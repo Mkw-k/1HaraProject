@@ -747,114 +747,7 @@ body {
 						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeAtchFileMngList.do" target="_self">첨부파일 관리</a>
 					</li>
 					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">워크넷 구직신청 </a>
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">입사지원 관리</a>
-			<button class="btn-show">입사지원 관리 메뉴 닫기</button>
-			<div class="depth3">
-				<ul>
-					<li>
-						<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">알선/입사지원 내역</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/aplentMng/seekActvHist/seekActvHistList.do" target="_self">구직활동내역</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/aplentMng/offerCo/offerCoList.do" target="_self">입사제안/스크랩한 기업</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeReadList.do" target="_self">이력서 열람기업</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/intrstInfo/mailToEmpList.do" target="_self">채용담당자와 한마디</a>
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">나의 맞춤정보</a>
-			<button class="btn-show">나의 맞춤정보 메뉴 닫기</button>
-			<div class="depth3">
-				<ul>
-					<li>
-						<a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">맞춤채용 관리</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do" target="_self">The Work AI추천</a>
-					</li>
-					<li>
-					<a href="#openPopup" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; keis.window.newWindow('/empInfo/customWorkSupportSrv/custSupportMain.do?loginAction=Y', 'pop', 1010, 780, 'yes'); return false;" target="_blank" title="새창">취업나침반</a>
-						<script type="text/javascript">
-							window.name = "mdmOpener";
-						</script>
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">나의 관심정보</a>
-			<button class="btn-show">나의 관심정보 메뉴 닫기</button>
-			<div class="depth3"><ul>
-					<li>
-						<a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">관심스크랩(찜)</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/intrstInfo/seekEmpInfoSrchHist.do?srchType=3" target="_self">최근 본 채용공고</a>
-					</li>
-					<li>
-						<a href="/empInfo/empInfoSrch/calendar/myCalendarMonth.do" target="_blank">마이캘린더</a>
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			<a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">e-채용마당 서비스</a>
-			<button class="btn-show">e-채용마당 서비스 메뉴 닫기</button>
-			<div class="depth3">
-				<ul>
-					<li>
-						<a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">지원서관리</a>
-					</li>
-					<li>
-						<a href="/eas/indivMemberSrv/employNotice/wNoInterest.do" target="_self">관심정보관리</a>
-					</li>
-					<li>
-						<a href="/eas/indivMemberSrv/employJudge/employJudgeList.do" target="_self">심사평가관리</a>
-					</li>
-					<li>
-						<a href="/empAgencySvc/empBoard/wBuBoardList.do" target="_self">채용게시판</a>
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/intrstInfo/joinResult.do" target="_self">온라인 신청관리</a>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/myCustmadeSrvList.do" target="_self">
-				고용복지 맞춤서비스
-			</a>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 관리</a>
-			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
-			<div class="depth3">
-				<ul>
-					<li class="curr">
-						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
-					</li>
-					<li>
-						<a href="mypageUpdate.do" target="_self">회원정보 수정(성명변경)</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a>
-					</li>
-					<li>
-						<a href="memberDelete.do" target="_self">회원탈퇴</a>
+						<a href="javascript:check()" target="_self">지원내역확인 </a>
 					</li>
 				</ul>
 			</div>
@@ -1574,7 +1467,7 @@ function f_empPgmList(resultObj){
 					</div>
 					<div class="mypage-idv-wrap">
 						<div class="idv-sec01">
-							<div class="con-top">
+							<div class="con-top" style="height:320px;">
 
 
 								<c:if test="${login.userpic ne null}">	 		
@@ -1693,45 +1586,9 @@ function f_empPgmList(resultObj){
 								</div>
 							</div>
 
-						<!-- 특별고용촉진 지원대상 확인서 출력 -->
-							<div class="box-line v3 blue mt30">
-								<div class="a-c">
-									<ul class="v1" style="margin-bottom: 10px;margin-right: 15px;">
-										<li>특별고용촉진장려금 지원을 위한 지원대상 확인서 출력은 아래 버튼을 클릭하여 주시기 바랍니다.</li>
-									</ul>
-									<button onclick="f_reportSpecialEmployment('0000036406785');" class="button large">특별고용촉진 지원대상 확인서 출력</button>
-								</div>
-							</div>
+						
 
-
-							<div class="idv-sec03"><!-- 2018-10-16 span 태그제거 후 이미지 추가 -->
-								<h3><img src="../../static/images/mypage/@mainidv-sec3-2.png" alt="고용정보"> AI추천</h3>
-								<p><span>우정현</span> 님의 구직정보 및 활동정보를 기반으로 워크넷 인공지능 분석을 통한 통합고용정보를 추천해 드립니다.</p>
-								<ul class="basic-list float">
-									<li><a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do?infoDiv=work">채용 <span class="futura">11</span></a></li>
-									<li><a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do?infoDiv=poly">정책 <span class="futura">5</span></a></li>
-									<li><a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do?infoDiv=busi">기업 <span class="futura">4</span></a></li>
-									<li><a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do?infoDiv=train">훈련 <span class="futura">26</span></a></li>
-									<li><a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do?infoDiv=qual">자격 <span class="futura">5</span></a></li>
-									<li><a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do?infoDiv=psy">심리검사 <span class="futura">2</span></a></li>
-								</ul>
-								<a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do" class="btn-more">더보기</a>
-							</div>
-
-							<div class="idv-sec04">
-								<div class="con-left" id="boardDiv"><!-- 2018-10-16 문구변경 -->
-									<span>공지<br>사항</span>
-									<ul class="dot-list v1"><li><a href="/ntNewsData/ntMatter/retrieveNtMatterDtl.do?boardNo=3&amp;writeNo=23584" onfocus="empBoardPlayType('stop');" onblur="empBoardPlayType('start');" onmouseover="empBoardPlayType('stop');" onmouseout="empBoardPlayType('start')">전문 승강기엔지니어 인력양성 교육생 모집</a></li><li><a href="/ntNewsData/ntMatter/retrieveNtMatterDtl.do?boardNo=3&amp;writeNo=23552" onfocus="empBoardPlayType('stop');" onblur="empBoardPlayType('start');" onmouseover="empBoardPlayType('stop');" onmouseout="empBoardPlayType('start')">2021년 워크넷 콘텐츠 모니터링단 모집 공고</a></li></ul>
-								</div>
-								<div class="con-right">
-									<a href="/useInfo/worknetInfo/useWorknetGuide.do">
-										<p>
-											<span>워크넷 이용안내 메뉴얼</span>
-											이용에 궁금한 점이 있으신가요?
-										</p>
-									</a>
-								</div>
-							</div>
+							
 
 							<div class="idv-sec05">
 								<div class="con01">
@@ -2081,6 +1938,81 @@ window.onscroll = function sticky() {
     nav[0].classList.remove("nav");
   }
 }
+
+
+
+
 </script>
+
+<script>
+$(document).ready(function() {
+	function check() {
+		alert('실행성공');
+		
+		$.ajax({
+			   url : "./getresumeData.do",
+			   type : "get",
+			   data : {"memberid" : '${login.memberid}'}
+			   success:function(list){
+
+			      $("mypage-idv-wrap *").remove();
+			      
+			      let app = "<table class='table list_col1' style='width: 1100px; text-align: center; margin-left: 400px;'>"+
+			    			"<colgroup>"+
+			  				"<col width='350px'><col width='350px'><col width='200px'><col width='100px'><col width='100px'>"+
+			  				"</colgroup>"+
+			  				"<thead>"+
+			  				"<tr>"+
+			  				"<td>지원공고</td>"+
+			  				"<td>지원이력서</td>"+
+			  				"<td>지원일</td>"+
+			  				"<td>열람여부</td>"+
+			  				"<td>지원취소</td>"+
+			  				"</tr>"+
+			  				"</thead>"+
+			  				"<tbody style='border-bottom: thin; border-color: #cccccc; border-bottom-style: solid;'>"; 
+
+			      $.each(list, function(i, val){
+
+					app += "<tr>"+
+						   "<td><a href='RecruitDetail.do?jobseq='"+val.jobseq()+"'&memberid='+'${login.memberid}'+''>"+val.jobtitle+"</a></td>";
+						   if(val.resumetitle == null){
+							app += "<td><p>삭제된 이력서입니다</p></td>";
+							}
+						   else{
+							app += "<td><a href='Resumedetail.do?seq='"+val.resumeseq+"''>"+val.resumetitle+"</a></td>";   
+						   }
+						   
+					app += "<td>"+val.applydate+"</td>"+
+						"<td>";
+						
+						if(val.companyread >0 ){
+						app += "<img alt='' src='./image/check.png' height='30px' width='30px' style='margin-left:0px;display:inline-flex;'>";
+						}
+						
+					app += "</td>"+
+						"<td><a href='cancelApply.do?seq='"+val.applyseq+"'&memberid='${login.memberid}'' class='box-btn'>취소</a></td>"+
+						"</tr>"+
+						"</tbody>"+
+						"</table>";				 
+
+			         $(".mypage-idv-wrap").append(app);
+			      });
+			      
+			      
+			   },
+			   error:function(){
+			      alert('error');
+			   }
+
+			 }); // ajax
+
+})
+
+}
+
+</script>
+
+
 </body>
 </html>
