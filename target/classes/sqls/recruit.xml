@@ -89,7 +89,7 @@
                J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME,E.EDUNAME
    FROM JOB J, BUSINESS C, EDUCATION E
    WHERE J.COMPANYID = C.MEMBERID AND
-        J.EDUCATION = E.EDUCODE
+        J.EDUCATION = E.EDUCODE AND J.DEL = 0
         <!-- AND J.DEL = 0 -->
 
 
@@ -172,6 +172,7 @@
                J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME
          FROM JOB J, BUSINESS C
          WHERE J.COMPANYID = C.MEMBERID
+         		AND J.DEL = 0
 
          <!-- AND J.DEL =0 -->
 
@@ -218,7 +219,8 @@
                J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
                J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME
          FROM JOB J, BUSINESS C
-         WHERE J.COMPANYID = C.MEMBERID
+         WHERE J.COMPANYID = C.MEMBERID 
+         	AND J.DEL=0
       <!-- AND J.DEL =0 -->
          <if test="choice != null and choice != ''and search != null and search != ''">
           <if test="choice == 'title'">

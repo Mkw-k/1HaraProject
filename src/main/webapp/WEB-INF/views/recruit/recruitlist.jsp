@@ -761,6 +761,8 @@ function getrecruitSearchList(pnum) {
  			$(".list_col").remove();
 
  			var memberid = '<c:out value="${login.memberid}"/>';
+ 			
+ 			var auth = '<c:out value="${login.auth}"/>';
 
 
  			$.each(list, function(i, val){
@@ -771,7 +773,7 @@ function getrecruitSearchList(pnum) {
  	 			regdate = regdate.substr(2,9);
 
 
- 				//alert(val.jobSeq);
+ 	 		//alert(val.jobSeq);
  				let app = "<tr class= 'list_col'>"
  							+"<td>" + val.rnum +"</td>";
 
@@ -796,7 +798,7 @@ function getrecruitSearchList(pnum) {
  									+"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
  									+"<td>" + end +"<br>"+regdate;
 
- 									if(val.companyId == '${login.memberid}' || '${login.auth == 3}'){
+ 									if(val.companyId == memberid || auth == 3){
  								app += "<input type='button' class='btn btn-primary' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"
  									}
 

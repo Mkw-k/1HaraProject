@@ -56,9 +56,16 @@ public class BuspageController {
 	@RequestMapping(value = "buspageUpdate.do",   method = {RequestMethod.GET, RequestMethod.POST})
 	public String buspageUpdate(Model model, BusinessDto dto) {
 		System.out.println("memberid="+dto.getMemberid());
+		
+		//페이지 받아오기
 		dto = service.getbuspage(dto);
+		
+		System.out.println("아이디:" + dto.getMemberid());
+		
 		model.addAttribute("business", dto);
 		return "busMypage/buspageupdate2";
+	
+	
 	}
 	
 	

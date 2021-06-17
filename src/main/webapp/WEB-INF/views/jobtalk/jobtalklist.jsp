@@ -919,10 +919,7 @@ margin-right : 450px;
     </div>
 </section>
 
-
 </header>
-
-
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <!-- Links -->
@@ -966,15 +963,12 @@ margin-right : 450px;
     </li>
 
     <li class="nav-item">
-
-
-
         <div class="col-md-6">
            <div class="">
               <div class="login">
 
                        <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;">로그인</a>
-                    <!--    <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
+                    <!-- <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
 
               </div>
 			</div>
@@ -993,12 +987,7 @@ margin-right : 450px;
 </nav>
 <br>
 
-
-
-<div class="container">
-<div class="side-navigation" style="
-    width: 942px;
-">
+<div class="side-navigation" style="width: 200px;">
 	<h2 class="skip">선배에게 질문하기 세부메뉴</h2>
 	<div class="navi-top-area">
 		<a href="/User/Qstn/QstnWrite" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
@@ -1039,7 +1028,16 @@ margin-right : 450px;
 
 <div class="container">
 
-<section id="contents" style="padding-top: 0px;width: 100%">
+<div class="container" style="
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    contain: layout;
+
+">
+
+<section id="contents" style="padding-top: 0px;padding-left: 100px;margin-top: 200px;">
 
 	<div class="tit-util">
 		<h2 class="tit">취업톡톡</h2>
@@ -1070,18 +1068,6 @@ margin-right : 450px;
 			<input type="hidden" name="searchText" value="">
 			<input type="hidden" name="jobyoung" value="">
 			<input type="hidden" name="pageIndex" id="pageIndex" value="1">
-			<div class="board-list-count mt40">
-				<div class="util">
-					<div class="range-view">
-						<select name="pageUnit" id="pageUnit" title="보기 갯수" class="w100px">
-							<option value="10" selected="selected">10 개씩</option>
-							<option value="30">30 개씩</option>
-							<option value="50">50 개씩</option>
-						</select>
-						<button type="button" onclick="fn_search(1)" class="button gray">보기</button>
-					</div>
-				</div>
-			</div>
 			<div>
 				<input type="hidden" name="_csrf" value="f9429a24-06a6-4e86-9fb8-413ddf249c96">
 			</div>
@@ -1106,9 +1092,7 @@ margin-right : 450px;
 				<th scope="col" style="color: black;">조회수</th>
 			</tr>
 		</thead>
-
-
-
+	</table>
 	<!-- <tr class="list_col"><th>1</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=31">페이징이 될까요??안됄까요??</a></td><td>jacob</td><td>2021-06-09</td><td>5</td></tr><tr class="list_col"><th>2</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=30">사장이랑 뭐하고 놀아요?/</a></td><td>jacob</td><td>2021-06-09</td><td>2</td></tr><tr class="list_col"><th>3</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=29">공부가 뭐죠??</a></td><td>jacob</td><td>2021-06-09</td><td>1</td></tr><tr class="list_col"><th>4</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=28">ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</a></td><td>jacob</td><td>2021-06-09</td><td>2</td></tr><tr class="list_col"><th>5</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=27">후후후후후후후후후후</a></td><td>jacob</td><td>2021-06-09</td><td>1</td></tr><tr class="list_col"><th>6</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=26">돈벌고싶은데 어떤 기업이 돈제일 많이 벌어요??</a></td><td>jacob</td><td>2021-06-09</td><td>3</td></tr><tr class="list_col"><th>7</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=25">쿠우쿠우</a></td><td>jacob</td><td>2021-06-09</td><td>2</td></tr><tr class="list_col"><th>8</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=24">여기에 욕쓰지 말아주세요!!</a></td><td>jacob</td><td>2021-06-09</td><td>2</td></tr><tr class="list_col"><th>9</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=23">뭐가좋을까요?</a></td><td>jacob</td><td>2021-06-09</td><td>1</td></tr><tr class="list_col"><th>10</th><td class="a-1"><a href="Jobtalkdetail.do?jobtalkseq=22">장난치지 마세요</a></td><td>jacob</td><td>2021-06-09</td><td>1</td></tr></table>
 !-->
 </div>
@@ -1161,9 +1145,9 @@ function getJobtalkListData(pNumber) {
 								app +="<td class='a-1'>"
 									+"<a href='Jobtalkdetail.do?jobtalkseq=" + val.jobtalkseq +"'>" + val.jobtalk_title + "</a>"
 									+"</td>"
-									+"<td>" + val.memberid + "</td>"
-									+"<td>" + val.wdate.substring(0,10) + "</td>"
-									+"<td>" + val.jobtalk_readcount + "</td>";
+									+"<td style='text-align:center'>" + val.memberid + "</td>"
+									+"<td style='text-align:center'>" + val.wdate.substring(0,10) + "</td>"
+									+"<td style='text-align:center'>" + val.jobtalk_readcount + "</td>";
 
 							} else {
 								app += "<td style='text-align:left' colspan='6'>"
@@ -1172,7 +1156,6 @@ function getJobtalkListData(pNumber) {
 							  }
 							app +=  "</tr>";
 							$("#table").append(app);
-
 				});
 
 			},

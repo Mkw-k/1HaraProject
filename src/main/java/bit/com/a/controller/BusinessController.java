@@ -12,11 +12,13 @@ import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import bit.com.a.dto.BusinessDto;
@@ -178,9 +180,54 @@ public class BusinessController {
 		service.businessDelete(dto);
 		session.invalidate();
 		return "home";
-		
-		
-		
+			
 	}
+	
+	@RequestMapping(value ="businesslist.do", method = {RequestMethod.GET,RequestMethod.POST})
+	public String listGET(HttpSession session, Model model) throws Exception{
+		
+		// 1. 관리자 세션 제어 
+		MemberDto member = (MemberDto) session.getAttribute("login");
+		if(member.getAuth()==3) {
+			model.addAttribute("bus", service.getBusList());
+			return "admin/businesslist";
+		}
+		else {
+			return "redirect:home.do";
+		}
+	}
+	@RequestMapping(value="businessdeletemerong.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView admin_member_forced_eviction(String memberid) throws Exception {
+        System.out.println("들어오냐?");
+        //유저의 아이디를 삭제 (강제탈퇴) 시키기위해서 dto에 담는다.
+        BusinessDto dto = new BusinessDto();
+        dto.setMemberid(memberid);
+
+        //회원탈퇴 체크를 하기위한 메소드, 탈퇴 시키려는 회원의 아이디가 있는지 검사한후에 result 변수에 저장한다.
+
+        service.admin_business_forced_evictionCheck(dto);
+
+        ModelAndView mav = new ModelAndView();
+
+        if(dto.getMemberid() != null) {    //회원 강제탈퇴가 성공했을시 출력되는 뷰
+
+            mav.setViewName("home");
+
+            mav.addObject("message", "회원이 정상적으로 강제탈퇴 처리 되었습니다.");
+
+        }else {
+
+            mav.setViewName("admin/businesslist");
+
+            mav.addObject("message", "회원 목록에 없는 회원입니다. 다시 확인해주세요.");
+        }
+
+
+        return mav;
+
+    }
+
+	
+	
 	
 }
