@@ -2454,7 +2454,7 @@ margin-right : 450px;
 ">
 		                        <div>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br>10대기업</a>
-		                          <a href="calendarlist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
+		                          <a href="calendarlist1.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
 		                        </div>
 		                        <div>
@@ -2693,9 +2693,7 @@ z-index: 10;"><span class="bar"></span></button>
                 </div>
             </div>
         </div>
-        <div class="wrap_my_area" style="
-    width: 401px;
-">
+        <div class="wrap_my_area" style="width: 401px;">
 
 
 
@@ -2714,7 +2712,7 @@ z-index: 10;"><span class="bar"></span></button>
 ">
 		                        <div>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br>10대기업</a>
-		                          <a href="calendarlist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
+		                          <a href="calendarlist1.do.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
 		                        </div>
 		                        <div>

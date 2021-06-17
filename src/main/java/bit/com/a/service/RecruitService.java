@@ -19,7 +19,7 @@ public interface RecruitService {
 
    List<RecruitDto> getRecruitPagingList(RecruitParam param);
 
-   RecruitDto getRecruitListOne(int jobseq);
+   RecruitDto getRecruitListOne(int string);
 
    boolean deleteRecruit(int jobseq);
 
@@ -31,7 +31,7 @@ public interface RecruitService {
 
    List<RecruitDto> getCalendarList(RecruitParam param);
 
-   List<String> getBsnameForDetail(int jobseq);
+   List<String> getBsnameForDetail(int jobSeq);
 
    List<RecruitParam> areacodeListData();
 

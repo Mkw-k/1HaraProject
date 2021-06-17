@@ -433,7 +433,6 @@ public class RecruitController {
 		  List<String> list = service.getBsnameForDetail(jobseq);
 		  System.out.println("직무이름 :"+ list.toString());
 
-		  dto.setBusname(list);
 
 		  RecruitParam param = new RecruitParam();
 

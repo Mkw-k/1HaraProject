@@ -352,9 +352,11 @@ width: max-content;
             <dd>${dto.jobStart }</dd>
             <dt class="end">마감일</dt>
             <dd>${dto.jobEnd }</dd>
-             <dd><c:if test="${login.auth==1 }">
-         		 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
-			</c:if></dd>
+             <dd>
+             	<c:if test="${login.auth==1 }">
+         			 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
+				</c:if>
+			</dd>
           </dl>
         </div>
         <div class="col-md-8 bg-light" style="">
@@ -384,7 +386,6 @@ width: max-content;
       <div class="row">
         <div class="col-md-4 bg-light border-right" style="">
           <dl class="info_period">
-
           	<p>담당자 및 근무지</p>
             <dt id="keyword1">${dto.area1Name } ${dto.area2Name } ${dto.detailAdress1 } ${dto.detailAdress2 }</dt>
             <dd>
@@ -427,36 +428,22 @@ width: max-content;
 				<tr>
 					<th>평균연봉</th><td>${com.salaryavg }</td>
 				</tr>
-
-
-
 			</table>
-
 		</div>
       </div>
     </div>
   </div>
 
-
-
-
-
-
   <div class="py-5">
     <div class="container">
       <div class="row"> 인기기업 HOT10
       <div class="col-md-12">
-
-
-
-
          <table class="table table-hover col-sm-12 " style="" id="table">
             <thead class="thead-dark">
                <tr>
                   <th></th>
 
                   <th>회사명</th>
-
                   <th>공고제목</th>
                   <th>지원자격(학력·경력)</th>
                   <th>채용인원</th>
@@ -464,21 +451,12 @@ width: max-content;
                   <th>마감일·등록일</th>
                </tr>
             </thead>
-
-
          </table>
          <p></p>
-
-
        </div>
       </div>
     </div>
   </div>
-
-
-
-
-
 
   <div class="py-5">
     <div class="container">
@@ -487,7 +465,6 @@ width: max-content;
       </div>
     </div>
   </div>
-
 
   <!-- 댓글 -->
   				<div class="container">
@@ -526,6 +503,7 @@ width: max-content;
 				<c:forEach var="row" items="${replylist}">
 				<input type="hidden" name="replyrecruitseq" value="${row.replyrecruitseq}">
 				<input type="hidden" name="jobSeq" value="${row.jobSeq}">
+
 				<div class="viewListWrap">
                 	<div class="headerWrap">
                     	<div class="numBx">
@@ -575,8 +553,6 @@ width: max-content;
   <input type="hidden" id="phonenumber">
 
 
-
-
 <script>
 getTop10List();
 
@@ -616,7 +592,7 @@ function getTop10List() {
  									+ "</td>"
  									+"<td style='text-align:left'>"
  									//+ arrow(val.depth)
- 									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
+ 									+"<a href='RecruitDetail.do?jobSeq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
  									+"</td>"
  									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
  									+"<td>" + val.jobVolumn + "</td>"
@@ -644,19 +620,23 @@ function getTop10List() {
 }
 
 
+
+function jobApply(jobseq, memberid, resumeseq) {
+	alert("jobApply");
+	//alert(jobseq);
+	//alert(memberid);
+	//alert(resumeseq);
+  location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
+}
 </script>
 
-
-
 <script type="text/javascript">
-
-
 
 function deleteRecruit(jobSeq) {
 	location.href="deleteRecruit.do?jobSeq="+jobSeq;
 }
-function updateRecruit(jobseq) {
-	location.href ="RecruitUpdate.do?jobseq="+jobseq;
+function updateRecruit(jobSeq) {
+	location.href ="RecruitUpdate.do?jobSeq="+jobSeq;
 }
 function mgUpdate() {
 	$("#_mgData *").remove(); //내부 요소만 삭제
@@ -719,7 +699,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
-var dAdress = '${dto.area1Name }'+' '+ '${dto.area2Name }'+' '+ '${dto.detailAdress1 }';
+var dAdress = '${dto.area1Name }' + ' ' + '${dto.area2Name }' + ' ' + '${dto.detailAdress1 }';
 
 // 주소로 좌표를 검색합니다
 geocoder.addressSearch(dAdress, function(result, status) {
@@ -1076,6 +1056,59 @@ function getPhonenum(memberid) {
 		console.warn( 'Build id: x1h6xk4rd95i-65gjhojljtvk' );
 		console.error( error );
 	} );
+
+
+// 댓글 입력
+var processing = false;
+$('.devBtnComtWrite').click(function () {
+    if (processing === false) {
+        processing = true;
+        //비회원 체크 여부
+        if ($isLogin != 1) {
+            JKLoginLayer.open();
+            processing = false;
+            return false;
+        }
+
+        var $this = $(this);
+        var answerNo = $this.closest('li').find('.devComtRoot').data('answerno');
+        var cntnt = $this.closest('form').find('textarea').val();
+
+        if (typeof cntnt === 'undefined' || cntnt === '') {
+            alert('댓글 내용을 입력해 주세요.');
+            processing = false;
+            return false;
+        }
+
+        $.ajax({
+            url: '/User/Qstn/ComtWrite',
+            dataType: 'html',
+            method: 'POST',
+            data: {
+                answerNo: answerNo,
+                cntnt: cntnt,
+                qstnNo: $('#hdnQstnNo').val()
+            },
+            success: function (html) {
+                if (html !== '') {
+                    html = html.replace('&lt;', '<').replace('&gt;', '>');
+                    if ($this, html.match(/문자를 입력할 수 없습니다/) === null) {
+                        fncComtCountChange($this, 1);
+                        $this.closest('form').find('textarea').val('');
+                        $this.closest('div.qnaFormBx').addClass('case');
+                        $this.closest('.cmtWrite').siblings('.replyWrap').append(html);
+                    }
+                    else {
+                        fncComtCountChange($this, 0);
+                    }
+                }
+            },
+            complete: function () {
+                processing = false;
+            }
+        });
+    }
+});
 
 
 

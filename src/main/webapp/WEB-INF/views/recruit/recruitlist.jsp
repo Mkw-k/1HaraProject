@@ -152,7 +152,7 @@ hr {
   content: "";
   clear: both;
   display: table;
-  
+
 }
 
 /* Change styles for cancel button and delete button on extra small screens */
@@ -294,7 +294,7 @@ hr {
 
 <c:import url="script.jsp" charEncoding="utf-8"/>
 
-<c:import url="header.jsp" charEncoding="utf-8"/> 
+<c:import url="header.jsp" charEncoding="utf-8"/>
 
 
 <div class="container-fluid">
@@ -317,7 +317,7 @@ hr {
       <div class="header clearfix">
          <nav>
             <ul class="nav nav-pills float-right">
-               
+
             </ul>
          </nav>
 
@@ -521,39 +521,6 @@ hr {
 </div>
 
 
-
-   <!-- /container -->
-
-
-
-<!--    <div class="container">
-
-      <div class="box border" style="margin-top: 5px; margin-bottom: 10px">
-         <form action="" id="_frmFormSearch" method="get">
-
-            <table
-               style="margin-left: auto; margin-right: auto; margin-top: 3px; margin-bottom: 3px;">
-               <tr>
-                  <td>검색</td>
-                  <td style="padding-left: 5px;"><select id="_choice"
-                     name="choice">
-                        <option value="" selected="selected" disabled="disabled">선택</option>
-                        <option value="title">제목</option>
-                        <option value="content">내용</option>
-                        <option value="companyname">회사명</option>
-                  </select></td>
-
-                  <td style="padding-left: 5px;"><input type="text"
-                     id="_searchWord" name="searchWord"></td>
-                  <td style="padding-left: 5px;"><span class="button blue">
-                        <button type="button" id="btnSearch"
-                           onclick="javascript:getrecruListData(0)">검색</button>
-                  </span></td>
-               </tr>
-            </table>
-         </form>
-      </div>
-   </div> -->
 
 
 
@@ -794,16 +761,16 @@ function getrecruitSearchList(pnum) {
  			$(".list_col").remove();
 
  			var memberid = '<c:out value="${login.memberid}"/>';
- 			
+
 
  			$.each(list, function(i, val){
- 				
+
  				var end = val.jobEnd;
  	 			var regdate = val.regdate;
  	 			end = end.substr(2,9);
  	 			regdate = regdate.substr(2,9);
- 	 			
- 	 			
+
+
  				//alert(val.jobSeq);
  				let app = "<tr class= 'list_col'>"
  							+"<td>" + val.rnum +"</td>";
@@ -828,13 +795,13 @@ function getrecruitSearchList(pnum) {
  									+"<td>" + val.jobVolumn + "</td>"
  									+"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
  									+"<td>" + end +"<br>"+regdate;
- 									  
+
  									if(val.companyId == '${login.memberid}' || '${login.auth == 3}'){
- 								app += "<input type='button' class='btn btn-primary' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >" 	
+ 								app += "<input type='button' class='btn btn-primary' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"
  									}
- 									
+
  								app += "</td>";
- 									
+
  							}
 
  							else{
@@ -881,7 +848,7 @@ function getrecruListData( pNumber, search ){
                             + "</td>"
                            +"<td style='text-align:left'>"
                            //+ arrow(val.depth)
-                           +"<a href='RecruitDetail.do?jobseq=" + val.jobSeq + "'>" + val.jobTitle+ "</a>"
+                           +"<a href='RecruitDetail.do?jobSeq=" + val.jobSeq + "'>" + val.jobTitle+ "</a>"
                            +"</td>"
                            +"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
                            +"<td>" + val.jobVolumn + "</td>"
