@@ -23,7 +23,7 @@ public class CompanyController {
 		model.addAttribute("company", dto);
 		
 		
-		System.out.println(dto.toString());
+		/* System.out.println(dto.toString()); */
 		
 		return "company/companydetail";
 	}

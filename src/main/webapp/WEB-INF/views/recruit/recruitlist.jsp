@@ -771,7 +771,7 @@ function getrecruitSearchList(pnum) {
  	 			regdate = regdate.substr(2,9);
 
 
- 				//alert(val.jobSeq);
+ 	 		//alert(val.jobSeq);
  				let app = "<tr class= 'list_col'>"
  							+"<td>" + val.rnum +"</td>";
 
