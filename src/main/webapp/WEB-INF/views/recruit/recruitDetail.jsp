@@ -442,27 +442,38 @@ white{
       </div>
     </div>
   </div>
+  
   <div class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
-			<table class="table table-hover col-sm-12 " >
-				<tr>
-					<th>사업</th><td>${com.content }</td>
-				</tr>
-				<tr>
-					<%-- <th><img alt="" src="./upload/${com.filename}"></th> --%>
-					<th>사원수</th><td>${com.empcount }</td>
-				</tr>
-				<tr>
-					<th>평균연봉</th><td>${com.salaryavg }</td>
-				</tr>
-			</table>
-		</div>
+        <div class="col-md-4 bg-light" >
+        	
+          <img src="upload/${bsdto.newfilename}" alt="디폴트이미지" width="100%" >
+        </div>
+        <div class="col-md-4 bg-light">
+          <ul>
+	          <li style=" list-style: none;"><h3>${com.companyname }</h3></li>
+	          <li style=" list-style: none;"><span>기업형태</span>&nbsp;&nbsp;<span>${com.companytype }</span></li>
+	          <li style=" list-style: none;"><span>업력</span>&nbsp;&nbsp;<span>${com.comyear }</span></li>
+	          <li style=" list-style: none;"><span>대표자명</span>&nbsp;&nbsp;<span>${com.ceoname }</span></li>
+	          <li style=" list-style: none;"><span>업종</span>&nbsp;&nbsp;<span>${com.content }</span></li>
+          </ul>
+        </div>
+        <div class="col-md-4 bg-light">
+	        <ul>
+	          <li style=" list-style: none;"></li><br><br>
+	          <li style=" list-style: none;"><span>직원수</span>&nbsp;&nbsp;<span>${com.empcount }</span></li>
+	          <li style=" list-style: none;"><span>총매출</span>&nbsp;&nbsp;<span>${com.totalsale }</span></li>
+	          <li style=" list-style: none;"><span>평균연봉</span>&nbsp;&nbsp;<span>${com.salaryavg }</span></li>
+	          <li style=" list-style: none;"><span>홈페이지주소</span>&nbsp;&nbsp;<span>${com.website }</span></li>
+	        </ul>
+        </div>
       </div>
     </div>
   </div>
-
+  
+  
+  
   <div class="py-5">
     <div class="container">
       <div class="row"> 인기기업 HOT10
@@ -651,12 +662,19 @@ function getTop10List() {
 
 
 function jobApply(jobseq, memberid, resumeseq) {
-	alert("jobApply");
-	//alert(jobseq);
-	//alert(memberid);
-	//alert(resumeseq);
-  location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
-}
+
+	   alert("jobApply");
+	   //alert(jobseq);
+	   //alert(memberid);
+	   //alert(resumeseq);
+	   // alert(phonenum);
+
+
+	   portseq = document.getElementById('portfolioseq').value;
+	   
+	    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq+"&portfolioseq="+portseq;
+
+	}
 </script>
 
 <script type="text/javascript">

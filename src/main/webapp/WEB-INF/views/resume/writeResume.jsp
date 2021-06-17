@@ -391,7 +391,7 @@ dt, dd {
 																class="box_input max_length" value="${login.phonenum }"
 																maxlength="11" data-only-number="true"
 																data-api_type="layer" data-api_id="basic_confirm_cell"
-																readonly>
+																>
 														</div>
 													</div>
 

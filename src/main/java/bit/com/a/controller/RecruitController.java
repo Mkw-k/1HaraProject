@@ -29,6 +29,8 @@ import bit.com.a.dto.RecruitReplyDto;
 import bit.com.a.dto.ResumeDto;
 import bit.com.a.dto.Resume_Portfolio;
 import bit.com.a.service.RecruitReplyService;
+import bit.com.a.service.BuspageService;
+import bit.com.a.service.CompanyService;
 import bit.com.a.service.MypageService;
 import bit.com.a.service.RecruitService;
 import bit.com.a.service.ResumeService;
@@ -48,6 +50,12 @@ public class RecruitController {
 
    @Autowired
    RecruitReplyService recruitservice;
+   
+   @Autowired
+   BuspageService bsService;
+   
+   @Autowired
+   CompanyService comservice;
 
 //TODO채용공고 리스트로 이동
    @RequestMapping(value = "recuruitlist.do", method = RequestMethod.GET)
@@ -458,9 +466,19 @@ public class RecruitController {
       		  dto.setFavoriteCom(comFavoriteCount);
 
 		  }
-
-
-
+		  
+		  
+		  BusinessDto bsdto = new BusinessDto();
+		  
+		  bsdto.setMemberid(dto.getCompanyId());
+		  bsdto = bsService.getbuspage(bsdto);
+		  
+		  model.addAttribute("bsdto", bsdto);
+		  
+		  String companyid = bsdto.getMemberid();
+		  CompanyDto com = comservice.getCompany(companyid);
+		  model.addAttribute("com", com);
+			
 		  System.out.println("변경된 Dto :"+dto.toString());
 
 		  model.addAttribute("dto", dto);

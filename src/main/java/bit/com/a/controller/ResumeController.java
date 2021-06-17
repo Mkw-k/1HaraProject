@@ -2,6 +2,7 @@ package bit.com.a.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,10 +109,8 @@ public class ResumeController {
 
 		System.out.println(memberid);
 		// 이력서 리스트
-		List<ResumeDto> resumelist = service.getresume(memberid);
-		List<ResumeDto> resumeNolist = service.getNoresume(memberid);
+	
 		List<ApplyDto> applylist = service.getApplyList(memberid);
-		List<Resume_Portfolio> portlist = service.getPortfolio(memberid);
 		List<ResumeParam> param = new ArrayList<ResumeParam>();
 
 		for (int i = 0; i < applylist.size(); i++) {
@@ -887,7 +887,7 @@ public class ResumeController {
 	
 	//이력서 삭제
 	@RequestMapping(value = "cancelApply.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String cancelApply(int seq, String memberid, Model model) {
+	public String cancelApply(int seq, String memberid, Model model)  {
 
 	
 		boolean c = service.cancelApply(seq);
@@ -927,8 +927,63 @@ public class ResumeController {
 		model.addAttribute("portlist", portlist);
 		model.addAttribute("param", param);
 
-		return "resume/resumeMain";
+		
+			return "resume/resumeMain";
+		
+		
 	}
+	
+	
+	//이력서 삭제 (마이페이지)
+		@ResponseBody
+		@RequestMapping(value = "MypageCancelApply.do", method = { RequestMethod.GET, RequestMethod.POST })
+		public String MypageCancelApply(int seq, String memberid, Model model, HttpServletResponse resp)throws Exception {
+
+		
+			boolean c = service.cancelApply(seq);
+			System.out.println(c);
+			
+
+			// 이력서 리스트
+			List<ResumeDto> resumelist = service.getresume(memberid);
+			List<ResumeDto> resumeNolist = service.getNoresume(memberid);
+			List<ApplyDto> applylist = service.getApplyList(memberid);
+			List<Resume_Portfolio> portlist = service.getPortfolio(memberid);
+			List<ResumeParam> param = new ArrayList<ResumeParam>();
+
+			for (int i = 0; i < applylist.size(); i++) {
+
+				ResumeParam pa = new ResumeParam();
+
+				pa.setApplyseq(applylist.get(i).getApplyseq());
+				pa.setJobseq(applylist.get(i).getJobseq());
+				pa.setResumeseq(applylist.get(i).getResumeseq());
+				pa.setApplydate(applylist.get(i).getApplydate());
+				pa.setCompanyread(applylist.get(i).getCompanyread());
+
+				int jobseq = applylist.get(i).getJobseq();
+				String jobtitle = service.getJobtitle(jobseq);
+				pa.setJobtitle(jobtitle);
+
+				int resumeseq = applylist.get(i).getResumeseq();
+				String resumetitle = service.getResumeTitle(resumeseq);
+				pa.setResumetitle(resumetitle);
+
+				param.add(pa);
+			}
+
+			model.addAttribute("resumelist", resumelist);
+			model.addAttribute("resumeNolist", resumeNolist);
+			model.addAttribute("portlist", portlist);
+			model.addAttribute("param", param);
+
+			
+			String suc = "성공";
+	            
+	            return suc; 
+	          
+			
+		}
 		
 		//기업 이력서 상세 정보(디테일) 보기
 		@RequestMapping(value = "Resumedetail2.do", method = { RequestMethod.GET, RequestMethod.POST })
