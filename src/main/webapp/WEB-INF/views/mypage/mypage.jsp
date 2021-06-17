@@ -83,24 +83,21 @@ body {
 							  ${login.name}님
 						</a>
 						<ul>
-
 								<!-- 개인 -->
 								<li><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지 홈</a></li>
 								<li><a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do">회원정보관리</a></li>
 								<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">구직신청관리</a></li>
 								<li><a href="#" onclick="worknet.popup.popCenterSuppAgree(); return false;" target="_blank" title="새창">고객지원</a></li>
-
-
 						</ul>
 					</div>
-					<a href="#" onclick="f_logout();" class="font-blue">로그아웃</a>
+					<a href="logout.do" onclick="f_logout();" class="font-blue">로그아웃</a>
 
 				<!-- E : 2018-09-28 추가 -->
 				<!--// 로그인 후 -->
 
 				<!-- 공통 -->
 				<a href="#" class="worknet-chatbot-start-button-for-client">챗봇</a>
-				<a href="jobtalk.do">취업톡톡<img src="static/images/common/ico/ico-gnb-new.png" style="width:15px; height:15px" class="va-m" alt="new"></a>
+				<a href="jobtalklist.do">취업톡톡<img src="static/images/common/ico/ico-gnb-new.png" style="width:15px; height:15px" class="va-m" alt="new"></a>
 				<a href="/useInfo/worknetInfo/useWorknetGuide.do">이용안내</a>
 				<a href="info.do">고객센터</a>
 				<a href="http://as82.kr/keis" target="_blank" title="새창">원격지원</a>
@@ -121,15 +118,9 @@ body {
 
 	<div class="middle-area">
 		<div class="inner-wrap">
-
-
-					<h1 class="top-logoWorknet">
-						<a href="home.do"><img src="static/images/common/bg/bg-top-logo.png" style="width:130px; height:60px" alt="일하라"></a>
-					</h1>
-
-
-
-
+			<h1 class="top-logoWorknet">
+				<a href="home.do"><img src="static/images/common/bg/bg-top-logo.png" style="width:130px; height:60px" alt="일하라"></a>
+			</h1>
 			<form id="searchFrm" name="searchFrm" action="/wnSearch/unifSrch.do" method="post" onsubmit="return false">
 				<div class="header-search">
 					<div class="searc-area">
@@ -186,7 +177,8 @@ body {
 					</dl>
 
 					<ul>
-						<li><b><a href="/empInfo/empInfoSrch/list/retriveJobsEmpIntroList.do?webIsOut=job">직종별</a></b>
+						<li>
+							<b><a href="/empInfo/empInfoSrch/list/retriveJobsEmpIntroList.do?webIsOut=job">직종별</a></b>
 							<ul>
 								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=08">건설·채굴직</a></li>
 								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=01">경영·사무·금융·보험직</a></li>
@@ -198,13 +190,12 @@ body {
 								<li><a href="javascript:void(0);">설치·정비·생산직</a>
 									<ul class="depth2">
 										<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=09">기계·금속·재료</a></li>
-										<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=12">인쇄·목재·공예
-												및 제조 단순</a></li>
+										<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=12">인쇄·목재·공예 및 제조 단순</a></li>
 										<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=10">전기·전자·정보통신</a></li>
 										<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=11">화학·환경·섬유·의복·식품가공</a></li>
-									</ul></li>
-								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=02">연구
-										및 공학기술직</a></li>
+									</ul>
+								</li>
+								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=02">연구 및 공학기술직</a></li>
 								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=07">영업·판매·운전·운송직</a></li>
 								<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchList.do?webIsOut=job&amp;occupation=05">예술·디자인·방송·스포츠직</a></li>
 							</ul></li>
@@ -255,237 +246,198 @@ body {
 										<span class="center"><a href="/empInfo/themeEmp/themeEmpInfoSrchListForGnb.do" class="button s-small round"><img src="/static/images/common/ico/ico-add-copy-sm.png" class="inline-block" alt="">&nbsp;바로가기</a></span>
 									</p>
 								</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="/jobMain.do" class="menu"><span>직업·진로</span></a>
+					<div class="sub">
+						<dl>
+							<dt>직업·진로</dt>
+							<dd>
+								<p>
+									<a href="/jobMain.do">직업·진로 홈</a>
+								</p>
+							</dd>
+						</dl>
+						<ul>
+							<li><b><a href="/consltJobCarpa/jobPsyExam/jobPsyExamIntro.do">직업심리검사</a></b>
+								<ul>
+									<li><a href="/consltJobCarpa/jobPsyExam/jobPsyExamIntro.do">직업심리검사 소개</a></li>
+									<li><a href="/consltJobCarpa/jobPsyExamNew/jobPsyExamYouthList.do">청소년 심리검사 실시</a></li>
+									<li><a href="/consltJobCarpa/jobPsyExamNew/jobPsyExamAdultList.do">성인용 심리검사 실시</a></li>
+									<li><a href="/consltJobCarpa/jobPsyExamNew/psyExamRsltList.do">검사결과 보기</a></li>
+									<li><a href="/consltJobCarpa/jobPsyExamNew/conslt/jobPsyExamConsltList.do">검사결과 상담</a></li>
+									<li><a href="/consltJobCarpa/jobPsyExamNew/conslt/jobPsyExamConsltFaqList.do">검사결과 상담 FAQ</a></li>
+								</ul> 
+								<b><a href="/consltJobCarpa/srch/jobInfoSrch/srchJobInfo.do">직업정보</a></b>
+								<ul>
+									<li><a href="/consltJobCarpa/srch/jobInfoSrch/srchJobInfo.do">직업정보 찾기</a></li>
+									<li><a href="/consltJobCarpa/srch/korJobProspect/korJobProspectSrchByJobClList.do">한국직업전망</a></li>
+									<li><a href="/consltJobCarpa/srch/jobDic/jobDicIntro.do">한국직업사전</a></li>
+									<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=01&amp;catCd1=01&amp;catCd2=0101">직업 동영상·VR</a></li>
+									<li><a href="/consltJobCarpa/srch/meetPerson/meetPerson.do">직업인 인터뷰</a></li>
+								</ul>
+							</li>
+							<li>
+								<b><a href="/consltJobCarpa/srch/schdpt/schdptSrch.do">학과정보</a></b>
+								<ul>
+									<li><a href="/consltJobCarpa/srch/schdpt/schdptSrch.do">학과검색</a></li>
+									<li><a href="/consltJobCarpa/jobData/retrieveCareerInfoList.do">전공진로 가이드</a></li>
+									<li><a href="/consltJobCarpa/srch/schdpt/dptFaqList.do">학과정보 FAQ</a></li>
+									<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=10&amp;catCd1=04&amp;catCd2=0401">학과정보동영상</a></li>
+								</ul>
+									<b><a href="/consltJobCarpa/jobConslt/jobConsltList.do">진로상담</a></b>
+								<ul>
+									<li><a href="/consltJobCarpa/jobConslt/jobConsltList.do">상담신청</a></li>
+									<li><a href="/consltJobCarpa/jobConslt/bestConsltList.do">상담 FAQ</a></li>
+								</ul>
+								<b><a href="/consltJobCarpa/jobData/retrieveJobInfoReportList.do">자료실</a></b>
+								<ul>
+									<li><a href="/consltJobCarpa/jobData/retrieveJobInfoReportList.do">직업진로정보서</a></li>
+									<li><a href="/consltJobCarpa/jobData/retrieveReseReportList.do">연구보고서</a></li>
+								</ul>
+							</li>
+							<li>
+								<b><a href="/empSpt/empGuide/empTrend/resumeSelfIntroGuide.do">취업가이드</a></b>
+								<ul>
+									<li>
+										<a href="/empSpt/empGuide/empTrend/resumeSelfIntroGuide.do">이력서·자기소개서 작성법</a>
+									</li>
+									<li>
+										<a href="/empSpt/empGuide/empTrend/interviewGuide.do">면접전략</a>
+									</li>
+									<li>
+										<a href="/empSpt/empTrend/empTrend.do">채용 트렌드</a>
+									</li>
+									<li>
+										<a href="/empSpt/empBlind/retrieveEmpBlind.do">블라인드 채용</a>
+									</li>
+									<li>
+										<a href="/empSpt/empBlind/retrieveEmpNcs.do">NCS 기반 능력중심 채용</a>
+									</li>
+									<li>
+										<a href="/empSpt/empGuide/empTrend/TargetGuide.do">대상별 취업가이드</a>
+									</li>
+									<li>
+										<a href="/empSpt/empGuide/empTrend/GoalGuide.do">기업별 취업팁 <img src="/static/images/common/ico/ico-gnb-new.png" alt="new"></a>
+									</li>
+									<li>
+										<a href="/empSpt/empGuide/empSptPolicy.do">취업지원정책</a>
+									</li>
+									<li>
+										<a href="/empSpt/empGuide/wiseWorkLife.do">슬기로운 직장생활 <img src="/static/images/common/ico/ico-gnb-new.png" alt="new"></a>
+									</li>
+									<li>
+										<a href="/empSpt/empEtc/pictureEmpTrend.do">그림으로 보는 취업동향</a>
+									</li>
+									<li>
+										<a href="/empSpt/empGuide/selfintroWriteGuide/selfintroWriteGuideViewList.do">직무별 자소서 작성가이드</a>
+									</li>
+									<li>
+										<a href="/empSpt/empSucc/empSuccSubMainList.do">취업성공수기
+										<img src="/static/images/common/ico/ico-gnb-new.png" alt="new"></a>
+									</li>
+									<li>
+										<a href="/empSpt/empEtc/enterDocIssueSvc.do">입사서류 발급 안내</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<b><a href="/empSpt/empNews/retrieveEmpNewsList.do">뉴스</a></b>
+								<ul>
 
-						<!-- 	<ul>
-								<li><a
-									href="/empInfo/empInfoSrch/list/openEmpSpecCalendarList.do?thisMenuId=M201400343">공채기업관</a></li>
-								<li><a href="/smallGiants/empInfoSrch/empInfoSrchList.do">청년친화강소기업</a></li>
-								<li><a
-									href="/smallGiants/empInfoSrch/empInfoSrchList.do?coGbCd=small">강소기업</a></li>
-								<li><a href="/empInfo/indRev/indRevMain.do">4차산업혁명 채용관
-										<img src="/static/images/common/ico/ico-gnb-new.png" alt="new">
-								</a></li>
-																		NCS 채용관 오픈 이후 런칭 대상
-																		<li><a href="#">NCS 채용관</a></li>
-								<li><a
-									href="/ilmoa/jobSearch/retrieveIlmoaJobDetailSearchByMain.do">정부지원일자리</a></li>
-								<li><a
-									href="/empInfo/tsjEmpInfo/retrieveTsjEmpAllSrchList.do">시간선택제
-										일자리</a></li>
-								<li><a href="/empInfo/subEmpHopeInfo/subEmpHopeSrchList.do">대체인력</a></li>
-								<li><a
-									href="/empInfo/empInfoSrch/list/retriveEnEmpSrchList.do">e-채용마당</a></li>
-								<li><a
-									href="/empInfo/themeEmp/themeEmpInfoSrchListForGnb.do">테마별 채용관</a></li>
-																		<li><a href="#" class="worknet-chatbot-start-button-for-client">워크넷 챗봇(시범)</a></li>
-							</ul>
-									<ul class="dir">
-										<li><a href="#" class="worknet-chatbot-start-button-for-client">워크넷 챗봇(시범)</a></li>
-									</ul>
-									 -->
-								<!-- <p class="eve_link"><a href="https://www.work.go.kr/event/eventContent.do?eventNo=530">[이벤트] 당신의 구직 테마는?</a></p> 20190903 추가 -->
+									<li><a href="/empSpt/exhibit/exhibit/exhibitList.do">공모전</a></li>
+									<li><a href="/empSpt/empEvent/retrieveEmpEventList.do">채용행사</a></li>
+									<li><a href="/empSpt/empExhibition/retrieveEmpExhibitionList.do">채용박람회</a></li>
+								</ul>
+								<b><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=06&amp;catCd1=02&amp;catCd2=0203">취업 동영상</a></b>
+								<ul>
+									<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=06&amp;catCd1=02&amp;catCd2=0203">청년층</a></li>
+									<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=05&amp;catCd1=02&amp;catCd2=0202">경력단절여성</a></li>
+									<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=04&amp;catCd1=02&amp;catCd2=0201">중장년층</a></li>
+								</ul>
 
-						</li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<a href="/jobMain.do" class="menu"><span>직업·진로</span></a>
-				<div class="sub">
-					<dl>
-						<dt>직업·진로</dt>
-						<dd>
-							<p>
-								<a href="/jobMain.do">직업·진로 홈</a>
-							</p>
-						</dd>
-						<!-- 화상상담 서비스 종료에 따른 주석처리(20210224)
-						<dd>
-							<p class="imgConslt"><a href="/consltJobCarpa/videoChatting/conslt/videoChattingConslt.do">화상상담 예약</a> <img src="/static/images/common/ico/ico-gnb-new.png" alt="new" style="vertical-align:-2px"></p>
-						</dd>
-						 -->
-					</dl>
-
-					<ul>
-						<li><b><a href="/consltJobCarpa/jobPsyExam/jobPsyExamIntro.do">직업심리검사</a></b>
-							<ul>
-								<li><a href="/consltJobCarpa/jobPsyExam/jobPsyExamIntro.do">직업심리검사 소개</a></li>
-								<li><a href="/consltJobCarpa/jobPsyExamNew/jobPsyExamYouthList.do">청소년 심리검사 실시</a></li>
-								<li><a href="/consltJobCarpa/jobPsyExamNew/jobPsyExamAdultList.do">성인용 심리검사 실시</a></li>
-								<li><a href="/consltJobCarpa/jobPsyExamNew/psyExamRsltList.do">검사결과 보기</a></li>
-								<li><a href="/consltJobCarpa/jobPsyExamNew/conslt/jobPsyExamConsltList.do">검사결과 상담</a></li>
-								<li><a href="/consltJobCarpa/jobPsyExamNew/conslt/jobPsyExamConsltFaqList.do">검사결과 상담 FAQ</a></li>
-							</ul> <b><a href="/consltJobCarpa/srch/jobInfoSrch/srchJobInfo.do">직업정보</a></b>
-							<ul>
-								<li><a href="/consltJobCarpa/srch/jobInfoSrch/srchJobInfo.do">직업정보 찾기</a></li>
-								<li><a href="/consltJobCarpa/srch/korJobProspect/korJobProspectSrchByJobClList.do">한국직업전망</a></li>
-								<li><a href="/consltJobCarpa/srch/jobDic/jobDicIntro.do">한국직업사전</a></li>
-								<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=01&amp;catCd1=01&amp;catCd2=0101">직업 동영상·VR</a></li>
-								<li><a href="/consltJobCarpa/srch/meetPerson/meetPerson.do">직업인 인터뷰</a></li>
-							</ul>
-						</li>
-						<li>
-							<b><a href="/consltJobCarpa/srch/schdpt/schdptSrch.do">학과정보</a></b>
-							<ul>
-								<li><a href="/consltJobCarpa/srch/schdpt/schdptSrch.do">학과검색</a></li>
-								<li><a href="/consltJobCarpa/jobData/retrieveCareerInfoList.do">전공진로 가이드</a></li>
-								<li><a href="/consltJobCarpa/srch/schdpt/dptFaqList.do">학과정보 FAQ</a></li>
-								<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=10&amp;catCd1=04&amp;catCd2=0401">학과정보동영상</a></li>
-							</ul>
-								<b><a href="/consltJobCarpa/jobConslt/jobConsltList.do">진로상담</a></b>
-							<ul>
-								<li><a href="/consltJobCarpa/jobConslt/jobConsltList.do">상담신청</a></li>
-								<li><a href="/consltJobCarpa/jobConslt/bestConsltList.do">상담 FAQ</a></li>
-							</ul>
-							<b><a href="/consltJobCarpa/jobData/retrieveJobInfoReportList.do">자료실</a></b>
-							<ul>
-								<li><a href="/consltJobCarpa/jobData/retrieveJobInfoReportList.do">직업진로정보서</a></li>
-								<li><a href="/consltJobCarpa/jobData/retrieveReseReportList.do">연구보고서</a></li>
-							</ul>
-						</li>
-						<li>
-							<b><a href="/empSpt/empGuide/empTrend/resumeSelfIntroGuide.do">취업가이드</a></b>
-							<ul>
-								<li>
-									<a href="/empSpt/empGuide/empTrend/resumeSelfIntroGuide.do">이력서·자기소개서 작성법</a>
-								</li>
-								<li>
-									<a href="/empSpt/empGuide/empTrend/interviewGuide.do">면접전략</a>
-								</li>
-								<li>
-									<a href="/empSpt/empTrend/empTrend.do">채용 트렌드</a>
-								</li>
-								<li>
-									<a href="/empSpt/empBlind/retrieveEmpBlind.do">블라인드 채용</a>
-								</li>
-								<li>
-									<a href="/empSpt/empBlind/retrieveEmpNcs.do">NCS 기반 능력중심 채용</a>
-
-								</li>
-								<li><a href="/empSpt/empGuide/empTrend/TargetGuide.do">대상별 취업가이드</a>
-								</li>
-								<li>
-									<a href="/empSpt/empGuide/empTrend/GoalGuide.do">기업별 취업팁 <img src="/static/images/common/ico/ico-gnb-new.png" alt="new"></a>
-								</li>
-								<li>
-									<a href="/empSpt/empGuide/empSptPolicy.do">취업지원정책</a>
-								</li>
-								<li>
-									<a href="/empSpt/empGuide/wiseWorkLife.do">슬기로운 직장생활 <img src="/static/images/common/ico/ico-gnb-new.png" alt="new"></a>
-								</li>
-								<li>
-									<a href="/empSpt/empEtc/pictureEmpTrend.do">그림으로 보는 취업동향</a>
-								</li>
-								<li>
-									<a href="/empSpt/empGuide/selfintroWriteGuide/selfintroWriteGuideViewList.do">직무별 자소서 작성가이드</a>
-								</li>
-								<li>
-									<a href="/empSpt/empSucc/empSuccSubMainList.do">취업성공수기
-									<img src="/static/images/common/ico/ico-gnb-new.png" alt="new"></a>
-								</li>
-								<li>
-									<a href="/empSpt/empEtc/enterDocIssueSvc.do">입사서류 발급 안내</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<b><a href="/empSpt/empNews/retrieveEmpNewsList.do">뉴스</a></b>
-							<ul>
-
-								<li><a href="/empSpt/exhibit/exhibit/exhibitList.do">공모전</a></li>
-								<li><a href="/empSpt/empEvent/retrieveEmpEventList.do">채용행사</a></li>
-								<li><a href="/empSpt/empExhibition/retrieveEmpExhibitionList.do">채용박람회</a></li>
-							</ul>
-							<b><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=06&amp;catCd1=02&amp;catCd2=0203">취업 동영상</a></b>
-							<ul>
-								<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=06&amp;catCd1=02&amp;catCd2=0203">청년층</a></li>
-								<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=05&amp;catCd1=02&amp;catCd2=0202">경력단절여성</a></li>
-								<li><a href="/consltJobCarpa/videoInfo/videoInfoList.do?videoType=04&amp;catCd1=02&amp;catCd2=0201">중장년층</a></li>
-							</ul>
-
-						</li>
-					</ul>
-					<ul class="dir">
-						<li><a href="#1" onclick="f_moveUrl('CM')">사이버진로교육센터</a></li>
-						<li><a target="_blank" href="/cyberedu/webzine.do">커리어
+							</li>
+						</ul>
+						<ul class="dir">
+							<li><a href="#1" onclick="f_moveUrl('CM')">사이버진로교육센터</a></li>
+							<li><a target="_blank" href="/cyberedu/webzine.do">커리어
 								Info(웹진)</a></li>
-						<li><a target="_blank" href="/cyberedu/cyb/career/contents/main/registerContentsMainView.do">커리어
+							<li><a target="_blank" href="/cyberedu/cyb/career/contents/main/registerContentsMainView.do">커리어
 								엔진</a></li>
-					</ul>
-				</div></li>
-			<li><a href="/empWelfareSrv/recommendSrv/empWelfareSrvMain.do" title="새창" class="menu"><span>고용복지정책</span></a>
-				<div class="sub">
-					<dl>
-						<dt>고용복지정책</dt>
-						<dd>
-							<p>
+						</ul>
+					</div>
+					</li>
+					<li>
+						<a href="/empWelfareSrv/recommendSrv/empWelfareSrvMain.do" title="새창" class="menu"><span>고용복지정책</span></a>
+						<div class="sub">
+						<dl>
+							<dt>고용복지정책</dt>
+							<dd>
+								<p>
 								<a href="/empWelfareSrv/recommendSrv/empWelfareSrvMain.do">고용복지정책 홈</a>
-							</p>
-						</dd>
-					</dl>
-
-					<ul>
-						<li class="w200px"><b><a href="/empWelfareSrv/recommendSrv/srvEmpPolList.do">고용정책</a></b>
-							<ul>
-								<li><a href="/empWelfareSrv/recommendSrv/srvEmpPolList.do">고용정책
+								</p>
+							</dd>
+						</dl>
+						<ul>
+							<li class="w200px"><b><a href="/empWelfareSrv/recommendSrv/srvEmpPolList.do">고용정책</a></b>
+								<ul>
+									<li><a href="/empWelfareSrv/recommendSrv/srvEmpPolList.do">고용정책
 										찾기</a></li>
-								<li><a href="/empWelfareSrv/recommendSrv/consultCalcl.do">고용
+									<li><a href="/empWelfareSrv/recommendSrv/consultCalcl.do">고용
 										모의계산</a></li>
-							</ul> <b><a href="/empWelfareSrv/recommendSrv/searchIndexList.do">복지정책</a></b>
-							<ul>
-								<li><a href="/empWelfareSrv/recommendSrv/searchIndexList.do">색인별
-										서비스 찾기</a></li>
-								<li><a href="/empWelfareSrv/recommendSrv/recommendSrvSrchField.do">분류별
-										서비스 찾기</a></li>
-								<li><a href="/empWelfareSrv/recommendSrv/categoryTitleList.do">나에게
-										맞는 서비스 찾기</a></li>
-								<li><a href="/empWelfareSrv/recommendSrv/welfareCalcl.do">복지
-										모의계산</a></li>
-							</ul>
-						</li>
-						<li style="width:505px"><b><a href="/empSpt/empSptPgm/empSptSubMain.do">구직자취업역량 강화프로그램</a></b>
-							<ul class="float-l w220px">
-								<li><a href="/empSpt/empSptPgm/empSptSubMain.do">프로그램 소개</a></li>
-								<li><a href="/empSpt/empSptPgm/empHope/compare.do">프로그램 비교</a></li>
-								<li><a href="/empSpt/empSptPgm/pgmSchdInvite/empSchdInviteCtrList.do">프로그램 일정</a></li>
-								<li><a href="/empSpt/empSptPgm/empHope/intro.do">취업희망 프로그램</a></li>
-								<li><a href="/empSpt/empSptPgm/happyTmrrwEmpSpt/intro.do">행복내일 취업지원 프로그램</a></li>
-								<li><a href="/empSpt/empSptPgm/succ/intro.do">성취 프로그램</a></li>
-								<li><a href="/empSpt/empSptPgm/shortTerm/intro.do">취업특강</a></li>
-								<li><a href="/empSpt/empSptPgm/grpConslt/intro.do">단기집단상담 프로그램</a></li>
-								<li><a href="/empSpt/empSptPgm/empAbility/intro.do">취업능력향상(행복오름) 프로그램 I</a></li>
-								<li><a href="/empSpt/empSptPgm/empAbility2/intro.do">취업능력향상(행복오름) 프로그램 II</a></li>
-							</ul>
-							<ul class="float-l overflow-hidden ml10">
+								</ul> 
+								<b><a href="/empWelfareSrv/recommendSrv/searchIndexList.do">복지정책</a></b>
+								<ul>
+									<li><a href="/empWelfareSrv/recommendSrv/searchIndexList.do">색인별 서비스 찾기</a></li>
+									<li><a href="/empWelfareSrv/recommendSrv/recommendSrvSrchField.do">분류별 서비스 찾기</a></li>
+									<li><a href="/empWelfareSrv/recommendSrv/categoryTitleList.do">나에게 맞는 서비스 찾기</a></li>
+									<li><a href="/empWelfareSrv/recommendSrv/welfareCalcl.do">복지 모의계산</a></li>
+								</ul>
+							</li>
+							<li style="width:505px"><b><a href="/empSpt/empSptPgm/empSptSubMain.do">구직자취업역량 강화프로그램</a></b>
+								<ul class="float-l w220px">
+									<li><a href="/empSpt/empSptPgm/empSptSubMain.do">프로그램 소개</a></li>
+									<li><a href="/empSpt/empSptPgm/empHope/compare.do">프로그램 비교</a></li>
+									<li><a href="/empSpt/empSptPgm/pgmSchdInvite/empSchdInviteCtrList.do">프로그램 일정</a></li>
+									<li><a href="/empSpt/empSptPgm/empHope/intro.do">취업희망 프로그램</a></li>
+									<li><a href="/empSpt/empSptPgm/happyTmrrwEmpSpt/intro.do">행복내일 취업지원 프로그램</a></li>
+									<li><a href="/empSpt/empSptPgm/succ/intro.do">성취 프로그램</a></li>
+									<li><a href="/empSpt/empSptPgm/shortTerm/intro.do">취업특강</a></li>
+									<li><a href="/empSpt/empSptPgm/grpConslt/intro.do">단기집단상담 프로그램</a></li>
+									<li><a href="/empSpt/empSptPgm/empAbility/intro.do">취업능력향상(행복오름) 프로그램 I</a></li>
+									<li><a href="/empSpt/empSptPgm/empAbility2/intro.do">취업능력향상(행복오름) 프로그램 II</a></li>
+								</ul>
+								<ul class="float-l overflow-hidden ml10">
 
-								<li><a href="/empSpt/empSptPgm/oldReemp/intro.do">성장(성공장년) 프로그램</a></li>
-								<li><a href="/empSpt/empSptPgm/wmReemp/intro.do">경력단절여성 프로그램</a></li>
-								<li><a href="/empSpt/empSptPgm/maritalImmgrnt/intro.do">Wici(결혼이민여성)지원 프로그램</a></li>
-								<li><a href="/empSpt/empSptPgm/youngJobGuide/intro.do">청년층직업지도프로그램(CAP+/CAP@)</a></li>
-								<li><a href="/empSpt/empSptPgm/youngAbility/intro.do">allA(청년진로역량강화)프로그램</a></li>
-								<li><a href="/empSpt/empSptPgm/youngJobCapaPgm/intro.do">청년취업역량 프로그램</a></li>
-								<li><a href="/empSpt/empSptPgm/hi/intro.do">Hi(고졸자취업지원) 프로그램</a></li>
-								<!-- <li><a href="/empSpt/empSptPgm/youngSporPgm/intro.do">청년지원 프로그램</a></li> 2019.6.17 사용안함-->
-								<li><a href="/empSpt/empSptPgm/youngSporPgmSec/intro.do">청년지원 프로그램(예비교육 이외)</a></li>
-								<!--
-								<li><a href="/jobyoung/jynEmpSptNew/jynEmpSptGuide.do?pageIndex=1&arrSearchData=&sortField=displayRank&setZzimBusiId=&busiId=201512170008&btnSearchTxt=&edubgCheckAll=Y&majorCheckAll=Y&coCheckAll=Y&specCheckAll=Y&onlineApplPossYn=all&empCheckAll=Y"
-								target="_blank" title="새창">중소기업탐방프로그램</a></li>
-								 -->
-								 <li><a href="/empSpt/empSptPgm/empCamp/retriveNoticeSchList.do">일자리희망 프로그램(인별)</a></li>
-								 <li><a href="/empSpt/empSptPgm/age40EmpSptAblPgm/intro.do">40대 구직자취업역량강화프로그램(4U<sup>+</sup>)</a></li>
-							</ul>
-						</li>
-						<li class="w200px"><b><a href="/useInfo/empCenterInfo/useEmpIntroList.do">일자리지원기관</a></b>
-							<ul>
-								<li><a href="/useInfo/empCenterInfo/useEmpIntroList.do">고용복지<sup>+</sup>센터
-								</a></li>
+									<li><a href="/empSpt/empSptPgm/oldReemp/intro.do">성장(성공장년) 프로그램</a></li>
+									<li><a href="/empSpt/empSptPgm/wmReemp/intro.do">경력단절여성 프로그램</a></li>
+									<li><a href="/empSpt/empSptPgm/maritalImmgrnt/intro.do">Wici(결혼이민여성)지원 프로그램</a></li>
+									<li><a href="/empSpt/empSptPgm/youngJobGuide/intro.do">청년층직업지도프로그램(CAP+/CAP@)</a></li>
+									<li><a href="/empSpt/empSptPgm/youngAbility/intro.do">allA(청년진로역량강화)프로그램</a></li>
+									<li><a href="/empSpt/empSptPgm/youngJobCapaPgm/intro.do">청년취업역량 프로그램</a></li>
+									<li><a href="/empSpt/empSptPgm/hi/intro.do">Hi(고졸자취업지원) 프로그램</a></li>
+									<!-- <li><a href="/empSpt/empSptPgm/youngSporPgm/intro.do">청년지원 프로그램</a></li> 2019.6.17 사용안함-->
+									<li><a href="/empSpt/empSptPgm/youngSporPgmSec/intro.do">청년지원 프로그램(예비교육 이외)</a></li>
+									<li><a href="/empSpt/empSptPgm/empCamp/retriveNoticeSchList.do">일자리희망 프로그램(인별)</a></li>
+									<li><a href="/empSpt/empSptPgm/age40EmpSptAblPgm/intro.do">40대 구직자취업역량강화프로그램(4U<sup>+</sup>)</a></li>
+								</ul>
+							</li>
+							<li class="w200px"><b><a href="/useInfo/empCenterInfo/useEmpIntroList.do">일자리지원기관</a></b>
+								<ul>
+								<li>
+									<a href="/useInfo/empCenterInfo/useEmpIntroList.do">고용복지<sup>+</sup>센터</a>
+								</li>
 								<li><a href="/jobyoung/weSchEmpConsltRoom/weSchEmpConsltRoomSvcInvite.do" target="_blank" title="새창">대학일자리센터</a></li>
 								<li><a href="https://saeil.mogef.go.kr/" title="새창열림" target="_blank">여성새로일하기센터 <img src="/static/images/common/ico/ico-gnb-dir.png" alt=""></a></li>
 								<li><a href="/senior/chgjbSptSvc/noaSeniorWantedHopeCtr.do" target="_blank" title="새창">중장년일자리희망센터</a></li>
 								<li><a href="/shipHopeCenter/intro.do">조선업 희망센터</a></li>
 								<li><a href="/useInfo/jobAndDesp/ynJobIntroList.do">직업소개소</a></li>
 								<!-- <li><a href="/useInfo/jobAndDesp/despCoInfoList.do">파견업체</a></li> -->
-							</ul></li>
+							</ul>
+						</li>
 					</ul>
 					<!-- 2018-11-27 -->
 					<!-- 2019.04 중소기업탐방프로그램 이동-->
@@ -505,7 +457,8 @@ body {
 					<ul class="dir" style="position:static !important;">
 						<li><a href="/youngChallenge/index.do" title="새창" target="_blank">청년도전지원사업</a></li>
 					</ul>
-				</div></li>
+				</div>
+			</li>
 			<li class=""><a href="/trnCourseMain.do" title="새창" class="menu"><span>훈련정보</span></a>
 				<div class="sub" style="">
 					<dl>
@@ -522,8 +475,10 @@ body {
 						<li><b><a href="/trnCourseTranin/retrieveTrnCourseTrainHffc.do">근로자훈련과정</a></b></li>
 						<li><b><a href="/trnCourseTranin/retrieveTrnCourseTrainCo.do">기업훈련과정</a></b></li>
 					</ul>
-				</div></li>
-			<li><a href="/psnInfo/psnInfoSrch/dtlPsnSrchMain.do" class="menu"><span>인재정보</span></a>
+				</div>
+			</li>
+			<li>
+			<a href="/psnInfo/psnInfoSrch/dtlPsnSrchMain.do" class="menu"><span>인재정보</span></a>
 				<div class="sub">
 					<dl>
 						<dt>인재정보</dt>
@@ -598,10 +553,6 @@ body {
 	</nav>
 </header>
     <!-- 헤더 -->
-
-
-
-
 
         <div class="container  bg-gray" id="container">
             <div class="sub-util">
@@ -723,7 +674,7 @@ body {
                 </script>
 
 
-<div class="inner">
+
 	<nav id="lnb">
 	<!-- S : 2018-09-28 추가 -->
 	<p class="tit"><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지</a></p>
@@ -745,9 +696,6 @@ body {
 					</li>
 					<li>
 						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeAtchFileMngList.do" target="_self">첨부파일 관리</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">워크넷 구직신청 </a>
 					</li>
 				</ul>
 			</div>
@@ -774,70 +722,6 @@ body {
 					</li>
 				</ul>
 			</div>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">나의 맞춤정보</a>
-			<button class="btn-show">나의 맞춤정보 메뉴 닫기</button>
-			<div class="depth3">
-				<ul>
-					<li>
-						<a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">맞춤채용 관리</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do" target="_self">The Work AI추천</a>
-					</li>
-					<li>
-					<a href="#openPopup" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; keis.window.newWindow('/empInfo/customWorkSupportSrv/custSupportMain.do?loginAction=Y', 'pop', 1010, 780, 'yes'); return false;" target="_blank" title="새창">취업나침반</a>
-						<script type="text/javascript">
-							window.name = "mdmOpener";
-						</script>
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">나의 관심정보</a>
-			<button class="btn-show">나의 관심정보 메뉴 닫기</button>
-			<div class="depth3"><ul>
-					<li>
-						<a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">관심스크랩(찜)</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/intrstInfo/seekEmpInfoSrchHist.do?srchType=3" target="_self">최근 본 채용공고</a>
-					</li>
-					<li>
-						<a href="/empInfo/empInfoSrch/calendar/myCalendarMonth.do" target="_blank">마이캘린더</a>
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			<a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">e-채용마당 서비스</a>
-			<button class="btn-show">e-채용마당 서비스 메뉴 닫기</button>
-			<div class="depth3">
-				<ul>
-					<li>
-						<a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">지원서관리</a>
-					</li>
-					<li>
-						<a href="/eas/indivMemberSrv/employNotice/wNoInterest.do" target="_self">관심정보관리</a>
-					</li>
-					<li>
-						<a href="/eas/indivMemberSrv/employJudge/employJudgeList.do" target="_self">심사평가관리</a>
-					</li>
-					<li>
-						<a href="/empAgencySvc/empBoard/wBuBoardList.do" target="_self">채용게시판</a>
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/intrstInfo/joinResult.do" target="_self">온라인 신청관리</a>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/myCustmadeSrvList.do" target="_self">
-				고용복지 맞춤서비스
-			</a>
 		</li>
 		<li>
 			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 관리</a>
@@ -1573,7 +1457,7 @@ function f_empPgmList(resultObj){
 						</div>
 					</div>
 					<div class="mypage-idv-wrap">
-						<div class="idv-sec01">
+						<div class="idv-sec01" style="height: 550px;">
 							<div class="con-top">
 
 
@@ -1595,13 +1479,14 @@ function f_empPgmList(resultObj){
 										</colgroup>
 										<tbody>
 
+										<c:if test="${dto.newuserpic ne null }">
 												<tr>
 													<th scope="row">프로필</th>
 													<td>
 														<img src="./upload/${dto.newuserpic}" style="width: 50px;height: 50px;">
 													</td>
 												</tr>
-
+										</c:if>
 												<tr>
 													<th scope="row">이메일</th>
 													<td>
@@ -1640,7 +1525,7 @@ function f_empPgmList(resultObj){
 								</div>
 							</div>
 
-							<div class="con-bot">
+							<!-- <div class="con-bot">
 								<ul class="basic-list float">
 									<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeSelfIntroMng.do"><span class="futura">1</span> <span class="txt">내 이력서</span></a></li>
 									<li><a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do?srchType=main"><span class="futura">0</span> <span class="txt">입사지원</span></a></li>
@@ -1649,10 +1534,10 @@ function f_empPgmList(resultObj){
 									<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeReadList.do"><span class="futura">1</span> <span class="txt">이력서열람</span></a></li>
 									<li><a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do"><span class="futura">0</span> <span class="txt">관심스크랩</span></a></li>
 								</ul>
-							</div>
+							</div> -->
 						</div>
-						<div class="idv-sec02">
-						<!-- 인증이 만료되었습니다. -->
+					<!-- 	<div class="idv-sec02">
+						인증이 만료되었습니다.
 							<div class="con-left v3 on">
 								<h4>회원님은
 									<span>
@@ -1660,9 +1545,9 @@ function f_empPgmList(resultObj){
 									</span> 자로<br>구직활동 가능기간이 만료되었습니다.</h4>
 								<p>입사지원, 취업알선을 원하시면 구직신청을 하셔야 합니다.</p>
 								<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" class="button large">구직신청관리</a>
-							</div>
+							</div> -->
 					<!-- 그외의 인증 완료일경우 -->
-							<div class="con-right v2 on">  <!-- v2 : 이력서있는경우 -->
+							<!-- <div class="con-right v2 on">  v2 : 이력서있는경우
 								<div class="con-top">
 									<h4 class="ellipsis">
 										<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveResumeDetail.do?tmplSeqno=1" target="_self">
@@ -1674,14 +1559,12 @@ function f_empPgmList(resultObj){
 										<ul class="basic-list float">
 											<li>경영 기획 사무원</li>
 											<li>
-												서울
-											 	 / 인천
-											 	 / 강원
+												희망 근무지역
 											 </li>
 											<li>
-												대학교(4년제) 졸업
+												최종력
 											</li>
-											<li>경력 0년 0개월</li>
+											<li>경력</li>
 										</ul>
 										<dl>
 											<dt>키워드</dt>
@@ -1691,20 +1574,20 @@ function f_empPgmList(resultObj){
 										</dl>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 						<!-- 특별고용촉진 지원대상 확인서 출력 -->
-							<div class="box-line v3 blue mt30">
+							<!-- <div class="box-line v3 blue mt30">
 								<div class="a-c">
 									<ul class="v1" style="margin-bottom: 10px;margin-right: 15px;">
 										<li>특별고용촉진장려금 지원을 위한 지원대상 확인서 출력은 아래 버튼을 클릭하여 주시기 바랍니다.</li>
 									</ul>
 									<button onclick="f_reportSpecialEmployment('0000036406785');" class="button large">특별고용촉진 지원대상 확인서 출력</button>
 								</div>
-							</div>
+							</div> -->
 
 
-							<div class="idv-sec03"><!-- 2018-10-16 span 태그제거 후 이미지 추가 -->
+							<!-- <div class="idv-sec03">2018-10-16 span 태그제거 후 이미지 추가
 								<h3><img src="../../static/images/mypage/@mainidv-sec3-2.png" alt="고용정보"> AI추천</h3>
 								<p><span>우정현</span> 님의 구직정보 및 활동정보를 기반으로 워크넷 인공지능 분석을 통한 통합고용정보를 추천해 드립니다.</p>
 								<ul class="basic-list float">
@@ -1717,9 +1600,9 @@ function f_empPgmList(resultObj){
 								</ul>
 								<a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do" class="btn-more">더보기</a>
 							</div>
-
-							<div class="idv-sec04">
-								<div class="con-left" id="boardDiv"><!-- 2018-10-16 문구변경 -->
+ -->
+							<!-- <div class="idv-sec04">
+								<div class="con-left" id="boardDiv">2018-10-16 문구변경
 									<span>공지<br>사항</span>
 									<ul class="dot-list v1"><li><a href="/ntNewsData/ntMatter/retrieveNtMatterDtl.do?boardNo=3&amp;writeNo=23584" onfocus="empBoardPlayType('stop');" onblur="empBoardPlayType('start');" onmouseover="empBoardPlayType('stop');" onmouseout="empBoardPlayType('start')">전문 승강기엔지니어 인력양성 교육생 모집</a></li><li><a href="/ntNewsData/ntMatter/retrieveNtMatterDtl.do?boardNo=3&amp;writeNo=23552" onfocus="empBoardPlayType('stop');" onblur="empBoardPlayType('start');" onmouseover="empBoardPlayType('stop');" onmouseout="empBoardPlayType('start')">2021년 워크넷 콘텐츠 모니터링단 모집 공고</a></li></ul>
 								</div>
@@ -1867,16 +1750,16 @@ function f_empPgmList(resultObj){
 								<a href="/custCenter/faqBoard/faqList.do" class="btn-more">더보기</a>
 							</div>
 
-							<!-- v2 :  심리검사결과없을때 -->
+							v2 :  심리검사결과없을때
 							<div class="con04 v2 on">
 								<h4>심리검사결과조회</h4>
 								<ul>
 									<li><a href="/consltJobCarpa/jobPsyExam/jobPsyExamIntro.do"><strong>직업심리검사</strong>나를 알아가는 또 하나의 방법</a>	</li>
 								</ul>
-							</div>
-						</div>
+							</div> -->
+					<!-- 	</div>
 					</div>
-				</section>
+				</section> -->
 				<!--// contents -->
 <script>
 	//우클릭 방지
@@ -1998,7 +1881,6 @@ function f_empPgmList(resultObj){
 
 
 <!-- 푸터미들 -->
-
 			<div class="middle-area">
 				<div class="inner-wrap">
 					<div class="link-footer">
@@ -2034,7 +1916,7 @@ function f_empPgmList(resultObj){
 				<img src="./static/images/mainlogo.png" style="width: 130px;">
 				<div class="etc">
 					<a href="/images/useInfo/certification_kor2015.jpg" target="_blank" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; var remote = window.open('https://www.eprivacy.or.kr/front/certifiedSiteMark/certifiedSiteMarkPopup.do?certCmd=E&amp;certNum=2021-E-R001','EPRIVACY','width=527,height=720'); remote.focus(); return false;" title="새창"><img src="./static/images/brn-epriavcy.png" alt="개인정보보호우수사이트 인증서"></a>
-								<a href="/html/wauMark2020_worknet.html" onclick="try { latte.getEvent(event).stop(); } catch (ex) {};window.open(this.href,'mark2020','width=605,height=850,scrollbars=no');return false;" title="새창" target="_blank" style="margin-top:-3px"><img src="./static/images/brn-wa-2019.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)"></a>
+					<a href="/html/wauMark2020_worknet.html" onclick="try { latte.getEvent(event).stop(); } catch (ex) {};window.open(this.href,'mark2020','width=605,height=850,scrollbars=no');return false;" title="새창" target="_blank" style="margin-top:-3px"><img src="./static/images/brn-wa-2019.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)"></a>
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,7 @@
 package bit.com.a.service;
 
+import java.util.List;
+
 import bit.com.a.dto.BusinessDto;
 
 public interface BusinessService {
@@ -11,6 +13,10 @@ public interface BusinessService {
 	BusinessDto login(BusinessDto dto);
 
 	void businessDelete(BusinessDto dto);
+
+	List<BusinessDto> getBusList();
+
+	void admin_business_forced_evictionCheck(BusinessDto dto) throws Exception;
 
 
 }

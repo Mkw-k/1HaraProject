@@ -93,7 +93,7 @@ body {
 
 						</ul>
 					</div>
-					<a href="#" onclick="f_logout();" class="font-blue">로그아웃</a>
+					<a href="logout.do" onclick="f_logout();" class="font-blue">로그아웃</a>
 
 
 				<!-- 공통 -->
@@ -168,6 +168,77 @@ body {
 	</nav>
 </header>
     <!-- 헤더 -->
+    
+<nav id="lnb">
+	<!-- S : 2018-09-28 추가 -->
+	<p class="tit"><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지</a></p>
+	<!-- E : 2018-09-28 추가 -->
+	<ul>
+		<li>
+			<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">이력서관리·구직신청</a>
+			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveResumeRegTp.do" target="_self">이력서 등록</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveSelfIntroRegIntro.do" target="_self">자기소개서 등록</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeSelfIntroMng.do" target="_self">이력서·자기소개서 관리</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeAtchFileMngList.do" target="_self">첨부파일 관리</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">입사지원 관리</a>
+			<button class="btn-show">입사지원 관리 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>
+					<li>
+						<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">알선/입사지원 내역</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/aplentMng/seekActvHist/seekActvHistList.do" target="_self">구직활동내역</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/aplentMng/offerCo/offerCoList.do" target="_self">입사제안/스크랩한 기업</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeReadList.do" target="_self">이력서 열람기업</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/intrstInfo/mailToEmpList.do" target="_self">채용담당자와 한마디</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 관리</a>
+			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>
+					<li class="curr">
+						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
+					</li>
+					<li>
+						<a href="buspageUpdate.do" target="_self">회원정보 수정(성명변경)</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a>
+					</li>
+					<li>
+						<a href="businessDelete.do" target="_self">회원탈퇴</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</nav>    
 
 
 

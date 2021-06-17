@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import bit.com.a.dto.MemberDto;
+import bit.com.a.dto.Resume_HighschoolDto;
+import bit.com.a.dto.Resume_UniversityDto;
+import bit.com.a.dto.Resume_UniversityVo;
 import bit.com.a.service.MypageService;
 import bit.com.a.util.PdsUtil;
 
@@ -30,11 +33,12 @@ public class MypageController {
    
    /*마이페이지*/
    @RequestMapping(value = "mypage.do", method = RequestMethod.GET)
-   public String mypage(Model model, String memberid) throws Exception {
+   public String mypage(Model model, String memberid, Resume_HighschoolDto highDto, Resume_UniversityVo univo, Resume_UniversityDto unidto) throws Exception {
 
 	  MemberDto dto = service.getMypage(memberid);
 	   
 	   model.addAttribute("dto", dto);
+	   
 	   
       return "mypage/mypage";
    }
