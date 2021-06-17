@@ -993,6 +993,9 @@ margin-right : 450px;
 </nav>
 <br>
 
+
+
+<div class="container">
 <div class="side-navigation" style="
     width: 942px;
 ">
@@ -1008,17 +1011,15 @@ margin-right : 450px;
 					<dl class="infoBx">
 						<dt class="qnaSpA">
 							<span class="nickname"></span>
-							<span class="lvIcon">Lv.1</span>
+							<span>${login.memberid}님</span>
 						</dt>
 						<dd>
 							<span>질문 0</span>
-							<span>답변 0 (채택 0)</span>
+							<span>답변 0</span>
 						</dd>
 					</dl>
 				</a>
-				<button type="button" class="myPoint devMainCouponButton">
-					<span class="point qnaSpB">0</span><span class="btnCoupon qnaSpA">쿠폰교환</span>
-				</button>
+			
 			</div>
 		</div>
 		<div class="navi-list-area">
@@ -1034,16 +1035,11 @@ margin-right : 450px;
 			</div>
 		</div>
 	</div>
+</div>
 
+<div class="container">
 
-<div class="container" style="
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-">
-
-<section id="contents" style="padding-top: 0px;padding-left: 100px;width: 1100px">
+<section id="contents" style="padding-top: 0px;width: 100%">
 
 	<div class="tit-util">
 		<h2 class="tit">취업톡톡</h2>
@@ -1126,11 +1122,9 @@ margin-right : 450px;
 		</nav>
 	</div>
 
-	<div class="manager-info">
-		<div class="left"><b class="font-bold">담당부서</b> : 워크넷팀</div>
-		<div class="right"><b class="font-bold">문의</b> : 1577-7114</div>
-	</div>
+
 </section>
 </div>
 
 </div>
+</body>

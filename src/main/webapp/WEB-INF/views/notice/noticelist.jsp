@@ -424,7 +424,7 @@ section .section-title {
 </style>
 </head>
 <body>
-<div class="all">
+
 
 
 <!-- 제이쿼리 -->
@@ -641,13 +641,7 @@ border-color: #2186eb;
     display: flex;
 }
 
-.container {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
+
 
 .logoarea {
 	clear: both;
@@ -945,7 +939,8 @@ margin-right : 450px;
 </style>
 </head>
 <body>
-<div class="all">
+
+
 <header>
 		
  <!-- 검색html -->
@@ -962,7 +957,7 @@ margin-right : 450px;
     </div>
 </section>
 <section class="search-sec">
-    <div class="container">
+   
         <form action="#" method="post" novalidate="novalidate">
             <div class="row">
                 <div class="col-lg-8">
@@ -999,7 +994,7 @@ margin-right : 450px;
                 </div>
             </div>
         </form>
-    </div>
+    
 </section>
 
 </header>
@@ -1096,7 +1091,7 @@ margin-right : 450px;
 <br>
 
 
-
+<div class="container">
 <section id="contents">
 
 	<div class="tit-util">
@@ -1234,10 +1229,7 @@ margin-right : 450px;
 
 		</nav>
 	
-	<div class="manager-info">
-		<div class="left"><b class="font-bold">담당부서</b> : 워크넷팀</div>
-		<div class="right"><b class="font-bold">문의</b> : 1577-7114</div>
-	</div>
+	
 </section>
 
 </div>
@@ -1368,3 +1360,5 @@ $("#btn_noticewrite").click(function(){
 
 
 </script>
+
+</body>

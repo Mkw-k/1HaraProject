@@ -415,44 +415,52 @@ public class RecruitController {
    @RequestMapping(value = "RecruitDetail.do", method = RequestMethod.GET)
    public String RecruitDetail(int jobseq, Model model, String memberid) {
 
-      //디테일 데이터 받아오기
-      System.out.println("seq:"+jobseq);
-      RecruitDto dto = service.getRecruitListOne(jobseq);
-      List<ResumeDto> resumelist = resumeservice.getresume(memberid);
-      List<Resume_Portfolio> portlist = resumeservice.getPortfolio(memberid);
+     model.addAttribute("doc_title", "채용공고");
 
-      System.out.println(dto.toString());
-      System.out.println(portlist.toString()+"0000000000000000000000000000000000000000000000000000");
+		 RecruitDto dto = service.getRecruitListOne(jobseq);
 
-		model.addAttribute("doc_title", "채용공고");
+      List<ResumeDto> resumelist = null;
+      List<Resume_Portfolio> portlist = null;
 
-		  //직무이름 받아오는 코드
+      //로그인 시에만 이력서와 포트폴리오를 받아오도록
+		  if(memberid != null) {
+  			  resumelist = resumeservice.getresume(memberid);
+          portlist = resumeservice.getPortfolio(memberid);
+  			  model.addAttribute("resumelist", resumelist);
+		  }
+
+      //직무이름 받아오는 코드
 		  List<String> list = service.getBsnameForDetail(jobseq);
 		  System.out.println("직무이름 :"+ list.toString());
 
 		  dto.setBusname(list);
 
-		  //검색용 파라미터 dto설정
 		  RecruitParam param = new RecruitParam();
-		  String jobSeq = jobseq + "";
-		  param.setJobSeq(jobSeq);
-		  param.setMemberid(memberid);
 
-		  //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
-		  int IjobFavoriteCount = service.getJobFavorite(param);
-		  String jobFavoriteCount = IjobFavoriteCount + "";
+		  if(memberid != null) {
+      		  //즐겨찾기 여부 검색용 파라미터 dto설정
+      		  String jobSeq = jobseq + "";
+      		  param.setJobSeq(jobSeq);
+      		  param.setMemberid(memberid);
 
-		  dto.setFavoriteJob(jobFavoriteCount);
+      		  //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
+      		  int IjobFavoriteCount = service.getJobFavorite(param);
+      		  String jobFavoriteCount = IjobFavoriteCount + "";
 
-		  //검색용 파라미터 dto설정
-		  param.setCompanyId(dto.getCompanyId());
-		  param.setMemberid(memberid);
+      		  dto.setFavoriteJob(jobFavoriteCount);
 
-		  //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
-		  int IcomFavoriteCount = service.getComFavorite(param);
-		  String comFavoriteCount = IcomFavoriteCount + "";
+      		  //검색용 파라미터 dto설정
+      		  param.setCompanyId(dto.getCompanyId());
+      		  param.setMemberid(memberid);
 
-		  dto.setFavoriteCom(comFavoriteCount);
+      		  //즐겨찾기 받아오기 (즐겨찾기 여부확인 코드 0보다 크면 이미 즐겨찾기 되있는거)
+      		  int IcomFavoriteCount = service.getComFavorite(param);
+      		  String comFavoriteCount = IcomFavoriteCount + "";
+      		  dto.setFavoriteCom(comFavoriteCount);
+
+		  }
+
+
 
 		  System.out.println("변경된 Dto :"+dto.toString());
 
