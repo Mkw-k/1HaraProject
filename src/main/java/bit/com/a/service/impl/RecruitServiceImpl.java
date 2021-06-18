@@ -198,6 +198,16 @@ public class RecruitServiceImpl implements RecruitService{
 		return dao.getPhonenum(memberid);
 	}
 
+	@Override
+	public List<RecruitDto> getNew6PreJob() {
+		return dao.getNew6PreJob();
+	}
+
+	@Override
+	public List<RecruitDto> getHot10Comname() {
+		return dao.getHot10Comname();
+	}
+
 
 	
 

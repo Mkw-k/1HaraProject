@@ -77,9 +77,16 @@ if(logincheck != null) {
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=685fcbb766340d7c8812f4e0a29a6661&libraries=services"></script>
 	<link href="csss/gnb.css" rel="stylesheet" type="text/css">
 	<link href="csss/view.css" rel="stylesheet" type="text/css">
+	
 
  <!-- 전체 공통 스크립트 임포트 -->
   <c:import url="script.jsp" charEncoding="utf-8"/>
+  
+  <!-- 캐러셀 탑텐 -->
+
+
+
+
 <style type="text/css">
 .star-on {
   color: gray;
@@ -173,6 +180,11 @@ white{
 .navbar-nav {
    background-color: rgba( 255, 255, 255, 0 );
   }
+  
+  
+  
+  
+  
 
 </style>
 
@@ -497,6 +509,8 @@ white{
       </div>
     </div>
   </div>
+  
+
 
   <div class="py-5">
     <div class="container">
@@ -505,87 +519,7 @@ white{
       </div>
     </div>
   </div>
-
-  <!-- 댓글 -->
-  				<div class="container">
-				<c:if test="${login.memberid != null }">
-
-					<div class="inputBox">
-						<div class="writeBoxWrap cmtWrite">
-							<form action="insertreplyRecruit.do" method="post">
-								<input type="hidden" name="jobSeq" value="${dto.jobSeq}">
-								<fieldset>
-									<div class="uiplaceholder">
-										<span class="ph">솔직하고 따뜻한 답변을 남겨주세요.<br>*휴대폰 번호, 메일 주소, 카카오톡 ID 등 개인정보가 포함된 내용은 비노출 처리 될 수 있습니다.</span>
-										<textarea class="devTxtAreaAnswerWrite" name="reply_content" maxlength="1000" title="답변쓰기"></textarea>
-									</div>
-									<div class="btnWrap">
-                               			<div class="infoBx">
-                            	    	   <a href="/User/Qstn/MainProfile?Target=16755209" class="my-profile" target="_blank">
-                                    		   <span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_8.jpg" target="_blank" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
-                                    	  	   <span class="info">${login.memberid}</span>
-                                   	   	   	   <input type="hidden" name="memberid" value="${login.memberid}">
-                                   	   	   </a>
-                                   	   	 </div>
-                                  	  	 <span class="byte"><b id="count">0</b> / 1,000</span>
-                               	         <button type="submit" id="btnSubmit" class="btnSbm devBtnAnswerWrite">등록</button>
-                           	   		</div>
-								</fieldset>
-							</form>
-						</div>
-						<ul class="notice-box-wrap">
-                		    <li>답변을 등록하면 닉네임으로 질문자에게 전달됩니다.</li>
-                	   		<li>개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.</li>
-                  			<li>개인정보가 포함되거나 부적절한 답변은 비노출 또는 해당 서비스 이용 불가 처리될 수 있습니다.</li>
-               			</ul>
-					</div>
-				</c:if>
-				<c:forEach var="row" items="${replylist}">
-				<input type="hidden" name="replyrecruitseq" value="${row.replyrecruitseq}">
-				<input type="hidden" name="jobSeq" value="${row.jobSeq}">
-
-				<div class="viewListWrap">
-                	<div class="headerWrap">
-                    	<div class="numBx">
-                           <span>답변 <span class="num">${row.reply_count}</span></span>
-                        </div>
-                    </div>
-					<div class="listWrap commonSecWrap">
-   						 	<ul class="answerArea">
-                				<li>
-                					<div class="contSec devContSection" style="display: block;">
-                						<div class="writeBoxWrap cmtWrite">
-                							<div class="infoBx">
-                								<a href="mypage.do" class="my-profile">
-                									<span class="nickname">${row.memberid}</span>
-                								</a>
-                							</div>
-                							<p class="cont">${row.reply_content}</p>
-                							<div class="cellBx">
-                								<span class="cell devAnswerDate">${row.rdate.substring(0,10)}</span>
-                							</div>
-                							<div class="btnBx devComtRoot" data-answerno="205449">
-                            					<!-- 댓글, 좋아요 버튼 클릭시 클래스 active 추가 -->
-                            					<button type="button" class="btnCmt devBtnComtList active">댓글 <em>${row.reply_count}</em></button>
-                            					<button type="button" class="btnHeart qnaSpB devBtnAnswerLike ">0</button>
-                        					</div>
-                						</div>
-                						<div class="commentSec" style="display: block;">
-                							<div class="cmtArea">
-                								<div class="cmtList replyWrap">
-                									<ul class="cmtList replyWrap">
-                                						<!-- [Dev] 내 댓글일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 삭제만 노출 -->
-                            						</ul>
-                								</div>
-                							</div>
-                						</div>
-                					</div>
-                				</li>
-					  		</ul>
-						</div>
-			   		</div>
-			   	</c:forEach>
-			   	</div>
+  
 
 
 
@@ -596,7 +530,7 @@ white{
 <script>
 getTop10List();
 
-//5단 검색바 사용 검색할 경우
+//인기 탑텐 가져오기 
 function getTop10List() {
 
     $.ajax({
@@ -1173,6 +1107,9 @@ $('.devBtnComtWrite').click(function () {
 	document.getElementById('portfolioseq').value = portseq;
 
 }
+  
+
+
 
   </script>
 
