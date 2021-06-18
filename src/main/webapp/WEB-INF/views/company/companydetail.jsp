@@ -6,27 +6,16 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="_csrf_parameter" content="_csrf"><meta name="_csrf_header" content="X-CSRF-TOKEN"><meta name="_csrf" content="5557377e-0013-402c-90e5-0dad4d61305f">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="p3p" content="CP=&quot;CAO DSP AND SO &quot; policyref=&quot;/w3c/p3p.xml&quot;">
-  <meta http-equiv="imagetoolbar" content="no">
-  <meta name="robots" content="noindex,nofollow,noarchive">
-  <meta name="subject" content="#">
-  <meta name="author" content="#">
-  <meta name="keywords" content="#">
-  <meta name="selected-menu" content="0, 0, 0, 0">
-  <link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
+  
   <!-- TO_BE CSS.. -->
 
   <link rel="stylesheet" href="static/css/import.css" media="all">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- jQuery Modal -->
 
+  <!-- jQuery Modal -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
   <!-- footer -->
-
 
 <!-- 네비바 -->
 <!-- carousel -->
@@ -38,13 +27,14 @@
 
 
  <!-- 전체 css -->
-
-<script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
 <script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
 <link href="csss/top.css" rel="stylesheet" type="text/css">
 <link href="csss/common.css" rel="stylesheet" type="text/css">
-        <link href="csss/reset.css" rel="stylesheet" type="text/css">
-
+<link href="csss/reset.css" rel="stylesheet" type="text/css">
+ -->
+ 
+ <c:import url="/WEB-INF/views/recruit/script.jsp" charEncoding="utf-8"/>
 
 <style type="text/css">
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -73,176 +63,9 @@ tr{
 
  <body id="sub_layout">
 
-     <div class="wrapper" style="background-color: white;">
-<!--  -->
-<header id="header">
-	<div class="top-area">
-		<div class="inner-wrap">
-			<div class="link-out">
-				<a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do" target="_blank" title="새창 열림">지역일하라</a>
-				<a href="/useInfo/empCenterInfo/useEmpIntroList.do" target="" title="새창">고용복지<sup></sup>센터</a>
-				<a href="#3" title="새창 열림" onclick="f_moveUrl('WT')">장애인고용포털</a>
-			</div>
-			<div class="util">
-				<!-- 로그인 전 -->
-
-				<!--// 로그인 전 -->
-				<!-- 로그인 후 -->
-
-				<!-- S : 2018-09-28 추가 -->
-
-					<div class="login-mypage">
-						<a href="#">
-								<span>[기업]</span>
-							  ${login.name}님
-						</a>
-						<ul>
-
-								<!-- 개인 -->
-								<li><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지 홈</a></li>
-								<li><a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do">회원정보관리</a></li>
-								<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do">구직신청관리</a></li>
-								<li><a href="#" onclick="worknet.popup.popCenterSuppAgree(); return false;" target="_blank" title="새창">고객지원</a></li>
-
-
-						</ul>
-					</div>
-					<a href="#" onclick="f_logout();" class="font-blue">로그아웃</a>
-
-
-				<!-- 공통 -->
-				<a href="#" class="worknet-chatbot-start-button-for-client">챗봇</a>
-				<a href="jobtalk.do">취업톡톡<img src="static/images/common/ico/ico-gnb-new.png" style="width:15px; height:15px" class="va-m" alt="new"></a>
-				<a href="/useInfo/worknetInfo/useWorknetGuide.do">이용안내</a>
-				<a href="info.do">고객센터</a>
-				<a href="http://as82.kr/keis" target="_blank" title="새창">원격지원</a>
-				<a href="/useInvite/worknetHomepgInvite/sitemap.do">사이트맵</a>
-
-			</div>
-		</div>
-	</div>
-
-	<div class="middle-area">
-		<div class="inner-wrap">
-
-
-					<h1 class="top-logoWorknet">
-						<a href="home.do"><img src="static/images/common/bg/bg-top-logo.png" style="width:130px; height:60px" alt="일하라"></a>
-					</h1>
-
-
-		</div>
-	</div>
-
-	<nav id="gnb">
-		<ul>
-			<c:if test="${company.companytype == null }">
-			<li><a href="companywrite.do" class="menu"><span>기업정보등록</span></a></li>
-			</c:if>
-			<li><a href="companyupdate.do?companyid=${login.memberid }" id="updateBtn" class="menu"><span>기업정보 수정</span></a></li>
-			
-			<li><a href="companydetail.do?companyid=${login.memberid }" class="menu"><span>기업정보</span></a></li>
-
-			<li><a href="createTest.do" class="menu"><span>공고등록</span></a></li>
-			<li><a href="myRecruitList.do?memberid=${login.memberid }" class="menu"><span>공고현황</span></a></li>	
-			
-		</ul>
-
-
-
-	</nav>
-</header>
-    <!-- 헤더 -->
-
-
-
-
-
-            <div class="inner-wrap">
-                <script type="text/javascript" src="/js/framework/keis.window.js" charset="utf-8"></script>
-                <script type="text/javascript" src="/js/framework/keis.cookie.js" charset="utf-8"></script>
-                <script type="text/javascript" defer="defer">
-                    $(document).ready(function () {
-                        var isFind = false;
-                        var navi_2 = $('#navi_2')
-                            .text()
-                            .replace(/^\s+/, "")
-                            .replace(/\s+$/, "");
-                        var navi_3 = $('#navi_3')
-                            .text()
-                            .replace(/^\s+/, "")
-                            .replace(/\s+$/, "");
-                        var location_txt = $('div .location em')
-                            .text()
-                            .replace(/^\s+/, "")
-                            .replace(/\s+$/, "");
-                        var a_text = "";
-                        var p_text = "";
-                        if (location_txt == navi_3) { // LNB depth3 메뉴명 검색
-                            $('nav#lnb ul li div.depth3 ul li a').each(function () {
-                                $a = $(this);
-                                a_text = $a
-                                    .text()
-                                    .replace(/^\s+/, "")
-                                    .replace(/\s+$/, "");
-                                // console.log('a_text==>' + a_text);
-                                if (a_text == location_txt && ! isFind) {
-                                    $p_a = $a
-                                        .parent()
-                                        .parent()
-                                        .parent()
-                                        .parent()
-                                        .find('a')
-                                        .eq(0);
-                                    p_text = $p_a
-                                        .text()
-                                        .replace(/^\s+/, "")
-                                        .replace(/\s+$/, "");
-                                    // console.log('p_text==>' + p_text);
-                                    if (p_text == navi_2 && ! isFind) {
-                                        $a.parent().addClass('curr');
-                                        isFind = true;
-                                    }
-                                }
-                            });
-                        } else if (location_txt == navi_2) {
-                            $('nav#lnb ul li a').each(function () {
-                                $a = $(this);
-                                a_text = $a
-                                    .text()
-                                    .replace(/^\s+/, "")
-                                    .replace(/\s+$/, "");
-                                if (a_text == location_txt && ! isFind) {
-                                    $a.parent().addClass('curr');
-                                    isFind = true;
-                                }
-                            });
-                        }
-                    });
-                    // 기업 마이페이지 > 구인신청서 등록 레이어팝업 분기
-                    function choiceWantedList(tag) {
-                        $.ajax({
-                            type: 'GET',
-                            url: '/coMemberSrv/wantedInfoAdmin/checkConditionAjax.do',
-                            error: function (request, status, error) {
-                                alert("오류가 발생했습니다. : " + error);
-                            },
-                            success: function (result) {
-                                if (result == 'Y') {
-                                    var option = {
-                                        left: '235px',
-                                        top: '-71px',
-                                        width: '600px'
-                                    };
-                                    keis.window.newLayer('/coMemberSrv/wantedInfoAdmin/notile/choiceWantedList.do', '#wanted-admin-apply', option)
-                                } else {
-                                    location.href = "/coMemberSrv/wantedInfoAdmin/registerWantedAdminApplyForm.do"
-                                }
-                            }
-                        });
-                    }
-                </script>
-
+<c:import url="/WEB-INF/views/recruit/header.jsp" charEncoding="utf-8"/>
+  
+<div class="wrapper" style="background-color: white;">
 
 <div class="all">
 
@@ -293,8 +116,8 @@ tr{
 
 <!-- ///////////////////////////////////// 테이블 시작 -->
 
+<div class="container">
 <form id="_comform">
-<div class="container" align="center" style="margin-left: 0px;">
 	<div style="padding-top: 0px">
 		<h1><strong>${company.companyname }</strong></h1>
 	</div>
@@ -335,7 +158,7 @@ tr{
 	</div>
 <br><br>
 
-<div>
+
 <c:if test="${company.companytype == null }">
 <table>
 	<tr align="center">
@@ -344,6 +167,9 @@ tr{
 </table>
 </c:if>
 <br>
+
+
+
 <c:if test="${company.companytype != null }">
 <table style="margin-left: 00px;background-color: aliceblue;">
 	<colgroup>
@@ -407,15 +233,19 @@ tr{
 </c:if>
 
 
-</div>
+
+
+
+
 	<br>
 	<c:if test="${login.memberid } ">
    	  <a  href="companyupdate.do?memberid=${company.memberid }" style="color:#2186eb">기업수정</a>
   	</c:if>
 	  
 	 <h1><strong><a href="recuruitlist.do">목록으로</a></strong></h1>
-	
+
 </form>
+</div>
 <!-- //////////////////////////////////////////테이블 끝 -->
 
 

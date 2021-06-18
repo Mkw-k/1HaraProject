@@ -539,14 +539,15 @@ body {
                     	<div class="sub-visual-noline">
                     		<!-- 프로필사진 들어가는곳  -->
                     	 <ul>
- 						   <li class="img" style="list-style: none; margin-left : 200px">
+ 						   <li class="img" style="list-style: none; margin-left : 200px" value="${business.filename }" name="filename">
                                 <div id="image_preview">
                                 	<c:choose>
-                                   	 	<c:when test="${login.filename == null }">
-                                   	 		<img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 160px;" src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
+                                   	 	<c:when test="${login.filename ne null }">
+         
+                                			<img src="./upload/${business.filename}" style="width: 150px; height: 150px;">
                                 		</c:when>
                                 		<c:otherwise>
-                                			<img src="./upload/${login.filename}" style="width: 150px;height: 150px;">
+                                			<img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 160px;" src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
                                 		</c:otherwise>
                                 	</c:choose>
                                 </div>
@@ -554,6 +555,7 @@ body {
                                 <div class="f_box">
                                         <label for="img"></label>
                                         <input type="file" name="fileload" id="img">
+                                        <input type="hidden" name="newfilename" value="${business.newfilename }" id="img">
                                 </div>
                             </li>
 						</ul>
@@ -588,12 +590,12 @@ body {
                             </div>
                             <div class="line">
                                 <label for="username" class="label w140px">성명</label>
-                                <input type="text" value="${login.name}"  placeholder="${login.name}"  name="name" title="성명 입력" class="input-text w260px" pil="PF_PNM">
-                             	<input type="hidden" value="${login.memberid }" placeholder="${login.memberid}"  name="memberid" title="유저아이디" class="input-text w260px" pil="PF_PNM">
+                                <input type="text" value="${business.name}"  placeholder="${business.name}"  name="name" title="성명 입력" class="input-text w260px" pil="PF_PNM">
+                             	<input type="hidden" value="${business.memberid }" placeholder="${business.memberid}"  name="memberid" title="유저아이디" class="input-text w260px" pil="PF_PNM">
                             </div>
                             <div class="line">
                             	<label for="userpwd" class="label w140px">비밀 번호</label>
-                            	<input type="text" value="${login.pwd }" placeholder="${login.pwd }" name="pwd" title="비밀번호 입력" class="input-text w260px" pil="PF_PNM">
+                            	<input type="text" value="${business.pwd }" placeholder="${business.pwd }" name="pwd" title="비밀번호 입력" class="input-text w260px" pil="PF_PNM" readonly="readonly">
                             </div>
                         </div>
                         <h3 class="tit font-black">연락처 정보</h3>
@@ -615,8 +617,8 @@ body {
         									
         										<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
 												<input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" readonly="readonly" value="우편번호 찾기"><br>
-												<input type="text" class="form-control" id="sample6_address" name="comaddress" placeholder="주소"><br>
-												<input type="text" class="form-control" id="sample6_detailAddress" name="addressdetail" placeholder="상세주소"><br>
+												<input type="text" class="form-control" id="sample6_address" name="comaddress" value="${business.comaddress }"><br>
+												<input type="text" class="form-control" id="sample6_detailAddress" name="addressdetail" value="${business.addressdetail }"><br>
 												<input type="hidden" class="form-control" id="sample6_extraAddress" placeholder="참고항목"><br>
         									</div>
                                         </td>
@@ -654,7 +656,7 @@ body {
                                         </th>
                                         <td> 
                                             <div class="email-wrap mt05">
-                                                <input type="text" style="width:400px" name="email" id="email1" maxlength="100" class="input-text" title="이메일 주소 입력" pil="PF_EMAIL",  placeholder="이메일 주소를 입력하세요. ex) example@gmail.com" />
+                                                <input type="text" style="width:400px" name="email" id="email1" maxlength="100" class="input-text" title="이메일 주소 입력" pil="PF_EMAIL",  value="${business.email }" />
                                             </div>
                                         </td>
                                     </tr>
