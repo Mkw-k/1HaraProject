@@ -1,26 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
     <meta charset="UTF-8">
-	<meta name="_csrf_parameter" content="_csrf"><meta name="_csrf_header" content="X-CSRF-TOKEN"><meta name="_csrf" content="5557377e-0013-402c-90e5-0dad4d61305f">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta http-equiv="p3p" content="CP=&quot;CAO DSP AND SO &quot; policyref=&quot;/w3c/p3p.xml&quot;">
-	<meta http-equiv="imagetoolbar" content="no">
-	<meta name="robots" content="noindex,nofollow,noarchive">
-	<meta name="subject" content="#">
-	<meta name="author" content="#">
-	<meta name="keywords" content="#">
-	<meta name="selected-menu" content="0, 0, 0, 0">
-	<link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<!-- TO_BE CSS.. -->
-	<link rel="stylesheet" href="static/css/import.css" media="all">
+   <meta name="_csrf_parameter" content="_csrf"><meta name="_csrf_header" content="X-CSRF-TOKEN"><meta name="_csrf" content="5557377e-0013-402c-90e5-0dad4d61305f">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <meta http-equiv="p3p" content="CP=&quot;CAO DSP AND SO &quot; policyref=&quot;/w3c/p3p.xml&quot;">
+   <meta http-equiv="imagetoolbar" content="no">
+   <meta name="robots" content="noindex,nofollow,noarchive">
+   <meta name="subject" content="#">
+   <meta name="author" content="#">
+   <meta name="keywords" content="#">
+   <meta name="selected-menu" content="0, 0, 0, 0">
+   <link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+   <!-- TO_BE CSS.. -->
+   <link rel="stylesheet" href="static/css/import.css" media="all">
 
     <title>/ajax/test04.html</title>
     <link rel="stylesheet" href="csss/bootstrap.css"/>
@@ -34,22 +34,22 @@
             display: none;
         }
         .form-control1{
-        	/* display: block; */
-   			width: 40%;
-   			height: calc(1.5em + 0.75rem + 2px);
-    		padding: 0.375rem 0.75rem;
-    		font-size: 1rem;
-   			font-weight: 400;
-   			line-height: 1.5;
-    		color: #5a5a5a;
-   			background-color: #fff;
-    		background-clip: padding-box;
-   			border: 1px solid #ced4da;
-    		border-radius: 0.4rem;
-    		transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+           /* display: block; */
+            width: 40%;
+            height: calc(1.5em + 0.75rem + 2px);
+          padding: 0.375rem 0.75rem;
+          font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+          color: #5a5a5a;
+            background-color: #fff;
+          background-clip: padding-box;
+            border: 1px solid #ced4da;
+          border-radius: 0.4rem;
+          transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
     </style>
-    
+
  <!-- 폰트 -->
 <style type="text/css">
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -67,12 +67,12 @@ body {
 <!-- 부트스트랩 -->
 
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> 
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 <!-- https://github.com/josecebe/twbs-pagination -->
 <script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
-    
-    
+
+
 </head>
 <body>
 
@@ -101,7 +101,7 @@ body {
             </div>
           </li>
 
-		<li class="nav-item">
+      <li class="nav-item">
             <div style="position: relative;
     text-align: right;">
               <button class="btn dropdown-toggle btn-link" data-toggle="dropdown"> 채용공고</button>
@@ -128,11 +128,11 @@ body {
             </a> </li>
           <li class="nav-item">
             <div style="
-    position: relative;
+   	position: relative;
     text-align: right;
     margin-left: 500px;
     ">
-    		<div class="btn-group"> <!--  -->
+          <div class="btn-group"> <!--  -->
               <button class="btn dropdown-toggle  btn-link" data-toggle="dropdown">로그인해주세요</button>
               <!-- <button class="btn dropdown-toggle btn-link " data-toggle="dropdown">이주영 님</button> -->
               <div class="dropdown-menu" style=""> <a class="dropdown-item" href="#">Action</a>
@@ -149,28 +149,28 @@ body {
 
 <script type="text/javascript">
 $(function() {
-	   $(window).scroll(function() {
-	      //ADD CLASS
-	      if ($(".navbar").offset().top > 90) {
-	         //바탕색상변경
-	    	 $(".sticky-top").addClass("top-nav-collapse");
-	         //폰트색상 변경
-	         $(".navbar a").addClass("text-light");
-	         //드랍다운색상 변경
-	         $(".navbar li button").addClass("text-light");
-	         //드랍다운 밑에 있는 a태그도 변경
-	         $(".navbar li button a").addClass("text-dark");
-	         //이미지 변경
-	         $("#_logo").attr("src", "<%=request.getContextPath() %>/image/흰 로고 반전.gif");
-	      } else {
-	         $(".sticky-top").removeClass("top-nav-collapse");
-	         $(".navbar a").removeClass("text-light");
-	         $(".navbar li button").removeClass("text-light");
-	         $(".navbar li button a").removeClass("text-dark");
-	         $("#_logo").attr("src", "<%=request.getContextPath() %>/image/흰로고다.gif");
-	      }
-	   });
-	});
+      $(window).scroll(function() {
+         //ADD CLASS
+         if ($(".navbar").offset().top > 90) {
+            //바탕색상변경
+           $(".sticky-top").addClass("top-nav-collapse");
+            //폰트색상 변경
+            $(".navbar a").addClass("text-light");
+            //드랍다운색상 변경
+            $(".navbar li button").addClass("text-light");
+            //드랍다운 밑에 있는 a태그도 변경
+            $(".navbar li button a").addClass("text-dark");
+            //이미지 변경
+            $("#_logo").attr("src", "<%=request.getContextPath() %>/image/흰 로고 반전.gif");
+         } else {
+            $(".sticky-top").removeClass("top-nav-collapse");
+            $(".navbar a").removeClass("text-light");
+            $(".navbar li button").removeClass("text-light");
+            $(".navbar li button a").removeClass("text-dark");
+            $("#_logo").attr("src", "<%=request.getContextPath() %>/image/흰로고다.gif");
+         }
+      });
+   });
 </script>
 <!-- 상단바 끝 -->
 
@@ -328,7 +328,7 @@ $(function() {
         <div class="form-group has-feedback">
 
         <!-- 프로필 사진 -->
-        
+
         				<section style="width:400px;height: 236px;margin-left: 0px;border-style: outset;">
         				<h3>회원 가입 (일반)</h3>
                           <ul>
@@ -344,13 +344,13 @@ $(function() {
                                         <input type="file" name="fileload" id="img">
                                 </div>
                             </li>
-						</ul>
-						</section>
-						
+                  		</ul>
+                  	</section>
+
                        <script>
                             // 이미지 업로드
                             $('#img').on('change', function() {
-                            	alert($('#img').val());
+                               alert($('#img').val());
                             ext = $(this).val().split('.').pop().toLowerCase(); //확장자
                             //배열에 추출한 확장자가 존재하는지 체크
                             if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
@@ -365,15 +365,15 @@ $(function() {
                             }
                             });
 
- 						</script>
-                    	<br><br>
+                   </script>
+                       <br><br>
 
         <!-- 프로필사진 등록 끝나는 구간  -->
-        
-    
-    
-    
-    
+
+
+
+
+
 
             <label class="control-label" for="id">아이디</label>
           	<div class="input-group">
@@ -397,17 +397,17 @@ $(function() {
             <span class="glyphicon glyphicon-ok form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-  			<label class="control-label" for="name">이름</label>
-  				<input type="text" class="form-control" id="name" name="name" placeholder="">
-  		</div>
+           <label class="control-label" for="name">이름</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="">
+        </div>
 
        <!--  <div class="form-group has-feedback">
-        	<label class="control-label" for="registrationNum">주민등록번호</label><br>
-        		<input class="form-control1" type="text" name="unum1" id="unum1">-</input>
-        		<input class="form-control1" type="password" name="unum2" id="unum2"/><br>
-        		<input type="button" value="검사" style="border-radius:5px; font-s" onclick="validate();" />
-  				<input type="reset" value="다시입력" style="border-radius:5px;" />
-  				<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+           <label class="control-label" for="registrationNum">주민등록번호</label><br>
+              <input class="form-control1" type="text" name="unum1" id="unum1">-</input>
+              <input class="form-control1" type="password" name="unum2" id="unum2"/><br>
+              <input type="button" value="검사" style="border-radius:5px; font-s" onclick="validate();" />
+              <input type="reset" value="다시입력" style="border-radius:5px;" />
+              <span class="glyphicon glyphicon-ok form-control-feedback"></span>
         </div> -->
         <div class="form-group has-feedback">
         	<label class="control-label" for="registrationNum">주소</label>
@@ -417,15 +417,6 @@ $(function() {
 				<input type="text" class="form-control" id="sample6_detailAddress" name="detailaddress" placeholder="상세주소">
 				<input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목">
         </div>
-  		<div class="form-group has-feedback">
-  			<label class="control-label" for="mem_birth">생년월일</label>
-  				<input type="tel" class="form-control" id="mem_birth" name="birth" placeholder="ex) 19990101">
-  			<div class="eheck_font" id="birth_check">
-  			</div>
-  		</div>
-
-
-
 
         <div class="form-group">
 			<label for="phonenumer" class="cols-sm-2 control-label">전화번호 (필수)</label>
@@ -467,29 +458,29 @@ $(function() {
 <!-- <script src="/js/jquery-3.2.1.js"></script> -->
 <script>
 
-	// 가입버튼 클릭시
-	$("#_btnRegi").click(function () {
+   // 가입버튼 클릭시
+   $("#_btnRegi").click(function () {
 
-		if( $("#memberid").val().trim() == "" ){
-			alert("id를 입력해 주십시오");
-			$("#memberid").focus();
-		}
-		else if( $("#pwd").val().trim() == "" ){
-			alert("패스워드를 입력해 주십시오");
-			$("#pwd").focus();
-		}
-		else{
-			alert($("#memberid").val());
-			$("#myForm").attr("action", "regiAf.do").submit();
-			alert("회원가입이 성공적으로 완료되었습니다");
-		}
-
-
-	});
+      if( $("#memberid").val().trim() == "" ){
+         alert("id를 입력해 주십시오");
+         $("#memberid").focus();
+      }
+      else if( $("#pwd").val().trim() == "" ){
+         alert("패스워드를 입력해 주십시오");
+         $("#pwd").focus();
+      }
+      else{
+         alert($("#memberid").val());
+         $("#myForm").attr("action", "regiAf.do").submit();
+         alert("회원가입이 성공적으로 완료되었습니다");
+      }
 
 
-	//주민번호
-	function validate() {
+   });
+
+
+   //주민번호
+   function validate() {
         var re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
         var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
         // 이메일이 적합한지 검사할 정규식
@@ -532,7 +523,7 @@ $(function() {
             num1.focus();
             return false;
         }else{
-        	alert("올바른 주민등록번호 입니다.");
+           alert("올바른 주민등록번호 입니다.");
         }
     }
 
@@ -547,48 +538,48 @@ $(function() {
     }
 
 
- 	// 생일 유효성 검사
-	var birthJ = false;
- 	// 생년월일 birthJ 유효성 검사
- 	$('#mem_birth').blur(function(){
- 		var dateStr = $(this).val();
- 		var year = Number(dateStr.substr(0,4));
- 	// 입력한 값의 0~4자리까지 (연)
- 	var month = Number(dateStr.substr(4,2));
- 	// 입력한 값의 4번째 자리부터 2자리 숫자 (월)
- 	var day = Number(dateStr.substr(6,2));
- 	// 입력한 값 6번째 자리부터 2자리 숫자 (일)
- 	var today = new Date();
- 	// 날짜 변수 선언
- 	var yearNow = today.getFullYear();
- 	// 올해 연도 가져옴
- 	if (dateStr.length <=8) {
- 		// 연도의 경우 1900 보다 작거나 yearNow 보다 크다면 false를 반환합니다.
- 		if (year > yearNow || year < 1900 ){
- 			$('#birth_check').text('생년월일을 확인해주세요');
- 			$('#birth_check').css('color', 'red');
- 			} else if (month < 1 || month > 12) {
- 				$('#birth_check').text('생년월일을 확인해주세요 ');
- 				$('#birth_check').css('color', 'red');
- 				}else if (day < 1 || day > 31) {
- 					$('#birth_check').text('생년월일을 확인해주세요 ');
- 					$('#birth_check').css('color', 'red');
- 					}else if ((month==4 || month==6 || month==9 || month==11) && day==31) {
- 						$('#birth_check').text('생년월일을 확인해주세요 ');
- 						$('#birth_check').css('color', 'red');
- 						}else if (month == 2)
- 						{ var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
- 						if (day>29 || (day==29 && !isleap))
- 						{ $('#birth_check').text('생년월일을 확인해주세요 ');
- 						$('#birth_check').css('color', 'red'); }
- 						else{ $('#birth_check').text(''); birthJ = true;
- 						}
- 						}else{ $('#birth_check').text(''); birthJ = true;
- 						}//end of if
- 						}else{ //1.입력된 생년월일이 8자 초과할때 : auth:false
- 							$('#birth_check').text('생년월일을 확인해주세요 ');
- 							$('#birth_check').css('color', 'red'); }
- 	}); //End of method /*
+    // 생일 유효성 검사
+   var birthJ = false;
+    // 생년월일 birthJ 유효성 검사
+    $('#mem_birth').blur(function(){
+       var dateStr = $(this).val();
+       var year = Number(dateStr.substr(0,4));
+    // 입력한 값의 0~4자리까지 (연)
+    var month = Number(dateStr.substr(4,2));
+    // 입력한 값의 4번째 자리부터 2자리 숫자 (월)
+    var day = Number(dateStr.substr(6,2));
+    // 입력한 값 6번째 자리부터 2자리 숫자 (일)
+    var today = new Date();
+    // 날짜 변수 선언
+    var yearNow = today.getFullYear();
+    // 올해 연도 가져옴
+    if (dateStr.length <=8) {
+       // 연도의 경우 1900 보다 작거나 yearNow 보다 크다면 false를 반환합니다.
+       if (year > yearNow || year < 1900 ){
+          $('#birth_check').text('생년월일을 확인해주세요');
+          $('#birth_check').css('color', 'red');
+          } else if (month < 1 || month > 12) {
+             $('#birth_check').text('생년월일을 확인해주세요 ');
+             $('#birth_check').css('color', 'red');
+             }else if (day < 1 || day > 31) {
+                $('#birth_check').text('생년월일을 확인해주세요 ');
+                $('#birth_check').css('color', 'red');
+                }else if ((month==4 || month==6 || month==9 || month==11) && day==31) {
+                   $('#birth_check').text('생년월일을 확인해주세요 ');
+                   $('#birth_check').css('color', 'red');
+                   }else if (month == 2)
+                   { var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+                   if (day>29 || (day==29 && !isleap))
+                   { $('#birth_check').text('생년월일을 확인해주세요 ');
+                   $('#birth_check').css('color', 'red'); }
+                   else{ $('#birth_check').text(''); birthJ = true;
+                   }
+                   }else{ $('#birth_check').text(''); birthJ = true;
+                   }//end of if
+                   }else{ //1.입력된 생년월일이 8자 초과할때 : auth:false
+                      $('#birth_check').text('생년월일을 확인해주세요 ');
+                      $('#birth_check').css('color', 'red'); }
+    }); //End of method /*
 
 
 
@@ -596,40 +587,40 @@ $(function() {
 
     /* 아이디 중복확인 버튼 클릭 */
     $(function () {
-    	$("#chkIdBtn").click(function () {
+       $("#chkIdBtn").click(function () {
 
-    		var userIdCheck = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);
-    		if(!userIdCheck.test($('#memberid').val())) {
-    			alert("ID는 영문 대소문자, 숫자, _ , - 만 입력 가능하며 5~20 글자만 가능합니다. ");
-    			return;
-    		};
-    		let memid = $("#memberid").val();
-    		alert(memid);
+          var userIdCheck = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);
+          if(!userIdCheck.test($('#memberid').val())) {
+             alert("ID는 영문 대소문자, 숫자, _ , - 만 입력 가능하며 5~20 글자만 가능합니다. ");
+             return;
+          };
+          let memid = $("#memberid").val();
+          alert(memid);
 
-    		$.ajax({
-    			url: "getId.do",
-    			type: "post",
-    			data: { memberid:memid },
-    			success:function( msg ){
-    			//	alert('chkIdBtn success');
-    				if(msg == "YES"){
+          $.ajax({
+             url: "getId.do",
+             type: "post",
+             data: { memberid:memid },
+             success:function( msg ){
+             //   alert('chkIdBtn success');
+                if(msg == "YES"){
 
-    					$("#idCheck").css("color", "#0000ff");
-    					$("#idCheck").html('사용 가능한 ID입니다.');
-    					//$('#memberid').attr('disabled', true);
-    					$('#idCheck').attr('disabled', true);
-    				}else{
-    					$("#idCheck").css("color", "#ff0000");
-    					$("#idCheck").html('이미 존재하는 ID입니다.');
-    					$("#memberid").val("");
-    				}
-    			},
-    			error:function(){
-    				alert('error');
-    			}
-    		});
+                   $("#idCheck").css("color", "#0000ff");
+                   $("#idCheck").html('사용 가능한 ID입니다.');
+                   //$('#memberid').attr('disabled', true);
+                   $('#idCheck').attr('disabled', true);
+                }else{
+                   $("#idCheck").css("color", "#ff0000");
+                   $("#idCheck").html('이미 존재하는 ID입니다.');
+                   $("#memberid").val("");
+                }
+             },
+             error:function(){
+                alert('error');
+             }
+          });
 
-    	});
+       });
     });
 
     $("#pwd").keyup(function(){
@@ -649,7 +640,7 @@ $(function() {
         var pwd=$("#pwd").val();
         // 비밀번호 같은지 확인
         if(rePwd==pwd){
-        	 //비밀번호 같다면
+            //비밀번호 같다면
             $("#rePwdErr").hide();
             successState("#rePwd");
         }else{//비밀번호 다르다면
@@ -673,17 +664,17 @@ $(function() {
 
              $("#text").val(number);      /* 난수로 생성된 인증번호를 hidden name : text 에 숨긴다 */
 
- 		var display = $('#time');
-	    var leftSec = 180;	//인증 남은시간(초)
+       var display = $('#time');
+       var leftSec = 180;   //인증 남은시간(초)
 
-	    // 이미 타이머가 작동중이면 중지
-	    if (isRunning){
-	    	clearInterval(timer);
-	    	display.html("");
-	    	startTimer(leftSec, display);
-	    }else{
-	    	startTimer(leftSec, display);
-	    	}
+       // 이미 타이머가 작동중이면 중지
+       if (isRunning){
+          clearInterval(timer);
+          display.html("");
+          startTimer(leftSec, display);
+       }else{
+          startTimer(leftSec, display);
+          }
           var to = $("#to").val();
 
           if(to == "" || to == null){
@@ -700,8 +691,8 @@ $(function() {
                   $.ajax({
                       url:"sendSms.do",
                       type:"post",
-                      data:{to: $("#to").val(),			// 휴대폰 번호
-                           text: $("#text").val()				// 인증번호
+                      data:{to: $("#to").val(),         // 휴대폰 번호
+                           text: $("#text").val()            // 인증번호
                            },
                     success:function(){
                       alert("해당 휴대폰으로 인증번호를 발송했습니다");
@@ -725,23 +716,23 @@ $(function() {
             }
        })
        $("#phone_authNumBtn").click(function() {   /* 내가 작성한 번호와 인증번호를 비교한다 */
-    	      alert($("#text").val());
-    	      var userNum = $("#phone_authNum").val();
+             alert($("#text").val());
+             var userNum = $("#phone_authNum").val();
 
-    	      var sysNum = $("#text").val();
+             var sysNum = $("#text").val();
 
-    	      if(userNum == null || userNum == ""){
-    	         alert("휴대폰으로 발송된 인증번호를 입력해주세요");
-    	      }
-    	      else{
-    	         if(userNum.trim() == sysNum.trim()){
-    	             alert("성공");
-    	          }
-    	          else {
-    	             alert("실패");
-    	          }
-    	      }
-    	   });
+             if(userNum == null || userNum == ""){
+                alert("휴대폰으로 발송된 인증번호를 입력해주세요");
+             }
+             else{
+                if(userNum.trim() == sysNum.trim()){
+                    alert("성공");
+                 }
+                 else {
+                    alert("실패");
+                 }
+             }
+          });
      });
 
 
@@ -777,18 +768,18 @@ $(function() {
 
     /* 인증번호 입력값 없으면 인증하기 버튼 비활성화 */
     $(document).on("keyup","#authNum", function () {
-    	if($('#authNum').val().length > 0) {
-    		$('#authNumBtn').attr('disabled', false);
-    	} else {
-    		$('#authNumBtn').attr('disabled', true);
-    	}
+       if($('#authNum').val().length > 0) {
+          $('#authNumBtn').attr('disabled', false);
+       } else {
+          $('#authNumBtn').attr('disabled', true);
+       }
     });
     $(document).on("keyup","#phone_authNum", function () {
-    	if($('#phone_authNum').val().length > 0) {
-    		$('#send').attr('disabled', false);
-    	} else {
-    		$('#send').attr('disabled', true);
-    	}
+       if($('#phone_authNum').val().length > 0) {
+          $('#send').attr('disabled', false);
+       } else {
+          $('#send').attr('disabled', true);
+       }
     });
 
 
@@ -797,7 +788,7 @@ $(function() {
     let isRunning = false;
     function startTimer(count, display) {
 
-    	var minutes, seconds;
+       var minutes, seconds;
         timer = setInterval(function () {
         minutes = parseInt(count / 60, 10);
         seconds = parseInt(count % 60, 10);
@@ -927,50 +918,50 @@ $(function() {
 </script>
  <!-- ==============FOOTER================= -->
       <footer class="main-footer">
-      	<div id="footer">
-			<div class="middle-area">
-				<div class="inner-wrap">
-					<div class="link-footer">
-						<a href="/useInvite/worknetHomepgInvite/worknetIntro.do">일하라 소개</a>
-						<a href="/useInvite/worknetHomepgInvite/useClause1.do">이용약관</a>
-						<a href="/useInvite/worknetHomepgInvite/indivInfoPrtecPolicy.do"><b>개인정보처리방침</b></a>
-						<a href="/useInvite/worknetHomepgInvite/emailAddrWonoticeGatherRefuse.do">이메일주소무단수집거부</a>
-						<a href="/useInvite/worknetHomepgInvite/webAccessPlcy.do">웹접근성정책</a>
-						<a href="/useInvite/worknetHomepgInvite/cprgtPolicyAsAllianceInq.do">저작권정책 및 제휴문의</a>
-						<a href="http://openapi.work.go.kr" target="_blank">Open API</a>
-						<a href="/contents.do?relAddr=/useInvite/worknetHomepgInvite/workBanner&amp;titleId=UIFG000001">배너 가져가기</a>
-						<a href="/useInfo/lieJobadRpt/lieJobadRptList.do">거짓구인광고 신고</a>
-					</div>
-				</div>
-			</div>
+         <div id="footer">
+         <div class="middle-area">
+            <div class="inner-wrap">
+               <div class="link-footer">
+                  <a href="/useInvite/worknetHomepgInvite/worknetIntro.do">일하라 소개</a>
+                  <a href="/useInvite/worknetHomepgInvite/useClause1.do">이용약관</a>
+                  <a href="/useInvite/worknetHomepgInvite/indivInfoPrtecPolicy.do"><b>개인정보처리방침</b></a>
+                  <a href="/useInvite/worknetHomepgInvite/emailAddrWonoticeGatherRefuse.do">이메일주소무단수집거부</a>
+                  <a href="/useInvite/worknetHomepgInvite/webAccessPlcy.do">웹접근성정책</a>
+                  <a href="/useInvite/worknetHomepgInvite/cprgtPolicyAsAllianceInq.do">저작권정책 및 제휴문의</a>
+                  <a href="http://openapi.work.go.kr" target="_blank">Open API</a>
+                  <a href="/contents.do?relAddr=/useInvite/worknetHomepgInvite/workBanner&amp;titleId=UIFG000001">배너 가져가기</a>
+                  <a href="/useInfo/lieJobadRpt/lieJobadRptList.do">거짓구인광고 신고</a>
+               </div>
+            </div>
+         </div>
 
-		<div class="bottom-area">
-			<div class="inner-wrap">
-				<div class="link-logo">
-					<a href="http://www.moel.go.kr/" class="bg-logo-moel" target="_blank" title="새창 열림">고용노동부</a>
-					<a href="http://www.keis.or.kr/" class="bg-logo-keis" target="_blank" title="새창 열림">한국고용정보원</a>
-				</div>
+      <div class="bottom-area">
+         <div class="inner-wrap">
+            <div class="link-logo">
+               <a href="http://www.moel.go.kr/" class="bg-logo-moel" target="_blank" title="새창 열림">고용노동부</a>
+               <a href="http://www.keis.or.kr/" class="bg-logo-keis" target="_blank" title="새창 열림">한국고용정보원</a>
+            </div>
 
-				<div class="info">
-					<address class="address">
-						서울특별시 마포구 신수동 63-14 비트캠프 신촌센터
-					</address>
-					<p class="copy">
-						Copyright © 2021 <span class="bg-txt-moel">고용노동부</span> <span class="bg-txt-keis">한국고용정보원</span> all rights reserved.
-					</p>
-					<p class="txt">
-						일하라 이용문의 1haramaster@keis.or.kr 1577-7114(유료)
-					</p>
-				</div>
-				<img src="./static/images/mainlogo.png">
-				<div class="etc">
-					<a href="/images/useInfo/certification_kor2015.jpg" target="_blank" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; var remote = window.open('https://www.eprivacy.or.kr/front/certifiedSiteMark/certifiedSiteMarkPopup.do?certCmd=E&amp;certNum=2021-E-R001','EPRIVACY','width=527,height=720'); remote.focus(); return false;" title="새창"><img src="./static/images/brn-epriavcy.png" alt="개인정보보호우수사이트 인증서"></a>
-								<a href="/html/wauMark2020_worknet.html" onclick="try { latte.getEvent(event).stop(); } catch (ex) {};window.open(this.href,'mark2020','width=605,height=850,scrollbars=no');return false;" title="새창" target="_blank" style="margin-top:-3px"><img src="./static/images/brn-wa-2019.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)"></a>
+            <div class="info">
+               <address class="address">
+                  서울특별시 마포구 신수동 63-14 비트캠프 신촌센터
+               </address>
+               <p class="copy">
+                  Copyright © 2021 <span class="bg-txt-moel">고용노동부</span> <span class="bg-txt-keis">한국고용정보원</span> all rights reserved.
+               </p>
+               <p class="txt">
+                  일하라 이용문의 1haramaster@keis.or.kr 1577-7114(유료)
+               </p>
+            </div>
+            <img src="./static/images/mainlogo.png">
+            <div class="etc">
+               <a href="/images/useInfo/certification_kor2015.jpg" target="_blank" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; var remote = window.open('https://www.eprivacy.or.kr/front/certifiedSiteMark/certifiedSiteMarkPopup.do?certCmd=E&amp;certNum=2021-E-R001','EPRIVACY','width=527,height=720'); remote.focus(); return false;" title="새창"><img src="./static/images/brn-epriavcy.png" alt="개인정보보호우수사이트 인증서"></a>
+                        <a href="/html/wauMark2020_worknet.html" onclick="try { latte.getEvent(event).stop(); } catch (ex) {};window.open(this.href,'mark2020','width=605,height=850,scrollbars=no');return false;" title="새창" target="_blank" style="margin-top:-3px"><img src="./static/images/brn-wa-2019.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)"></a>
 
-				</div>
-			</div>
-		</div>
-	</div>
+            </div>
+         </div>
+      </div>
+   </div>
    </footer>
       <!-- ==============FOOTER END================= -->
 

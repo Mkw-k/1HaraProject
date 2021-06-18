@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.view.AbstractView;
 
-import bit.com.a.service.FAQservice;
 import bit.com.a.service.ResumeService;
 
 public class ResumeDownloadView extends AbstractView {

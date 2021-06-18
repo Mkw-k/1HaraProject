@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>    
-    
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +12,7 @@
 	<meta http-equiv="imagetoolbar" content="no">
 	<meta name="robots" content="noindex,nofollow,noarchive">
 	<meta name="subject" content="#">
-	<meta name="author" content="#">	
+	<meta name="author" content="#">
 	<meta name="keywords" content="#">
 	<meta name="selected-menu" content="0, 0, 0, 0">
 	<link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
@@ -23,7 +23,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <style>
-        /* .help-block 을 일단 보이지 않게 설정 */
+         /* .help-block 을 일단 보이지 않게 설정 */
         #myForm .help-block{
             display: none;
         }
@@ -31,8 +31,31 @@
         #myForm .glyphicon{
             display: none;
         }
+        .form-control1{
+           /* display: block; */
+            width: 40%;
+            height: calc(1.5em + 0.75rem + 2px);
+          padding: 0.375rem 0.75rem;
+          font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+          color: #5a5a5a;
+            background-color: #fff;
+          background-clip: padding-box;
+            border: 1px solid #ced4da;
+          border-radius: 0.4rem;
+          transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
     </style>
-    
+    <style type="text/css">
+    	@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+		body {
+  			font-family: "Noto Sans KR", sans-serif !important;
+			}
+
+    </style>
+
     <style type="text/css">
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
@@ -48,13 +71,13 @@ body {
 <!-- 부트스트랩 -->
 
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> 
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 <!-- https://github.com/josecebe/twbs-pagination -->
 <script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
 
-    
-    
+
+
 </head>
 <body>
 
@@ -162,12 +185,37 @@ $(function() {
 
 
 <div class="container" style="text-align: center;">
-    <h3>기업회원</h3>
-    <form action="" method="post" id="myForm" enctype="multipart/form-data">
+	<nav id="lnb">
+   <!-- S : 2018-09-28 추가 -->
+   <p class="tit"><a href="/indivMemberSrv/main/indivMemberSrvMain.do">회원가입</a></p>
+   <!-- E : 2018-09-28 추가 -->
+   <ul>
+      <li>
+         <a href="notice.do" target="_self">공지사항</a>
+      </li>
+      <li>
+         <a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">faq</a>
+      </li>
+      <li>
+         <a href="recruitlist.do" target="_self">채용정보</a>
+      </li>
+      <li>
+         <a href="채용게시판" target="_self">취업뉴스</a>
+      </li>
+      <li>
+         <a href="채용게시판" target="_self">공채달력</a>
+      </li>
+   </ul>
+</nav>
+    <form action="" method="post" id="myForm" enctype="multipart/form-data" style="border-style: outset;padding-right: 30px;padding-left: 30px;padding-top: 30px;padding-bottom: 30px;width: 466px;margin-left: 500px;">
+    	<div class="form-group has-feedback">
+
     	  <!-- 프로필 사진 -->
+    	  <section style="width:400px;height: 236px;margin-left: 0px;border-style: outset;">
+          <h3>기업회원</h3>
           <ul>
-			<li class="img" style="list-style: none; margin-left : 200px">
-              <div id="image_preview">
+			<li class="img" style="list-style: none; margin-left : 0px">
+              <div id="image_preview" style="margin-left: 150px;">
                  <img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 160px;" src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
               </div>
               <h4 style="margin-left: 35px;">프로필 사진을 등록해주세요</h4>
@@ -177,8 +225,9 @@ $(function() {
               </div>
             </li>
 		  </ul>
+		  </section>
  		  <script>
-                // 이미지 업로드  
+                // 이미지 업로드
                 $('#img').on('change', function() {
                 	alert($('#img').val());
                      ext = $(this).val().split('.').pop().toLowerCase(); //확장자
@@ -190,41 +239,42 @@ $(function() {
                                 file = $('#img').prop("files")[0];
                                 blobURL = window.URL.createObjectURL(file);
                                 $('#image_preview img').attr('src', blobURL);
-                                $('#image_preview').slideDown(); //업로드한 이미지 미리보기 
+                                $('#image_preview').slideDown(); //업로드한 이미지 미리보기
                                 $(this).slideUp(); //파일 양식 감춤
                             }
                 });
-                 
+
  		   </script>
-           <br><br>         	
-        <!-- 프로필사진 등록 끝나는 구간  -->
-        <div class="form-group has-feedback">
+           <br><br>
+
             <label class="control-label" for="id">아이디</label>
-            <input class="form-control" type="text" name="memberid" id="memberid"/>
-            <input type="button" class="btn btn-secondary" name="chkIdBtn" id="chkIdBtn" value="중복확인"/>
-         	<br>
-         	<p id="idCheck" style="font-size: 12px"></p>
-        </div>
+            <div class="input-group">
+            	<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+            	<input class="form-control" type="text" name="memberid" id="memberid"/>
+            	<input type="button" class="btn btn-secondary" name="chkIdBtn" id="chkIdBtn" value="중복확인"/>
+         		<br>
+         		<p id="idCheck" style="font-size: 12px"></p>
+         	</div>
+       	</div>
         <div class="form-group has-feedback">
             <label class="control-label" for="pwd">비밀번호</label>
             <input class="form-control" type="password" name="pwd" id="pwd"/>
             <span id="pwdRegErr" class="help-block">8글자 이상 입력하세요.</span>
             <span class="glyphicon glyphicon-ok form-control-feedback"></span>
         </div>
-   
-   
+
         <div class="form-group has-feedback">
             <label class="control-label" for="rePwd">비밀번호 재확인</label>
             <input class="form-control" type="password" name="rePwd" id="rePwd"/>
             <span id="rePwdErr" class="help-block">비밀번호와 일치하지 않습니다. 다시 입력해 주세요.</span>
             <span class="glyphicon glyphicon-ok form-control-feedback"></span>
         </div>
-   
-   
-        <div class="form-group has-feedback"> 
-  			<label class="control-label" for="name">이름</label> 
-  			<input type="text" class="form-control" id="name" name="name" placeholder=""> 
-  		</div> 
+
+
+        <div class="form-group has-feedback">
+  			<label class="control-label" for="name">이름</label>
+  			<input type="text" class="form-control" id="name" name="name" placeholder="">
+  		</div>
         <div class="form-group has-feedback">
             <label class="control-label" for="companyname">회사명</label>
             <input class="form-control" type="text" name="companyname" id="companyname"/>
@@ -252,8 +302,8 @@ $(function() {
 		       </div>
 		 </div>
          -->
-         
-         
+
+
         <div class="form-group">
 			<label for="phonenumer" class="cols-sm-2 control-label">전화번호 (필수)</label>
 		<div class="cols-sm-10">
@@ -262,24 +312,26 @@ $(function() {
 			   <input type="text" class="form-control" name="phonenum" id="to" placeholder="전화번호를 입력해주세요.(-는 빼고 적어주세요) ex)01011112222 " />
 			   <p id="phoneCheck" style="font-size: 12px"></p>
 			  	<input type="button" class="btn btn-secondary" id="send" name="phoneBtn" value="본인 인증">
-			   <input type="hidden" name="text" id="text">   인증번호를 히든으로 저장해서 보낸다
+			   <input type="hidden" name="text" id="text">
 		   </div>
 			   <br>
 		</div>
 	 	<div class="cols-sm-6" id="phone_authNumber">
 	 		<input type="text" id="phone_authNum" name="userNum" size="30px" placeholder="인증번호 6자리를 입력하세요.">
 	 		<input type='button' class="btn btn-primary" id="phone_authNumBtn" name="phoneNumBtn" value="인증하기">
-	 	
+
 		</div>
-		</div> 
-         
-        <div class="form-group has-feedback">
-            <label class="control-label" for="email">이메일</label>
-            <input class="form-control" type="text" name="email" id="email"/>
-            <span id="emailErr" class="help-block">올바른 이메일 형식이 아닙니다. 다시 입력해 주세요.</span>
-            <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-        </div>
-        <button id="_btnRegi" class="btn btn-success" type="submit">가입</button>
+		</div>
+
+       <div class="form-group">
+           <label for="email" class="cols-sm-2 control-label">이메일</label>
+           	<div class="cols-sm-10">
+           		 <input class="form-control" type="text" name="email" id="email"/>
+            	 <span id="emailErr" class="help-block">올바른 이메일 형식이 아닙니다. 다시 입력해 주세요.</span>
+            	 <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+        	</div>
+       </div>
+     <button id="_btnRegi" class="btn btn-success" type="submit">가입</button>
     </form>
 </div>
 <!-- <script src="/js/jquery-3.2.1.js"></script> -->
@@ -296,16 +348,16 @@ $(function() {
 			alert("패스워드를 입력해 주십시오");
 			$("#pwd").focus();
 		}
-		else{	
+		else{
 			alert($("#memberid").val());
 			$("#myForm").attr("action", "businessregiAf.do").submit();
 			alert("회원가입이 성공적으로 완료되었습니다");
-		}	
-	
+		}
+
 	});
 
-	
-    //아이디 입력란에 keyup 이벤트가 일어 났을때 실행할 함수 등록 
+
+    //아이디 입력란에 keyup 이벤트가 일어 났을때 실행할 함수 등록
    /*  $("#companyid").keyup(function(){
         //입력한 문자열을 읽어온다.
         var id=$(this).val();
@@ -316,19 +368,19 @@ $(function() {
             data:{inputId:id},
             success:function(data){
                 var obj=JSON.parse(data);
-                if(obj.canUse){//사용 가능한 아이디 라면 
+                if(obj.canUse){//사용 가능한 아이디 라면
                     $("#overlapErr").hide();
                     // 성공한 상태로 바꾸는 함수 호출
                     successState("#id");
-                    
-                }else{//사용 가능한 아이디가 아니라면 
+
+                }else{//사용 가능한 아이디가 아니라면
                     $("#overlapErr").show();
                     errorState("#id");
                 }
             }
         });
     }); */
-    
+
     $("#pwd").keyup(function(){
         var pwd=$(this).val();
         // 비밀번호 검증할 정규 표현식
@@ -356,7 +408,7 @@ $(function() {
     /* 아이디 중복확인 버튼 클릭 */
     $(function () {
     	$("#chkIdBtn").click(function () {
-    		
+
     		var userIdCheck = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);
     		if(!userIdCheck.test($('#memberid').val())) {
     			alert("ID는 영문 대소문자, 숫자, _ , - 만 입력 가능하며 5~20 글자만 가능합니다. ");
@@ -364,7 +416,7 @@ $(function() {
     		};
     		let comid = $("#memberid").val();
     		alert(comid);
-    		
+
     		$.ajax({
     			url: "businessgetId.do",
     			type: "post",
@@ -385,14 +437,14 @@ $(function() {
     			},
     			error:function(){
     				alert('error');
-    			}			
+    			}
     		});
-    		
-    	});	
-    });
-    
 
-</script>   
+    	});
+    });
+
+
+</script>
 <script type="text/javascript">
 function sample6_execDaumPostcode() {
     new daum.Postcode({
@@ -428,7 +480,7 @@ function sample6_execDaumPostcode() {
                 }
                 // 조합된 참고항목을 해당 필드에 넣는다.
                 document.getElementById("sample6_extraAddress").value = extraAddr;
-            
+
             } else {
                 document.getElementById("sample6_extraAddress").value = '';
             }
@@ -442,7 +494,7 @@ function sample6_execDaumPostcode() {
     }).open();
 }
 
-</script> 
+</script>
 <script type="text/javascript">
 
 //핸드폰인증
@@ -509,31 +561,31 @@ $(document).ready(function() {
 
            }
        }
-     
+
   });
   $("#phone_authNumBtn").click(function() {   /* 내가 작성한 번호와 인증번호를 비교한다 */
       alert($("#text").val());
       var userNum = $("#phone_authNum").val();
-      
-      var sysNum = $("#text").val();         
-      
+
+      var sysNum = $("#text").val();
+
       if(userNum == null || userNum == ""){
          alert("휴대폰으로 발송된 인증번호를 입력해주세요");
-      }     
-      else{     
+      }
+      else{
          if(userNum.trim() == sysNum.trim()){
              alert("성공");
           }
           else {
              alert("실패");
-          }          
+          }
       }
    });
-  
-  
-  
+
+
+
 });
-  
+
 
 /* 인증번호 입력 타이머 */
 let timer = null;
@@ -613,14 +665,14 @@ function errorState(sel){
 					</div>
 				</div>
 			</div>
-	
+
 		<div class="bottom-area">
 			<div class="inner-wrap">
 				<div class="link-logo">
 					<a href="http://www.moel.go.kr/" class="bg-logo-moel" target="_blank" title="새창 열림">고용노동부</a>
 					<a href="http://www.keis.or.kr/" class="bg-logo-keis" target="_blank" title="새창 열림">한국고용정보원</a>
 				</div>
-			
+
 				<div class="info">
 					<address class="address">
 						서울특별시 마포구 신수동 63-14 비트캠프 신촌센터
@@ -636,12 +688,12 @@ function errorState(sel){
 				<div class="etc">
 					<a href="/images/useInfo/certification_kor2015.jpg" target="_blank" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; var remote = window.open('https://www.eprivacy.or.kr/front/certifiedSiteMark/certifiedSiteMarkPopup.do?certCmd=E&amp;certNum=2021-E-R001','EPRIVACY','width=527,height=720'); remote.focus(); return false;" title="새창"><img src="./static/images/brn-epriavcy.png" alt="개인정보보호우수사이트 인증서"></a>
 								<a href="/html/wauMark2020_worknet.html" onclick="try { latte.getEvent(event).stop(); } catch (ex) {};window.open(this.href,'mark2020','width=605,height=850,scrollbars=no');return false;" title="새창" target="_blank" style="margin-top:-3px"><img src="./static/images/brn-wa-2019.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)"></a>
-							
+
 				</div>
 			</div>
 		</div>
-	</div>	
-       
+	</div>
+
    </footer>
       <!-- ==============FOOTER END================= -->
 

@@ -11,7 +11,7 @@ public interface BuspageDao {
 
 	boolean updateBuspage(BusinessDto dto);
 
-	BusinessDto getbuspage(BusinessDto dto);
+	BusinessDto getbuspage(String memberid);
 
 	public List<RecruitDto> getMyrecruitList(String memberid);
 

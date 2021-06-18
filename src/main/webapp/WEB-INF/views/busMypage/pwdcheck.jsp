@@ -30,6 +30,7 @@ body {
     min-width: 1200px;
     background-color: #fff;
 }
+
 </style>
 
 </head>
@@ -87,16 +88,17 @@ body {
 
 <br><br><br>
 
+<div style="margin-left: 500px;">
 <table>
-	<tr align="center">
-		<th><strong >비밀번호를 입력해주세요</strong>
-		<input type="password" name="pwd" id="pwdval"  >
+	<tr>
+		<th><strong>비밀번호를 입력해주세요</strong>
+		<input type="password" name="pwd" id="pwdval">
 		<button onclick="pwdch('${login.memberid }','${login.pwd}')">확인</button>
+		<input type="hidden" name="pwdval" value="${business.pwd}">
 		</th>
-
 	</tr>
 </table>
-
+</div>
 <br><br><br>
 </body>
 
@@ -229,11 +231,9 @@ body {
 <script type="text/javascript">
 
 function pwdch(memberid, pwd) {
-   alert(memberid);
+ 
    let pwdchk = document.getElementById('pwdval').value;
-   alert(pwdchk);
    if( pwdchk == pwd){
-      alert('성동');
       location.href="buspageUpdate.do?memberid="+memberid;
    }
    else{

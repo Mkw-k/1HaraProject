@@ -1,5 +1,7 @@
 package bit.com.a.dao;
 
+import java.util.List;
+
 import bit.com.a.dto.BusinessDto;
 
 public interface BusinessDao {
@@ -11,5 +13,9 @@ public interface BusinessDao {
 	BusinessDto login(BusinessDto dto);
 
 	void businessDelete(BusinessDto dto);
+
+	List<BusinessDto> getBusinessList();
+
+	void admin_business_forced_evictionCheck(BusinessDto dto) throws Exception;
 
 }

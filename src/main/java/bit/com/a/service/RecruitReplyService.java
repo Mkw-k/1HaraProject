@@ -8,7 +8,7 @@ public interface RecruitReplyService  {
 
 	boolean insertreply(RecruitReplyDto dto);
 
-	List<RecruitReplyDto> list(int jobseq);
+	List<RecruitReplyDto> list(int i);
 	
 	
 

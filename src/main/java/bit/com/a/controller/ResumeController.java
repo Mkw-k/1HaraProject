@@ -2,6 +2,7 @@ package bit.com.a.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import bit.com.a.dto.RecruitDto;
@@ -80,6 +83,12 @@ public class ResumeController {
 			int resumeseq = applylist.get(i).getResumeseq();
 			String resumetitle = service.getResumeTitle(resumeseq);
 			pa.setResumetitle(resumetitle);
+			
+			
+			int portfolioseq = applylist.get(i).getPortfolioseq();
+			String portfolioname = service.getPortfolioname(portfolioseq);
+			System.out.println("portfolioname###################################"+portfolioname);
+			pa.setPortfolioname(portfolioname);
 
 			param.add(pa);
 		}
@@ -90,6 +99,44 @@ public class ResumeController {
 		model.addAttribute("param", param);
 
 		return "resume/resumeMain";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getresumeData.do", method = { RequestMethod.GET, RequestMethod.POST })
+
+	//이력서 관리 메인페이지 이동
+	public List<ResumeParam> getresumeData(Model model, String memberid) {
+
+		System.out.println(memberid);
+		// 이력서 리스트
+	
+		List<ApplyDto> applylist = service.getApplyList(memberid);
+		List<ResumeParam> param = new ArrayList<ResumeParam>();
+
+		for (int i = 0; i < applylist.size(); i++) {
+
+			ResumeParam pa = new ResumeParam();
+
+			pa.setApplyseq(applylist.get(i).getApplyseq());
+			pa.setJobseq(applylist.get(i).getJobseq());
+			pa.setResumeseq(applylist.get(i).getResumeseq());
+			pa.setApplydate(applylist.get(i).getApplydate());
+			pa.setCompanyread(applylist.get(i).getCompanyread());
+
+			int jobseq = applylist.get(i).getJobseq();
+			String jobtitle = service.getJobtitle(jobseq);
+			pa.setJobtitle(jobtitle);
+
+			int resumeseq = applylist.get(i).getResumeseq();
+			String resumetitle = service.getResumeTitle(resumeseq);
+			pa.setResumetitle(resumetitle);
+
+			param.add(pa);
+		}
+
+		model.addAttribute("param", param);
+
+		return param;
 	}
 
 	//이력서 작성 페이지 이동
@@ -807,17 +854,24 @@ public class ResumeController {
 
 	//공고 지원하기
 	@RequestMapping(value = "jobApply.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String getMyResume(int jobseq, int resumeseq, String memberid, Model model) {
+	public String getMyResume(int jobseq, int resumeseq, String memberid, int portfolioseq, Model model) {
 
 		ApplyDto param = new ApplyDto();
 
 		param.setJobseq(jobseq);
 		param.setMemberid(memberid);
 		param.setResumeseq(resumeseq);
-
+		if(portfolioseq!=0) {
+		param.setPortfolioseq(portfolioseq);
+		List<Resume_Portfolio> portlist = service.getPortfolio(memberid);
+		model.addAttribute("portlist", portlist);
+		} else {
+			
+		}
 		RecruitDto dto = recruitservice.getRecruitListOne(jobseq);
 		List<String> list = recruitservice.getBsnameForDetail(jobseq);
 		List<ResumeDto> resumelist = service.getresume(memberid);
+		
 
 		dto.setBusname(list);
 	
@@ -825,6 +879,7 @@ public class ResumeController {
 
 		model.addAttribute("dto", dto);
 		model.addAttribute("resumelist", resumelist);
+		
 
 		return "recruit/recruitDetail";
 
@@ -832,7 +887,7 @@ public class ResumeController {
 	
 	//이력서 삭제
 	@RequestMapping(value = "cancelApply.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String cancelApply(int seq, String memberid, Model model) {
+	public String cancelApply(int seq, String memberid, Model model)  {
 
 	
 		boolean c = service.cancelApply(seq);
@@ -872,8 +927,63 @@ public class ResumeController {
 		model.addAttribute("portlist", portlist);
 		model.addAttribute("param", param);
 
-		return "resume/resumeMain";
+		
+			return "resume/resumeMain";
+		
+		
 	}
+	
+	
+	//이력서 삭제 (마이페이지)
+		@ResponseBody
+		@RequestMapping(value = "MypageCancelApply.do", method = { RequestMethod.GET, RequestMethod.POST })
+		public String MypageCancelApply(int seq, String memberid, Model model, HttpServletResponse resp)throws Exception {
+
+		
+			boolean c = service.cancelApply(seq);
+			System.out.println(c);
+			
+
+			// 이력서 리스트
+			List<ResumeDto> resumelist = service.getresume(memberid);
+			List<ResumeDto> resumeNolist = service.getNoresume(memberid);
+			List<ApplyDto> applylist = service.getApplyList(memberid);
+			List<Resume_Portfolio> portlist = service.getPortfolio(memberid);
+			List<ResumeParam> param = new ArrayList<ResumeParam>();
+
+			for (int i = 0; i < applylist.size(); i++) {
+
+				ResumeParam pa = new ResumeParam();
+
+				pa.setApplyseq(applylist.get(i).getApplyseq());
+				pa.setJobseq(applylist.get(i).getJobseq());
+				pa.setResumeseq(applylist.get(i).getResumeseq());
+				pa.setApplydate(applylist.get(i).getApplydate());
+				pa.setCompanyread(applylist.get(i).getCompanyread());
+
+				int jobseq = applylist.get(i).getJobseq();
+				String jobtitle = service.getJobtitle(jobseq);
+				pa.setJobtitle(jobtitle);
+
+				int resumeseq = applylist.get(i).getResumeseq();
+				String resumetitle = service.getResumeTitle(resumeseq);
+				pa.setResumetitle(resumetitle);
+
+				param.add(pa);
+			}
+
+			model.addAttribute("resumelist", resumelist);
+			model.addAttribute("resumeNolist", resumeNolist);
+			model.addAttribute("portlist", portlist);
+			model.addAttribute("param", param);
+
+			
+			String suc = "성공";
+	            
+	            return suc; 
+	          
+			
+		}
 		
 		//기업 이력서 상세 정보(디테일) 보기
 		@RequestMapping(value = "Resumedetail2.do", method = { RequestMethod.GET, RequestMethod.POST })
