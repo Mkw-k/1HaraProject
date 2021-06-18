@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import bit.com.a.dao.RecruitDao;
 import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.BusinessDto;
+import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 import bit.com.a.service.RecruitService;
@@ -169,5 +170,45 @@ public class RecruitServiceImpl implements RecruitService{
 	public List<RecruitDto> getCalendarSearchList(Map<String, Object> map) {
 		return dao.getCalendarSearchList(map);
 	}
+
+	@Override
+	public List<RecruitDto> getTop10List() {
+		return dao.getTop10List();
+	}
+
+	@Override
+	public boolean favoriteJob2(RecruitParam param) {
+		return dao.favoriteJob2(param);
+	}
+
+	@Override
+	public boolean dropFavoriteJob2(RecruitParam param) {
+		return dao.dropFavoriteJob2(param);
+	}
+
+ 	@Override
+	public CompanyDto getCompany(int jobseq) {
+
+		return dao.getCompany(jobseq);
+
+	}
+
+	@Override
+	public String getPhonenum(String memberid) {
+		return dao.getPhonenum(memberid);
+	}
+
+	@Override
+	public List<RecruitDto> getNew6PreJob() {
+		return dao.getNew6PreJob();
+	}
+
+	@Override
+	public List<RecruitDto> getHot10Comname() {
+		return dao.getHot10Comname();
+	}
+
+
+	
 
 }

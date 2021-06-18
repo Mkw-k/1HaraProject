@@ -41,19 +41,28 @@
 </select>
 
 
-<!-- 아이디 찾기 -->
-<select id="findId" resultType="user">
-		SELECT * 
-		FROM MEMBER 
+<!-- <select id="findId" resultType="user">
+		SELECT *
+		FROM MEMBER
 		WHERE name=#{name} and PHONENUMBER=#{phonenumber}
 </select>
 
-<!-- 비밀번호 찾기 -->
+비밀번호 찾기
 <select id="findPassword" resultType="user">
-		select * from users where id=#{id} and name=#{name} and phone=#{phone}
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBERID=#{id} AND NAME=#{name} AND PHONENUMBER=#{phone}
 </select>
 
-<!-- 비밀번호 찾고 비밀번호 수정 -->
+비밀번호 찾고 비밀번호 수정
+
+<update id="updatePassword">
+		UPDATE MEMBER
+		SET PWD=#{pwd}
+		WHERE MEMBER=#{id}
+
+</update> -->
+
 
 
 
@@ -94,7 +103,7 @@
 
 	<!--  뿌려주는것 -->
 	<select id="getMypage" parameterType="java.lang.String" resultType="bit.com.a.dto.MemberDto">
-	SELECT NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH
+	SELECT NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, PHONENUM, USERPIC, NEWUSERPIC
 	FROM MEMBER
 	WHERE MEMBERID=#{memberid}
 	</select>
@@ -105,10 +114,10 @@
 	SET NAME=#{name}, EMAIL=#{email}, ADDRESS=#{address}, DETAILADDRESS=#{detailaddress}, PHONENUM=#{phonenum}, USERPIC=#{userpic}, NEWUSERPIC=#{newuserpic}
 	WHERE MEMBERID=#{memberid}
 	</update>
-<!-- 
+<!--
 	<insert parameterType="bit.com.a.dto.MemberDto" id="addmember">
 	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, USERPIC, AUTH)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, #{userpic} 1) 
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, #{userpic} 1)
 	</insert>
  -->
 

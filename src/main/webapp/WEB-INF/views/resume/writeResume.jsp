@@ -315,7 +315,7 @@ dt, dd {
 												<h3 style="text-align: left">이력서 제목</h3>
 												<div class="resume_title" style="margin-top: 20px;">
 													<div class="resume_input">
-														<input type="text" id="title" name="resumetitle"
+														<input type="text" id="resumetitle" name="resumetitle"
 															class="resume_title_input" value="" maxlength="100">
 													</div>
 												</div>
@@ -328,7 +328,7 @@ dt, dd {
 															이름 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text" id="user_nm" name="user_nm"
+															<input type="text" id="name" name="name"
 																class="box_input" value="${login.name }" maxlength="20"
 																data-only-word="true">
 																<input type="hidden" name="memberid" value="${login.memberid }">
@@ -338,7 +338,6 @@ dt, dd {
 
 															<select class="selectpicker" style="width: 207.22222px;"
 																name="recruit_status">
-																<option>구직상태</option>
 																<option value="구직중">구직중</option>
 																<option value="구직완료">구직완료</option>
 															</select>
@@ -351,7 +350,7 @@ dt, dd {
 															생년월일 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text" id="birth_dt" name="birth_dt"
+															<input type="text" id="birth" name="birth"
 																value="${login.birth }" class="box_input expect_date"
 																data-dateformat="yymmdd" data-only-number="true"
 																autocomplete="off">
@@ -388,11 +387,11 @@ dt, dd {
 															휴대폰 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text" id="user_cell" name="user_cell"
-																class="box_input max_length" value="${login.name }"
+															<input type="text" id="phonenum" name="phonenum"
+																class="box_input max_length" value="${login.phonenum }"
 																maxlength="11" data-only-number="true"
 																data-api_type="layer" data-api_id="basic_confirm_cell"
-																readonly>
+																>
 														</div>
 													</div>
 
@@ -407,7 +406,7 @@ dt, dd {
 
 														<div class="resume_address">
 															<div class="resume_input" style="display:">
-																<input type="text" id="new_address" name="new_address"
+																<input type="text" id="address" name="address"
 																	value="${login.address }" maxlength="40" readonly
 																	class="box_input old_address _searchArea">
 																<p class="txt_error"></p>
@@ -415,14 +414,10 @@ dt, dd {
 
 
 															<div class="resume_input resume_bottom" style="display:;">
-																<input type="text" id="new_address_details"
-																	name="new_address_details"
+																<input type="text" id="detailaddress"
+																	name="detailaddress"
 																	value="${login.detailaddress }" maxlength="50"
-																	class="box_input size_type5 _newAddress"> <input
-																	type="hidden" id="new_address_extra"
-																	name="new_address_extra"
-																	value="${login.detailaddress }">
-																<p class="txt_error"></p>
+																	class="box_input size_type5 _newAddress">
 															</div>
 
 														</div>
@@ -628,7 +623,7 @@ dt, dd {
 																	<div class="sri_select resume_select">
 
 																		<select class="selectpicker"
-																			style="width: 107.22222px; height: 50.22222px;">
+																			style="width: 107.22222px; height: 50.22222px;" name="high_field" id="high_field">
 																			<option>문과계열</option>
 																			<option>이과계열</option>
 																			<option>전문(실업계)</option>
@@ -830,7 +825,7 @@ dt, dd {
 																	<div class="area_grades">
 																		<div class="resume_input">
 																			<input type="text" id="univ_grade"
-																				name="univ_grade" value="3.59"
+																				name="univ_grade" value=""
 																				class="box_input size_type3" maxlength="5"
 																				data-only-float="true">
 																		</div>
@@ -1063,7 +1058,7 @@ dt, dd {
 																					name="pre_buscode" value=""
 																					class="box_input" data-api_type="layer"
 																					data-api_id="career_job_category" data-dim="n"
-																					data-position="unused" >
+																					data-position="unused">
 																			</div>
 																		</div>
 																	</div>
@@ -1386,7 +1381,6 @@ dt, dd {
 																	<div class="sri_select resume_select">
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lan_pass" id="lan_pass">
-																			<option>취득여부</option>
 																			<option value="취득(PASS)">취득(PASS)</option>
 																		</select>
 																	</div>
@@ -1582,7 +1576,7 @@ dt, dd {
 																		class="area_task_input resume_input">
 
 																		<input type="text" id="jobtypes" name="desiredjobtype"
-																			value="" maxlength="50" class="box_input">
+																			value="" maxlength="50" class="box_input" readonly="readonly">
 																		<div>
 																			<ul>
 																				<li class="menu"><a><img
@@ -1676,7 +1670,7 @@ dt, dd {
 																<div id="desire_area"
 																	class="area_task_input resume_input">
 																	<input type="text" id="Areas" name="desiredarea1"
-																		value="" maxlength="50" class="box_input">
+																		value="" maxlength="50" class="box_input" readonly="readonly">
 
 																	<div>
 
@@ -1709,7 +1703,7 @@ dt, dd {
 																<div id="desire_job_category"
 																	class="area_task_input resume_input">
 																	<input type="text" id="Buses" name="desiredjob1"
-																		value="" maxlength="50" class="box_input">
+																		value="" maxlength="50" class="box_input" >
 
 																	<div>
 
@@ -1719,19 +1713,42 @@ dt, dd {
 																						src="./image/plus.png" alt="추가하기" height="30"
 																						width="30" /></a>
 																					<div class="hide" style="width: 600px;">
-																						<span class="col-md-3" id="_buscodeList1">
-																							<p>직무분류1</p> <!-- 데이터들어오는자리 -->
-																						</span> <span class="col-md-3" id="_buscodeList2">
-																							<p>직무분류2</p> <!-- 데이터들어오는자리 -->
-																						</span>
-																						<div class="col-md-3" style="" id="_buscodeList3">
-																							<p>직무분류3</p>
-																							<!-- 데이터들어오는자리 -->
-																						</div>
+																						<div class="col-md-4">
+														                                    <div class="form-group wrapper">
+														                                       <label>대분류</label> <select class="form-control"
+														                                          id="_buscodeList1" size="5" onfocus='this.size=5;'
+														                                          onblur='this.size=5;' onchange='this.size=5; this.blur();'>
+														
+														
+														                                       </select>
+														                                    </div>
+														
+														                                 </div>
+														
+														                                 <div class="col-md-4">
+														                                    <div class="form-group wrapper">
+														                                       <label>중분류</label> <select class="form-control"
+														                                          id="_buscodeList2" size="5" onfocus='this.size=5;'
+														                                          onblur='this.size=5;' onchange='this.size=5; this.blur();'>
+														
+														
+														                                       </select>
+														                                    </div>
+														
+														                                 </div>
+																						<div class="col-md-4">
+														                                    <p>소분류</p>
+														                                    <div id="_buscodeList3"
+														                                       style="overflow: auto; width: 350px; height: 150px;">
+														
+														                                    </div>
+														
+														                                 </div>
 																						<div class="col-md-3">
-																							<a style="color: #2186eb; display: flex;"
-																								onclick="addBus()">추가하기</a>
+																							<a style="color: white; display: flex;"
+																								class="btn btn-primary" onclick="addBus()">추가하기</a>
 																						</div>
+																						
 																					</div></li>
 																			</ul>
 																		</div>
@@ -1754,8 +1771,8 @@ dt, dd {
 						</div>
 						</section>
 						
-						<button onclick="iscompleted()" id="incomplete">중간저장</button>
-						<button id="complete">작성완료</button>
+						<button class="btn btn-primary" id="incomplete">중간저장</button>
+						<button class="btn btn-primary" id="complete">작성완료</button>
 						
 					</div>
 				</div>
@@ -2101,180 +2118,183 @@ $('document').ready(function() {
 
 <script>
 
-//첫번째 BUSCODE1 DATA를 받아서 체크박스로 뿌려주는 코드 
+//첫번째 BUSCODE1 DATA를 받아서 체크박스로 뿌려주는 코드
 $(document).ready(function() {
-   
-   
+
+
 $.ajax({
-   url : "./buscodeListData.do", 
-   type : "get", 
+   url : "./buscodeListData.do",
+   type : "get",
    success:function(list){
       //alert('success');
       //alert(list);
-      
-      //JSTL로 받아온 지역 정보의 대분류 네임이 서울이면 (일단 자바스크립트 변수로 변경) selected 조건을 줌 
+
+      //JSTL로 받아온 지역 정보의 대분류 네임이 서울이면 (일단 자바스크립트 변수로 변경) selected 조건을 줌
       var area1Name = '<c:out value="${dto.area1Name}"/>';
-      
+
       $(".list_col1").remove();
-      
+
       $.each(list, function(i, val){
 
          //alert(val.jobSeq);
 
          //let app = "<input type='checkbox' class='list_col' name='buscode' value='"+val.buscode1+"' class='form-control'>"+val.buscodename1
-         let app = "<div>"+
-               "<input type='radio' class='list_col1' id='buscode1'"+ 
-               
-               "name='buscode1' value='"+val.buscode1+"'><label for='huey'>"+val.buscodename1+"</label>"+
-               "</div>";
-            
-            $("#_buscodeList1").append(app);
+         let app = "<option value='"+val.buscode1+"'class='list_col1' name='buscode1' id='buscode1'>"+
+                 val.buscodename1+
+                 "</option>";
+
+         $("#_buscodeList1").append(app);
       });
-   }, 
+   },
    error:function(){
       alert('error');
    }
-   
+
  }); // ajax
- 
-}); // document ready 
+
+}); // document ready
 
 
-//두번째 BUSCODE2 DATA를 받아서 체크박스로 뿌려주는 코드 
-$(document).on("change",".list_col1", function(){
-   
-   if($(this).is(":checked")){
+//두번째 BUSCODE2 DATA를 받아서 체크박스로 뿌려주는 코드
+$(document).on("change","#_buscodeList1", function(){
+
+   //alert('변경');
+   //alert( $(this).prop("selected"));
+
+    let buscode = $(this).find(":selected").val();
+     //alert(buscode);
+
+
         //alert("체크");
         //alert($(this).val());
-        let buscode = $(this).val();
-        
+
+
         $.ajax({
-           url : "./buscode2ListData.do", 
-           type : "get", 
-           data: {"buscode":buscode}, 
+           url : "./buscode2ListData.do",
+           type : "get",
+           data: {"buscode":buscode},
            success:function(list){
               //alert('success');
               //alert(list);
-              
-              $(".list_col2").remove();      
-              
-              
-              
+
+              $(".list_col2").remove();
+
+
+
               $.each(list, function(i, val){
-                     let app = "<div>"+
-                       "<input type='radio' class='list_col2' id='buscode2' name='buscode2' value='"+val.buscode2+"'><label class='list_col2' for='huey'>"+val.buscodename2+"</label>"+
-                       "</div>";
-                    
-                    $("#_buscodeList2").append(app);
+                     let app = "<option class='list_col2' id='buscode2' name='buscode2' value='"+val.buscode2+"'>"+
+                              val.buscodename2+
+                                "</option>";
+
+                  $("#_buscodeList2").append(app);
               });
-           }, 
+           },
            error:function(){
               alert('error');
            }
-           
+
          });
-   
-    }
+
+
+
+    });
     /* else if($(this).is(":checked")==false){
         alert("체크 해제");
     } */
-   
-});
 
 
-let count = 1;
-//마지막 BUSCODE3 DATA를 받아서 체크박스로 뿌려주는 코드 
-$(document).on("change",".list_col2", function(){
-   
-   if($(this).is(":checked")){
+
+
+    let count = 1;
+  //마지막 BUSCODE3 DATA를 받아서 체크박스로 뿌려주는 코드
+  $(document).on("change","#_buscodeList2", function(){
+
+
         //alert("체크");
-        //alert($(this).val());
-        let buscode = $(this).val();
-        
-        $.ajax({
-           url : "./buscode2ListData.do", 
-           type : "get", 
-           data: {"buscode":buscode}, 
-           success:function(list){
-              //alert('success');
-              //alert(list);
-              
-           
-              //$("_buscodeList3 *").remove(); //내부 요소만 삭제 
-              
-              $(".list_col3").remove(); 
-              
-              var parent = document.getElementById('_buscodeList3');
-              var var1   = parent.getElementsByTagName('br');
+          //alert($(this).val());
 
-              for(var i = var1.length; i--;) {
-                  var1[i].parentNode.removeChild(var1[i]);
-              }
-              
-              
-              
-              //기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 초기셋팅 
-              var stackValue = $("input[name='buscode']").length;
-             var stackData = new Array(stackValue);
-              //alert(stackValue);
-              
-              for(var i=0; i<stackValue; i++){                          
-                 stackData[i] = $("input[name='buscode']")[i].value;
-              }
-              //alert("길이"+stackData.length);
-              
-              $.each(stackData, function(i, data){
-                 //alert("이게 값임"+data);
-              });
-              
-              
-              
-              $.each(list, function(i, val){
-                 let app = "";
-                 
-                 //stackname = 밑에태그 아이디.val (elements) 배열로 해야될듯 
-                 
-                    app += "<span class='list_col3'>"+
-                    "<input type='checkbox' class='list_col3' name="+count+" id='buscode3data"+count+"' value='"+val.busname+"' class='form-control' onclick='selectbus(this.value)'>"+val.busname+
-                    "</span>"; 
-                             
-                   if((i+1)%2==0){
-                       app += "</br>";
-                    }
-                   
-            $("#_buscodeList3").append(app);
-            
-              
-            //기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 최종진행
-            var buscodeTag ="buscode3data"+count;
-            
-            for(var i=0; i<stackValue; i++){                          
-                if(stackData[i] == val.busname){
-                   document.getElementById(buscodeTag).checked = true;
+          let buscode = $(this).find(":selected").val();
+          //alert(buscode);
+
+          $.ajax({
+             url : "./buscode2ListData.do",
+             type : "get",
+             data: {"buscode":buscode},
+             success:function(list){
+                //alert('success');
+                //alert(list);
+
+
+                //$("_buscodeList3 *").remove(); //내부 요소만 삭제
+
+                $(".list_col3").remove();
+
+                var parent = document.getElementById('_buscodeList3');
+                var var1   = parent.getElementsByTagName('br');
+
+                for(var i = var1.length; i--;) {
+                    var1[i].parentNode.removeChild(var1[i]);
                 }
-              }
-            
-            
-            
-            count+=1;
-            
-              });
-              
-              
-              
-           }, 
-           error:function(){
-              alert('error');
-           }
-           
-         });
-   
-    }
-    /* else if($(this).is(":checked")==false){
-        alert("체크 해제");
-    } */
-   
-});
+
+
+
+                //기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 초기셋팅
+                var stackValue = $("input[name='buscode']").length;
+               var stackData = new Array(stackValue);
+                //alert(stackValue);
+
+                for(var i=0; i<stackValue; i++){
+                   stackData[i] = $("input[name='buscode']")[i].value;
+                }
+                //alert("길이"+stackData.length);
+
+
+                $.each(list, function(i, val){
+                   let app = "";
+
+                   //stackname = 밑에태그 아이디.val (elements) 배열로 해야될듯
+
+                      app +=    "<div class='form-check mt-2 form-check-inline list_col3' id='buscodeList3'>"+
+                       "<input class='form-check-input list_col3' onclick='selectbus(this.value)' name="+count+" id='buscode3data"+count+"' value='"+val.busname+"' data-value='"+val.busname+"' type='checkbox'>"+
+                       "<label class='form-check-label' for='exampleCheck1'>"+val.busname+
+                       "</label></div>";
+
+                       if((i+1)%2==0){
+                         app += "</br>";
+                      }
+
+              $("#_buscodeList3").append(app);
+
+
+              //기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 최종진행
+              var buscodeTag ="buscode3data"+count;
+
+              for(var i=0; i<stackValue; i++){
+                  if(stackData[i] == val.buscode){
+                     document.getElementById(buscodeTag).checked = true;
+                  }
+                }
+
+
+
+              count+=1;
+
+                });
+
+
+
+             },
+             error:function(){
+                alert('error');
+             }
+
+           });
+
+      /* else if($(this).is(":checked")==false){
+          alert("체크 해제");
+      } */
+
+  });
 
 
 
@@ -2308,6 +2328,8 @@ $(document).on("change", ".list_col3" , function(){
            "<img alt='왜안뜨지' src='ma.jpg' style='width:30px; height:30px;'>"+
            "</a>"+"</span>"+"&nbsp;&nbsp;";
            
+           
+         
 
         var id = $(this).attr("id");
       //alert(id);
@@ -2318,9 +2340,9 @@ $(document).on("change", ".list_col3" , function(){
        //HTML data 속성 사용
       input.dataset.code = 'selectedBuscode'+cnt;
       
-      alert('datacode 생성: '+'selectedBuscode'+cnt);
+      //alert('datacode 생성: '+'selectedBuscode'+cnt);
       
-      alert('datacode 리얼: ' + $(this).data("code"));
+      //alert('datacode 리얼: ' + $(this).data("code"));
       
       $("#selectResult").append(app);
       cnt += 1;
@@ -2332,10 +2354,10 @@ $(document).on("change", ".list_col3" , function(){
    //체크박스 해제가 될때 밑에 부분에 적재되있는 같은 데이터의 span태그도 삭제
    //else{   
    else if($(this).is(":checked") == false){
-      alert("위에 셀렉코드 : "+$(this).data("code"));
+      //alert("위에 셀렉코드 : "+$(this).data("code"));
       //data 속성 가져오기 (data-code) 
       selectedBuscode = $(this).data("code");
-      alert('위에 셀렉코드 :'+ selectedBuscode);
+      //alert('위에 셀렉코드 :'+ selectedBuscode);
       
       document.getElementById(selectedBuscode).remove();
    }
@@ -2349,7 +2371,7 @@ function delSelBuscode(cnt, count) {
    //alert(count);
    
    var spanid = "selectedBuscode"+cnt;
-   alert('밑에셀렉코드 :'+spanid);
+   //alert('밑에셀렉코드 :'+spanid);
    
    var buscodeTag ="buscode3data"+count;
    //alert(buscodeTag);
@@ -2672,7 +2694,7 @@ function careerokCheck() {
 																	<div class="area_grades">
 																		<div class="resume_input">
 																			<input type="text" id="univ_grade"
-																				name="univ_grade" value="3.59"
+																				name="univ_grade" value=""
 																				class="box_input size_type3" maxlength="5"
 																				data-only-float="true">
 																		</div>
@@ -3179,7 +3201,6 @@ function careerokCheck() {
 																	<div class="sri_select resume_select">
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lan_pass">
-																			<option>취득여부</option>
 																			<option value="취득(PASS)">취득(PASS)</option>
 																		</select>
 																	</div>
@@ -3409,13 +3430,13 @@ function addArea() {
 <script type="text/javascript">
 let bus = '';
 function selectbus(val) {
-	alert(val);
+	//alert(val);
 	bus += val + " "
 }
 
 function addBus() {
 	
-	alert(bus);
+	//alert(bus);
 	document.getElementById('Buses').value = bus;
 
 }
@@ -3439,23 +3460,211 @@ function selectCareerArea(val) {
 
 </script>
 
+<!-- 중간저장 빈칸체크 -->
 <script type="text/javascript">
-function iscompleted() {
-alert("iscompleted");
+$("#incomplete").click(function () {
+alert("incomplete");
+document.getElementById('resumeStatus').value = 'NO';
+alert(document.getElementById('resumeStatus').value);
 
-	document.getElementById('resumeStatus').value = 'NO';
-	alert(document.getElementById('resumeStatus').value);
+if($("#resumetitle").val().trim() == ""){
 	
-	 $("#resumewrite").submit(); 
+    alert('이력서 제목을 입력해 주십시오');
+    $("#resumetitle").focus();
+    return false;
+}
+
+else if($("#university").val().trim() != ""){
+
+	
+	if($("#univ_str").val().trim() == ""){
+	   alert('대학관련 사항을 모두 입력해 주십시오');
+	   $("#univ_str").focus();
+	   return false;
+	}
+	if($("#univ_end").val().trim() == ""){
+	       alert('대학관련 사항을 모두 입력해 주십시오');
+	       $("#univ_end").focus();
+	       return false;
+	   	}
+	if($("#univ_major").val().trim() == ""){
+	       alert('대학관련 사항을 모두 입력해 주십시오');
+	       $("#univ_major").focus();
+	       return false;
+	   	}
+	if($("#univ_grade").val().trim() == ""){
+	       alert('대학관련 사항을 모두 입력해 주십시오');
+	       $("#univ_grade").focus();
+	       return false;
+	   	}
+	if($("#univ_paper").val().trim() == ""){
+	       alert('대학관련 사항을 모두 입력해 주십시오(논문없을시 없음 기입)');
+	       $("#univ_paper").focus();
+	       return false;
+	   	}
 	
 }
+
+else if($("#pre_comname").val().trim() != ""){
+	
+    
+	if($("#pre_startdate").val().trim() == ""){
+    alert('경력 관련 사항을 모두 입력해 주십시오');
+    $("#pre_startdate").focus();
+    return false;
+	}
+	if($("#pre_enddate").val().trim() == ""){
+		alert('경력 관련 사항을 모두 입력해 주십시오');
+        $("#pre_enddate").focus();
+        return false;
+    	}
+	if($("#pre_position").val().trim() == ""){
+		alert('경력 관련 사항을 모두 입력해 주십시오');
+        $("#pre_position").focus();
+        return false;
+    	}
+	if($("#pre_buscode").val().trim() == ""){
+		alert('경력 관련 사항을 모두 입력해 주십시오');
+        $("#pre_buscode").focus();
+        return false;
+    	}
+	if($("#pre_area").val().trim() == ""){
+		alert('경력 관련 사항을 모두 입력해 주십시오');
+        $("#pre_area").focus();
+        return false;
+    	}
+	if($("#pre_dept").val().trim() == ""){
+		alert('경력 관련 사항을 모두 입력해 주십시오');
+        $("#pre_dept").focus();
+        return false;
+    	}
+	if($("#pre_jobdetail").val().trim() == ""){
+		alert('경력 관련 사항을 모두 입력해 주십시오');
+        $("#pre_jobdetail").focus();
+        return false;
+    	}
+	
+}
+
+else if($("#act_org").val().trim() != ""){
+	
+    
+	if($("#act_org").val().trim() == ""){
+    alert('대외활동 관련 사항을 모두 입력해 주십시오');
+    $("#act_org").focus();
+    
+    return false;
+	}
+	if($("#act_str").val().trim() == ""){
+		alert('대외활동 관련 사항을 모두 입력해 주십시오');
+        $("#act_str").focus();
+        return false;
+    	}
+	if($("#act_end").val().trim() == ""){
+		alert('대외활동 관련 사항을 모두 입력해 주십시오');
+        $("#act_end").focus();
+        return false;
+    	}
+	if($("#act_detail").val().trim() == ""){
+		alert('대외활동 관련 사항을 모두 입력해 주십시오');
+        $("#act_detail").focus();
+        return false;
+    	}
+	
+	
+	
+}
+
+else if($("#lic_name").val().trim() != ""){
+	
+    
+	if($("#lic_publisher").val().trim() == ""){
+		alert('자격증 관련 사항을 모두 입력해 주십시오');
+        $("#lic_publisher").focus();
+        return false;
+    	}
+	if($("#lic_date").val().trim() == ""){
+        alert('자격증 관련 사항을 모두 입력해 주십시오');
+        $("#lic_date").focus();
+        return false;
+    	}
+}
+
+else if($("#lan_exam").val().trim() != ""){
+	
+	if($("#lan_score").val().trim() == ""){
+    alert('어학 관련 사항을 모두 입력해 주십시오');
+    $("#lan_score").focus();
+    return false;
+	}
+	if($("#lan_date").val().trim() == ""){
+		alert('어학 관련 사항을 모두 입력해 주십시오');
+        $("#lan_date").focus();
+        return false;
+    	}
+}
+
+else if($("#awd_name").val().trim() != ""){
+	
+	if($("#awd_date").val().trim() == ""){
+    alert('수상 관련 사항을 모두 입력해 주십시오');
+    $("#awd_date").focus();
+    return false;
+	}
+	if($("#awd_org").val().trim() == ""){
+		alert('수상 관련 사항을 모두 입력해 주십시오');
+        $("#awd_org").focus();
+        return false;
+    	}
+}
+
+/* else if($("#male").val().trim() == "" || $("#female").val().trim() ==""){
+	
+    alert('성별 사항을 입력해 주십시오');
+    $("#male").focus();
+    return false;
+} */
+
+else if($("#jobtypes").val().trim() == ""){
+	
+    alert('희망 근무 형태 사항을 입력해 주십시오');
+    $("#jobtypes").focus();
+    
+    return false;
+    
+}
+
+else if($("#Areas").val().trim() == ""){
+	
+    alert('희망 지역을 입력해 주십시오');
+    $("#Areas").focus();
+    
+    return false;
+}
+
+else if($("#Buses").val().trim() == ""){
+	
+    alert('희망 직종을 입력해 주십시오');
+    $("#Buses").focus();
+	
+    return false;
+}
+	
+});
 </script>
 
 <!-- 빈칸 체크 -->
 <script type="text/javascript">
 $("#complete").click(function () {
  
-    if($("#university").val().trim() != ""){
+ 	if($("#resumetitle").val().trim() == ""){
+		
+	    alert('이력서 제목을 입력해 주십시오');
+	    $("#resumetitle").focus();
+	    return false;
+	}
+ 	
+ 	else if($("#university").val().trim() != ""){
     	
     
     	if($("#univ_str").val().trim() == ""){
@@ -3527,12 +3736,13 @@ $("#complete").click(function () {
     	
     }
     
-    if($("#act_org").val().trim() != ""){
+    else if($("#act_org").val().trim() != ""){
     	
         
     	if($("#act_org").val().trim() == ""){
         alert('대외활동 관련 사항을 모두 입력해 주십시오');
         $("#act_org").focus();
+        
         return false;
     	}
     	if($("#act_str").val().trim() == ""){
@@ -3545,20 +3755,27 @@ $("#complete").click(function () {
             $("#act_end").focus();
             return false;
         	}
+    	if($("#act_detail").val().trim() == ""){
+    		alert('대외활동 관련 사항을 모두 입력해 주십시오');
+            $("#act_detail").focus();
+            return false;
+        	}
+    	
+    	
     	
     }
     
     else if($("#lic_name").val().trim() != ""){
     	
         
-    	if($("#lic_date").val().trim() == ""){
-        alert('자격증 관련 사항을 모두 입력해 주십시오');
-        $("#lic_date").focus();
-        return false;
-    	}
     	if($("#lic_publisher").val().trim() == ""){
     		alert('자격증 관련 사항을 모두 입력해 주십시오');
             $("#lic_publisher").focus();
+            return false;
+        	}
+    	if($("#lic_date").val().trim() == ""){
+            alert('자격증 관련 사항을 모두 입력해 주십시오');
+            $("#lic_date").focus();
             return false;
         	}
     }
@@ -3591,12 +3808,12 @@ $("#complete").click(function () {
         	}
     }
 	
-    else if($("#male").val().trim() == "" || $("#female").val().trim() ==""){
+    /* else if($("#male").val().trim() == "" || $("#female").val().trim() ==""){
 		
 	    alert('성별 사항을 입력해 주십시오');
 	    $("#male").focus();
 	    return false;
-	}
+	} */
 	
     else if($("#jobtypes").val().trim() == ""){
     	

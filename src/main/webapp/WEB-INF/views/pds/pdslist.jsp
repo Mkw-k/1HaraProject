@@ -67,6 +67,9 @@
 
 <link href="csss/header.css" rel="stylesheet" type="text/css">
 
+
+
+
 <style type="text/css">
   
 /* 모달 */
@@ -342,20 +345,33 @@ nav {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* 테이블 th 속성*/
-table thead th {
-    color: #FFFFFF;
-    background-color: #cccccc;
-    border: 1px solid #CCCCCC;
-    border-collapse: collapse;
-    text-align: center;
-    table-layout: auto;
-    vertical-align: middle;
+
+/* 테이블 속성 */
+.table-bordered {
+border: 1px solid #dddddd;
+border-collapse: separate;
+border-left: 0;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
+.table {
+width: 100%;
+margin-bottom: 20px;
+background-color: transparent;
+border-collapse: collapse;
+border-spacing: 0;
+display: table;
 }
 
 </style>
 </head>
 <body>
+
+
+
+
 <div class="all">
 <header>
 
@@ -363,7 +379,7 @@ table thead th {
   <!-- Links -->
   
   <div>
-	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
+	 <a href="home.do"><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
 	</div>
   
   <ul class="navbar-nav">
@@ -474,19 +490,16 @@ table thead th {
       </header>
       </div>
       </body>
-      
-      
+
+
 
 <!-- =======Login 클릭 시 Modal END =========-->
 
 <!-- 검색창 -->
-<section class="newsletter" style="padding-bottom: 50px;">
-<div class="container">
+<section class="newsletter" style=" background-image:url('자료실1.PNG'); no-repeat; width: 2000px; ">
+<div class="container" >
 <div class="row">
 <div class="col-sm-12">
-	<div class="content">
-		<h2 style="color:#fff;margin-bottom: 0px;">이력서 양식</h2>
-	</div>
 </div>
 </div>
 </div>
@@ -499,7 +512,7 @@ table thead th {
                <div class="col-xl-12">
 				<div class="single-price">
 				  <div class="price-item">
-					<table class="list_table" style="width: 100%;border-left: solid;border-color: #cccccc;border-left-width: thin;border-bottom: solid;border-bottom-width: thin;border-bottom-color: #cccccc;"">
+					<table  class="table table-striped table-bordered" style="width: 100%;border-left: solid;border-color: #cccccc;border-left-width: thin;border-bottom: solid;border-bottom-width: thin;border-bottom-color: #cccccc;"">
 				<colgroup >
 					<col width="50" style=""><col width="300"><col width="75">
 					<col width="50"><col width="50">

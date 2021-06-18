@@ -435,7 +435,7 @@ System.out.println(_gender);
 												<h3 style="text-align: left">이력서 제목</h3>
 												<div class="resume_title" style="margin-top: 20px;">
 													<div class="resume_input">
-														<input type="text" id="title" name="resumetitle"
+														<input type="text" id="resumetitle" name="resumetitle"
 															class="resume_title_input" value="<%=resumedto.getResumetitle() %>" maxlength="100">
 													</div>
 												</div>
@@ -448,8 +448,8 @@ System.out.println(_gender);
 															이름 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text" id="user_nm" name="user_nm"
-																class="box_input" value="${login.name }" maxlength="20"
+															<input type="text" id="name" name="name"
+																class="box_input" value="<%=resumedto.getName() %>" maxlength="20"
 																data-only-word="true">
 																<input type="hidden" name="memberid" value="${login.memberid }">
 														</div>
@@ -458,7 +458,6 @@ System.out.println(_gender);
 
 															<select class="selectpicker" style="width: 207.22222px;"
 																name="recruit_status">
-																<option>구직상태</option>
 																<option value="구직중">구직중</option>
 																<option value="구직완료">구직완료</option>
 															</select>
@@ -471,8 +470,8 @@ System.out.println(_gender);
 															생년월일 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text" id="birth_dt" name="birth_dt"
-																value="${login.birth }" class="box_input expect_date"
+															<input type="text" id="birth" name="birth"
+																value="<%=resumedto.getBirth() %>" class="box_input expect_date"
 																data-dateformat="yymmdd" data-only-number="true"
 																autocomplete="off">
 														</div>
@@ -495,7 +494,7 @@ System.out.println(_gender);
 														</div>
 														<div class="resume_input">
 															<input type="text" id="email" name="email"
-																class="box_input max_length" value="${login.email }"
+																class="box_input max_length" value="<%=resumedto.getEmail() %>"
 																readonly data-api_type="layer"
 																data-api_id="basic_confirm_email">
 														</div>
@@ -508,8 +507,8 @@ System.out.println(_gender);
 															휴대폰 <span class="point">필수</span>
 														</div>
 														<div class="resume_input">
-															<input type="text" id="user_cell" name="user_cell"
-																class="box_input max_length" value="${login.name }"
+															<input type="text" id="phonenum" name="phonenum"
+																class="box_input max_length" value="<%=resumedto.getName() %>"
 																maxlength="11" data-only-number="true"
 																data-api_type="layer" data-api_id="basic_confirm_cell"
 																readonly>
@@ -539,17 +538,17 @@ System.out.println(_gender);
 
 														<div class="resume_address">
 															<div class="resume_input" style="display:">
-																<input type="text" id="new_address" name="new_address"
-																	value="${login.address }" maxlength="40" readonly
+																<input type="text" id="address" name="address"
+																	value="<%=resumedto.getAddress() %>" maxlength="40" readonly
 																	class="box_input old_address _searchArea">
 																<p class="txt_error"></p>
 															</div>
 
 
 															<div class="resume_input resume_bottom" style="display:;">
-																<input type="text" id="new_address_details"
-																	name="new_address_details"
-																	value="${login.detailaddress }" maxlength="50"
+																<input type="text" id="detailaddress"
+																	name="detailaddress"
+																	value="<%=resumedto.getDetailaddress() %>" maxlength="50"
 																	class="box_input size_type5 _newAddress"> <input
 																	type="hidden" id="new_address_extra"
 																	name="new_address_extra"
@@ -670,7 +669,11 @@ System.out.println(_gender);
 														<div id="education" class="resume_write resume_edu">
 
 
-														
+														<% if(highdto==null){
+															
+															
+														}else{
+															%>
 															<div id="tpl_row_1621990777" class="tpl_row fixedTop"
 																data-tpl_id="tpl_highschool">
 
@@ -679,7 +682,7 @@ System.out.println(_gender);
 																</div>
 
 												
-
+												
 																<div class="resume_row" style="display:">
 																	<div class="input_title">
 																		학교명 <span class="point">필수</span>
@@ -841,21 +844,78 @@ System.out.println(_gender);
 																<div class="resume_row" style="display:">
 																	<div class="input_title">전공 계열</div>
 																	<div class="sri_select resume_select">
+																	<% if( highdto.getHigh_field().equals("문과계열") ){ %>
 																		<select class="selectpicker"
-																			style="width: 107.22222px; height: 50.22222px;">
-																			<option>문과계열</option>
+																			style="width: 107.22222px; height: 50.22222px;" name="high_field" id="high_field">
+																			<option selected="selected">문과계열</option>
 																			<option>이과계열</option>
 																			<option>전문(실업계)</option>
 																			<option>예체능계</option>
 																			<option>특성화/마이스터고</option>
 																			<option>특수목적고</option>
 																		</select>
+																		<% } %>
+																	<% if( highdto.getHigh_field().equals("이과계열") ){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="high_field" id="high_field">
+																			<option>문과계열</option>
+																			<option selected="selected">이과계열</option>
+																			<option>전문(실업계)</option>
+																			<option>예체능계</option>
+																			<option>특성화/마이스터고</option>
+																			<option>특수목적고</option>
+																		</select>
+																		<% } %>
+																		<% if( highdto.getHigh_field().equals("전문(실업계)") ){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="high_field" id="high_field">
+																			<option>문과계열</option>
+																			<option>이과계열</option>
+																			<option selected="selected">전문(실업계)</option>
+																			<option>예체능계</option>
+																			<option>특성화/마이스터고</option>
+																			<option>특수목적고</option>
+																		</select>
+																		<% } %>
+																		<% if( highdto.getHigh_field().equals("예체능계") ){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="high_field" id="high_field">
+																			<option>문과계열</option>
+																			<option>이과계열</option>
+																			<option>전문(실업계)</option>
+																			<option selected="selected">예체능계</option>
+																			<option>특성화/마이스터고</option>
+																			<option>특수목적고</option>
+																		</select>
+																		<% } %>
+																		<% if( highdto.getHigh_field().equals("특성화/마이스터고") ){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="high_field" id="high_field">
+																			<option>문과계열</option>
+																			<option>이과계열</option>
+																			<option>전문(실업계)</option>
+																			<option>예체능계</option>
+																			<option selected="selected">특성화/마이스터고</option>
+																			<option>특수목적고</option>
+																		</select>
+																		<% } %>
+																		<% if( highdto.getHigh_field().equals("특수목적고") ){ %>
+																		<select class="selectpicker"
+																			style="width: 107.22222px; height: 50.22222px;" name="high_field" id="high_field">
+																			<option>문과계열</option>
+																			<option>이과계열</option>
+																			<option>전문(실업계)</option>
+																			<option>예체능계</option>
+																			<option>특성화/마이스터고</option>
+																			<option selected="selected">특수목적고</option>
+																		</select>
+																		<% } %>
 																	</div>
 																</div>
 
 															</div>
 															
-											
+														<%} %>
 															
 														<% if(unilist==null || unilist.isEmpty()){
 															
@@ -1676,7 +1736,7 @@ System.out.println(_gender);
 												<div id="activity" class="resume_section blind_guide"
 													data-order_item="activity" data-except="y">
 													<div class="area_title">
-														<h3 class="title">대외활동</h3>
+														<h3 class="title">대외활동 원글</h3>
 													</div>
 
 													<div class="resume_write resume_write_add">
@@ -1924,7 +1984,7 @@ System.out.println(_gender);
 														<div class="area_add_btn">
 															<button type="button" class="btn_resume_add"
 																data-tpl_id="tpl_activity_item" id="actAdd">
-																<span>대외활동 추가</span>
+																<span>대외활동 수정</span>
 															</button>
 														</div>
 													</div>
@@ -1936,7 +1996,7 @@ System.out.println(_gender);
 												<div id="license" class="resume_section blind_guide"
 													data-order_item="license" data-except="y">
 													<div class="area_title">
-														<h3 class="title">자격증/어학/수상 내역</h3>
+														<h3 class="title">자격증/어학/수상 내역 원글</h3>
 													</div>
 
 													<div class="resume_write resume_write_add">
@@ -2235,7 +2295,6 @@ System.out.println(_gender);
 																	<div class="sri_select resume_select">
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lan_pass" id="lan_pass">
-																			<option>취득여부</option>
 																			<option value="취득(PASS)" selected="selected">취득(PASS)</option>
 																		</select>
 																	</div>
@@ -2292,7 +2351,7 @@ System.out.println(_gender);
 														<div class="area_add_btn">
 															<button type="button" class="btn_resume_add"
 																data-tpl_id="tpl_license_default" id="licAdd">
-																<span>자격증/어학/수상내역 추가</span>
+																<span>자격증/어학/수상내역 수정</span>
 															</button>
 														</div>
 													</div>
@@ -2351,7 +2410,7 @@ System.out.println(_gender);
 																		data-tpl_id="tpl_introduce_item">
 																		<div class="item_title">
 																			<div class="input_wrap">
-																				<%if(resumedto.getResume_intro_title().equals("null")){ %>
+																				<%if(resumedto.getResume_intro_title()==null || resumedto.getResume_intro_title().equals("null")){ %>
 																				<input type="text" id="resume_intro_title" value=""
 																					name="resume_intro_title" class="input_type1"
 																					placeholder="자소서 제목" maxlength="100">
@@ -2367,7 +2426,7 @@ System.out.println(_gender);
 
 																		<div class="item_txt">
 																			
-																			<%if(resumedto.getResume_intro_content().equals("null")){ %>
+																			<%if(resumedto.getResume_intro_content()==null || resumedto.getResume_intro_content().equals("null")){ %>
 																			<div class="textarea_wrap">
 																				<textarea id="resume_intro_content"
 																					name="resume_intro_content" class="textarea_type1"
@@ -4052,7 +4111,6 @@ function careerokCheck() {
 																	<div class="sri_select resume_select">
 																		<select class="selectpicker"
 																			style="width: 107.22222px; height: 50.22222px;" name="lan_pass">
-																			<option>취득여부</option>
 																			<option value="취득(PASS)">취득(PASS)</option>
 																		</select>
 																	</div>
@@ -4458,11 +4516,11 @@ $("#complete").click(function () {
             return false;
         	}
     }
-	
-    else if($("#male").val().trim() == "" || $("#female").val().trim() ==""){
+    	
+    else if($("#resumetitle").val().trim() == "" ){
 		
-	    alert('성별 사항을 입력해 주십시오');
-	    $("#male").focus();
+	    alert('이력서 제목을 입력해 주십시오');
+	    $("#resumetitle").focus();
 	    return false;
 	}
 	

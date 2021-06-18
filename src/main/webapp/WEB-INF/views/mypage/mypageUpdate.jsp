@@ -1084,14 +1084,14 @@ body {
                                 <div id="image_preview">
                                 	<c:choose>
                                    	 	<c:when test="${login.userpic == null }">
-                                   	 		<img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 160px;" src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
+                                   	 		<img src="./upload/${dto.newuserpic}" style="width: 50px;height: 50px;">         	 		
                                 		</c:when>
                                 		<c:otherwise>
-                                			<img src="./upload/${login.userpic}" style="width: 150px;height: 150px;">
+                                			<img src="./upload/${dto.newuserpic}" style="width: 50px;height: 50px;">
                                 		</c:otherwise>
                                 	</c:choose>
                                 </div>
-                                <h4 style="margin-left: 35px;">프로필 사진을 등록해주세요</h4>
+                                <h4 style="margin-left: 35px;">프로필 사진을 변경하실 수 있습니다.</h4>
                                 <div class="f_box">
                                         <label for="img"></label>
                                         <input type="file" name="fileload" id="img">

@@ -6,16 +6,16 @@ import java.util.List;
 import bit.com.a.dto.RecruitDto;
 
 public class UtilEx {
-	
+
 
 	// 날짜를 클릭하면 그날의 일정을 모두 볼 수 있는 callist.jsp로 이동하는 함수
 	public static String callist(int year, int month, int day) {
 		String str = "";
 
-		str += String.format("&nbsp;<a href='%s?year=%d&month=%d&day=%d'>",
+		str += String.format("&nbsp;<p>",
 										"callist.do", year, month, day);
 		str += String.format("%2d", day);
-		str += "</a>";
+		str += "</p>";
 
 		// <a href='callist.jsp?year=2021&month=3&day=19'>19</a>
 		return str;
@@ -26,7 +26,7 @@ public class UtilEx {
 		String str = "";
 
 		String image = "<img src='image/pen.png' width='18px' height='18px'>";
-		
+
 		str = String.format("<a href='%s?year=%d&month=%d&day=%d'>%s</a>",
 				"calwrite.do", year, month, day, image);
 		/*
@@ -58,9 +58,11 @@ public class UtilEx {
 			for(RecruitDto dto : list) {
 				if(dto.getJobStart().substring(0, 10).equals(dates)) {
 					str += "<li>";
-					str += "<a href='recruitdetail.do?seq=" + dto.getJobSeq() + "'>";
-					str += "<font style='font-size:15px; color:blue'>";
-					str += "[시작]"; 
+					str += "<a href='RecruitDetail.do?jobSeq=" + dto.getJobSeq() + "'>";
+					str += "<font style='font-size:12px;color:#3399ff'>";
+					str += "[시작]";
+					str += "</font>";
+					str += "<font style='font-size:12px; color:#666'>";
 					str += dot3(dto.getJobTitle());
 					str += "</font>";
 					str += "</a>";
@@ -68,9 +70,11 @@ public class UtilEx {
 				}
 				else if(dto.getJobEnd().substring(0, 10).equals(dates)) {
 					str += "<li>";
-					str += "<a href='recruitdetail.do?seq=" + dto.getJobSeq() + "'>";
-					str += "<font style='font-size:15px; color:blue'>";
-					str += "[마감]"; 					
+					str += "<a href='RecruitDetail.do?jobSeq=" + dto.getJobSeq() + "'>";
+					str += "<font style='font-size:12px; color:#f3406e'>";
+					str += "[마감]";
+					str += "</font>";
+					str += "<font style='font-size:12px; color:#666'>";
 					str += dot3(dto.getJobTitle());
 					str += "</font>";
 					str += "</a>";
@@ -89,7 +93,7 @@ public class UtilEx {
 
 	public static String yyyymmdd(int year, int month, int day) {
 		return "" + year + "/" + two(month + "") + "/" + two(day + "");
-	}     
+	}
 
 	public static String yyyymmddhhmm(int year, int month, int day, int hour, int min) {
 		return yyyymmdd(year, month, day) + two(hour + "") + two(min + "");
@@ -107,7 +111,7 @@ public class UtilEx {
 		return str;
 	}
 
-	
+
 	// 2021-04-26 -> java.sql.Date로 변경
 	public static Date toDate(int year, int month, int day) {
 		String s = year + "-" + two(month + "") + "-" + two(day + "");

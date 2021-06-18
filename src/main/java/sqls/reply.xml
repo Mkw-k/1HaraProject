@@ -6,7 +6,7 @@
   
 <mapper namespace="Reply">
 	
-	<!-- 댓글 입력 -->
+	<!-- 취업톡톡 댓글 입력 -->
 	<insert id="insertReply" parameterType="bit.com.a.dto.replyDto">
 		INSERT INTO REPLY(REPLYSEQ, JOBTALKSEQ, REPLY_CONTENT, REPLY_COUNT, MEMBERID, RDATE, DEL)
 		VALUES(REPLYSEQ_REPLY.NEXTVAL, #{jobtalkseq}, #{reply_content}, 0,  #{memberid}, SYSDATE, 0)		

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="bit.com.a.dto.Resume_Portfolio"%>
 <%@page import="bit.com.a.dto.ResumeParam"%>
 <%@page import="bit.com.a.dto.ApplyDto"%>
 <%@page import="bit.com.a.dto.ResumeDto"%>
@@ -415,6 +416,28 @@ nav {
 .list-group{
     margin-left: 400px;
 }
+
+/* 모달 */
+
+<style>
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
  
 </style>
 </head>
@@ -527,14 +550,18 @@ nav {
 
 
 <%
+//이력서 리스트
 List<ResumeDto> resumelist =(List<ResumeDto>) request.getAttribute("resumelist");
+//작성중 리스트
 List<ResumeDto> resumeNolist =(List<ResumeDto>) request.getAttribute("resumeNolist");
+//지원현황리스트
 List<ResumeParam> param =(List<ResumeParam>) request.getAttribute("param");
+//포트폴리오리스트
+List<Resume_Portfolio> portlist =(List<Resume_Portfolio>) request.getAttribute("portlist");
 System.out.println("resumelist" +resumelist);
 System.out.println("resumeNolist" +resumeNolist);
 System.out.println("param" +param);
-
-
+System.out.println("portlist" +portlist);
 %>
 
 
@@ -560,10 +587,12 @@ System.out.println("param" +param);
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#writing" role="tab">작성중</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#portfolio" role="tab">포트폴리오 관리</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#applied" role="tab">지원 현황</a></li>
-					<li class="nav-item" style="margin-left: 700px;">
+					<li class="nav-item" style="margin-left: 550px;">
 						<div style="text-align: center;">
-							<a href="writeResume.do" class="box-btn">이력서 추가</a>
+							<a href="writeResume.do" class="box-btn" style="background-color: #a3a3a3">이력서 추가</a>
 						</div>
 					</li>
 					
@@ -581,7 +610,7 @@ System.out.println("param" +param);
 						<li class="list-group-item"><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a>
 						<div>
 						<a href="updateResume.do?seq=<%=resumelist.get(i).getResumeseq()%>" class="box-btn">수정</a>
-						<a href="deleteResume.do?seq=<%=resumelist.get(i).getResumeseq()%>&memberid=${login.memberid}" class="box-btn">삭제</a>
+						<a href="deleteResume.do?resumeseq=<%=resumelist.get(i).getResumeseq()%>&memberid=${login.memberid}" class="box-btn">삭제</a>
 						</div>
 						</li>
 					<% 	
@@ -606,7 +635,7 @@ System.out.println("param" +param);
 											<span class="sr-only"></span>
 										</progress>
 										<a href="updateResume.do?seq=<%=resumeNolist.get(i).getResumeseq()%>" class="box-btn">작성</a>
-										<a href="deleteResume.do?seq=<%=resumeNolist.get(i).getResumeseq()%>" class="box-btn">삭제</a>
+										<a href="deleteResume.do?seq=<%=resumeNolist.get(i).getResumeseq()%>&memberid=${login.memberid}" class="box-btn">삭제</a>
 									</div>
 								</li>
 							<%  
@@ -616,19 +645,49 @@ System.out.println("param" +param);
 						</div>
 
 					</div>
+					
+					<div class="tab-pane fade" id="portfolio" role="tabpanel">
+						<div class="bs-callout bs-callout-primary" id="certifications"
+							name="certifications" style="width: 1500px;">
+						<ul class="list-group">
+							
+							<%for(int i=0; i<portlist.size();i++){ %>
+								<li class="list-group-item">
+								<%=portlist.get(i).getPortfolioname() %>
+								<a href="downport.do?seq=<%=portlist.get(i).getPortfolioseq()%>&filename=<%=portlist.get(i).getPortfolioname() %>&newfilename=<%=portlist.get(i).getNewportfolioname() %>" class="box-btn">다운로드</a>	
+								</li>
+								
+							<%  
+							}
+							%>	
+							</ul>
+							
+							<div style="float: right;">
+							<a href="writeport.do" class="box-btn">작성</a>
+							</div>
+							
+						</div>
+						
+					
+
+					</div>
+					
+					
 					<div class="tab-pane fade" id="applied" name="applied"
 						role="tabpanel">
 						<div class="bs-callout bs-callout-primary">
 							<table class="table" style="width: 1100px; text-align: center; margin-left: 400px;">
 							<colgroup>
-							<col width="350px"><col width="350px"><col width="200px"><col width="200px">
+							<col width="350px"><col width="350px"><col width="100px"><col width="100px"><col width="100px"><col width="100px">
 							</colgroup>
 								<thead>
 									<tr>
 										<td>지원공고</td>
 										<td>지원이력서</td>
+										<td>포트폴리오</td>
 										<td>지원일</td>
-										<td>열람여부</td>
+										<td>기업열람여부</td>
+										<td>지원취소</td>
 									</tr>
 								</thead>
 								<tbody
@@ -648,8 +707,18 @@ System.out.println("param" +param);
 										
 										<% } %>
 										
+										<% if(param.get(i).getPortfolioname()!=null){ %>
+										<td><%=param.get(i).getPortfolioname() %></td>
+										<%} else{%>
+										<td></td>
+										<%} %>
 										<td><%=param.get(i).getApplydate() %></td>
-										<td><img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;"></td>
+										<td>
+										<% if(param.get(i).getCompanyread()>0 ) { %>
+										<img alt="" src="<%=request.getContextPath()%>/image/check.png" height="30px" width="30px" style="margin-left: 0px;display: inline-flex;">
+										<% } %>
+										</td>
+										<td><a href="cancelApply.do?seq=<%=param.get(i).getApplyseq() %>&memberid=${login.memberid}" class="box-btn">취소</a></td>
 									</tr>
 								<%  
 								}
@@ -885,7 +954,7 @@ function login() {
 <script>
 $("#searchBtn").click(function () {
     
-	alert("searchBtn click")
+	alert("searchBtn click");
 	/* 검색어 */
 	let search = document.getElementById("_searchBtn").value;
     

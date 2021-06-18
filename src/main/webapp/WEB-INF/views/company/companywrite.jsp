@@ -2,9 +2,66 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head>
 
- <style>
- .fontscolor{
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="csss/header.css" rel="stylesheet" type="text/css">
+
+
+<style type="text/css">
+ 
+
+/* 버튼 */
+a.box-btn {
+	background-color: #2186eb;
+	padding: 5px 20px;
+	display: inline-block;
+	color: #fff;
+	text-transform: capitalize;
+	border-radius: 3px;
+	font-size: 15px;
+	transition: .3s;
+}
+
+/* 버튼  */
+a.box-btn:hover, a.border-btn:hover {
+	background-color: #2186eb;
+}
+
+
+
+/* 테이블 속성 */
+.table-bordered {
+border: 1px solid #dddddd;
+border-collapse: separate;
+border-left: 0;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
+.table {
+width: 100%;
+margin-bottom: 20px;
+background-color: transparent;
+border-collapse: collapse;
+border-spacing: 0;
+display: table;
+}
+
+
+
+body {
+  font-family: "Noto Sans KR", sans-serif !important;
+	margin: auto;
+    width: 500px;
+    
+
+}
+
+.fontscolor{
  color:blue;
  }
  .fontscolor2{
@@ -13,145 +70,20 @@
  .fontscolor3{
  color:green
  }
- </style>
 
- <style type="text/css">
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-body {
-  font-family: "Noto Sans KR", sans-serif !important;
-}
+
+
 </style>
 
-<!-- 버튼 모달 -->
-<style type="text/css">
-
-
-* {box-sizing: border-box}
-
-/* Set a style for all buttons */
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-button:hover {
-  opacity:1;
-}
-
-/* Float cancel and delete buttons and add an equal width */
-.cancelbtn, .deletebtn {
-  float: left;
-  width: 50%;
-}
-
-/* Add a color to the cancel button */
-.cancelbtn {
-  background-color: #ccc;
-  color: black;
-}
-
-/* Add a color to the delete button */
-.deletebtn {
-  background-color: #f44336;
-}
-
-/* Add padding and center-align text to the container */
-.container {
-  padding: 16px;
-  text-align: center;
-}
-
-.foota {
-width:2000px;
-}
-
-.con{
-border-top-left-radius: 2em; border-top-right-radius: 2em; border-bottom-right-radius: 2em; border-bottom-left-radius: 2em;
-
-}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: #474e5d;
-  padding-top: 50px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* Style the horizontal ruler */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-
-/* The Modal Close Button (x) */
-.close {
-  position: absolute;
-  right: 35px;
-  top: 15px;
-  font-size: 40px;
-  font-weight: bold;
-  color: #f1f1f1;
-}
-
-.close:hover,
-.close:focus {
-  color: #f44336;
-  cursor: pointer;
-}
-
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-
-
-}
-
-/* Change styles for cancel button and delete button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .deletebtn {
-    width: 100%;
-  }
-}
-</style>
-
-<<<<<<< HEAD
-
-<header>헤더</header>
+</head>
 
 
 
 <div class="container"></div>
    
 <form name="comform" id="_comform" method="get">    
-    <table border="1" >
-=======
-<form name="comform" id="_comform" method="get">
-    <table border="1">
->>>>>>> 0ef5c8e119374e1aa0263c1d35cf3a49c46b5c61
+    <table border="1" class="table table-striped table-bordered">
      	<tr>
     		<th>회사이름:<p class="fontscolor2">* 변경할수없습니다</p></th>
     		<td><input type="text" name="companyname" value="${login.companyname }" readonly="readonly"></td>
@@ -179,7 +111,7 @@ hr {
 
     	<tr>
     		<th>회사 규모 (중소기업 , 대기업):</th>
-    		<td><input type="text" name="companytype" value="${company.companytype}"> (필수)</td>
+    		<td><input type="text" name="companytype" value="${company.companytype}"></td>
     	</tr>
 
      	<tr hidden="">
@@ -189,12 +121,12 @@ hr {
 
 		<tr>
     		<th>평균 연봉:</th>
-    		<td><input type="text" name="salaryavg" value="${company.salaryavg }"> (필수)</td>
+    		<td><input type="text" name="salaryavg" value="${company.salaryavg }"></td>
     	</tr>
 
     	<tr>
     		<th>초봉:</th>
-    		<td><input type="text" name="salarystart" value="${company.salarystart }"> (필수)</td>
+    		<td><input type="text" name="salarystart" value="${company.salarystart }"></td>
     	</tr>
 
     	<tr>
@@ -237,53 +169,36 @@ hr {
     		<td><input type="text" name="joinner" value="${company.joinner }">명</td>
     	</tr>
 
-    </table>
-    
-    
-    <br><br>
-    <div align="center">
+	</table>
 
-    		<c:choose>
-          		<c:when test='${company.updatecompanylist=="YES"}'>
-          			<div class="col-md-12"><button type="button" class="button cancel" onclick="location.href='javascript:ComUpdate()'">수정하기</button></div>
-          			<%-- <input type="hidden" value="${company.memberid }"> --%>
-          		</c:when>
-        	    <c:otherwise>
-          			<div class="col-md-12"><button type="button" class="button cancel" onclick="location.href='javascript:ComRegi()'">작성하기</button></div>
-          		</c:otherwise>
-          	</c:choose>
+		    <div align="center">
+	    	<c:if test="${company.companyseq == null}">	    	
+	    	<button id="companyBtn" class="box-btn">등록하기</button>
+	    	</c:if>
+	    	
+	    	<c:if test="${company.companyseq != null }">
+	    	<p>중복등록을 할수없습니다 수정하기로 가주세요</p>
+	    	</c:if>
+	    	
+	    	
+	    </div>
 
-
-    <!--       	<a class="btn btn-secondary" href="javascript:ComUpdate()">수정하기</a> -->
-
-    	<!--
-    	<button id="companyBtn" >등록하기</button>
-  		<button id="updateBtn">수정하기</button> -->
-    </div>
-<<<<<<< HEAD
-    
 </form>    
-=======
-</form>
->>>>>>> 0ef5c8e119374e1aa0263c1d35cf3a49c46b5c61
+
 
 
 <script>
 
-function ComRegi() {
-	 
-
-    $("#_comform").attr("action", "companywriteAf.do").submit();
 
 
-}
+$("#companyBtn").click(function () {
+	
+	alert("클릭크 수정");
+	$("#_comform").submit();
+	}
 
-function ComUpdate() {
-
-
-	$("#_comform").attr("action", "companyupdateAf.do").submit();
-}
-
+});
+	
 
 
 

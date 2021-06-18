@@ -97,6 +97,127 @@ button:hover {
   text-align: center;
 }
 
+
+.con{
+border-top-left-radius: 2em; border-top-right-radius: 2em; border-bottom-right-radius: 2em; border-bottom-left-radius: 2em;
+
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* The Modal Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+
+}
+
+/* Change styles for cancel button and delete button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .deletebtn {
+    width: 100%;
+  }
+}
+</style>
+
+<link href="csss/layout.css" rel="stylesheet" type="text/css">
+
+<style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+  font-family: "Noto Sans KR", sans-serif !important;
+}
+</style>
+
+<!-- 버튼 모달 -->
+<style type="text/css">
+
+
+* {box-sizing: border-box}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+  background-color: #ccc;
+  color: black;
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+  background-color: #f44336;
+}
+
+/* Add padding and center-align text to the container */
+.container {
+  padding: 16px;
+  text-align: center;
+}
+
 .foota {
 width:2000px;
 }
@@ -167,10 +288,10 @@ hr {
 }
 </style>
 
-
-
 </head>
+
 <body>
+
 <c:import url="script.jsp" charEncoding="utf-8"/>
 
 <c:import url="header.jsp" charEncoding="utf-8"/>
@@ -196,15 +317,11 @@ hr {
       <div class="header clearfix">
          <nav>
             <ul class="nav nav-pills float-right">
-               <li class="nav-item"><a class="nav-link" href="#">직업별</a></li>
-               <li class="nav-item"><a class="nav-link" href="#">직업별</a></li>
-               <li class="nav-item"><a class="nav-link" href="home.do">메인으로</a></li>
+
             </ul>
          </nav>
 
-		<h3 class="text-muted" style="
-    margin-left: 250px;
-">채용공고 게시판</h3>
+		<h3 class="text-muted">채용공고 게시판</h3>
 
          <div class="m-5"></div>
       </div>
@@ -231,7 +348,13 @@ hr {
                      <div class="tab-pane fade active show" id="tabone"
                         role="tabpanel">
                         <div class="py-5">
-                           <div class="container" style="border: outset;">
+                       <!-- 폰트스타일  -->
+
+
+
+
+
+    <div class="container" style="border: outset;">
                               <div class="row">
 
                                  <div class="col-md-4">
@@ -321,7 +444,7 @@ hr {
 							</div>
 
 							<p>
-								<button class="deletebtn" type="button" id="deleteResult" style="width: 120px;">선택 초기화</button>
+								<button class="deletebtn" type="button" id="deleteResult" style="width: 140px;">선택 초기화</button>
 							</p>
 
 
@@ -337,27 +460,11 @@ hr {
 
    <section class="search-sec">
     <div class="container">
-            <div class="row">
+     		<div class="row">
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-                            <select class="form-control search-slt" name="careerStart" style="font-size: 12pt">
-                                <option disabled="disabled">경력시작</option>
-                                <option value="100">무관</option>
-                                <option value="1">신입</option>
-                                <option value="2">1년</option>
-                                <option value="3">2년</option>
-                                <option value="4">3년</option>
-                                <option value="5">4년</option>
-                                <option value="6">5년</option>
-                                <option value="7">6년</option>
-                                <option value="8">7년</option>
-                                <option value="9">8년</option>
-                                <option value="10">9년</option>
-                                <option value="11">10년</option>
 
-                            </select>
-                            <h3>~</h3>
                             <select class="form-control search-slt" name="careerEnd" style="font-size: 12pt">
                                 <option disabled="disabled">경력끝</option>
                                 <option value="100">무관</option>
@@ -415,39 +522,6 @@ hr {
 
 
 
-   <!-- /container -->
-
-
-
-<!--    <div class="container">
-
-      <div class="box border" style="margin-top: 5px; margin-bottom: 10px">
-         <form action="" id="_frmFormSearch" method="get">
-
-            <table
-               style="margin-left: auto; margin-right: auto; margin-top: 3px; margin-bottom: 3px;">
-               <tr>
-                  <td>검색</td>
-                  <td style="padding-left: 5px;"><select id="_choice"
-                     name="choice">
-                        <option value="" selected="selected" disabled="disabled">선택</option>
-                        <option value="title">제목</option>
-                        <option value="content">내용</option>
-                        <option value="companyname">회사명</option>
-                  </select></td>
-
-                  <td style="padding-left: 5px;"><input type="text"
-                     id="_searchWord" name="searchWord"></td>
-                  <td style="padding-left: 5px;"><span class="button blue">
-                        <button type="button" id="btnSearch"
-                           onclick="javascript:getrecruListData(0)">검색</button>
-                  </span></td>
-               </tr>
-            </table>
-         </form>
-      </div>
-   </div> -->
-
 
 
 
@@ -456,13 +530,19 @@ hr {
 
 
    <div class="container">
+   				<c:if test="${login.auth==2 }">
+   				<span style="color: red;">기업회원이신가요? 공고를 작성하시려면 버튼을 클릭해주세요</span>&nbsp;
+               <span><a class="btn btn-primary" href="javascript:createRecruitNew()" style="color: white;">공고작성하러가기</a></span><br><br>
+              	</c:if>
       <div class="row marketing">
 
 
          <table class="table table-hover col-sm-12 " style="" id="table">
+             <col width="5%"><col width="10%"><col width="30%"><col width="15%">
+             <col width="10%"><col width="15%"><col width="15%">
             <thead class="thead-dark">
                <tr>
-                  <th>#</th>
+                  <th></th>
 
                   <th>회사명</th>
 
@@ -494,11 +574,7 @@ hr {
    </div>
 
 
-   <!-- <div class="container" style="">
-      <footer class="footer">
-         <p>© 1hara Corp. 2021</p>
-      </footer>
-   </div> -->
+
 
 
 <!-- FOOTER -->
@@ -685,9 +761,19 @@ function getrecruitSearchList(pnum) {
  			$(".list_col").remove();
 
  			var memberid = '<c:out value="${login.memberid}"/>';
+ 			
+ 			var auth = '<c:out value="${login.auth}"/>';
+
 
  			$.each(list, function(i, val){
- 				//alert(val.jobSeq);
+
+ 				var end = val.jobEnd;
+ 	 			var regdate = val.regdate;
+ 	 			end = end.substr(2,9);
+ 	 			regdate = regdate.substr(2,9);
+
+
+ 	 		//alert(val.jobSeq);
  				let app = "<tr class= 'list_col'>"
  							+"<td>" + val.rnum +"</td>";
 
@@ -710,8 +796,14 @@ function getrecruitSearchList(pnum) {
  									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
  									+"<td>" + val.jobVolumn + "</td>"
  									+"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
- 									+"<td>" + val.jobEnd +"<br>"+val.regdate+ "&nbsp;&nbsp;"
- 									+"<input type='button' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"+ "</td>";
+ 									+"<td>" + end +"<br>"+regdate;
+
+ 									if(val.companyId == memberid || auth == 3){
+ 								app += "<input type='button' class='btn btn-primary' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"
+ 									}
+
+ 								app += "</td>";
+
  							}
 
  							else{
@@ -758,7 +850,7 @@ function getrecruListData( pNumber, search ){
                             + "</td>"
                            +"<td style='text-align:left'>"
                            //+ arrow(val.depth)
-                           +"<a href='RecruitDetail.do?jobseq=" + val.jobSeq + "'>" + val.jobTitle+ "</a>"
+                           +"<a href='RecruitDetail.do?jobSeq=" + val.jobSeq + "'>" + val.jobTitle+ "</a>"
                            +"</td>"
                            +"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
                            +"<td>" + val.jobVolumn + "</td>"

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import bit.com.a.dao.RecruitDao;
 import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.BusinessDto;
+import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 
@@ -45,6 +46,7 @@ public class RecruitDaoImpl implements RecruitDao{
 
 	@Override
 	public RecruitDto getRecruitListOne(int jobseq) {
+		session.update(ns+"RecuReadcount", jobseq);
 		return session.selectOne(ns+"getRecruitListOne", jobseq);
 	}
 
@@ -173,9 +175,42 @@ public class RecruitDaoImpl implements RecruitDao{
 		return session.selectList(ns+"getCalendarSearchList", map);
 	}
 
+	@Override
+	public List<RecruitDto> getTop10List() {
+		return session.selectList(ns+"getTop10List");
+	}
 
+	@Override
+	public boolean favoriteJob2(RecruitParam param) {
+		return session.update(ns+"favoriteJob2", param)>0? true:false;
+	}
 
+	@Override
+	public boolean dropFavoriteJob2(RecruitParam param) {
+		return session.update(ns+"dropFavoriteJob2", param)>0?true:false;
+	}
 
+@Override
+	public CompanyDto getCompany(int jobseq) {
+
+		return session.selectOne(ns + "getCompany", jobseq);
+	}
+
+@Override
+public String getPhonenum(String memberid) {
+	String phonenumber = session.selectOne(ns+"getPhonenum",memberid);
+	return phonenumber;
+}
+
+@Override
+public List<RecruitDto> getNew6PreJob() {
+	return session.selectList(ns+"getNew6PreJob");
+}
+
+@Override
+public List<RecruitDto> getHot10Comname() {
+	return session.selectList(ns+"Hot10Comname");
+}
 
 
 }

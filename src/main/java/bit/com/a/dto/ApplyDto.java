@@ -6,65 +6,105 @@ public class ApplyDto {
 	private int resumeseq;
 	private String memberid;
 	private String applydate;
+	private int companyread;
+	private int portfolioseq;
 	
 	
 	public ApplyDto() {
 		super();
 	}
 
-	public ApplyDto(int applyseq, int jobseq, int resumeseq, String memberid) {
-		super();
-		this.applyseq = applyseq;
-		this.jobseq = jobseq;
-		this.resumeseq = resumeseq;
-		this.memberid = memberid;
-	}
 
 	public int getApplyseq() {
 		return applyseq;
 	}
 
+
 	public void setApplyseq(int applyseq) {
 		this.applyseq = applyseq;
 	}
+
 
 	public int getJobseq() {
 		return jobseq;
 	}
 
+
 	public void setJobseq(int jobseq) {
 		this.jobseq = jobseq;
 	}
+
 
 	public int getResumeseq() {
 		return resumeseq;
 	}
 
+
 	public void setResumeseq(int resumeseq) {
 		this.resumeseq = resumeseq;
 	}
+
 
 	public String getMemberid() {
 		return memberid;
 	}
 
+
 	public void setMemberid(String memberid) {
 		this.memberid = memberid;
 	}
+
 
 	public String getApplydate() {
 		return applydate;
 	}
 
+
 	public void setApplydate(String applydate) {
 		this.applydate = applydate;
 	}
 
+
+	public int getCompanyread() {
+		return companyread;
+	}
+
+
+	public void setCompanyread(int companyread) {
+		this.companyread = companyread;
+	}
+
+
+	public int getPortfolioseq() {
+		return portfolioseq;
+	}
+
+
+	public void setPortfolioseq(int portfolioseq) {
+		this.portfolioseq = portfolioseq;
+	}
+
+
+	public ApplyDto(int applyseq, int jobseq, int resumeseq, String memberid, String applydate, int companyread,
+			int portfolioseq) {
+		super();
+		this.applyseq = applyseq;
+		this.jobseq = jobseq;
+		this.resumeseq = resumeseq;
+		this.memberid = memberid;
+		this.applydate = applydate;
+		this.companyread = companyread;
+		this.portfolioseq = portfolioseq;
+	}
+
+
 	@Override
 	public String toString() {
-		return "ResumeParam [applyseq=" + applyseq + ", jobseq=" + jobseq + ", resumeseq=" + resumeseq + ", memberid="
-				+ memberid + ", applydate=" + applydate + "]";
+		return "ApplyDto [applyseq=" + applyseq + ", jobseq=" + jobseq + ", resumeseq=" + resumeseq + ", memberid="
+				+ memberid + ", applydate=" + applydate + ", companyread=" + companyread + ", portfolioseq="
+				+ portfolioseq + "]";
 	}
+
 	
 	
 

@@ -224,19 +224,22 @@ public class MemberController {
 
 
 	@ResponseBody
-	@RequestMapping(value = "/reserveSendSms.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/reserveSendSms.do", method = RequestMethod.GET)
 
-	public String reservSendSms(HttpServletRequest request, String phonenum, String reserveDate) throws Exception {
+	public String reservSendSms(HttpServletRequest request, String phonenum, String reserveDate, String title) throws Exception {
 
+		System.out.println("들어옴~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		
+		
 		String api_key = "NCSLHXF31QIYUJCT";
 		String api_secret = "T4SG4WFRBS1BGK9J7TOWKLVYJ9NVEGUI";
 
 		Coolsms coolsms = new Coolsms(api_key, api_secret);
 
 		HashMap<String, String> set = new HashMap<String, String>();
-		set.put("to", (String) request.getParameter("to")); // 수신번호
-		set.put("from", phonenum); // 발신번호
-		set.put("text", "안녕하세요 일하라입니다"+ "스크랩하신 "+ "title" + "공고의 마감기한이 24시간 남았습니다" ); // 문자내용
+		set.put("to", phonenum); // 수신번호
+		set.put("from", "01059559878"); // 발신번호
+		set.put("text", "안녕하세요 일하라입니다"+ "스크랩하신 "+ title + "공고의 마감기한이 24시간 남았습니다" ); // 문자내용
 		set.put("type", "sms"); // 문자 타입
 
 		System.out.println(set);
@@ -306,6 +309,7 @@ public class MemberController {
 			dto.setDetailaddress("정보를 수정해주세요");
 			dto.setAddress("정보를 수정해주세요");
 			dto.setUserpic("0000");
+			dto.setPhonenum("0000");
 			String newuserpic = new Date().getTime() + ".back";
 			dto.setNewuserpic(newuserpic);
 			

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import bit.com.a.dto.BbsParam;
 import bit.com.a.dto.BusinessDto;
+import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.RecruitDto;
 import bit.com.a.dto.RecruitParam;
 
@@ -18,7 +19,7 @@ public interface RecruitService {
 
    List<RecruitDto> getRecruitPagingList(RecruitParam param);
 
-   RecruitDto getRecruitListOne(int jobseq);
+   RecruitDto getRecruitListOne(int string);
 
    boolean deleteRecruit(int jobseq);
 
@@ -30,7 +31,7 @@ public interface RecruitService {
 
    List<RecruitDto> getCalendarList(RecruitParam param);
 
-   List<String> getBsnameForDetail(int jobseq);
+   List<String> getBsnameForDetail(int jobSeq);
 
    List<RecruitParam> areacodeListData();
 
@@ -70,6 +71,24 @@ public interface RecruitService {
 
 	List<RecruitDto> getCalendarSearchList(Map<String, Object> map);
 
-	
+	List<RecruitDto> getTop10List();
+
+	boolean favoriteJob2(RecruitParam param);
+
+	boolean dropFavoriteJob2(RecruitParam param);
+
+	CompanyDto getCompany(int jobseq);
+
+	String getPhonenum(String memberid);
+
+	List<RecruitDto> getNew6PreJob();
+
+	List<RecruitDto> getHot10Comname();
+
+
+
+
+
+
 
 }

@@ -2,9 +2,66 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="csss/header.css" rel="stylesheet" type="text/css">
+
+
+<style type="text/css">
  
- <style>
- .fontscolor{
+
+/* 버튼 */
+a.box-btn {
+	background-color: #2186eb;
+	padding: 5px 20px;
+	display: inline-block;
+	color: #fff;
+	text-transform: capitalize;
+	border-radius: 3px;
+	font-size: 15px;
+	transition: .3s;
+}
+
+/* 버튼  */
+a.box-btn:hover, a.border-btn:hover {
+	background-color: #2186eb;
+}
+
+
+
+/* 테이블 속성 */
+.table-bordered {
+border: 1px solid #dddddd;
+border-collapse: separate;
+border-left: 0;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
+.table {
+width: 100%;
+margin-bottom: 20px;
+background-color: transparent;
+border-collapse: collapse;
+border-spacing: 0;
+display: table;
+}
+
+
+
+body {
+  font-family: "Noto Sans KR", sans-serif !important;
+	margin: auto;
+    width: 500px;
+    
+
+}
+
+.fontscolor{
  color:blue;
  }
  .fontscolor2{
@@ -13,40 +70,51 @@
  .fontscolor3{
  color:green
  }
- </style>
+
+
+
+
+</style>
+
+</head>
+
+
+
+
 <h1 align="center"><strong>기업 정보 수정하기</strong></h1>
 <form name="comform" id="_comform" action="companyupdateAf.do" method="get">    
-    <table border="1">
+    <div  align="center" >
+    <table border="1" class="table table-striped table-bordered">
      	<tr>
     		<th>회사이름:<p class="fontscolor2">* 변경할수없습니다</p></th>
     		<td><input type="text" name="companyname" value="${login.companyname }" readonly="readonly"></td>
     	</tr>
-     
+     	
     	<tr>
     		<th>주소:<p class="fontscolor2">* 변경할수없습니다</p></th>
     		<td><input type="text" name="address" value="${login.comaddress }" readonly="readonly"></td>
     	</tr>
-    
+    	
     	<tr hidden="">
     		<th>사업자 번호(비공개입니다):<p class="fontscolor2">* 변경할수없습니다</p></th>
     		<td><input type="text" name="comanynum" value="${company.companynum }" readonly="readonly"></td>
     	</tr> 
-    
+    	
     	<tr>
     		<th>대표자 이름:<p class="fontscolor2">* 변경할수없습니다</p></th>
     		<td><input type="text" name="ceoname" value="${login.name }" readonly="readonly"></td>
     	</tr>
-    	   
+    	
     	<tr>
     		<th>기업 아이디:<p class="fontscolor2">* 변경할수없습니다</p></th>
     		<td><input type="text" name="memberid" value="${login.memberid }" readonly="readonly"></td>
     	</tr>
-    
+    	
     	<tr>
     		<th>회사 규모 (중소기업 , 대기업):</th>
-    		<td><input type="text" name="companytype" value="${company.companytype}"> (필수)</td>
+    		<td><input type="text" name="companytype" value="${company.companytype}"></td>
     	</tr>
-    
+    	
     	<tr hidden="">
     		<th>기업 이미지:</th>
     		<td>${company.comimage }</td>
@@ -54,12 +122,12 @@
     
     	<tr>
     		<th>평균 연봉:</th>
-    		<td><input type="text" name="salaryavg" value="${company.salaryavg }" > (필수)</td>
+    		<td><input type="text" name="salaryavg" value="${company.salaryavg }" ></td>
     	</tr>
     
     	<tr>
     		<th>초봉:</th>
-    		<td><input type="text" name="salarystart" value="${company.salarystart }"> (필수)</td>
+    		<td><input type="text" name="salarystart" value="${company.salarystart }"></td>
     	</tr>
     
     	<tr>
@@ -86,7 +154,7 @@
     		<th>연매출 :</th>
     		<td><input type="text" name="totalsale" value="${company.totalsale }" ></td>
     	</tr>
- 
+ 	
  		<tr>
      		<th>직원 수:<p class="fontscolor">(숫자로만 입력해주세요)</p></th>
     		<td><input type="text" name="empcount" value="${company.empcount }" >명</td>
@@ -103,10 +171,22 @@
     	</tr>
     	   	
     </table>
-    <br><br>
+    </div>
+
 	    <div align="center">
-	    	<button id="companyBtn">수정하기</button>
+	    	<c:if test="${company.companyseq == null}">	    	
+	    	<p>상세정보를 먼저 입력해주세요</p>
+	    	</c:if>
+	    	
+	    	<c:if test="${company.companyseq != null }">
+	    	<button id="companyBtn" class="box-btn">수정하기</button>
+	    	</c:if>
+	    	
+	    	
+	    	
+	    	
 	    </div>
+
 </form>    
 
 
@@ -125,4 +205,3 @@
 		
 
 </script>    
-    

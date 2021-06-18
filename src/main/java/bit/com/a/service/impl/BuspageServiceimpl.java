@@ -9,6 +9,8 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import bit.com.a.dao.BuspageDao;
+import bit.com.a.dto.ApplyDto;
+import bit.com.a.dto.ApplyParam;
 import bit.com.a.dto.BusinessDto;
 import bit.com.a.dto.CompanyDto;
 import bit.com.a.dto.RecruitDto;
@@ -27,9 +29,9 @@ public class BuspageServiceimpl implements BuspageService {
 	}
 
 	@Override
-	public BusinessDto getbuspage(BusinessDto dto) {
+	public BusinessDto getbuspage(String memberid) {
 		
-		return dao.getbuspage(dto);
+		return dao.getbuspage(memberid);
 	}
 
 	@Override
@@ -38,4 +40,11 @@ public class BuspageServiceimpl implements BuspageService {
 		return dao.getMyrecruitList(memberid);
 	}
 
+	@Override
+	public List<ApplyParam> getApplylist(int jobseq) {
+		// TODO Auto-generated method stub
+		return dao.getApplylist(jobseq);
+	}
+
+	
 }

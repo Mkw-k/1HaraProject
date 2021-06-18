@@ -1,5 +1,7 @@
 package bit.com.a.dao.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,6 +38,20 @@ public class BusinessDaoImpl implements BusinessDao{
 	@Override
 	public void businessDelete(BusinessDto dto) {
 		sqlsession.delete(namespace + "businessDelete", dto);
+	}
+	
+	@Override
+	public List<BusinessDto> getBusinessList() {
+		List<BusinessDto> buslist = sqlsession.selectList(namespace + "BusinessList");
+		System.out.println("getBusinesslist : " + buslist );
+		return buslist;
+		
+	}
+	
+	@Override
+	public void admin_business_forced_evictionCheck(BusinessDto dto) throws Exception {
+		sqlsession.delete(namespace + "admin_business_forced_evictionCheck" , dto);
+		
 	}
 	
 }

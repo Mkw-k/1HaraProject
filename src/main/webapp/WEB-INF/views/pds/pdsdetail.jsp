@@ -396,11 +396,24 @@ nav {
 }
 
 /* 테이블 속성 */
-table thead th, table tbody td {
-    padding: 5px;
-    border-collapse: collapse;
-    text-align: left;
+.table-bordered {
+border: 1px solid #dddddd;
+border-collapse: separate;
+border-left: 0;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
 }
+
+.table {
+width: 100%;
+margin-bottom: 20px;
+background-color: transparent;
+border-collapse: collapse;
+border-spacing: 0;
+display: table;
+}
+
 
 </style>
 </head>
@@ -523,7 +536,7 @@ table thead th, table tbody td {
 				  <div class="price-item">
 						
 						
-						<table class="faqtable" border="1">
+						<table  class="table table-striped table-bordered" border="1">
 						   <colgroup>
 						      <col width="200"><col width="500">
 						   </colgroup>
@@ -570,7 +583,7 @@ table thead th, table tbody td {
 						</tr>
 						
 						
-						<tr>
+						<tr hidden="">
 						   <th>등록일</th>
 						   <td>${pds.regdate }</td>
 						</tr>

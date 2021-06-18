@@ -1,24 +1,40 @@
 package bit.com.a;
 
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import bit.com.a.dto.MemberDto;
+import bit.com.a.dto.RecruitDto;
+import bit.com.a.service.RecruitService;
 
 @Controller
 public class HelloController {
 
 	private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 
+	@Autowired
+	RecruitService RecuService;
+	
 	@RequestMapping(value = "home.do", method = RequestMethod.GET)
-	public String home() {
+	public String home(Model model) {
 		logger.info("HelloController home() " + new Date());
+		
+		//메인페이지 프리미엄회원 공고용
+		List<RecruitDto> list = RecuService.getNew6PreJob();
+		
+		//인기기업 TOP10 이름 가져오기 
+		List<RecruitDto> hot10 = RecuService.getHot10Comname();
+		
+		model.addAttribute("list", list);
+		model.addAttribute("hot10", hot10);
 		
 		return "home";
 	}
@@ -66,15 +82,6 @@ public class HelloController {
 
 			return "infobanner";
 		}
-
-
-		@RequestMapping(value = "testtest.do", method = RequestMethod.GET)
-		public String musicplayer(Model model) {
-			logger.info("HelloController home() " + new Date());
-
-			return "testtest";
-		}
-
 
 
 		@RequestMapping(value = "infomember.do", method = RequestMethod.GET)
@@ -136,5 +143,12 @@ public class HelloController {
 			logger.info("HelloController member_info() " + new Date());
 			return "Maintest";
 		}
+		
+		@RequestMapping(value ="musicplayer.do", method = RequestMethod.GET)
+		public String musicplayer(Model model) {
+			logger.info("HelloController member_info() " + new Date());
+			return "musicplayer";
+		}
+		
 
 }
