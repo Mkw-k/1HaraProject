@@ -1447,7 +1447,7 @@ function f_empPgmList(resultObj){
 							<!-- 기능 버튼 들어갈 예정 -->
 						</div>
 					</div>
-					<div class="mypage-idv-wrap">
+					<div class="mypage-idv-wrap" id="Area1">
 						<div class="idv-sec01" style="height: 550px;">
 							<div class="con-top">
 

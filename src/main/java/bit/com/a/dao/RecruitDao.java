@@ -82,6 +82,10 @@ public interface RecruitDao {
 
 	String getPhonenum(String memberid);
 
+	List<RecruitDto> getNew6PreJob();
+
+	List<RecruitDto> getHot10Comname();
+
 
 
 
