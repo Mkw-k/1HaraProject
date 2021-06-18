@@ -82,7 +82,7 @@ body {
 
 <div class="container"></div>
    
-<form name="comform" id="_comform" method="get">    
+<form name="comform" action="companywriteAf.do" id="_comform" method="get">    
     <table border="1" class="table table-striped table-bordered">
      	<tr>
     		<th>회사이름:<p class="fontscolor2">* 변경할수없습니다</p></th>
@@ -177,7 +177,9 @@ body {
 	    	</c:if>
 	    	
 	    	<c:if test="${company.companyseq != null }">
+	    	
 	    	<p>중복등록을 할수없습니다 수정하기로 가주세요</p>
+	    	<a href="companyupdate.do?companyid=${company.memberid }" style="color:#2186eb">기업수정</a>
 	    	</c:if>
 	    	
 	    	
