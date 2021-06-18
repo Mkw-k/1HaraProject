@@ -583,7 +583,7 @@ display: table;
 						</tr>
 						
 						
-						<tr>
+						<tr hidden="">
 						   <th>등록일</th>
 						   <td>${pds.regdate }</td>
 						</tr>

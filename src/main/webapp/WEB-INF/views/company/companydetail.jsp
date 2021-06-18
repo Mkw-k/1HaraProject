@@ -119,10 +119,10 @@ tr{
 <div class="container">
 <form id="_comform">
 	<div style="padding-top: 0px">
-		<h1><strong>${company.companyname }</strong></h1>
+		<h1 style="text-align: center"><strong>${company.companyname }</strong></h1>
 	</div>
 	<div align="center" style="border-bottom: 10px;margin-left: 0px;">
-	<ul style="border-bottom: 10px;margin-left: 100px;" class="ulli" >
+	<ul style="border-bottom: 10px;margin-left: 50px;" class="ulli" >
 		<li class="ulli ullist">
 			<img alt="" src="./image/comyear4.PNG" width="70px" height="70px"><br>
 			<strong>창업 년도</strong><br>
@@ -159,7 +159,7 @@ tr{
 <br><br>
 
 
-<c:if test="${company.companytype == null }">
+<c:if test="${company.companyseq == null }">
 <table>
 	<tr align="center">
 		<td style="font-size: 45px;">기업 정보가 없습니다</td>
@@ -170,7 +170,7 @@ tr{
 
 
 
-<c:if test="${company.companytype != null }">
+<c:if test="${company.companyseq != null }">
 <table style="margin-left: 00px;background-color: aliceblue;">
 	<colgroup>
 	<col width="200px"><col width="200px">
@@ -238,11 +238,12 @@ tr{
 
 
 	<br>
-	<c:if test="${login.memberid } ">
-   	  <a  href="companyupdate.do?memberid=${company.memberid }" style="color:#2186eb">기업수정</a>
-  	</c:if>
+	<%-- <c:if test="${login.memberid } "> --%>
+   	  <a  href="companyupdate.do?companyid=${company.memberid }" style="color:#2186eb">기업수정</a>
+   	   <a  href="companywrite.do?companyid=${company.memberid }" style="color:#2186eb">기업등록</a>
+  <%-- 	</c:if> --%>
 	  
-	 <h1><strong><a href="recuruitlist.do">목록으로</a></strong></h1>
+	 <h1 align="center"><strong><a href="recuruitlist.do">목록으로</a></strong></h1>
 
 </form>
 </div>

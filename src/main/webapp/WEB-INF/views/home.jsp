@@ -520,7 +520,7 @@ margin-right : 450px;
 <div class="navi_common">
 <ul class="navi_depth1">
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','recruit')" href="recuruitlist.do"><span>채용정보</span></a></li>
-<!-- <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','company_info')" href="companylist.do"><span>기업정보</span></a></li> -->
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','company_info')" href="companydetail.do?companyid=${login.memberid }"><span>이정우 작업중</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','status-list')" href="newslist.do"><span>TODAY NEWS📈</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','verification')" href="pdslist.do"><span>자료실</span></a></li>
 <li>
@@ -561,7 +561,7 @@ margin-right : 450px;
              	 		 </c:when>
 
              			<c:when test="${login.auth == 2}">
-             				<p><b>[사원👨‍💼]${login.name }</b>님</p>
+             				<p><b>[기업👨‍💼]${login.name }</b>님</p>
     		 			</c:when>
 
     					<c:otherwise>
