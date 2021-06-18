@@ -42,9 +42,9 @@ public class BuspageController {
 	
 	/*마이페이지*/
 	@RequestMapping(value = "buspage.do",  method = {RequestMethod.GET, RequestMethod.POST})
-	public String buspage(Model model, BusinessDto dto){
+	public String buspage(Model model, String memberid){
 	
-	dto = service.getbuspage(dto);
+	BusinessDto dto = service.getbuspage(memberid);
 	model.addAttribute("business", dto);
 		
 	return "busMypage/buspage2";	
@@ -54,10 +54,10 @@ public class BuspageController {
 	 /* 회원정보수정페이지*/
 	
 	@RequestMapping(value = "buspageUpdate.do",   method = {RequestMethod.GET, RequestMethod.POST})
-	public String buspageUpdate(Model model, BusinessDto dto) {
-		System.out.println("memberid="+dto.getMemberid());
-		dto = service.getbuspage(dto);
-		model.addAttribute("business", dto);
+	public String buspageUpdate(Model model, String memberid) {
+		//System.out.println("memberid="+emberid());
+		service.getbuspage(memberid);
+		model.addAttribute("business", memberid);
 		return "busMypage/buspageupdate2";
 	}
 	

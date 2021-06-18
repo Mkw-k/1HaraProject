@@ -45,7 +45,7 @@
 			<h2 class="skip">선배에게 질문하기 세부메뉴</h2>
 			<div class="navi-top-area">
 				<a href="Jobtalkwrite.do" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
-				<div class="myInfoSec">
+				<%-- <div class="myInfoSec">
 					<a href="/User/Qstn/MainProfile" class="myInfo">
 						<!-- [Dev] 프로필 랜덤 이미지 파일명 : random_1 ~ random_20, 이미지 없음 : random_default -->
 						<span class="proThumb">
@@ -54,36 +54,13 @@
 						<dl class="infoBx">
 							<dt class="qnaSpA">
 								<span class="nickname">${login.name}</span> 
-								<span class="lvIcon">Lv.1</span>
 							</dt>
-							<dd>
-								<span>질문 0</span>
-								<span>답변 0 (채택 0)</span>
-							</dd>
 						</dl>
 					</a>
-					<button type="button" class="myPoint devMainCouponButton">
-						<span class="point qnaSpB">0</span><span class="btnCoupon qnaSpA">쿠폰교환</span>
-					</button>
-				</div>
+				</div> --%>
 			</div>
 			<div class="navi-list-area">
 			<!-- [Dev] 메뉴 on : 클래스 active 추가 -->
-				<div class="sideNavLow">
-					<strong class="sideNavTit"><a id="devLeftMenuRequireTag" href="/User/Qstn/Index?MainType=1" data-tab="1" class="devLoginLayer " devalert="0">답변하기</a></strong>
-				</div>
-				<div class="sideNavLow">
-					<strong class="sideNavTit"><a id="devLeftMenuOwnerTag" href="/User/Qstn/Index?MainType=2" data-tab="2" class="devLoginLayer " devalert="0">나의질문</a></strong>
-				</div>
-				<div class="sideNavLow">
-					<strong class="sideNavTit"><a id="devLeftMenuEntireTag" href="/User/Qstn/Index?MainType=3" data-tab="3" class="">전체질문</a></strong>
-				</div>
-				
-				<div class="sideNavLow has-tooltip">
-					<strong class="sideNavTit no-link">
-						<a href="javascript:void()">나의그룹</a>
-					</strong>
-				</div>
 				<c:choose>
 					<c:when test="${jobtalk.memberid==login.memberid }">
 						<div class="sideNavLow">
@@ -98,12 +75,8 @@
 						</div>
 					</c:when>
 				</c:choose>
-			<div class="sideNavLow devRecentVisitGroup" style="display:none;">
-				<strong class="sideNavTit"><a href="javascript:void();">최근 본 그룹</a></strong>
-				<ul class="sideNavList boxList"></ul>
 			</div>
 		</div>
-	</div>
 		
 		<%-- <c:choose>
 						<c:when test="${jobtalk.memberid==login.memberid }">

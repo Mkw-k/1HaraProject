@@ -1066,17 +1066,26 @@ function f_empPgmList(resultObj){
 											<col style="width:140px">
 										</colgroup>
 										<tbody>
-										<c:if test="${login.filename ne null}">
-										<img alt="" src ="./upload/${login.filename}">
-			    						</c:if>
-
+										<c:choose>
+										<c:when test="${login.newfilename ne null}">
+										<tr>
+										<th>
+										<img alt="" src ="./upload/${business.newfilename}">
+			    						</th>
+			    						</tr>
+			    						</c:when>
+			    						<c:otherwise>
 			    						<tr>
 								     		<!-- <th>이미지:</th> -->
 								     		<th>
 								     	 <img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 100px;"
 								     	  src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
 								     		</th>
-
+										</tr>
+										</c:otherwise>
+										
+										</c:choose>
+			
 								     	<tr>
 								     		<th>아이디: </th>
 								     		<td>${login.memberid }</td>

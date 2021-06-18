@@ -990,7 +990,7 @@ margin-right : 450px;
 <div class="side-navigation" style="width: 200px;">
 	<h2 class="skip">선배에게 질문하기 세부메뉴</h2>
 	<div class="navi-top-area">
-		<a href="/User/Qstn/QstnWrite" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
+		<a href="Jobtalkwrite.do" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
 			<div class="myInfoSec">
 				<a href="/User/Qstn/MainProfile" class="myInfo">
 					<!-- [Dev] 프로필 랜덤 이미지 파일명 : random_1 ~ random_20, 이미지 없음 : random_default -->
@@ -999,18 +999,10 @@ margin-right : 450px;
 					</span>
 					<dl class="infoBx">
 						<dt class="qnaSpA">
-							<span class="nickname"></span>
-							<span class="lvIcon">Lv.1</span>
+							<span class="nickname">${login.name }</span>
 						</dt>
-						<dd>
-							<span>질문 0</span>
-							<span>답변 0 (채택 0)</span>
-						</dd>
 					</dl>
 				</a>
-				<button type="button" class="myPoint devMainCouponButton">
-					<span class="point qnaSpB">0</span><span class="btnCoupon qnaSpA">쿠폰교환</span>
-				</button>
 			</div>
 		</div>
 		<div class="navi-list-area">
@@ -1133,8 +1125,8 @@ function getJobtalkListData(pNumber) {
 		type:"get",
 		data:{ page:pNumber, choice:$("#_choice").val(), search:$("#_searchWord").val() },
 		success:function( list ){
-			alert('success');
-			alert(list);
+			//alert('success');
+			//alert(list);
 			//loadPage(count);
 			
 			$(".list_col").remove();
@@ -1214,7 +1206,7 @@ function loadPage( totalCount ) {
 		initiateStartPageClick:false,		// onPageClick 자동 실행되지 않도록 한다
 		onPageClick:function(event, page){
 			nowPage = page;
-			alert('nowPage:' + page);
+			//alert('nowPage:' + page);
 		  getJobtalkListData( page - 1 );
 		}
 	});	
