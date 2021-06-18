@@ -93,7 +93,7 @@ body {
 
 						</ul>
 					</div>
-					<a href="#" onclick="f_logout();" class="font-blue">로그아웃</a>
+					<a href="logout.do" onclick="f_logout();" class="font-blue">로그아웃</a>
 
 
 				<!-- 공통 -->
@@ -117,49 +117,20 @@ body {
 					</h1>
 
 
-
-	<!--
-			<form id="searchFrm" name="searchFrm" action="/wnSearch/unifSrch.do" method="post" onsubmit="return false">
-				<div class="header-search">
-					<div class="searc-area">
-						<input type="search" id="topQuery" name="topQuery" onclick="if(event.keyCode == '13'){goWnSearch();}" maxlength="50" onfocus="input_limit_string(this,'/kor,/eng,/d,/symbol6,/s');" class="input-text" autocomplete="off" title="검색어를 입력해주세요.">
-						<button type="button" onclick="goWnSearch()" class="btn-search">검색</button>
-					</div>
-
-
-					<div id="searchWord" class="auto-complete">
-						<ul>
-							<li><a href="#"><em class="word">사회복지</em> 관련 관리자</a></li>
-						</ul>
-
-						<button type="button" class="btn-input-reset">자동완성 닫기</button>
-					</div>
-
-					<a href="javascript:f_job_search()" class="button">일자리 검색</a>
-				</div>
-			<div>
-<input type="hidden" name="_csrf" value="40c07236-ce2a-46f9-b046-8fbf7137e0fa">
-</div></form>
- -->
-
-
-
-			<!-- <div class="link-special">
-				<a href="/jobyoung/main.do">청년</a> <a href="/woman/main/main.do">여성</a> <a href="/senior/main/main.do">장년</a>
-			</div> -->
 		</div>
 	</div>
 
 	<nav id="gnb">
 		<ul>
-
+			<c:if test="${company.companytype == null }">
 			<li><a href="companywrite.do" class="menu"><span>기업정보등록</span></a></li>
-			<li><a href="buspageUpdate.do?companyid=${login.memberid }" class="menu"><span>기업정보 수정</span></a></li>
-
+			</c:if>
+			<li><a href="companyupdate.do?companyid=${login.memberid }" id="updateBtn" class="menu"><span>기업정보 수정</span></a></li>
+			
 			<li><a href="companydetail.do?companyid=${login.memberid }" class="menu"><span>기업정보</span></a></li>
 
 			<li><a href="createTest.do" class="menu"><span>공고등록</span></a></li>
-			<li><a href="myRecruitList.do?companyid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
+			<li><a href="myRecruitList.do?memberid=${login.memberid }" class="menu"><span>공고현황</span></a></li>	
 			
 		</ul>
 
@@ -168,6 +139,57 @@ body {
 	</nav>
 </header>
     <!-- 헤더 -->
+    
+<nav id="lnb">
+	<!-- S : 2018-09-28 추가 -->
+	<p class="tit"><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지</a></p>
+	<!-- E : 2018-09-28 추가 -->
+	<ul>
+		<li>
+			<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">공고 관리</a>
+			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>
+					<li>
+						<a href="createTest.do" target="_self">공고등록</a>
+					</li>
+					<li>
+						<a href="myRecruitList.do?memberid=${login.memberid }" target="_self">공고현황 관리</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		
+		<li>
+			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">기업정보 관리</a>
+			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>
+					<li>
+						<a href="companydetail.do?companyid=${login.memberid }" target="_self">기업상세정보</a>
+					</li>
+					<li>
+						<a href="buspageUpdate.do" target="_self">회원정보 수정</a>
+					</li>
+					<li>
+						<a href="businessDelete.do" target="_self">회원탈퇴</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">프리미엄 회원가입</a>
+			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>
+					<li>
+						<a href="javascript:priMember('${login.memberid }','${login.companyname }','${login.name }','${login.comaddress }')" target="_self">가입하기</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</nav>    
 
 
 
@@ -197,14 +219,7 @@ body {
                             $('.custom-menu').show();
                         });
                     </script>
-                  <!--   <div class="custom-menu">
-                        <div>
-                            <a href="#" id="myCustomMenu">나만의 맞춤메뉴(<span>0</span>)</a>
-                        </div>
-                        <span>
-                            <a href="javascript:void(0);" onclick="openMyCustomMenu();" title="새창열림">맞춤메뉴설정</a>
-                        </span>
-                    </div> -->
+              
                 </div>
             </div>
             <div class="inner-wrap">
@@ -954,20 +969,6 @@ function f_empPgmList(resultObj){
 		f_requestOrgcdList(topOrgcd);
 	});
 </script>
-
- <!-- 구직신청 요청 영역-->
- <!-- 이력서 작성프로세스-->
- <!-- 등록된이력서 없음 영역-->
- <!-- 나의구직정보-->
- <!-- 작성중인 이력서 있음 -->
- <!-- 인증만료 -->
- <!-- 인증대기  -->
- <!-- 인증거부  -->
- <!-- 구직인증 완료 -->
- <!-- 장고단 구직인증 완료 -->
- <!-- 인증일자로부터 7일이 지나지 않았을때 보여줌 -->
- <!-- 인증일자로부터 7일이 지나지 않았을때 보여줌 -->
- <!-- 인증만료일이 다갈올대 보여줌-->
 				<!-- contents -->
 				<section id="contents" class="mypage">
 					<div class="tit-util">
@@ -1016,11 +1017,6 @@ function f_empPgmList(resultObj){
 								    		<td>${business.companyname }</td>
 								    	</tr>
 
-								    <%-- 	<tr>
-								    		<th>비밀번호: </th>
-								    		<td>${login.pwd }</td>
-								    	</tr>
- --%>
 								    	<tr>
 								    		<th>주소: </th>
 								    		<td>${business.comaddress }</td>
@@ -1037,11 +1033,8 @@ function f_empPgmList(resultObj){
 								    	</tr>
 
 			    						<tr>
-												<th >이메일</th>
-												<td>
-														${login.email}
-												</td>
-
+											<th >이메일</th>
+											<td>${login.email}</td>
 										</tr>
 											
 
@@ -1266,6 +1259,18 @@ window.onscroll = function sticky() {
     nav[0].classList.remove("nav");
   }
 }
+
+
+
+/* 프리미엄결제창이동 */
+//프리미엄 결제창 이동
+function priMember(memberid, companyname, name, comaddress) {
+alert("priMember");	
+	   location.href = "priMember.do?memberid="+memberid+"&companyname="+companyname +"&name="+name+"&comaddress="+comaddress;
+	} 
+ 
+
+
 </script>
 </body>
 </html>

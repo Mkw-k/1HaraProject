@@ -1,14 +1,15 @@
-<!DOCTYPE html>
+<%@page import="bit.com.a.dto.MemberDto"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
 <%@page import="java.util.List"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> --%>
+
+<!DOCTYPE html>
 <head>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--   <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="_csrf_parameter" content="_csrf"><meta name="_csrf_header" content="X-CSRF-TOKEN"><meta name="_csrf" content="5557377e-0013-402c-90e5-0dad4d61305f">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -19,40 +20,35 @@
 <meta name="author" content="#">
 <meta name="keywords" content="#">
 <meta name="selected-menu" content="0, 0, 0, 0">
-
+ -->
 <!-- 제이쿼리 -->
 <script src="//https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- 네비바 -->
-<!-- carousel -->
-<link rel="stylesheet" href="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  
-<script src="//https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<!-- jQuery Modal -->
-<script src="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="//https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> 
 
  <!-- 전체 css -->
-<link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
-<script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
-<script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
+<!-- <link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
+<script type="text/javascript" src="layout/scripts/featured_slide.js"></script> -->
 
 <!-- footer -->
 <link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="static/css/import.css" media="all">
 
-<!-- 퀵메뉴 -->
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
+<!-- <!-- 랭킹 -->
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 
-<!-- 랭킹 -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- JQuery -->
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+<!------ Ajax ---------->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- 부트스트랩 -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<!-- https://github.com/josecebe/twbs-pagination -->
+<!-- script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script> -->
 
 <link href="csss/header.css" rel="stylesheet" type="text/css">
 
@@ -65,7 +61,7 @@ margin-right : 450px;
 }
 
 .newsletter {
-padding: 80px 0;
+padding: 20px 0;
 background: #2186eb;
 }
 
@@ -98,9 +94,9 @@ font-weight:600;
 /* 3가지 FAQ링크 */
 
 
-:root {
+/* :root {
     font-size: 10px;
-}
+} */
 
 .faqnav ul {
     padding: 0;
@@ -118,7 +114,7 @@ font-weight:600;
     letter-spacing: 1px;
     position: relative;
     transition: 0.3s;
-    margin: 8.5rem;
+    margin: 2rem;
     background-color: #eee;
 }
 
@@ -270,7 +266,7 @@ a{
 a.box-btn {
 	background-color: #2186eb;
 	padding: 5px 20px;
-	display: inline-block;
+	/* display: inline-block; */
 	color: #fff;
 	text-transform: capitalize;
 	border-radius: 3px;
@@ -281,51 +277,6 @@ a.box-btn:hover, a.border-btn:hover {
 	background-color: #2186eb;
 }
 
-/* 네비바 반응형 */
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  /* 요소의 최소 너비 지정, height 속성 무시
-    vh단위는 브라우저 안쪽 높이(window.innerHeight)을 기준으로
-    설정된다. 하지만 태블릿이나, 모바일의 경우에는 뷰 포트에 따라
-    맞춰짐*/
-  min-height: 8vh;
-  background-color: #504954;
-  font-family: "Poppins", sans-serif;
-}
-
-.logo {
-  color: rgb(226, 226, 226);
-  text-transform: uppercase;
-  /* 각 글자 2px씩 간격을 줌*/
-  letter-spacing: 2px;
-  font-size: 18px;
-}
-
-.nav-links {
-  width: 40%;
-  /* display: flex; */
-  justify-content: space-around;
-}
-
-.nav-links li {
-  list-style: none;
-}
-
-.nav-links a {
-  color: rgb(226, 226, 226);
-  text-decoration: none;
-  letter-spacing: 3px;
-  font-weight: bold;
-  font-size: 14px;
-}
 
 .burger {
   display: none;
@@ -384,32 +335,142 @@ nav {
   }
 }
 
-.toggle .line1 {
-  transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.toggle .line2 {
-  opacity: 0;
-}
-
-.toggle .line3 {
-  transform: rotate(45deg) translate(-5px, -6px);
-}
  
+ 
+/* 네비바 */
+.createRecruitBtn{
+	cursor: pointer;
+}
+/* .wrapper{
+width:200px;
+padding:20px;
+height: 150px;
+} */
+#nav-main{
+	height: 100 px;
+}
+nav.top-nav-collapse {
+   transition: all 300ms ease-in-out;
+   background-color: #036cde !important;
+   color: white !important;
+}
+white{
+	color: white !important;
+}
+
+.navbar-nav {
+   background-color: rgba( 255, 255, 255, 0 );
+  }
+</style>
+
+
+
+<style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+  font-family: "Noto Sans KR", sans-serif !important;
+}
 </style>
 </head>
 
 <body>
 
 <!-- 헤더생성기 (붙여넣기전 코어태그 생성하세요)-->
-<c:import url="script.jsp" charEncoding="utf-8"/>
- <c:import url="header.jsp" charEncoding="utf-8"/> 
+<!-- <c:import url="script.jsp" charEncoding="utf-8"/>
+<c:import url="header.jsp" charEncoding="utf-8"/>  -->
 <!-- 헤더 생성기 끝 -->
 
 
+<nav class="navbar navbar-expand-md sticky-top" style="text-shadow: white 0px 0px 0.2px; box-shadow: black 0px 0px 10px;" id="nav-main"><a class="navbar-brand d-none d-md-block ml-3" href="home.do">
+      <img alt="" src="/sample10/image/흰로고다.gif" id="_logo" height="80" width="160" style="float:left; padding-right: 20px">
+
+    </a>
+    <div class="container-fluid" style="margin-left: 0px;"> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar19" style="">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar19" style="
+    margin-right: 50px;
+">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <div style="position: relative; text-align: right;">
+              <button class="btn dropdown-toggle btn-link" data-toggle="dropdown"> 전체보기</button>
+              <div class="dropdown-menu" style="">
+                <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+              </div>
+            </div>
+          </li>
+
+		<li class="nav-item">
+            <div style="position: relative;
+    text-align: right;">
+              <button class="btn dropdown-toggle btn-link" data-toggle="dropdown"> 채용공고</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="recuruitlist.do">채용공고 목록으로</a>
+               <!--  <div class="dropdown-divider"></div> -->
+                <a class="dropdown-item" href="javascript:createRecruitNew()">채용공고 작성 New</a>
+              </div>
+            </div>
+          </li>
 
 
-<br>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">기업정보</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">취업톡톡</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="calendarlist1.do">공채달력</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">자료실</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">이력서관리</a> </li>
+          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">기업관리</a> </li>
+
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item"> <a class="nav-link" href="#">
+              <i class="fa fa-twitter fa-fw text-primary"></i>
+            </a> </li>
+          <li class="nav-item">
+            <div style="position: relative;text-align: right;margin-left: 500px;">
+    		<div class="btn-group"> 
+              <button class="btn dropdown-toggle  btn-link" data-toggle="dropdown">로그인해주세요</button>
+              <!-- <button class="btn dropdown-toggle btn-link " data-toggle="dropdown">이주영 님</button> -->
+              <div class="dropdown-menu" style=""> <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+              </div>
+            </div><a class="btn" style="background-color: #000000; color: #fff !important;" href="#">로그인</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<script type="text/javascript">
+$(function() {
+	   $(window).scroll(function() {
+	      //ADD CLASS
+	      if ($(".navbar").offset().top > 90) {
+	         //바탕색상변경
+	    	 $(".sticky-top").addClass("top-nav-collapse");
+	         //폰트색상 변경
+	         $(".navbar a").addClass("text-light");
+	         //드랍다운색상 변경
+	         $(".navbar li button").addClass("text-light");
+	         //드랍다운 밑에 있는 a태그도 변경
+	         $(".navbar li button a").addClass("text-dark");
+	         //이미지 변경
+	         $("#_logo").attr("src", "<%=request.getContextPath() %>/image/흰 로고 반전.gif");
+	      } else {
+	         $(".sticky-top").removeClass("top-nav-collapse");
+	         $(".navbar a").removeClass("text-light");
+	         $(".navbar li button").removeClass("text-light");
+	         $(".navbar li button a").removeClass("text-dark");
+	         $("#_logo").attr("src", "<%=request.getContextPath() %>/image/흰로고다.gif");
+	      }
+	   });
+	});
+</script>
 
  <!-- =========Login 클릭 시 Modal =========== -->
       <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" class="modal modal-center fade ">
@@ -479,14 +540,15 @@ List<FAQDto> commonlist =(List<FAQDto>) request.getAttribute("commonlist");
 
 %>
 
+<div>
 <nav class="faqnav navbar-nav" style="height: auto;">
-  <ul style="display: flex; margin-right: 180px;">
+  <ul style="display: flex;margin-right: 180px;margin-left: 375px;">
     <li><a href="memberFAQ.do" class="nav-links" >지원자</a></li>
     <li><a href="companyFAQ.do" class="nav-links">기업</a></li>
     <li><a href="commonFAQ.do" class="nav-links">일반</a></li>
   </ul>
 </nav>
-
+</div>
 
 <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,800,900%7cRaleway:300,400,500,600,700" rel="stylesheet">
 <section class="pricing-area pt-100 pb-100" id="pricing" style="padding-top: 0px;">
@@ -495,7 +557,7 @@ List<FAQDto> commonlist =(List<FAQDto>) request.getAttribute("commonlist");
                <div class="col-xl-4">
 				<div class="single-price">
 				  <div class="price-item">
-					<ul>
+					<ul >
 					
 					<%
 					if(memlist.size()>5){
@@ -572,16 +634,18 @@ List<FAQDto> commonlist =(List<FAQDto>) request.getAttribute("commonlist");
 
 
 
+<%
+MemberDto mem = (MemberDto)request.getSession().getAttribute("login");
+%>
 
 
 
 
-
-
+<% if( mem.getAuth() == 3 ){ %> 
 <div style="text-align: center;margin-bottom: 300px;margin-top: -100px;">
 <a href="writeFAQ.do" class="box-btn" >글쓰기</a>
 </div>
-
+ <% } %> 
 
 
 
@@ -724,7 +788,6 @@ List<FAQDto> commonlist =(List<FAQDto>) request.getAttribute("commonlist");
 	</div>	
     
       <!-- ==============FOOTER END================= -->
-</div>
 
 
 

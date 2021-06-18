@@ -14,9 +14,9 @@
 
 	<insert id="companywrite" parameterType="bit.com.a.dto.CompanyDto">
 	INSERT INTO COMPANY(COMPANYNAME, ADDRESS, COMPANYNUM, CEONAME, DEL, COMPANYTYPE, COMPANYSEQ, MEMBERID, CONTENT, 
-	COMIMAGE, EMPCOUNT, SALARYAVG, SALARYSTART, COMYEAR, RETIREE, JOINNER, WEBSITE, MAINSERVICE, TOTALSALE, UPDATECOMPANYLIST)
+	COMIMAGE, EMPCOUNT, SALARYAVG, SALARYSTART, COMYEAR, RETIREE, JOINNER, WEBSITE, MAINSERVICE, TOTALSALE)
 	VALUES(#{companyname}, #{address}, #{companynum}, #{ceoname}, 0, #{companytype}, COMPANY_SEQ.NEXTVAL , #{memberid} , #{content}, 
-	#{comimage, jdbcType=VARCHAR}, #{content} ,#{salaryavg} , #{salarystart}, #{comyear} , #{retiree} , #{joinner} , #{website}, #{mainservice}, #{totalsale}, #{updatecompanylist} )
+	#{comimage, jdbcType=VARCHAR}, #{content} ,#{salaryavg} , #{salarystart}, #{comyear} , #{retiree} , #{joinner} , #{website}, #{mainservice}, #{totalsale} )
 	</insert>
 	
 	<update id="companyupdate" parameterType="bit.com.a.dto.CompanyDto">

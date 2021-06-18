@@ -389,9 +389,7 @@ dt, dd {
 														<div class="resume_input">
 															<input type="text" id="phonenum" name="phonenum"
 																class="box_input max_length" value="${login.phonenum }"
-																maxlength="11" data-only-number="true"
-																data-api_type="layer" data-api_id="basic_confirm_cell"
-																readonly>
+																>
 														</div>
 													</div>
 
@@ -1748,8 +1746,8 @@ dt, dd {
 						</div>
 						</section>
 						
-						<button id="incomplete">중간저장</button>
-						<button id="complete">작성완료</button>
+						<button id="incomplete" class="btn btn-warning btn-md">중간저장</button>
+						<button id="complete" class="btn btn-info btn-md">작성완료</button>
 						
 					</div>
 				</div>

@@ -26,11 +26,14 @@
 
 <style type="text/css">
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-
 body {
 	font-family: "Noto Sans KR", sans-serif !important;
 }
 </style>
+
+<!-- jobs -->
+<link rel="stylesheet" href="csss/bootstrap.min.css" />
+<link rel="stylesheet" href="csss/main3.css" />
 
 <!-- 카카오 로그인 -->
 <script type="text/javascript"
@@ -203,6 +206,24 @@ p{
 }
 #homecontent img {
     padding: 0px;
+}
+.form-control {
+    display: block;
+    width: 70%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 /* 검색css */
 .form-control-borderless {
@@ -493,17 +514,19 @@ margin-right : 450px;
         background: #1A4668;
     }
 }
+
+h2{
+ font-size: 20px;
+}
 </style>
+
 <link href="csss/Newmain.css" rel="stylesheet" type="text/css">
 <link href="csss/headerDefa.css" rel="stylesheet" type="text/css">
-
 </head>
 <body id="sri_main" onload="window.open('ad.do','','width=400px, height=400px, left=400px, top=200px, toolbar=0, status=yes, menubars=0, scrollbars=0, resizable=0, location=0, directories=0')">
-
 <div id="skipnavigation">
 <a href="#search">본문 바로가기</a>
 </div>
-
 <header id="sri_header">
 <div class="wrap_header">
 <h1>
@@ -515,12 +538,11 @@ margin-right : 450px;
 </h1>
 <img src="static/css/Animation.gif" class="bi_art_logo" aria-label="내일이 더 즐거운 사람인" onclick="pushDataLayer('ga_lead','main-gnb','global_menu','ci')">
 <span class="blind">내일이 더 즐거운 사람인</span>
-
 <div class="navigation">
 <div class="navi_common">
 <ul class="navi_depth1">
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','recruit')" href="recuruitlist.do"><span>채용정보</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','company_info')" href="/zf_user/companylab"><span>기업정보</span></a></li>
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="Jobtalklist.do"><span>취업톡톡💬</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','status-list')" href="newslist.do"><span>TODAY NEWS📈</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','verification')" href="pdslist.do"><span>자료실</span></a></li>
 <li>
@@ -536,7 +558,9 @@ margin-right : 450px;
 <div class="navi_depth1 secondary">
 <span class="marker"><svg aria-hidden="true"><use xlink:href="#svg_gnb_more"></use></svg></span>
 <ul>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="Jobtalklist.do"><span>취업톡톡💬</span></a></li>
+<c:if test="${login.auth==1 || login.auth==3}">
+	<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="resumeMain.do?memberid=${login.memberid }"><span>이력서관리</span></a></li>
+</c:if>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="FAQ.do"><span>FAQ</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents2')" href="notice.do"><span>공지사항</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','jumpit')" href="https://www.jumpit.co.kr" target="_blank"><span class="icon icon_jumpit">점핏</span></a></li>
@@ -548,7 +572,6 @@ margin-right : 450px;
 <svg class="icon" aria-hidden="true"><use xlink:href="#svg_gnb_search"></use></svg>
 <span>궁금한 정보를 검색해보세요</span>
 </button>
-
 <!-- 누구누구님 안녕하세요 -->
 <ul class="navbar-nav">
  <li class="nav-item">
@@ -558,57 +581,49 @@ margin-right : 450px;
             			 <c:when test="${login.auth == 1}">
              				 <p><b>[개인🧑]${login.name }</b>님</p>
              	 		 </c:when>
-
              			<c:when test="${login.auth == 2}">
              				<p><b>[사원👨‍💼]${login.name }</b>님</p>
     		 			</c:when>
-
     					<c:otherwise>
-             				<p><b>[관리자👨‍✈️]]${login.name }</b>님</p>
+             				<p><b>[관리자👨‍✈️]${login.name }</b>님</p>
     					</c:otherwise>
     				</c:choose>
             	 </c:when>
          	</c:choose>
       </li>
  </ul>
-
 <!-- 로그인 로그아웃 란 -->
 <c:choose>
 	<c:when test="${empty login}">
 		<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="javascript:login()" class="btn_sign signin"><span class="txt">로그인🔑</span></a>
 	</c:when>
-<c:otherwise>
-
-<c:choose>
-   <c:when test="${login.auth==1 || login.auth==3}">
-      <a href="logout.do" class="btn_sign signin"><span class="txt">로그아웃</span></a>
-   </c:when>
-   <c:otherwise>
-      <a href="logout.do" class="btn_sign signin"><span class="txt">로그아웃</span></a>
-   </c:otherwise>
+	<c:otherwise>
+		<c:choose>
+		   <c:when test="${login.auth==1 || login.auth==3}">
+    		  <a href="logout.do" class="btn_sign signin"><span class="txt">로그아웃</span></a>
+   			</c:when>
+   			<c:otherwise>
+    		  <a href="logout.do" class="btn_sign signin"><span class="txt">로그아웃</span></a>
+   			</c:otherwise>
+		</c:choose>
+	</c:otherwise>
 </c:choose>
-</c:otherwise>
-</c:choose>
-
-
 <c:if test="${login.memberid == null }">
    <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="regiclick.do" class="btn_sign signup"><span class="txt">회원가입</span></a>
 </c:if>
-
 <c:if test="${login.auth == 1 || login.auth == 3 }">
    <a href="mypage.do?memberid=${login.memberid }" class="btn_sign signup"><span class="txt">마이페이지</span></a>
 </c:if>
-
+<c:if test="${login.auth == 3 }">
+<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="memberlist.do" class="btn_sign signup"><span class="txt">회원목록</span></a>
+</c:if>
 <c:if test="${login.auth == 2 }">
 <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="buspage.do?memberid=${login.memberid }" class="btn_sign signup"><span class="txt">기업마이페이지</span></a>
 </c:if>
-
-
-
-
-
-
-
+<c:if test="${login.auth == 3 }">
+<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="memberlist.do" class="btn_sign signup"><span class="txt">회원목록</span></a>
+<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="businesslist.do" class="btn_sign signup"><span class="txt">사원목록</span></a>
+</c:if>
 </div>
 </div>
 <div class="navi_total">
@@ -686,16 +701,9 @@ margin-right : 450px;
 </div>
 </div>
 </header>
-
 <div class="all">
-
-
  <!-- 메인 검색 창 -->
-
-
  <!-- 검색html -->
-
-
  <section style="padding: 0">
  <form id="search_form_recruit" onsubmit="event.preventDefault()" style="height: 400px; background-image: url('개발자23.gif'); margin-top: 0px;"">
     <div class="main_search" style="top: 160px;">
@@ -746,14 +754,10 @@ margin-right : 450px;
 			</form>
 		</section>
 		<!-- 메인검색창 끝 -->
-
-
-
-
 		<!-- =========Login 클릭 시 Modal =========== -->
       <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" class="modal modal-center fade ">
         <div role="document" class="modal-dialog" style="margin: 0;">
-          <div class="modal-content">
+          <div class="modal-content" style="width: 371.988636px;">
             <div class="modal-header">
               <h4 id="login-modalLabel" class="modal-title">1hara Login</h4>
               <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"></span>x</button>
@@ -762,26 +766,21 @@ margin-right : 450px;
             <!-- memberController - loginAf.do로 이동 -->
            <!--    <form action="loginAf.do" method="post" id="_frmFrom"> -->
              <!--     <input type="hidden" name="param" value="loginAf.do"> -->
-
-          <ul class="nav nav-pills" style="margin-left:140px;">
+          <ul class="nav nav-pills" style="margin-left: 100px;">
             <li class="nav-item"> <a href="" class="nav-link active show" data-toggle="pill" data-target="#tabone">개인회원</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">기업회원</a> </li>
-
           </ul>
           <div class="tab-content mt-2">
             <div class="tab-pane fade active show" id="tabone" role="tabpanel">
-
-
               <form id="login_frm" name="login_frm" method="post" action="loginAf.do">
                   <input type="hidden" name="page_url" value="">
                  <input type="hidden" name="FrameKey" value="">
                  <input type="hidden" name="login_tab" value="p" id="login_tab">
-
-                    <div class="form-group">
-                        <input id="memberid" type="text" placeholder="ID" name="memberid" class="form-control">
+                    <div class="form-group" >
+                        <input id="memberid" style="margin: 0 auto;" type="text" placeholder="ID" name="memberid" class="form-control">
                       </div>
-                      <div class="form-group">
-                        <input id="pwd" type="password" name="pwd" placeholder="password" class="form-control">
+                      <div class="form-group" >
+                        <input id="pwd"  style="margin: 0 auto;" type="password" name="pwd" placeholder="password" class="form-control">
                       </div>
                       <p class="text-center">
                         <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
@@ -792,49 +791,33 @@ margin-right : 450px;
               </a>
               <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
               <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
-
-
-
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
-
-
               <form id="login_frm" name="login_frm" method="post" action="businessloginAf.do">
                   <input type="hidden" name="page_url" value="">
                  <input type="hidden" name="FrameKey" value="">
                  <input type="hidden" name="login_tab" value="p" id="login_tab">
-
                     <div class="form-group">
-                        <input id="memberid" type="text" placeholder="ID" name="memberid" class="form-control">
+                        <input id="memberid" style="margin: 0 auto;" type="text" placeholder="ID" name="memberid" class="form-control">
                       </div>
                       <div class="form-group">
-                        <input id="pwd" type="password" name="pwd" placeholder="password" class="form-control">
+                       <input id="pwd"  style="margin: 0 auto;" type="password" name="pwd" placeholder="password" class="form-control">
                       </div>
                       <p class="text-center">
                         <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
                      </p>
               </form>
-
               <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
               <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
-
             </div>
-
           </div>
-
             </div>
           </div>
         </div>
       </div>
 <!-- =======Login 클릭 시 Modal END =========-->
-
-
-
-
-
 		<!-- 본문 -->
 		<main>
-
 			<div id="section_contents" class="cont_top">
 				<div class="inner">
 					<div class="lpop_wrap layer_upgrade" style="display: none;">
@@ -1610,13 +1593,12 @@ margin-right : 450px;
 						</div>
 					</div>
 					<div class="wrap_my_area">
-						<div class="top_login" style="display: block">
-							<input type="hidden" id="top_login_tab" name="top_login_tab"
-								value="p">
-
-
+						<div class="top_login" style="display: block;padding-left: 100px;">
+							<!-- <input type="hidden" id="top_login_tab" name="top_login_tab"
+								value="p"> -->
 							<ul>
-								<li><c:choose>
+								<li>
+									<c:choose>
 										<c:when test="${login.memberid ne null }">
 											<c:choose>
 												<c:when test="${login.auth == 1}">
@@ -1631,25 +1613,23 @@ margin-right : 450px;
 												</c:when>
 												<c:otherwise>
 													<p>
-														<b>[관리자👨‍✈️]]${login.name }</b>님 안녕하세요.
+														<b>[관리자👨‍✈️]${login.name }</b>님 안녕하세요.
 													</p>
 												</c:otherwise>
 											</c:choose>
 										</c:when>
-									</c:choose></li>
+									</c:choose>
+								</li>
 							</ul>
-
 							<!--  -->
-
 							<c:choose>
 								<c:when test="${empty login}">
-									<ul class="area_login">
-										<li class="on"><button type="button"
-												id="login_tab_person_login" class="track_event"
-												onclick="loginpage()"
-												data-track_event="login|pc_main_per|tab_per">
-												<strong>로그인 ✔</strong>
-											</button></li>
+									<ul class="area_login" style="display: contents;">
+										<li class="on" style="width: 160.994318px;">
+											<button type="button"id="login_tab_person_login" class="track_event"onclick="loginpage()" data-track_event="login|pc_main_per|tab_per">
+												<strong style="padding-right: 20px;">로그인 ✔</strong>
+											</button>
+										</li>
 									</ul>
 								</c:when>
 								<c:otherwise>
@@ -1667,25 +1647,21 @@ margin-right : 450px;
 										</c:when>
 										<c:otherwise>
 											<ul class="area_login">
-												<li class="on"><button type="button"
+												<li class="on">
+													<button type="button"
 														id="login_tab_business" class="track_event"
 														data-track_event="login|pc_main_per|tab_per">
 														<strong>로그아웃</strong>
-													</button></li>
+													</button>
+												</li>
 											</ul>
 										</c:otherwise>
 									</c:choose>
 								</c:otherwise>
 							</c:choose>
-
-
 							<c:if test="${login.memberid == null }">
-								<a href="searchidpwd.do" class="link_id_password track_event"
-									data-track_event="login|pc_main_per|find|">아이디/비번찾기</a>
-
-								<a href="regiclick.do" onclick="return false;"
-									class="link_join track_event"
-									data-track_event="login|pc_main_per|join|">회원가입</a>
+								<a href="searchidpwd.do" class="link_id_password track_event" data-track_event="login|pc_main_per|find|">아이디/비번찾기</a>
+								<a href="regiclick.do" class="link_join track_event" data-track_event="login|pc_main_per|join|">회원가입</a>
 							</c:if>
 						</div>
 						<div class="area_recom recruit_card" style="display: block">
@@ -1787,36 +1763,29 @@ margin-right : 450px;
 												id="login_layer_tab_person" onclick="loginpage()"
 												class="track_event"
 												data-track_event="login|pc_main_per|tab_per">로그인</button></li>
-
 									</ul>
 									<div class="area_login">
 										<div class="sns_login" id="wrap_sns_login">
-											<a
-												href="/zf_user/auth/sign-in-with?provider=naver.com&amp;display=popup&amp;url=%2Fzf_user%2F"
-												onclick="return false;"
-												class="link_sns link_naver track_event tag_manager"
-												data-track_event="login|pc_main_per|social_login|naver"><span
-												class="blind">네이버 아이디 로그인</span></a> <a
-												href="/zf_user/auth/sign-in-with?provider=kakao.com&amp;display=popup&amp;url=%2Fzf_user%2F"
-												onclick="return false;"
-												class="link_sns link_kakaotalk track_event tag_manager"
-												data-track_event="login|pc_main_per|social_login|kakao"><span
-												class="blind">카카오톡 아이디 로그인</span></a> <a
-												href="/zf_user/auth/sign-in-with?provider=facebook.com&amp;display=popup&amp;url=%2Fzf_user%2F"
-												onclick="return false;"
-												class="link_sns link_facebook track_event tag_manager"
-												data-track_event="login|pc_main_per|social_login|facebook"><span
-												class="blind">페이스북 아이디 로그인</span></a> <a
-												href="/zf_user/auth/sign-in-with?provider=google.com&amp;display=popup&amp;url=%2Fzf_user%2F"
-												onclick="return false;"
-												class="link_sns link_google track_event tag_manager"
-												data-track_event="login|pc_main_per|social_login|google"><span
-												class="blind">구글 아이디 로그인</span></a> <a
-												href="/zf_user/auth/sign-in-with?provider=apple.com&amp;display=popup&amp;&amp;url=%2Fzf_user%2F"
-												onclick="return false;"
-												class="link_sns link_apple track_event tag_manager"
-												data-track_event="login|pc_main_per|social_login|apple"><span
-												class="blind">애플로그인</span></a>
+											<a href="/zf_user/auth/sign-in-with?provider=naver.com&amp;display=popup&amp;url=%2Fzf_user%2F" onclick="return false;" class="link_sns link_naver track_event tag_manager"
+												data-track_event="login|pc_main_per|social_login|naver">
+												<span class="blind">네이버 아이디 로그인</span>
+											</a>
+											<a href="/zf_user/auth/sign-in-with?provider=kakao.com&amp;display=popup&amp;url=%2Fzf_user%2F" onclick="return false;" class="link_sns link_kakaotalk track_event tag_manager"
+												data-track_event="login|pc_main_per|social_login|kakao">
+												<span class="blind">카카오톡 아이디 로그인</span>
+											</a>
+											<a href="/zf_user/auth/sign-in-with?provider=facebook.com&amp;display=popup&amp;url=%2Fzf_user%2F" onclick="return false;" class="link_sns link_facebook track_event tag_manager"
+												data-track_event="login|pc_main_per|social_login|facebook">
+												<span class="blind">페이스북 아이디 로그인</span>
+											</a>
+											<a href="/zf_user/auth/sign-in-with?provider=google.com&amp;display=popup&amp;url=%2Fzf_user%2F" onclick="return false;" class="link_sns link_google track_event tag_manager"
+												data-track_event="login|pc_main_per|social_login|google">
+												<span class="blind">구글 아이디 로그인</span>
+											</a>
+											<a href="/zf_user/auth/sign-in-with?provider=apple.com&amp;display=popup&amp;&amp;url=%2Fzf_user%2F" onclick="return false;" class="link_sns link_apple track_event tag_manager"
+												data-track_event="login|pc_main_per|social_login|apple">
+												<span class="blind">애플로그인</span>
+											</a>
 										</div>
 										<div class="login_input person" style="display: block;">
 											<strong class="blind">개인회원 로그인</strong> <span
@@ -2183,8 +2152,6 @@ margin-right : 450px;
 					</div>
 				</div>
 			</div>
-
-
 <div id="section_contents" class="cont_top">
     <div class="inner">
         <div class="lpop_wrap layer_upgrade" style="display: none;">
@@ -2200,93 +2167,68 @@ margin-right : 450px;
         </div>
         <div class="wrap_recomm loading" style="display : block">
             <div class="wrap_bigbox person" style="
-    width: 400px;
-">
-
-
-
+    width: 400px;">
             <div id="jquery-accordion-menu" class="jquery-accordion-menu">
-
 					<ul>
 						<li class="active"><a href="#" style="font-size: 12pt;"><i class="fa fa-home"></i>NAVER</a><span class="jquery-accordion-menu-label">1 </span><li><a href="#" style="font-size: 12pt;"><i class="fa fa-glass"></i>KAKAO</a><span class="jquery-accordion-menu-label">2 </span></li></li>
 						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-glass"></i>KAKAO</a><span class="jquery-accordion-menu-label">2 </span></li>
 						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-file-image-o"></i>LINE </a><span class="jquery-accordion-menu-label">3 </span></li>
 						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-cog"></i>COUPANG </a><span class="jquery-accordion-menu-label">4 </span></li>
 						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-cog"></i>배달의 민족 </a><span class="jquery-accordion-menu-label">5 </span></li>
-
-
-
-
-
 					</ul>
-
-				</div></div>
+				</div>
+			</div>
             <div class="recomm_content" style="
     padding-top: 0px;
     padding-left: 0px;
-    width: 400px;
-">
-
+    width: 400px;">
             <div id="carouselSample" class="carousel slide" data-ride="carousel">
-
 			    <!-- indicator(이동할 수 있는 바) -->
 			    <ol class="carousel-indicators">
 			        <li data-target="#carouselSample" data-slide-to="0" class="">
 			        </li><li data-target="#carouselSample" data-slide-to="1" class="">
 			        </li></ol>
-
 			    <div class="carousel-inner">
 			        <!-- first slide -->
 			        <div class="carousel-item">
 			            <img alt="first" class="d-block w-100" src="/sample10/image/bm.png" height="300px" width="200px">
-
 			            <!-- caption -->
 			            <div class="carousel-caption d-none d-md-block">
-
 			            </div>
 			        </div>
-
 			        <!-- second slide -->
 			        <div class="carousel-item active">
 			            <img alt="second" class="d-block w-100" src="/sample10/image/dg.png" height="300px" width="200px">
-
 			            <!-- caption -->
 			            <div class="carousel-caption d-none d-md-block">
-
 			            </div>
 			        </div>
-
 			        <!-- third slide -->
 			        <div class="carousel-item active">
-
-
 			            <!-- caption -->
 			            <div class="carousel-caption d-none d-md-block">
-
 			            </div>
 			        </div>
-
 			        <!-- controller 부분 -->
 			        <a class="carousel-control-prev" href="#carouselSample" role="button" data-slide="prev">
 			            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 			            <span class="sr-only">앞으로</span>
-			          </a>
-
+			        </a>
 			        <a class="carousel-control-next" href="#carouselSample" role="button" data-slide="next">
 			            <span class="carousel-control-next-icon" aria-hidden="true"></span>
 			            <span class="sr-only">다음으로</span>
-			          </a>
-
+			        </a>
 			    </div>
-			</div></div>
-        </div>
-        <div class="wrap_recomm company" style="display : none">
-            <div class="wrap_bigbox company">
-                <div class="bigbox company" style="width: 1595px; transform: translateX(-957px); transition: all 300ms ease 0s;">
-                    <div class="slide type_hr">
-                        <img src="https://www.saraminbanner.co.kr/new/main/2020/08/qevl7q_6psk-1meg1l1_banner3.png">
-                        <a href="http://www.saramin.co.kr/zf_user/memcom/preview/guide?page_type=verify&amp;inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=top_box_type_banner_company&amp;inner_term=preview" class="go_link" target=""></a>
-                    </div>
+			</div>
+		</div>
+      </div>
+      <div class="wrap_recomm company" style="display : none">
+          <div class="wrap_bigbox company">
+              <div class="bigbox company" style="width: 1595px; transform: translateX(-957px); transition: all 300ms ease 0s;">
+                  <div class="slide type_hr">
+                      <img src="https://www.saraminbanner.co.kr/new/main/2020/08/qevl7q_6psk-1meg1l1_banner3.png">
+                      <a href="http://www.saramin.co.kr/zf_user/memcom/preview/guide?page_type=verify&amp;inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=top_box_type_banner_company&amp;inner_term=preview" class="go_link" target=""></a>
+                  </div>
                     <div class="slide type_rec_write">
                         <svg xmlns="http://www.w3.org/2000/svg" width="44" height="45" viewBox="0 0 44 45" class="ic_write">
                             <g fill="none" fill-rule="evenodd" opacity=".7">
@@ -2432,15 +2374,8 @@ margin-right : 450px;
                 </div>
             </div>
         </div>
-        <div class="wrap_my_area" style="
-    width: 401px;
-">
-
-
-
-
-
-        <div class="row" style="width: 450px;">
+        <div class="wrap_my_area" style="width: 401px;">
+	        <div class="row" style="width: 450px;">
 		        <div>
 		            <div class="panel panel-primary">
 		                <div class="panel-heading" style="width: 400px;">
@@ -2448,18 +2383,20 @@ margin-right : 450px;
 		                        <span class="glyphicon glyphicon-bookmark"></span> Quick Shortcuts</h3>
 		                </div>
 		                <div class="panel-body">
-		                    <div class="row" style="
-    width: 400px;
-">
+		                    <div class="row" style="width: 400px;">
 		                        <div>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br>10대기업</a>
-		                          <a href="calendarlist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
+		                          <a href="calendarlist1.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
 		                        </div>
 		                        <div>
 		                         <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡💬</a>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br>자료실</a>
-		                          <a href="mypage.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>마이페이지</a>
+		                          <c:if test="${login.auth==1 || login.auth==3 }">
+		                          	<a href="mypage.do?memberid=${login.memberid }" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>마이페이지</a>
+		                          </c:if>
+		                          <c:if test="${login.auth==2}">
+		                          	<a href="buspage.do?memberid=${login.memberid }" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>마이페이지</a>
+		                          </c:if>
 		                        </div>
 		                        <div>
 		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>이력서관리</a>
@@ -2470,50 +2407,9 @@ margin-right : 450px;
 		                </div>
 		            </div>
 		        </div>
-		    </div></div>
-
-
+		    </div>
+		 </div>
     </div>
-<div id="section_contents" class="cont_top">
-    <div class="inner">
-        <div class="lpop_wrap layer_upgrade" style="display: none;">
-            <div class="layer_head"><strong class="blind">브라우저 지원범위 안내</strong></div>
-            <div class="layer_cont">
-                <a class="desc_upgrade" target="_blank" title="업그레이드 새창알림">
-                    원활한 서비스 이용을 위해<br>
-                    <strong>최신 익스플로러 브라우저</strong>로<br>
-                    <strong>업그레이드</strong> 해주세요
-                </a>
-            </div>
-            <button type="button" class="btn_close"><span class="blind">닫기</span></button>
-        </div>
-        <div class="wrap_recomm loading" style="display : block">
-            <div class="wrap_bigbox person" style="
-    width: 400px;
-">
-
-
-
-<button class="close" style="position: absolute;
-top: 0;
-right: 0;
-background-color: white;
-border: 0;
-padding: 22px;
-z-index: 10;"><span class="bar"></span></button>
-<div class="outside">
-  <div class="inside">
-    <ul class="menu">
-      <li><span class="fa fa-dashboard"></span>일하라 소개</li>
-      <li><span class="fa fa-shopping-basket"></span>이용약관</li>
-      <li><span class="fa fa-shopping-cart"></span>개인정보처리방침</li>
-      <li><span class="fa fa-info-circle"></span>이메일주소무단수집거부</li>
-      <li><span class="fa fa-credit-card"></span>웹접근성정책</li>
-      <li><span class="fa fa-leaf"></span>배너가져가기</li>
-    </ul>
-  </div>
-</div>
-
 <script type="text/javascript">
 	$(".close").click(function(){
 	 	 $('.outside').toggleClass('in');
@@ -2521,30 +2417,158 @@ z-index: 10;"><span class="bar"></span></button>
 	 	 $(this).toggleClass('is-showing');
 	});
 </script>
+		</div>
+		
+							<div style="text-align: center;"><h2>VIP 채용관</h2></div>
+						
+		
+		
+		<!-- Jobs -->
+							<section class="tiles" style="margin-left: 300px;margin-right: 300px;">
+								<article class="style2">
+									<span class="image">
+										<img src="image/naver2.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
 
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="image/Kakao.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
 
-							</div>
-							<div class="recomm_content"
-								style="padding-top: 0px; padding-left: 0px; width: 400px;">
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="image/line.jpg" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
 
-							</div>
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+
+								<article class="style6">
+									<span class="image">
+										<img src="image/coupang.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
+
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+
+								<article class="style5">
+									<span class="image">
+										<img src="image/baemin.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
+
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+
+								<article class="style6">
+									<span class="image">
+										<img src="image/danggeun.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
+
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+							</section>
 						</div>
-						<div class="wrap_recomm company" style="display: none">
-							<div class="wrap_bigbox company">
-								<div class="bigbox company"
-									style="width: 1595px; transform: translateX(-957px); transition: all 300ms ease 0s;">
-									<div class="slide type_hr">
-										<img
-											src="https://www.saraminbanner.co.kr/new/main/2020/08/qevl7q_6psk-1meg1l1_banner3.png">
-										<a
-											href="http://www.saramin.co.kr/zf_user/memcom/preview/guide?page_type=verify&amp;inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=top_box_type_banner_company&amp;inner_term=preview"
-											class="go_link" target=""></a>
-									</div>
-									<div class="slide type_rec_write">
-										<svg xmlns="http://www.w3.org/2000/svg" width="44" height="45"
-											viewBox="0 0 44 45" class="ic_write">
-                            <g fill="none" fill-rule="evenodd"
-												opacity=".7">
+					</div>
+
+				
+
+			</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+	<!-- <div class="slide type_rec_write">
+					<svg xmlns="http://www.w3.org/2000/svg" width="44" height="45" viewBox="0 0 44 45" class="ic_write">
+                            <g fill="none" fill-rule="evenodd" opacity=".7">
                                 <path fill="#FFF" fill-rule="nonzero"
 												d="M16 5v2H2v35h35V26h2v18H0V5h16z"
 												transform="translate(0 1)"></path>
@@ -2554,204 +2578,18 @@ z-index: 10;"><span class="bar"></span></button>
 												transform="translate(0 1)"></path>
                             </g>
                         </svg>
-										<p class="desc1">
-											구직자의 입사지원은 물론,<br>맞춤형 인재추천까지!
-										</p>
-										<p class="desc2">
-											지금!<br>채용공고를 등록하세요!
-										</p>
-										<button type="button" class="btn_link"
-											onclick="document.location.href='/zf_user/recruit-manage';"
-											onmousedown="">채용공고 등록하기</button>
-									</div>
-									<div class="slide type_hr">
-										<img
-											src="https://www.saraminbanner.co.kr/new/main/2020/09/qhel6d_eyqc-2so1qt_032.png">
-										<a
-											href="http://www.saramin.co.kr/zf_user/memcom/talent-pool/main/recommend?inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=top_box_type_banner_company&amp;inner_term=new_talent-pool"
-											class="go_link" target="_blank"></a>
-									</div>
-									<div class="slide type_hr slide_active">
-										<img
-											src="https://www.saraminbanner.co.kr/new/main/2020/08/qevl7q_6psk-1meg1l1_banner3.png">
-										<a
-											href="http://www.saramin.co.kr/zf_user/memcom/preview/guide?page_type=verify&amp;inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=top_box_type_banner_company&amp;inner_term=preview"
-											class="go_link" target=""></a>
-									</div>
-									<div class="slide type_rec_write">
-										<svg xmlns="http://www.w3.org/2000/svg" width="44" height="45"
-											viewBox="0 0 44 45" class="ic_write">
-                            <g fill="none" fill-rule="evenodd"
-												opacity=".7">
-                                <path fill="#FFF" fill-rule="nonzero"
-												d="M16 5v2H2v35h35V26h2v18H0V5h16z"
-												transform="translate(0 1)"></path>
-                                <path stroke="#FFF"
-												stroke-linecap="round" stroke-width="2"
-												d="M38.828 1.828l2.344 2.344c1.562 1.562 1.562 4.094 0 5.656L18 33h-8v-8L33.172 1.828c1.562-1.562 4.094-1.562 5.656 0zM30 5l8 8"
-												transform="translate(0 1)"></path>
-                            </g>
-                        </svg>
-										<p class="desc1">
-											구직자의 입사지원은 물론,<br>맞춤형 인재추천까지!
-										</p>
-										<p class="desc2">
-											지금!<br>채용공고를 등록하세요!
-										</p>
-										<button type="button" class="btn_link"
-											onclick="document.location.href='/zf_user/recruit-manage';"
-											onmousedown="">채용공고 등록하기</button>
-									</div>
-								</div>
-								<div class="wrap_slide_btns company" style="display: block">
-									<div class="pager company">
-										<button type="button" class="pager_item" data-index="0">1</button>
-										<button type="button" class="pager_item" data-index="1">1</button>
-										<button type="button" class="pager_item active" data-index="2">1</button>
-									</div>
-									<div class="controll_auto play">
-										<button type="button" class="btn_play">
-											<svg width="6px" height="8px" viewBox="0 0 6 8" version="1.1"
-												xmlns="http://www.w3.org/2000/svg"
-												xmlns:xlink="http://www.w3.org/1999/xlink" class="btn">
-                                <title>슬라이드 시작 버튼</title>
-                                <g stroke="none" stroke-width="1"
-													fill="none" fill-rule="evenodd">
-                                    <g
-													transform="translate(-615.000000, -535.000000)"
-													fill="#FFFFFF">
-                                        <g
-													transform="translate(330.000000, 192.000000)">
-                                            <g
-													transform="translate(229.000000, 343.000000)">
-                                                <g
-													transform="translate(56.000000, 0.000000)">
-                                                    <polygon
-													points="0 5.69266856e-14 0 8 6 4"></polygon>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
-										</button>
-										<button type="button" class="btn_pause">
-											<svg width="6px" height="6px" viewBox="0 0 6 6" version="1.1"
-												xmlns="http://www.w3.org/2000/svg"
-												xmlns:xlink="http://www.w3.org/1999/xlink" class="btn">
-                                <title>슬라이드 정지 버튼</title>
-                                <g stroke="none" stroke-width="1"
-													fill="none" fill-rule="evenodd">
-                                    <g
-													transform="translate(-615.000000, -536.000000)"
-													fill="#FFFFFF" fill-rule="nonzero">
-                                        <g
-													transform="translate(330.000000, 192.000000)">
-                                            <g
-													transform="translate(229.000000, 344.000000)">
-                                                <g
-													transform="translate(56.000000, 0.000000)">
-                                                    <rect x="0" y="0"
-													width="1.5" height="6"></rect>
-                                                    <rect x="4.5" y="0"
-													width="1.5" height="6"></rect>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="recomm_content">
-                <div class="wrap_box_news company">
-                    <div class="box_news company">
-                        <div class="slide type2">
-                            <div class="item">
-                                <strong class="title">HR매거진</strong>
-                                <p class="desc">논란을 줄이는 회사 문화 구축 방법</p>
-                                <p class="desc2">바로가기</p>
-                                <span class="wrap_thumb">
-                                    <img src="//www.saraminimage.co.kr/sri/main/thumb/hr_1_l.jpg" alt="HR매거진 이미지" class="thumb">
-                                </span>
-                                <a href="/zf_user/hr-magazine/view?hr_idx=810&amp;magazine_join_type=subject" class="link" onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'hr-magazine', ''], ['ga_lead', 'main', 'CONTENTS', 'hr-magazine'])"></a>
-                            </div>
-                            <div class="item">
-                                <strong class="title">인재POOL</strong>
-                                <p class="desc">딱 맞는 인재추천부터 입사제의를 제한없이 편리하게 이용해보세요.</p>
-                                <p class="desc2">빠르게 인재구하기</p>
-                                <span class="wrap_thumb">
-                                    <img src="//www.saraminimage.co.kr/sri/main/thumb/rec_pool_1_l.jpg" alt="인재POOL 이미지" class="thumb">
-                                </span>
-                                <a href="/zf_user/memcom/talent-pool/main#/recommend" class="link" onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'talent-manage', ''], ['ga_lead', 'main', 'CONTENTS', 'talent-manage'])"></a>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
-        <div class="wrap_my_area" style="
-    width: 401px;
-">
-
-
-
-
-
-        <div class="row" style="width: 450px;">
-		        <div>
-		            <div class="panel panel-primary">
-		                <div class="panel-heading" style="width: 400px;">
-		                    <h3 class="panel-title">
-		                        <span class="glyphicon glyphicon-bookmark"></span> Quick Shortcuts</h3>
-		                </div>
-		                <div class="panel-body">
-		                    <div class="row" style="
-    width: 400px;
-">
-		                        <div>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br>10대기업</a>
-		                          <a href="calendarlist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br>TOP10</a>
-		                        </div>
-		                        <div>
-		                         <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡💬</a>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br>자료실</a>
-		                          <a href="mypage.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>마이페이지</a>
-		                        </div>
-		                        <div>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>이력서관리</a>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br>취업뉴스</a>
-		                          <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br>공지사항</a>
-		                        </div>
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-		    </div></div>
-
-
     </div>
-</div></div>
-
-
-		        </main></div>
-
-
-
-
+</div>
+</div>
+</main>
+</div>
 	<!-- column2 end -->
-
-
 	<br class="clear">
-
-
-
-
 	<!-- FOOTER -->
-
 	<div id="footer" style="margin-top:100px;">
 		<div class="top-area">
 			<div class="inner-wrap">
@@ -2761,13 +2599,7 @@ z-index: 10;"><span class="bar"></span></button>
 					<a href="#2" class="bg-logo-hrd"
 						onclick="fn_moelToken('http://www.hrd.go.kr');">직업훈련포털 HRD-Net</a>
 				</div>
-
-
 				<div class="right">
-					<div class="visit">
-						일평균 방문자수 <em>144,970</em>명
-					</div>
-
 					<div class="link-select">
 						<button type="button" class="btn-link-open">패밀리 및 유관기관
 							사이트</button>
@@ -2775,8 +2607,6 @@ z-index: 10;"><span class="bar"></span></button>
 				</div>
 			</div>
 		</div>
-
-
 		<div class="familySite-area" style="display: block;">
 			<ul>
 				<li><strong>패밀리사이트</strong> <a
@@ -2831,10 +2661,7 @@ z-index: 10;"><span class="bar"></span></button>
 				</li>
 			</ul>
 		</div>
-
-
 		<!-- 푸터미들 -->
-
 		<div class="middle-area">
 			<div class="inner-wrap">
 				<div class="link-footer">
@@ -2845,7 +2672,6 @@ z-index: 10;"><span class="bar"></span></button>
 				</div>
 			</div>
 		</div>
-
 		<div class="bottom-area">
 			<div class="inner-wrap">
 				<div class="link-logo">
@@ -2854,7 +2680,6 @@ z-index: 10;"><span class="bar"></span></button>
 						href="http://www.keis.or.kr/" class="bg-logo-keis" target="_blank"
 						title="새창 열림">한국고용정보원</a>
 				</div>
-
 				<div class="info">
 					<address class="address">서울특별시 마포구 신수동 63-14 비트캠프 신촌센터</address>
 					<p class="copy">
@@ -2874,13 +2699,10 @@ z-index: 10;"><span class="bar"></span></button>
 						title="새창" target="_blank" style="margin-top: -3px"><img
 						src="./static/images/brn-wa-2019.png"
 						alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)"></a>
-
 				</div>
 			</div>
 		</div>
 	</div>
-
-
 	<!-- ==============FOOTER================= -->
 	<script type="text/javascript" defer="defer">
 //<![CDATA[
@@ -2895,29 +2717,18 @@ z-index: 10;"><span class="bar"></span></button>
     });
 //]]>
 </script>
-
-
 	<script type="text/javascript">
-
 /* $("#_btnRegi").click(function () {
 	location.href = "regiclick.do";
 }); */
 function login() {
-
 	alert('c');
-
 	$("#login-modal").modal();
 	$("#login-modal").removeClass("modal fade");
 	$("#login-modal").addClass("modal");
-
-
-
-
 }
-
 /* 네비게이션고정 */
 var nav = document.getElementsByClassName("navigation");
-
 window.onscroll = function sticky() {
   if(window.pageYOffset > nav[0].offsetTop) {
     nav[0].classList.add("nav");
@@ -2925,9 +2736,7 @@ window.onscroll = function sticky() {
     nav[0].classList.remove("nav");
   }
 }
-
 </script>
-
 	!-- Channel Plugin Scripts --&gt;
 	<script>
   (function() {
@@ -2968,11 +2777,9 @@ window.onscroll = function sticky() {
   ChannelIO('boot', {
     "pluginKey": "9ec9cb05-626c-49ad-9fcf-67ccef29c08f"
   });
-
   function f_logout() {
 	  location.href = "logout.do";
   }
-
 	  //<!--
     jQuery(function() {
     var $ = jQuery;
@@ -2996,48 +2803,32 @@ window.onscroll = function sticky() {
                 $('#login_frm').attr('action', 'businessloginAf.do');
            }
         })
-
 });
 //-->
-
-
 //<!--
-
 var $j = jQuery.noConflict();
-
 function checkLoginValue() {
 $j('#memberid, #pwd').each(function (index, el) {
 $j(el).siblings('label').hide();
-
 if($j(el).val() == '') {
 $j(el).siblings('label').show();
 }
-
 if ($j(el).css('background-color') == 'rgb(250, 255, 189)') {
 $j('#id-label, #password-label').hide();
 }
 });
 }
-
-
 $j(document).ready(function () {
-
-
-
 window.setTimeout(function () {
 checkLoginValue();
-
 $j('#memberid').focus();
-
 if ('' != $j('#memberid').val()) {
 $j('#pwd').focus();
 }
 }, 100);
-
 $j('#memberid, #pwd').on('focus blur keyup change', function () {
 checkLoginValue();
 });
-
 $j('#label_type').on('click',function () {
 $j('#label_type').toggleClass('on');
 });
@@ -3045,7 +2836,6 @@ $j('span.frm_checkbox > input[type=checkbox]').on('change', function() {
 var chkbox =$j(this);
 chkbox.closest('span.frm_checkbox').toggleClass('checked');
 })
-
 var security_btn =  $j('#security_btn'),
 ssl_login = $j('#ssl_login');
 security_btn.on('click', function () {
@@ -3061,7 +2851,6 @@ security_btn.removeClass('off');
 }
 });
 $j('#security_btn').off('dblclick');
-
 $j('.tab_member_type')
 .on('click', '.t_per', function () {
 saraminEffect('person');
@@ -3069,16 +2858,13 @@ saraminEffect('person');
 .on('click', '.t_com', function () {
 saraminEffect('compnay');
 });
-
 $j('#wrap_social_login').on('click', 'a', function (e) {
 e.preventDefault();
 e.stopPropagation();
-
 var link =  $j(e.currentTarget).attr('href'),
 loginType = $j('.t_com').hasClass('t_on') === true ? 'c' : 'p' ,
 provider = $j(e.currentTarget).data('provider'),
 label = loginType === 'c' ? 'com_login_'+provider :  'per_login_'+provider;
-
 var isIe10Check = false;
 if((navigator.userAgent.toLowerCase().indexOf("msie") !== -1) && provider === 'apple'){
 if(confirm('IE10이하 버전의 인터넷 익스플로러에서는 Apple 로그인이 정상 작동하지 않을 수 있습니다.\n' +
@@ -3089,17 +2875,14 @@ window.open(link+'&login_type='+loginType, '_blank', 'width=480,height=640');
 }
 return;
 }
-
 loggingEventAndTagManager(['login','pc_login_page',label,''],['ga_lead','login','pc_login_page',label]);
 window.open(link+'&login_type='+loginType, '_blank', (!$j(this).hasClass('sl_phone') ? 'width=480,height=640' : ''));
 });
-
 if ($j('.t_com').hasClass('t_on') === true) {
 saraminEffect('compnay');
 } else {
 saraminEffect('person');
 }
-
 function saraminEffect(memberType) {
 if (memberType === 'compnay') {
 $j('.wrap_member_info').show();
@@ -3108,10 +2891,8 @@ $j('.wrap_member_info').hide();
 }
 }
 });
-
   </script>
 	<!-- End Channel Plugin -->
-
 	<!-- 카카오 스크립트 -->
 	<script type="text/javascript">
   function kakaoLogout() {
@@ -3124,14 +2905,10 @@ $j('.wrap_member_info').hide();
     })
   }
 </script>
-
 <script>
 <!-- d59485d594506fb0185f34b5e6b7b114 -->
-
 <!-- 자바스크립트 key를 입력하여 초기화해줌 -->
 Kakao.init('685fcbb766340d7c8812f4e0a29a6661');
-
-
 function kakaoLogin() {
 	//alert('카카오로그인실행');
     Kakao.Auth.login({
@@ -3139,7 +2916,6 @@ function kakaoLogin() {
       success: function(authObj) {
          //alert('success');
          console.log(authObj);
-
          Kakao.API.request({
             url: '/v2/user/me',
             success: res => {
@@ -3148,7 +2924,6 @@ function kakaoLogin() {
                let name = kakao_account.profile.nickname;
                let birth = kakao_account.birthday;
                let email = kakao_account.email
-
                $.ajax({
            		type:"post",
            		url:"kakalogAf.do",
@@ -3168,24 +2943,13 @@ function kakaoLogin() {
       }
    });
 }
-
-
 function loginpage() {
 	location.href="login1.do";
-
 }
-
 function logout() {
 	location.href="logout.do";
 }
-
-
 </script>
-
-
-
-
-
 	<div id="ch-plugin">
 		<div id="ch-plugin-core">
 			<style data-styled="active" data-styled-version="5.1.1"></style>

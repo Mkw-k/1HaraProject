@@ -1,3 +1,4 @@
+<%@page import="bit.com.a.dto.Resume_Portfolio"%>
 <%@page import="bit.com.a.dto.MemberDto"%>
 <%@page import="bit.com.a.dto.ResumeDto"%>
 <%@page import="java.util.List"%>
@@ -12,8 +13,14 @@ RecruitDto recuDto = (RecruitDto)request.getAttribute("dto");
 %>
 
 <%
-List<ResumeDto> resumelist =(List<ResumeDto>) request.getAttribute("resumelist");
+List<ResumeDto> resumelist = null;
+if(request.getAttribute("resumelist") != null){
+	resumelist =(List<ResumeDto>) request.getAttribute("resumelist");
+}
 System.out.println("resumelist" +resumelist);
+
+List<Resume_Portfolio> portlist =(List<Resume_Portfolio>) request.getAttribute("portlist");
+System.out.println("portlist****************************************" +portlist);
 %>
 
 <%-- <%
@@ -60,8 +67,6 @@ if(logincheck != null) {
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 
- <!-- 전체 공통 스크립트 임포트 -->
-  <c:import url="script.jsp" charEncoding="utf-8"/>
 
   <!-- <link rel="stylesheet" href="static/csss/bootstrap.css" media="all"> -->
 
@@ -72,16 +77,16 @@ if(logincheck != null) {
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=685fcbb766340d7c8812f4e0a29a6661&libraries=services"></script>
 	<link href="csss/gnb.css" rel="stylesheet" type="text/css">
 	<link href="csss/view.css" rel="stylesheet" type="text/css">
+	
+	
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+ <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> 
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	 -->
+	
+	
 
-  <!-- 입사지원 모달 -->
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<!-- 테이블 -->
-<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
-
+ <!-- 전체 공통 스크립트 임포트 -->
+  <c:import url="script.jsp" charEncoding="utf-8"/>
 <style type="text/css">
 .star-on {
   color: gray;
@@ -127,7 +132,7 @@ font-weight: bold;
 
 
 .titles{
-margin-left: 370px;
+
 font-weight: bold;
 
 }
@@ -138,8 +143,200 @@ font-weight: bold;
     border-color: #eee;
 }
 
+
+.applybtn{
+width: max-content;
+
 .JobSumData{
 	font-weight: bold;
+
+}
+
+
+
+
+ 
+/* 네비바 */
+.createRecruitBtn{
+	cursor: pointer;
+}
+/* .wrapper{
+width:200px;
+padding:20px;
+height: 150px;
+} */
+#nav-main{
+	height: 100 px;
+}
+nav.top-nav-collapse {
+   transition: all 300ms ease-in-out;
+   background-color: #036cde !important;
+   color: white !important;
+}
+white{
+	color: white !important;
+}
+
+.navbar-nav {
+   background-color: rgba( 255, 255, 255, 0 );
+  }
+  
+
+/* carousel */
+.blog_section {
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+}
+.blog_section .blog_content .blog_item {
+  margin-bottom: 30px;
+  box-shadow: 0 0 11px 0 rgba(6, 22, 58, 0.14);
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.blog_section .blog_content .blog_item:hover .blog_image img {
+  transform: scale(1.1);
+}
+.blog_section .blog_content .blog_item .blog_image {
+  overflow: hidden;
+  padding: 0;
+}
+.blog_section .blog_content .blog_item .blog_image img {
+
+  transition: transform 0.5s ease-in-out;
+  height: 300px!important;
+}
+.blog_section .blog_content .blog_item .blog_image span i {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+  font-size: 18px;
+  width: 38px;
+  height: 45px;
+  padding-top: 7px;
+  text-align: center;
+  right: 20px;
+  top: 0;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 79%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 79%, 0 100%);
+  background-color: #ff5e14;
+}
+.blog_section .blog_content .blog_item .blog_details {
+  padding: 25px 20px 30px 20px;
+}
+.blog_section .blog_content .blog_item .blog_details .blog_title h5 a {
+  color: #020d26;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 25px;
+  line-height: 32px;
+  font-weight: 400;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.blog_section .blog_content .blog_item .blog_details .blog_title h5 a:hover {
+  color: #ff5e14;
+}
+.blog_section .blog_content .blog_item .blog_details ul {
+  padding: 0 3px 10px 0;
+  margin: 0;
+}
+.blog_section .blog_content .blog_item .blog_details ul li {
+  display: inline-block;
+  padding-right: 15px;
+  position: relative;
+  color: #7f7f7f;
+}
+.blog_section .blog_content .blog_item .blog_details ul li i {
+  padding-right: 7px;
+}
+.blog_section .blog_content .blog_item .blog_details p {
+  border-top: 1px solid #e5e5e5;
+  margin-top: 4px;
+  padding: 20px 0 4px;
+}
+.blog_section .blog_content .blog_item .blog_details a {
+  font-size: 16px;
+  display: inline-block;
+  color: #ff5e14;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.blog_section .blog_content .blog_item .blog_details a:hover {
+  color: #020d26;
+}
+.blog_section .blog_content .blog_item .blog_details a i {
+  vertical-align: middle;
+  font-size: 20px;
+}
+.blog_section .blog_content .owl-nav {
+  display: block;
+}
+.blog_section .blog_content .owl-nav .owl-prev {
+  position: absolute;
+  left: -27px;
+  top: 33%;
+  border: 5px solid #fff;
+  text-align: center;
+  z-index: 5;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  outline: 0;
+  background: #ff5e14;
+  transition: all 0.3s;
+  color: #fff;
+}
+.blog_section .blog_content .owl-nav .owl-prev span {
+  font-size: 25px;
+  margin-top: -6px;
+  display: inline-block;
+}
+.blog_section .blog_content .owl-nav .owl-prev:hover {
+  background: #fff;
+  border-color: #ff5e14;
+  color: #ff5e14;
+}
+.blog_section .blog_content .owl-nav .owl-next {
+  position: absolute;
+  right: -27px;
+  top: 33%;
+  border: 5px solid #fff;
+  text-align: center;
+  z-index: 5;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  outline: 0;
+  background: #ff5e14;
+  color: #fff;
+  transition: all 0.3s;
+}
+.blog_section .blog_content .owl-nav .owl-next span {
+  font-size: 25px;
+  margin-top: -6px;
+  display: inline-block;
+}
+.blog_section .blog_content .owl-nav .owl-next:hover {
+  background: #fff;
+  border-color: #ff5e14;
+  color: #ff5e14;
+}
+
+@media only screen and (max-width: 577px) {
+  .blog_section .owl-nav .owl-prev {
+    left: -17px !important;
+  }
+  .blog_section .owl-nav .owl-next {
+    right: -17px !important;
+  }
+}
+
+.owl-carousel .owl-item img {
+    display: block;
+    width: 300px!important;
+    height: 200px;
 }
 
 </style>
@@ -149,28 +346,11 @@ font-weight: bold;
 <body>
 
 
-<c:import url="header.jsp" charEncoding="utf-8"/>
 
- <div class="py-0 pt-3" style="background-color: #2186eb; color: white; height: 174px;">
+
+  <div class="py-0 pt-3" style="background-color: #2186eb; color: white; height: 174px;">
     <div class="container">
       <div class="row">
-
-        <div class="col-md-8">
-          <h3 class="">${dto.companyname}&nbsp; &nbsp;&nbsp;
-          		<c:choose>
-          			<c:when test="${dto.favoriteCom >0 }">
-          					<a style="color:red" class="btn btn-secondary red" href="javascript:dropFavoriteCom(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
-          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
-          			</c:when>
-          		<c:otherwise>
-          					<a class="btn btn-secondary red" href="javascript:comFavorite(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
-          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
-          		</c:otherwise>
-          	</c:choose>
-
-          ${dto.jobTitle}
-         </h3>
-
         <div class="col-md-10">
 	        <div>
 	          <p class="" style="color: #eee;">${dto.companyname}&nbsp; &nbsp;&nbsp;</p>
@@ -180,7 +360,7 @@ font-weight: bold;
 			  <h3 class="jobtitle">
 	           <c:if test="${login.auth==1}">
 	          	<c:choose>
-	          		<c:when test="${dto.favoriteCom >0 }">
+	          		<c:when test="${dto.favoriteCom >0 and dto.favoriteCom != null }">
 	          					<a style="color:red" class="btn btn-secondary red" href="javascript:dropFavoriteCom(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
 	          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
 	          		</c:when>
@@ -204,7 +384,7 @@ font-weight: bold;
           	<c:choose>
           		<c:when test="${login.auth == 1 }">
           			<c:choose>
-          				<c:when test="${dto.favoriteJob >0 }">
+          				<c:when test="${dto.favoriteJob >0 and dto.favoriteCom != null }">
           					<a style="color:red" class="btn btn-secondary" href="javascript:dropFavoriteJob(${dto.jobSeq }, '${login.memberid }')">
 				          		<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
 				          	</a>
@@ -219,8 +399,8 @@ font-weight: bold;
           	</c:choose>
 
 			<c:choose>
-				<c:when test="${login.auth == 2}">
- 					<c:if test="${login.memberid == dto.companyId }">
+				<c:when test="${login.auth == 2 or login.auth == 3}">
+ 					<c:if test="${login.memberid == dto.companyId or login.auth == 3}">
           				<a class="btn btn-secondary" href="javascript:updateRecruit(${dto.jobSeq })">수정하기</a>
           				<a class="btn btn-secondary" href="javascript:deleteRecruit(${dto.jobSeq })">삭제</a>
           			</c:if>
@@ -236,7 +416,7 @@ font-weight: bold;
 			  <div class="modal-dialog" role="document" style="width: -webkit-fill-available;">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel" style="width: 700px;">입사지원</h5>
+			        <h5 class="modal-title" id="exampleModalLabel" style="width: 700px; color: black;">입사지원</h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">×</span>
 			        </button>
@@ -245,18 +425,46 @@ font-weight: bold;
 			       <table>
 			       <colgroup>
 			       <col width="400"><col width="50">
-						<tr><td colspan="2">이력서list</td></tr>
+
+						<tr><td colspan="2" style="color: black">이력서list</td></tr>
+
+            <%
+            if(request.getAttribute("resumelist") != null){
+
+            %>
+                <%
+      					for(int i=0; i<resumelist.size(); i++){
+      					%>
+
+						<tr>
+					  <td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a><input type="hidden" value="" id="portfolioseq"></td>
+						<td><button type="button" class="btn btn-primary applybtn" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>')">지원하기</button></td>
+						</tr>
+      					<%
+      					}
+             }
+      					%>
+
+					<tr><td colspan="2" style="color: black">포트폴리오 첨부</td></tr>
 					<%
-					for(int i=0; i<resumelist.size(); i++){
+					if(portlist != null){
+					for(int i=0; i<portlist.size(); i++){
 					%>
 
 						<tr>
-						<td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a></td>
-						<td><button type="button" class="btn btn-primary" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>')">지원하기</button></td>
+						<td style="color: black">
+						<select id="portseq" onchange="getportseq('<%=portlist.get(i).getPortfolioseq() %>')">
+						<option>첨부없음</option>
+						<option><%=portlist.get(i).getPortfolioname() %></option>
+						</select>
+						</td>
+						<td><button type="button" class="btn btn-primary">첨부</button></td>
 						</tr>
 					<%
+						}
 					}
 					%>
+
 
 				</table>
 			      </div>
@@ -327,8 +535,8 @@ font-weight: bold;
   </div>
 
   <div class="py-5">
-  <h3 class="titles">접수기간 및 방법</h3>
     <div class="container">
+	  <h3 class="titles">접수기간 및 방법</h3><br>
       <div class="row">
         <div class="col-md-4 bg-light border-right" style="">
           <dl class="info_period">
@@ -338,9 +546,11 @@ font-weight: bold;
             <dd>${dto.jobStart }</dd>
             <dt class="end">마감일</dt>
             <dd>${dto.jobEnd }</dd>
-             <dd><c:if test="${login.auth==1 }">
-         		 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
-			</c:if></dd>
+             <dd>
+             	<c:if test="${login.auth==1 }">
+         			 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
+				</c:if>
+			</dd>
           </dl>
         </div>
         <div class="col-md-8 bg-light" style="">
@@ -357,20 +567,19 @@ font-weight: bold;
     </div>
   </div>
   <div class="py-5">
-  <h3 class="titles">지원현황</h3>
     <div class="container">
+	  <h3 class="titles">지원현황</h3>
       <div class="row">
         <div class="col-md-12"> 지원현황(선택) </div>
       </div>
     </div>
   </div>
   <div class="py-5">
-  <h3 class="titles">근무지</h3>
     <div class="container">
+	  <h3 class="titles">근무지</h3>
       <div class="row">
         <div class="col-md-4 bg-light border-right" style="">
           <dl class="info_period">
-
           	<p>담당자 및 근무지</p>
             <dt id="keyword1">${dto.area1Name } ${dto.area2Name } ${dto.detailAdress1 } ${dto.detailAdress2 }</dt>
             <dd>
@@ -391,56 +600,162 @@ font-weight: bold;
           <div class="companydetail"> <p>담당자이메일주소</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgEmail }</div>
         </div>
         <div class="text-primary" style=""> 담당자 정보 수정을 원하시면 버튼을 클릭하세요 &nbsp;&nbsp;&nbsp;
+        	<c:if test="${dto.companyId == login.memberid or login.auth == 3}">
         	<a class="btn btn-secondary" href="javascript:mgUpdate()">담당자 정보수정</a>
+        	</c:if>
         </div>
       </div>
     </div>
   </div>
+  
   <div class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
-			<table class="table table-hover col-sm-12 " >
-				<tr>
-					<th>사업</th><td>${com.content }</td>
-				</tr>
-				<tr>
-					<%-- <th><img alt="" src="./upload/${com.filename}"></th> --%>
-					<th>사원수</th><td>${com.empcount }</td>
-				</tr>
-				<tr>
-					<th>평균연봉</th><td>${com.salaryavg }</td>
-				</tr>
-
-
-
-			</table>
-
-		</div>
+        <div class="col-md-4 bg-light" >
+        	
+          <img src="upload/${bsdto.newfilename}" alt="디폴트이미지" width="100%" >
+        </div>
+        <div class="col-md-4 bg-light">
+          <ul>
+	          <li style=" list-style: none;"><h3>${com.companyname }</h3></li>
+	          <li style=" list-style: none;"><span>기업형태</span>&nbsp;&nbsp;<span>${com.companytype }</span></li>
+	          <li style=" list-style: none;"><span>업력</span>&nbsp;&nbsp;<span>${com.comyear }</span></li>
+	          <li style=" list-style: none;"><span>대표자명</span>&nbsp;&nbsp;<span>${com.ceoname }</span></li>
+	          <li style=" list-style: none;"><span>업종</span>&nbsp;&nbsp;<span>${com.content }</span></li>
+          </ul>
+        </div>
+        <div class="col-md-4 bg-light">
+	        <ul>
+	          <li style=" list-style: none;"></li><br><br>
+	          <li style=" list-style: none;"><span>직원수</span>&nbsp;&nbsp;<span>${com.empcount }</span></li>
+	          <li style=" list-style: none;"><span>총매출</span>&nbsp;&nbsp;<span>${com.totalsale }</span></li>
+	          <li style=" list-style: none;"><span>평균연봉</span>&nbsp;&nbsp;<span>${com.salaryavg }</span></li>
+	          <li style=" list-style: none;"><span>홈페이지주소</span>&nbsp;&nbsp;<span>${com.website }</span></li>
+	        </ul>
+        </div>
       </div>
     </div>
   </div>
+  
+  
+  
+  
+  
+  
+  
+  
+         <!--   Google font
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,400i,600,600i,700,700i,900">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i"> -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <!-- icofont
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionic/1.3.2/css/ionic.css"> -->
+     <!--    carousel -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"> 
+      <!-- Jquery -->
+     <!--    <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+        <!-- bootstrap -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <!-- carousel -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+  
+  
+  
+ 
+  
+  <section class="blog_section">
+            <div class="container">
+                <div class="blog_content">
+                    <div class="owl-carousel owl-theme">
+                        <div class="blog_item">
+                            <div class="blog_image">
+                                <img class="img-fluid" src="./image/naver2.png" alt="images not found" style="width: 300px;height: 200px;">
+                                <span><i class="icon ion-md-create"></i></span>
+                            </div>
+                            <div class="blog_details">
+                                <div class="blog_title">
+                                    <h5 style="text-align: center"><a href="#">네이버 신입공채</a></h5>
+                                </div>
+                                <ul>
+                                    <li><i class="icon ion-md-person"></i>Alex</li>
+                                    <li><i class="icon ion-md-calendar"></i>August 1, 2018</li>
+                                </ul>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...</p>
+                                <a href="#">Read More<i class="icofont-long-arrow-right"></i></a>
+                            </div>
+                        </div>                        
+                        <div class="blog_item">
+                            <div class="blog_image">
+                                <img class="img-fluid" src="./image/kakao.jpg" alt="images not found" style="width: 300px;height: 200px;">
+                                <span><i class="icon ion-md-create"></i></span>
+                            </div>
+                            <div class="blog_details">
+                                <div class="blog_title">
+                                    <h5 style="text-align: center"><a href="#">카카오 개발자 모집</a></h5>
+                                </div>
+                                <ul>
+                                    <li><i class="icon ion-md-person"></i>Alex</li>
+                                    <li><i class="icon ion-md-calendar"></i>August 1, 2018</li>
+                                </ul>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...</p>
+                                <a href="#">Read More<i class="icofont-long-arrow-right"></i></a>
+                            </div>
+                        </div>                        
+                        <div class="blog_item">
+                            <div class="blog_image">
+                                <img class="img-fluid" src="./image/coupang.png" alt="images not found" style="width: 300px;height: 200px;">
+                                <span><i class="icon ion-md-create"></i></span>
+                            </div>
+                            <div class="blog_details">
+                                <div class="blog_title">
+                                    <h5 style="text-align: center"><a href="#">쿠팡친구 전국 모집</a></h5>
+                                </div>
+                                <ul>
+                                    <li><i class="icon ion-md-person"></i>Alex</li>
+                                    <li><i class="icon ion-md-calendar"></i>August 1, 2018</li>
+                                </ul>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...</p>
+                                <a href="#">Read More<i class="icofont-long-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+  
+  
 
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <div class="py-5">
     <div class="container">
       <div class="row"> 인기기업 HOT10
       <div class="col-md-12">
-
-
-
-
          <table class="table table-hover col-sm-12 " style="" id="table">
             <thead class="thead-dark">
                <tr>
-                  <th>#</th>
+                  <th></th>
 
                   <th>회사명</th>
-
                   <th>공고제목</th>
                   <th>지원자격(학력·경력)</th>
                   <th>채용인원</th>
@@ -448,21 +763,12 @@ font-weight: bold;
                   <th>마감일·등록일</th>
                </tr>
             </thead>
-
-
          </table>
          <p></p>
-
-
        </div>
       </div>
     </div>
   </div>
-
-
-
-
-
 
   <div class="py-5">
     <div class="container">
@@ -472,8 +778,8 @@ font-weight: bold;
     </div>
   </div>
 
-
   <!-- 댓글 -->
+  				<div class="container">
 				<c:if test="${login.memberid != null }">
 
 					<div class="inputBox">
@@ -509,6 +815,7 @@ font-weight: bold;
 				<c:forEach var="row" items="${replylist}">
 				<input type="hidden" name="replyrecruitseq" value="${row.replyrecruitseq}">
 				<input type="hidden" name="jobSeq" value="${row.jobSeq}">
+
 				<div class="viewListWrap">
                 	<div class="headerWrap">
                     	<div class="numBx">
@@ -550,21 +857,12 @@ font-weight: bold;
 						</div>
 			   		</div>
 			   	</c:forEach>
+			   	</div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" style=""></script>
+
 
 
   <input type="hidden" id="phonenumber">
-  <button onclick="charchen()">charchen</button>
-
-
-
-  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" style=""></script> -->
->>>>>>> d8ec9437902769692056210040f8be523b7edf9b
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
-
-
 
 
 <script>
@@ -606,7 +904,7 @@ function getTop10List() {
  									+ "</td>"
  									+"<td style='text-align:left'>"
  									//+ arrow(val.depth)
- 									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
+ 									+"<a href='RecruitDetail.do?jobSeq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
  									+"</td>"
  									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
  									+"<td>" + val.jobVolumn + "</td>"
@@ -635,22 +933,29 @@ function getTop10List() {
 
 
 
+function jobApply(jobseq, memberid, resumeseq) {
+
+	   alert("jobApply");
+	   //alert(jobseq);
+	   //alert(memberid);
+	   //alert(resumeseq);
+	   // alert(phonenum);
 
 
+	   portseq = document.getElementById('portfolioseq').value;
+	   
+	    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq+"&portfolioseq="+portseq;
 
+	}
 </script>
 
-
-
 <script type="text/javascript">
-
-
 
 function deleteRecruit(jobSeq) {
 	location.href="deleteRecruit.do?jobSeq="+jobSeq;
 }
-function updateRecruit(jobseq) {
-	location.href ="RecruitUpdate.do?jobseq="+jobseq;
+function updateRecruit(jobSeq) {
+	location.href ="RecruitUpdate.do?jobSeq="+jobSeq;
 }
 function mgUpdate() {
 	$("#_mgData *").remove(); //내부 요소만 삭제
@@ -713,7 +1018,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
-var dAdress = '${dto.area1Name }'+' '+ '${dto.area2Name }'+' '+ '${dto.detailAdress1 }';
+var dAdress = '${dto.area1Name }' + ' ' + '${dto.area2Name }' + ' ' + '${dto.detailAdress1 }';
 
 // 주소로 좌표를 검색합니다
 geocoder.addressSearch(dAdress, function(result, status) {
@@ -820,6 +1125,33 @@ function jobFavorite(jobSeq, memberid) {
 	//alert(jobSeq);
 	//alert(memberid);
 
+	let endDate = '${dto.jobEnd}';
+	var reserve = charchen(endDate);
+	alert("이게 예약시간 : "+ reserve);
+
+	var phone = getPhonenum(memberid);
+	alert("이게 연락처"+phone);
+
+	var title = '${dto.jobTitle}';
+
+
+
+	$.ajax({
+        type : 'get',
+        url : './reserveSendSms.do',
+        data:{phonenum: phone, reserveDate : reserve, title : title },
+       success:function(suc){
+			alert("예약문자성공");
+			alert(suc);
+
+		},
+		error:function(){
+			alert('error');
+		}
+    });
+
+
+
 	location.href = "favoriteJob.do?jobSeq="+jobSeq+"&memberid="+memberid;
 
 	//setTimeout("location.reload()", 15);
@@ -889,34 +1221,6 @@ CountDownTimer('${dto.jobEnd}', 'timeDeal'); // 2020-12-06 오후10시 50분까�
 
 
 
-
-	/* let endDate = '${dto.jobEnd}';
-	var reserve = charchen(endDate);
-	alert("이게 예약시간 : "+ reserve);
-
-
-	  $.ajax({
-	        type : 'get',
-	        url : './reserveSendSms.do',
-	        data:{phonenum: phone, reserveDate : reserve			// 휴대폰 번호
-                },
-	       success:function(suc){
-				alert("성공");
-				alert(suc);
-
-			},
-			error:function(){
-				alert('error');
-			}
-	    });   */
-
-	//location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
-
-
-
-
-
-
 function charchen(endDate) {
 endDate = new Date(endDate);
 var rest = endDate - 86400000;
@@ -961,35 +1265,14 @@ function jobApply(jobseq, memberid, resumeseq) {
 	//alert(resumeseq);
 	// alert(phonenum);
 
-	let endDate = '${dto.jobEnd}';
-	var reserve = charchen(endDate);
-	alert("이게 예약시간 : "+ reserve);
 
-	var phone = getPhonenum(memberid);
-	alert("이게 연락처"+phone);
-
-	var title = '${dto.jobTitle}';
-
-
-
-	$.ajax({
-        type : 'get',
-        url : './reserveSendSms.do',
-        data:{phonenum: phone, reserveDate : reserve, title : title },
-       success:function(suc){
-			alert("예약문자성공");
-			alert(suc);
-
-		},
-		error:function(){
-			alert('error');
-		}
-    });
-
-
-
-
-    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
+	portseq = document.getElementById('portfolioseq').value;
+	
+	if(portseq == ""){
+		portseq = 0;
+	}
+	
+    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq+"&portfolioseq="+portseq;
 
 }
 
@@ -1100,7 +1383,93 @@ function getPhonenum(memberid) {
 	} );
 
 
+// 댓글 입력
+var processing = false;
+$('.devBtnComtWrite').click(function () {
+    if (processing === false) {
+        processing = true;
+        //비회원 체크 여부
+        if ($isLogin != 1) {
+            JKLoginLayer.open();
+            processing = false;
+            return false;
+        }
 
+        var $this = $(this);
+        var answerNo = $this.closest('li').find('.devComtRoot').data('answerno');
+        var cntnt = $this.closest('form').find('textarea').val();
+
+        if (typeof cntnt === 'undefined' || cntnt === '') {
+            alert('댓글 내용을 입력해 주세요.');
+            processing = false;
+            return false;
+        }
+
+        $.ajax({
+            url: '/User/Qstn/ComtWrite',
+            dataType: 'html',
+            method: 'POST',
+            data: {
+                answerNo: answerNo,
+                cntnt: cntnt,
+                qstnNo: $('#hdnQstnNo').val()
+            },
+            success: function (html) {
+                if (html !== '') {
+                    html = html.replace('&lt;', '<').replace('&gt;', '>');
+                    if ($this, html.match(/문자를 입력할 수 없습니다/) === null) {
+                        fncComtCountChange($this, 1);
+                        $this.closest('form').find('textarea').val('');
+                        $this.closest('div.qnaFormBx').addClass('case');
+                        $this.closest('.cmtWrite').siblings('.replyWrap').append(html);
+                    }
+                    else {
+                        fncComtCountChange($this, 0);
+                    }
+                }
+            },
+            complete: function () {
+                processing = false;
+            }
+        });
+    }
+});
+
+
+
+  </script>
+
+  <script type="text/javascript">
+  function getportseq(portseq) {
+	alert(portseq);
+	document.getElementById('portfolioseq').value = portseq;
+
+}
+
+  </script>
+  <!-- carousel -->
+  <script type="text/javascript">
+  $('.owl-carousel').owlCarousel({
+	    loop:true,
+	    margin:10,
+	    dots:false,
+	    nav:true,
+	    autoplay:true,   
+	    smartSpeed: 3000, 
+	    autoplayTimeout:7000,
+	    responsive:{
+	        0:{
+	            items:1
+	        },
+	        600:{
+	            items:2
+	        },
+	        1000:{
+	            items:3
+	        }
+	    }
+	})
+  
   </script>
 
 

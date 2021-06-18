@@ -220,12 +220,12 @@ WHERE RESUMESEQ=#{resumeseq}
 
 <insert id="addApply" parameterType="bit.com.a.dto.ResumeParam">
 INSERT
-INTO APPLY (APPLYSEQ, MEMBERID, JOBSEQ, RESUMESEQ, APPLYDATE, COMPANYREAD)
-VALUES (APPLY_SEQ.NEXTVAL, #{memberid}, #{jobseq}, #{resumeseq}, SYSDATE, 0)
+INTO APPLY (APPLYSEQ, MEMBERID, JOBSEQ, RESUMESEQ, APPLYDATE, COMPANYREAD, PORTFOLIOSEQ)
+VALUES (APPLY_SEQ.NEXTVAL, #{memberid}, #{jobseq}, #{resumeseq}, SYSDATE, 0, #{portfolioseq, jdbcType=VARCHAR})
 </insert>
 
 <select id="getApplyList" parameterType="java.lang.String" resultType="bit.com.a.dto.ApplyDto">
-SELECT APPLYSEQ, MEMBERID, JOBSEQ, RESUMESEQ, APPLYDATE, COMPANYREAD
+SELECT APPLYSEQ, MEMBERID, JOBSEQ, RESUMESEQ, APPLYDATE, COMPANYREAD, PORTFOLIOSEQ
 FROM APPLY
 WHERE MEMBERID = #{memberid}
 ORDER BY APPLYDATE DESC
@@ -331,6 +331,12 @@ VALUES (PORTFOLIO_SEQ.NEXTVAL, #{memberid}, #{portfolioname, jdbcType=VARCHAR}, 
 SELECT PORTFOLIOSEQ, MEMBERID, PORTFOLIONAME, NEWPORTFOLIONAME
 FROM PORTFOLIO
 WHERE MEMBERID=#{memberid}
+</select>
+
+<select id="getPortfolioname" parameterType="java.lang.Integer" resultType="java.lang.String">
+SELECT PORTFOLIONAME, NEWPORTFOLIONAME
+FROM PORTFOLIO
+WHERE PORTFOLIOSEQ=#{portfolioseq}
 </select>
 
 

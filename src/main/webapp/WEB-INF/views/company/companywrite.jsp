@@ -238,16 +238,15 @@ hr {
     
     <br><br>
     <div align="center">
-
+<%-- 
     		<c:choose>
-          		<c:when test='${company.updatecompanylist=="YES"}'>
+          		<c:when test='${company.updatecompanylist=="YES"}'> --%>
+          		<c:if test="${company.companytype =! null }">
           			<div class="col-md-12"><button type="button" class="button cancel" onclick="location.href='javascript:ComUpdate()'">수정하기</button></div>
-          			<%-- <input type="hidden" value="${company.memberid }"> --%>
-          		</c:when>
-        	    <c:otherwise>
+          		</c:if>
+ 
           			<div class="col-md-12"><button type="button" class="button cancel" onclick="location.href='javascript:ComRegi()'">작성하기</button></div>
-          		</c:otherwise>
-          	</c:choose>
+       
 
 
     <!--       	<a class="btn btn-secondary" href="javascript:ComUpdate()">수정하기</a> -->

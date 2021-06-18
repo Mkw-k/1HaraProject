@@ -1,5 +1,4 @@
-
-  package bit.com.a.controller;
+package bit.com.a.controller;
 
 import java.util.List;
  

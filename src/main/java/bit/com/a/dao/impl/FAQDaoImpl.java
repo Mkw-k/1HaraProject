@@ -11,7 +11,6 @@ import bit.com.a.dto.FAQDto;
 
 @Repository
 public class FAQDaoImpl implements FAQDao {
-	
 	@Autowired
 	SqlSession session;
 	
@@ -66,8 +65,4 @@ public class FAQDaoImpl implements FAQDao {
 		// TODO Auto-generated method stub
 		return session.selectList(ns + "getsearchFAQ", search);	
 	}
-
-	
-	
-   
 }

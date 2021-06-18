@@ -480,6 +480,14 @@ public class ResumeDaoImpl implements ResumeDao {
 		// TODO Auto-generated method stub
 		return session.selectList(ns+"getPortfolio", memberid);
 	}
+
+
+
+	@Override
+	public String getPortfolioname(int portfolioseq) {
+		// TODO Auto-generated method stub
+		return session.selectOne(ns+"getPortfolioname", portfolioseq);
+	}
 	
 	
 	
