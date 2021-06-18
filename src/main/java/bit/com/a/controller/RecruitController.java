@@ -470,8 +470,7 @@ public class RecruitController {
 		  
 		  BusinessDto bsdto = new BusinessDto();
 		  
-		  bsdto.setMemberid(dto.getCompanyId());
-		  bsdto = bsService.getbuspage(bsdto);
+		  bsdto = bsService.getbuspage(dto.getCompanyId());
 		  
 		  model.addAttribute("bsdto", bsdto);
 		  

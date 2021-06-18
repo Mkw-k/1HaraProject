@@ -133,7 +133,7 @@ input, select, textarea {
 
 		}
 
-	a {
+	/* a {
 		-moz-transition: border-bottom-color 0.2s ease, color 0.2s ease;
 		-webkit-transition: border-bottom-color 0.2s ease, color 0.2s ease;
 		-ms-transition: border-bottom-color 0.2s ease, color 0.2s ease;
@@ -141,7 +141,7 @@ input, select, textarea {
 		text-decoration: none;
 		color: #585858;
 		border-bottom: dotted 1px rgba(88, 88, 88, 0.5);
-	}
+	} */
 
 		a:hover {
 			border-bottom-color: transparent;
@@ -2426,7 +2426,7 @@ input, select, textarea {
 
 /* Button */
 
-	input[type="submit"],
+	/* input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
 	button,
@@ -2546,7 +2546,7 @@ input, select, textarea {
 		.button:disabled {
 			pointer-events: none;
 			opacity: 0.25;
-		}
+		} */
 
 /* Tiles */
 
