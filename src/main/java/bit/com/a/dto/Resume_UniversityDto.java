@@ -6,7 +6,7 @@ public class Resume_UniversityDto {
 	private int universityseq;
 	private int resumeseq;
 	private String[] university;
-	private String[] univ_status;
+	private String[] univ_status;	
 	private String[] univ_str;
 	private String[] univ_str_status;
 	private String[] univ_end;

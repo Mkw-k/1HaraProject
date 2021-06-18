@@ -42,7 +42,7 @@
 /* 가로로 정렬 */
 .ulli {list-style-type: none; float: left; margin-left: 15%}
 .ullist { margin-left: 100px}
-/* 
+/*
 
 body {
 
@@ -63,9 +63,11 @@ tr{
 
  <body id="sub_layout">
 
+
 <c:import url="/WEB-INF/views/recruit/header.jsp" charEncoding="utf-8"/>
   
 <div class="wrapper" style="background-color: white;">
+
 
 <div class="all">
 
@@ -128,32 +130,32 @@ tr{
 			<strong>창업 년도</strong><br>
 			<span>${company.comyear }</span>
 		</li>
-		
+
 		<li class="ulli ullist">
 			<img alt="" src="./image/companytype.PNG" width="70px" height="70px"><br>
 			<strong>기업 형태</strong><br>
 			<span>${company.companytype }</span>
 		</li>
-		
+
 		<li class="ulli ullist">
 			<img alt="" src="./image/totalsale2.PNG" width="70px" height="70px"><br>
 			<strong>매출액</strong><br>
 			<span>${company.totalsale }</span>
 		</li>
-	
+
 		<li class="ulli ullist">
 			<img alt="" src="./image/emp2.PNG" width="70px" height="70px"><br>
 			<strong>사원수</strong><br>
 			<span>${company.empcount } 명</span>
 		</li>
-	
+
 		<li class="ulli ullist">
 			<img alt="" src="./image/a.PNG" width="70px" height="70px"><br>
 			<strong>회사 복지</strong><br>
 			<span>${company.mainservice } </span>
 		</li>
-	
-	
+
+
 	</ul>
 	</div>
 <br><br>
@@ -178,22 +180,22 @@ tr{
 		<th>대표자 명</th>
 		<td>${company.ceoname }</td>
 	</tr>
-	
+
 	<tr>
 		<th>회사아아디</th>
 		<td>${company.memberid }</td>
 	</tr>
-	
+
 	<tr>
 		<th>회사 위치</th>
 		<td>${login.comaddress }</td>
 	</tr>
-	
+
 	<tr hidden="">
 		<th>사업자 번호</th>
 		<td>${company.companynum }</td>
 	</tr>
-	
+
 	<tr >
 		<th>주요 업무 :</th>
 		<td>${company.content }</td>
@@ -203,12 +205,12 @@ tr{
 		<th>회사 이미지</th>
 		<td>${company.comimage }</td>
 	</tr>
-	
+
 	<tr>
 		<th>평균 연봉</th>
 		<td>${company.salaryavg }</td>
 	</tr>
-	
+
 	<tr>
 		<th>초봉</th>
 		<td>${company.salarystart }</td>
@@ -218,17 +220,17 @@ tr{
 		<th>입사자 수</th>
 		<td>${company.joinner } 명</td>
 	</tr>
-	
+
 	<tr>
 		<th>퇴사자 수</th>
 		<td>${company.retiree } 명</td>
 	</tr>
-	
+
 	<tr>
 		<th>웹사이트 주소</th>
 		<td><a href="javascript:btnweb()">${company.website }</a></td>
 	</tr>
-	
+
 </table>
 </c:if>
 
@@ -238,12 +240,14 @@ tr{
 
 
 	<br>
+
 	<%-- <c:if test="${login.memberid } "> --%>
    	  <a  href="companyupdate.do?companyid=${company.memberid }" style="color:#2186eb">기업수정</a>
    	   <a  href="companywrite.do?companyid=${company.memberid }" style="color:#2186eb">기업등록</a>
   <%-- 	</c:if> --%>
 	  
 	 <h1 align="center"><strong><a href="recuruitlist.do">목록으로</a></strong></h1>
+
 
 </form>
 </div>
@@ -538,11 +542,11 @@ window.onscroll = function sticky() {
 
 
 
-function btnweb() {	
+function btnweb() {
 	var url = 'http://' + '${company.website }';
 //	var url = window.open('http://' + '${company.website }');
 	//alert(url);
-	
+
 	window.location.href = url;
 }
 
@@ -556,15 +560,3 @@ function btnweb() {
 
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
-

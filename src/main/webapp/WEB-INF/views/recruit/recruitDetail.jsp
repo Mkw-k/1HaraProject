@@ -145,6 +145,35 @@ width: max-content;
 
 }
 
+
+
+
+ 
+/* 네비바 */
+.createRecruitBtn{
+	cursor: pointer;
+}
+/* .wrapper{
+width:200px;
+padding:20px;
+height: 150px;
+} */
+#nav-main{
+	height: 100 px;
+}
+nav.top-nav-collapse {
+   transition: all 300ms ease-in-out;
+   background-color: #036cde !important;
+   color: white !important;
+}
+white{
+	color: white !important;
+}
+
+.navbar-nav {
+   background-color: rgba( 255, 255, 255, 0 );
+  }
+
 </style>
 
 
@@ -152,7 +181,7 @@ width: max-content;
 <body>
 
 
-<c:import url="header.jsp" charEncoding="utf-8"/>
+
 
   <div class="py-0 pt-3" style="background-color: #2186eb; color: white; height: 174px;">
     <div class="container">
@@ -413,27 +442,38 @@ width: max-content;
       </div>
     </div>
   </div>
+  
   <div class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
-			<table class="table table-hover col-sm-12 " >
-				<tr>
-					<th>사업</th><td>${com.content }</td>
-				</tr>
-				<tr>
-					<%-- <th><img alt="" src="./upload/${com.filename}"></th> --%>
-					<th>사원수</th><td>${com.empcount }</td>
-				</tr>
-				<tr>
-					<th>평균연봉</th><td>${com.salaryavg }</td>
-				</tr>
-			</table>
-		</div>
+        <div class="col-md-4 bg-light" >
+        	
+          <img src="upload/${bsdto.newfilename}" alt="디폴트이미지" width="100%" >
+        </div>
+        <div class="col-md-4 bg-light">
+          <ul>
+	          <li style=" list-style: none;"><h3>${com.companyname }</h3></li>
+	          <li style=" list-style: none;"><span>기업형태</span>&nbsp;&nbsp;<span>${com.companytype }</span></li>
+	          <li style=" list-style: none;"><span>업력</span>&nbsp;&nbsp;<span>${com.comyear }</span></li>
+	          <li style=" list-style: none;"><span>대표자명</span>&nbsp;&nbsp;<span>${com.ceoname }</span></li>
+	          <li style=" list-style: none;"><span>업종</span>&nbsp;&nbsp;<span>${com.content }</span></li>
+          </ul>
+        </div>
+        <div class="col-md-4 bg-light">
+	        <ul>
+	          <li style=" list-style: none;"></li><br><br>
+	          <li style=" list-style: none;"><span>직원수</span>&nbsp;&nbsp;<span>${com.empcount }</span></li>
+	          <li style=" list-style: none;"><span>총매출</span>&nbsp;&nbsp;<span>${com.totalsale }</span></li>
+	          <li style=" list-style: none;"><span>평균연봉</span>&nbsp;&nbsp;<span>${com.salaryavg }</span></li>
+	          <li style=" list-style: none;"><span>홈페이지주소</span>&nbsp;&nbsp;<span>${com.website }</span></li>
+	        </ul>
+        </div>
       </div>
     </div>
   </div>
-
+  
+  
+  
   <div class="py-5">
     <div class="container">
       <div class="row"> 인기기업 HOT10
@@ -622,12 +662,19 @@ function getTop10List() {
 
 
 function jobApply(jobseq, memberid, resumeseq) {
-	alert("jobApply");
-	//alert(jobseq);
-	//alert(memberid);
-	//alert(resumeseq);
-  location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
-}
+
+	   alert("jobApply");
+	   //alert(jobseq);
+	   //alert(memberid);
+	   //alert(resumeseq);
+	   // alert(phonenum);
+
+
+	   portseq = document.getElementById('portfolioseq').value;
+	   
+	    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq+"&portfolioseq="+portseq;
+
+	}
 </script>
 
 <script type="text/javascript">
@@ -947,7 +994,13 @@ function jobApply(jobseq, memberid, resumeseq) {
 	// alert(phonenum);
 
 
-    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq;
+	portseq = document.getElementById('portfolioseq').value;
+	
+	if(portseq == ""){
+		portseq = 0;
+	}
+	
+    location.href = "jobApply.do?jobseq="+jobseq+"&memberid="+memberid+"&resumeseq="+resumeseq+"&portfolioseq="+portseq;
 
 }
 

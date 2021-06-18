@@ -56,5 +56,15 @@
 		AND a.JOBSEQ=#{jobseq}
 	</select>
 
+	<select id="BusinessList" resultType="bit.com.a.dto.BusinessDto">
+		SELECT * FROM BUSINESS WHERE MEMBERID NOT IN('admin')
+	</select>
+
+	<!-- 강제종료 -->
+ 	<delete id="admin_business_forced_evictionCheck">
+ 		DELETE FROM BUSINESS
+ 		WHERE MEMBERID=#{memberid}
+ 	</delete>
+ 	
  
  </mapper>

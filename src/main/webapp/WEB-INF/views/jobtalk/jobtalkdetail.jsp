@@ -32,7 +32,7 @@
 
 	<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled">
 		<ins id="aswift_0_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement">
-			< ins id="aswift_0_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;">
+			<ins id="aswift_0_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;">
 				<iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-2252464458280030&amp;output=html&amp;adk=1812271804&amp;adf=3025194257&amp;lmt=1622787209&amp;plat=1%3A32776%2C2%3A32776%2C9%3A32776%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1081344%2C32%3A32&amp;format=0x0&amp;url=https%3A%2F%2Fwww.jobkorea.co.kr%2FUser%2FQstn%2FAnswerWrite%3FQstnNo%3D42373&amp;ea=0&amp;flash=0&amp;pra=5&amp;wgl=1&amp;uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjkxLjAuNDQ3Mi43NyIsW11d&amp;dt=1622787209282&amp;bpp=2&amp;bdt=99&amp;idt=193&amp;shv=r20210601&amp;cbv=%2Fr20190131&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3Dd94760dfaac75f98-22c0eb6bcfc700d9%3AT%3D1620115996%3ART%3D1620115996%3AS%3DALNI_MamePeV-JAAiP2NmGq8YoCBEp_7iA&amp;nras=1&amp;correlator=1856056351134&amp;frm=20&amp;pv=2&amp;ga_vid=1073000281.1620115996&amp;ga_sid=1622787210&amp;ga_hid=459766479&amp;ga_fc=1&amp;u_tz=540&amp;u_his=9&amp;u_java=0&amp;u_h=1080&amp;u_w=1920&amp;u_ah=1040&amp;u_aw=1920&amp;u_cd=24&amp;u_nplug=3&amp;u_nmime=4&amp;adx=-12245933&amp;ady=-12245933&amp;biw=1235&amp;bih=937&amp;scr_x=0&amp;scr_y=13&amp;eid=31060956%2C21065725&amp;oid=3&amp;pvsid=707401245178408&amp;pem=229&amp;ref=https%3A%2F%2Fwww.jobkorea.co.kr%2FUser%2FQstn%2FIndex%3FMainType%3D1&amp;eae=2&amp;fc=1920&amp;brdim=-1920%2C-109%2C-1920%2C-109%2C1920%2C-109%2C1920%2C1040%2C1252%2C937&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=32768&amp;bc=31&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;dtd=221" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" allow="conversion-measurement 'src'" data-google-container-id="a!1" data-load-complete="true">
 				</iframe>
 			</ins>
@@ -53,7 +53,7 @@
 						</span>
 						<dl class="infoBx">
 							<dt class="qnaSpA">
-								<span class="nickname">${login.name }</span> 
+								<span class="nickname">${login.name}</span> 
 								<span class="lvIcon">Lv.1</span>
 							</dt>
 							<dd>
@@ -172,13 +172,13 @@
                 		    			<li>답변을 등록하면 닉네임으로 질문자에게 전달됩니다.</li>
                 	   					<li>개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.</li>
                   						<li>개인정보가 포함되거나 부적절한 답변은 비노출 또는 해당 서비스 이용 불가 처리될 수 있습니다.</li>
-               					</ul>
-							</div>
-						</c:if>		
-					</div>	
-					<c:forEach var="row" items="${replylist}">
-						<input type="hidden" name="replyseq" value="${row.replyseq}">	
-						<div class="viewListWrap">
+               						</ul>
+								</div>
+							</c:if>		
+						</div>	
+						<c:forEach var="row" items="${replylist}">
+							<input type="hidden" name="replyseq" value="${row.replyseq}">	
+							<div class="viewListWrap">
                 				<div class="headerWrap">
                     				<div class="numBx">
                            				<span>답변 <span class="num">${row.reply_count}</span></span>
