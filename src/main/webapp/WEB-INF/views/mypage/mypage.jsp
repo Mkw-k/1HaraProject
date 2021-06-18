@@ -46,12 +46,34 @@
         <link href="csss/reset.css" rel="stylesheet" type="text/css">
 
 
+<!-- 지원현황테이블 -->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+
+
+
 <style type="text/css">
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 body {
   font-family: "Noto Sans KR", sans-serif !important;
 }
+
+
+/* 지원현황테이블 */
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
 </style>
 
 
@@ -681,7 +703,7 @@ body {
 	<!-- E : 2018-09-28 추가 -->
 	<ul>
 		<li>
-			<a href="resumeMain.do?memberid=${login.memberid }" target="_self">이력서관리·구직신청</a>
+			<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">이력서관리·구직신청</a>
 			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
 			<div class="depth3">
 				<ul>
@@ -1433,7 +1455,7 @@ function f_empPgmList(resultObj){
 							<!-- 기능 버튼 들어갈 예정 -->
 						</div>
 					</div>
-					<div class="mypage-idv-wrap">
+					<div class="mypage-idv-wrap" id="Area1">
 						<div class="idv-sec01" style="height: 550px;">
 							<div class="con-top">
 
@@ -1712,17 +1734,19 @@ function check(memberid) {
 					alert('성공');
 			      $("#Area1").empty();
 
-			      let app = "<table class='table table-striped list_col1' style='width: 100%; text-align: center;'>"+
+			      let app = "<div class='container'>"+
+			      			"<div class='row col-md-12 col-md-offset-2 custyle' style='margin-left: 0px;'>"+
+			    	  		"<table class='table table-striped custab'>"+
 			    			"<colgroup>"+
 			  				"<col width='30%'><col width='30%><col width='20%'><col width='10%'><col width='10%'>"+
 			  				"</colgroup>"+
 			  				"<thead>"+
 			  				"<tr>"+
-			  				"<td>지원공고</td>"+
-			  				"<td>지원이력서</td>"+
-			  				"<td>지원일</td>"+
-			  				"<td>열람여부</td>"+
-			  				"<td>지원취소</td>"+
+			  				"<td style='text-align: center;font-weight: bold;'>지원공고</td>"+
+			  				"<td style='text-align: center;font-weight: bold;'>지원이력서</td>"+
+			  				"<td style='text-align: center;font-weight: bold;'>지원일</td>"+
+			  				"<td style='text-align: center;font-weight: bold;'>열람여부</td>"+
+			  				"<td style='text-align: center;font-weight: bold;'>지원취소</td>"+
 			  				"</tr>"+
 			  				"</thead>"+
 			  				"<tbody style='border-bottom: thin; border-color: black; border-bottom-style: solid;'>";
@@ -1739,14 +1763,14 @@ function check(memberid) {
 						   }
 
 					app += "<td>"+val.applydate+"</td>"+
-						"<td>";
+						"<td style='text-align: -webkit-center;'>";
 
 						if(val.companyread >0 ){
 							app += "<img alt='' src='./image/check.png' height='30px' width='30px' style='margin-left:0px;display:inline-flex;'>";
 						}
 
 					app += "</td>"+
-						"<td><a href='cancelApply.do?seq="+val.applyseq+"&memberid="+memberid+"' class='box-btn'>취소</a></td>"+
+						"<td style='text-align: center;'><a href='cancelApply.do?seq="+val.applyseq+"&memberid="+memberid+"' class='box-btn'>취소</a></td>"+
 						"</tr>";
 
 
@@ -1754,7 +1778,7 @@ function check(memberid) {
 			      });
 
 			      app += "</tbody>"+
-						 "</table>";
+						 "</table></div></div>";
 
 			      $("#Area1").append(app);
 			   },

@@ -1746,8 +1746,8 @@ dt, dd {
 						</div>
 						</section>
 						
-						<button id="incomplete">중간저장</button>
-						<button id="complete">작성완료</button>
+						<button id="incomplete" class="btn btn-warning btn-md">중간저장</button>
+						<button id="complete" class="btn btn-info btn-md">작성완료</button>
 						
 					</div>
 				</div>
