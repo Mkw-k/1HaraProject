@@ -25,7 +25,7 @@ public class FAQController {
 	@Autowired
 	FAQservice service;
 
-	@RequestMapping(value = "faq.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "FAQ.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String goFAQ(Model model) {	
 	
 		List<FAQDto> mem = service.getmemberFAQ();

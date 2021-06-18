@@ -389,8 +389,6 @@ dt, dd {
 														<div class="resume_input">
 															<input type="text" id="phonenum" name="phonenum"
 																class="box_input max_length" value="${login.phonenum }"
-																maxlength="11" data-only-number="true"
-																data-api_type="layer" data-api_id="basic_confirm_cell"
 																>
 														</div>
 													</div>

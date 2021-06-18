@@ -681,7 +681,7 @@ body {
 	<!-- E : 2018-09-28 추가 -->
 	<ul>
 		<li>
-			<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">이력서관리·구직신청</a>
+			<a href="resumeMain.do?memberid=${login.memberid }" target="_self">이력서관리·구직신청</a>
 			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
 			<div class="depth3">
 				<ul>

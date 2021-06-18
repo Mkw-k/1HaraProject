@@ -26,11 +26,14 @@
 
 <style type="text/css">
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-
 body {
 	font-family: "Noto Sans KR", sans-serif !important;
 }
 </style>
+
+<!-- jobs -->
+<link rel="stylesheet" href="csss/bootstrap.min.css" />
+<link rel="stylesheet" href="csss/main3.css" />
 
 <!-- 카카오 로그인 -->
 <script type="text/javascript"
@@ -222,7 +225,6 @@ p{
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-
 /* 검색css */
 .form-control-borderless {
         border: none;
@@ -512,17 +514,19 @@ margin-right : 450px;
         background: #1A4668;
     }
 }
+
+h2{
+ font-size: 20px;
+}
 </style>
+
 <link href="csss/Newmain.css" rel="stylesheet" type="text/css">
 <link href="csss/headerDefa.css" rel="stylesheet" type="text/css">
-
 </head>
 <body id="sri_main" onload="window.open('ad.do','','width=400px, height=400px, left=400px, top=200px, toolbar=0, status=yes, menubars=0, scrollbars=0, resizable=0, location=0, directories=0')">
-
 <div id="skipnavigation">
 <a href="#search">본문 바로가기</a>
 </div>
-
 <header id="sri_header">
 <div class="wrap_header">
 <h1>
@@ -534,7 +538,6 @@ margin-right : 450px;
 </h1>
 <img src="static/css/Animation.gif" class="bi_art_logo" aria-label="내일이 더 즐거운 사람인" onclick="pushDataLayer('ga_lead','main-gnb','global_menu','ci')">
 <span class="blind">내일이 더 즐거운 사람인</span>
-
 <div class="navigation">
 <div class="navi_common">
 <ul class="navi_depth1">
@@ -569,7 +572,6 @@ margin-right : 450px;
 <svg class="icon" aria-hidden="true"><use xlink:href="#svg_gnb_search"></use></svg>
 <span>궁금한 정보를 검색해보세요</span>
 </button>
-
 <!-- 누구누구님 안녕하세요 -->
 <ul class="navbar-nav">
  <li class="nav-item">
@@ -579,11 +581,9 @@ margin-right : 450px;
             			 <c:when test="${login.auth == 1}">
              				 <p><b>[개인🧑]${login.name }</b>님</p>
              	 		 </c:when>
-
              			<c:when test="${login.auth == 2}">
              				<p><b>[사원👨‍💼]${login.name }</b>님</p>
     		 			</c:when>
-
     					<c:otherwise>
              				<p><b>[관리자👨‍✈️]${login.name }</b>님</p>
     					</c:otherwise>
@@ -592,14 +592,12 @@ margin-right : 450px;
          	</c:choose>
       </li>
  </ul>
-
 <!-- 로그인 로그아웃 란 -->
 <c:choose>
 	<c:when test="${empty login}">
 		<a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','signin')" href="javascript:login()" class="btn_sign signin"><span class="txt">로그인🔑</span></a>
 	</c:when>
 	<c:otherwise>
-
 		<c:choose>
 		   <c:when test="${login.auth==1 || login.auth==3}">
     		  <a href="logout.do" class="btn_sign signin"><span class="txt">로그아웃</span></a>
@@ -610,20 +608,15 @@ margin-right : 450px;
 		</c:choose>
 	</c:otherwise>
 </c:choose>
-
-
 <c:if test="${login.memberid == null }">
    <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="regiclick.do" class="btn_sign signup"><span class="txt">회원가입</span></a>
 </c:if>
-
 <c:if test="${login.auth == 1 || login.auth == 3 }">
    <a href="mypage.do?memberid=${login.memberid }" class="btn_sign signup"><span class="txt">마이페이지</span></a>
 </c:if>
-
 <c:if test="${login.auth == 3 }">
 <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="memberlist.do" class="btn_sign signup"><span class="txt">회원목록</span></a>
 </c:if>
-
 <c:if test="${login.auth == 2 }">
 <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="buspage.do?memberid=${login.memberid }" class="btn_sign signup"><span class="txt">기업마이페이지</span></a>
 </c:if>
@@ -631,8 +624,6 @@ margin-right : 450px;
 <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="memberlist.do" class="btn_sign signup"><span class="txt">회원목록</span></a>
 <a onclick="pushDataLayer('ga_lead','main-gnb','layer_sign','join')" href="businesslist.do" class="btn_sign signup"><span class="txt">사원목록</span></a>
 </c:if>
-
-
 </div>
 </div>
 <div class="navi_total">
@@ -710,16 +701,9 @@ margin-right : 450px;
 </div>
 </div>
 </header>
-
 <div class="all">
-
-
  <!-- 메인 검색 창 -->
-
-
  <!-- 검색html -->
-
-
  <section style="padding: 0">
  <form id="search_form_recruit" onsubmit="event.preventDefault()" style="height: 400px; background-image: url('개발자23.gif'); margin-top: 0px;"">
     <div class="main_search" style="top: 160px;">
@@ -770,10 +754,6 @@ margin-right : 450px;
 			</form>
 		</section>
 		<!-- 메인검색창 끝 -->
-
-
-
-
 		<!-- =========Login 클릭 시 Modal =========== -->
       <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" class="modal modal-center fade ">
         <div role="document" class="modal-dialog" style="margin: 0;">
@@ -786,21 +766,16 @@ margin-right : 450px;
             <!-- memberController - loginAf.do로 이동 -->
            <!--    <form action="loginAf.do" method="post" id="_frmFrom"> -->
              <!--     <input type="hidden" name="param" value="loginAf.do"> -->
-
           <ul class="nav nav-pills" style="margin-left: 100px;">
             <li class="nav-item"> <a href="" class="nav-link active show" data-toggle="pill" data-target="#tabone">개인회원</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">기업회원</a> </li>
-
           </ul>
           <div class="tab-content mt-2">
             <div class="tab-pane fade active show" id="tabone" role="tabpanel">
-
-
               <form id="login_frm" name="login_frm" method="post" action="loginAf.do">
                   <input type="hidden" name="page_url" value="">
                  <input type="hidden" name="FrameKey" value="">
                  <input type="hidden" name="login_tab" value="p" id="login_tab">
-
                     <div class="form-group" >
                         <input id="memberid" style="margin: 0 auto;" type="text" placeholder="ID" name="memberid" class="form-control">
                       </div>
@@ -816,18 +791,12 @@ margin-right : 450px;
               </a>
               <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
               <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
-
-
-
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
-
-
               <form id="login_frm" name="login_frm" method="post" action="businessloginAf.do">
                   <input type="hidden" name="page_url" value="">
                  <input type="hidden" name="FrameKey" value="">
                  <input type="hidden" name="login_tab" value="p" id="login_tab">
-
                     <div class="form-group">
                         <input id="memberid" style="margin: 0 auto;" type="text" placeholder="ID" name="memberid" class="form-control">
                       </div>
@@ -838,23 +807,17 @@ margin-right : 450px;
                         <button class="btn btn-template-outlined" id="_btnLogin"><i class="fa fa-sign-in"></i> Login</button>
                      </p>
               </form>
-
               <p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
               <p class="text-center text-muted"><a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!</p>
-
             </div>
-
           </div>
-
             </div>
           </div>
         </div>
       </div>
 <!-- =======Login 클릭 시 Modal END =========-->
-
 		<!-- 본문 -->
 		<main>
-
 			<div id="section_contents" class="cont_top">
 				<div class="inner">
 					<div class="lpop_wrap layer_upgrade" style="display: none;">
@@ -1658,9 +1621,7 @@ margin-right : 450px;
 									</c:choose>
 								</li>
 							</ul>
-
 							<!--  -->
-
 							<c:choose>
 								<c:when test="${empty login}">
 									<ul class="area_login" style="display: contents;">
@@ -1698,8 +1659,6 @@ margin-right : 450px;
 									</c:choose>
 								</c:otherwise>
 							</c:choose>
-
-
 							<c:if test="${login.memberid == null }">
 								<a href="searchidpwd.do" class="link_id_password track_event" data-track_event="login|pc_main_per|find|">아이디/비번찾기</a>
 								<a href="regiclick.do" class="link_join track_event" data-track_event="login|pc_main_per|join|">회원가입</a>
@@ -1804,7 +1763,6 @@ margin-right : 450px;
 												id="login_layer_tab_person" onclick="loginpage()"
 												class="track_event"
 												data-track_event="login|pc_main_per|tab_per">로그인</button></li>
-
 									</ul>
 									<div class="area_login">
 										<div class="sns_login" id="wrap_sns_login">
@@ -2194,8 +2152,6 @@ margin-right : 450px;
 					</div>
 				</div>
 			</div>
-
-
 <div id="section_contents" class="cont_top">
     <div class="inner">
         <div class="lpop_wrap layer_upgrade" style="display: none;">
@@ -2213,7 +2169,6 @@ margin-right : 450px;
             <div class="wrap_bigbox person" style="
     width: 400px;">
             <div id="jquery-accordion-menu" class="jquery-accordion-menu">
-
 					<ul>
 						<li class="active"><a href="#" style="font-size: 12pt;"><i class="fa fa-home"></i>NAVER</a><span class="jquery-accordion-menu-label">1 </span><li><a href="#" style="font-size: 12pt;"><i class="fa fa-glass"></i>KAKAO</a><span class="jquery-accordion-menu-label">2 </span></li></li>
 						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-glass"></i>KAKAO</a><span class="jquery-accordion-menu-label">2 </span></li>
@@ -2221,64 +2176,48 @@ margin-right : 450px;
 						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-cog"></i>COUPANG </a><span class="jquery-accordion-menu-label">4 </span></li>
 						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-cog"></i>배달의 민족 </a><span class="jquery-accordion-menu-label">5 </span></li>
 					</ul>
-
 				</div>
 			</div>
             <div class="recomm_content" style="
     padding-top: 0px;
     padding-left: 0px;
     width: 400px;">
-
             <div id="carouselSample" class="carousel slide" data-ride="carousel">
-
 			    <!-- indicator(이동할 수 있는 바) -->
 			    <ol class="carousel-indicators">
 			        <li data-target="#carouselSample" data-slide-to="0" class="">
 			        </li><li data-target="#carouselSample" data-slide-to="1" class="">
 			        </li></ol>
-
 			    <div class="carousel-inner">
 			        <!-- first slide -->
 			        <div class="carousel-item">
 			            <img alt="first" class="d-block w-100" src="/sample10/image/bm.png" height="300px" width="200px">
-
 			            <!-- caption -->
 			            <div class="carousel-caption d-none d-md-block">
-
 			            </div>
 			        </div>
-
 			        <!-- second slide -->
 			        <div class="carousel-item active">
 			            <img alt="second" class="d-block w-100" src="/sample10/image/dg.png" height="300px" width="200px">
-
 			            <!-- caption -->
 			            <div class="carousel-caption d-none d-md-block">
-
 			            </div>
 			        </div>
-
 			        <!-- third slide -->
 			        <div class="carousel-item active">
-
-
 			            <!-- caption -->
 			            <div class="carousel-caption d-none d-md-block">
-
 			            </div>
 			        </div>
-
 			        <!-- controller 부분 -->
 			        <a class="carousel-control-prev" href="#carouselSample" role="button" data-slide="prev">
 			            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 			            <span class="sr-only">앞으로</span>
 			        </a>
-
 			        <a class="carousel-control-next" href="#carouselSample" role="button" data-slide="next">
 			            <span class="carousel-control-next-icon" aria-hidden="true"></span>
 			            <span class="sr-only">다음으로</span>
 			        </a>
-
 			    </div>
 			</div>
 		</div>
@@ -2479,6 +2418,153 @@ margin-right : 450px;
 	});
 </script>
 		</div>
+		
+							<div style="text-align: center;"><h2>VIP 채용관</h2></div>
+						
+		
+		
+		<!-- Jobs -->
+							<section class="tiles" style="margin-left: 300px;margin-right: 300px;">
+								<article class="style2">
+									<span class="image">
+										<img src="image/naver2.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
+
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="image/Kakao.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
+
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="image/line.jpg" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
+
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+
+								<article class="style6">
+									<span class="image">
+										<img src="image/coupang.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
+
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+
+								<article class="style5">
+									<span class="image">
+										<img src="image/baemin.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
+
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+
+								<article class="style6">
+									<span class="image">
+										<img src="image/danggeun.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
+
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+							</section>
+						</div>
+					</div>
+
+				
+
+			</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</div>
 	<!-- <div class="slide type_rec_write">
 					<svg xmlns="http://www.w3.org/2000/svg" width="44" height="45" viewBox="0 0 44 45" class="ic_write">
@@ -2501,14 +2587,9 @@ margin-right : 450px;
 </div>
 </main>
 </div>
-
 	<!-- column2 end -->
-
-
 	<br class="clear">
-
 	<!-- FOOTER -->
-
 	<div id="footer" style="margin-top:100px;">
 		<div class="top-area">
 			<div class="inner-wrap">
@@ -2518,7 +2599,6 @@ margin-right : 450px;
 					<a href="#2" class="bg-logo-hrd"
 						onclick="fn_moelToken('http://www.hrd.go.kr');">직업훈련포털 HRD-Net</a>
 				</div>
-
 				<div class="right">
 					<div class="link-select">
 						<button type="button" class="btn-link-open">패밀리 및 유관기관
@@ -2527,8 +2607,6 @@ margin-right : 450px;
 				</div>
 			</div>
 		</div>
-
-
 		<div class="familySite-area" style="display: block;">
 			<ul>
 				<li><strong>패밀리사이트</strong> <a
@@ -2583,10 +2661,7 @@ margin-right : 450px;
 				</li>
 			</ul>
 		</div>
-
-
 		<!-- 푸터미들 -->
-
 		<div class="middle-area">
 			<div class="inner-wrap">
 				<div class="link-footer">
@@ -2597,7 +2672,6 @@ margin-right : 450px;
 				</div>
 			</div>
 		</div>
-
 		<div class="bottom-area">
 			<div class="inner-wrap">
 				<div class="link-logo">
@@ -2606,7 +2680,6 @@ margin-right : 450px;
 						href="http://www.keis.or.kr/" class="bg-logo-keis" target="_blank"
 						title="새창 열림">한국고용정보원</a>
 				</div>
-
 				<div class="info">
 					<address class="address">서울특별시 마포구 신수동 63-14 비트캠프 신촌센터</address>
 					<p class="copy">
@@ -2626,13 +2699,10 @@ margin-right : 450px;
 						title="새창" target="_blank" style="margin-top: -3px"><img
 						src="./static/images/brn-wa-2019.png"
 						alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)"></a>
-
 				</div>
 			</div>
 		</div>
 	</div>
-
-
 	<!-- ==============FOOTER================= -->
 	<script type="text/javascript" defer="defer">
 //<![CDATA[
@@ -2647,29 +2717,18 @@ margin-right : 450px;
     });
 //]]>
 </script>
-
-
 	<script type="text/javascript">
-
 /* $("#_btnRegi").click(function () {
 	location.href = "regiclick.do";
 }); */
 function login() {
-
 	alert('c');
-
 	$("#login-modal").modal();
 	$("#login-modal").removeClass("modal fade");
 	$("#login-modal").addClass("modal");
-
-
-
-
 }
-
 /* 네비게이션고정 */
 var nav = document.getElementsByClassName("navigation");
-
 window.onscroll = function sticky() {
   if(window.pageYOffset > nav[0].offsetTop) {
     nav[0].classList.add("nav");
@@ -2677,9 +2736,7 @@ window.onscroll = function sticky() {
     nav[0].classList.remove("nav");
   }
 }
-
 </script>
-
 	!-- Channel Plugin Scripts --&gt;
 	<script>
   (function() {
@@ -2720,11 +2777,9 @@ window.onscroll = function sticky() {
   ChannelIO('boot', {
     "pluginKey": "9ec9cb05-626c-49ad-9fcf-67ccef29c08f"
   });
-
   function f_logout() {
 	  location.href = "logout.do";
   }
-
 	  //<!--
     jQuery(function() {
     var $ = jQuery;
@@ -2748,48 +2803,32 @@ window.onscroll = function sticky() {
                 $('#login_frm').attr('action', 'businessloginAf.do');
            }
         })
-
 });
 //-->
-
-
 //<!--
-
 var $j = jQuery.noConflict();
-
 function checkLoginValue() {
 $j('#memberid, #pwd').each(function (index, el) {
 $j(el).siblings('label').hide();
-
 if($j(el).val() == '') {
 $j(el).siblings('label').show();
 }
-
 if ($j(el).css('background-color') == 'rgb(250, 255, 189)') {
 $j('#id-label, #password-label').hide();
 }
 });
 }
-
-
 $j(document).ready(function () {
-
-
-
 window.setTimeout(function () {
 checkLoginValue();
-
 $j('#memberid').focus();
-
 if ('' != $j('#memberid').val()) {
 $j('#pwd').focus();
 }
 }, 100);
-
 $j('#memberid, #pwd').on('focus blur keyup change', function () {
 checkLoginValue();
 });
-
 $j('#label_type').on('click',function () {
 $j('#label_type').toggleClass('on');
 });
@@ -2797,7 +2836,6 @@ $j('span.frm_checkbox > input[type=checkbox]').on('change', function() {
 var chkbox =$j(this);
 chkbox.closest('span.frm_checkbox').toggleClass('checked');
 })
-
 var security_btn =  $j('#security_btn'),
 ssl_login = $j('#ssl_login');
 security_btn.on('click', function () {
@@ -2813,7 +2851,6 @@ security_btn.removeClass('off');
 }
 });
 $j('#security_btn').off('dblclick');
-
 $j('.tab_member_type')
 .on('click', '.t_per', function () {
 saraminEffect('person');
@@ -2821,16 +2858,13 @@ saraminEffect('person');
 .on('click', '.t_com', function () {
 saraminEffect('compnay');
 });
-
 $j('#wrap_social_login').on('click', 'a', function (e) {
 e.preventDefault();
 e.stopPropagation();
-
 var link =  $j(e.currentTarget).attr('href'),
 loginType = $j('.t_com').hasClass('t_on') === true ? 'c' : 'p' ,
 provider = $j(e.currentTarget).data('provider'),
 label = loginType === 'c' ? 'com_login_'+provider :  'per_login_'+provider;
-
 var isIe10Check = false;
 if((navigator.userAgent.toLowerCase().indexOf("msie") !== -1) && provider === 'apple'){
 if(confirm('IE10이하 버전의 인터넷 익스플로러에서는 Apple 로그인이 정상 작동하지 않을 수 있습니다.\n' +
@@ -2841,17 +2875,14 @@ window.open(link+'&login_type='+loginType, '_blank', 'width=480,height=640');
 }
 return;
 }
-
 loggingEventAndTagManager(['login','pc_login_page',label,''],['ga_lead','login','pc_login_page',label]);
 window.open(link+'&login_type='+loginType, '_blank', (!$j(this).hasClass('sl_phone') ? 'width=480,height=640' : ''));
 });
-
 if ($j('.t_com').hasClass('t_on') === true) {
 saraminEffect('compnay');
 } else {
 saraminEffect('person');
 }
-
 function saraminEffect(memberType) {
 if (memberType === 'compnay') {
 $j('.wrap_member_info').show();
@@ -2860,10 +2891,8 @@ $j('.wrap_member_info').hide();
 }
 }
 });
-
   </script>
 	<!-- End Channel Plugin -->
-
 	<!-- 카카오 스크립트 -->
 	<script type="text/javascript">
   function kakaoLogout() {
@@ -2876,14 +2905,10 @@ $j('.wrap_member_info').hide();
     })
   }
 </script>
-
 <script>
 <!-- d59485d594506fb0185f34b5e6b7b114 -->
-
 <!-- 자바스크립트 key를 입력하여 초기화해줌 -->
 Kakao.init('685fcbb766340d7c8812f4e0a29a6661');
-
-
 function kakaoLogin() {
 	//alert('카카오로그인실행');
     Kakao.Auth.login({
@@ -2891,7 +2916,6 @@ function kakaoLogin() {
       success: function(authObj) {
          //alert('success');
          console.log(authObj);
-
          Kakao.API.request({
             url: '/v2/user/me',
             success: res => {
@@ -2900,7 +2924,6 @@ function kakaoLogin() {
                let name = kakao_account.profile.nickname;
                let birth = kakao_account.birthday;
                let email = kakao_account.email
-
                $.ajax({
            		type:"post",
            		url:"kakalogAf.do",
@@ -2920,24 +2943,13 @@ function kakaoLogin() {
       }
    });
 }
-
-
 function loginpage() {
 	location.href="login1.do";
-
 }
-
 function logout() {
 	location.href="logout.do";
 }
-
-
 </script>
-
-
-
-
-
 	<div id="ch-plugin">
 		<div id="ch-plugin-core">
 			<style data-styled="active" data-styled-version="5.1.1"></style>
