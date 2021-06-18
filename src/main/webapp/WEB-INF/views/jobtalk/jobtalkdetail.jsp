@@ -45,7 +45,7 @@
 			<h2 class="skip">선배에게 질문하기 세부메뉴</h2>
 			<div class="navi-top-area">
 				<a href="Jobtalkwrite.do" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
-				<div class="myInfoSec">
+				<%-- <div class="myInfoSec">
 					<a href="/User/Qstn/MainProfile" class="myInfo">
 						<!-- [Dev] 프로필 랜덤 이미지 파일명 : random_1 ~ random_20, 이미지 없음 : random_default -->
 						<span class="proThumb">
@@ -54,36 +54,13 @@
 						<dl class="infoBx">
 							<dt class="qnaSpA">
 								<span class="nickname">${login.name}</span> 
-								<span class="lvIcon">Lv.1</span>
 							</dt>
-							<dd>
-								<span>질문 0</span>
-								<span>답변 0 (채택 0)</span>
-							</dd>
 						</dl>
 					</a>
-					<button type="button" class="myPoint devMainCouponButton">
-						<span class="point qnaSpB">0</span><span class="btnCoupon qnaSpA">쿠폰교환</span>
-					</button>
-				</div>
+				</div> --%>
 			</div>
 			<div class="navi-list-area">
 			<!-- [Dev] 메뉴 on : 클래스 active 추가 -->
-				<div class="sideNavLow">
-					<strong class="sideNavTit"><a id="devLeftMenuRequireTag" href="/User/Qstn/Index?MainType=1" data-tab="1" class="devLoginLayer " devalert="0">답변하기</a></strong>
-				</div>
-				<div class="sideNavLow">
-					<strong class="sideNavTit"><a id="devLeftMenuOwnerTag" href="/User/Qstn/Index?MainType=2" data-tab="2" class="devLoginLayer " devalert="0">나의질문</a></strong>
-				</div>
-				<div class="sideNavLow">
-					<strong class="sideNavTit"><a id="devLeftMenuEntireTag" href="/User/Qstn/Index?MainType=3" data-tab="3" class="">전체질문</a></strong>
-				</div>
-				
-				<div class="sideNavLow has-tooltip">
-					<strong class="sideNavTit no-link">
-						<a href="javascript:void()">나의그룹</a>
-					</strong>
-				</div>
 				<c:choose>
 					<c:when test="${jobtalk.memberid==login.memberid }">
 						<div class="sideNavLow">
@@ -98,12 +75,8 @@
 						</div>
 					</c:when>
 				</c:choose>
-			<div class="sideNavLow devRecentVisitGroup" style="display:none;">
-				<strong class="sideNavTit"><a href="javascript:void();">최근 본 그룹</a></strong>
-				<ul class="sideNavList boxList"></ul>
 			</div>
 		</div>
-	</div>
 		
 		<%-- <c:choose>
 						<c:when test="${jobtalk.memberid==login.memberid }">
@@ -144,11 +117,12 @@
 						</div>	
 						</div>		
 						<!-- 댓글 -->			
-						<c:if test="${login.memberid != null }">
+						<%-- <c:if test="${login.memberid != null }">  --%>
 							<div class="inputBox">
 								<div class="writeBoxWrap cmtWrite">
-									<form action="replyinsert.do" method="post">
+									<form method="post" id="_frm" name="Frm">
 										<input type="hidden" name="jobtalkseq" value="${jobtalk.jobtalkseq}">
+										<%-- <input type="hidden" name="memberid" value="${login.memberid }">  --%>
 											<fieldset>
 												<div class="uiplaceholder">
 													<span class="ph">솔직하고 따뜻한 답변을 남겨주세요.<br>*휴대폰 번호, 메일 주소, 카카오톡 ID 등 개인정보가 포함된 내용은 비노출 처리 될 수 있습니다.</span>
@@ -163,7 +137,7 @@
                                    	   	   				</a>
                                    	   	 			</div>	  	
                                   	  	 			<span class="byte"><b id="count">0</b> / 1,000</span> 
-                               	         			<button type="submit" id="btnSubmit" class="btnSbm devBtnAnswerWrite">등록</button>
+                               	         			<button type="submit" id="btnSubmit" class="btnSbm devBtnAnswerWrite" onclick="cute('${login.memberid }')">등록</button>
                            	   					</div>
 											</fieldset>
 										</form>
@@ -174,7 +148,7 @@
                   						<li>개인정보가 포함되거나 부적절한 답변은 비노출 또는 해당 서비스 이용 불가 처리될 수 있습니다.</li>
                						</ul>
 								</div>
-							</c:if>		
+							 <%-- </c:if> --%>		 
 						</div>	
 						<c:forEach var="row" items="${replylist}">
 							<input type="hidden" name="replyseq" value="${row.replyseq}">	
@@ -227,7 +201,7 @@
 																					<a href="/User/Qstn/MainProfile?Target=0" class="my-profile" target="_blank">
 																						<span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
 																						<span class="info">${login.memberid}</span>
-																						<input type="hidden" name="memberid" value="${login.memberid}">
+																						<%-- <input type="hidden" name="memberid" value="${login.memberid}"> --%>
 																					</a>
 																				</div>
 	                															<span class="byte"><b id="count">0</b> / 1,000</span>
@@ -1082,5 +1056,31 @@
             });
         }
     </script>
-
+	<script type="text/javascript">
+		function cute(memberid) {
+			alert(memberid);
+			if(memberid == null || memberid==""){
+				alert('로그인해주세요');
+				
+		/* location.href='home.do'; */
+				/* $("#_frm").attr("action",""); */ //혹시나 방지용
+				/* $("#_frm").attr("onsubmit","event.preventDefault();"); */ //이것만 써도 된다.
+				/*  $('#_frm').submit(); */
+				 /* $('#_frm').attr('action','login1.do'); */
+				 document.Frm.action = "login1.do"
+				
+				
+			}else{
+				alert('댓글 추가성공');
+				/* $("#_frm").attr("onsubmit","event.preventDefault();");
+				$('#_frm').attr('action','replyinsert.do');  */
+				/* $('#_frm').submit(); */
+				document.Frm.action = "replyinsert.do"
+			}
+			
+			document.Frm.submit();
+		}
+	
+	
+	</script>
 </body>

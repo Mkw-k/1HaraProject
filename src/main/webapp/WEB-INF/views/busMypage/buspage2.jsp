@@ -165,7 +165,7 @@ body {
 
          <li><a href="createTest.do" class="menu"><span>공고등록</span></a></li>
          <li><a href="myRecruitList.do?companyid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
-         
+
       </ul>
 
 
@@ -173,33 +173,13 @@ body {
    </nav>
 </header>
     <!-- 헤더 -->
-    
+
 <nav id="lnb">
 
 	<!-- S : 2018-09-28 추가 -->
 	<p class="tit"><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지</a></p>
 	<!-- E : 2018-09-28 추가 -->
 	<ul>
-		<li>
-			<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">이력서관리·구직신청</a>
-			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
-			<div class="depth3">
-				<ul>
-					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveResumeRegTp.do" target="_self">이력서 등록</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveSelfIntroRegIntro.do" target="_self">자기소개서 등록</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeSelfIntroMng.do" target="_self">이력서·자기소개서 관리</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeAtchFileMngList.do" target="_self">첨부파일 관리</a>
-					</li>
-				</ul>
-			</div>
-		</li>
 		<li>
 			<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">입사지원 관리</a>
 			<button class="btn-show">입사지원 관리 메뉴 닫기</button>
@@ -232,7 +212,7 @@ body {
 						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
 					</li>
 					<li>
-						<a href="buspageUpdate.do" target="_self">회원정보 수정(성명변경)</a>
+						<a href="pwdcheck.do?memberid=${login.memberid}" target="_self">회원정보 수정(성명변경)</a>
 					</li>
 					<li>
 						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a>
@@ -245,7 +225,7 @@ body {
 		</li>
 	</ul>
 
-</nav>    
+</nav>
 
 
 
@@ -1046,96 +1026,92 @@ function f_empPgmList(resultObj){
  <!-- 인증일자로부터 7일이 지나지 않았을때 보여줌 -->
  <!-- 인증일자로부터 7일이 지나지 않았을때 보여줌 -->
  <!-- 인증만료일이 다갈올대 보여줌-->
-            <!-- contents -->
-            <section id="contents" class="mypage">
-               <div class="tit-util">
-                  <span class="hide-location" id="navi_1">마이페이지(기업)</span>
-                  <span class="hide-location" id="navi_2">마이페이지(기업) 홈</span>
-                  <div class="page-util">
-                     <!-- 기능 버튼 들어갈 예정 -->
-                  </div>
-               </div>
-               <div class="mypage-idv-wrap">
-                  <div class="idv-sec01" style="border: 1px solid #ffffff;">
-                     <div class="con-top">
-                        <div class="tit-area"><span>${login.memberid}</span> 님, 반갑습니다.
+				<!-- contents -->
+				<section id="contents" class="mypage">
+					<div class="tit-util">
+						<span class="hide-location" id="navi_1">마이페이지(기업)</span>
+						<span class="hide-location" id="navi_2">마이페이지(기업) 홈</span>
+						<div class="page-util">
+							<!-- 기능 버튼 들어갈 예정 -->
+						</div>
+					</div>
+					<div class="mypage-idv-wrap">
+						<div class="idv-sec01" style="border: 1px solid #ffffff;">
+							<div class="con-top">
+								<div class="tit-area"><span>${login.memberid}</span> 님, 반갑습니다.
 
-                        <a href = "pwdcheck.do?memberid=${memberid}" class="button">회원정보수정</a></div>
+									<a href = "pwdcheck.do?memberid=${login.memberid}" class="button">회원정보 수정</a>
+								</div>
 
 
-                        <div class="con-resume">
-                           <table>
+								<div class="con-resume">
+									<table>
 
-                              <colgroup>
-                                 <col style="width:100px">
-                                 <col>
-                                 <col style="width:120px">
-                                 <col style="width:140px">
-                              </colgroup>
-                              <tbody>
-                              <c:choose>
-                              <c:when test="${login.newfilename ne null}">
-                              <tr>
-                              <th>
-                              <img alt="" src ="./upload/${business.newfilename}">
-                               </th>
-                               </tr>
-                               </c:when>
-                               <c:otherwise>
-                               <tr>
-                                   <!-- <th>이미지:</th> -->
-                                   <th>
-                                 <img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 100px;"
-                                  src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
-                                   </th>
-                              </tr>
-                              </c:otherwise>
-                              
-                              </c:choose>
-         
-                                <tr>
-                                   <th>아이디: </th>
-                                   <td>${login.memberid }</td>
-                                </tr>
+										<colgroup>
+											<col style="width:100px">
+											<col>
+											<col style="width:120px">
+											<col style="width:140px">
+										</colgroup>
+										<tbody>
+										<c:choose>
+										<c:when test="${login.newfilename ne null}">
+										<tr>
+										<th>
+										<img alt="" src ="./upload/${business.newfilename}" style="width: 100px;height: 100px;">
+			    						</th>
+			    						</tr>
+			    						</c:when>
+			    						<c:otherwise>
+			    						<tr>
+								     		<!-- <th>이미지:</th> -->
+								     		<th>
+								     	 <img style="width: 100px;height: 100px;margin-left: 0px;margin-right: 100px;"
+								     	  src="unnamed.png" alt="프로필사진" style="width:126px; height:165px;">
+								     		</th>
+										</tr>
+										</c:otherwise>
 
-                               <tr>
-                                  <th>회사 이름: </th>
-                                  <td>${business.companyname }</td>
-                               </tr>
+										</c:choose>
 
-                            <%--    <tr>
-                                  <th>비밀번호: </th>
-                                  <td>${login.pwd }</td>
-                               </tr>
- --%>
-                               <tr>
-                                  <th>주소: </th>
-                                  <td>${business.comaddress }</td>
-                               </tr>
+								     	<tr>
+								     		<th>아이디: </th>
+								     		<td>${login.memberid }</td>
+								     	</tr>
 
-                               <tr>
-                                  <th>상세 주소 : </th>
-                                  <td>${business.addressdetail }</td>
-                               </tr>
+								    	<tr>
+								    		<th>회사 이름: </th>
+								    		<td>${business.companyname }</td>
+								    	</tr>
 
-                               <tr>
-                                  <th>대표자명 : </th>
-                                  <td>${login.name }</td>
-                               </tr>
+								    	<tr>
+								    		<th>주소: </th>
+								    		<td>${business.comaddress }</td>
+								    	</tr>
 
-                               <tr>
-                                    <th >이메일</th>
-                                    <td>
-                                          ${login.email}
-                                    </td>
+								    	<tr>
+								    		<th>상세 주소 : </th>
+								    		<td>${business.addressdetail }</td>
+								    	</tr>
 
-                              </tr>
-                                 
+								    	<tr>
+								    		<th>대표자명 : </th>
+								    		<td>${business.name }</td>
+								    	</tr>
 
-                              </tbody>
-                           </table>
-                        </div>
-                     </div>
+			    						<tr>
+												<th >이메일</th>
+												<td>
+													${business.email}
+												</td>
+
+										</tr>
+
+
+										</tbody>
+									</table>
+								</div>
+							</div>
 
                   </div>
 
