@@ -542,7 +542,9 @@ h2{
 <div class="navi_common">
 <ul class="navi_depth1">
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','recruit')" href="recuruitlist.do"><span>채용정보</span></a></li>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="Jobtalklist.do"><span>취업톡톡💬</span></a></li>
+
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','company_info')" href="companydetail.do?companyid=${login.memberid }"><span>이정우 작업중</span></a></li>
+
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','status-list')" href="newslist.do"><span>TODAY NEWS📈</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','verification')" href="pdslist.do"><span>자료실</span></a></li>
 <li>
@@ -582,7 +584,7 @@ h2{
              				 <p><b>[개인🧑]${login.name }</b>님</p>
              	 		 </c:when>
              			<c:when test="${login.auth == 2}">
-             				<p><b>[사원👨‍💼]${login.name }</b>님</p>
+             				<p><b>[기업👨‍💼]${login.name }</b>님</p>
     		 			</c:when>
     					<c:otherwise>
              				<p><b>[관리자👨‍✈️]${login.name }</b>님</p>
@@ -2168,7 +2170,12 @@ h2{
         <div class="wrap_recomm loading" style="display : block">
             <div class="wrap_bigbox person" style="
     width: 400px;">
+    	<div class="panel-heading" style="width: 400px; color: white; background-color: #2186EB;">
+		                    <h3 class="panel-title">
+		                        <span class="glyphicon glyphicon-bookmark"></span> 인기기업 TOP 10</h3>
+		                </div>
             <div id="jquery-accordion-menu" class="jquery-accordion-menu">
+<<<<<<< HEAD
 					<ul>
 						<li class="active"><a href="#" style="font-size: 12pt;"><i class="fa fa-home"></i>NAVER</a><span class="jquery-accordion-menu-label">1 </span><li><a href="#" style="font-size: 12pt;"><i class="fa fa-glass"></i>KAKAO</a><span class="jquery-accordion-menu-label">2 </span></li></li>
 						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-glass"></i>KAKAO</a><span class="jquery-accordion-menu-label">2 </span></li>
@@ -2176,6 +2183,14 @@ h2{
 						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-cog"></i>COUPANG </a><span class="jquery-accordion-menu-label">4 </span></li>
 						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-cog"></i>배달의 민족 </a><span class="jquery-accordion-menu-label">5 </span></li>
 					</ul>
+=======
+            		<ul>
+            <c:forEach var="hot" items="${hot10}" varStatus="status">
+            	<li><a href="companydetail.do?companyid='${hot.companyId}'" style="font-size: 12pt;">&nbsp;&nbsp;&nbsp;${hot.companyname}</a><span class="jquery-accordion-menu-label">${status.count}</span>
+            </c:forEach>
+					</ul>
+					
+>>>>>>> ea5487e962cdef91cc58cd53173764c7b177e657
 				</div>
 			</div>
             <div class="recomm_content" style="
@@ -2418,6 +2433,7 @@ h2{
 	});
 </script>
 		</div>
+<<<<<<< HEAD
 		
 							<div style="text-align: center;"><h2>VIP 채용관</h2></div>
 						
@@ -2536,6 +2552,77 @@ h2{
 		
 		
 		
+=======
+					
+						<div style="text-align: center;"><h4>프리미엄 채용관</h4></div>
+							<section class="tiles" style="margin-left: 300px;margin-right: 300px;">
+								<c:forEach var="dto" items="${list}">
+
+							    	<%-- <c:out value="${dto.title}" /> --%>
+								<article class="style2">
+										<span class="image">
+											<img src="upload/${dto.newfilename}" alt="디폴트이미지" width="20%" height="300px" >
+										</span>
+										<a href="job-details.html">
+											<h5>${dto.companyname}</h5><br>
+											<h2>${dto.jobTitle}</h2>
+											
+											<c:choose>
+												<c:when test="${dto.salary == 0} ">
+													<p><strong>💰연봉 회사내규에 따름</strong></p>
+												</c:when>
+												<c:when test="">
+													<p><strong>💰연봉 면접후 결정</strong></p>
+												</c:when>
+												<c:otherwise>
+													<p><strong>💰연봉 ${dto.salary}</strong></p>
+												</c:otherwise>
+											
+											
+											</c:choose>
+											
+	
+											<p>
+			                                	<i class="fa fa-calendar"></i> ${dto.jobEnd } &nbsp;&nbsp;&nbsp;&nbsp;
+	                                         	
+	                                         	<i class="fa fa-map-marker"></i> ${dto.area1Name }&nbsp;&nbsp;${dto.area2Name }
+											</p>
+										</a>
+									</article>
+								</c:forEach>
+							</section>
+						</div>
+				
+		
+		
+		
+		<br><br>
+		<div class="py-5">
+    <div class="container">
+      <div class="row"> 인기기업채용공고<br>
+      <div class="col-md-12">
+         <table class="table table-hover col-sm-12" style="" id="HOT10">
+         <col width="5%"><col width="10%"><col width="30%"><col width="13%">
+         <col width="7%"><col width="10%"><col width="25%">
+            <thead class="thead-dark">
+               <tr>
+                  <th></th>
+
+                  <th>회사명</th>
+                  <th>공고제목</th>
+                  <th>지원자격(학력·경력)</th>
+                  <th>채용인원</th>
+                  <th>근무조건</th>
+                  <th>마감일·등록일</th>
+               </tr>
+            </thead>
+         </table>
+         <p></p>
+       </div>
+      </div>
+    </div>
+  </div>
+>>>>>>> ea5487e962cdef91cc58cd53173764c7b177e657
 		
 		
 		
@@ -2949,6 +3036,92 @@ function loginpage() {
 function logout() {
 	location.href="logout.do";
 }
+<<<<<<< HEAD
+=======
+
+
+
+getTop10List();
+
+//인기 탑텐 가져오기 
+function getTop10List() {
+
+  $.ajax({
+       type : 'get',
+       url : './getTop10List.do',
+       error: function(xhr, status, error){
+           alert("에러발생");
+       },
+       success:function(list){
+			//alert('success');
+			//alert(list);
+
+			$(".list_col").remove();
+
+			var memberid = '<c:out value="${login.memberid}"/>';
+ 			var auth = '<c:out value="${login.auth}"/>';
+
+			$.each(list, function(i, val){
+				
+				var end = val.jobEnd;
+ 	 			var regdate = val.regdate;
+ 	 			end = end.substr(2,9);
+ 	 			regdate = regdate.substr(2,9);
+
+ 	 			
+				//alert(val.jobSeq);
+				let app = "<tr class= 'list_col'>"
+							+"<td>" + val.rnum +"</td>";
+
+							if(val.del==0){
+
+								"<td>"
+								+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname+"</a>"
+							    + "</td>"
+								/* let empT = "";
+								if(val.empType == 3){
+									empT = "정규직";
+								} */
+								app +="<td>"
+									+ "<a href='companydetail.do?companyid=" + val.companyId  + "'>" + val.companyname + "</a>"
+									+ "</td>"
+									+"<td style='text-align:left'>"
+									//+ arrow(val.depth)
+									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
+									+"</td>"
+									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
+									+"<td>" + val.jobVolumn + "</td>"
+									+"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
+									+"<td>" + end +"<br>"+regdate;
+									
+								if(val.companyId == memberid || auth == 3){
+	 								app += "<input type='button' class='btn btn-primary' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"
+	 									}
+
+	 								app += "</td>";
+
+	 							}
+
+	 							else{
+	 								app += "<td style='text-align:left' colspan='6'>"
+	 										+"<font color='#ff0000'>********* 이 글은 작성자에 의해서 삭제되었습니다</font>"
+	 										+"</td>";
+	 							}
+
+	 							+"</tr>";
+
+					$("#HOT10").append(app);
+			});
+		},
+		error:function(){
+			alert('error');
+		}
+   });
+
+}
+
+
+>>>>>>> ea5487e962cdef91cc58cd53173764c7b177e657
 </script>
 	<div id="ch-plugin">
 		<div id="ch-plugin-core">

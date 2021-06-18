@@ -703,21 +703,35 @@ body {
 	<!-- E : 2018-09-28 추가 -->
 	<ul>
 		<li>
-			<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">이력서관리·구직신청</a>
+			<a href="resumeMain.do?memberid=${login.memberid }" target="_self">이력서관리·구직신청</a>
 			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
 			<div class="depth3">
 				<ul>
 					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveResumeRegTp.do" target="_self">이력서 등록</a>
+						<a href="writeResume.do" target="_self">이력서 등록</a>
 					</li>
 					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveSelfIntroRegIntro.do" target="_self">자기소개서 등록</a>
+						<a href="pdslist.do" target="_self">이력서 양식 다운로드</a>
 					</li>
 					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeSelfIntroMng.do" target="_self">이력서·자기소개서 관리</a>
+						<a href="/indivMemberSrv/aplentMng/seekActvHist/seekActvHistList.do" target="_self">구직활동내역</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 관리</a>
+			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
+			<div class="depth3">
+				<ul>
+					<li class="curr">
+						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
 					</li>
 					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeAtchFileMngList.do" target="_self">첨부파일 관리</a>
+						<a href="mypageUpdate.do" target="_self">회원정보 수정(성명변경)</a>
+					</li>
+					<li>
+						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a>
 					</li>
 					<li>
 						<a href="javascript:check('${login.memberid}')" target="_self">지원내역확인 </a>
@@ -1459,10 +1473,6 @@ function f_empPgmList(resultObj){
 						<div class="idv-sec01" style="height: 550px;">
 							<div class="con-top">
 
-
-								<c:if test="${login.userpic ne null}">
-									<img src="./upload/${dto.newuserpic}" style="width: 150px;height: 150px;">
-								</c:if>
 								<div class="tit-area"><span>${login.name}</span> 님, 반갑습니다.
 									<a href = "mypageUpdate.do" class="button">회원정보수정</a>
 								</div>
@@ -1482,7 +1492,7 @@ function f_empPgmList(resultObj){
 												<tr>
 													<th scope="row">프로필</th>
 													<td>
-														<img src="./upload/${dto.newuserpic}" style="width: 50px;height: 50px;">
+														<img src="./upload/${dto.newuserpic}" style="width: 150px;height: 150px;">
 													</td>
 												</tr>
 										</c:if>

@@ -94,6 +94,7 @@ body {
 		<th><strong>비밀번호를 입력해주세요</strong>
 		<input type="password" name="pwd" id="pwdval">
 		<button onclick="pwdch('${login.memberid }','${login.pwd}')">확인</button>
+		<input type="hidden" name="pwdval" value="${business.pwd}">
 		</th>
 	</tr>
 </table>

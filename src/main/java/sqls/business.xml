@@ -16,7 +16,7 @@
 	</insert>
 
 	<select id="login" parameterType="bit.com.a.dto.BusinessDto" resultType="bit.com.a.dto.BusinessDto">
-		SELECT MEMBERID, PWD, COMPANYNAME, NAME, AUTH , COMADDRESS, NEWFILENAME , EMAIL
+		SELECT MEMBERID, PWD, COMPANYNAME, NAME, AUTH , COMADDRESS, NEWFILENAME , EMAIL, FILENAME
 		FROM BUSINESS
 		WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 	</select>
@@ -27,32 +27,32 @@
 		WHERE MEMBERID = #{memberid} AND PWD = #{pwd}
 	</delete>
 
-	<select id="getBuspage" parameterType="java.lang.String" resultType="bit.com.a.dto.BusinessDto">
-	SELECT MEMBERID,COMPANYNAME,PWD,COMADDRESS,ADDRESSDETAIL,AUTH,NAME,FILENAME, NEWFILENAME
+	<select id="getBuspage" parameterType="bit.com.a.dto.BusinessDto" resultType="bit.com.a.dto.BusinessDto">
+	SELECT MEMBERID,COMPANYNAME,PWD,COMADDRESS,ADDRESSDETAIL,AUTH,NAME,FILENAME, NEWFILENAME,EMAIL
 	FROM BUSINESS
 	WHERE MEMBERID=#{memberid}
 	</select>
 
 
-	
+
 	<!-- 회원정보 수정 -->
 	<update id="updateBuspage"  parameterType="bit.com.a.dto.BusinessDto">
 	UPDATE BUSINESS
-	SET MEMBERID=#{memberid}, COMADDRESS=#{comaddress}, ADDRESSDETAIL=#{addressdetail}, PWD=#{pwd}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}
+	SET MEMBERID=#{memberid}, COMADDRESS=#{comaddress}, ADDRESSDETAIL=#{addressdetail}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}, EMAIL=#{email}, NAME=#{name}
 	WHERE MEMBERID=#{memberid}
 	</update>
-	
-	
+
+
 	<select id="getMyrecruitList" parameterType="java.lang.String" resultType="bit.com.a.dto.RecruitDto">
 		SELECT JOBSEQ, JOBTITLE, JOBSTART, JOBEND
 		FROM JOB
 		WHERE COMPANYID=#{memberid}
 	</select>
-	
+
 	<select id="getApplylist" parameterType="java.lang.Integer" resultType="bit.com.a.dto.ApplyParam">
 		SELECT a.APPLYSEQ, a.MEMBERID, a.JOBSEQ, a.RESUMESEQ, a.APPLYDATE, a.COMPANYREAD, r.RESUMETITLE, m.NAME, m.BIRTH, m.ADDRESS, m.DETAILADDRESS, m.PHONENUM, m.EMAIL
 		FROM APPLY a, JOB j, RESUME r, MEMBER m
-		WHERE a.JOBSEQ=j.JOBSEQ AND a.RESUMESEQ=r.RESUMESEQ AND a.MEMBERID=m.MEMBERID 
+		WHERE a.JOBSEQ=j.JOBSEQ AND a.RESUMESEQ=r.RESUMESEQ AND a.MEMBERID=m.MEMBERID
 		AND a.JOBSEQ=#{jobseq}
 	</select>
 
@@ -65,6 +65,6 @@
  		DELETE FROM BUSINESS
  		WHERE MEMBERID=#{memberid}
  	</delete>
- 	
- 
+
+
  </mapper>
