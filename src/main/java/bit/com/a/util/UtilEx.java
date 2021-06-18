@@ -12,10 +12,10 @@ public class UtilEx {
 	public static String callist(int year, int month, int day) {
 		String str = "";
 
-		str += String.format("&nbsp;<a href='%s?year=%d&month=%d&day=%d'>",
+		str += String.format("&nbsp;<p>",
 										"callist.do", year, month, day);
 		str += String.format("%2d", day);
-		str += "</a>";
+		str += "</p>";
 
 		// <a href='callist.jsp?year=2021&month=3&day=19'>19</a>
 		return str;
@@ -58,9 +58,11 @@ public class UtilEx {
 			for(RecruitDto dto : list) {
 				if(dto.getJobStart().substring(0, 10).equals(dates)) {
 					str += "<li>";
-					str += "<a href='recruitdetail.do?seq=" + dto.getJobSeq() + "'>";
-					str += "<font style='font-size:15px; color:blue'>";
+					str += "<a href='RecruitDetail.do?jobSeq=" + dto.getJobSeq() + "'>";
+					str += "<font style='font-size:12px;color:#3399ff'>";
 					str += "[시작]"; 
+					str += "</font>";
+					str += "<font style='font-size:12px; color:#666'>";
 					str += dot3(dto.getJobTitle());
 					str += "</font>";
 					str += "</a>";
@@ -68,9 +70,11 @@ public class UtilEx {
 				}
 				else if(dto.getJobEnd().substring(0, 10).equals(dates)) {
 					str += "<li>";
-					str += "<a href='recruitdetail.do?seq=" + dto.getJobSeq() + "'>";
-					str += "<font style='font-size:15px; color:blue'>";
+					str += "<a href='RecruitDetail.do?jobSeq=" + dto.getJobSeq() + "'>";
+					str += "<font style='font-size:12px; color:#f3406e'>";
 					str += "[마감]"; 					
+					str += "</font>";
+					str += "<font style='font-size:12px; color:#666'>";
 					str += dot3(dto.getJobTitle());
 					str += "</font>";
 					str += "</a>";

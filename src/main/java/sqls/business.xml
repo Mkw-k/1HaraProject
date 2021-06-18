@@ -27,7 +27,7 @@
 		WHERE MEMBERID = #{memberid} AND PWD = #{pwd}
 	</delete>
 
-	<select id="getBuspage" parameterType="java.lang.String" resultType="bit.com.a.dto.BusinessDto">
+	<select id="getBuspage" parameterType="bit.com.a.dto.BusinessDto" resultType="bit.com.a.dto.BusinessDto">
 	SELECT MEMBERID,COMPANYNAME,PWD,COMADDRESS,ADDRESSDETAIL,AUTH,NAME,FILENAME, NEWFILENAME,EMAIL
 	FROM BUSINESS
 	WHERE MEMBERID=#{memberid}
@@ -38,7 +38,7 @@
 	<!-- 회원정보 수정 -->
 	<update id="updateBuspage"  parameterType="bit.com.a.dto.BusinessDto">
 	UPDATE BUSINESS
-	SET MEMBERID=#{memberid}, COMADDRESS=#{comaddress}, ADDRESSDETAIL=#{addressdetail}, PWD=#{pwd}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}
+	SET MEMBERID=#{memberid}, COMADDRESS=#{comaddress}, ADDRESSDETAIL=#{addressdetail}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}, EMAIL=#{email}, NAME=#{name}
 	WHERE MEMBERID=#{memberid}
 	</update>
 	

@@ -117,11 +117,12 @@
 						</div>	
 						</div>		
 						<!-- 댓글 -->			
-						<c:if test="${login.memberid != null }">
+						<%-- <c:if test="${login.memberid != null }">  --%>
 							<div class="inputBox">
 								<div class="writeBoxWrap cmtWrite">
-									<form action="replyinsert.do" method="post">
+									<form method="post" id="_frm" name="Frm">
 										<input type="hidden" name="jobtalkseq" value="${jobtalk.jobtalkseq}">
+										<%-- <input type="hidden" name="memberid" value="${login.memberid }">  --%>
 											<fieldset>
 												<div class="uiplaceholder">
 													<span class="ph">솔직하고 따뜻한 답변을 남겨주세요.<br>*휴대폰 번호, 메일 주소, 카카오톡 ID 등 개인정보가 포함된 내용은 비노출 처리 될 수 있습니다.</span>
@@ -136,7 +137,7 @@
                                    	   	   				</a>
                                    	   	 			</div>	  	
                                   	  	 			<span class="byte"><b id="count">0</b> / 1,000</span> 
-                               	         			<button type="submit" id="btnSubmit" class="btnSbm devBtnAnswerWrite">등록</button>
+                               	         			<button type="submit" id="btnSubmit" class="btnSbm devBtnAnswerWrite" onclick="cute('${login.memberid }')">등록</button>
                            	   					</div>
 											</fieldset>
 										</form>
@@ -147,7 +148,7 @@
                   						<li>개인정보가 포함되거나 부적절한 답변은 비노출 또는 해당 서비스 이용 불가 처리될 수 있습니다.</li>
                						</ul>
 								</div>
-							</c:if>		
+							 <%-- </c:if> --%>		 
 						</div>	
 						<c:forEach var="row" items="${replylist}">
 							<input type="hidden" name="replyseq" value="${row.replyseq}">	
@@ -200,7 +201,7 @@
 																					<a href="/User/Qstn/MainProfile?Target=0" class="my-profile" target="_blank">
 																						<span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
 																						<span class="info">${login.memberid}</span>
-																						<input type="hidden" name="memberid" value="${login.memberid}">
+																						<%-- <input type="hidden" name="memberid" value="${login.memberid}"> --%>
 																					</a>
 																				</div>
 	                															<span class="byte"><b id="count">0</b> / 1,000</span>
@@ -1055,5 +1056,31 @@
             });
         }
     </script>
-
+	<script type="text/javascript">
+		function cute(memberid) {
+			alert(memberid);
+			if(memberid == null || memberid==""){
+				alert('로그인해주세요');
+				
+		/* location.href='home.do'; */
+				/* $("#_frm").attr("action",""); */ //혹시나 방지용
+				/* $("#_frm").attr("onsubmit","event.preventDefault();"); */ //이것만 써도 된다.
+				/*  $('#_frm').submit(); */
+				 /* $('#_frm').attr('action','login1.do'); */
+				 document.Frm.action = "login1.do"
+				
+				
+			}else{
+				alert('댓글 추가성공');
+				/* $("#_frm").attr("onsubmit","event.preventDefault();");
+				$('#_frm').attr('action','replyinsert.do');  */
+				/* $('#_frm').submit(); */
+				document.Frm.action = "replyinsert.do"
+			}
+			
+			document.Frm.submit();
+		}
+	
+	
+	</script>
 </body>

@@ -115,7 +115,7 @@ public class BuspageController {
 		}
 		
 		*/
-		return "home";
+		return "redirect:buspage.do";
 	}
 	
 	// 기업 마이페이지 공고현황 이동

@@ -556,7 +556,7 @@ margin-right : 450px;
 <span class="marker"><svg aria-hidden="true"><use xlink:href="#svg_gnb_more"></use></svg></span>
 <ul>
 <c:if test="${login.auth==1 || login.auth==3}">
-	<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="Jobtalklist.do"><span>이력서관리</span></a></li>
+	<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="resumeMain.do?memberid=${login.memberid }"><span>이력서관리</span></a></li>
 </c:if>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="FAQ.do"><span>FAQ</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents2')" href="notice.do"><span>공지사항</span></a></li>

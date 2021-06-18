@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 
 <head>
@@ -79,14 +80,18 @@ white{
             </a> </li>
           <li class="nav-item">
             <div class="btn-group">
-              <button class="btn dropdown-toggle btn-link " data-toggle="dropdown">로그인해주세요</button>
-              <!-- <button class="btn dropdown-toggle btn-link " data-toggle="dropdown">이주영 님</button> -->
-              <div class="dropdown-menu" style=""> <a class="dropdown-item" href="#">Action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-              </div>
-            </div><a class="btn" style="background-color: #000000; color: #fff !important;" href="#">로그인</a>
+           		<c:choose>
+           			 <c:when test="${login.memberid == null}">
+            			  <button class="btn dropdown-toggle btn-link " onclick="login()">로그인해주세요</button>
+         				  <a class="btn" style="background-color: #000000; color: #fff !important;" href="login1.do">로그인</a>
+        	 		</c:when>
+              		<c:otherwise>
+              		 	 <button class="btn dropdown-toggle btn-link " data-toggle="dropdown">이주영 님</button>
+              		</c:otherwise>
+          		</c:choose>		
+         	</div>
           </li>
+          
         </ul>
       </div>
     </div>
@@ -117,6 +122,6 @@ $(function() {
 	      }
 	   });
 	});
+	
 </script>
-
 
