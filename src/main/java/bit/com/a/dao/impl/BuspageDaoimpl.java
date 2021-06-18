@@ -31,9 +31,9 @@ public class BuspageDaoimpl implements BuspageDao {
 	
 	// 회원 정보 뿌려주는곳
 	@Override
-	public BusinessDto getbuspage(BusinessDto dto) {
+	public BusinessDto getbuspage(String memberid) {
 		
-		return sqlSession.selectOne(namespace + "getBuspage", dto );
+		return sqlSession.selectOne(namespace + "getBuspage", memberid );
 	}
 
 

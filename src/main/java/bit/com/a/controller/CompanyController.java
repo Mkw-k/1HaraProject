@@ -17,7 +17,7 @@ public class CompanyController {
 	
 	@RequestMapping(value = "companydetail.do",  method = {RequestMethod.GET, RequestMethod.POST})
 	public String companydetail(Model model, String companyid) {
-		
+		System.out.println("companyid="+companyid);
 		
 		CompanyDto dto = service.getCompany(companyid);
 		model.addAttribute("company", dto);
@@ -30,10 +30,10 @@ public class CompanyController {
 	
 	
 	@RequestMapping(value = "companywrite.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String companywrite() {
+	public String companywrite(Model model , CompanyDto dto) {
 		
 		System.out.println("올까요?");
-		
+		model.addAttribute("company", dto);
 		return "company/companywrite";
 	}
 	
@@ -55,7 +55,7 @@ public class CompanyController {
 			/* return "company/companywrite"; */
 			return "company/companywrite";
 		}
-		return "redirect:/recuruitlist.do";
+		return "company/companydetail";
 	}
 	
 	@RequestMapping(value = "companyupdate.do", method = {RequestMethod.GET, RequestMethod.POST})
@@ -89,8 +89,10 @@ public class CompanyController {
 			System.out.println("업데이트실패");
 		}
 		
-	
-		return "redirect:/recuruitlist.do";
+		String companyid = dto.getMemberid(); 
+		model.addAttribute("companyid", companyid);
+		
+		return "redirect:/companydetail.do";
 	}
 	
 	

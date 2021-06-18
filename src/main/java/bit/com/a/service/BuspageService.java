@@ -12,7 +12,7 @@ public interface BuspageService {
 	
 	
 	// 뿌려주는곳
-	public BusinessDto getbuspage(BusinessDto dto);
+	public BusinessDto getbuspage(String memberid);
 	
 	boolean updateBuspage(BusinessDto dto);
 
