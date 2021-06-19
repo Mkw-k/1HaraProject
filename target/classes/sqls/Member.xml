@@ -40,32 +40,6 @@
 	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 </select>
 
-
-<!-- <select id="findId" resultType="user">
-		SELECT *
-		FROM MEMBER
-		WHERE name=#{name} and PHONENUMBER=#{phonenumber}
-</select>
-
-비밀번호 찾기
-<select id="findPassword" resultType="user">
-		SELECT *
-		FROM MEMBER
-		WHERE MEMBERID=#{id} AND NAME=#{name} AND PHONENUMBER=#{phone}
-</select>
-
-비밀번호 찾고 비밀번호 수정
-
-<update id="updatePassword">
-		UPDATE MEMBER
-		SET PWD=#{pwd}
-		WHERE MEMBER=#{id}
-
-</update> -->
-
-
-
-
 <!-- 카카오로그인 -->
 <select id="kakaoLogin" parameterType="bit.com.a.dto.MemberDto"
 	resultType="bit.com.a.dto.MemberDto">
@@ -114,6 +88,9 @@
 	SET NAME=#{name}, EMAIL=#{email}, ADDRESS=#{address}, DETAILADDRESS=#{detailaddress}, PHONENUM=#{phonenum}, USERPIC=#{userpic}, NEWUSERPIC=#{newuserpic}
 	WHERE MEMBERID=#{memberid}
 	</update>
+	
+	
+	
 <!--
 	<insert parameterType="bit.com.a.dto.MemberDto" id="addmember">
 	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, USERPIC, AUTH)

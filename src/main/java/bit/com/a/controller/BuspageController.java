@@ -68,7 +68,7 @@ public class BuspageController {
 	public String buspageUpdateAf( BusinessDto dto,
 								   String filename,	// 기존의 파일 명,
 								   HttpServletRequest req,
-								   @RequestParam(value = "fileload", required = false)MultipartFile fileload) {
+								   @RequestParam(value = "fileload", required = false)MultipartFile fileload, Model model) {
 
 		System.out.println("fileload" + fileload);
 		System.out.println(dto.toString());
@@ -117,7 +117,8 @@ public class BuspageController {
 		}
 
 		*/
-		return "redirect:buspage.do";
+		model.addAttribute("memberid", dto.getMemberid());
+		return "redirect:/buspage.do";
 	}
 
 	// 기업 마이페이지 공고현황 이동

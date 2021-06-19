@@ -1342,7 +1342,7 @@ System.out.println(_gender);
 													</div>
 												</div>
 												
-												
+												<% if(!calist.isEmpty()) {%>
 												<% for(int i=0; i<calist.size();i++){ %>
 												<div id="career" class="resume_section blind_guide">
 
@@ -1730,7 +1730,278 @@ System.out.println(_gender);
 													</div>
 												</div>
 											
-											<% } %>	
+											<% } 
+											
+											} else {%>	
+											
+											<div id="career" class="resume_section blind_guide">
+
+													<div class="area_title">
+														<h3 class="title">경력사항</h3>
+													</div>
+
+													<div class="resume_write resume_career">
+														<div class="select_title">
+															<div class="row">
+																<div class="row">
+																	<div class="form-group">
+																		<div class="searchable-container">
+																			<div
+																				class="items col-xs-5 col-sm-5 col-md-6 col-lg-6">
+																				<div class="info-block block-info clearfix">
+																					<div class="square-box pull-left">
+																						<span
+																							class="glyphicon glyphicon-tags glyphicon-lg"></span>
+																					</div>
+																					<div data-toggle="buttons"
+																						class="btn-group bizmoduleselect"
+																						style="width: 200px; padding-right: 20px;">
+																						<label class="btn btn-default" id="careerno"
+																							onclick="careernoCheck()" for="careerno">
+																							<div class="bizcontent">
+																								<input type="checkbox" name="Nocareer"
+																									autocomplete="off" value="신입"> <span
+																									class="glyphicon glyphicon-ok glyphicon-lg careerno"
+																									id=""></span>
+																								<h5>신입</h5>
+																							</div>
+																						</label>
+																					</div>
+																				</div>
+																			</div>
+																			<div
+																				class="items col-xs-5 col-sm-5 col-md-6 col-lg-6">
+																				<div class="info-block block-info clearfix">
+																					<div class="square-box pull-left">
+																						<span
+																							class="glyphicon glyphicon-tags glyphicon-lg"></span>
+																					</div>
+																					<div data-toggle="buttons"
+																						class="btn-group bizmoduleselect"
+																						style="width: 200px; padding-right: 20px;">
+																						<label class="btn btn-default" id="careerok"
+																							onclick="careerokCheck()" for="careerok">
+																							<div class="bizcontent">
+																								<input type="checkbox" name="Okcareer"
+																									autocomplete="off" value=""> <span
+																									class="glyphicon glyphicon-ok glyphicon-lg careerok"
+																									id=""></span>
+																								<h5>경력</h5>
+																							</div>
+																						</label>
+																					</div>
+																				</div>
+																			</div>
+
+
+																		</div>
+																	</div>
+																</div>
+
+															</div>
+
+
+															<div id="career_template" style="display: none">
+
+																<div id="tpl_row_1621990779" class="tpl_row"
+																	data-tpl_id="tpl_career_item">
+
+																	<div class="resume_row">
+																		<div class="input_title">
+																			회사명 <span class="point">필수</span>
+																		</div>
+																		<div class="resume_input">
+																			<input type="text" id="pre_comname"
+																				name="pre_comname" value=""
+																				class="box_input" maxlength="80"
+																				data-api_type="auto" data-api_id="career_company">
+
+																		</div>
+
+																	</div>
+
+																	<div class="resume_row">
+																		<div class="input_title">
+																			재직기간 <span class="point">필수</span>
+																		</div>
+																		<div class="area_period">
+																			<div class="resume_input">
+																				<input type="text" id="pre_startdate"
+																					name="pre_startdate"
+																					class="expect_date box_input size_type2" value=""
+																					data-dateformat="yymm" data-only-number="true"
+																					autocomplete="off">
+
+																			</div>
+																			<span class="txt_period">~</span>
+																			<div class="resume_input">
+
+																				<input type="text" id="pre_enddate"
+																					name="pre_enddate"
+																					class="expect_date box_input size_type2" value=""
+																					data-dateformat="yymm" data-only-number="true"
+																					autocomplete="off">
+
+																			</div>
+																			<div class="sri_select resume_select">
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_status" id="pre_status">
+																					<option value="퇴사">퇴사</option>
+																					<option value="재직중">재직중</option>
+																				</select>
+
+
+																			</div>
+																			<p class="txt_error"></p>
+																		</div>
+																		<p class="info_period period_1621990779"></p>
+																	</div>
+
+																	<div class="resume_row">
+																		<div class="input_title">퇴사사유</div>
+																		<div class="resume_bundle">
+																			<div class="sri_select resume_select">
+
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_reason" id="pre_reason">
+																					<option>업직종 전환</option>
+																					<option>근무조건</option>
+																					<option>경영악화</option>
+																					<option>계약만료</option>
+																					<option>출산/육아</option>
+																					<option>학업</option>
+																					<option>유학</option>
+																					<option>개인사정</option>
+																					<option>기타</option>
+																				</select>
+
+																			</div>
+
+																		</div>
+																	</div>
+
+																	<div class="resume_row">
+																		<div class="input_title">
+																			직급/직책 <span class="point">필수</span>
+																		</div>
+																		<div class="resume_bundle">
+																			<div class="resume_input">
+																				<input type="text"
+																					id="pre_position"
+																					name="pre_position"
+																					class="box_input max_length" value=""
+																					data-api_type="layer"
+																					data-api_id="career_job_grade_duties"
+																					maxlength="20">
+																			</div>
+
+																			<p class="txt_number"></p>
+																		</div>
+																	</div>
+
+																	<div class="resume_row">
+																		<div class="input_title">
+																			직종 <span class="point">필수</span>
+																		</div>
+																		<div class="resume_input">
+																			<div class="option option_area">
+																				<input type="text"
+																					id="pre_buscode"
+																					name="pre_buscode" value=""
+																					class="box_input" data-api_type="layer"
+																					data-api_id="career_job_category" data-dim="n"
+																					data-position="unused">
+																			</div>
+																		</div>
+																	</div>
+
+																	<div class="resume_row">
+																		<div class="input_title">근무지역</div>
+																		<div class="sri_select resume_select">
+																			<input type="hidden" name="pre_area" id="pre_area">
+																			<select name="sido1" id="sido1"></select> 
+																			<select name="gugun1" name="" id="gugun1" onchange="selectCareerArea(this.value)"></select>
+
+																		</div>
+																	</div>
+
+																	<div class="resume_row">
+																		<div class="input_title">근무부서</div>
+																		<div class="resume_input">
+																			<input type="text" id="pre_dept"
+																				name="pre_dept" class="box_input" value=""
+																				maxlength="16">
+
+																		</div>
+																	</div>
+
+																	<div class="resume_row">
+																		<div class="input_title">연봉</div>
+																		<div class="area_salary">
+
+																			<div class="sri_select resume_select">
+																				<select class="selectpicker"
+																					style="width: 107.22222px; height: 50.22222px;" name="pre_sal" id="pre_sal">
+																					<option>회사 내규에 따름</option>
+																					<option>2000~2500만원</option>
+																					<option>2500~3000만원</option>
+																					<option>3000~3500만원</option>
+																					<option>3500~4000만원</option>
+																					<option>4000~4500만원</option>
+																					<option>4500~5000만원</option>
+																					<option>5500~6000만원</option>
+																					<option>6000~7000만원</option>
+																					<option>7000~8000만원</option>
+																					<option>8000~9000만원</option>
+																					<option>8000~</option>
+																				</select>
+																			</div>
+
+																			<p class="txt_number"></p>
+																			<p class="txt_error"></p>
+																		</div>
+																	</div>
+
+																	<div class="resume_row">
+																		<div class="input_title">담당업무</div>
+																		<div class="resume_textarea">
+
+																			<textarea id="pre_jobdetail"
+																				name="pre_jobdetail" class="box_textarea"
+																				style="width: 500px;"></textarea>
+																		</div>
+																	</div>
+
+																	<!-- <div class="resume_project">
+																		<div class="area_title">
+																			<h4 class="title">프로젝트 수행이력</h4>
+																			<p class="txt_noti">프로젝트 수행 이력이 있는 경우 수행 역할을 작성해
+																				보세요!</p>
+																			<button type="button" class="btn_add btn_resume_add"
+																				data-tpl_id="tpl_career_project">프로젝트 수행이력
+																				추가</button>
+																		</div>
+
+
+																	</div> -->
+																</div>
+
+																<div id="careerAdd"></div>
+
+																<div class="area_resume_btn">
+																	<button type="button" class="btn_resume_add"
+																		data-tpl_id="tpl_career_item" id="carAdd">경력
+																		추가</button>
+																</div>
+															</div>
+
+
+														</div>
+													</div>
+												</div>
+											
+												<% } %>
+												
 												<% for(int i=0; i< actlist.size(); i++) { %>
 												
 												<div id="activity" class="resume_section blind_guide"

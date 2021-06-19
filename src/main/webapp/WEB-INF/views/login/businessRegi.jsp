@@ -287,21 +287,7 @@ $(function() {
 				<input type="text" class="form-control" id="sample6_detailAddress" name="addressdetail" placeholder="상세주소">
 				<input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목">
         </div>
-      <!--   <div class="form-group">
-			<label for="email" class="cols-sm-2 control-label">이메일 (필수)</label>
-			   <div class="cols-sm-10">
-			   		<div class="input-group">
-			             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-			             <input type="text" class="form-control" name="email" id="email" placeholder="이메일 주소를 입력하세요. ex) example@gmail.com" />
-			             <p id="emailCheck" style="font-size: 12px"></p>
-			             <input type="button" class="btn btn-secondary" id="emailBtn" name="emailBtn" value="본인 인증" disabled="disabled">
-			        </div>
-			        <br>
-			   </div>
-		       <div class="cols-sm-6" id="authNumber">
-		       </div>
-		 </div>
-         -->
+     
 
 
         <div class="form-group">
@@ -357,29 +343,6 @@ $(function() {
 	});
 
 
-    //아이디 입력란에 keyup 이벤트가 일어 났을때 실행할 함수 등록
-   /*  $("#companyid").keyup(function(){
-        //입력한 문자열을 읽어온다.
-        var id=$(this).val();
-        //ajax 요청을 해서 서버에 전송한다.
-        $.ajax({
-            method:"post",
-            url:"/idCheck",
-            data:{inputId:id},
-            success:function(data){
-                var obj=JSON.parse(data);
-                if(obj.canUse){//사용 가능한 아이디 라면
-                    $("#overlapErr").hide();
-                    // 성공한 상태로 바꾸는 함수 호출
-                    successState("#id");
-
-                }else{//사용 가능한 아이디가 아니라면
-                    $("#overlapErr").show();
-                    errorState("#id");
-                }
-            }
-        });
-    }); */
 
     $("#pwd").keyup(function(){
         var pwd=$(this).val();

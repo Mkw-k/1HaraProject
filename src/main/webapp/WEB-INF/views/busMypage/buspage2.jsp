@@ -164,7 +164,7 @@ body {
          <li><a href="companydetail.do?companyid=${login.memberid }" class="menu"><span>기업정보</span></a></li>
 
          <li><a href="createTest.do" class="menu"><span>공고등록</span></a></li>
-         <li><a href="myRecruitList.do?companyid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
+         <li><a href="myRecruitList.do?memberid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
 
       </ul>
 
@@ -181,44 +181,46 @@ body {
 	<!-- E : 2018-09-28 추가 -->
 	<ul>
 		<li>
-			<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">입사지원 관리</a>
-			<button class="btn-show">입사지원 관리 메뉴 닫기</button>
+
+			<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">공고 관리</a>
+			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
 			<div class="depth3">
 				<ul>
 					<li>
-						<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">알선/입사지원 내역</a>
+						<a href="createTest.do" target="_self">공고등록</a>
 					</li>
 					<li>
-						<a href="/indivMemberSrv/aplentMng/seekActvHist/seekActvHistList.do" target="_self">구직활동내역</a>
+						<a href="myRecruitList.do?memberid=${login.memberid }" target="_self">공고현황 관리</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+
+		<li>
+			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">기업정보 관리</a>
+			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
+
+			<div class="depth3">
+				<ul>
+					<li>
+						<a href="companydetail.do?companyid=${login.memberid }" target="_self">기업상세정보</a>
 					</li>
 					<li>
-						<a href="/indivMemberSrv/aplentMng/offerCo/offerCoList.do" target="_self">입사제안/스크랩한 기업</a>
+						<a href="buspageUpdate.do" target="_self">회원정보 수정</a>
 					</li>
 					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeReadList.do" target="_self">이력서 열람기업</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/intrstInfo/mailToEmpList.do" target="_self">채용담당자와 한마디</a>
+						<a href="businessDelete.do" target="_self">회원탈퇴</a>
 					</li>
 				</ul>
 			</div>
 		</li>
 		<li>
-			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 관리</a>
+			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">프리미엄 회원가입</a>
 			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
 			<div class="depth3">
 				<ul>
-					<li class="curr">
-						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
-					</li>
 					<li>
-						<a href="pwdcheck.do?memberid=${login.memberid}" target="_self">회원정보 수정(성명변경)</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a>
-					</li>
-					<li>
-						<a href="businessDelete.do" target="_self">회원탈퇴</a>
+						<a href="javascript:priMember('${login.memberid }','${login.companyname }','${login.name }','${login.comaddress }')" target="_self">가입하기</a>
 					</li>
 				</ul>
 			</div>
@@ -1329,6 +1331,19 @@ window.onscroll = function sticky() {
     nav[0].classList.remove("nav");
   }
 }
+
+
+
+
+/* 프리미엄결제창이동 */
+//프리미엄 결제창 이동
+function priMember(memberid, companyname, name, comaddress) {
+alert("priMember");
+	   location.href = "priMember.do?memberid="+memberid+"&companyname="+companyname +"&name="+name+"&comaddress="+comaddress;
+	}
+
+
+
 </script>
 </body>
 </html>

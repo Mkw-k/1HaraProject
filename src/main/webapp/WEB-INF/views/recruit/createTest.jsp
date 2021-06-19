@@ -35,7 +35,7 @@
 </head>
 
 
-<c:import url="header.jsp" charEncoding="utf-8"/>
+<c:import url="../header2.jsp" charEncoding="utf-8"/> 
 
 
 <body class="bg">
