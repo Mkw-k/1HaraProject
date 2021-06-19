@@ -1,8 +1,14 @@
 package bit.com.a.service;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.ModelAndView;
+
 import bit.com.a.dto.BusinessDto;
+
 
 public interface BusinessService {
 
@@ -10,7 +16,7 @@ public interface BusinessService {
 
 	boolean addmember(BusinessDto bus);
 
-	BusinessDto login(BusinessDto dto);
+	ModelAndView  login(BusinessDto dto, HttpServletResponse response) throws IOException;
 
 	void businessDelete(BusinessDto dto);
 
