@@ -137,8 +137,6 @@ index.jsp
 <a href="member_info.do">개인정보관리</a>
 
 <a href="Maintest.do">개인정보관리</a>
-=======
->>>>>>> 98b77e6c7f27189403dc19a4db68da89df83ceaf
 
 <!-- 메인 홈페이지 읽기 애니메이션 -->
 <div class="container">
