@@ -48,7 +48,7 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 
 /* ----------------------------------------------Generalise------------------------------------- */
 
-#header, #topbar, #featured_slide, #homecontent, #breadcrumb, #container, #footer, #copyright{display:block; position:relative; width:960px; margin:0 auto;}
+#header, #topbar, #featured_slide, #homecontent, #breadcrumb, #container, #footer, #copyright{display:block; position:relative; margin:0 auto;}
 
 /* ----------------------------------------------Header------------------------------------- */
 
@@ -56,7 +56,7 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 #header .fl_left{display:block; float:left; width:300px; overflow:hidden;}
 #header .fl_left h1, #header .fl_left p{margin:0; padding:0; line-height:normal;}
 #header .fl_left h1{font-size:36px;}
-#header h1 a{color:#CED6DA; background-color:#70848E;}
+#header h1 a{color:#CED6DA;}
 #search{display:block; width:300px; margin:10px 0 0 0; padding:0;}
 #search ul{margin:40px 0 10px 0; padding:0; list-style:none;}
 #search li{display:inline;}

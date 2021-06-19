@@ -193,7 +193,7 @@ white{
 <body>
 
 
-
+<c:import url="../header2.jsp" charEncoding="utf-8"/> 
 
   <div class="py-0 pt-3" style="background-color: #2186eb; color: white; height: 174px;">
     <div class="container">
@@ -546,6 +546,8 @@ function getTop10List() {
  			$(".list_col").remove();
 
  			var memberid = '<c:out value="${login.memberid}"/>';
+ 			var auth = '<c:out value="${login.auth}"/>';
+ 			
 
  			$.each(list, function(i, val){
  				//alert(val.jobSeq);

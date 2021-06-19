@@ -288,13 +288,19 @@ hr {
 }
 </style>
 
+<c:import url="script.jsp" charEncoding="utf-8"/>
+
+<link rel="stylesheet" href="static/csss/common.css" media="all">
+<link rel="stylesheet" href="static/csss/top.css" media="all">
+<link rel="stylesheet" href="static/csss/reset.css" media="all">
+
 </head>
 
 <body>
 
-<c:import url="script.jsp" charEncoding="utf-8"/>
 
-<c:import url="header.jsp" charEncoding="utf-8"/>
+
+<c:import url="../header2.jsp" charEncoding="utf-8"/> 
 
 
 <div class="container-fluid">
