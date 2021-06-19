@@ -29,9 +29,9 @@ public class BuspageServiceimpl implements BuspageService {
 	}
 
 	@Override
-	public BusinessDto getbuspage(BusinessDto dto) {
+	public BusinessDto getbuspage(String memberid) {
 		
-		return dao.getbuspage(dto);
+		return dao.getbuspage(memberid);
 	}
 
 	@Override

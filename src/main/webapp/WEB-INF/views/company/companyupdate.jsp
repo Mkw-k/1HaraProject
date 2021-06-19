@@ -4,32 +4,61 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <head>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<link href="csss/header.css" rel="stylesheet" type="text/css">
 
-
-
-
-
-
-</head>
 
 <style type="text/css">
+ 
 
-/*  table{
-	width:100%;
-	border-top: 1px solid #444444;
-	border-collapse: collapse;
+/* 버튼 */
+a.box-btn {
+	background-color: #2186eb;
+	padding: 5px 20px;
+	display: inline-block;
+	color: #fff;
+	text-transform: capitalize;
+	border-radius: 3px;
+	font-size: 15px;
+	transition: .3s;
 }
-th , td{
-	border-bottom: 1px solid #444444;
-	padding: 10px;
+
+/* 버튼  */
+a.box-btn:hover, a.border-btn:hover {
+	background-color: #2186eb;
 }
-  */
+
+
+
+/* 테이블 속성 */
+.table-bordered {
+border: 1px solid #dddddd;
+border-collapse: separate;
+border-left: 0;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
+.table {
+width: 100%;
+margin-bottom: 20px;
+background-color: transparent;
+border-collapse: collapse;
+border-spacing: 0;
+display: table;
+}
 
 
 
 body {
   font-family: "Noto Sans KR", sans-serif !important;
+	margin: auto;
+    width: 500px;
+    
+
 }
 
 .fontscolor{
@@ -42,15 +71,20 @@ body {
  color:green
  }
 
- 
+
+
+
 </style>
+
+</head>
+
 
 
 
 <h1 align="center"><strong>기업 정보 수정하기</strong></h1>
 <form name="comform" id="_comform" action="companyupdateAf.do" method="get">    
-    <div align="center" >
-    <table border="1">
+    <div  align="center" >
+    <table border="1" class="table table-striped table-bordered">
      	<tr>
     		<th>회사이름:<p class="fontscolor2">* 변경할수없습니다</p></th>
     		<td><input type="text" name="companyname" value="${login.companyname }" readonly="readonly"></td>
@@ -78,7 +112,7 @@ body {
     	
     	<tr>
     		<th>회사 규모 (중소기업 , 대기업):</th>
-    		<td><input type="text" name="companytype" value="${company.companytype}"> (필수)</td>
+    		<td><input type="text" name="companytype" value="${company.companytype}"></td>
     	</tr>
     	
     	<tr hidden="">
@@ -88,12 +122,12 @@ body {
     
     	<tr>
     		<th>평균 연봉:</th>
-    		<td><input type="text" name="salaryavg" value="${company.salaryavg }" > (필수)</td>
+    		<td><input type="text" name="salaryavg" value="${company.salaryavg }" ></td>
     	</tr>
     
     	<tr>
     		<th>초봉:</th>
-    		<td><input type="text" name="salarystart" value="${company.salarystart }"> (필수)</td>
+    		<td><input type="text" name="salarystart" value="${company.salarystart }"></td>
     	</tr>
     
     	<tr>
@@ -120,7 +154,7 @@ body {
     		<th>연매출 :</th>
     		<td><input type="text" name="totalsale" value="${company.totalsale }" ></td>
     	</tr>
- 
+ 	
  		<tr>
      		<th>직원 수:<p class="fontscolor">(숫자로만 입력해주세요)</p></th>
     		<td><input type="text" name="empcount" value="${company.empcount }" >명</td>
@@ -140,9 +174,17 @@ body {
     </div>
 
 	    <div align="center">
-	    	<c:if test="${company.companytype ne null}">
-	    	<button id="companyBtn">수정하기</button>
+	    	<c:if test="${company.companyseq == null}">	    	
+	    	<p>상세정보를 먼저 입력해주세요</p>
 	    	</c:if>
+	    	
+	    	<c:if test="${company.companyseq != null }">
+	    	<button id="companyBtn" class="box-btn">수정하기</button>
+	    	</c:if>
+	    	
+	    	
+	    	
+	    	
 	    </div>
 
 </form>    

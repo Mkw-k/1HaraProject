@@ -717,4 +717,26 @@ WHERE J.COMPANYID = C.MEMBERID AND
 
 </select>
 
+<!-- 프리미엄 채용 전용 (메인페이지) -->
+<select id="getNew6PreJob" resultType="bit.com.a.dto.RecruitDto">
+	SELECT ROWNUM, j.jobseq, j.companyid, j.jobtitle, j.salary, j.jobend, j.area1name, j.area2name, b.newfilename, b.companyname
+	FROM (SELECT  jobseq, companyid, jobtitle, salary, jobend, area1name, area2name
+	          FROM job
+	          ORDER BY jobseq DESC
+	        )J, business B
+	where j.companyid = b.memberid and 
+	b.ispremium = 1 and 
+	rownum between 1 and 12
+</select>
+
+<!-- 인기기업 탑텐 타이틀만 가져오기  -->
+<select id="Hot10Comname" resultType="bit.com.a.dto.RecruitDto">
+	SELECT F.COMPANYID, COUNT(F.COMPANYID) AS CNT, b.companyname
+	FROM comfavorite F , business B
+	WHERE f.companyid = b.memberid AND
+	<![CDATA[ROWNUM <=10]]>
+	GROUP BY f.companyid, b.companyname
+	ORDER BY CNT DESC
+</select>
+
 </mapper>

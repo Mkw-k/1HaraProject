@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -123,31 +123,16 @@ public class MemberController {
 		 return "login/memberRegi";
 
 		 }		 
-	
-	
+
 	//TODO 로그인 
 	@RequestMapping(value = "loginAf.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String loginAf(MemberDto dto, HttpServletRequest req, HttpServletResponse response,
+	public ModelAndView loginAf(HttpServletRequest req, HttpServletResponse response, @ModelAttribute MemberDto dto,
 			@RequestParam(value="memberid", required=true) String userId,
 			@RequestParam(value="pwd",required=true) String password ) throws Exception {
 
-		MemberDto login = service.login(dto);
-
-		if (login != null && !login.getMemberid().equals("")) {
-
-			req.getSession().setAttribute("login", login);
-			// req.getSession().setMaxInactiveInterval(60 * 60 * 24);
-
-			return "redirect:/home.do";
-
-		} else {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
-			
-			return "redirect:/login1.do";
-
-		}
+		ModelAndView mav = new ModelAndView();
+		mav = service.login(dto, response);
+		return mav;
 	}
 
 	/*

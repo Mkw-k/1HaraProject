@@ -17,6 +17,8 @@
   <link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
   <!-- TO_BE CSS.. -->
   <link rel="stylesheet" href="static/css/import.css" media="all">
+  <link href="csss/common.css" rel="stylesheet" type="text/css">
+  <link href="csss/reset.css" rel="stylesheet" type="text/css">
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- jQuery Modal -->
@@ -38,10 +40,10 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 
- <!-- 전체 css -->
 
+ <!-- 전체 css -->
 <link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
-<!-- <script type="text/javascript" src="layout/scripts/jquery.min.js"></script> -->
+<script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
 <script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
 
 <!-- 부트스트랩 -->
@@ -411,51 +413,40 @@ section .section-title {
 
 </style>
 </head>    
+<body>
 
-<form name="frmForm" id="_frmForm" action="noticeupload.do" method="post"
-	enctype="multipart/form-data">
+<div class="container">
+<form name="frmForm" id="_frmForm" action="noticeupload.do" method="post" enctype="multipart/form-data">
 
-<table class="list_table">
-
-<tr>
-	<th>아이디</th>
-	<td style="text-align: left;">
-		<input type="text" name="memberid" readonly="readonly" value="${login.memberid }" size="50">
-	</td>
-</tr>
-
-<tr>
-	<th>제목</th>
-	<td style="text-align: left;">
-		<input type="text" name="title" size="50">
-	</td>
-</tr>
-
-<tr>
-	<th>파일 업로드</th>
-	<td style="text-align: left;">
-		<input type="file" id="_fileload" name="fileload" style="width: 400px">
-	</td>
-</tr>
-
-<tr>
-	<th>내용</th>
-	<td style="text-align: left;">
-		<textarea rows="10" cols="50" name="content"></textarea>
-	</td>
-</tr>
-
-<tr>
-	<td colspan="2" style="height: 50px; text-align: center;">
+<section id="contents">
+	<section class="board-view">
+		<div class="tit-area">
+			<input type="text" name="title" size="50">
+		</div>
+		<div class="info">
+			<p class="tit">작성자</p>
+			<input type="text" name="memberid" readonly="readonly" value="${login.memberid }" size="50">
+		</div>
+		<div class="info">
+			<p class="tit">파일업로드</p>
+			<p class="add-file">
+			<input type="file" id="_fileload" name="fileload" style="width: 400px">	
+			</p>
+		</div>
+		
+		<div class="cont">
+				<p class="tit">내용</p>
+			   	<textarea rows="10" cols="50" name="content"></textarea>
+			
+		</div>
+		
 		<a href="#none" id="_btnNotice" title="자료올리기">
 			글쓰기
 		</a>
-	</td>
-</tr>
-
-</table>
+	</section>
+</section>
 </form>
-
+</div>
 <div id="footer">
       	<div class="top-area">
 		<div class="inner-wrap">
@@ -636,4 +627,5 @@ $("#_btnNotice").click(function () {
 	$("#_frmForm").submit();
 });
 </script>
+</body>
 

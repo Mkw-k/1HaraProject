@@ -99,11 +99,25 @@ public class RecruitDto implements Serializable{
     private String empcount;
     private String comimage;
     
+    //메인페이지에 프리미엄 회원 공고를 뿌려주기 위함 
+    private String newfilename;
+    
     
 
     private List<String> busname;
 
-    public String getComimage() {
+    
+    
+    
+    public String getNewfilename() {
+		return newfilename;
+	}
+
+	public void setNewfilename(String newfilename) {
+		this.newfilename = newfilename;
+	}
+
+	public String getComimage() {
 		return comimage;
 	}
 
