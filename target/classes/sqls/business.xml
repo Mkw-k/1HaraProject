@@ -38,7 +38,7 @@
 	<!-- 회원정보 수정 -->
 	<update id="updateBuspage"  parameterType="bit.com.a.dto.BusinessDto">
 	UPDATE BUSINESS
-	SET MEMBERID=#{memberid}, COMADDRESS=#{comaddress}, ADDRESSDETAIL=#{addressdetail}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}, EMAIL=#{email}, NAME=#{name}
+	SET COMADDRESS=#{comaddress}, ADDRESSDETAIL=#{addressdetail}, FILENAME=#{filename}, NEWFILENAME=#{newfilename}, EMAIL=#{email}, NAME=#{name}
 	WHERE MEMBERID=#{memberid}
 	</update>
 

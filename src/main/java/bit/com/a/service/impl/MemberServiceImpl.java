@@ -1,15 +1,10 @@
 package bit.com.a.service.impl;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.ModelAndView;
+
 
 import bit.com.a.dao.MemberDao;
 import bit.com.a.dto.MemberDto;
@@ -21,8 +16,6 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired				
 	MemberDao memberDao;	// MemberDao memberDao = new MemberDaoImpl();
 	
-	@Autowired
-	private HttpSession session;
 	/*
 	@Override
 	public List<MemberDto> allMember() {		
@@ -41,24 +34,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public ModelAndView login(MemberDto dto, HttpServletResponse response) throws IOException {	
-			response.setContentType("text/html; charset=utf-8");
-		
-			ModelAndView mav = new ModelAndView();
-		
-			MemberDto member = memberDao.login(dto);
-			PrintWriter out = response.getWriter();
-			
-			if (member != null) {
-				session.setAttribute("loginId", member.getMemberid());
-				mav.addObject("loginMember",member);	//setAttribute와 같은 기능. 뷰에서 사용할 데이터를 사용하기 위해서 저장할 수 있음. request 영역에서 데이터가 유지됨.
-				mav.setViewName("main");
-			} else {
-				out.println("<script> alert('아이디 또는 비밀번호가 틀립니다.');");
-				out.println("history.go(-1); </script>");
-				out.close();
-			}
-			return mav;	
+	public MemberDto login(MemberDto dto) {	
+		return memberDao.login(dto);		
 	}
 
 	@Override
@@ -92,7 +69,6 @@ public class MemberServiceImpl implements MemberService {
 	public String getKakaoPwd(String memberid) {
 		return memberDao.getKakaoPwd(memberid);
 	}
-
 	
 }
 
