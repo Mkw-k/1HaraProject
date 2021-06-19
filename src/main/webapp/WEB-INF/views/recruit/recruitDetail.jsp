@@ -86,7 +86,11 @@ if(logincheck != null) {
 	
 	
 =======
+<<<<<<< HEAD
 >>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+=======
+>>>>>>> ea5487e962cdef91cc58cd53173764c7b177e657
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 
  <!-- 전체 공통 스크립트 임포트 -->
   <c:import url="script.jsp" charEncoding="utf-8"/>
@@ -353,7 +357,11 @@ white{
   
   
   
+<<<<<<< HEAD
 >>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+=======
+>>>>>>> ea5487e962cdef91cc58cd53173764c7b177e657
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 
 </style>
 
@@ -362,7 +370,7 @@ white{
 <body>
 
 
-
+<c:import url="../header2.jsp" charEncoding="utf-8"/> 
 
   <div class="py-0 pt-3" style="background-color: #2186eb; color: white; height: 174px;">
     <div class="container">
@@ -822,6 +830,8 @@ function getTop10List() {
  			$(".list_col").remove();
 
  			var memberid = '<c:out value="${login.memberid}"/>';
+ 			var auth = '<c:out value="${login.auth}"/>';
+ 			
 
  			$.each(list, function(i, val){
  				//alert(val.jobSeq);

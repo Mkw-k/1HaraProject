@@ -164,7 +164,7 @@ body {
          <li><a href="companydetail.do?companyid=${login.memberid }" class="menu"><span>기업정보</span></a></li>
 
          <li><a href="createTest.do" class="menu"><span>공고등록</span></a></li>
-         <li><a href="myRecruitList.do?companyid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
+         <li><a href="myRecruitList.do?memberid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
 
       </ul>
 
@@ -182,9 +182,13 @@ body {
 	<ul>
 		<li>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+=======
+
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 			<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">공고 관리</a>
 			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
 			<div class="depth3">
@@ -198,10 +202,11 @@ body {
 				</ul>
 			</div>
 		</li>
-		
+
 		<li>
 			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">기업정보 관리</a>
 			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -209,6 +214,9 @@ body {
 			
 
 >>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+=======
+
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 			<div class="depth3">
 				<ul>
 					<li>
@@ -229,6 +237,7 @@ body {
 			<div class="depth3">
 				<ul>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 					<li class="curr">
@@ -239,6 +248,8 @@ body {
 					</li>
 
 >>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+=======
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 					<li>
 						<a href="javascript:priMember('${login.memberid }','${login.companyname }','${login.name }','${login.comaddress }')" target="_self">가입하기</a>
 					</li>
@@ -1355,16 +1366,20 @@ window.onscroll = function sticky() {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+=======
+
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 /* 프리미엄결제창이동 */
 //프리미엄 결제창 이동
 function priMember(memberid, companyname, name, comaddress) {
-alert("priMember");	
+alert("priMember");
 	   location.href = "priMember.do?memberid="+memberid+"&companyname="+companyname +"&name="+name+"&comaddress="+comaddress;
-	} 
- 
+	}
+
 
 
 </script>

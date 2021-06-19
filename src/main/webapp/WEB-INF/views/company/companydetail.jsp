@@ -24,15 +24,6 @@
 <script src="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-
-
- <!-- 전체 css -->
-<!-- <script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
-<script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
-<link href="csss/top.css" rel="stylesheet" type="text/css">
-<link href="csss/common.css" rel="stylesheet" type="text/css">
-<link href="csss/reset.css" rel="stylesheet" type="text/css">
- -->
  
  <c:import url="/WEB-INF/views/recruit/script.jsp" charEncoding="utf-8"/>
 

@@ -288,24 +288,18 @@ hr {
 }
 </style>
 
+<c:import url="script.jsp" charEncoding="utf-8"/>
+
 </head>
 
 <body>
 
-<c:import url="script.jsp" charEncoding="utf-8"/>
-
-<c:import url="header.jsp" charEncoding="utf-8"/>
 
 
-<div class="container-fluid">
-      <div class="row">
-         <div class="col-12">
-         	<div style="text-align : center;">
-            <img alt="" src="<%=request.getContextPath() %>/image/찾잡.png" style="width: 60%; height: 60%;">
-            </div>
-         </div>
-      </div>
-   </div>
+<c:import url="../header2.jsp" charEncoding="utf-8"/> 
+
+
+
    <br>
 
 
@@ -313,15 +307,16 @@ hr {
 
 
 <!-- 프론트 작업중 다중 셀렉트 박스  -->
-   <div class="container con" style="border: groove;">
+   <div class="container con" style="margin-top: 50px;padding-top: 0px;padding-bottom: 100px; margin-left: 250px;">
       <div class="header clearfix">
          <nav>
             <ul class="nav nav-pills float-right">
 
             </ul>
-         </nav>
+         <div style="text-align : center;">
+            <img alt="" src="/sample10/image/찾잡.png" style="width: 60%; height: 60%;">
+            </div></nav>
 
-		<h3 class="text-muted">채용공고 게시판</h3>
 
          <div class="m-5"></div>
       </div>
@@ -329,24 +324,23 @@ hr {
 
 
 <form action="#" id="_frmFormSearch" name="dataForm" method="post" novalidate="novalidate">
-   <input type="hidden"  id="_page" >
+   <input type="hidden" id="_page" value="0">
       <div class="py-5">
-         <div class="container" style="border: ridge;">
+         <div class="container">
 
             <div class="row">
                <div class="col-md-12">
-                  <ul class="nav nav-pills">
-                     <li class="nav-item"><a href="" class="nav-link active show"
-                        data-toggle="pill" data-target="#tabone">직종별</a></li>
-                     <li class="nav-item"><a class="nav-link" href=""
-                        data-toggle="pill" data-target="#tabtwo">지역별</a></li>
+                  <ul class="nav nav-pills" style="
+    margin-left: 450px;
+">
+                     <li class="nav-item"><a href="" class="nav-link active show" data-toggle="pill" data-target="#tabone">직종별</a></li>
+                     <li class="nav-item"><a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">지역별</a></li>
 
                   </ul>
 
 <!-- 다중이 중중이 시작 -->
                   <div class="tab-content mt-2">
-                     <div class="tab-pane fade active show" id="tabone"
-                        role="tabpanel">
+                     <div class="tab-pane fade active show" id="tabone" role="tabpanel">
                         <div class="py-5">
                        <!-- 폰트스타일  -->
 
@@ -354,26 +348,22 @@ hr {
 
 
 
-    <div class="container" style="border: outset;">
+    <div class="container" style="border: outset; background-color: #2076eb2b; padding-left: 20px;padding-right: 20px;">
                               <div class="row">
 
                                  <div class="col-md-4">
                                     <div class="form-group wrapper">
-                                       <label>대분류</label> <select class="form-control"
-                                          id="_buscodeList1" size="5" onfocus='this.size=5;'
-                                          onblur='this.size=5;' onchange='this.size=5; this.blur();'>
+                                       <label>대분류🌏</label> <select class="form-control" id="_buscodeList1" size="5" onfocus="this.size=5;" onblur="this.size=5;" onchange="this.size=5; this.blur();" style="width: 346px; height: 154px;">
 
 
-                                       </select>
+                                       <option value="1" class="list_col1" name="buscode1" id="buscode1">경영·사무</option><option value="2" class="list_col1" name="buscode1" id="buscode1">영업·고객상담</option><option value="3" class="list_col1" name="buscode1" id="buscode1">생산·제조</option><option value="4" class="list_col1" name="buscode1" id="buscode1">IT·인터넷</option><option value="5" class="list_col1" name="buscode1" id="buscode1">전문직</option><option value="6" class="list_col1" name="buscode1" id="buscode1">교육</option><option value="7" class="list_col1" name="buscode1" id="buscode1">미디어</option><option value="8" class="list_col1" name="buscode1" id="buscode1">특수계층·공공</option><option value="9" class="list_col1" name="buscode1" id="buscode1">건설</option><option value="10" class="list_col1" name="buscode1" id="buscode1">유통·무역</option><option value="11" class="list_col1" name="buscode1" id="buscode1">서비스</option><option value="12" class="list_col1" name="buscode1" id="buscode1">디자인</option><option value="13" class="list_col1" name="buscode1" id="buscode1">의료</option></select>
                                     </div>
 
                                  </div>
 
                                  <div class="col-md-4">
                                     <div class="form-group wrapper">
-                                       <label>중분류</label> <select class="form-control"
-                                          id="_buscodeList2" size="5" onfocus='this.size=5;'
-                                          onblur='this.size=5;' onchange='this.size=5; this.blur();'>
+                                       <label>중분류🌴</label> <select class="form-control" id="_buscodeList2" size="5" onfocus="this.size=5;" onblur="this.size=5;" onchange="this.size=5; this.blur();" style="width: 346px;height: 154px;">
 
 
                                        </select>
@@ -382,9 +372,8 @@ hr {
                                  </div>
 
                                  <div class="col-md-4">
-                                    <p>소분류</p>
-                                    <div id="_buscodeList3"
-                                       style="overflow: auto; width: 350px; height: 150px;">
+                                    <p>소분류🥥</p>
+                                    <div id="_buscodeList3" style="overflow: auto; width: 330px; height: 150px; border-style:outset;">
 
                                     </div>
 
@@ -407,12 +396,10 @@ hr {
 
                                  <div class="col-md-4">
                                     <div class="form-group wrapper">
-                                       <label>지역대</label> <select class="form-control"
-                                          id="_areacodeList1" size="5" onfocus='this.size=5;'
-                                          onblur='this.size=5;' onchange='this.size=5; this.blur();'>
+                                       <label>지역대</label> <select class="form-control" id="_areacodeList1" size="5" onfocus="this.size=5;" onblur="this.size=5;" onchange="this.size=5; this.blur();">
 
 
-                                       </select>
+                                       <option value="11" class="list_col4" name="areacode1" id="areacode1">서울</option><option value="21" class="list_col4" name="areacode1" id="areacode1">부산</option><option value="22" class="list_col4" name="areacode1" id="areacode1">대구</option><option value="23" class="list_col4" name="areacode1" id="areacode1">인천</option><option value="24" class="list_col4" name="areacode1" id="areacode1">광주</option><option value="25" class="list_col4" name="areacode1" id="areacode1">대전</option><option value="26" class="list_col4" name="areacode1" id="areacode1">울산</option><option value="29" class="list_col4" name="areacode1" id="areacode1">세종특별자치시</option><option value="31" class="list_col4" name="areacode1" id="areacode1">경기</option><option value="32" class="list_col4" name="areacode1" id="areacode1">강원</option><option value="33" class="list_col4" name="areacode1" id="areacode1">충북</option><option value="34" class="list_col4" name="areacode1" id="areacode1">충남</option><option value="35" class="list_col4" name="areacode1" id="areacode1">전북</option><option value="36" class="list_col4" name="areacode1" id="areacode1">전남</option><option value="37" class="list_col4" name="areacode1" id="areacode1">경북</option><option value="38" class="list_col4" name="areacode1" id="areacode1">경남</option><option value="39" class="list_col4" name="areacode1" id="areacode1">제주특별자치도</option></select>
                                     </div>
 
                                  </div>
@@ -420,8 +407,7 @@ hr {
 
                                     <div class="col-md-4">
                                     <p>지역소</p>
-                                    <div id="_areacodeList2"
-                                       style="overflow: auto; width: 350px; height: 150px;">
+                                    <div id="_areacodeList2" style="overflow: auto; width: 350px; height: 150px;">
 
                                     </div>
 
@@ -439,13 +425,17 @@ hr {
 
 
 
-							<div class="col-md-12">
-								<p id="selectResult"></p>
-							</div>
+                     <div class="col-md-12">
+                        <p id="selectResult"></p>
+                     </div>
 
-							<p>
-								<button class="deletebtn" type="button" id="deleteResult" style="width: 140px;">선택 초기화</button>
-							</p>
+                     <p>
+                        <button class="deletebtn" type="button" id="deleteResult" style="
+    width: 140px;
+    height: 50px;
+    margin-left: 470px;
+">선택 초기화</button>
+                     </p>
 
 
                   </div>
@@ -456,11 +446,11 @@ hr {
 
 
 
-	경력 / 학력  <br>
+   경력 / 학력  <br>
 
    <section class="search-sec">
     <div class="container">
-     		<div class="row">
+           <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-12 p-0">
@@ -506,8 +496,7 @@ hr {
                             <input type="text" class="form-control search-slt" id="_searchWord" name="search" placeholder="검색어 입력" style="font-size: 12pt">
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                            <button type="button" class="btn btn-secondary wrn-btn" id="btnSearch"
-                           onclick="javascript:getrecruitSearchList(0)">Search</button>
+                            <button type="button" class="btn btn-secondary wrn-btn" id="btnSearch" onclick="javascript:getrecruitSearchList(0)">Search</button>
                         </div>
                     </div>
                 </div>
@@ -517,8 +506,7 @@ hr {
 </section>
 <br><br><br>
 
-</form>
-</div>
+</form></div>
 
 
 
@@ -529,7 +517,9 @@ hr {
 
 
 
-   <div class="container">
+   <div class="container" style="
+    margin-left: 250px;
+">
    				<c:if test="${login.auth==2 }">
    				<span style="color: red;">기업회원이신가요? 공고를 작성하시려면 버튼을 클릭해주세요</span>&nbsp;
                <span><a class="btn btn-primary" href="javascript:createRecruitNew()" style="color: white;">공고작성하러가기</a></span><br><br>

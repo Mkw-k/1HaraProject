@@ -3192,6 +3192,8 @@ button.iconset {border:0;background-color:transparent;}
 
 /* container */
 .container {width:100%; min-height:100%; margin:-180px 0 -227px 0; padding:180px 0 307px 0;}
+.containeer {width:100%; min-height:100%; }
+
 .container.footer-open {margin:-180px 0 -443px 0; padding:180px 0 523px 0;}
 /* .container.bg-gray {background-color:#f1f4f6;} */
 .container .sub-util {height:48px; border-bottom:1px solid #e6e6e6; background-color:#fff;}
@@ -4123,7 +4125,7 @@ select, input, option, textarea{font-family:"맑은 고딕", Malgun Gothic, "돋
 .qnaSpB:before, .qnaSpA:after, .qnaSpM:before, .qnaSpM:after{content:""; display:inline-block; background-image:url("/content/images/user/qna/sp_qna.png?202007280011"); background-repeat:no-repeat; background-position:0 0; vertical-align:middle;}
 
 /* layout */
-body{min-width:1200px; background-color:#f3f5f7;}
+body{min-width:1200px;}
 #adTopWrap{width:1200px;}
 #wrap{margin:0 auto; width:1200px;}
 #wrap:after{content:""; clear:both; display:block; visibility:hidden; font-size:0; height:0;}

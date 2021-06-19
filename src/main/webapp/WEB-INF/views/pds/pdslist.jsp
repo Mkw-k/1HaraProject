@@ -373,88 +373,10 @@ display: table;
 
 
 <div class="all">
-<header>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-  <!-- Links -->
-  
-  <div>
-	 <a href="home.do"><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
-	</div>
-  
-  <ul class="navbar-nav">
-<!-- Dropdown -->
-    <li class="nav-item dropdown" style="padding-top: 5px;">
-     <div class="dropdown">
-		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
-		  <div class="dropdown-content">
-		    <a href="#">채용공고</a>
-		    <a href="#">기업정보</a>
-		    <a href="#">취업톡톡</a>
-		    <a href="#">공채달력</a>
-		    <a href="pdslist.do">자료실</a>
-		    <a href="notice.do">공지사항</a>
-		  </div>
-		</div>
-    </li>
 
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">취업톡톡</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="pdslist.do" style="color:#2186eb">자료실</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
-    </li>
-    </ul>
-    
-   
-   <ul class="navbar-nav navbar-nav2">
-     <li class="nav-item">
-      <li class="nav-item">
-            <c:choose>
-               <c:when test="${login.memberid ne null }">
-                  <c:choose>
-                      <c:when test="${login.auth == 1}">
-                          <p><b>${login.name }</b>님 반갑습니다</p>
-                        </c:when>    
-                   <c:otherwise>
-                         <p><b>${login.name }</b>님</p>
-                   </c:otherwise>
-                </c:choose>         
-                </c:when> 
-             </c:choose>  
-        <div class="col-md-6">
-           <div class="">
-              <div class="login">
-                 <c:if test="${ empty login }">
-                     <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: white;background-color: #2186eb;">로그인</a>
-                    <!--    <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
-                </c:if>       
-              </div>
-         </div>
-      </div>   
-    </li>
-    
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
-    </li>
-  
+<c:import url="../header2.jsp" charEncoding="utf-8"/> 
 
-  </ul>
-</nav>
-<br>
 
  <!-- =========Login 클릭 시 Modal =========== -->
       <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" class="modal modal-center fade ">

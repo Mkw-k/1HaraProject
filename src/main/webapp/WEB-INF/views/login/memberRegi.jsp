@@ -401,14 +401,7 @@ $(function() {
               <input type="text" class="form-control" id="name" name="name" placeholder="">
         </div>
 
-       <!--  <div class="form-group has-feedback">
-           <label class="control-label" for="registrationNum">주민등록번호</label><br>
-              <input class="form-control1" type="text" name="unum1" id="unum1">-</input>
-              <input class="form-control1" type="password" name="unum2" id="unum2"/><br>
-              <input type="button" value="검사" style="border-radius:5px; font-s" onclick="validate();" />
-              <input type="reset" value="다시입력" style="border-radius:5px;" />
-              <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-        </div> -->
+    
         <div class="form-group has-feedback">
         	<label class="control-label" for="registrationNum">주소</label>
         		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">

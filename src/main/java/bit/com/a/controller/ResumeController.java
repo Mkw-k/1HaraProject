@@ -854,7 +854,7 @@ public class ResumeController {
 
 	//공고 지원하기
 	@RequestMapping(value = "jobApply.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String getMyResume(int jobseq, int resumeseq, String memberid, int portfolioseq, Model model) {
+	public String getMyResume(int jobseq, int resumeseq, String memberid, int portfolioseq, Model model)throws Exception {
 
 		ApplyDto param = new ApplyDto();
 
@@ -879,6 +879,9 @@ public class ResumeController {
 
 		model.addAttribute("dto", dto);
 		model.addAttribute("resumelist", resumelist);
+		
+		
+		
 		
 
 		return "recruit/recruitDetail";

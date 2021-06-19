@@ -82,7 +82,6 @@
 	</div>
 </div>
 
-asdfasdfasdfasdfasdfasdf
 
         <div id="container">
             <!-- 쓰기 : qnaWriteWrap -->
