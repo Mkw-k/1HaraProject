@@ -77,20 +77,10 @@ if(logincheck != null) {
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=685fcbb766340d7c8812f4e0a29a6661&libraries=services"></script>
 	<link href="csss/gnb.css" rel="stylesheet" type="text/css">
 	<link href="csss/view.css" rel="stylesheet" type="text/css">
-	
-<<<<<<< HEAD
-	
+
 <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> 
 <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	 -->
-	
-	
-=======
-<<<<<<< HEAD
->>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
-=======
->>>>>>> ea5487e962cdef91cc58cd53173764c7b177e657
->>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 
  <!-- 전체 공통 스크립트 임포트 -->
   <c:import url="script.jsp" charEncoding="utf-8"/>
@@ -356,12 +346,6 @@ white{
   
   
   
-  
-<<<<<<< HEAD
->>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
-=======
->>>>>>> ea5487e962cdef91cc58cd53173764c7b177e657
->>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 
 </style>
 
@@ -372,64 +356,58 @@ white{
 
 <c:import url="../header2.jsp" charEncoding="utf-8"/> 
 
-  <div class="py-0 pt-3" style="background-color: #2186eb; color: white; height: 174px;">
+
+<br>
+<br>
+<br>
+<br>
+
+  <div class="py-0 pt-3" style="background-color: #2c3339;color: white;height: 174px;margin-top: 80px;">
     <div class="container">
       <div class="row">
         <div class="col-md-10">
 	        <div>
-	          <p class="" style="color: #eee;">${dto.companyname}&nbsp; &nbsp;&nbsp;</p>
+	          <p class="" style="color: #eee;">&nbsp; &nbsp;&nbsp;</p>
 			</div>
 
 			<div>
 			  <h3 class="jobtitle">
-	           <c:if test="${login.auth==1}">
-	          	<c:choose>
-	          		<c:when test="${dto.favoriteCom >0 and dto.favoriteCom != null }">
-	          					<a style="color:red" class="btn btn-secondary red" href="javascript:dropFavoriteCom(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
+	           
+	          	
+	          		
+	          		
+	          					<a class="btn btn-secondary red" href="javascript:comFavorite(194, 'w1', 'rhauddn111@hanmail.net')">
 	          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
-	          		</c:when>
-	          		<c:otherwise>
-	          					<a class="btn btn-secondary red" href="javascript:comFavorite(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
-	          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
-	          		</c:otherwise>
-	          	</c:choose>
-				</c:if>
-	          ${dto.jobTitle}
+	          		
+	          	
+				
+	          풀스텍 고급경력 개발자 채용합니다 
 	         </h3>
 	         </div>
 
         </div>
         <div class="col-md-2 text-right" style="margin-top: 45px;">
 
-		 	<c:if test="${login.auth==1 }">
+		 	
          		 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
-			</c:if>
+			
 
-          	<c:choose>
-          		<c:when test="${login.auth == 1 }">
-          			<c:choose>
-          				<c:when test="${dto.favoriteJob >0 and dto.favoriteCom != null }">
-          					<a style="color:red" class="btn btn-secondary" href="javascript:dropFavoriteJob(${dto.jobSeq }, '${login.memberid }')">
-				          		<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
-				          	</a>
-          				</c:when>
-          				<c:otherwise>
-          					<a class="btn btn-secondary" href="javascript:jobFavorite(${dto.jobSeq }, '${login.memberid }')">
+          	
+          		
+          			
+          				
+          				
+          					<a class="btn btn-secondary" href="javascript:jobFavorite(194, 'rhauddn111@hanmail.net')">
 				         	   <i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
 				            </a>
-          				</c:otherwise>
-          			</c:choose>
-          		</c:when>
-          	</c:choose>
+          				
+          			
+          		
+          	
 
-			<c:choose>
-				<c:when test="${login.auth == 2 or login.auth == 3}">
- 					<c:if test="${login.memberid == dto.companyId or login.auth == 3}">
-          				<a class="btn btn-secondary" href="javascript:updateRecruit(${dto.jobSeq })">수정하기</a>
-          				<a class="btn btn-secondary" href="javascript:deleteRecruit(${dto.jobSeq })">삭제</a>
-          			</c:if>
-          		</c:when>
-          	</c:choose>
+			
+				
+          	
           </div>
        </div>
 
@@ -450,47 +428,34 @@ white{
 			       <colgroup>
 			       <col width="400"><col width="50">
 
-						<tr><td colspan="2" style="color: black">이력서list</td></tr>
+						</colgroup><tbody><tr><td colspan="2" style="color: black">이력서list</td></tr>
 
-            <%
-            if(request.getAttribute("resumelist") != null){
-
-            %>
-                <%
-      					for(int i=0; i<resumelist.size(); i++){
-      					%>
+            
+                
 
 						<tr>
-					  <td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a><input type="hidden" value="" id="portfolioseq"></td>
-						<td><button type="button" class="btn btn-primary applybtn" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>')">지원하기</button></td>
+					  <td><a href="Resumedetail.do?seq=51">이력서 3</a><input type="hidden" value="" id="portfolioseq"></td>
+						<td><button type="button" class="btn btn-primary applybtn" onclick="javascript:jobApply('194','rhauddn111@hanmail.net','51')">지원하기</button></td>
 						</tr>
-      					<%
-      					}
-             }
-      					%>
+      					
+
+						<tr>
+					  <td><a href="Resumedetail.do?seq=48">이력서1</a><input type="hidden" value="" id="portfolioseq"></td>
+						<td><button type="button" class="btn btn-primary applybtn" onclick="javascript:jobApply('194','rhauddn111@hanmail.net','48')">지원하기</button></td>
+						</tr>
+      					
+
+						<tr>
+					  <td><a href="Resumedetail.do?seq=2">예약 문자 테스트용 </a><input type="hidden" value="" id="portfolioseq"></td>
+						<td><button type="button" class="btn btn-primary applybtn" onclick="javascript:jobApply('194','rhauddn111@hanmail.net','2')">지원하기</button></td>
+						</tr>
+      					
 
 					<tr><td colspan="2" style="color: black">포트폴리오 첨부</td></tr>
-					<%
-					if(portlist != null){
-					for(int i=0; i<portlist.size(); i++){
-					%>
-
-						<tr>
-						<td style="color: black">
-						<select id="portseq" onchange="getportseq('<%=portlist.get(i).getPortfolioseq() %>')">
-						<option>첨부없음</option>
-						<option><%=portlist.get(i).getPortfolioname() %></option>
-						</select>
-						</td>
-						<td><button type="button" class="btn btn-primary">첨부</button></td>
-						</tr>
-					<%
-						}
-					}
-					%>
+					
 
 
-				</table>
+				</tbody></table>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

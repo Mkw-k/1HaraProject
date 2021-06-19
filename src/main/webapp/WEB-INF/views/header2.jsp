@@ -131,7 +131,9 @@
 			<li class=""><a href="/trnCourseMain.do" title="새창" class="menu"><span>공채달력</span></a>
 				
 			</li>
-			<li>
+			<li style="
+    width: 150px;
+">
 			<a href="/psnInfo/psnInfoSrch/dtlPsnSrchMain.do" class="menu"><span>공지사항</span></a>
 				
 			</li>
