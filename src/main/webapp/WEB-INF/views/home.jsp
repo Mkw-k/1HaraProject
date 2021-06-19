@@ -1264,7 +1264,7 @@ h2{
 												src="//www.saraminimage.co.kr/sri/main/thumb/interview_6.jpg"
 												alt="면접후기 이미지" class="thumb">
 											</span> <a
-												href="/zf_user/interview-review?my=0&amp;page=1&amp;orderby=registration&amp;career_cd=1&amp;job_category=10"
+												href="https://www.jobkorea.co.kr/goodjob/tip/view?News_No=18694"
 												class="link"
 												onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'interview-review', ''], ['ga_lead', 'main', 'CONTENTS', 'interview-review'])"></a>
 										</div>
@@ -1276,7 +1276,7 @@ h2{
 												src="https://pds.saramin.co.kr/career-information/asset_thumbnail/202105/25/qtndz8_b5sd-2so1r1_asset.jpg"
 												alt="직무인터뷰 이미지" class="thumb">
 											</span> <a
-												href="/zf_user/career-information/senior-view?doc_idx=21980&amp;page=1"
+												href="https://www.robertwalters.co.kr/"
 												class="link"
 												onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'job-interview', ''], ['ga_lead', 'main', 'CONTENTS', 'job-interview'])"></a>
 										</div>
@@ -1287,7 +1287,7 @@ h2{
 												src="//www.saraminimage.co.kr/sri/main/thumb/new_p_6.jpg"
 												alt="취업뉴스 이미지" class="thumb">
 											</span> <a
-												href="/zf_user/help/live/view?idx=108297&amp;list_idx=0&amp;listType=news&amp;category=10&amp;keyword=&amp;menu=1&amp;page=1"
+												href="https://www.saramin.co.kr/zf_user/help/live/view?idx=108297&listType=news"
 												class="link"
 												onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'job-news', ''], ['ga_lead', 'main', 'CONTENTS', 'job-news'])"></a>
 										</div>
@@ -1298,7 +1298,7 @@ h2{
 													#(주)아프리카티비</span></span> <span class="wrap_thumb"> <img
 												src="//www.saraminimage.co.kr/sri/main/thumb/cu_6.jpg"
 												alt="기업큐레이션 이미지" class="thumb">
-											</span> <a href="/zf_user/company-info/sri-certification?seq=995"
+											</span> <a href="https://www.saramin.co.kr/zf_user/company-info/sri-certification?seq=995"
 												class="link"
 												onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'certification', ''], ['ga_lead', 'main', 'CONTENTS', 'certification'])"></a>
 										</div>
@@ -1396,7 +1396,7 @@ h2{
 													#(주)아프리카티비</span></span> <span class="wrap_thumb"> <img
 												src="//www.saraminimage.co.kr/sri/main/thumb/cu_6.jpg"
 												alt="기업큐레이션 이미지" class="thumb">
-											</span> <a href="/zf_user/company-info/sri-certification?seq=995"
+											</span> <a href="https://www.saramin.co.kr/zf_user/company-info/sri-certification?seq=995"
 												class="link"
 												onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'certification', ''], ['ga_lead', 'main', 'CONTENTS', 'certification'])"></a>
 										</div>
