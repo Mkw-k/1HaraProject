@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<%@page import="bit.com.a.dto.FAQDto"%>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<%@page import="bit.com.a.dto.BusinessDto"%>
+<%@page import="bit.com.a.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="bit.com.a.util.UtilEx"%>
+<%@page import="bit.com.a.dto.FAQDto"%>
+<%@page import="java.util.List"%>
+ 
+
+<!DOCTYPE html>
+<head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="_csrf_parameter" content="_csrf"><meta name="_csrf_header" content="X-CSRF-TOKEN"><meta name="_csrf" content="5557377e-0013-402c-90e5-0dad4d61305f">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta http-equiv="p3p" content="CP=&quot;CAO DSP AND SO &quot; policyref=&quot;/w3c/p3p.xml&quot;">
-<meta http-equiv="imagetoolbar" content="no">
-<meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="subject" content="#">
-<meta name="author" content="#">
-<meta name="keywords" content="#">
-<meta name="selected-menu" content="0, 0, 0, 0">
 
 <!-- 제이쿼리 -->
 <script src="//https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -32,11 +26,108 @@
 
 <link href="csss/header.css" rel="stylesheet" type="text/css">
 
+
 <style type="text/css">
   
 /* 모달 */
 #login-modal {
 margin-right : 450px;
+}
+
+.newsletter {
+padding: 20px 0;
+background: #2186eb;
+}
+
+.newsletter .content {
+max-width: 650px;
+margin: 0 auto;
+text-align: center;
+position: relative;
+z-index: 2; }
+.newsletter .content h2 {
+color: #243c4f;
+margin-bottom: 40px; }
+.newsletter .content .form-control {
+height: 50px;
+border-color: #ffffff;
+border-radius:0;
+}
+.newsletter .content.form-control:focus {
+box-shadow: none;
+border: 2px solid #243c4f;
+}
+.newsletter .content .btn {
+min-height: 50px; 
+border-radius:0;
+background: #243c4f;
+color: #fff;
+font-weight:600;
+}
+
+/* 3가지 FAQ링크 */
+
+
+/* :root {
+    font-size: 10px;
+} */
+
+.faqnav ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.faqnav li {
+    width: 20rem;
+    height: 7rem;
+    font-size: 20px;
+    text-align: center;
+    line-height: 7rem;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: 0.3s;
+    margin: 2rem;
+    background-color: #eee;
+}
+
+.faqnav li::before,
+.faqnav li::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    top: 0;
+    left: 0;
+    transition: 0.3s;
+}
+
+.faqnav li::before {
+    background-color: #eee;
+    z-index: -1;
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.faqnav li::after {
+    background-color: #2186eb;
+    transform: translate(1.5rem, 1.5rem);
+    z-index: -2;
+}
+
+.faqnav li:hover {
+    transform: translate(1.5rem, 1.5rem);
+    color: black;
+    background-color: #2186eb;
+}
+
+.faqnav li:hover::before {
+    background-color: #2186eb;
+}
+
+.faqnav li:hover::after {
+    background-color: #eee;
+    transform: translate(-1.5rem, -1.5rem);
 }
 
 /* 테이블 css */
@@ -149,7 +240,7 @@ a{
 a.box-btn {
 	background-color: #2186eb;
 	padding: 5px 20px;
-	display: inline-block;
+	/* display: inline-block; */
 	color: #fff;
 	text-transform: capitalize;
 	border-radius: 3px;
@@ -160,10 +251,66 @@ a.box-btn:hover, a.border-btn:hover {
 	background-color: #2186eb;
 }
 
-.faqtable{
-	border: 1px;
+
+.burger {
+  display: none;
+  cursor: pointer;
 }
 
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: rgb(226, 226, 226);
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-links {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  .nav-links {
+    position: absolute;
+    top: 8vh;
+    right: 0;
+    height: 92vh;
+    background-color: #504954;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(100%);
+  }
+  .nav-links li {
+    opacity: 0;
+  }
+  .burger {
+    display: block;
+  }
+
+  .nav-active {
+    transform: translateX(0%);
+  }
+
+  @keyframes navLinkFade {
+    from {
+      opacity: 0;
+      transform: translateX(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+ 
+ 
 /* 네비바 */
 .createRecruitBtn{
 	cursor: pointer;
@@ -198,21 +345,16 @@ white{
 body {
   font-family: "Noto Sans KR", sans-serif !important;
 }
-
-header {
-    height: 0px;
-    background: white;
-    padding-top: 0;
-}
 </style>
 </head>
 
 <body>
-<div class="all">
-<!-- 헤더가 있어야 위쪽을 가리지 않음 -->
-<header>
 
-</header>
+<!-- 헤더생성기 (붙여넣기전 코어태그 생성하세요)-->
+<!-- <c:import url="script.jsp" charEncoding="utf-8"/>
+<c:import url="header.jsp" charEncoding="utf-8"/>  -->
+<!-- 헤더 생성기 끝 -->
+
 
 <nav class="navbar navbar-expand-md sticky-top" style="text-shadow: white 0px 0px 0.2px; box-shadow: black 0px 0px 10px;" id="nav-main"><a class="navbar-brand d-none d-md-block ml-3" href="home.do">
       <img alt="" src="/sample10/image/흰로고다.gif" id="_logo" height="80" width="160" style="float:left; padding-right: 20px">
@@ -315,7 +457,7 @@ $(function() {
             <div class="modal-body">
             
             <!-- memberController - loginAf.do로 이동 -->
-              <form action="member" method="post" enctype="multipart/form-data">
+              <form action="member" method="post">
                  <input type="hidden" name="param" value="loginAf.do">
                 <div class="form-group">
                   <input id="email_modal" type="text" placeholder="ID" name="id" class="form-control">
@@ -343,86 +485,135 @@ $(function() {
 <!-- ####################################################################################################### -->
 <!-- 본문 -->
 <main>
+
+<!-- 검색창 -->
+<section class="newsletter">
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+	<div class="content">
+		<h2 style="color:#fff">FAQ</h2>
+	<div class="input-group">
+         <input type="email" class="form-control" placeholder="검색어 입력" id="_searchBtn">
+         <span class="input-group-btn">
+         <button class="btn" type="submit" id="searchBtn">SEARCH</button>
+         </span>
+          </div>
+	</div>
+</div>
+</div>
+</div>
+</section>
+
+
 <%
-FAQDto dto =(FAQDto) request.getAttribute("dto");
-System.out.println("dto" +dto.toString());
+List<FAQDto> memlist =(List<FAQDto>) request.getAttribute("memlist");
+List<FAQDto> companylist =(List<FAQDto>) request.getAttribute("companylist");
+List<FAQDto> commonlist =(List<FAQDto>) request.getAttribute("commonlist");
+//System.out.println("memlist" +memlist);
+
 %>
 
+<div>
+<nav class="faqnav navbar-nav" style="height: auto;">
+  <ul style="display: flex;margin-right: 180px;margin-left: 375px;">
+    <li><a href="memberFAQ.do" class="nav-links" >지원자</a></li>
+    <li><a href="companyFAQ.do" class="nav-links">기업</a></li>
+    <li><a href="commonFAQ.do" class="nav-links">일반</a></li>
+  </ul>
+</nav>
+</div>
 
 <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,800,900%7cRaleway:300,400,500,600,700" rel="stylesheet">
 <section class="pricing-area pt-100 pb-100" id="pricing" style="padding-top: 0px;">
 		<div class="container">
 			<div class="row">
-               
-               <div class="col-xl-12">
+               <div class="col-xl-4">
 				<div class="single-price">
 				  <div class="price-item">
-					<form name="frmForm" id="_frmForm" action="writeAfFAQ.do" method="post" enctype="multipart/form-data">
- 
-							<table class="faqtable" border="1">
-							 <colgroup><col width="200px"><col width="auto"></colgroup>
-							<tr>
-							    <th>질문</th>
-							    <td style="text-align: left;">
-							        ${dto.question }
-							    </td>
-							</tr>
-							 
-							<tr>
-							    <th>업로드된 파일</th>
-							    <td style="text-align: left;">
-							       ${dto.filename }
-							    </td>
-							</tr>
-							<tr>
-							    <th>파일 다운로드</th>
-							    <td style="text-align: left;">
-							    <% if(dto.getNewFilename()!=null && dto.getNewFilename()!="" ){
-							    	
-							    %>
-							       <input type="button" name="btnDown" value="다운로드" onclick="filedown('<%=dto.getNewFilename() %>', '<%=dto.getFaqseq() %>', '<%=dto.getFilename()%>')">
-							    <% 
-							    }
-							    %>
-							    </td>
-							</tr> 
-							<tr>
-							    <th>답변</th>
-							    <td style="text-align: left; height: 500px">
-							       ${dto.faqanswer }
-							    </td>
-							</tr>
-							 
-<!-- 							<tr>
-							    <td colspan="2" style="height: 50px; text-align: center;">
-							        <a href="#none" id="_btnPds" title="자료올리기">
-							            <img alt="" src="image/bwrite.png">
-							        </a>
-							    </td>
-							</tr> -->
-							<tr>
-							<td colspan="2">
-							    <a href="FAQ.do" class="box-btn">글목록</a>
-							    <a href="updateFAQ.do?seq=<%=dto.getFaqseq() %>" class="box-btn">수정</a>
-							    <a href="deleteFAQ.do?seq=<%=dto.getFaqseq() %>" class="box-btn">삭제</a>
-							</td>
-							</tr> 
-							</table>
-							</form>
+					<ul >
+					
+					<%
+					if(memlist.size()>5){
+					for(int i=0; i<5; i++){
+						%>
+						<li><a href="FAQdetail.do?seq=<%=memlist.get(i).getFaqseq()%>"><%=UtilEx.dot03(memlist.get(i).getQuestion()) %></a></li>
+					<% 	
+						}			
+					} else{ 
+					for(int i=0; i<memlist.size(); i++){
+						%>
+						<li><a href="FAQdetail.do?seq=<%=memlist.get(i).getFaqseq()%>"><%=UtilEx.dot03(memlist.get(i).getQuestion()) %></a></li>
+					<% 
+						}
+					}
+					%>
+					
+					</ul>
 				  </div>
-				 	
+				  <a href="memberFAQ.do" class="box-btn">더보기</a>
+			   </div>
+			   </div>
+               <div class="col-xl-4">
+				<div class="single-price">
+				  <div class="price-item">
+					<ul>
+							<%
+						if(companylist.size()>5){	
+						for(int i=0; i<5; i++){
+							%>
+							<li><a href="FAQdetail.do?seq=<%=companylist.get(i).getFaqseq()%>"><%=UtilEx.dot03(companylist.get(i).getQuestion()) %></a></li>
+						<% 	
+						}			
+					} else{ 
+					for(int i=0; i<companylist.size(); i++){
+						%>
+						<li><a href="FAQdetail.do?seq=<%=companylist.get(i).getFaqseq()%>"><%=UtilEx.dot03(companylist.get(i).getQuestion()) %></a></li>
+						<% 	
+						}
+					}
+					%>
+					</ul>
+				  </div>
+				  <a href="companyFAQ.do" class="box-btn">더보기</a>
+			   </div>
+			   </div>
+               <div class="col-xl-4">
+				<div class="single-price">
+				  <div class="price-item">
+					<ul>
+							<%
+						if(commonlist.size()>5){	
+						for(int i=0; i<5; i++){
+							%>
+							<li><a href="FAQdetail.do?seq=<%=commonlist.get(i).getFaqseq()%>"><%=UtilEx.dot03(commonlist.get(i).getQuestion()) %></a></li>
+						<% 	
+						}			
+					} else{ 
+					for(int i=0; i<commonlist.size(); i++){
+						%>
+						<li><a href="FAQdetail.do?seq=<%=commonlist.get(i).getFaqseq()%>"><%=UtilEx.dot03(commonlist.get(i).getQuestion()) %></a></li>
+						<% 	
+						}
+					}
+					%>
+					</ul>
+				  </div>
+				  <a href="commonFAQ.do" class="box-btn">더보기</a>
 			   </div>
 			   </div>
             </div>
 		</div>
 	  </section>
 
-<!-- 다운로드 버튼을 클릭시 -->
-<form name="file_Down" action="FAQfileDownload.do" method="post">
-    <input type="hidden" name="newfilename">
-    <input type="hidden" name="filename">
-    <input type="hidden" name="faqseq">
-</form>
+
+
+
+
+
+
+
+
 
 
 
@@ -558,7 +749,6 @@ System.out.println("dto" +dto.toString());
 	</div>	
     
       <!-- ==============FOOTER END================= -->
-</div>
 
 
 
@@ -640,51 +830,20 @@ function login() {
   ChannelIO('boot', {
     "pluginKey": "9ec9cb05-626c-49ad-9fcf-67ccef29c08f"
   });
- 
-  
 </script>
 <!-- End Channel Plugin -->
 
-<!-- 이미지 볼수있게 해주는 스크립트 -->
- <script>
-  $("#FAQimg").change(function(){
-   if(this.files && this.files[0]) {
-    var reader = new FileReader;
-    reader.onload = function(data) {
-     $(".select_img img").attr("src", data.target.result).width(500);        
-    }
-    reader.readAsDataURL(this.files[0]);
-   }
-  });
- </script>
- 
- <script type="text/javascript">
- function getSelectValue()
- {
-		//  alert('getSelectValue');
-	 
-	    let selIndex = document.getElementById('fieldnum').selectedIndex;
-	//    alert(selIndex);
-	    
-	    let faqnum = document.getElementById('fieldnum').options[selIndex].value;
-	 //   alert(faqnum);
-	    document.getElementById('fieldnum').value = faqnum;
-	    alert(document.getElementById('fieldnum').value);
-		
- }
- 
- 
- function filedown(newfilename, faqseq, filename) {
-	alert("filedown")
-    let doc = document.file_Down;
-    doc.newfilename.value = newfilename;
-    doc.filename.value = filename;
-    doc.faqseq.value = faqseq;
-    doc.submit();
-}
- 
- </script>
- 
+<!-- 검색 -->
+<script>
+$("#searchBtn").click(function () {
+    
+	alert("searchBtn click")
+	/* 검색어 */
+	let search = document.getElementById("_searchBtn").value;
+    
+    location.href = "searchFAQ.do?search=" + search;
+});
+</script>
 
 </body>
 </html>

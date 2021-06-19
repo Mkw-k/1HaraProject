@@ -19,31 +19,15 @@
 <!-- 제이쿼리 -->
 <script src="//https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-
- <!-- 전체 css -->
-<!-- <link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
-<script type="text/javascript" src="layout/scripts/featured_slide.js"></script> -->
-
 <!-- footer -->
 <link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="static/css/import.css" media="all">
 
-<!-- <!-- 랭킹 -->
-<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
-<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
-
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-
-<!-- JQuery -->
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
 <!------ Ajax ---------->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- 부트스트랩 -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<!-- https://github.com/josecebe/twbs-pagination -->
-<!-- script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script> -->
 
 <link href="csss/header.css" rel="stylesheet" type="text/css">
 

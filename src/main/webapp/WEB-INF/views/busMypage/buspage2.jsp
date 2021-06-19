@@ -164,7 +164,7 @@ body {
          <li><a href="companydetail.do?companyid=${login.memberid }" class="menu"><span>기업정보</span></a></li>
 
          <li><a href="createTest.do" class="menu"><span>공고등록</span></a></li>
-         <li><a href="myRecruitList.do?companyid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
+         <li><a href="myRecruitList.do?memberid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
 
       </ul>
 
@@ -195,13 +195,10 @@ body {
 				</ul>
 			</div>
 		</li>
-		
+
 		<li>
 			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">기업정보 관리</a>
 			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
-
-			<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">입사지원 관리</a>
-			
 
 			<div class="depth3">
 				<ul>
@@ -222,14 +219,6 @@ body {
 			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
 			<div class="depth3">
 				<ul>
-
-					<li class="curr">
-						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
-					</li>
-					<li>
-						<a href="pwdcheck.do?memberid=${login.memberid}" target="_self">회원정보 수정(성명변경)</a>
-					</li>
-
 					<li>
 						<a href="javascript:priMember('${login.memberid }','${login.companyname }','${login.name }','${login.comaddress }')" target="_self">가입하기</a>
 					</li>
@@ -1349,10 +1338,10 @@ window.onscroll = function sticky() {
 /* 프리미엄결제창이동 */
 //프리미엄 결제창 이동
 function priMember(memberid, companyname, name, comaddress) {
-alert("priMember");	
+alert("priMember");
 	   location.href = "priMember.do?memberid="+memberid+"&companyname="+companyname +"&name="+name+"&comaddress="+comaddress;
-	} 
- 
+	}
+
 
 
 </script>

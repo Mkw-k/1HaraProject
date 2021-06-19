@@ -563,8 +563,12 @@ h2{
 <c:if test="${login.auth==1 || login.auth==3}">
 	<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="resumeMain.do?memberid=${login.memberid }"><span>이력서관리</span></a></li>
 </c:if>
-<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','qst-and-ans')" href="Jobtalklist.do"><span>취업톡톡💬</span></a></li>
+<c:if test="${login.auth==1 || login.auth==3}">
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="FAQ.do"><span>FAQ</span></a></li>
+</c:if>
+<c:if test="${login.auth==2}">
+<li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents')" href="FAQ2.do"><span>FAQ</span></a></li>
+</c:if>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','contents2')" href="notice.do"><span>공지사항</span></a></li>
 <li><a onclick="pushDataLayer('ga_lead','main-gnb','menu','jumpit')" href="https://www.jumpit.co.kr" target="_blank"><span class="icon icon_jumpit">점핏</span></a></li>
 </ul>
@@ -1670,29 +1674,29 @@ h2{
 						<div class="area_recom recruit_card" style="display: block">
 							<div class="top">
 								<strong class="sub_title">추천공고</strong>
-								
+
 							</div>
-							
-							
+
+
 							<div class="list_recom">
-								
+
 							<%-- 	<c:forEach var="item" items="${list}" begin=0 end=2 step=1 varStatus="status">
-								
+
             						<div class="list">
 										<strong class="rec_name" title="(주)감정평가법인세종">${item.companyname}</strong>
 										<a href=""
 											class="rec_desc">${item.jobTitle}</a>
 										<p class="hashtag" title=" #웹개발 #강남구">${item.area1Name} ${item.area2Name}</p>
-										
+
 									</div>
-								
+
             					</c:forEach> --%>
-				
-							
+
+
 							</div>
-							
-							
-							
+
+
+
 						</div>
 						<div class="area_recom live" style="display: none">
 							<div class="top">
@@ -2157,7 +2161,7 @@ h2{
             	<li><a href="companydetail.do?companyid='${hot.companyId}'" style="font-size: 12pt;">&nbsp;&nbsp;&nbsp;${hot.companyname}</a><span class="jquery-accordion-menu-label">${status.count}</span>
             </c:forEach>
 					</ul>
-					
+
 				</div>
 			</div>
             <div class="recomm_content" style="
@@ -2373,8 +2377,8 @@ h2{
                               <div>
                                <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡💬</a>
                                 <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br>자료실</a>
-                                
-                                
+
+
                               <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>이력서관리</a></div>
                               <div>
                                 <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>이력서관리</a>
@@ -2396,7 +2400,7 @@ h2{
 	});
 </script>
 		</div>
-					
+
 						<div style="text-align: center;"><h4>프리미엄 채용관</h4></div>
 							<section class="tiles" style="margin-left: 300px;margin-right: 300px;">
 								<c:forEach var="dto" items="${list}">
@@ -2410,7 +2414,7 @@ h2{
 										<a href= "RecruitDetail.do?jobseq=${dto.jobSeq}&memberid='${dto.companyId}'">
 											<h5>${dto.companyname}</h5><br>
 											<h2>${dto.jobTitle}</h2>
-											
+
 											<c:choose>
 												<c:when test="${dto.salary == 0} ">
 													<p><strong>💰연봉 회사내규에 따름</strong></p>
@@ -2421,14 +2425,14 @@ h2{
 												<c:otherwise>
 													<p><strong>💰연봉 ${dto.salary}</strong></p>
 												</c:otherwise>
-											
-											
+
+
 											</c:choose>
-											
-	
+
+
 											<p>
 			                                	<i class="fa fa-calendar"></i> ${dto.jobEnd } &nbsp;&nbsp;&nbsp;&nbsp;
-	                                         	
+
 	                                         	<i class="fa fa-map-marker"></i> ${dto.area1Name }&nbsp;&nbsp;${dto.area2Name }
 											</p>
 										</a>
@@ -2436,10 +2440,10 @@ h2{
 								</c:forEach>
 							</section>
 						</div>
-				
-		
-		
-		
+
+
+
+
 		<br><br>
 		<div class="py-5">
     <div class="container">
@@ -2466,35 +2470,35 @@ h2{
       </div>
     </div>
   </div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	</div>
 	<!-- <div class="slide type_rec_write">
 					<svg xmlns="http://www.w3.org/2000/svg" width="44" height="45" viewBox="0 0 44 45" class="ic_write">
@@ -2634,14 +2638,14 @@ h2{
 		</div>
 	</div>
 	<!-- ==============FOOTER================= -->
-	
-	
-	
-	
-			
-			
-			
-			
+
+
+
+
+
+
+
+
 	<script type="text/javascript" defer="defer">
 //<![CDATA[
     $(window).load(function() {
@@ -2892,7 +2896,7 @@ function logout() {
 
 getTop10List();
 
-//인기 탑텐 가져오기 
+//인기 탑텐 가져오기
 function getTop10List() {
 
   $.ajax({
@@ -2911,13 +2915,13 @@ function getTop10List() {
  			var auth = '<c:out value="${login.auth}"/>';
 
 			$.each(list, function(i, val){
-				
+
 				var end = val.jobEnd;
  	 			var regdate = val.regdate;
  	 			end = end.substr(2,9);
  	 			regdate = regdate.substr(2,9);
 
- 	 			
+
 				//alert(val.jobSeq);
 				let app = "<tr class= 'list_col'>"
 							+"<td>" + val.rnum +"</td>";
@@ -2942,7 +2946,7 @@ function getTop10List() {
 									+"<td>" + val.jobVolumn + "</td>"
 									+"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
 									+"<td>" + end +"<br>"+regdate;
-									
+
 								if(val.companyId == memberid || auth == 3){
 	 								app += "<input type='button' class='btn btn-primary' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"
 	 									}
