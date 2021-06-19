@@ -16,7 +16,7 @@ public interface BusinessService {
 
 	boolean addmember(BusinessDto bus);
 
-	ModelAndView  login(BusinessDto dto, HttpServletResponse response) throws IOException;
+	BusinessDto login(BusinessDto dto);
 
 	void businessDelete(BusinessDto dto);
 

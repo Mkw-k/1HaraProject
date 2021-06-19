@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
@@ -14,7 +13,6 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -142,14 +140,21 @@ public class BusinessController {
 	
 	
 	@RequestMapping(value = "businessloginAf.do", method = {RequestMethod.GET,RequestMethod.POST}) 
-	public ModelAndView loginAf(@ModelAttribute BusinessDto dto, HttpServletResponse response, HttpServletRequest req,
-			@RequestParam(value="memberid", required=true) String userId,
-			@RequestParam(value="pwd",required=true) String password) throws Exception {
+	public String loginAf(BusinessDto dto, HttpServletRequest req) {
 	  
-		ModelAndView mav = new ModelAndView();
-		mav = service.login(dto, response);
-		return mav;
-	
+	  System.out.println("씨발 쫌 들어와라");
+
+	  BusinessDto login = service.login(dto); 
+	  if(login != null && !login.getMemberid().equals("")) {
+		  System.out.println("login id="+login.getMemberid());
+		  req.getSession().setAttribute("login", login); 
+		  // req.getSession().setMaxInactiveInterval(60 * 60 * 24);
+	  
+		  return "redirect:/home.do";
+	  
+	  }else { 
+		  return "redirect:/login.do"; 
+	  	} 
 	}
 	
 	@RequestMapping(value = "businessDelete.do", method = {RequestMethod.GET,RequestMethod.POST})

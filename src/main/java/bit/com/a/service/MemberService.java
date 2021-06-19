@@ -22,6 +22,6 @@ public interface MemberService {
 	void admin_member_foced_evictionCheck(MemberDto dto) throws Exception;
 	MemberDto kakaoLogin(MemberDto dto);
 	String getKakaoPwd(String memberid);
-	ModelAndView login(MemberDto dto, HttpServletResponse response) throws IOException;
+	MemberDto login(MemberDto dto);
 	
 }
