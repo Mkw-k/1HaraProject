@@ -270,7 +270,7 @@ body {
 									<li><a href="/consltJobCarpa/jobPsyExamNew/psyExamRsltList.do">검사결과 보기</a></li>
 									<li><a href="/consltJobCarpa/jobPsyExamNew/conslt/jobPsyExamConsltList.do">검사결과 상담</a></li>
 									<li><a href="/consltJobCarpa/jobPsyExamNew/conslt/jobPsyExamConsltFaqList.do">검사결과 상담 FAQ</a></li>
-								</ul>
+								</ul> 
 								<b><a href="/consltJobCarpa/srch/jobInfoSrch/srchJobInfo.do">직업정보</a></b>
 								<ul>
 									<li><a href="/consltJobCarpa/srch/jobInfoSrch/srchJobInfo.do">직업정보 찾기</a></li>
@@ -388,7 +388,7 @@ body {
 										찾기</a></li>
 									<li><a href="/empWelfareSrv/recommendSrv/consultCalcl.do">고용
 										모의계산</a></li>
-								</ul>
+								</ul> 
 								<b><a href="/empWelfareSrv/recommendSrv/searchIndexList.do">복지정책</a></b>
 								<ul>
 									<li><a href="/empWelfareSrv/recommendSrv/searchIndexList.do">색인별 서비스 찾기</a></li>
@@ -712,25 +712,8 @@ body {
 						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a>
 					</li>
 					<li>
-						<a href="javascript:check('${login.memberid}')" target="_self">지원내역확인 </a>
+						<a href="memberDelete.do" target="_self">회원탈퇴</a>
 					</li>
-          <li>
-      			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 관리</a>
-      			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
-      			<div class="depth3">
-      				<ul>
-      					<li class="curr">
-      						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
-      					</li>
-      					<li>
-      						<a href="mypageUpdate.do" target="_self">회원정보 수정(성명변경)</a>
-      					</li>
-      					<li>
-      						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a>
-      					</li>
-      					<li>
-      						<a href="memberDelete.do" target="_self">회원탈퇴</a>
-                </li>
 				</ul>
 			</div>
 		</li>
@@ -1447,7 +1430,7 @@ function f_empPgmList(resultObj){
 							<!-- 기능 버튼 들어갈 예정 -->
 						</div>
 					</div>
-					<div class="mypage-idv-wrap" id="Area1">
+					<div class="mypage-idv-wrap">
 						<div class="idv-sec01" style="height: 550px;">
 							<div class="con-top">
 
@@ -1497,7 +1480,7 @@ function f_empPgmList(resultObj){
 														</div>
 													</td>
 												</tr>
-
+												
 												<tr>
 													<th scope="row">전화번호</th>
 													<td colspan="3">
@@ -1512,9 +1495,242 @@ function f_empPgmList(resultObj){
 								</div>
 							</div>
 
+							<!-- <div class="con-bot">
+								<ul class="basic-list float">
+									<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeSelfIntroMng.do"><span class="futura">1</span> <span class="txt">내 이력서</span></a></li>
+									<li><a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do?srchType=main"><span class="futura">0</span> <span class="txt">입사지원</span></a></li>
+									<li><a href="/indivMemberSrv/aplentMng/aplentHist/plcmtHistList.do?srchType=main"><span class="futura">0</span> <span class="txt">취업알선</span></a></li>
+									<li><a href="/indivMemberSrv/aplentMng/offerCo/offerCoList.do"><span class="futura">0</span> <span class="txt">입사제안</span></a></li>
+									<li><a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeReadList.do"><span class="futura">1</span> <span class="txt">이력서열람</span></a></li>
+									<li><a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do"><span class="futura">0</span> <span class="txt">관심스크랩</span></a></li>
+								</ul>
+							</div> -->
 						</div>
+					<!-- 	<div class="idv-sec02">
+						인증이 만료되었습니다.
+							<div class="con-left v3 on">
+								<h4>회원님은
+									<span>
+										2021년 04월 06일
+									</span> 자로<br>구직활동 가능기간이 만료되었습니다.</h4>
+								<p>입사지원, 취업알선을 원하시면 구직신청을 하셔야 합니다.</p>
+								<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" class="button large">구직신청관리</a>
+							</div> -->
+					<!-- 그외의 인증 완료일경우 -->
+							<!-- <div class="con-right v2 on">  v2 : 이력서있는경우
+								<div class="con-top">
+									<h4 class="ellipsis">
+										<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveResumeDetail.do?tmplSeqno=1" target="_self">
+											<i class="ico-state">기본 이력서</i>우정현님의 이력서 입니다.
+										</a>
+									</h4>
+									</div>
+									<div class="con-bot">
+										<ul class="basic-list float">
+											<li>경영 기획 사무원</li>
+											<li>
+												희망 근무지역
+											 </li>
+											<li>
+												최종력
+											</li>
+											<li>경력</li>
+										</ul>
+										<dl>
+											<dt>키워드</dt>
+											<dd>
+												나의 이력서를 알리기 위한 핵심 키워드
+											</dd>
+										</dl>
+									</div>
+								</div>
+							</div> -->
+
+						<!-- 특별고용촉진 지원대상 확인서 출력 -->
+							<!-- <div class="box-line v3 blue mt30">
+								<div class="a-c">
+									<ul class="v1" style="margin-bottom: 10px;margin-right: 15px;">
+										<li>특별고용촉진장려금 지원을 위한 지원대상 확인서 출력은 아래 버튼을 클릭하여 주시기 바랍니다.</li>
+									</ul>
+									<button onclick="f_reportSpecialEmployment('0000036406785');" class="button large">특별고용촉진 지원대상 확인서 출력</button>
+								</div>
+							</div> -->
 
 
+							<!-- <div class="idv-sec03">2018-10-16 span 태그제거 후 이미지 추가
+								<h3><img src="../../static/images/mypage/@mainidv-sec3-2.png" alt="고용정보"> AI추천</h3>
+								<p><span>우정현</span> 님의 구직정보 및 활동정보를 기반으로 워크넷 인공지능 분석을 통한 통합고용정보를 추천해 드립니다.</p>
+								<ul class="basic-list float">
+									<li><a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do?infoDiv=work">채용 <span class="futura">11</span></a></li>
+									<li><a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do?infoDiv=poly">정책 <span class="futura">5</span></a></li>
+									<li><a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do?infoDiv=busi">기업 <span class="futura">4</span></a></li>
+									<li><a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do?infoDiv=train">훈련 <span class="futura">26</span></a></li>
+									<li><a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do?infoDiv=qual">자격 <span class="futura">5</span></a></li>
+									<li><a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do?infoDiv=psy">심리검사 <span class="futura">2</span></a></li>
+								</ul>
+								<a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do" class="btn-more">더보기</a>
+							</div>
+ -->
+							<!-- <div class="idv-sec04">
+								<div class="con-left" id="boardDiv">2018-10-16 문구변경
+									<span>공지<br>사항</span>
+									<ul class="dot-list v1"><li><a href="/ntNewsData/ntMatter/retrieveNtMatterDtl.do?boardNo=3&amp;writeNo=23584" onfocus="empBoardPlayType('stop');" onblur="empBoardPlayType('start');" onmouseover="empBoardPlayType('stop');" onmouseout="empBoardPlayType('start')">전문 승강기엔지니어 인력양성 교육생 모집</a></li><li><a href="/ntNewsData/ntMatter/retrieveNtMatterDtl.do?boardNo=3&amp;writeNo=23552" onfocus="empBoardPlayType('stop');" onblur="empBoardPlayType('start');" onmouseover="empBoardPlayType('stop');" onmouseout="empBoardPlayType('start')">2021년 워크넷 콘텐츠 모니터링단 모집 공고</a></li></ul>
+								</div>
+								<div class="con-right">
+									<a href="/useInfo/worknetInfo/useWorknetGuide.do">
+										<p>
+											<span>워크넷 이용안내 메뉴얼</span>
+											이용에 궁금한 점이 있으신가요?
+										</p>
+									</a>
+								</div>
+							</div>
+
+							<div class="idv-sec05">
+								<div class="con01">
+									<h4>구직자취업역량 강화프로그램</h4>
+									<div class="search-box">
+										<select id="topOrgcd" name="topOrgcd" onchange="f_requestOrgcdList(this.value)" title="관할구청" class="w110px">
+											<option value="">관할 청 선택</option>
+											<option value="12010">서울청</option>
+											<option value="13000">부산청</option>
+											<option value="14010">대구청</option>
+											<option value="15000" selected="selected">중부청</option>
+											<option value="16000">광주청</option>
+											<option value="17000">대전청</option>
+										</select>
+										<select id="orgCd" name="orgCd" title="고용센터" class="w220px">
+											<option value="">고용센터 선택</option>
+											<option value="15001">인천고용센터</option>
+											<option value="15011" selected="selected">인천북부고용센터</option>
+											<option value="15012">인천서부고용센터</option>
+											<option value="15014">강화고용센터</option>
+											<option value="15112">수원고용센터</option>
+											<option value="15113">용인고용센터</option>
+											<option value="15115">화성고용센터</option>
+											<option value="15122">김포고용센터</option>
+											<option value="15123">부천고용센터</option>
+											<option value="15132">광명고용센터</option>
+											<option value="15133">의왕고용센터</option>
+											<option value="15134">안양고용센터</option>
+											<option value="15136">군포고용센터</option>
+											<option value="15141">시흥고용센터</option>
+											<option value="15142">안산고용센터</option>
+											<option value="15152">의정부고용센터</option>
+											<option value="15153">구리고용센터</option>
+											<option value="15155">동두천고용센터</option>
+											<option value="15157">남양주고용센터</option>
+											<option value="15158">양주고용센터</option>
+											<option value="1515z">포천고용센터</option>
+											<option value="15162">이천고용센터</option>
+											<option value="15163">성남고용센터</option>
+											<option value="15164">하남고용센터</option>
+											<option value="15165">경기광주고용센터</option>
+											<option value="15168">양평고용센터</option>
+											<option value="15169">여주고용센터</option>
+											<option value="15171">평택고용센터</option>
+											<option value="15172">안성고용센터</option>
+											<option value="15173">오산고용센터</option>
+											<option value="15181">고양고용센터</option>
+											<option value="15182">파주고용센터</option>
+											<option value="15212">춘천고용센터</option>
+											<option value="15215">가평고용센터</option>
+											<option value="15216">홍천고용센터</option>
+											<option value="15221">삼척고용센터</option>
+											<option value="15222">태백고용센터</option>
+											<option value="15231">강릉고용센터</option>
+											<option value="15232">속초고용센터</option>
+											<option value="15234">동해고용센터</option>
+											<option value="15241">원주고용센터</option>
+											<option value="15251">영월고용센터</option>
+										</select>
+										<a href="javascript:void(0);" class="button navy" onclick="f_empPgmSrch('Y')">조회</a>
+									</div>
+								<ul id="tabList2">
+									<ul>
+										<li>
+											<div class="ellipsis w250px">[평생월급 프로젝트-국민연금공단]</div>
+											<span>05.18 ~ 05.18 (2H) <i class="ico-state s-small gray">마감</i></span>
+										</li>
+										<li>
+											<div class="ellipsis w250px">[재취업자를 위한 멋진 이력서, 자기소개서 작성하기]</div>
+											<span>05.20 ~ 05.20 (3H) <i class="ico-state s-small gray">마감</i></span>
+										</li>
+										<li>
+											<div class="ellipsis w250px">[강점분석 나를 이해하기]</div>
+											<span>05.21 ~ 05.21 (3H) <i class="ico-state s-small gray">마감</i></span>
+										</li>
+									</ul>
+								</ul>
+								<a id="tabUrl2" href="/empSpt/empSptPgm/pgmSchdInvite/empSchdInviteCtrList.do?orgCd=15011&amp;amp;pgmId=A08,A17" class="btn-more">더보기</a>
+							</div>
+
+							<div class="con02">
+								<h4>지역별 채용행사</h4>
+								<div class="search-box">
+									<label for="selectAreaList" class="w70px">행사지역</label>
+									<select name="selectAreaList" id="selectAreaList" class="w260px">
+										<option value="">전체</option>
+
+										<option value="51">서울,강원</option>
+
+										<option value="52">부산,경남</option>
+
+										<option value="53">대구,경북</option>
+
+										<option value="54" selected="selected">경기,인천</option>
+
+										<option value="55">광주,전라,제주</option>
+
+										<option value="56">대전,충청</option>
+
+									</select>
+									<a href="javascript:void(0);" class="button navy" onclick="f_arearSrch();">조회</a>
+								</div>
+								<ul id="tabList1">
+
+									<li><a href="/empSpt/empEvent/retrieveEmpEventDtl.do?eventMegaRegionCd=54&amp;newsDataSeqno=41414" class="ellipsis">■영림임업(주) 영업사원 채용■</a>
+										<span>04.24 ~ 04.24</span>
+									</li>
+									<li>
+										<a href="/empSpt/empEvent/retrieveEmpEventDtl.do?eventMegaRegionCd=54&amp;newsDataSeqno=41417" class="ellipsis">[용인시일자리센터] 청년대상 현직자 온라인 직무박람회</a>
+										<span>04.22 ~ 04.29</span>
+									</li>
+									<li>
+										<a href="/empSpt/empEvent/retrieveEmpEventDtl.do?eventMegaRegionCd=54&amp;newsDataSeqno=41412" class="ellipsis">2021년 4월 온ㆍ오프라인 구인ㆍ구직자 만남의날</a>
+										<span>04.13 ~ 04.15</span>
+									</li>
+								</ul>
+								<a id="tabUrl1" href="/empSpt/empEvent/retrieveEmpEventList.do?selectAreaList=54" class="btn-more">더보기</a>
+							</div>
+
+							<div class="con03" id="faxDiv">
+								<h4>자주 묻는 질문</h4>
+								<ul>
+									<li>
+										<a href="/custCenter/faqBoard/faqDetail.do?seq=881&amp;faqType=ind" class="ellipsis">채용정보 검색에서 사람인, 커리어 공고가 검색됩니다. 입사지원은 가능한가요?</a>
+									</li>
+									<li>
+										<a href="/custCenter/faqBoard/faqDetail.do?seq=880&amp;faqType=ind" class="ellipsis">취업했습니다. 구직신청취소는 어떻게 해야하나요?</a>
+									</li>
+									<li>
+										<a href="/custCenter/faqBoard/faqDetail.do?seq=879&amp;faqType=ind" class="ellipsis">일자리를 메일로 받고 있는데 더 이상 받고 싶지 않아요. 혹은 받아보고 싶어요</a>
+									</li>
+								</ul>
+								<a href="/custCenter/faqBoard/faqList.do" class="btn-more">더보기</a>
+							</div>
+
+							v2 :  심리검사결과없을때
+							<div class="con04 v2 on">
+								<h4>심리검사결과조회</h4>
+								<ul>
+									<li><a href="/consltJobCarpa/jobPsyExam/jobPsyExamIntro.do"><strong>직업심리검사</strong>나를 알아가는 또 하나의 방법</a>	</li>
+								</ul>
+							</div> -->
+					<!-- 	</div>
+					</div>
+				</section> -->
+				<!--// contents -->
 <script>
 	//우클릭 방지
 	$(document).ready(function(){
@@ -1707,85 +1923,16 @@ function login() {
 
 }
 
-</script>
+/* 네비게이션고정 */
+var nav = document.getElementsByClassName("navigation");
 
-<script>
-
-function check(memberid) {
-		alert('실행성공');
-
-		$.ajax({
-			   url : "./getresumeData.do",
-			   type : "get",
-			   data : {"memberid" : memberid},
-			   success:function(param){
-					alert('성공');
-			      $("#Area1").empty();
-
-			      let app = "<table class='table table-striped list_col1' style='width: 100%; text-align: center;'>"+
-			    			"<colgroup>"+
-			  				"<col width='30%'><col width='30%><col width='20%'><col width='10%'><col width='10%'>"+
-			  				"</colgroup>"+
-			  				"<thead>"+
-			  				"<tr>"+
-			  				"<td>지원공고</td>"+
-			  				"<td>지원이력서</td>"+
-			  				"<td>지원일</td>"+
-			  				"<td>열람여부</td>"+
-			  				"<td>지원취소</td>"+
-			  				"</tr>"+
-			  				"</thead>"+
-			  				"<tbody style='border-bottom: thin; border-color: black; border-bottom-style: solid;'>";
-
-			      $.each(param, function(i, val){
-
-					app += "<tr>"+
-						   "<td><a href='RecruitDetail.do?jobseq="+val.jobSeq+"&memberid="+memberid+"'>"+val.jobtitle+"</a></td>";
-						   if(val.resumetitle == null && val.resumetitle != ''){
-								app += "<td><p>삭제된 이력서입니다</p></td>";
-							}
-						   else{
-								app += "<td><a href='Resumedetail.do?seq="+val.resumeseq+"'>"+val.resumetitle+"</a></td>";
-						   }
-
-					app += "<td>"+val.applydate+"</td>"+
-						"<td>";
-
-						if(val.companyread >0 ){
-							app += "<img alt='' src='./image/check.png' height='30px' width='30px' style='margin-left:0px;display:inline-flex;'>";
-						}
-
-					app += "</td>"+
-						"<td><a href='cancelApply.do?seq="+val.applyseq+"&memberid="+memberid+"' class='box-btn'>취소</a></td>"+
-						"</tr>";
-
-
-
-			      });
-
-			      app += "</tbody>"+
-						 "</table>";
-
-			      $("#Area1").append(app);
-			   },
-			   error:function(){
-			      alert('error');
-			   }
-
-			 }); // ajax
-
+window.onscroll = function sticky() {
+  if(window.pageYOffset > nav[0].offsetTop) {
+    nav[0].classList.add("nav");
+  } else {
+    nav[0].classList.remove("nav");
+  }
 }
-
-
-
-
-
-
-
-
-
 </script>
-
-
 </body>
 </html>

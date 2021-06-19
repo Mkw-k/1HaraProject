@@ -446,8 +446,8 @@ white{
           <div class="companydetail"> <p>담당자연락처</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgPhone }</div>
           <div class="companydetail"> <p>담당자이메일주소</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgEmail }</div>
         </div>
-        <div class="text-primary" style=""> 담당자 정보 수정을 원하시면 버튼을 클릭하세요 &nbsp;&nbsp;&nbsp;
         	<c:if test="${dto.companyId == login.memberid or login.auth == 3}">
+        <div class="text-primary" style=""> 담당자 정보 수정을 원하시면 버튼을 클릭하세요 &nbsp;&nbsp;&nbsp;
         	<a class="btn btn-secondary" href="javascript:mgUpdate()">담당자 정보수정</a>
         	</c:if>
         </div>
@@ -488,7 +488,7 @@ white{
   
   <div class="py-5">
     <div class="container">
-      <div class="row"> 인기기업 HOT10
+      <div class="row"> 인기공고 HOT10
       <div class="col-md-12">
          <table class="table table-hover col-sm-12 " style="" id="table">
             <thead class="thead-dark">
@@ -530,7 +530,7 @@ white{
 <script>
 getTop10List();
 
-//인기 탑텐 가져오기 
+//인기 탑텐 HOT10 가져오기 
 function getTop10List() {
 
     $.ajax({
@@ -566,24 +566,30 @@ function getTop10List() {
  									+ "</td>"
  									+"<td style='text-align:left'>"
  									//+ arrow(val.depth)
- 									+"<a href='RecruitDetail.do?jobSeq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
+ 									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
  									+"</td>"
  									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
  									+"<td>" + val.jobVolumn + "</td>"
  									+"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
- 									+"<td>" + val.jobEnd +"<br>"+val.regdate+ "&nbsp;&nbsp;"
- 									+"<input type='button' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"+ "</td>";
- 							}
+ 									+"<td>" + val.jobEnd +"<br>"+val.regdate;
+ 									
+ 									if(val.companyId == memberid || auth == 3){
+ 		 								app += "<input type='button' class='btn btn-primary' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"
+ 		 									}
 
- 							else{
- 								app += "<td style='text-align:left' colspan='6'>"
- 										+"<font color='#ff0000'>********* 이 글은 작성자에 의해서 삭제되었습니다</font>"
- 										+"</td>";
- 							}
+ 		 								app += "</td>";
 
- 							+"</tr>";
+ 		 							}
 
- 					$("#table").append(app);
+ 		 							else{
+ 		 								app += "<td style='text-align:left' colspan='6'>"
+ 		 										+"<font color='#ff0000'>********* 이 글은 작성자에 의해서 삭제되었습니다</font>"
+ 		 										+"</td>";
+ 		 							}
+
+ 		 							+"</tr>";
+ 									
+					$("#table").append(app);
  			});
  		},
  		error:function(){

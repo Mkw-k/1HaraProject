@@ -24,39 +24,39 @@ body {
                          opacity: 0.4;
                    }
 </style>
-
+        
 </head>
-
-
+    
+    
      <body id="sub_layout">
-
-     <div class="wrapper">
-
+     
+     <div class="wrapper"> 
+            
     <!-- header -->
 <header id="header">
    <div class="top-area">
       <div class="inner-wrap">
-
+   
          <div class="util">
             <!-- 로그인 전 -->
-
+            
             <!--// 로그인 전 -->
             <!-- 로그인 후 -->
 
             <!-- S : 2018-09-28 추가 -->
-
+            
                <div class="login-mypage">
-                  <a href="#">
+                  <a href="#"> 
                         <span>[기업]</span>
                        ${login.name}님
                   </a>
                   <ul>
-
-
+         
+                     
                   </ul>
                </div>
                <a href="logout.do" onclick="logout();" class="font-blue">로그아웃</a>
-
+            
          </div>
       </div>
    </div>
@@ -66,7 +66,7 @@ body {
          <h1 class="top-logoWorknet">
             <a href="home.do"><img src="/static/images/common/bg/bg-top-logo.png" alt="일하라"></a>
          </h1>
-
+         
          <form id="searchFrm" name="searchFrm" hidden="" action="/wnSearch/unifSrch.do" method="post" onsubmit="return false">
             <div class="header-search">
                <div class="searc-area">
@@ -88,12 +88,12 @@ body {
          <div>
             <input type="hidden" name="_csrf" value="40c07236-ce2a-46f9-b046-8fbf7137e0fa">
          </div>
-      </form>
+      </form>   
 
 
 
 
-
+      
       </div>
    </div>
 
@@ -101,28 +101,28 @@ body {
       <ul>
          <li><span></span>
             <div class="sub" hidden="">
+               
 
-
-
+            
             </div></li>
          <li><span></span>
             <div class="sub">
-
-
+               
+                  
             </div></li>
          <li><span></span>
             <div class="sub">
-
-
+               
+            
             </div></li>
          <li class=""><span></span>
             <div class="sub" style="">
-
+               
             </div></li>
          <li><a href="" class="menu" hidden=""><span></span></a>
             <div class="sub">
-
-
+               
+               
             </div></li>
       </ul>
    </nav>
@@ -154,7 +154,7 @@ body {
                         });
                     </script>
                     <div class="custom-menu">
-
+                      
                     </div>
                 </div>
             </div>
@@ -242,7 +242,7 @@ body {
                         });
                     }
                 </script>
-
+        
                 <script type="text/javascript">
                     // <![CDATA[
                     function trim(s) {
@@ -286,7 +286,7 @@ body {
                                 frm.juso1.focus();
                                 return false;
                             }
-
+     
                         }
                         var tel1 = document.getElementById("telno1");
                         var tel2 = document.getElementById("telno2");
@@ -311,9 +311,9 @@ body {
                                 tel1, tel2, tel3
                             ], [
                                 '잘못된 전화번호(지역번호)입니다.', '잘못된 전화번호(국번)입니다.', '잘못된 전화번호 입니다.'
-                            ], keis.chk.invalidHomePhone))
+                            ], keis.chk.invalidHomePhone)) 
                                 return false;
-
+                            
                             telInput = true;
                         }
                         if (!keis.chk.isEmpty(hp1.value) || !keis.chk.isEmpty(hp2.value) || !keis.chk.isEmpty(hp3.value)) {
@@ -323,9 +323,9 @@ body {
                                 hp1, hp2, hp3
                             ], [
                                 '잘못된 휴대전화번호(사업자번호)입니다.', '잘못된 휴대전화번호(국번)입니다.', '잘못된 휴대전화번호 입니다.'
-                            ], keis.chk.invalidCellPhone))
+                            ], keis.chk.invalidCellPhone)) 
                                 return false;
-
+                            
                             telInput = true;
                         }
                         // 웹회원은 미입력 체크 안함.
@@ -335,25 +335,25 @@ body {
                         }
                         // 유효성 검사   : 이메일
                         if (!keis.chk.isEmpty(email1.value) || !keis.chk.isEmpty(email2.value)) { // if (!(/^[a-zA-Z][a-zA-Z0-9._%+-]+$/i).test(email1.value)) return worknet.checkForm.alert('잘못된 이메일 주소입니다.', email1);
-                            if (keis.chk.isEmpty(email1.value))
+                            if (keis.chk.isEmpty(email1.value)) 
                                 return worknet.checkForm.alert('잘못된 이메일 주소입니다.', email1);
-
-                            if (!(/((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/).test(email2.value))
+                            
+                            if (!(/((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/).test(email2.value)) 
                                 return worknet.checkForm.alert('잘못된 이메일 주소입니다.', email2);
-
+                            
                         }
-                        if ((keis.chk.isEmpty(hp1.value) && smsRcvYn1.checked))
+                        if ((keis.chk.isEmpty(hp1.value) && smsRcvYn1.checked)) 
                             return worknet.checkForm.alert('휴대전화 문자서비스를 받기 위해선 휴대전화번호를 입력하여야 합니다.', hp1);
-
-                        if ((keis.chk.isEmpty(email1.value) && mailsvcRcvYn1.checked))
+                        
+                        if ((keis.chk.isEmpty(email1.value) && mailsvcRcvYn1.checked)) 
                             return worknet.checkForm.alert('메일링서비스를 받기 위해선 E-mail을 입력하여야 합니다.', email1);
-
-                        if ((keis.chk.isEmpty(hp1.value) && imsSmsRcvYn1.checked))
+                        
+                        if ((keis.chk.isEmpty(hp1.value) && imsSmsRcvYn1.checked)) 
                             return worknet.checkForm.alert('고용노동서비스 One-ID의 정책과 공지사항을 받으시려면\n휴대전화번호 입력이 반드시 필요합니다.', hp1);
-
-                        if ((keis.chk.isEmpty(email1.value) && imsMailsvcRcvYn1.checked))
+                        
+                        if ((keis.chk.isEmpty(email1.value) && imsMailsvcRcvYn1.checked)) 
                             return worknet.checkForm.alert('고용노동서비스 One-ID의 정책과 공지사항을 받으시려면\nE-mail 입력이 반드시 필요합니다.', email1);
-
+                        
                         // 20131203 BDH도로명안내추가
                         if (addrType == "jibun") {
                             alert("입력하신 주소는 지번주소입니다. 도로명 주소로 변경하시기 바랍니다.");
@@ -516,8 +516,8 @@ body {
                     }
                     // ]]>
                 </script>
-
-
+                
+                
                 <section id="contents" class="mypage">
                     <form id="registForm" name="registForm" action ="buspageUpdateAf.do" method="post"  enctype="multipart/form-data">
                         <input type="hidden" id="checkAddr" name="checkAddr" value="">
@@ -547,7 +547,6 @@ body {
                                 <div class="f_box">
                                         <label for="img"></label>
                                         <input type="file" name="fileload" id="img">
-                                        <input type="hidden" name="newfilename" value="${business.newfilename }" id="img">
                                 </div>
                             </li>
                   </ul>
@@ -571,7 +570,7 @@ body {
 
                    </script>
                        <br><br>
-
+          
                        </div>
                        <h3 class="tit font-black">회원 로그인 정보</h3>
                         <input type="hidden" name="strtnmDetailAddr" id="strtnmDetailAddr">
@@ -606,7 +605,7 @@ body {
                                         </th>
                                         <td>
                                            <div class="form-group has-feedback">
-
+                                   
                                       <input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
                                     <input type="button"class="btn btn-secondary" onclick="sample6_execDaumPostcode()" readonly="readonly" value="우편번호 찾기"><br>
                                     <input type="text" class="form-control" id="sample6_address" name="comaddress"><br>
@@ -637,7 +636,7 @@ body {
                                                 <input type="text" class="input-text" id="hp2" title="휴대전화 중간자리 입력" maxlength="4" >
                                                 <span>-</span>
                                                 <input type="text" class="input-text" id="hp3" title="휴대전화 뒷자리 입력"  maxlength="4" >
-
+                                            
                                                <input type="hidden" class="input-text" id="phonenum" name="phonenum" title="번호 합친거"   maxlength="4" >
                                             </div>
                                         </td>
@@ -646,7 +645,7 @@ body {
                                         <th scope="row" colspan="1">
                                             <span class="label">이메일</span>
                                         </th>
-                                        <td>
+                                        <td> 
                                             <div class="email-wrap mt05">
                                                 <input type="text" style="width:400px" name="email" id="email1" maxlength="100" class="input-text" title="이메일 주소 입력" pil="PF_EMAIL" />
                                             </div>
@@ -729,7 +728,7 @@ body {
                         <!-- //20170602 네이버,소셜 로그인 연동 간편 로그인 추가 -->
                         <div class="btn-group">
                             <a href="buspage.do" class="button navy">취소</a>
-                            <button type="button" onclick="submitFunc()" class="button blue">확인</button>
+                            <button type="button" onclick="submitFunc()" class="button blue">확인</button>             
                             <a href="memberDelete.do" class="button navy">탈퇴하라!</a>
                         </div>
                         <div>
@@ -767,10 +766,10 @@ body {
                 $(document).ready(function () {
                     console.timeEnd('checktime2');
                 });
-
-
+                
+                
             </script>
-
+            
             <script type="text/javascript">
             function sample6_execDaumPostcode() {
                 new daum.Postcode({
@@ -806,7 +805,7 @@ body {
                             }
                             // 조합된 참고항목을 해당 필드에 넣는다.
                             document.getElementById("sample6_extraAddress").value = extraAddr;
-
+                        
                         } else {
                             document.getElementById("sample6_extraAddress").value = '';
                         }
@@ -820,19 +819,19 @@ body {
                 }).open();
             }
 
-
+            
             function submitFunc() {
                alert('클릭');
                let num1 = $('#hp1').val();
                let num2 = $('#hp2').val();
                let num3 = $('#hp3').val();
-            let phone = num1 + num2 + num3;
+            let phone = num1 + num2 + num3; 
             $('#allphonenum').val;
             alert;
             $('#registForm').submit();
             }
-
-            </script>
+            
+            </script>   
         </div>
         </div>
     </body>
