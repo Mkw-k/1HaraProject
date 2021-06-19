@@ -7,9 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="static/csss/common.css" media="all">
-<link rel="stylesheet" href="static/csss/top.css" media="all">
-<link rel="stylesheet" href="static/csss/reset.css" media="all">
+<link rel="stylesheet" href="csss/common.css" media="all">
+<link rel="stylesheet" href="csss/top.css" media="all">
+<link rel="stylesheet" href="csss/reset.css" media="all">
 
 </head>
 <body>

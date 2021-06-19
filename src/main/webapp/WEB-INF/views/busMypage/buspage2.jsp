@@ -181,7 +181,14 @@ body {
 	<!-- E : 2018-09-28 추가 -->
 	<ul>
 		<li>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+=======
+
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 			<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">공고 관리</a>
 			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
 			<div class="depth3">
@@ -199,7 +206,17 @@ body {
 		<li>
 			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">기업정보 관리</a>
 			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+			<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">입사지원 관리</a>
+			
+
+>>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+=======
+
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 			<div class="depth3">
 				<ul>
 					<li>
@@ -219,6 +236,20 @@ body {
 			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
 			<div class="depth3">
 				<ul>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+					<li class="curr">
+						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
+					</li>
+					<li>
+						<a href="pwdcheck.do?memberid=${login.memberid}" target="_self">회원정보 수정(성명변경)</a>
+					</li>
+
+>>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+=======
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 					<li>
 						<a href="javascript:priMember('${login.memberid }','${login.companyname }','${login.name }','${login.comaddress }')" target="_self">가입하기</a>
 					</li>
@@ -1334,7 +1365,14 @@ window.onscroll = function sticky() {
 
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+=======
+
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 /* 프리미엄결제창이동 */
 //프리미엄 결제창 이동
 function priMember(memberid, companyname, name, comaddress) {

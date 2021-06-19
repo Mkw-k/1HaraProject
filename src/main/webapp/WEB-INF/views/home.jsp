@@ -2156,12 +2156,29 @@ h2{
 		                        <span class="glyphicon glyphicon-bookmark"></span> 인기기업 TOP 10</h3>
 		                </div>
             <div id="jquery-accordion-menu" class="jquery-accordion-menu">
+<<<<<<< HEAD
+<<<<<<< HEAD
+					<ul>
+						<li class="active"><a href="#" style="font-size: 12pt;"><i class="fa fa-home"></i>NAVER</a><span class="jquery-accordion-menu-label">1 </span><li><a href="#" style="font-size: 12pt;"><i class="fa fa-glass"></i>KAKAO</a><span class="jquery-accordion-menu-label">2 </span></li></li>
+						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-glass"></i>KAKAO</a><span class="jquery-accordion-menu-label">2 </span></li>
+						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-file-image-o"></i>LINE </a><span class="jquery-accordion-menu-label">3 </span></li>
+						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-cog"></i>COUPANG </a><span class="jquery-accordion-menu-label">4 </span></li>
+						<li><a href="#" style="font-size: 12pt;"><i class="fa fa-cog"></i>배달의 민족 </a><span class="jquery-accordion-menu-label">5 </span></li>
+					</ul>
+=======
+=======
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
             		<ul>
             <c:forEach var="hot" items="${hot10}" varStatus="status">
             	<li><a href="companydetail.do?companyid='${hot.companyId}'" style="font-size: 12pt;">&nbsp;&nbsp;&nbsp;${hot.companyname}</a><span class="jquery-accordion-menu-label">${status.count}</span>
             </c:forEach>
 					</ul>
+<<<<<<< HEAD
+					
+>>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+=======
 
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 				</div>
 			</div>
             <div class="recomm_content" style="
@@ -2400,7 +2417,131 @@ h2{
 	});
 </script>
 		</div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+		
+							<div style="text-align: center;"><h2>VIP 채용관</h2></div>
+						
+		
+		
+		<!-- Jobs -->
+							<section class="tiles" style="margin-left: 300px;margin-right: 300px;">
+								<article class="style2">
+									<span class="image">
+										<img src="image/naver2.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
 
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="image/Kakao.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
+
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="image/line.jpg" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
+
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+
+								<article class="style6">
+									<span class="image">
+										<img src="image/coupang.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
+
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+
+								<article class="style5">
+									<span class="image">
+										<img src="image/baemin.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
+
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+
+								<article class="style6">
+									<span class="image">
+										<img src="image/danggeun.png" width="20%" height="300px" alt="" />
+									</span>
+									<a href="job-details.html">
+										<h2>Lorem ipsum dolor sit amet, consectetur</h2>
+										
+										<p><strong>$60 000</strong></p>
+
+										<p>
+		                                	<i class="fa fa-calendar"></i> 15-06-2020 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-file"></i> Contract &nbsp;&nbsp;&nbsp;&nbsp;
+                                         	<i class="fa fa-map-marker"></i> London
+										</p>
+									</a>
+								</article>
+							</section>
+						</div>
+					</div>
+
+				
+
+			</div>
+		
+		
+		
+		
+		
+=======
+					
+=======
+
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 						<div style="text-align: center;"><h4>프리미엄 채용관</h4></div>
 							<section class="tiles" style="margin-left: 300px;margin-right: 300px;">
 								<c:forEach var="dto" items="${list}">
@@ -2470,6 +2611,38 @@ h2{
       </div>
     </div>
   </div>
+<<<<<<< HEAD
+>>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+=======
 
 
 
@@ -2499,6 +2672,7 @@ h2{
 
 
 
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 	</div>
 	<!-- <div class="slide type_rec_write">
 					<svg xmlns="http://www.w3.org/2000/svg" width="44" height="45" viewBox="0 0 44 45" class="ic_write">
@@ -2891,6 +3065,11 @@ function loginpage() {
 function logout() {
 	location.href="logout.do";
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 
 
 
@@ -2974,6 +3153,10 @@ function getTop10List() {
 }
 
 
+<<<<<<< HEAD
+>>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+=======
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 </script>
 	<div id="ch-plugin">
 		<div id="ch-plugin-core">

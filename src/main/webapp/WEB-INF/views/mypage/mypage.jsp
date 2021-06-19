@@ -1020,6 +1020,10 @@ function login() {
 
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 </script>
 
 <script>
@@ -1088,6 +1092,13 @@ function check(memberid) {
 			   }
 
 			 }); // ajax
+<<<<<<< HEAD
+=======
+/* 네비게이션고정 */
+var nav = document.getElementsByClassName("navigation");
+>>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+=======
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 
 window.onscroll = function sticky() {
   if(window.pageYOffset > nav[0].offsetTop) {

@@ -1768,11 +1768,22 @@ dt, dd {
 								</article>
 						</div>
 						</section>
+<<<<<<< HEAD
+						
+<<<<<<< HEAD
+						<button id="incomplete" class="btn btn-warning btn-md">중간저장</button>
+						<button id="complete" class="btn btn-info btn-md">작성완료</button>
+=======
+						<button class="btn btn-primary" id="incomplete">중간저장</button>
+						<button class="btn btn-primary" id="complete">작성완료</button>
+>>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
+=======
 
 						<div style="margin-left: 450px;">
 						<button id="incomplete" class="btn btn-warning btn-md">중간저장</button>
 						<button id="complete" class="btn btn-info btn-md">작성완료</button>
 						</div>
+>>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 						
 					</div>
 				</div>
