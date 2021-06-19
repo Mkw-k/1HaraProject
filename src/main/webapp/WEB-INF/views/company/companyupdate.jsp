@@ -8,10 +8,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link href="csss/header.css" rel="stylesheet" type="text/css">
-
-
+<link rel="stylesheet" href="static/css/import.css" media="all">
+ <c:import url="/WEB-INF/views/recruit/script.jsp" charEncoding="utf-8"/>
 <style type="text/css">
- 
+ @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 /* 버튼 */
 a.box-btn {
@@ -49,13 +49,14 @@ background-color: transparent;
 border-collapse: collapse;
 border-spacing: 0;
 display: table;
+
 }
 
 
 
 body {
   font-family: "Noto Sans KR", sans-serif !important;
-	margin: auto;
+	margin: auto;	
     width: 500px;
     
 
@@ -76,13 +77,16 @@ body {
 
 </style>
 
+<c:import url="/WEB-INF/views/recruit/header.jsp" charEncoding="utf-8"/>
+  
+
 </head>
 
-
-
+<body>
 
 <h1 align="center"><strong>기업 정보 수정하기</strong></h1>
-<form name="comform" id="_comform" action="companyupdateAf.do" method="get">    
+<form name="comform" id="_comform" action="companyupdateAf.do" method="get"> 
+	<input type="hidden" value="${company.companyseq }">   
     <div  align="center" >
     <table border="1" class="table table-striped table-bordered">
      	<tr>
@@ -124,6 +128,7 @@ body {
     		<th>평균 연봉:</th>
     		<td><input type="text" name="salaryavg" value="${company.salaryavg }" ></td>
     	</tr>
+    
     
     	<tr>
     		<th>초봉:</th>
@@ -174,21 +179,26 @@ body {
     </div>
 
 	    <div align="center">
-	    	<c:if test="${company.companyseq == null}">	    	
-	    	<p>상세정보를 먼저 입력해주세요</p>
-	    	</c:if>
-	    	
-	    	<c:if test="${company.companyseq != null }">
+	    <c:choose>
+			<c:when test="${company.companyseq ne null }">
 	    	<button id="companyBtn" class="box-btn">수정하기</button>
-	    	</c:if>
+	    	</c:when>
 	    	
+
+	    	<c:otherwise>	    	
+	    	<p>상세정보를 먼저 등록해주세요</p>
+	    	</c:otherwise>
+	    	
+		</c:choose>
 	    	
 	    	
 	    	
 	    </div>
 
 </form>    
-
+</body>	
+		<button type="button" onclick="detail('${login.memberid}')" >상세정보보기</button>
+	
 
 <script>
 
@@ -204,4 +214,7 @@ body {
 	});
 		
 
+	function detail(memberid) {
+		location.href = "companydetail.do?companyid="+memberid;
+	};
 </script>    

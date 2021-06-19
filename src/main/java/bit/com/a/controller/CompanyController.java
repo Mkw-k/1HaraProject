@@ -30,9 +30,10 @@ public class CompanyController {
 	
 	
 	@RequestMapping(value = "companywrite.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String companywrite(Model model , CompanyDto dto) {
+	public String companywrite(Model model , CompanyDto dto, String companyid) {
 		
 		System.out.println("올까요?");
+		dto = service.getCompany(companyid);
 		model.addAttribute("company", dto);
 		return "company/companywrite";
 	}
@@ -59,18 +60,17 @@ public class CompanyController {
 	}
 	
 	@RequestMapping(value = "companyupdate.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String companyupdate(Model model, String memberid) {
+	public String companyupdate(Model model, String companyid) {
 		
 		System.out.println("update");
-		/*
+		
 		//페이지 받아오기 
-		CompanyDto dto = service.getCompany(memberid);
-		System.out.println("아이디: "+dto.getMemberid());
+		CompanyDto dto = service.getCompany(companyid);
 		
 		
 		model.addAttribute("company",dto);
-		System.out.println("af투스트링" + dto.toString());
-		*/
+		
+	
 		return "company/companyupdate";
 	}
 	

@@ -82,7 +82,8 @@ body {
 
 <div class="container"></div>
    
-<form name="comform" action="companywriteAf.do" id="_comform" method="get">    
+<form name="comform" action="companywriteAf.do" id="_comform" method="get">
+	<input type="hidden" value="${company.companyseq }">     
     <table border="1" class="table table-striped table-bordered">
      	<tr>
     		<th>회사이름:<p class="fontscolor2">* 변경할수없습니다</p></th>
@@ -170,24 +171,24 @@ body {
     	</tr>
 
 	</table>
-
-		    <div align="center">
-	    	<c:if test="${company.companyseq == null}">	    	
+		<div align="center">
+		  <c:choose> 
+	    	<c:when test="${company.companyseq eq null}">	    	
 	    	<button id="companyBtn" class="box-btn">등록하기</button>
-	    	</c:if>
+	    	</c:when>
 	    	
-	    	<c:if test="${company.companyseq != null }">
-	    	
+	    	<c:otherwise>
 	    	<p>중복등록을 할수없습니다 수정하기로 가주세요</p>
-	    	<a href="companyupdate.do?companyid=${company.memberid }" style="color:#2186eb">기업수정</a>
-	    	</c:if>
+	    	</c:otherwise>
+	    </c:choose>	
 	    	
 	    	
 	    </div>
 
 </form>    
-
-
+		
+		
+		<button type="button" onclick="detail('${login.memberid}')" >상세정보보기</button>
 
 <script>
 
@@ -197,11 +198,12 @@ $("#companyBtn").click(function () {
 	
 	alert("클릭크 수정");
 	$("#_comform").submit();
-	}
+	
 
 });
 	
-
-
+function detail(memberid) {
+	location.href = "companydetail.do?companyid="+memberid;
+};
 
 </script>

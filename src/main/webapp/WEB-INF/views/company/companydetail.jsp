@@ -23,17 +23,6 @@
 <script src="//https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
-
-
- <!-- 전체 css -->
-<!-- <script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
-<script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
-<link href="csss/top.css" rel="stylesheet" type="text/css">
-<link href="csss/common.css" rel="stylesheet" type="text/css">
-<link href="csss/reset.css" rel="stylesheet" type="text/css">
- -->
- 
  <c:import url="/WEB-INF/views/recruit/script.jsp" charEncoding="utf-8"/>
 
 <style type="text/css">
@@ -240,7 +229,7 @@ tr{
 
 
 	<br>
-
+	<input type="hidden" value="${company.memberid }">
 	<%-- <c:if test="${login.memberid } "> --%>
    	  <a  href="companyupdate.do?companyid=${company.memberid }" style="color:#2186eb">기업수정</a>
    	   <a  href="companywrite.do?companyid=${company.memberid }" style="color:#2186eb">기업등록</a>
