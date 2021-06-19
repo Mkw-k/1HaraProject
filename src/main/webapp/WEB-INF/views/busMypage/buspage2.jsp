@@ -164,7 +164,7 @@ body {
          <li><a href="companydetail.do?companyid=${login.memberid }" class="menu"><span>기업정보</span></a></li>
 
          <li><a href="createTest.do" class="menu"><span>공고등록</span></a></li>
-         <li><a href="myRecruitList.do?companyid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
+         <li><a href="myRecruitList.do?memberid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
 
       </ul>
 
@@ -181,7 +181,7 @@ body {
 	<!-- E : 2018-09-28 추가 -->
 	<ul>
 		<li>
-<<<<<<< HEAD
+
 			<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">공고 관리</a>
 			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
 			<div class="depth3">
@@ -199,10 +199,7 @@ body {
 		<li>
 			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">기업정보 관리</a>
 			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
-=======
-			<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">입사지원 관리</a>
-			<button class="btn-show">입사지원 관리 메뉴 닫기</button>
->>>>>>> ea5487e962cdef91cc58cd53173764c7b177e657
+
 			<div class="depth3">
 				<ul>
 					<li>
@@ -222,15 +219,6 @@ body {
 			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
 			<div class="depth3">
 				<ul>
-<<<<<<< HEAD
-=======
-					<li class="curr">
-						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
-					</li>
-					<li>
-						<a href="pwdcheck.do?memberid=${login.memberid}" target="_self">회원정보 수정(성명변경)</a>
-					</li>
->>>>>>> ea5487e962cdef91cc58cd53173764c7b177e657
 					<li>
 						<a href="javascript:priMember('${login.memberid }','${login.companyname }','${login.name }','${login.comaddress }')" target="_self">가입하기</a>
 					</li>

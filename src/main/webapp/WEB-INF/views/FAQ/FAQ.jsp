@@ -1,54 +1,28 @@
+<%@page import="bit.com.a.dto.BusinessDto"%>
 <%@page import="bit.com.a.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
 <%@page import="java.util.List"%>
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> --%>
+ 
 
 <!DOCTYPE html>
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
-<!--   <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="_csrf_parameter" content="_csrf"><meta name="_csrf_header" content="X-CSRF-TOKEN"><meta name="_csrf" content="5557377e-0013-402c-90e5-0dad4d61305f">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta http-equiv="p3p" content="CP=&quot;CAO DSP AND SO &quot; policyref=&quot;/w3c/p3p.xml&quot;">
-<meta http-equiv="imagetoolbar" content="no">
-<meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="subject" content="#">
-<meta name="author" content="#">
-<meta name="keywords" content="#">
-<meta name="selected-menu" content="0, 0, 0, 0">
- -->
+
 <!-- 제이쿼리 -->
 <script src="//https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
- <!-- 전체 css -->
-<!-- <link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
-<script type="text/javascript" src="layout/scripts/featured_slide.js"></script> -->
 
 <!-- footer -->
 <link rel="shortcut icon" href="/images/common/ico/w_favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="static/css/import.css" media="all">
 
-<!-- <!-- 랭킹 -->
-<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
-<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
-
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-
-<!-- JQuery -->
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
 <!------ Ajax ---------->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- 부트스트랩 -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<!-- https://github.com/josecebe/twbs-pagination -->
-<!-- script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script> -->
 
 <link href="csss/header.css" rel="stylesheet" type="text/css">
 
@@ -636,16 +610,24 @@ List<FAQDto> commonlist =(List<FAQDto>) request.getAttribute("commonlist");
 
 <%
 MemberDto mem = (MemberDto)request.getSession().getAttribute("login");
+
 %>
 
 
 
 
-<% if( mem.getAuth() == 3 ){ %> 
+<% 
+if(mem != null){
+if( mem.getAuth()==3 ){ %> 
 <div style="text-align: center;margin-bottom: 300px;margin-top: -100px;">
 <a href="writeFAQ.do" class="box-btn" >글쓰기</a>
 </div>
- <% } %> 
+
+ <% } else {%> 
+
+ <%  }
+ 
+ }%> 
 
 
 

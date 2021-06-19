@@ -166,13 +166,13 @@ ORDER BY RESUMESEQ DESC
 
 <update id="upProgress" parameterType="bit.com.a.dto.ResumeDto">
  UPDATE RESUME
- SET PROGRESS = PROGRESS + 20
+ SET PROGRESS = PROGRESS + 15
  WHERE RESUMESEQ=#{resumeseq}
 </update>
 
 <update id="updateProgress" parameterType="java.lang.Integer">
  UPDATE RESUME
- SET PROGRESS = PROGRESS+20
+ SET PROGRESS = PROGRESS+15
  WHERE RESUMESEQ=#{resumeseq}
 </update>
 

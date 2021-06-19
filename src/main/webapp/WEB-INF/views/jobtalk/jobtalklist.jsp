@@ -40,30 +40,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 
-  <!-- footer -->
-
-
-<!-- 네비바 -->
-<!-- carousel -->
-<!-- <link rel="stylesheet" href="//https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-
-<!-- <script src="//https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
- -->
   <!-- 검색 부트스트랩 -->
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
 
  <!-- 전체 css -->
 
 <link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
-<!-- <script type="text/javascript" src="layout/scripts/jquery.min.js"></script> -->
 <script type="text/javascript" src="layout/scripts/featured_slide.js"></script>
  <!-- 부트스트랩 -->
-<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
- -->
 <!-- 링크!  -->
 <link href="csss/common.css" rel="stylesheet" type="text/css">
 <link href="csss/reset.css" rel="stylesheet" type="text/css">

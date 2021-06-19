@@ -1701,7 +1701,7 @@ dt, dd {
 																<div id="desire_job_category"
 																	class="area_task_input resume_input">
 																	<input type="text" id="Buses" name="desiredjob1"
-																		value="" maxlength="50" class="box_input" >
+																		value="" maxlength="50" class="box_input" readonly="readonly">
 
 																	<div>
 
@@ -1768,14 +1768,11 @@ dt, dd {
 								</article>
 						</div>
 						</section>
-						
-<<<<<<< HEAD
+
+						<div style="margin-left: 450px;">
 						<button id="incomplete" class="btn btn-warning btn-md">중간저장</button>
 						<button id="complete" class="btn btn-info btn-md">작성완료</button>
-=======
-						<button class="btn btn-primary" id="incomplete">중간저장</button>
-						<button class="btn btn-primary" id="complete">작성완료</button>
->>>>>>> ea5487e962cdef91cc58cd53173764c7b177e657
+						</div>
 						
 					</div>
 				</div>
