@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="bit.com.a.dto.MemberDto"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -393,18 +394,37 @@ System.out.println("dto" +dto.toString());
 							    </td>
 							</tr>
 							 
-<!-- 							<tr>
-							    <td colspan="2" style="height: 50px; text-align: center;">
-							        <a href="#none" id="_btnPds" title="자료올리기">
-							            <img alt="" src="image/bwrite.png">
-							        </a>
-							    </td>
-							</tr> -->
+
+
+
+
+
 							<tr>
 							<td colspan="2">
 							    <a href="FAQ.do" class="box-btn">글목록</a>
-							    <a href="updateFAQ.do?seq=<%=dto.getFaqseq() %>" class="box-btn">수정</a>
-							    <a href="deleteFAQ.do?seq=<%=dto.getFaqseq() %>" class="box-btn">삭제</a>
+							    
+							    
+							    <%
+MemberDto mem = (MemberDto)request.getSession().getAttribute("login");
+
+%>
+
+
+
+
+<% 
+if(mem != null){
+if( mem.getAuth()==3 ){ %> 
+<a href="updateFAQ.do?seq=<%=dto.getFaqseq() %>" class="box-btn">수정</a>
+<a href="deleteFAQ.do?seq=<%=dto.getFaqseq() %>" class="box-btn">삭제</a>
+
+ <% } else {%> 
+
+ <%  }
+ 
+ }%> 
+							    
+							  
 							</td>
 							</tr> 
 							</table>

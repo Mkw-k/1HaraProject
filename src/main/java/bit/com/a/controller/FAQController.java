@@ -172,6 +172,16 @@ public class FAQController {
 		return "FAQ/FAQdetail";
 	}
 	
+	@RequestMapping(value = "FAQdetail2.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String FAQdetail2(Model model, int seq) {	
+
+		FAQDto dto = service.getFAQ(seq);
+		System.out.println(dto.toString());
+		model.addAttribute("dto", dto);
+		
+		return "FAQ/FAQdetail2";
+	}
+	
 	@RequestMapping(value = "updateFAQ.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String updateFAQ(Model model, int seq) {	
 		System.out.println("여기는 업데이트");
