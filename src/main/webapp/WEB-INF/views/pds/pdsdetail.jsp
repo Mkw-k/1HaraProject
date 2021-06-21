@@ -292,11 +292,6 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* 요소의 최소 너비 지정, height 속성 무시
-    vh단위는 브라우저 안쪽 높이(window.innerHeight)을 기준으로
-    설정된다. 하지만 태블릿이나, 모바일의 경우에는 뷰 포트에 따라
-    맞춰짐*/
-  min-height: 8vh;
   background-color: #504954;
   font-family: "Poppins", sans-serif;
 }
@@ -464,16 +459,15 @@ display: table;
 <!-- 본문 -->
 <main>
 
+<div style="width:987px;height:900px;border-style: outset;margin-left: auto;margin-right: auto;margin-top: 140px;margin-bottom: auto";>
 
-
-
-<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,800,900%7cRaleway:300,400,500,600,700" rel="stylesheet">
+<img src="자료실배경.png"/>
 <section class="pricing-area pt-100 pb-100" id="pricing" style="padding-top: 0px;">
 		<div class="container" style="margin-top: -100;">
 			<div class="row">
                
                <div class="col-xl-12">
-				<div class="single-price">
+				<div class="single-price" style="/* margin-left: 300px; */width: 980px;margin-left: 0px;padding-right: 0px;padding-top: 0px;padding-bottom: 0px;padding-left: 0px;">
 				  <div class="price-item">
 						
 						
@@ -532,7 +526,7 @@ display: table;
 						<tr>
 						   <th>내용</th>
 						   <td>
-						      <textarea rows="10" cols="100" readonly="readonly">${pds.content }</textarea>
+						      <textarea rows="10" cols="100" readonly="readonly" style="width: 682px;">${pds.content }</textarea>
 						   </td>
 						</tr>
 						
@@ -585,7 +579,7 @@ display: table;
 		</div>
 	  </section>
 
-
+</div>
 
 
 

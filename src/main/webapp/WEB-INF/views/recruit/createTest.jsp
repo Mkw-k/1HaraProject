@@ -51,12 +51,12 @@
  
  
   <div class="py-1" >
-    <div class="container">
+    <div class="container" style="margin-left: auto;margin-right: auto;">
       <div class="row">
         <div class="col-md-12" style="margin-bottom: 20px; border-style: outset;">
         <br>
-        <p>프리미엄 회원으로 등록을 원하시면 프리미엄 회원결제를 해주세요. <br>프리미엄 회원이 되시면 우선순위로 공고 최상단에 검색됩니다.</p>
-          <a style="color: blue;">프리미엄 회원 등록하러가기🏅</a><br><br><br>
+        <p>프리미엄 회원으로 등록을 원하시면 프리미엄 회원결제를 해주세요. <br>프리미엄 회원이 되시면 우선순위로 공고 최상단에 검색됩니다. <br>회원등록은 마이페이지 좌측 메뉴에서 프리미엄회원 [가입하기] 버튼을 누르시면 됩니다</p>
+          <a href="buspage.do?memberid=${login.memberid}" style="color: blue;">마이페이지로 이동(프리미엄 회원 등록하러가기)🏅</a><br><br><br>
           
         </div>
       </div>
@@ -64,7 +64,7 @@
     <div class="">
       
       
-      <div class="container" style="border-style: outset;">
+      <div class="container" style="border-style: outset;margin-left: auto;margin-right: auto;padding-bottom: 10px;padding-top: 10px;">
         
           <div class="col-md-12 order-md-1">
             <form class="needs-validation" id="_recruitcrefrm" novalidate="" method="post">
@@ -191,7 +191,7 @@
 	              	
 	              	
 	              	<input type="hidden" name="jobContent" id="_jobContent">
-	              	<a type="button" href="#_writeFrm2" class="btn btn-primary" style="float: right;">다음입력</a>              	 
+	              	<a type="button" href="#_writeFrm2" class="btn btn-primary" style="float: right; color: white;">다음입력</a>              	 
 	              
               </div>
               </div>
@@ -311,7 +311,7 @@
 					<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 			</div>
          	<br>
-          	<a type="button" href="#_writeFrm3" class="btn btn-primary" style="float: right;">다음입력</a>
+          	<a type="button" href="#_writeFrm3" class="btn btn-primary" style="float: right; color: white;">다음입력</a>
           </div>
         </div>
         
@@ -363,12 +363,12 @@
          	<c:choose> 
           		<c:when test="${dto.certifyUpdate == 'YES'}">
           			<br>
-          			<div class="col-md-12"><a class="btn btn-primary" href="javascript:jobUpdate();">수정하기</a></div>
+          			<div class="col-md-12"><a class="btn btn-primary" href="javascript:jobUpdate();" sty>수정하기</a></div>
           			<input type="hidden" value="${dto.jobSeq }" id="_jobSeq" name="jobSeq">          		
           		</c:when> 
         	    <c:otherwise>
         	    	<br>
-          			<div class="col-md-12"><a class="btn btn-primary" id="submit" href="javascript:jobRegi();">작성하기</a></div>
+          			<div class="col-md-12"><a class="btn btn-primary" id="submit" href="javascript:jobRegi();" style="color: white">작성하기</a></div>
           		</c:otherwise> 
           	</c:choose> 
           	
@@ -429,21 +429,6 @@
 <script type="text/javascript">
 
 
-function reseveSms() {
-	 $.ajax({
-	        url : "./reserveSendSms.do",
-	        type : "get",
-	        data: {"phonenum": '01026074128', "reserveDate" : '202106122323'},
-	        success:function(list){
-	           alert('success');
-	           //alert(list);
-			},
-	        error:function(){
-	           alert('error');
-	        }
-
-	      });
-}
 
 function jobRegi() {
  
@@ -455,12 +440,6 @@ function jobRegi() {
     }
     
  
-    
-    //alert($(".editor").html());
-    //$("#_jobContent").val($(".editor").html());
-    
-   
-    
    
     
     $("#_recruitcrefrm").attr("action", "recuruitcreateAf.do").submit();
@@ -487,30 +466,9 @@ function jobUpdate() {
  
  
 
-	
-
-
-
 
 $(".btnRegister").click(function(){
-	
-	/* var start = $("#_jobStart").val().replace('T', '');
-	var end = $("#_jobEnd").val().replace('T', '');
-	
-	alert("start:" + start);
-	alert("end:" + end);
-	
-	
-	document.getElementByID("_jobStart").value = start;
-	document.getElementByID("_jobEnd").value = end;
-	
-	start = $("#_jobStart").val(); 
-	end = $("#_jobEnd").val();
-	
-	alert("start:" + start);
-	alert("end:" + end); */
-	
-	//$("#_recruitcrefrm").submit();	
+
 
 });
 

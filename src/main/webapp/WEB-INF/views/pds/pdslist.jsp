@@ -168,7 +168,7 @@ a{
 }
 .single-price {
 	text-align: center;
-	padding: 30px;
+	padding: 60px;
 	/* box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); */
 }
 .price-title h4 {
@@ -245,7 +245,6 @@ nav {
     vh단위는 브라우저 안쪽 높이(window.innerHeight)을 기준으로
     설정된다. 하지만 태블릿이나, 모바일의 경우에는 뷰 포트에 따라
     맞춰짐*/
-  min-height: 8vh;
   background-color: #504954;
   font-family: "Poppins", sans-serif;
 }
@@ -417,8 +416,15 @@ display: table;
 
 <!-- =======Login 클릭 시 Modal END =========-->
 
+
+
 <!-- 검색창 -->
-<section class="newsletter" style=" background-image:url('자료실1.PNG'); no-repeat; width: 2000px; ">
+<div style="width:980px;height: 1306px;border-style: solid;margin-top: 120px;margin-left: 400px;">
+
+
+
+
+<section class="newsletter" style=" background-image:url('자료실배경.png'); no-repeat; width: 100%; no-repeat; ">
 <div class="container" >
 <div class="row">
 <div class="col-sm-12">
@@ -457,7 +463,7 @@ display: table;
 					</a>
 				</td>
 				<td>
-				 <button id="btnDown" class="btn btn-primary" type="button" style="width: 120px;height: 36px; background-color: #2186eb" onclick="filedown('${pds.newfilename}', '${pds.pdsseq }', '${pds.filename}')">
+				 <button id="btnDown" class="btn btn-primary" type="button" style="width: 98px;height: 36px; background-color: #2186eb" onclick="filedown('${pds.newfilename}', '${pds.pdsseq }', '${pds.filename}')">
 				 														Download</button>
 					<%-- <input type="button" name="btnDown" value="다운로드" 
 						onclick="filedown('${pds.newfilename}', '${pds.pdsseq }', '${pds.filename}')">	 --%>	
@@ -487,6 +493,7 @@ display: table;
 </div>
 </c:if>
 
+</div>
 
 
 <!-- 다운로드 버튼을 클릭시 -->

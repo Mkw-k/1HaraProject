@@ -158,13 +158,13 @@ body {
    <nav id="gnb">
       <ul>
 
-         <li><a href="companywrite.do" class="menu"><span>기업정보등록</span></a></li>
-         <li><a href="buspageUpdate.do?companyid=${login.memberid }" class="menu"><span>기업정보 수정</span></a></li>
+         <li><a href="companywrite.do?companyid=${login.memberid}" class="menu"><span>기업정보 등록</span></a></li>
+         <li><a href="companyupdate.do?companyid=${login.memberid}" class="menu"><span>기업정보 수정</span></a></li>
 
-         <li><a href="companydetail.do?companyid=${login.memberid }" class="menu"><span>기업정보</span></a></li>
+         <li><a href="companydetail.do?companyid=${login.memberid}" class="menu"><span>기업정보</span></a></li>
 
          <li><a href="createTest.do" class="menu"><span>공고등록</span></a></li>
-         <li><a href="myRecruitList.do?memberid=${login.memberid }" class="menu"><span>공고현황</span></a></li>
+         <li><a href="myRecruitList.do?memberid=${login.memberid}" class="menu"><span>공고현황</span></a></li>
 
       </ul>
 
@@ -175,20 +175,11 @@ body {
     <!-- 헤더 -->
 
 <nav id="lnb">
-
 	<!-- S : 2018-09-28 추가 -->
 	<p class="tit"><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지</a></p>
 	<!-- E : 2018-09-28 추가 -->
 	<ul>
 		<li>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
-=======
-
->>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 			<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">공고 관리</a>
 			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
 			<div class="depth3">
@@ -202,28 +193,17 @@ body {
 				</ul>
 			</div>
 		</li>
-
+		
 		<li>
 			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">기업정보 관리</a>
 			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-			<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">입사지원 관리</a>
-			
-
->>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
-=======
-
->>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 			<div class="depth3">
 				<ul>
 					<li>
 						<a href="companydetail.do?companyid=${login.memberid }" target="_self">기업상세정보</a>
 					</li>
 					<li>
-						<a href="buspageUpdate.do" target="_self">회원정보 수정</a>
+						<a href="companyupdate.do?companyid=${login.memberid }" target="_self">회원정보 수정</a>
 					</li>
 					<li>
 						<a href="businessDelete.do" target="_self">회원탈퇴</a>
@@ -232,24 +212,10 @@ body {
 			</div>
 		</li>
 		<li>
-			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">프리미엄 회원가입</a>
+			<a href="#" target="_self">프리미엄 회원가입</a>
 			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
 			<div class="depth3">
 				<ul>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-					<li class="curr">
-						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
-					</li>
-					<li>
-						<a href="pwdcheck.do?memberid=${login.memberid}" target="_self">회원정보 수정(성명변경)</a>
-					</li>
-
->>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
-=======
->>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 					<li>
 						<a href="javascript:priMember('${login.memberid }','${login.companyname }','${login.name }','${login.comaddress }')" target="_self">가입하기</a>
 					</li>
@@ -257,8 +223,7 @@ body {
 			</div>
 		</li>
 	</ul>
-
-</nav>
+</nav>    
 
 
 
@@ -1073,7 +1038,9 @@ function f_empPgmList(resultObj){
 							<div class="con-top">
 								<div class="tit-area"><span>${login.memberid}</span> 님, 반갑습니다.
 
-									<a href = "pwdcheck.do?memberid=${login.memberid}" class="button">회원정보 수정</a>
+									<a href="javascript:priMember('${login.memberid }','${login.companyname }','${login.name }','${login.comaddress }')" class="button" style="float: right; margin-left: 5px;" target="_self">프리미엄등록</a>
+								
+									<a href="pwdcheck.do?memberid=${login.memberid}" class="button">회원정보 수정</a>
 								</div>
 
 
@@ -1364,15 +1331,7 @@ window.onscroll = function sticky() {
 }
 
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
-=======
-
->>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
+f
 /* 프리미엄결제창이동 */
 //프리미엄 결제창 이동
 function priMember(memberid, companyname, name, comaddress) {

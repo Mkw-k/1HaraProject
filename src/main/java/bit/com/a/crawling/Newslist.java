@@ -35,7 +35,7 @@ public class Newslist {
 		// 리스트 생성
 		List<NewsDto> list = new ArrayList<NewsDto>();
 
-		for (int i = 0; i < 14; i++) {
+		for (int i = 0; i < 8; i++) {
 			if(imgs == null) {
 				break;
 			}

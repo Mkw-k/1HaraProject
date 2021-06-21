@@ -127,16 +127,13 @@ String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, mont
 %>
 <c:import url="script.jsp" charEncoding="utf-8"/>
 
-<c:import url="header.jsp" charEncoding="utf-8"/>
+<c:import url="../header2.jsp" charEncoding="utf-8"/>
 
-<c:import url="script.jsp" charEncoding="utf-8"/>
-
-<c:import url="header.jsp" charEncoding="utf-8"/>
 
 
 
 <!-- 프론트 작업중 다중 셀렉트 박스  -->
- <div class="container con" style="margin-top: 50px;padding-top: 0px;padding-bottom: 100px;">
+ <div class="container con" style="margin-top: 100px;padding-top: 0px;padding-bottom: 100px;margin-left: auto;margin-right: auto;">
       <div class="header clearfix">
          <nav>
             <ul class="nav nav-pills float-right">
@@ -335,7 +332,7 @@ String url = String.format("%s?year=%d&month=%d", "calendarMonth.do", year, mont
 
 
 
-<div class="box_border" style="margin-top: 5px; margin-bottom: 10px">
+<div class="box_border" style="margin-top: 50px; margin-bottom: 10px;">
 
 	<table style="width: 1082px;margin-left: auto;margin-right: auto;" >
 	<col width="100px">

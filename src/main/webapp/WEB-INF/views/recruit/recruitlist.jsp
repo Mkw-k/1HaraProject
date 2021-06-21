@@ -307,13 +307,13 @@ hr {
 
 
 <!-- 프론트 작업중 다중 셀렉트 박스  -->
-   <div class="container con" style="margin-top: 50px;padding-top: 0px;padding-bottom: 100px; margin-left: 250px;">
+   <div class="container con" style="margin-top: 50px;padding-top: 0px;padding-bottom: 100px;margin-left: auto;margin-right: auto;">
       <div class="header clearfix">
          <nav>
             <ul class="nav nav-pills float-right">
 
             </ul>
-         <div style="text-align : center;">
+         <div style="text-align : center; margin-top: 30px;">
             <img alt="" src="/sample10/image/찾잡.png" style="width: 60%; height: 60%;">
             </div></nav>
 
@@ -445,7 +445,7 @@ hr {
       </div>
 
 
-
+	<br><br>
    경력 / 학력  <br>
 
    <section class="search-sec">
@@ -517,16 +517,16 @@ hr {
 
 
 
-   <div class="container" style="
-    margin-left: 250px;
-">
+   <div class="container" style="margin-left: auto;margin-right: auto;">
    				<c:if test="${login.auth==2 }">
    				<span style="color: red;">기업회원이신가요? 공고를 작성하시려면 버튼을 클릭해주세요</span>&nbsp;
                <span><a class="btn btn-primary" href="javascript:createRecruitNew()" style="color: white;">공고작성하러가기</a></span><br><br>
               	</c:if>
+     
       <div class="row marketing">
-
-
+      
+      
+	  
          <table class="table table-hover col-sm-12 " style="" id="table">
              <col width="5%"><col width="10%"><col width="30%"><col width="15%">
              <col width="10%"><col width="15%"><col width="15%">
@@ -548,20 +548,16 @@ hr {
          </table>
          <p></p>
       </div>
-
+	<nav aria-label="Page navigation">
+	         <ul class="pagination" id="pagination"
+	            style="justify-content: center;">
+	         </ul>
+	      </nav>
 
    </div>
 
 
 
-
-   <div class="container">
-      <nav aria-label="Page navigation">
-         <ul class="pagination" id="pagination"
-            style="justify-content: center;">
-         </ul>
-      </nav>
-   </div>
 
 
 

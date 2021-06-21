@@ -19,9 +19,9 @@
 	<div class="top-area">
 		<div class="inner-wrap">
 			<div class="link-out">
-				<a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do" target="_blank" title="새창 열림">지역일하라</a>
-				<a href="/useInfo/empCenterInfo/useEmpIntroList.do" target="" title="새창">고용복지<sup></sup>센터</a>
-				<a href="#3" title="새창 열림" onclick="f_moveUrl('WT')">장애인고용포털</a>
+				<a href="home.do" target="_blank" title="새창 열림">지역일하라</a>
+				<a href="https://www.workplus.go.kr/intro/about.do" target="" title="새창">고용복지<sup></sup>센터</a>
+				<a href="https://www.worktogether.or.kr/main.do" title="새창 열림" onclick="f_moveUrl('WT')">장애인고용포털</a>
 			</div>
 			<div class="util">
 				<!-- 로그인 전 -->
@@ -68,13 +68,11 @@
 
 				<!-- 공통 -->
 				<a href="#" class="worknet-chatbot-start-button-for-client">챗봇</a>
-				<a href="jobtalklist.do">취업톡톡</a><img src="static/images/common/ico/ico-gnb-new.png" style="width:15px;height:15px;margin-top: 8px;" class="va-m" alt="new">
-				<a href="/useInfo/worknetInfo/useWorknetGuide.do">이용안내</a>
+				<a href="Jobtalklist.do">취업톡톡</a><img src="static/images/common/ico/ico-gnb-new.png" style="width:15px;height:15px;margin-top: 8px;" class="va-m" alt="new">
+				<!-- <a href="/useInfo/worknetInfo/useWorknetGuide.do">이용안내</a>
 				<a href="info.do">고객센터</a>
-				<a href="http://as82.kr/keis" target="_blank" title="새창">원격지원</a>
-				<a href="/useInvite/worknetHomepgInvite/sitemap.do">사이트맵</a>
+				<a href="/useInvite/worknetHomepgInvite/sitemap.do">사이트맵</a> -->
 				<!-- 20201022 추가 -->
-
 				<!-- //20201022 추가 -->
 <!--<div class="font-control"> -->
 <!--<p>글자크기</p> -->
@@ -116,25 +114,25 @@
 	</div>
 </div>
 
-	<nav id="gnb">
+	<nav id="gnb" style="height:50px; width: 2000px;">
 		<ul>
-			<li><a href="/empInfo/empInfoSrch/list/dtlEmpSrchMain.do" class="menu"><span>채용정보</span></a>
+			<li><a href="recuruitlist.do" class="menu"><span>채용정보</span></a>
 				</li>
 				<li>
-					<a href="/jobMain.do" class="menu"><span>기업뉴스</span></a>
+					<a href="newslist.do" class="menu"><span>기업뉴스</span></a>
 					
 					</li>
 					<li>
-						<a href="/empWelfareSrv/recommendSrv/empWelfareSrvMain.do" title="새창" class="menu"><span>자료실</span></a>
+						<a href="pdslist.do" title="새창" class="menu"><span>자료실</span></a>
 						
 			</li>
-			<li class=""><a href="/trnCourseMain.do" title="새창" class="menu"><span>공채달력</span></a>
+			<li class=""><a href="calendarlist1.do" title="새창" class="menu"><span>공채달력</span></a>
 				
 			</li>
 			<li style="
     width: 150px;
 ">
-			<a href="/psnInfo/psnInfoSrch/dtlPsnSrchMain.do" class="menu"><span>공지사항</span></a>
+			<a href="notice.do" class="menu"><span>공지사항</span></a>
 				
 			</li>
 		</ul>

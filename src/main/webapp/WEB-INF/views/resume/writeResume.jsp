@@ -2,6 +2,7 @@
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
 <%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -165,6 +166,17 @@ dt, dd {
 	height: 200px
 
 }
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* 요소의 최소 너비 지정, height 속성 무시
+    vh단위는 브라우저 안쪽 높이(window.innerHeight)을 기준으로
+    설정된다. 하지만 태블릿이나, 모바일의 경우에는 뷰 포트에 따라
+    맞춰짐*/
+  background-color: #504954;
+  font-family: "Poppins", sans-serif;
+}
 
  
 </style>
@@ -176,55 +188,7 @@ dt, dd {
 		<header> </header>
 
 		<!-- 네비바 -->
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-
-
-			<div>
-				<a href="home.do"><img alt=""
-					src="<%=request.getContextPath() %>/image/logo5.gif" height="80"
-					width="160" style="float: left; padding-right: 20px"></a>
-			</div>
-
-			<ul class="navbar-nav">
-				<!-- Dropdown -->
-				<li class="nav-item dropdown" style="padding-top: 5px;">
-					<div class="dropdown">
-						<button class="dropbtn"
-							style="color: #2186eb; background-color: #fff;">전체보기</button>
-						<div class="dropdown-content">
-							<a href="#">채용공고</a> <a href="#">기업정보</a> <a href="#">취업톡톡</a> <a
-								href="#">공채달력</a> <a href="#">자료실</a> <a href="notice.do">공지사항</a>
-						</div>
-					</div>
-				</li>
-
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">채용공고</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">기업정보</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">취업톡톡</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">공채달력</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">자료실</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="notice.do"
-					style="color: #2186eb">공지사항</a></li>
-			</ul>
-
-
-			<ul class="navbar-nav navbar-nav2" style="margin-left: 50px;">
-				<li class="nav-item">
-					<!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
-					<a href="javascript:login()" id="login-btn" class="nav-link bgc"
-					style="color: #2186eb; background-color: #fff;">로그인</a>
-				</li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb; background-color: #fff;">이력서관리</a></li>
-
-
-			</ul>
-		</nav>
+		<c:import url="../header2.jsp" charEncoding="utf-8"/> 
 		<br>
 
 		<!-- =========Login 클릭 시 Modal =========== -->
@@ -277,26 +241,10 @@ dt, dd {
 		<!-- 본문 -->
 		<main>
 
-
-			<!-- 검색창 -->
-			<section class="newsletter"
-				style="margin-top: -150px; padding-bottom: 0px; padding-top: 100px;">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="content">
-								<h2 style="color: #fff"></h2>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
 			<form action="writeAfResume.do" method="post" name="resumewrite" id="resumewrite" enctype="multipart/form-data" >
 
-				<div class="container" style="margin-top: 0px; margin-right: 400px;">
-					<div class="row">
+				<!-- <div class="container" style="margin-top: 0px; margin-right: 400px;"> -->
+					<div class="container" style="margin-top: 50px; margin-right: 200px; margin-left: 200px;">
 						<div class="col-lg-offset-2 col-lg-12" style="margin-left: 0px;">
 							<section class="panel panel-default">
 								<div class="panel-body">
@@ -1768,26 +1716,14 @@ dt, dd {
 								</article>
 						</div>
 						</section>
-<<<<<<< HEAD
-						
-<<<<<<< HEAD
-						<button id="incomplete" class="btn btn-warning btn-md">중간저장</button>
-						<button id="complete" class="btn btn-info btn-md">작성완료</button>
-=======
-						<button class="btn btn-primary" id="incomplete">중간저장</button>
-						<button class="btn btn-primary" id="complete">작성완료</button>
->>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
-=======
 
 						<div style="margin-left: 450px;">
 						<button id="incomplete" class="btn btn-warning btn-md">중간저장</button>
 						<button id="complete" class="btn btn-info btn-md">작성완료</button>
 						</div>
->>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
 						
 					</div>
 				</div>
-	</div>
 	</form>
 	</main>
 	<!-- ####################################################################################################### -->
@@ -3475,9 +3411,9 @@ function selectCareerArea(val) {
 <script type="text/javascript">
 $("#incomplete").click(function () {
 alert("incomplete");
-document.getElementById('resumeStatus').value = 'NO';
+/* document.getElementById('resumeStatus').value = 'NO';
 alert(document.getElementById('resumeStatus').value);
-
+ */
 if($("#resumetitle").val().trim() == ""){
 	
     alert('이력서 제목을 입력해 주십시오');
@@ -3485,7 +3421,7 @@ if($("#resumetitle").val().trim() == ""){
     return false;
 }
 
-else if($("#university").val().trim() != ""){
+if($("#university").val().trim() != ""){
 
 	
 	if($("#univ_str").val().trim() == ""){
@@ -3516,7 +3452,7 @@ else if($("#university").val().trim() != ""){
 	
 }
 
-else if($("#pre_comname").val().trim() != ""){
+if($("#pre_comname").val().trim() != ""){
 	
     
 	if($("#pre_startdate").val().trim() == ""){
@@ -3557,7 +3493,7 @@ else if($("#pre_comname").val().trim() != ""){
 	
 }
 
-else if($("#act_org").val().trim() != ""){
+if($("#act_org").val().trim() != ""){
 	
     
 	if($("#act_org").val().trim() == ""){
@@ -3586,7 +3522,7 @@ else if($("#act_org").val().trim() != ""){
 	
 }
 
-else if($("#lic_name").val().trim() != ""){
+if($("#lic_name").val().trim() != ""){
 	
     
 	if($("#lic_publisher").val().trim() == ""){
@@ -3601,7 +3537,7 @@ else if($("#lic_name").val().trim() != ""){
     	}
 }
 
-else if($("#lan_exam").val().trim() != ""){
+if($("#lan_exam").val().trim() != ""){
 	
 	if($("#lan_score").val().trim() == ""){
     alert('어학 관련 사항을 모두 입력해 주십시오');
@@ -3615,7 +3551,7 @@ else if($("#lan_exam").val().trim() != ""){
     	}
 }
 
-else if($("#awd_name").val().trim() != ""){
+if($("#awd_name").val().trim() != ""){
 	
 	if($("#awd_date").val().trim() == ""){
     alert('수상 관련 사항을 모두 입력해 주십시오');
@@ -3636,7 +3572,7 @@ else if($("#awd_name").val().trim() != ""){
     return false;
 } */
 
-else if($("#jobtypes").val().trim() == ""){
+if($("#jobtypes").val().trim() == ""){
 	
     alert('희망 근무 형태 사항을 입력해 주십시오');
     $("#jobtypes").focus();
@@ -3645,7 +3581,7 @@ else if($("#jobtypes").val().trim() == ""){
     
 }
 
-else if($("#Areas").val().trim() == ""){
+if($("#Areas").val().trim() == ""){
 	
     alert('희망 지역을 입력해 주십시오');
     $("#Areas").focus();
@@ -3653,13 +3589,17 @@ else if($("#Areas").val().trim() == ""){
     return false;
 }
 
-else if($("#Buses").val().trim() == ""){
+if($("#Buses").val().trim() == ""){
 	
     alert('희망 직종을 입력해 주십시오');
     $("#Buses").focus();
 	
     return false;
 }
+ 
+document.getElementById('resumeStatus').value = 'NO';
+alert(document.getElementById('resumeStatus').value);
+
 	
 });
 </script>

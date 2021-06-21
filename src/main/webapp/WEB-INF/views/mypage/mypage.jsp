@@ -371,16 +371,16 @@ body {
 			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
 			<div class="depth3">
 				<ul>
-					<li>
-						<a href="writeResume.do" target="_self">이력서 등록</a>
-					</li>
-					<li>
-						<a href="pdslist.do" target="_self">이력서 양식 다운로드</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/aplentMng/seekActvHist/seekActvHistList.do" target="_self">구직활동내역</a>
-					</li>
-				</ul>
+               <li>
+                  <a href="writeResume.do" target="_self">이력서 등록</a>
+               </li>
+               <li>
+                  <a href="pdslist.do" target="_self">이력서 양식 다운로드</a>
+               </li>
+               <li>
+                  <a href="javascript:check('${login.memberid}')" target="_self">구직활동내역</a>
+               </li>
+            </ul>
 			</div>
 		</li>
 		<li>
@@ -399,9 +399,7 @@ body {
 					<li>
 						<a href="memberDelete.do" target="_self">회원탈퇴</a>
 					</li>
-					<li>
-      						<a href="memberDelete.do" target="_self">회원탈퇴</a>
-                </li>
+					
 
 	</ul>
 </nav>
@@ -527,7 +525,7 @@ $(document).ready( function() {
 							<!-- 기능 버튼 들어갈 예정 -->
 						</div>
 					</div>
-					<div class="mypage-idv-wrap">
+					<div class="mypage-idv-wrap" id="Area1">
 						<div class="idv-sec01" style="height: 550px;">
 							<div class="con-top">
 
@@ -1020,23 +1018,20 @@ function login() {
 
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
+
 </script>
 
 <script>
 
 function check(memberid) {
-		alert('실행성공');
+		//alert('실행성공');
 
 		$.ajax({
 			   url : "./getresumeData.do",
 			   type : "get",
 			   data : {"memberid" : memberid},
 			   success:function(param){
-					alert('성공');
+					//alert('성공');
 			      $("#Area1").empty();
 
 			      let app = "<div class='container'>"+
@@ -1059,7 +1054,7 @@ function check(memberid) {
 			      $.each(param, function(i, val){
 
 					app += "<tr>"+
-						   "<td><a href='RecruitDetail.do?jobseq="+val.jobSeq+"&memberid="+memberid+"'>"+val.jobtitle+"</a></td>";
+						   "<td><a href='RecruitDetail.do?jobseq="+val.jobseq+"&memberid="+memberid+"'>"+val.jobtitle+"</a></td>";
 						   if(val.resumetitle == null && val.resumetitle != ''){
 								app += "<td><p>삭제된 이력서입니다</p></td>";
 							}
@@ -1092,13 +1087,12 @@ function check(memberid) {
 			   }
 
 			 }); // ajax
-<<<<<<< HEAD
-=======
+}
+
 /* 네비게이션고정 */
 var nav = document.getElementsByClassName("navigation");
->>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
-=======
->>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
+
+
 
 window.onscroll = function sticky() {
   if(window.pageYOffset > nav[0].offsetTop) {

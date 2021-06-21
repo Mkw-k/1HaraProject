@@ -184,9 +184,9 @@ System.out.println(_gender);
                            
                            <% } %>
                         </div>
-                        <div class="my_data">
+                         <div class="my_data">
                            <p class="myname">
-                              <em>최은지</em><span class="birthday"><span><%=dto.getBirth() %>
+                              <em><%=dto.getName() %></em><span class="birthday"><span><%=dto.getBirth() %>
                                     (<%=age %>세)</span><span><%=_gender %></span><span><%=dto.getRecruit_status() %></span></span>
                            </p>
 

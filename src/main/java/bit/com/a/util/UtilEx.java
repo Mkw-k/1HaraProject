@@ -58,7 +58,7 @@ public class UtilEx {
 			for(RecruitDto dto : list) {
 				if(dto.getJobStart().substring(0, 10).equals(dates)) {
 					str += "<li>";
-					str += "<a href='RecruitDetail.do?jobSeq=" + dto.getJobSeq() + "'>";
+					str += "<a href='RecruitDetail.do?jobseq=" + dto.getJobSeq() + "'>";
 					str += "<font style='font-size:12px;color:#3399ff'>";
 					str += "[시작]";
 					str += "</font>";
@@ -70,7 +70,7 @@ public class UtilEx {
 				}
 				else if(dto.getJobEnd().substring(0, 10).equals(dates)) {
 					str += "<li>";
-					str += "<a href='RecruitDetail.do?jobSeq=" + dto.getJobSeq() + "'>";
+					str += "<a href='RecruitDetail.do?jobseq=" + dto.getJobSeq() + "'>";
 					str += "<font style='font-size:12px; color:#f3406e'>";
 					str += "[마감]";
 					str += "</font>";

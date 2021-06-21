@@ -457,101 +457,6 @@ margin-right : 450px;
 <body>
 
 
-<div class="all">
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-  <!-- Links -->
-  
-  
-  <div>
-	 <a href="home.do"><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
-	</div>
-  
-  <ul class="navbar-nav">
-<!-- Dropdown -->
-
-	 <li class="nav-item">
-            <c:choose>
-            	<c:when test="${login.memberid ne null }">
-            		<c:choose>
-            			 <c:when test="${login.auth == 1}">
-             				 <p><b>[개인]${login.name }</b>님</p>
-             	 		 </c:when>	 
-             			<%-- <%-- <c:when test="${login ne null }">
-         				<p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>	
-         				</c:when> --%>
-             			<c:when test="${login.auth == 2}">
-             				<p><b>[사원]${login.name }</b>님</p>
-    					</c:when>
-    					<c:otherwise>
-             				<p><b>${login.name }</b>님</p>
-    					</c:otherwise>
-    				</c:choose>			
-            	 </c:when> 
-         	 </c:choose>  
-    </li>
-
-    <li class="nav-item dropdown" style="padding-top: 5px;">
-     <div class="dropdown">
-		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
-		  <div class="dropdown-content">
-		    <a href="#">채용공고</a>
-		    <a href="#">기업정보</a>
-		    <a href="jobtalk.do">취업톡톡</a>
-		    <a href="#">공채달력</a>
-		    <a href="#">자료실</a>
-		    <a href="notice.do">공지사항</a>
-		  </div>
-		</div>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link bgc" href="recuruitlist.do" style="color:#2186eb">채용공고</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="jobtalk.do" style="color:#2186eb">취업톡톡</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
-    </li>
-
-
-
-
-
-    
-    <li class="nav-item">
-
-
-     	 <a class="nav-link bgc" href="resumeMain.do" style="color: #2186eb;background-color: #fff;">이력서관리</a>
-
-    </li>
-    <li class="nav-item">
-
-       <c:if test="${login.auth==3}">
-          <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a> 
-      </c:if>
-   </li>
-   <li class="nav-item">
-      <c:if test="${login.memberid ne null}">   
-         <a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
-      </c:if>   
-   </li>
-  </ul>
-</nav>
-<br>
-
-  
-</div>
 
 
 <div class="container" id="container">
@@ -594,38 +499,8 @@ margin-right : 450px;
 			</div>
 		</div>
 		<div class="join-wrap bdt-no">
-			<div class="join-form join-idv pd00">
-				<div class="box-gray">
-					<ul class="dot-list v1 v2" style="margin-left: 0px;">
-						<li>최대 5개의 이력서 등록 및 관리</li>
-						<li>맞춤 일자리정보 제공</li>
-						<li>취업활동 증명서 발급</li>
-						<li>채용공고 스크랩 기능 제공</li>
-						<li>입사지원 시스템 제공</li>
-						<li>생애경력설계 서비스(만 40세 이상)</li>
-						<li>직업심리검사 서비스 무료 제공</li>
-						<li>전직지원 서비스(만 40세 이상)</li>
-					</ul>
-				</div>
-			</div>
-			<div class="join-form join-ent pd00">
-				<div class="box-gray">
-					<ul class="dot-list v1 w50pc float-l" style="margin-left: 0px;">
-						<li class="mt05">구인신청서 작성 및 관리</li>
-						<li>채용지원, 알선기능 제공</li>
-						<li>맞춤 인재정보 제공</li>
-						<li>이력서 스크랩 기능 제공</li>
-					</ul> 
-					<ul class="dot-list v1 w50pc float-l" style="margin-left: 0px;">
-						<li class="mt05">기업체 출강 제공(무료)
-							<ul class="dash-list" style="margin-left: 0px;">
-								<li>생애경력설계 서비스</li>
-								<li>전직지원 서비스</li>
-							</ul>
-						</li>
-					</ul> 
-				</div>
-			</div>
+			
+			
 		</div>
 	</div>
 

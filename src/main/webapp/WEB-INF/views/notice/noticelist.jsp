@@ -861,7 +861,6 @@ body { padding-top:20px; }
 }
 
 #header, #topbar, #featured_slide, #homecontent, #breadcrumb, #container, #copyright {
-    display: flex;
     position: relative;
     margin: 0 auto;
     align-items: flex-start;
@@ -944,15 +943,19 @@ margin-right : 450px;
 
 
 
+<div style="width:980px;height:1200px;margin-left: auto;margin-right: auto;">
+<img src="공지사항.png"/>
 
 
-
-<div class="container">
+<div class="container" style="
+    margin-left: auto;
+    margin-right: auto;
+">
 
 <section id="contents">
 
 	<div class="tit-util">
-		<h2 class="tit">공지사항</h2>
+		<h2 class="tit">Notice</h2>
 		<div class="page-util">
 			<span class="hide-location" id="navi_1">고객센터</span>
 		    <span class="hide-location" id="navi_2">고객센터 게시판</span>
@@ -1042,6 +1045,12 @@ margin-right : 450px;
 </section>
 
 </div>
+
+</div>
+
+<c:import url="../footer.jsp" charEncoding="utf-8"/> 
+
+
 
 <script>
 

@@ -1319,7 +1319,7 @@ input[type='search']::-ms-clear {width:20px; height:20px; margin-right:-3px; pad
 .board-list tr.bg_blue {background:#f5f7f9} /* 20190221 추가 */
 .board-list {line-height:1.6;}
 .board-list p {margin:0; padding:0;}
-.board-list > thead > tr > th {height:48px; padding:7px 5px; background:#f7f7f7; font-weight:700;}
+.board-list > thead > tr > th {height:48px; padding:7px 5px; background:#212529; font-weight:700;}
 .board-list > thead > tr/*:last-of-type*/ > th {border-bottom:1px solid #e6e6e6;}
 .board-list > tbody > tr > th,
 .board-list > tbody > tr > td {height:48px; padding:16px 5px; border:1px solid #f5f7f9; border-width:0 0 1px 0; border-color:#e4ebf1; text-align:center; word-break:break-all;}

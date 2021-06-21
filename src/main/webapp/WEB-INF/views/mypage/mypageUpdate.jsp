@@ -36,11 +36,6 @@ body {
 <header id="header">
    <div class="top-area">
       <div class="inner-wrap">
-         <div class="link-out">
-            <a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do" target="_blank" title="새창 열림">지역워크넷</a>
-            <a href="/useInfo/empCenterInfo/useEmpIntroList.do" target="" title="새창">고용복지<sup>+</sup>센터</a>
-            <a href="#3" title="새창 열림" onclick="f_moveUrl('WT')">장애인고용포털</a>
-         </div>
          <div class="util">
             <!-- 로그인 전 -->
 
@@ -70,14 +65,6 @@ body {
 
             <!-- E : 2018-09-28 추가 -->
             <!--// 로그인 후 -->
-
-            <!-- 공통 -->
-            <a href="#" class="worknet-chatbot-start-button-for-client">챗봇</a>
-            <a href="/myJobLetter/myJobLetterCnfm.do">내일레터<img src="/static/images/common/ico/ico-gnb-new.png" class="va-m" alt="new"></a>
-            <a href="/useInfo/worknetInfo/useWorknetGuide.do">이용안내</a>
-            <a href="/custCenter/custCtrMain.do">고객센터</a>
-            <a href="http://as82.kr/keis" target="_blank" title="새창">원격지원</a>
-            <a href="/useInvite/worknetHomepgInvite/sitemap.do">사이트맵</a>
             <!-- 20201022 추가 -->
 
             <!-- //20201022 추가 -->
@@ -95,7 +82,7 @@ body {
    <div class="middle-area">
       <div class="inner-wrap">
          <h1 class="top-logoWorknet">
-            <a href="/seekWantedMain.do"><img src="/static/images/common/bg/bg-top-logo.png" alt="일하라"></a>
+            	<a href="home.do"><img src="static/images/common/bg/bg-top-logo.png" style="width:130px; height:60px" alt="일하라"></a>
          </h1>
 
          <form id="searchFrm" name="searchFrm" action="/wnSearch/unifSrch.do" method="post" onsubmit="return false">
@@ -573,14 +560,6 @@ body {
                             $('.custom-menu').show();
                         });
                     </script>
-                    <div class="custom-menu">
-                        <div>
-                            <a href="#" id="myCustomMenu">나만의 맞춤메뉴(<span>0</span>)</a>
-                        </div>
-                        <span>
-                            <a href="javascript:void(0);" onclick="openMyCustomMenu();" title="새창열림">맞춤메뉴설정</a>
-                        </span>
-                    </div>
                 </div>
             </div>
             <div class="inner-wrap">
@@ -738,8 +717,8 @@ body {
                       <li class="img" style="list-style: none; margin-left : 200px">
                                 <div id="image_preview">
                                    <c:choose>
-                                          <c:when test="${login.userpic == null }">
-                                             <img src="./upload/${dto.newuserpic}" style="width: 50px;height: 50px;">
+                                          <c:when test="${dto.userpic == null }">
+                                             <img src="unnamed.png" style="width: 50px;height: 50px;">
                                       </c:when>
                                       <c:otherwise>
                                          <img src="./upload/${dto.newuserpic}" style="width: 50px;height: 50px;">

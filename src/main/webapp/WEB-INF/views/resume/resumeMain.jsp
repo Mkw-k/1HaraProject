@@ -6,6 +6,7 @@
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
 <%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -302,7 +303,7 @@ nav {
     vh단위는 브라우저 안쪽 높이(window.innerHeight)을 기준으로
     설정된다. 하지만 태블릿이나, 모바일의 경우에는 뷰 포트에 따라
     맞춰짐*/
-  min-height: 8vh;
+ /*  min-height: 8vh; */
   background-color: #504954;
   font-family: "Poppins", sans-serif;
 }
@@ -450,62 +451,7 @@ nav {
 </header>
 
 <!-- 네비바 -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-
-  
-  <div>
-	 <a href="home.do"><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
-	</div>
-  
-  <ul class="navbar-nav">
-<!-- Dropdown -->
-    <li class="nav-item dropdown" style="padding-top: 5px;">
-     <div class="dropdown">
-		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
-		  <div class="dropdown-content">
-		    <a href="#">채용공고</a>
-		    <a href="#">기업정보</a>
-		    <a href="#">취업톡톡</a>
-		    <a href="#">공채달력</a>
-		    <a href="#">자료실</a>
-		    <a href="notice.do">공지사항</a>
-		  </div>
-		</div>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">취업톡톡</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
-    </li>
-    </ul>
-    
-   
-   <ul class="navbar-nav navbar-nav2" style="margin-left: 50px;">
-     <li class="nav-item">
-     <!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
-      <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
-    </li>
-  
-
-  </ul>
-</nav>
+<c:import url="../header2.jsp" charEncoding="utf-8"/> 
 <br>
 
  <!-- =========Login 클릭 시 Modal =========== -->
@@ -566,22 +512,13 @@ System.out.println("portlist" +portlist);
 
 
 <!-- 검색창 -->
-<section class="newsletter" style="padding-bottom: 10px;">
-<div class="container">
-<div class="row">
-<div class="col-sm-12">
-	<div class="content">
-		<h2 style="color:#fff">이력서 관리</h2>
-	</div>
-</div>
-</div>
-</div>
-</section>
+<div style="width:984px;height:1000px;border-style: outset;margin-left: auto;margin-right: auto;margin-top: 120px;">
 
+<img src="자료실배경.png"/>
 
 			<div id="navbar-example" style="display: list-item;">
 				<!-- Nav tabs -->
-				<ul class="nav nav-tabs" role="tablist" style="margin-left: 400px;">
+				<ul class="nav nav-tabs" role="tablist">
 					<li class="nav-item"><a class="nav-link active"
 						data-toggle="tab" href="#completed" role="tab">이력서</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
@@ -732,8 +669,9 @@ System.out.println("portlist" +portlist);
 				</div>
 			</div>
 
-
-
+<!--  -->
+</div>
+<!--  -->
 
 		</main>
 <!-- ####################################################################################################### -->

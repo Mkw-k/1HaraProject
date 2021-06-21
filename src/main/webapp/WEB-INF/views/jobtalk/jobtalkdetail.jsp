@@ -20,6 +20,322 @@
 	}
 	element.style {
 	}
+	/* 모달 */
+#login-modal {
+margin-right : 450px;
+}
+
+.newsletter {
+padding: 20px 0;
+background: #1b82eaab;
+}
+
+.newsletter .content {
+max-width: 650px;
+margin: 0 auto;
+text-align: center;
+position: relative;
+z-index: 2; }
+.newsletter .content h2 {
+color: #243c4f;
+margin-bottom: 40px; }
+.newsletter .content .form-control {
+height: 50px;
+border-color: #ffffff;
+border-radius:0;
+}
+.newsletter .content.form-control:focus {
+box-shadow: none;
+border: 2px solid #243c4f;
+}
+.newsletter .content .btn {
+min-height: 50px; 
+border-radius:0;
+background: #243c4f;
+color: #fff;
+font-weight:600;
+}
+
+/* 3가지 FAQ링크 */
+
+
+/* :root {
+    font-size: 10px;
+} */
+
+.faqnav ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.faqnav li {
+    width: 20rem;
+    height: 7rem;
+    font-size: 20px;
+    text-align: center;
+    line-height: 7rem;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: 0.3s;
+    margin: 2rem;
+    background-color: #eee;
+}
+
+.faqnav li::before,
+.faqnav li::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    top: 0;
+    left: 0;
+    transition: 0.3s;
+}
+
+.faqnav li::before {
+    background-color: #eee;
+    z-index: -1;
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.faqnav li::after {
+    background-color: #2186eb;
+    transform: translate(1.5rem, 1.5rem);
+    z-index: -2;
+}
+
+.faqnav li:hover {
+    transform: translate(1.5rem, 1.5rem);
+    color: black;
+    background-color: #2186eb;
+}
+
+.faqnav li:hover::before {
+    background-color: #2186eb;
+}
+
+.faqnav li:hover::after {
+    background-color: #eee;
+    transform: translate(-1.5rem, -1.5rem);
+}
+
+/* 테이블 css */
+.pb-100 {
+	padding-bottom: 100px;
+}
+.pt-100 {
+	padding-top: 100px;
+}
+a{
+    text-decoration:none;
+}
+.section-title h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #777;
+}
+.section-title h2 {
+	font-size: 32px;
+	text-transform: capitalize;
+	margin: 15px 0;
+	display: inline-block;
+	position: relative;
+	font-weight: 700;
+	padding-bottom: 15px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+.section-title p {
+	font-weight: 300;
+	font-size: 14px;
+}
+.black-bg .section-title h2, .black-bg .section-title h4, .black-bg .section-title p {
+  color:#fff
+}
+.section-title h2:before {
+  position: absolute;
+  content: "";
+  width: 150px;
+  height: 1px;
+  background-color: #777;
+  bottom: 0;
+  left: 50%;
+  margin-left: -75px;
+}
+.section-title h2:after {
+  position: absolute;
+  content: "";
+  width: 80px;
+  height: 3px;
+  background-color: #e16038;
+  border: darkblue;
+  bottom: -1px;
+  left: 50%;
+  margin-left: -40px;
+}
+.section-title {
+  margin-bottom: 70px;
+}
+.single-price {
+	text-align: center;
+	padding: 30px;
+	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+.price-title h4 {
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.price-tag {
+  margin: 30px 0;
+}
+.price-tag {
+	margin: 30px 0;
+	background-color: #fafafa;
+	color: #000;
+	padding: 10px 0;
+}
+.center.price-tag {
+	background-color: tomato;
+	color:#fff
+}
+.price-tag h2 {
+	font-size: 45px;
+	font-weight: 600;
+	font-family: poppins;
+}
+.price-tag h2 span {
+  font-weight: 300;
+  font-size: 16px;
+  font-style: italic;
+}
+.price-item ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.price-item ul li {
+  font-size: 14px;
+  padding: 5px 0;
+  border-bottom: 1px dashed #eee;
+  margin: 5px 0;
+}
+.price-item ul li:last-child {
+  border-bottom: 0;
+}
+.single-price a {
+  margin-top: 15px;
+}
+a.box-btn {
+	background-color: #2186eb;
+	padding: 5px 20px;
+	/* display: inline-block; */
+	color: #fff;
+	text-transform: capitalize;
+	border-radius: 3px;
+	font-size: 15px;
+	transition: .3s;
+}
+a.box-btn:hover, a.border-btn:hover {
+	background-color: #2186eb;
+}
+
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: rgb(226, 226, 226);
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-links {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  .nav-links {
+    position: absolute;
+    top: 8vh;
+    right: 0;
+    height: 92vh;
+    background-color: #504954;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(100%);
+  }
+  .nav-links li {
+    opacity: 0;
+  }
+  .burger {
+    display: block;
+  }
+
+  .nav-active {
+    transform: translateX(0%);
+  }
+
+  @keyframes navLinkFade {
+    from {
+      opacity: 0;
+      transform: translateX(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+ 
+ 
+/* 네비바 */
+.createRecruitBtn{
+	cursor: pointer;
+}
+/* .wrapper{
+width:200px;
+padding:20px;
+height: 150px;
+} */
+#nav-main{
+	height: 100 px;
+}
+nav.top-nav-collapse {
+   transition: all 300ms ease-in-out;
+   background-color: #036cde !important;
+   color: white !important;
+}
+white{
+	color: white !important;
+}
+
+.navbar-nav {
+   background-color: rgba( 255, 255, 255, 0 );
+  }
+</style>
+
+
+
+<style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+  font-family: "Noto Sans KR", sans-serif !important;
+}
 	
 	</style>
 	
@@ -28,9 +344,14 @@
 	<!-- 제이쿼리 -->
 	<script src="//https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body class="qnaWrapBody">
 
-	<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled">
+
+<body>
+
+
+<c:import url="../header2.jsp" charEncoding="utf-8"/> 
+
+	<!-- <ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled">
 		<ins id="aswift_0_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;" tabindex="0" title="Advertisement" aria-label="Advertisement">
 			<ins id="aswift_0_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;">
 				<iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-2252464458280030&amp;output=html&amp;adk=1812271804&amp;adf=3025194257&amp;lmt=1622787209&amp;plat=1%3A32776%2C2%3A32776%2C9%3A32776%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1081344%2C32%3A32&amp;format=0x0&amp;url=https%3A%2F%2Fwww.jobkorea.co.kr%2FUser%2FQstn%2FAnswerWrite%3FQstnNo%3D42373&amp;ea=0&amp;flash=0&amp;pra=5&amp;wgl=1&amp;uach=WyJXaW5kb3dzIiwiMTAuMCIsIng4NiIsIiIsIjkxLjAuNDQ3Mi43NyIsW11d&amp;dt=1622787209282&amp;bpp=2&amp;bdt=99&amp;idt=193&amp;shv=r20210601&amp;cbv=%2Fr20190131&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3Dd94760dfaac75f98-22c0eb6bcfc700d9%3AT%3D1620115996%3ART%3D1620115996%3AS%3DALNI_MamePeV-JAAiP2NmGq8YoCBEp_7iA&amp;nras=1&amp;correlator=1856056351134&amp;frm=20&amp;pv=2&amp;ga_vid=1073000281.1620115996&amp;ga_sid=1622787210&amp;ga_hid=459766479&amp;ga_fc=1&amp;u_tz=540&amp;u_his=9&amp;u_java=0&amp;u_h=1080&amp;u_w=1920&amp;u_ah=1040&amp;u_aw=1920&amp;u_cd=24&amp;u_nplug=3&amp;u_nmime=4&amp;adx=-12245933&amp;ady=-12245933&amp;biw=1235&amp;bih=937&amp;scr_x=0&amp;scr_y=13&amp;eid=31060956%2C21065725&amp;oid=3&amp;pvsid=707401245178408&amp;pem=229&amp;ref=https%3A%2F%2Fwww.jobkorea.co.kr%2FUser%2FQstn%2FIndex%3FMainType%3D1&amp;eae=2&amp;fc=1920&amp;brdim=-1920%2C-109%2C-1920%2C-109%2C1920%2C-109%2C1920%2C1040%2C1252%2C937&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=32768&amp;bc=31&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;dtd=221" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" allow="conversion-measurement 'src'" data-google-container-id="a!1" data-load-complete="true">
@@ -38,45 +359,12 @@
 			</ins>
 		</ins>
 	</ins>
-	
-	<div id="wrap">
-	
-	 	<div class="side-navigation">
-			<h2 class="skip">선배에게 질문하기 세부메뉴</h2>
-			<div class="navi-top-area">
-				<a href="Jobtalkwrite.do" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
-				<%-- <div class="myInfoSec">
-					<a href="/User/Qstn/MainProfile" class="myInfo">
-						<!-- [Dev] 프로필 랜덤 이미지 파일명 : random_1 ~ random_20, 이미지 없음 : random_default -->
-						<span class="proThumb">
-							<img onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'" src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_8.jpg" alt="프로필 이미지">
-						</span>
-						<dl class="infoBx">
-							<dt class="qnaSpA">
-								<span class="nickname">${login.name}</span> 
-							</dt>
-						</dl>
-					</a>
-				</div> --%>
-			</div>
-			<div class="navi-list-area">
-			<!-- [Dev] 메뉴 on : 클래스 active 추가 -->
-				<c:choose>
-					<c:when test="${jobtalk.memberid==login.memberid }">
-						<div class="sideNavLow">
-							<strong class="sideNavTit">
-								<a id="devLeftMenuEntireTag" href="Jobtalkupdate.do?jobtalkseq=${jobtalk.jobtalkseq }" data-tab="3" class="">질문수정</a>
-							</strong>
-						</div>
-						<div class="sideNavLow">
-							<strong class="sideNavTit">
-								<a id="devLeftMenuEntireTag" href="Jobtalkdelete.do?jobtalkseq=${jobtalk.jobtalkseq }" data-tab="3" class="">질문삭제</a>
-							</strong>
-						</div>
-					</c:when>
-				</c:choose>
-			</div>
-		</div>
+	 -->
+	<div style="
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+">
 		
 		<%-- <c:choose>
 						<c:when test="${jobtalk.memberid==login.memberid }">
@@ -89,8 +377,15 @@
 						</c:when>
 					</c:choose> --%>
 	
-		<div id="container">	
-			<div id="content" class="qnaViewWrap">
+			
+			<div id="content" class="qnaViewWrap" style="
+    margin-left: auto;
+    margin-right: auto;
+">
+
+
+
+
 				<input type="hidden" name="jobtalkseq" value="${jobtalk.jobtalkseq}"/>
 				<div class="lyViewBoard">
 					<div class="viewContWrap">
@@ -220,9 +515,30 @@
 			   				</div>
 			   		</c:forEach>  
                	</div>
+               	
+               	<div class="side-navigation">
+			<h2 class="skip">선배에게 질문하기 세부메뉴</h2>
+			<div class="navi-top-area">
+				<a href="Jobtalkwrite.do" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
+				
+			</div>
+			<div class="navi-list-area">
+			<!-- [Dev] 메뉴 on : 클래스 active 추가 -->
+				
+					
+				
 			</div>
 		</div>
-	</div>	
+               	
+               	
+			</div>
+			
+			
+			<c:import url="../footer.jsp" charEncoding="utf-8"/> 
+			
+			
+		</div>
+
 	<!-- </div>
 </div>	 -->
 	<script>
@@ -558,288 +874,6 @@
                     return true;
                 }
             }
-
-           /*  $(".devTxtAreaAnswerWrite").click(function (e) {
-                e.preventDefault();
-
-                if ($isLogin != 1) {
-                    $(".devTxtAreaAnswerWrite").blur();
-                    JKLoginLayer.open();
-                    return false;
-                }
-            });
-
-            // 답변 등록
-            $('.devBtnAnswerWrite').click(function (e) {
-                e.preventDefault();
-                $(".devTxtAreaAnswerWrite").blur();
-                //비회원 체크 여부
-                if ($isLogin != 1) {
-                    JKLoginLayer.open();
-                    return false;
-                }
-
-                if (fncAnswerValitate()) {
-                    $(this).closest('form').submit();
-                }
-            });
-
-            // 답변 수정 버튼
-            $('.devAnswerEditButton').click(function () {
-
-                //비회원 체크 여부
-                if ($isLogin != 1) {
-                    JKLoginLayer.open();
-                    return false;
-                }
-
-                $(this).closest('.contSec').hide();
-                $(this).closest('.contSec').next('.modify-answer').show();
-
-                var currentAnswer = jk.util.string.replaceAll($(this).closest('.devContSection').find('p').html(), '<br>', '\n');
-                var newAnswerTextArea = $(this).closest('.devContSection').siblings('.contSec').find('textarea');
-                var answerLength = $(this).closest('.devContSection').siblings('.contSec').find('#count');
-                newAnswerTextArea.siblings('span.ph').hide();
-                newAnswerTextArea.val(currentAnswer);
-                answerLength.text(currentAnswer.length);
-            });
-
-            // 답변 수정
-            $('.devAnswerEditSubmitButton').click(function () {
-
-                //비회원 체크 여부
-                if ($isLogin != 1) {
-                    JKLoginLayer.open();
-                    return false;
-                }
-
-                var $this = $(this);
-                var answerNo = $this.data('answerno');
-                var cntnt = $this.closest('.btnWrap').siblings('.uiPlaceholder').find('textarea').val();
-                if (fncAnswerValitate(cntnt)) {
-                    //cntnt = cntnt.replace(/\n/gi, '\r\n');
-                    $.ajax({
-                        url: '/User/Qstn/AnswerUpdate',
-                        dataType: 'json',
-                        method: 'POST',
-                        data: {
-                            Answer_No: answerNo,
-                            Cntnt: cntnt
-                        }
-                    }).done(function (data) {
-                        if (typeof data !== 'undefined') {
-                            if (data.Code === 0) {
-                                $(".btnModifyCancel").click();
-                                $this.closest('.contSec').siblings('.devContSection').find('.devAnswerDate').text('방금 전');
-                                $this.closest('.contSec').siblings('.devContSection').find('.cont').html(jk.util.string.replaceAll(cntnt, '\n', '<br>'));
-                            } else {
-                                alert(data.Msg);
-                            }
-                        }
-                    });
-                }
-            });
-
-            // 답변 삭제 버튼
-            $('.devAnswerDeleteButton').click(function () {
-
-                //비회원 체크 여부
-                if ($isLogin != 1) {
-                    JKLoginLayer.open();
-                    return false;
-                }
-
-                var $this = $(this);
-                if (confirm('답변을 삭제할까요?')) {
-                    $.ajax({
-                        url: '/User/Qstn/AnswerDelete',
-                        dataType: 'json',
-                        method: 'POST',
-                        data: {
-                            answerNo: $this.data('answerno')
-                        }
-                    }).done(function (data) {
-                        if (typeof data !== 'undefined') {
-                            alert(data.Msg);
-                            if (data.Code === 0) {
-                                window.location.reload();
-                                //$this.closest('.devContSection').remove();
-                            }
-                        }
-                    });
-                }
-            });
-
-            // 답변 수정 취소 버튼
-            $('.devAnswerCancel').click(function () {
-                if (confirm('수정을 취소할까요?')) {
-                    var $txbCntnt = $(this).closest('.devAnswerEditor').find('textarea');
-                    var cntnt = $txbCntnt.attr('data-origin');
-                    var $wrap = null;
-                    $txbCntnt.val(cntnt);
-
-                    var $editor = $(this).closest('.devAnswerEditor');
-                    fncDisplayToggle($editor);
-
-                    if ($editor.prev().prop('tagName').toLowerCase() === 'p') {
-                        $wrap = $editor.prev().prev('.cmtWrap');
-                    } else {
-                        $wrap = $editor.prev('.cmtWrap');
-                    }
-                    $wrap.show();
-                }
-            });
-
-            //질문 삭제 알람 문구
-            var fnGetGstnDeleteMessage = function (freeFlag, answerFlag) {
-                var msg = "답변을 기다리는 중입니다. 정말 삭제하시겠어요?";
-
-                if (freeFlag && answerFlag) {
-                    msg = "답변자가 채택을 기다리고 있어요! 정말 삭제하시겠어요?";
-                }
-                else if (freeFlag) {
-                    msg = "답변을 기다리는 중입니다. 정말 삭제하시겠어요?";
-                }
-                else if (!freeFlag && !answerFlag) {
-                    msg = "답변을 기다리는 중입니다. 정말 삭제하시겠어요? (삭제 시 결제금액 전액환불 예정, 최대 7일가량 소요)";
-                }
-                else if (!freeFlag && answerFlag) {
-                    msg = "질문을 삭제하시겠어요? 답변 등록된 후 삭제 시 채택포인트 결제금액은 환불되지 않습니다.";
-                }
-
-                return msg;
-            }
-
-            // 질문 삭제 버튼
-            $('.devQstnDeleteButton').click(function () {
-                var qstnNo = $("#hdnQstnNo").val();
-                var isFreeQstn = $("#hdnSalsales").val() === "0" ? true : false;
-                var hasAnswer = $(".answerArea li").length > 0 ? true : false;
-
-                var msg = fnGetGstnDeleteMessage(isFreeQstn, hasAnswer);
-                if (confirm(msg)) {
-                    $.ajax({
-                        url: '/User/Qstn/QstnDelete',
-                        dataType: 'json',
-                        method: 'POST',
-                        data: {
-                            qstnNo: qstnNo
-                        }
-                    }).done(function (data) {
-                        if (typeof data !== 'undefined') {
-                            if (data.Code === 0) {
-                                window.alert(data.Msg);
-                            } else {
-                                alert(data.Msg);
-                            }
-                        }
-                        window.location.href = "/User/Qstn/Index?MainType=2";
-                    });
-                }
-            });
-
-            // 댓글 삭제
-            $('.replyWrap').on('click', '.devBtnComtDelete', function () {
-                var $this = $(this);
-                var $root = $this.closest('.devCmtWrap');
-                var comtNo = $root.data('comtno');
-
-                if (confirm('댓글을 삭제할까요?')) {
-                    $.ajax({
-                        url: '/User/Qstn/ComtDelete',
-                        dataType: 'json',
-                        method: 'POST',
-                        data: {
-                            comtNo: comtNo
-                        }
-                    }).done(function (data) {
-                        if (typeof data !== 'undefined') {
-                            if (data.Code === 0 || data.Code === 99) {
-                                if (data.Code === 99) {
-                                    location.reload();
-                                    return false;
-                                }
-                                location.reload();
-                                //fncComtCountChange($this, -1);
-                                //$root.remove();
-                            } else {
-                                alert(data.Msg);
-                                location.reload();
-                            }
-                        }
-                    });
-                }
-            });
-
-            // 댓글 불러오기
-            $('.devBtnComtList').click(function () {
-                if ($(this).closest('li').find(".commentSec").css("display") == "none") {
-                    var answerNo = $(this).closest('div.devComtRoot').data('answerno');
-                    if ($(this).closest('li').find(".commentSec").find("ul>li").length === 0) {
-                        fncComtListAjax(this, answerNo, 1, 20, true);
-                    }
-                    else {
-                        $(this).closest('li').find(".commentSec").show();
-                    }
-                } else {
-                    $(this).closest('li').find(".commentSec").hide();
-                    $(this).removeClass("active");
-                    //이전 댓글 리스트 제거
-                    //$(this).parents('.contSec').siblings('.commentSec').find('.replyWrap>li').remove();
-                }
-            });
- */
-            // 댓글 입력
-            var processing = false;
-            $('.devBtnComtWrite').click(function () {
-                if (processing === false) {
-                    processing = true;
-                    //비회원 체크 여부
-                    if ($isLogin != 1) {
-                        JKLoginLayer.open();
-                        processing = false;
-                        return false;
-                    }
-
-                    var $this = $(this);
-                    var answerNo = $this.closest('li').find('.devComtRoot').data('answerno');
-                    var cntnt = $this.closest('form').find('textarea').val();
-
-                    if (typeof cntnt === 'undefined' || cntnt === '') {
-                        alert('댓글 내용을 입력해 주세요.');
-                        processing = false;
-                        return false;
-                    }
-
-                    $.ajax({
-                        url: '/User/Qstn/ComtWrite',
-                        dataType: 'html',
-                        method: 'POST',
-                        data: {
-                            answerNo: answerNo,
-                            cntnt: cntnt,
-                            qstnNo: $('#hdnQstnNo').val()
-                        },
-                        success: function (html) {
-                            if (html !== '') {
-                                html = html.replace('&lt;', '<').replace('&gt;', '>');
-                                if ($this, html.match(/문자를 입력할 수 없습니다/) === null) {
-                                    fncComtCountChange($this, 1);
-                                    $this.closest('form').find('textarea').val('');
-                                    $this.closest('div.qnaFormBx').addClass('case');
-                                    $this.closest('.cmtWrite').siblings('.replyWrap').append(html);
-                                }
-                                else {
-                                    fncComtCountChange($this, 0);
-                                }
-                            }
-                        },
-                        complete: function () {
-                            processing = false;
-                        }
-                    });
-                }
-            });
 
             //채택하기 버튼 클릭
             $(".devBtnAdopt").on("click", function (e) {

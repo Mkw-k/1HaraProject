@@ -807,7 +807,6 @@ body { padding-top:20px; }
 }
 
 #header, #topbar, #featured_slide, #homecontent, #breadcrumb, #container, #copyright {
-    display: flex;
     position: relative;
     margin: 0 auto;
     align-items: flex-start;
@@ -885,92 +884,15 @@ margin-right : 450px;
 
 </style>
 </head>
-<body style="background-color: white;">
+<body>
 
-<div class="all" style="display: block;">
-<header>
 
- <!-- 검색html -->
+<c:import url="../header2.jsp" charEncoding="utf-8"/>
 
-<section style="padding: 0">
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
 
-            </div>
 
-            <!--https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg-->
-        </div>
-    </div>
-</section>
 
-</header>
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-  <!-- Links -->
-  <div>
-	 <a href="home.do"><img alt="" src="/sample10/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
-  </div>
-
-  <ul class="navbar-nav">
-<!-- Dropdown -->
-    <li class="nav-item dropdown" style="padding-top: 5px;">
-     <div class="dropdown">
-		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
-		  <div class="dropdown-content">
-		    <a href="#">채용공고</a>
-		    <a href="#">기업정보</a>
-		    <a href="jobtalk.do">취업톡톡</a>
-		    <a href="#">공채달력</a>
-		    <a href="#">자료실</a>
-		    <a href="notice.do">공지사항</a>
-		  </div>
-		</div>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="jobtalk.do" style="color:#2186eb">취업톡톡</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
-    </li>
-
-    <li class="nav-item">
-        <div class="col-md-6">
-           <div class="">
-              <div class="login">
-
-                       <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;">로그인</a>
-                    <!-- <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
-
-              </div>
-			</div>
-		</div>
-    </li>
-    <li class="nav-item">
-     	 <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
-    </li>
-    <li class="nav-item">
-
-	</li>
-	<li class="nav-item">
-
-	</li>
-  </ul>
-</nav>
-<br>
+<div style="width:1500px;height:800px;margin-top: 50px;margin-left: auto;margin-right: 0px;">
 
 <div class="side-navigation" style="width: 200px;">
 	<h2 class="skip">선배에게 질문하기 세부메뉴</h2>
@@ -1003,20 +925,11 @@ margin-right : 450px;
 			</div>
 		</div>
 	</div>
-</div>
 
-<div class="container">
 
-<div class="container" style="
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    contain: layout;
+<div>
 
-">
-
-<section id="contents" style="padding-top: 0px;padding-left: 100px;margin-top: 200px;">
+<section id="contents" style="width: 1200px;height:800px;margin-top: 0px;padding-top: 0px;padding-left: 30px;">
 
 	<div class="tit-util">
 		<h2 class="tit">취업톡톡</h2>
@@ -1091,6 +1004,8 @@ margin-right : 450px;
 </div>
 
 </div>
+
+<c:import url="../footer.jsp" charEncoding="utf-8"/>
 
 <script>
 

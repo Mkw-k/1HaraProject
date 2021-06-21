@@ -127,6 +127,8 @@ p{
 
 .companydetail{
 display: flex;
+padding-top: 3px;
+padding-bottom: 3px;
 }
 
 .jobtitle{
@@ -184,7 +186,7 @@ white{
    background-color: rgba( 255, 255, 255, 0 );
   }
   
-<<<<<<< HEAD
+
 
 /* carousel */
 .blog_section {
@@ -342,8 +344,7 @@ white{
     width: 300px!important;
     height: 200px;
 }
-=======
-  
+
   
   
 
@@ -357,54 +358,71 @@ white{
 <c:import url="../header2.jsp" charEncoding="utf-8"/> 
 
 
-<br>
-<br>
-<br>
-<br>
+<div style="width:1260px;height:2400px;margin-left: auto;margin-right: auto;">
 
-  <div class="py-0 pt-3" style="background-color: #2c3339;color: white;height: 174px;margin-top: 80px;">
+  <div class="py-0 pt-3" style="background-color: #003f76;color: white;height: 174px; padding-left: 16px;">
     <div class="container">
       <div class="row">
         <div class="col-md-10">
 	        <div>
-	          <p class="" style="color: #eee;">&nbsp; &nbsp;&nbsp;</p>
+	          <p class="" style="color: #eee;">
+	          <c:if test="${login.auth==1}">
+		          	<c:choose>
+		          		<c:when test="${dto.favoriteCom >0 and dto.favoriteCom != null }">
+		          					<a style="color:red" class="btn btn-secondary red" href="javascript:dropFavoriteCom(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
+		          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
+		          		</c:when>
+		          		<c:otherwise>
+		          					<a class="btn btn-secondary red" href="javascript:comFavorite(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
+		          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
+		          		</c:otherwise>
+		          	</c:choose>
+					</c:if>
+					&nbsp;&nbsp;${dto.companyname}
+	          </p>
 			</div>
 
 			<div>
 			  <h3 class="jobtitle">
-	           
-	          	
-	          		
-	          		
-	          					<a class="btn btn-secondary red" href="javascript:comFavorite(194, 'w1', 'rhauddn111@hanmail.net')">
-	          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
-	          		
-	          	
-				
-	          풀스텍 고급경력 개발자 채용합니다 
+		            	<c:if test="${login.auth == 1 }">
+          			<c:choose>
+          				<c:when test="${dto.favoriteJob >0 and dto.favoriteCom != null }">
+          					<a style="color:red" class="btn btn-secondary" href="javascript:dropFavoriteJob(${dto.jobSeq }, '${login.memberid }')">
+				          		<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
+				          	</a>
+          				</c:when>
+          				<c:otherwise>
+          					<a class="btn btn-secondary" href="javascript:jobFavorite(${dto.jobSeq }, '${login.memberid }')">
+				         	   <i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
+				            </a>
+          				</c:otherwise>
+          			</c:choose>
+          		</c:if>
+		          ${dto.jobTitle}
 	         </h3>
 	         </div>
 
         </div>
-        <div class="col-md-2 text-right" style="margin-top: 45px;">
+        <div class="col-md-2 text-right" id="applyButtonArea" style="margin-top: 45px;">
 
-		 	
-         		 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
-			
-
+		 	<c:if test="${login.auth==1 }">
+         		 <button type="button" class="btn btn-primary applybtn" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button><br>
+			</c:if>
           	
           		
-          			
-          				
-          				
-          					<a class="btn btn-secondary" href="javascript:jobFavorite(194, 'rhauddn111@hanmail.net')">
-				         	   <i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i>
-				            </a>
-          				
-          			
           		
           	
-
+         
+          	
+		
+			<c:choose>
+				<c:when test="${login.auth == 2 or login.auth == 3}">
+ 					<c:if test="${login.memberid == dto.companyId or login.auth == 3}">
+          				<a class="btn btn-secondary" href="javascript:updateRecruit(${dto.jobSeq })">수정하기</a>
+          				<a class="btn btn-secondary" href="javascript:deleteRecruit(${dto.jobSeq })">삭제</a>
+          			</c:if>
+          		</c:when>
+          	</c:choose>
 			
 				
           	
@@ -414,55 +432,68 @@ white{
 
 
 			<!-- 입사지원 모달 -->
-			 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document" style="width: -webkit-fill-available;">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel" style="width: 700px; color: black;">입사지원</h5>
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			          <span aria-hidden="true">×</span>
-			        </button>
-			      </div>
-			      <div class="modal-body">
-			       <table>
-			       <colgroup>
-			       <col width="400"><col width="50">
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+           <div class="modal-dialog" role="document" style="width: -webkit-fill-available;">
+             <div class="modal-content"  style="width: 700px;">
+               <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalLabel" style="width: 1000px; color: black;">지원</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">×</span>
+                 </button>
+               </div>
+               <div class="modal-body">
+                <table>
+                <colgroup>
+                <col width="400"><col width="50">
 
-						</colgroup><tbody><tr><td colspan="2" style="color: black">이력서list</td></tr>
+                  <tr><td colspan="2" style="color: black">이력서list</td></tr>
 
-            
-                
+            <%
+            if(request.getAttribute("resumelist") != null){
 
-						<tr>
-					  <td><a href="Resumedetail.do?seq=51">이력서 3</a><input type="hidden" value="" id="portfolioseq"></td>
-						<td><button type="button" class="btn btn-primary applybtn" onclick="javascript:jobApply('194','rhauddn111@hanmail.net','51')">지원하기</button></td>
-						</tr>
-      					
+            %>
+                <%
+                     for(int i=0; i<resumelist.size(); i++){
+                     %>
 
-						<tr>
-					  <td><a href="Resumedetail.do?seq=48">이력서1</a><input type="hidden" value="" id="portfolioseq"></td>
-						<td><button type="button" class="btn btn-primary applybtn" onclick="javascript:jobApply('194','rhauddn111@hanmail.net','48')">지원하기</button></td>
-						</tr>
-      					
+                  <tr>
+                 <td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a><input type="hidden" value="" id="portfolioseq"></td>
+                  <td><button type="button" class="btn btn-primary applybtn" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>')">지원</button></td>
+                  </tr>
+                     <%
+                     }
+             }
+                     %>
 
-						<tr>
-					  <td><a href="Resumedetail.do?seq=2">예약 문자 테스트용 </a><input type="hidden" value="" id="portfolioseq"></td>
-						<td><button type="button" class="btn btn-primary applybtn" onclick="javascript:jobApply('194','rhauddn111@hanmail.net','2')">지원하기</button></td>
-						</tr>
-      					
+               <tr><td colspan="2" style="color: black">포트폴리오 첨부</td></tr>
+               <%
+               if(portlist != null){
+               for(int i=0; i<portlist.size(); i++){
+               %>
 
-					<tr><td colspan="2" style="color: black">포트폴리오 첨부</td></tr>
-					
+                  <tr>
+                  <td style="color: black">
+                  <select id="portseq" onchange="getportseq('<%=portlist.get(i).getPortfolioseq() %>')">
+                  <option>첨부없음</option>
+                  <option><%=portlist.get(i).getPortfolioname() %></option>
+                  </select>
+                  </td>
+                  <td><button type="button" class="btn btn-primary">첨부</button></td>
+                  </tr>
+               <%
+                  }
+               }
+               %>
 
 
-				</tbody></table>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
+            </table>
+               </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               </div>
+             </div>
+           </div>
+         </div>
 
 
       </div>
@@ -470,8 +501,10 @@ white{
 
       </div>
     </div>
+  	
+  	
   	<div class="" style="margin-top: 20px;">
-    	<div class="container">
+    	<div class="container" style="padding-bottom: 20px;">
       		<div class="row">
         		<div class="col-md-6">
         		  <li class="companydetail"><p>경력</p>&nbsp; &nbsp; &nbsp; &nbsp; <font class="JobSumData">${dto.career_Desc }</font>
@@ -503,7 +536,7 @@ white{
   <div class="">
     <div class="container">
       <div class="row">
-        <div class="col-md-12" style="float:left;">
+        <div class="col-md-12" style="float:left;margin-top: 40px;">
         <hr class="mb-12">
           <li class="text-right mb-3">조회수&nbsp;&nbsp;<font>${dto.readcount }</font>
           </li>
@@ -523,6 +556,7 @@ white{
     </div>
   </div>
 
+ 
   <div class="py-5">
     <div class="container">
 	  <h3 class="titles">접수기간 및 방법</h3><br>
@@ -537,7 +571,7 @@ white{
             <dd>${dto.jobEnd }</dd>
              <dd>
              	<c:if test="${login.auth==1 }">
-         			 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
+         			 <button type="button" class="btn btn-primary applybtn" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
 				</c:if>
 			</dd>
           </dl>
@@ -555,14 +589,7 @@ white{
       </div>
     </div>
   </div>
-  <div class="py-5">
-    <div class="container">
-	  <h3 class="titles">지원현황</h3>
-      <div class="row">
-        <div class="col-md-12"> 지원현황(선택) </div>
-      </div>
-    </div>
-  </div>
+
   <div class="py-5">
     <div class="container">
 	  <h3 class="titles">근무지</h3>
@@ -597,15 +624,22 @@ white{
     </div>
   </div>
   
+  
+  <div style="width:1260px;height:300px;margin-left: auto;margin-right: auto;margin-bottom: 100px;">
   <div class="py-5">
-    <div class="container">
-      <div class="row">
+    <div class="container" s>
+    <h3>기업정보</h3>
+    <br>
+      <div class="row" style="border-style:outset;">
         <div class="col-md-4 bg-light" >
         	
-          <img src="upload/${bsdto.newfilename}" alt="디폴트이미지" width="100%" >
+          <img src="upload/${bsdto.newfilename}" alt="디폴트이미지" width="360px;" height="300px;" style="padding-left: 30px;padding-top: 30px;
+    padding-right: 30px;padding-bottom: 30px;">
         </div>
         <div class="col-md-4 bg-light">
-          <ul>
+          <ul style="
+    margin-top: 30px;
+">
 	          <li style=" list-style: none;"><h3>${com.companyname }</h3></li>
 	          <li style=" list-style: none;"><span>기업형태</span>&nbsp;&nbsp;<span>${com.companytype }</span></li>
 	          <li style=" list-style: none;"><span>업력</span>&nbsp;&nbsp;<span>${com.comyear }</span></li>
@@ -614,8 +648,9 @@ white{
           </ul>
         </div>
         <div class="col-md-4 bg-light">
-	        <ul>
-	          <li style=" list-style: none;"></li><br><br>
+	        <ul style="
+    margin-top: 30px;
+">
 	          <li style=" list-style: none;"><span>직원수</span>&nbsp;&nbsp;<span>${com.empcount }</span></li>
 	          <li style=" list-style: none;"><span>총매출</span>&nbsp;&nbsp;<span>${com.totalsale }</span></li>
 	          <li style=" list-style: none;"><span>평균연봉</span>&nbsp;&nbsp;<span>${com.salaryavg }</span></li>
@@ -625,13 +660,9 @@ white{
       </div>
     </div>
   </div>
+  </div>
   
-  
-  
-  
-  
-  
-  
+
   
          <!--   Google font
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,400i,600,600i,700,700i,900">
@@ -651,93 +682,11 @@ white{
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
   
   
-  
- 
-  
-  <section class="blog_section">
-            <div class="container">
-                <div class="blog_content">
-                    <div class="owl-carousel owl-theme">
-                        <div class="blog_item">
-                            <div class="blog_image">
-                                <img class="img-fluid" src="./image/naver2.png" alt="images not found" style="width: 300px;height: 200px;">
-                                <span><i class="icon ion-md-create"></i></span>
-                            </div>
-                            <div class="blog_details">
-                                <div class="blog_title">
-                                    <h5 style="text-align: center"><a href="#">네이버 신입공채</a></h5>
-                                </div>
-                                <ul>
-                                    <li><i class="icon ion-md-person"></i>Alex</li>
-                                    <li><i class="icon ion-md-calendar"></i>August 1, 2018</li>
-                                </ul>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...</p>
-                                <a href="#">Read More<i class="icofont-long-arrow-right"></i></a>
-                            </div>
-                        </div>                        
-                        <div class="blog_item">
-                            <div class="blog_image">
-                                <img class="img-fluid" src="./image/kakao.jpg" alt="images not found" style="width: 300px;height: 200px;">
-                                <span><i class="icon ion-md-create"></i></span>
-                            </div>
-                            <div class="blog_details">
-                                <div class="blog_title">
-                                    <h5 style="text-align: center"><a href="#">카카오 개발자 모집</a></h5>
-                                </div>
-                                <ul>
-                                    <li><i class="icon ion-md-person"></i>Alex</li>
-                                    <li><i class="icon ion-md-calendar"></i>August 1, 2018</li>
-                                </ul>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...</p>
-                                <a href="#">Read More<i class="icofont-long-arrow-right"></i></a>
-                            </div>
-                        </div>                        
-                        <div class="blog_item">
-                            <div class="blog_image">
-                                <img class="img-fluid" src="./image/coupang.png" alt="images not found" style="width: 300px;height: 200px;">
-                                <span><i class="icon ion-md-create"></i></span>
-                            </div>
-                            <div class="blog_details">
-                                <div class="blog_title">
-                                    <h5 style="text-align: center"><a href="#">쿠팡친구 전국 모집</a></h5>
-                                </div>
-                                <ul>
-                                    <li><i class="icon ion-md-person"></i>Alex</li>
-                                    <li><i class="icon ion-md-calendar"></i>August 1, 2018</li>
-                                </ul>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...</p>
-                                <a href="#">Read More<i class="icofont-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-  
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+ <div style="width:1260px;height:850px;margin-left: auto;margin-right: auto;">
   <div class="py-5">
     <div class="container">
-      <div class="row"> 인기공고 HOT10
+    <h3 class="titles">인기공고HOT10</h3>
+      <div class="row">
       <div class="col-md-12">
          <table class="table table-hover col-sm-12 " style="" id="table">
             <thead class="thead-dark">
@@ -759,15 +708,7 @@ white{
     </div>
   </div>
   
-
-
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12"> 광고 </div>
-      </div>
-    </div>
-  </div>
+</div>
   
 
 
@@ -775,6 +716,7 @@ white{
 
   <input type="hidden" id="phonenumber">
 
+<c:import url="../footer.jsp" charEncoding="utf-8"/>
 
 <script>
 getTop10List();
@@ -799,6 +741,13 @@ function getTop10List() {
  			
 
  			$.each(list, function(i, val){
+ 				
+ 				var end = val.jobEnd;
+ 	 			var regdate = val.regdate;
+ 	 			end = end.substr(2,9);
+ 	 			regdate = regdate.substr(2,9);
+ 	 			
+ 	 			
  				//alert(val.jobSeq);
  				let app = "<tr class= 'list_col'>"
  							+"<td>" + val.rnum +"</td>";
@@ -822,7 +771,7 @@ function getTop10List() {
  									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
  									+"<td>" + val.jobVolumn + "</td>"
  									+"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
- 									+"<td>" + val.jobEnd +"<br>"+val.regdate;
+ 									+"<td>" + end +"<br>"+regdate;
  									
  									if(val.companyId == memberid || auth == 3){
  		 								app += "<input type='button' class='btn btn-primary' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"
@@ -1046,10 +995,10 @@ function jobFavorite(jobSeq, memberid) {
 
 	let endDate = '${dto.jobEnd}';
 	var reserve = charchen(endDate);
-	alert("이게 예약시간 : "+ reserve);
+	//alert("이게 예약시간 : "+ reserve);
 
 	var phone = getPhonenum(memberid);
-	alert("이게 연락처"+phone);
+	//alert("이게 연락처"+phone);
 
 	var title = '${dto.jobTitle}';
 
@@ -1060,12 +1009,12 @@ function jobFavorite(jobSeq, memberid) {
         url : './reserveSendSms.do',
         data:{phonenum: phone, reserveDate : reserve, title : title },
        success:function(suc){
-			alert("예약문자성공");
-			alert(suc);
+			alert("공고 스크랩 성공! 스크랩하신 공고의 남은 시간이 24시간 이내일 경우 문자가 전송됩니다.");
+			//alert(suc);
 
 		},
 		error:function(){
-			alert('error');
+			//alert('error');
 		}
     });
 
@@ -1121,7 +1070,13 @@ function CountDownTimer(dt, id) {
 
             clearInterval(timer);
             document.getElementById(id).innerHTML = '공고 기한이 만료되었습니다';
-            //$("#_apply").hide();
+            //$(".applybtn").attr("disabled", true);
+            $(".applybtn").css('visibility', 'hidden');
+            
+            var app = "<span style='color:white;'>공고기한이 만료되었습니다</span>";
+            
+            $("#applyButtonArea").append(app);
+            
             //location.reload();
             return;
         }
