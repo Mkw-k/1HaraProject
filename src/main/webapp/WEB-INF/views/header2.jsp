@@ -19,9 +19,9 @@
 	<div class="top-area">
 		<div class="inner-wrap">
 			<div class="link-out">
-				<a href="home.do" target="_blank" title="새창 열림">지역일하라</a>
-				<a href="https://www.workplus.go.kr/intro/about.do" target="" title="새창">고용복지<sup></sup>센터</a>
-				<a href="https://www.worktogether.or.kr/main.do" title="새창 열림" onclick="f_moveUrl('WT')">장애인고용포털</a>
+				<a href="/empInfo/empInfoSrch/list/retriveWorkRegionEmpIntroList.do" target="_blank" title="새창 열림">지역일하라</a>
+				<a href="/useInfo/empCenterInfo/useEmpIntroList.do" target="" title="새창">고용복지<sup></sup>센터</a>
+				<a href="#3" title="새창 열림" onclick="f_moveUrl('WT')">장애인고용포털</a>
 			</div>
 			<div class="util">
 				<!-- 로그인 전 -->
@@ -61,18 +61,28 @@
 								<li><a href="#" onclick="worknet.popup.popCenterSuppAgree(); return false;" target="_blank" title="새창">고객지원</a></li>
 						</ul>
 					</div>
+				
+				<c:choose>
+					<c:when test="${login.memberid ne null}">			
 					<a href="logout.do" onclick="f_logout();" class="font-blue">로그아웃</a>
-
+					</c:when>
+					
+					<c:otherwise>
+					<a href="login1.do" onclick="f_logout();" class="font-blue">로그인</a>
+					</c:otherwise>
+				</c:choose>
 				<!-- E : 2018-09-28 추가 -->
 				<!--// 로그인 후 -->
 
 				<!-- 공통 -->
 				<a href="#" class="worknet-chatbot-start-button-for-client">챗봇</a>
-				<a href="Jobtalklist.do">취업톡톡</a><img src="static/images/common/ico/ico-gnb-new.png" style="width:15px;height:15px;margin-top: 8px;" class="va-m" alt="new">
-				<!-- <a href="/useInfo/worknetInfo/useWorknetGuide.do">이용안내</a>
+				<a href="jobtalklist.do">취업톡톡</a><img src="static/images/common/ico/ico-gnb-new.png" style="width:15px;height:15px;margin-top: 8px;" class="va-m" alt="new">
+				<a href="infomember.do">이용안내</a>
 				<a href="info.do">고객센터</a>
-				<a href="/useInvite/worknetHomepgInvite/sitemap.do">사이트맵</a> -->
+				<a href="infocopyright.do" target="_blank" title="새창">저작권</a>
+				<a href="home.do">사이트맵</a>
 				<!-- 20201022 추가 -->
+
 				<!-- //20201022 추가 -->
 <!--<div class="font-control"> -->
 <!--<p>글자크기</p> -->

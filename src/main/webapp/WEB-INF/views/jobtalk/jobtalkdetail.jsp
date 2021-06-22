@@ -430,8 +430,7 @@ body {
                                     	  	   				<span class="info">${login.memberid}</span>
                                    	   	   	   				<input type="hidden" name="memberid" value="${login.memberid}">
                                    	   	   				</a>
-                                   	   	 			</div>	  	
-                                  	  	 			<span class="byte"><b id="count">0</b> / 1,000</span> 
+                                   	   	 			</div>	  	                                 	
                                	         			<button type="submit" id="btnSubmit" class="btnSbm devBtnAnswerWrite" onclick="cute('${login.memberid }')">등록</button>
                            	   					</div>
 											</fieldset>
@@ -479,7 +478,7 @@ body {
                 											<ul class="cmtList replyWrap">
                                 							<!-- [Dev] 내 댓글일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 삭제만 노출 -->
                             								</ul>
-                            								<div class="writeBoxWrap cmtWrite case">
+                            								<%-- <div class="writeBoxWrap cmtWrite case">
    				 												<form id="" action="replyinsert.do" method="post">
         															<fieldset>
             															<legend>후배에게 답변하기 입력</legend>
@@ -489,22 +488,19 @@ body {
                    	 																· 개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.<br>
                     																· 부적절한 댓글은 비노출 또는 서비스 이용 정지 사유가 될 수 있습니다.
                 																</span>
-			               				 										<textarea name="reply_content" maxlength="1000" title="답변쓰기"></textarea>
            	 																</div>
             																<div class="btnWrap">
 																				<div class="infoBx">
 																					<a href="/User/Qstn/MainProfile?Target=0" class="my-profile" target="_blank">
 																						<span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
 																						<span class="info">${login.memberid}</span>
-																						<%-- <input type="hidden" name="memberid" value="${login.memberid}"> --%>
+																						<input type="hidden" name="memberid" value="${login.memberid}">
 																					</a>
 																				</div>
-	                															<span class="byte"><b id="count">0</b> / 1,000</span>
-                																<button type="button" id="btnSubmit" class="btnSbm devBtnComtWrite">등록</button>
             																</div>
         															</fieldset>
     															</form>
-															</div>                        						
+															</div>       --%>                  						
                 										</div>
                 									</div>	
                 								</div>
@@ -520,6 +516,7 @@ body {
 			<h2 class="skip">선배에게 질문하기 세부메뉴</h2>
 			<div class="navi-top-area">
 				<a href="Jobtalkwrite.do" class="btn-question qnaSpB devLoginLayer" devalert="1">질문하기</a>
+				<a href="Jobtalklist.do" class="btn-question qnaSpB devLoginLayer" devalert="1">목록으로</a>
 				
 			</div>
 			<div class="navi-list-area">

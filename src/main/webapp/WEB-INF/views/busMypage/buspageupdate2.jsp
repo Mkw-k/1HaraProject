@@ -28,8 +28,11 @@ body {
 </head>
     
     
-     <body id="sub_layout">
+     <body>
      
+     
+     <c:import url="../header2.jsp" charEncoding="utf-8"/>
+     <%-- 
      <div class="wrapper"> 
             
     <!-- header -->
@@ -515,10 +518,14 @@ body {
                         })
                     }
                     // ]]>
-                </script>
+                </script> --%>
                 
                 
-                <section id="contents" class="mypage">
+                <section id="contents" class="mypage" style="
+    margin-left: auto;
+    margin-right: auto;
+    padding-top : 20px;
+">
                     <form id="registForm" name="registForm" action ="buspageUpdateAf.do" method="post"  enctype="multipart/form-data">
                         <input type="hidden" id="checkAddr" name="checkAddr" value="">
                         <input type="hidden" id="regionCd" name="regionCd" value="28245">
@@ -834,5 +841,6 @@ body {
             </script>   
         </div>
         </div>
+        <c:import url="../footer.jsp" charEncoding="utf-8"/>
     </body>
 </html>

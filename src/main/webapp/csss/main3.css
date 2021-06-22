@@ -1,10 +1,7 @@
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900");
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -1874,9 +1871,9 @@ input, select, textarea {
 		padding-left: 1em;
 	}
 
-		ul li {
+	/* 	ul li {
 			padding-left: 0.5em;
-		}
+		} */
 
 		ul.alt {
 			list-style: none;
@@ -2551,9 +2548,7 @@ input, select, textarea {
 			pointer-events: none;
 			opacity: 0.25;
 		} */
->>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
-=======
->>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
+
 
 /* Tiles */
 
@@ -2794,7 +2789,7 @@ input, select, textarea {
 				}
 
 		}
-<<<<<<< HEAD
+
 
 /* Header */
 
@@ -2931,9 +2926,7 @@ input, select, textarea {
 					}
 
 		}
-<<<<<<< HEAD
-		
-=======
+
 
 /* Menu */
 
@@ -3323,6 +3316,4 @@ input, select, textarea {
 			}
 
 		}
->>>>>>> 5288990b2544536b2a682cc8bde8916a4e8e23c0
-=======
->>>>>>> 44006c5501d72063c923b36bdf127a9e4d27c73b
+

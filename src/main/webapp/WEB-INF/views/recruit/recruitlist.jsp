@@ -731,7 +731,8 @@ function getrecruitSearchList(pnum) {
     var queryString = $("form[name=dataForm]").serialize()+ "&page="+pnum;
 
     var selectSearchData1 = $("form[name=dataForm]").serialize();
-    getRecruitListCount(selectSearchData1);
+    
+    getRecruitListCount();
 
      $.ajax({
          type : 'post',
@@ -761,7 +762,7 @@ function getrecruitSearchList(pnum) {
 
  	 		//alert(val.jobSeq);
  				let app = "<tr class= 'list_col'>"
- 							+"<td>" + val.rnum +"</td>";
+ 							+"<td>" + i +"</td>";
 
  							if(val.del==0){
 
@@ -868,7 +869,7 @@ function getrecruListData( pNumber, search ){
 
 
 //글의 총수를 취득
-function getRecruitListCount(selectSearchData1) {
+function getRecruitListCount() {
 
    /*  var pnum = pnum;
     $("#_page").val(pnum);
@@ -884,7 +885,7 @@ function getRecruitListCount(selectSearchData1) {
          data : selectSearchData,
          success: function( count ) {
           //alert('success');
-         //alert(count);
+         //alert('이게 넘어온 글수 : '+count);
 
           loadPage(count);
        },
@@ -903,7 +904,7 @@ function getRecruitListCount(selectSearchData1) {
       url : "./recruitlistCount.do",
       type: "get",
       data: {page:0, choice:$("#_choice").val(), search:$("#_searchWord").val()},
-      success: function( count ) {
+      success: function( count ) { 
          //alert('success');
 
          loadPage(count);
@@ -933,11 +934,15 @@ function loadPage( totalCount ) {
    }
 
    //alert('몇개냐 :'+_totalPages);
+   
+  $("#pagination").twbsPagination('destroy');
 
    $("#pagination").twbsPagination({
       startPage: 1,
       totalPages : _totalPages,
       visiblePages : 7,
+     /*  totalPages : 7,
+      visiblePages :_totalPages, */
       first: '<span aria-hidden = "true">«</span>',
       prev : "이전",
       next : "다음",

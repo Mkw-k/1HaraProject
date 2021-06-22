@@ -530,6 +530,7 @@ h2{
 }
 </style>
 
+
 <link href="csss/Newmain.css" rel="stylesheet" type="text/css">
 <link href="csss/headerDefa.css" rel="stylesheet" type="text/css">
 </head>
@@ -553,9 +554,8 @@ h2{
 <ul class="navi_depth1">
 <li><a href="recuruitlist.do"><span>채용정보</span></a></li>
 
-<%-- <li><a href="companydetail.do?companyid=${login.memberid }"><span>이정우 작업중</span></a></li> --%>
 
-<li><a href="calendarlist1.do"><span>공채달력</span></a></li>
+
 <li><a href="newslist.do"><span>TODAY NEWS📈</span></a></li>
 <li><a href="pdslist.do"><span>자료실</span></a></li>
 <li>
@@ -581,7 +581,6 @@ h2{
 <li><a href="FAQ2.do"><span>FAQ</span></a></li>
 </c:if>
 <li><a href="notice.do"><span>공지사항</span></a></li>
-<li><a href="Jobtalklist.do"><span>취업톡톡</span></a></li>
 <li><a href="https://www.jumpit.co.kr" target="_blank"><span class="icon icon_jumpit">점핏</span></a></li>
 </ul>
 </div>
@@ -611,7 +610,7 @@ h2{
 <!-- 로그인 로그아웃 란 -->
 <c:choose>
 	<c:when test="${empty login}">
-		<a href="javascript:login()" class="btn_sign signin"><span class="txt">로그인🔑</span></a>
+		<a href="javascript:login()" class="btn_sign signin"><span class="txt">로그인 🔑</span></a>
 	</c:when>
 	<c:otherwise>
 		<c:choose>
@@ -637,8 +636,7 @@ h2{
 <a href="buspage.do?memberid=${login.memberid }" class="btn_sign signup"><span class="txt">기업마이페이지</span></a>
 </c:if>
 <c:if test="${login.auth == 3 }">
-<!-- <a href="memberlist.do" class="btn_sign signup"><span class="txt">회원목록</span></a> -->
-<a href="businesslist.do" class="btn_sign signup"><span class="txt">사원목록</span></a>
+<a href="memberlist.do" class="btn_sign signup"><span class="txt">회원목록</span></a>
 </c:if>
 </div>
 </div>
@@ -717,14 +715,15 @@ h2{
 </div>
 </div>
 </header>
-<div class="all">
+<div class="all" style="background-color: #ecf1fd;">
  <!-- 메인 검색 창 -->
  <!-- 검색html -->
- <section style="padding: 0">
- <form id="search_form_recruit"  style="height: 400px; background-image: url('개발자23.gif'); margin-top: 0px;"">
-    
-			</form>
-		</section>
+ 
+
+
+    <img src="개발자23.gif" style="width:1259px;height:250px;margin-left: auto;margin-right: auto;">
+		
+		
 		<!-- 메인검색창 끝 -->
 		<!-- =========Login 클릭 시 Mod	al =========== -->
       <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" class="modal modal-center fade ">
@@ -805,7 +804,7 @@ h2{
 						</button>
 					</div>
 					<div class="wrap_recomm loading" style="display: block">
-						<div class="wrap_bigbox person">
+						<div class="wrap_bigbox person" >
 							<div class="bigbox person"
 								style="width: 2233px; transform: translateX(-1595px); transition: all 300ms ease 0s;">
 								<div class="slide type_event">
@@ -1019,7 +1018,7 @@ h2{
 									<img
 										src="https://www.saraminbanner.co.kr/new/main/2021/03/qpqjor_pit8-2so1qt_A01.png">
 									<a
-										href="https://www.saramin.co.kr/zf_user/curation?inner_source=saramin&amp;inner_medium=banner&amp;inner_campaign=top_box_type_banner_person&amp;inner_term=curation"
+										href="recuruitlist.do"
 										class="go_link" target="_blank"></a>
 								</div>
 								
@@ -1044,7 +1043,7 @@ h2{
 												src="//www.saraminimage.co.kr/sri/main/thumb/interview_6.jpg"
 												alt="면접후기 이미지" class="thumb">
 											</span> <a
-												href="https://www.jobkorea.co.kr/goodjob/tip/view?News_No=18694"
+												href="jobtalklist.do"
 												class="link"
 												onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'interview-review', ''], ['ga_lead', 'main', 'CONTENTS', 'interview-review'])"></a>
 										</div>
@@ -1085,55 +1084,56 @@ h2{
 									</div>
 									
 									<div class="slide">
-										<div class="item">
-											<span class="title type_review">면접후기</span>
-											<p class="desc">면접은 코로나때문에 비대면으로 실시됐습니다. 지원자 6에 면접관 5였던걸로
-												기억합니다. 면접은 인성과 끈기, 가치관 위주로 물어봤습니다. 저한테만 상이한 질문하여서 합격했다는 느낌을
-												받았습니다. 상이한 질문은 저한테만 사는곳이 여긴데 어디서도 근무가능하냐는 질문이었습니다.</p>
-											<span class="hashtag"><span>#직무·인성 면접</span></span> <span
-												class="wrap_thumb"> <img
-												src="//www.saraminimage.co.kr/sri/main/thumb/interview_6.jpg"
-												alt="면접후기 이미지" class="thumb">
-											</span> <a
-												href="/zf_user/interview-review?my=0&amp;page=1&amp;orderby=registration&amp;career_cd=1&amp;job_category=10"
-												class="link"
-												onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'interview-review', ''], ['ga_lead', 'main', 'CONTENTS', 'interview-review'])"></a>
-										</div>
-										<div class="item">
-											<span class="title type_interview">직무인터뷰</span>
-											<p class="desc">진정성을 바탕으로 소통하는 채용 컨설턴트</p>
-											<span class="hashtag"><span>#로버트월터스코리아</span></span> <span
-												class="wrap_thumb"> <img
-												src="https://pds.saramin.co.kr/career-information/asset_thumbnail/202105/25/qtndz8_b5sd-2so1r1_asset.jpg"
-												alt="직무인터뷰 이미지" class="thumb">
-											</span> <a
-												href="/zf_user/career-information/senior-view?doc_idx=21980&amp;page=1"
-												class="link"
-												onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'job-interview', ''], ['ga_lead', 'main', 'CONTENTS', 'job-interview'])"></a>
-										</div>
-										<div class="item">
-											<span class="title type_live">취업뉴스</span>
-											<p class="desc">사람인HR, (주)두산과 함께 중소기업 채용 돕는다</p>
-											<span class="wrap_thumb"> <img
-												src="//www.saraminimage.co.kr/sri/main/thumb/new_p_6.jpg"
-												alt="취업뉴스 이미지" class="thumb">
-											</span> <a
-												href="/zf_user/help/live/view?idx=108297&amp;list_idx=0&amp;listType=news&amp;category=10&amp;keyword=&amp;menu=1&amp;page=1"
-												class="link"
-												onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'job-news', ''], ['ga_lead', 'main', 'CONTENTS', 'job-news'])"></a>
-										</div>
-										<div class="item">
-											<span class="title type_curation">기업큐레이션</span>
-											<p class="desc">일하기 좋은in경기도</p>
-											<span class="hashtag"><span>#(주)고운세상코스메틱
-													#(주)아프리카티비</span></span> <span class="wrap_thumb"> <img
-												src="//www.saraminimage.co.kr/sri/main/thumb/cu_6.jpg"
-												alt="기업큐레이션 이미지" class="thumb">
-											</span> <a href="https://www.saramin.co.kr/zf_user/company-info/sri-certification?seq=995"
-												class="link"
-												onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'certification', ''], ['ga_lead', 'main', 'CONTENTS', 'certification'])"></a>
-										</div>
-									</div>
+                              <div class="item">
+                                 <span class="title type_review">홍보대사</span>
+                                 <p class="desc">광고계의 블루칩으로 떠오른 배우 송중기. 일하라 홍보대사로 선정</p>
+                                 <span class="hashtag"><span>#빈센조·송중기 일하라</span></span> <span
+                                    class="wrap_thumb"> <img
+                                    src="songpic.png"
+                                    alt="면접후기 이미지" class="thumb">
+                                 </span> <a
+                                    href="#"
+                                    class="link"
+                                    onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'interview-review', ''], ['ga_lead', 'main', 'CONTENTS', 'interview-review'])"></a>
+                              </div>
+                              <div class="item">
+                                 <span class="title type_interview">6월 이벤트</span>
+                                 <p class="desc">취업자추첨 BTS공연 초대 이벤트</p>
+                                 <span class="hashtag"><span>#런던 스타디움·일하라 Festival</span></span> <span
+                                    class="wrap_thumb"> <img
+                                    src="mainad7.png"
+                                    alt="직무인터뷰 이미지" class="thumb">
+                                 </span> <a
+                                    href="mainad07.png"
+                                    class="link"
+                                    onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'job-interview', ''], ['ga_lead', 'main', 'CONTENTS', 'job-interview'])"></a>
+                              </div>
+                              <div class="item">
+                                 <span class="title type_live">취업뉴스</span>
+                                 <p class="desc">일하라, 구글코리아 함께 중소기업 채용 돕는다</p>
+                                 <span class="wrap_thumb"> <img
+                                    src="//www.saraminimage.co.kr/sri/main/thumb/new_p_6.jpg"
+                                    alt="취업뉴스 이미지" class="thumb">
+                                 </span> <a
+                                    href="newslist.do"
+                                    class="link"
+                                    onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'job-news', ''], ['ga_lead', 'main', 'CONTENTS', 'job-news'])"></a>
+                              </div>
+                              <div class="item">
+                                 <span class="title type_curation">취업정보공유</span>
+                                 <p class="desc">일하라 취업 Talk</p>
+                                 <span class="hashtag"><span>#(주)오라클코리아
+                                       #(주)비트캠프</span></span> <span class="wrap_thumb"> <img
+                                    src="//www.saraminimage.co.kr/sri/main/thumb/cu_6.jpg"
+                                    alt="기업큐레이션 이미지" class="thumb">
+                                 </span> <a href="Jobtalklist.do"
+                                    class="link"
+                                    onmousedown="loggingEventAndTagManager(['main', 'CONTENTS', 'certification', ''], ['ga_lead', 'main', 'CONTENTS', 'certification'])"></a>
+                              </div>
+                              <div class="item">
+                              <img src="ma.jpg"/>
+                              </div>
+                           </div>
 								</div>
 								<div class="wrap_slide_btns" style="display: block">
 									<button type="button" class="btn_slide btn_prev">
@@ -1200,7 +1200,7 @@ h2{
 									<ul class="area_login" style="display: contents;">
 										<li class="on" style="width: 160.994318px;">
 											<button type="button"id="login_tab_person_login" class="track_event"onclick="loginpage()" data-track_event="login|pc_main_per|tab_per">
-												<strong style="padding-right: 20px;">로그인 ✔</strong>
+												<strong style="padding-right: 20px;">로그인</strong>
 											</button>
 										</li>
 									</ul>
@@ -1233,13 +1233,13 @@ h2{
 								</c:otherwise>
 							</c:choose>
 							<c:if test="${login.memberid == null }">
-								<a href="searchidpwd.do" class="link_id_password track_event" data-track_event="login|pc_main_per|find|">아이디/비번찾기</a>
+							<!-- 	<a href="searchidpwd.do" class="link_id_password track_event" data-track_event="login|pc_main_per|find|">아이디/비번찾기</a> -->
 								<a href="regiclick.do" class="link_join track_event" data-track_event="login|pc_main_per|join|">회원가입</a>
 							</c:if>
 						</div>
 						<div class="area_recom recruit_card" style="display: block">
 							<div class="top">
-								<strong class="sub_title">추천공고</strong>
+								<strong class="sub_title">당신의 최고의 취업멘토 '일하라'</strong>
 
 							</div>
 
@@ -1247,7 +1247,9 @@ h2{
 							<div class="list_recom">
 
 							
-
+							<div style="width:317px; height:190px;">
+								<a href="hiddengame.do"><img src="m3.gif" style="width:317px;height:190px;padding-top: 15px;border-left-width: 15px;padding-left: 15px;border-right-width: 15px;padding-bottom: 15px;padding-right: 15px;"/></a>
+							</div>
 
 							</div>
 
@@ -1330,15 +1332,19 @@ h2{
 					
 				</div>
 			</div>
-<div id="section_contents" class="cont_top">
-    <div class="inner">
+<div id="section_contents" class="cont_top" style="
+    height: 430px;
+">
+    <div class="inner" style="
+    height: 300px;
+">
       
         <div class="wrap_recomm loading" style="display : block">
             <div class="wrap_bigbox person" style="
     width: 400px;">
     	<div class="panel-heading" style="width: 400px; color: white; background-color: #2186EB;">
 		                    <h3 class="panel-title">
-		                        <span class="glyphicon glyphicon-bookmark"></span> 인기기업 TOP 10</h3>
+		                        <span class="glyphicon glyphicon-bookmark"></span> 인기기업 TOP 5</h3>
 		                </div>
             <div id="jquery-accordion-menu" class="jquery-accordion-menu">
 
@@ -1370,7 +1376,9 @@ h2{
 			        </div>
 			        <!-- second slide -->
 			        <div class="carousel-item active">
-			            <img alt="second" class="d-block w-100" src="/sample10/image/dg.png" height="300px" width="200px">
+			            <img alt="second" class="d-block w-100" src="/sample10/image/dg.png" height="300px" width="200px" style="
+    margin-left: 10px;
+">
 			            <!-- caption -->
 			            <div class="carousel-caption d-none d-md-block">
 			            </div>
@@ -1524,30 +1532,57 @@ h2{
         <div class="wrap_my_area" style="width: 401px;">
            <div class="row" style="width: 450px;">
               <div>
-                 <div class="panel panel-primary" style="margin-bottom: 0px;height: 302px;width: 442px;margin-left: 55px;">
+                 <div class="panel panel-primary" style="margin-bottom: 0px;height: 302px;width: 442px;margin-left: 20px;">
                       <div class="panel-heading" style="width: 440px;">
                           <h3 class="panel-title">
-                              <span class="glyphicon glyphicon-bookmark"></span> Quick Shortcuts</h3>
+                              <span class="glyphicon glyphicon-bookmark"></span> 바로가기 🚀 </h3>
                       </div>
+                      
                       <div class="panel-body" style="padding-left: 0px;padding-right: 0px;">
-                          <div class="row" style="width: 400px;margin-right: 0px;margin-left: 0px;">
-                              <div>
-                                <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br>10대기업</a>
-                                <a href="calendarlist1.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br>공채달력</a>
-                              <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡💬</a></div>
-                              <div>
-                               <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡💬</a>
-                                <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br>자료실</a>
+                          <div class="row" style="width: 450px;margin-right: 0px;margin-left: 0px;">
+                              <div style="padding-left: 0px;width: 450px;">
+                                <a href="recuruitlist.do" class="btn btn-light btn-lg" role="button" style="
+    width: 142px;
+"><span class="glyphicon glyphicon-bookmark"></span> <br>채용정보</a>
+                                <a href="newslist.do" class="btn btn-light btn-lg" role="button" style="
+    width: 142px;
+"><span class="glyphicon glyphicon-list-alt"></span> <br>오늘의 뉴스</a>
+                              <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button" style="
+    width: 142px;
+"><span class="glyphicon glyphicon-comment"></span> <br>취업톡톡</a></div>
+                              
+                              
+                          <div style="padding-left: 0px;width: 450px;">
+                                <a href="pdslist.do" class="btn btn-light btn-lg" role="button" style="
+    width: 142px;
+"><span class="glyphicon glyphicon-file"></span> <br>자료실</a>
+                                <a href="calendarlist1.do" class="btn btn-light btn-lg" role="button" style="
+    width: 142px;
+"><span class="glyphicon glyphicon-user"></span> <br>이력서</a>
+                              <a href="Jobtalklist.do" class="btn btn-light btn-lg" role="button" style="
+    width: 142px;
+"><span class="glyphicon glyphicon-picture"></span> <br>공채달력</a></div><div style="padding-left: 0px;width: 450px;">
+                                <a href="notice.do" class="btn btn-light btn-lg" role="button" style="
+    width: 142px;
+"><span class="glyphicon glyphicon-tag"></span> <br>공지사항</a>
+                                <a href="FAQ.do" class="btn btn-light btn-lg" role="button" style="
+    width: 142px;
+"><span class="glyphicon glyphicon-list-alt"></span> <br>FAQ</a>
+                              <a href="info
+                              .do" class="btn btn-light btn-lg" role="button" style="
+    width: 142px;
+"><span class="glyphicon glyphicon-comment"></span> <br>일하라는?</a></div></div>
 
 
-                              <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>이력서관리</a></div>
-                              <div>
-                                <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br>이력서관리</a>
-                                <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br>취업뉴스</a>
-                                <a href="#" class="btn btn-light btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br>공지사항</a>
-                              </div>
-                          </div>
-                      </div>
+
+<!--  -->
+<div style="width:440px;height:90px;border-style: solid;padding-top:10px;background-color: #2186eb;margin-top: 10px;">
+
+</div>
+<!--  -->
+
+
+                      </div> 
                   </div>
               </div>
           </div>
@@ -1568,11 +1603,11 @@ h2{
 
 		
 							
-						
+					<br><br><br>
 		
 		
 		<!-- Jobs -->
-						<div style="text-align: center;"><h4>프리미엄 채용관</h4></div>
+						<div style="text-align: center;"><h2>🏆프리미엄 채용관🏆</h2></div>
 							<section class="tiles" style="margin-left: 300px;margin-right: 300px;">
 								<c:forEach var="dto" items="${list}">
 
@@ -1616,9 +1651,13 @@ h2{
 
 
 		<br><br>
+		
+		
+		<div style="text-align: center;"><h2>🌟인기공고🌟</h2></div>
+		
 		<div class="py-5">
     <div class="container">
-      <div class="row"> 인기공고 HOT10<br>
+      <div class="row"><br>
       <div class="col-md-12">
          <table class="table table-hover col-sm-12" style="" id="HOT10">
          <col width="5%"><col width="10%"><col width="30%"><col width="13%">
@@ -1786,7 +1825,7 @@ h2{
 	location.href = "regiclick.do";
 }); */
 function login() {
-	alert('c');
+	//alert('c');
 	$("#login-modal").modal();
 	$("#login-modal").removeClass("modal fade");
 	$("#login-modal").addClass("modal");
@@ -1856,6 +1895,7 @@ function kakaoLogin() {
 function loginpage() {
 	location.href="login1.do";
 }
+
 function logout() {
 	location.href="logout.do";
 }
@@ -2009,5 +2049,8 @@ $("#btn_search_recruit").click(function() {
 		</div>
 	</div>
 	<style data-styled="active" data-styled-version="5.1.1"></style>
+	
+	
+	
 </body>
 </html>

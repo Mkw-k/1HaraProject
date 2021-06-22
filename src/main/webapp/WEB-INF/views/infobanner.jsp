@@ -7,28 +7,28 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link href="csss/common.css" rel="stylesheet" type="text/css">
-<link href="csss/reset.css" rel="stylesheet" type="text/css">
-<link href="csss/contents.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
 
-<!-- 헤더생성기 (붙여넣기전 코어태그 생성하세요)-->
-<c:import url="script.jsp" charEncoding="utf-8"/>
-<c:import url="header.jsp" charEncoding="utf-8"/>  
-<!-- 헤더 생성기 끝 -->
+
+<c:import url="header2.jsp" charEncoding="utf-8"/>  
 
 
 
-<section id="contents">
+
+<section style="
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+">
 	
 	<div class="tit-util">
 		<h2 class="tit">일하라 BI</h2>
 		<div class="page-util">
 			<span class="hide-location" id="navi_1">이용안내</span>
-			<span class="hide-location" id="navi_2">워크넷 소개</span>
-			<span class="hide-location" id="navi_3">워크넷 BI</span>
+			<span class="hide-location" id="navi_2">일하라 소개</span>
+			<span class="hide-location" id="navi_3">일하라 BI</span>
 		</div>
 	</div>
 	
@@ -45,7 +45,7 @@
 
 	<div class="box-gray v3 pd25 mb40">
 		<strong>사용 예 </strong><br>
-		&lt;a href="/images/"&gt;&lt;img src="해당디렉토리명/배너명.gif" width="배너폭" height="배너높이" border="0" alt="워크넷 홈페이지로 이동합니다"&gt;&lt;/a&gt;<br><br>						
+		&lt;a href="/images/"&gt;&lt;img src="해당디렉토리명/배너명.gif" width="배너폭" height="배너높이" border="0" alt="일하라 홈페이지로 이동합니다"&gt;&lt;/a&gt;<br><br>						
 		<span class="font-red">※ 주의</span> : 해당 디렉토리는 이미지를 저장하는 디렉토리로 사용자가 직접 작성하시고 배너폭과 높이는 이미지 크기를 이용
 	</div>
 
@@ -72,7 +72,7 @@
 			</tbody>
 		</table>
 	</div>정보표입니다
-표표</caption>
+</caption>
 			<colgroup>
 				<col style="width:160px;">
 				<col>
@@ -142,10 +142,12 @@
 		</table>
 	</div>
 
+<c:import url="footer.jsp" charEncoding="utf-8"/>
+
 </section>
 
 
-<c:import url="footer.jsp" charEncoding="utf-8"/>
+
 
 
 </body>

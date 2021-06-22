@@ -136,16 +136,6 @@ if(lanlist == null || lanlist.isEmpty()){
 
 
 
-/* 로그인 세션 가져오기 */
-
-
-String birth = dto.getBirth();
-System.out.println(birth);
-
-/* 나이구하기 */
-int age = 2021 - (Integer.parseInt(birth.substring(0, 4))) + 1;
-System.out.println(age);
-
 /* 성별구하기 */
 int gender = dto.getGender();
 String _gender = "";
@@ -187,7 +177,7 @@ System.out.println(_gender);
                          <div class="my_data">
                            <p class="myname">
                               <em><%=dto.getName() %></em><span class="birthday"><span><%=dto.getBirth() %>
-                                    (<%=age %>세)</span><span><%=_gender %></span><span><%=dto.getRecruit_status() %></span></span>
+                                    </span><span><%=_gender %></span><span><%=dto.getRecruit_status() %></span></span>
                            </p>
 
                            <ul class="myaddress">
@@ -487,10 +477,10 @@ careerChk();
 
 function careerChk() {
 if ( calist == null || calist.isEmpty() ) {
-   alert("callist null");
+   //alert("callist null");
    document.getElementById('career_table').style.display='none';
    } else {
-   alert("calist not null");
+   //alert("calist not null");
    document.getElementById('career_table').style.display='block';
    }
 }

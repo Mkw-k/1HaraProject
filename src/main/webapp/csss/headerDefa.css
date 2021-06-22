@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 /* header */
-#sri_header {position:absolute;top:0;left:0;z-index:100;width:100%;min-width:1280px;height:105px;border-bottom:1px solid #4876ef;box-sizing:border-box;background:#fff}
+#sri_header {position:absolute;top:0;left:0;z-index:100;width:100%;min-width:1280px;height:105px;border-bottom:0.5px solid #4876ef;box-sizing:border-box;background:#fff}
 #sri_header:after {display:table;clear:both;content:"";table-layout:fixed}
 #sri_header .wrap_header {position:relative;margin:0 auto;width:1260px;box-sizing:border-box;font-size:0;letter-spacing:-1px}
 #sri_header .bi {display:inline-block;position:relative;margin:8px 23px 0 -10px;padding:0 10px;width:21px;vertical-align:top}

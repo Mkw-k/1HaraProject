@@ -466,7 +466,6 @@ body { padding-top:20px; }
 }
 
 #header, #topbar, #featured_slide, #homecontent, #breadcrumb, #container, #copyright {
-    display: flex;
     position: relative;
     margin: 0 auto;
     align-items: flex-start;
@@ -544,167 +543,18 @@ margin-right : 450px;
 </style>
 </head>
 <body>
-<div class="all">
-<header>
-		
- <!-- 검색html -->
-
-<section style="padding: 0">
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="<%=request.getContextPath() %>/image/개발자메인로고.gif" class="d-block w-100" height="300">
-            </div>
-            
-            <!--https://upload.wikimedia.org/wikipedia/commons/8/8d/Yarra_Night_Panorama%2C_Melbourne_-_Feb_2005.jpg-->
-        </div>
-    </div>
-</section>
-<section class="search-sec">
-    <div class="container">
-        <form action="#" method="post" novalidate="novalidate">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" id="exampleFormControlSelect1" style="font-size: 12pt">
-                                <option>지역</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" id="exampleFormControlSelect1" style="font-size: 12pt">
-                                <option>분야</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                                <option>Example one</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <input type="text" class="form-control search-slt" placeholder="회사명" style="font-size: 12pt">
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <button type="button" class="btn btn-secondary wrn-btn">Search</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
-
-</header>
 
 
+<c:import url="../header2.jsp" charEncoding="utf-8"/> 
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-  <!-- Links -->
-  
-  <div>
-	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
-	</div>
-  
-  <ul class="navbar-nav">
-<!-- Dropdown -->
-    <li class="nav-item dropdown" style="padding-top: 5px;">
-     <div class="dropdown">
-		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
-		  <div class="dropdown-content">
-		    <a href="#">채용공고</a>
-		    <a href="#">기업정보</a>
-		    <a href="jobtalk.do">취업톡톡</a>
-		    <a href="#">공채달력</a>
-		    <a href="#">자료실</a>
-		    <a href="notice.do">공지사항</a>
-		  </div>
-		</div>
-    </li>
 
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="jobtalk.do" style="color:#2186eb">취업톡톡</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
-    </li>
-    
-    <li class="nav-item">
-            <c:choose>
-            	<c:when test="${login.memberid ne null }">
-            		<c:choose>
-            			 <c:when test="${login.auth == 1}">
-             				 <p><b>${login.name }</b>님</p>
-             	 		 </c:when>	 
-             			<%-- <%-- <c:when test="${login ne null }">
-         				<p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>	
-         				</c:when> --%>
-             			<%-- <c:when test="${login.auth == 3}">
-             				<p><b>${login.name }</b>님</p>
-    					</c:when> --%>
-    					<c:otherwise>
-             				<p><b>${login.name }</b>님</p>
-    					</c:otherwise>
-    				</c:choose>			
-            	 </c:when> 
-         	 </c:choose>  
-        <div class="col-md-6">
-           <div class="">
-              <div class="login">
-              	<c:if test="${ empty login }">
-                       <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
-                    <!--    <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
-                </c:if>       
-              </div>
-			</div>
-		</div>	
-    </li>
-    <li class="nav-item">
-     	 <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
-    </li>
-    <li class="nav-item">
-    	<c:if test="${login.auth==3}">
-    		<a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a> 
-		</c:if>
-	</li>
-	<li class="nav-item">
-		<c:if test="${login.memberid ne null}">	
-			<a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
-		</c:if>	
-	</li>
-  </ul>
-</nav>
-<br>
+<div style="width:980px;height:700px;margin-left: auto;margin-right: auto;">
 
-<section id="contents">
+<section>
 
 	<div class="tit-util">
 		<h2 class="tit">공지사항</h2>
 		<input type="hidden" name="seq" value="${notice.noticeseq}"/>
-		<div class="page-util">
-			<span class="hide-location" id="navi_1">고객센터</span>
-		    <span class="hide-location" id="navi_2">고객센터 게시판</span>
-		    <span class="hide-location" id="navi_3">공지사항</span>
-			<!-- 기능 버튼 들어갈 예정 -->
-		</div>
 	</div>
 	
 	<section class="board-view">
@@ -743,24 +593,6 @@ margin-right : 450px;
 		</div>
 	</section>
 	
-	<div class="prev-next">
-		<div class="line">
-			<p class="tit">이전글 <i class="iconset ico-arr-prev-list"></i></p>
-			
-			
-				<a href="/ntNewsData/ntMatter/retrieveNtMatterDtl.do?writeNo=23552&amp;boardNo=3&amp;pageIndex=1&amp;startDt=20200522&amp;endDt=20210521&amp;searchText=&amp;pageUnit=10&amp;srch=&amp;jobyoung=" class="link">2021년 워크넷 콘텐츠 모니터링단 모집 공고</a>
-			
-		</div>
-		
-		<div class="line">
-			<p class="tit">다음글 <i class="iconset ico-arr-next-list"></i></p>
-			
-			
-				<a href="/ntNewsData/ntMatter/retrieveNtMatterDtl.do?writeNo=23587&amp;boardNo=3&amp;pageIndex=1&amp;startDt=20200522&amp;endDt=20210521&amp;searchText=&amp;pageUnit=10&amp;srch=&amp;jobyoung=" class="link">광주창조경제혁신센터 인공지능 산업지능화 전문인력 양성과정 교육생 추가 모집공고</a>
-			
-		</div>
-	</div>
-	
 	<div class="btn-group center">
 		
 		
@@ -794,10 +626,18 @@ margin-right : 450px;
 	</div>
 
 	<div class="manager-info">
-		<div class="left"><b class="font-bold">담당부서</b> : 워크넷팀</div>
+		<div class="left"><b class="font-bold">담당부서</b> : 일하라팀</div>
 		<div class="right"><b class="font-bold">문의</b> : 1577-7114</div>
 	</div>
+	
+	
 </section>
+
+</div>
+
+
+<c:import url="../footer.jsp" charEncoding="utf-8"/> 
+
 
 <script>
 var myVar;

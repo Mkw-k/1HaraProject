@@ -174,7 +174,9 @@ body {
 </header>
     <!-- 헤더 -->
 
-<nav id="lnb">
+<nav id="lnb"style="
+    margin-left: 120px;
+">
 	<!-- S : 2018-09-28 추가 -->
 	<p class="tit"><a href="/indivMemberSrv/main/indivMemberSrvMain.do">마이페이지</a></p>
 	<!-- E : 2018-09-28 추가 -->

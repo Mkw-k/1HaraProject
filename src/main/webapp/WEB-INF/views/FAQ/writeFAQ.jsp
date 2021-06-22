@@ -662,7 +662,7 @@ function login() {
 	    let faqnum = document.getElementById('fieldnum').options[selIndex].value;
 	 //   alert(faqnum);
 	    document.getElementById('fieldnum').value = faqnum;
-	    alert(document.getElementById('fieldnum').value);
+	   // alert(document.getElementById('fieldnum').value);
 		
  }
  

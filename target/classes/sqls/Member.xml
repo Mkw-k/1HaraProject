@@ -28,14 +28,14 @@
 </insert> -->
 
 <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, AUTH, BIRTH, DETAILADDRESS, ADDRESS, USERPIC, NEWUSERPIC,  PHONENUM)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, 1, #{birth}, #{detailaddress}, #{address}, #{userpic}, #{newuserpic}, #{phonenum}  )
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, AUTH, DETAILADDRESS, ADDRESS, USERPIC, NEWUSERPIC,  PHONENUM)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, 1, #{detailaddress}, #{address}, #{userpic}, #{newuserpic}, #{phonenum}  )
 </insert>
 
 <!-- 로그인 -->
 <select id="login" parameterType="bit.com.a.dto.MemberDto"
 	resultType="bit.com.a.dto.MemberDto">
-	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, BIRTH, NEWUSERPIC, PHONENUM
+	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, NEWUSERPIC, PHONENUM
 	FROM MEMBER
 	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 </select>
@@ -43,7 +43,7 @@
 <!-- 카카오로그인 -->
 <select id="kakaoLogin" parameterType="bit.com.a.dto.MemberDto"
 	resultType="bit.com.a.dto.MemberDto">
-	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, BIRTH
+	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS
 	FROM MEMBER
 	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 </select>
@@ -77,7 +77,7 @@
 
 	<!--  뿌려주는것 -->
 	<select id="getMypage" parameterType="java.lang.String" resultType="bit.com.a.dto.MemberDto">
-	SELECT NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, PHONENUM, USERPIC, NEWUSERPIC
+	SELECT NAME, EMAIL, ADDRESS, DETAILADDRESS, PHONENUM, USERPIC, NEWUSERPIC
 	FROM MEMBER
 	WHERE MEMBERID=#{memberid}
 	</select>

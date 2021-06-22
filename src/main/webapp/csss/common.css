@@ -1319,7 +1319,7 @@ input[type='search']::-ms-clear {width:20px; height:20px; margin-right:-3px; pad
 .board-list tr.bg_blue {background:#f5f7f9} /* 20190221 추가 */
 .board-list {line-height:1.6;}
 .board-list p {margin:0; padding:0;}
-.board-list > thead > tr > th {height:48px; padding:7px 5px; background:#212529; font-weight:700;}
+.board-list > thead > tr > th {height:48px; padding:7px 5px; background:#f7f7f7; font-weight:700;}
 .board-list > thead > tr/*:last-of-type*/ > th {border-bottom:1px solid #e6e6e6;}
 .board-list > tbody > tr > th,
 .board-list > tbody > tr > td {height:48px; padding:16px 5px; border:1px solid #f5f7f9; border-width:0 0 1px 0; border-color:#e4ebf1; text-align:center; word-break:break-all;}
@@ -3078,7 +3078,7 @@ button.iconset {border:0;background-color:transparent;}
 
 /* gnb */
 /*#gnb {position:relative; background-color:#3683c3; min-width:1160px;}*/
-#gnb {position:relative; background-color:#1b82ea; min-width:1160px;}/* 고대비 작업 */
+#gnb {position:relative; background-color:#1b82ea;}
 #gnb > ul {display:block; width:1160px; margin:0 auto; position:relative;}
 #gnb .background {width:100%; position:absolute; top:50px; left:0; z-index:101; background-color:#fff; content:""; border-bottom:1px solid #3683c3}
 #gnb ul:before,
@@ -3252,7 +3252,7 @@ button.iconset {border:0;background-color:transparent;}
 #lnb .lnb-one-id {margin:10px 0 0 0;}
 #lnb .lnb-one-id .button {display:block; padding:0; font-size:0.9286em;}
 
-#contents {float:left; width:920px; background-color:#fff;}
+#contents {width:920px; background-color:#fff;}
 #contents .tit-util {position:relative; padding:0;}
 #contents .tit-util:before,
 #contents .tit-util:after {content:''; display:table;}

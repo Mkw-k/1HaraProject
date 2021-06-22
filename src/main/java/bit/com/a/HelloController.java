@@ -150,5 +150,11 @@ public class HelloController {
 			return "musicplayer";
 		}
 		
+		@RequestMapping(value ="hiddengame.do", method = RequestMethod.GET)
+		public String hiddengame(Model model) {
+			logger.info("HelloController member_info() " + new Date());
+			return "hiddengame";
+		}
+		
 
 }

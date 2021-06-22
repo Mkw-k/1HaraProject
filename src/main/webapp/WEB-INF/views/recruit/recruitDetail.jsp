@@ -625,7 +625,7 @@ white{
   </div>
   
   
-  <div style="width:1260px;height:300px;margin-left: auto;margin-right: auto;margin-bottom: 100px;">
+  <div style="width:1260px;height:300px;margin-left: auto;margin-right: auto;margin-bottom: 100px;float:center;margin-top: 200px;">
   <div class="py-5">
     <div class="container" s>
     <h3>기업정보</h3>
@@ -708,6 +708,8 @@ white{
     </div>
   </div>
   
+  <c:import url="../footer.jsp" charEncoding="utf-8"/>
+  
 </div>
   
 
@@ -715,8 +717,10 @@ white{
 
 
   <input type="hidden" id="phonenumber">
+  
+  
 
-<c:import url="../footer.jsp" charEncoding="utf-8"/>
+
 
 <script>
 getTop10List();
@@ -823,7 +827,7 @@ function deleteRecruit(jobSeq) {
 	location.href="deleteRecruit.do?jobSeq="+jobSeq;
 }
 function updateRecruit(jobSeq) {
-	location.href ="RecruitUpdate.do?jobSeq="+jobSeq;
+	location.href ="RecruitUpdate.do?jobseq="+jobSeq;
 }
 function mgUpdate() {
 	$("#_mgData *").remove(); //내부 요소만 삭제

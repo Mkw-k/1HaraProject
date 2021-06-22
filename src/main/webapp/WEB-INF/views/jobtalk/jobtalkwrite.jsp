@@ -37,17 +37,10 @@
 						<dl class="infoBx">
 							<dt class="qnaSpA">
 								<span class="nickname">${login.name}</span> 
-								<span class="lvIcon">Lv.1</span>
+							
 							</dt>
-							<dd>
-								<span>질문 0</span>
-								<span>답변 0 (채택 0)</span>
-							</dd>
 						</dl>
 					</a>
-					<button type="button" class="myPoint devMainCouponButton">
-						<span class="point qnaSpB">0</span><span class="btnCoupon qnaSpA">쿠폰교환</span>
-					</button>
 				</div>
 			</div>
 			<div class="navi-list-area">

@@ -12,6 +12,7 @@
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
 <%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -181,112 +182,12 @@ dt, dd {
 </head>
 
 <body>
-	<div class="all">
-		<!-- 헤더가 있어야 위쪽을 가리지 않음 -->
-		<header> </header>
+	
+	<c:import url="../header2.jsp" charEncoding="utf-8"/>
 
-		<!-- 네비바 -->
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-
-
-			<div>
-				<a href="home.do"><img alt=""
-					src="<%=request.getContextPath() %>/image/logo5.gif" height="80"
-					width="160" style="float: left; padding-right: 20px"></a>
-			</div>
-
-			<ul class="navbar-nav">
-				<!-- Dropdown -->
-				<li class="nav-item dropdown" style="padding-top: 5px;">
-					<div class="dropdown">
-						<button class="dropbtn"
-							style="color: #2186eb; background-color: #fff;">전체보기</button>
-						<div class="dropdown-content">
-							<a href="#">채용공고</a> <a href="#">기업정보</a> <a href="#">취업톡톡</a> <a
-								href="#">공채달력</a> <a href="#">자료실</a> <a href="notice.do">공지사항</a>
-						</div>
-					</div>
-				</li>
-
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">채용공고</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">기업정보</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">취업톡톡</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">공채달력</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">자료실</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="notice.do"
-					style="color: #2186eb">공지사항</a></li>
-			</ul>
-
-
-			<ul class="navbar-nav navbar-nav2" style="margin-left: 50px;">
-				<li class="nav-item">
-					<!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
-					<a href="javascript:login()" id="login-btn" class="nav-link bgc"
-					style="color: #2186eb; background-color: #fff;">로그인</a>
-				</li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb; background-color: #fff;">이력서관리</a></li>
-
-
-			</ul>
-		</nav>
-		<br>
-
-		<!-- =========Login 클릭 시 Modal =========== -->
-		<div id="login-modal" tabindex="-1" role="dialog"
-			aria-labelledby="login-modalLabel" class="modal modal-center fade ">
-			<div role="document" class="modal-dialog" style="margin: 0;">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 id="login-modalLabel" class="modal-title">1hara Login</h4>
-						<button type="button" data-dismiss="modal" aria-label="Close"
-							class="close">
-							<span aria-hidden="true"></span>x
-						</button>
-					</div>
-					<div class="modal-body">
-
-						<!-- memberController - loginAf.do로 이동 -->
-						<form action="member" method="post">
-							<input type="hidden" name="param" value="loginAf.do">
-							<div class="form-group">
-								<input id="email_modal" type="text" placeholder="ID" name="id"
-									class="form-control">
-							</div>
-							<div class="form-group">
-								<input id="password_modal" type="password" name="pwd"
-									placeholder="password" class="form-control">
-							</div>
-							<p class="text-center">
-								<button class="btn btn-template-outlined">
-									<i class="fa fa-sign-in"></i> Login
-								</button>
-							</p>
-						</form>
-
-
-						<p class="text-center text-muted">아직 회원가입을 안하셨나요?</p>
-						<p class="text-center text-muted">
-							<a href="regiclick.do"><strong>가입하기</strong></a> 백수를 탈출합시다!
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- =======Login 클릭 시 Modal END =========-->
-
-
-
-		<!-- ####################################################################################################### -->
-		<!-- 본문 -->
+	
 		<main>
-
+	
 <%
 
 
@@ -371,42 +272,13 @@ if(obj != null){
 	memdto = (MemberDto)obj;
 }
 
-String birth = memdto.getBirth();
-System.out.println(birth);
-
-/* 나이구하기 */
-int age = 2021 - (Integer.parseInt(birth.substring(0, 4))) + 1;
-System.out.println(age);
-
-/* 성별구하기 */
-int gender = resumedto.getGender();
-String _gender = "";
-if(gender==1){
-	_gender += "남자";
-} else{
-	_gender += "여자";
-}
-System.out.println(_gender);
 %>
 
-			<!-- 검색창 -->
-			<section class="newsletter"
-				style="margin-top: -150px; padding-bottom: 0px; padding-top: 100px;">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="content">
-								<h2 style="color: #fff"></h2>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+			
 
 			<form action="updateAfResume.do" method="post" name="resumewrite" id="resumewrite" enctype="multipart/form-data" >
 				<input type="hidden" name="resumeseq" value=<%=resumedto.getResumeseq() %>>
-				<div class="container" style="margin-top: 0px; margin-right: 400px;">
+				<div class="container" style="margin-top: 0px;margin-right: auto;margin-left: auto;">
 					<div class="row">
 						<div class="col-lg-offset-2 col-lg-12" style="margin-left: 0px;">
 							<section class="panel panel-default">
@@ -3186,17 +3058,17 @@ function login() {
 <script type="text/javascript">
 function licenseCheck(value) {
 	
-	alert("licenseCheck");
-	alert(value);
+	//alert("licenseCheck");
+	//alert(value);
 	 if(value=="case2"){
-		 alert("value case2")
+		 //alert("value case2")
 		 document.getElementById('licensechk').style.display='none';
 		 document.getElementById('languagechk').style.display='block';
 		 document.getElementById('awardchk').style.display='none';
 	}
 	 
 	 else if(value=="case3"){
-		 alert("value case3");
+		 //alert("value case3");
 		 document.getElementById('licensechk').style.display='none';
 		 document.getElementById('languagechk').style.display='none';
 		 document.getElementById('awardchk').style.display='block';
@@ -3335,7 +3207,7 @@ $.ajax({
       });
    }, 
    error:function(){
-      alert('error');
+     // alert('error');
    }
    
  }); // ajax
@@ -3372,7 +3244,7 @@ $(document).on("change",".list_col1", function(){
               });
            }, 
            error:function(){
-              alert('error');
+              //alert('error');
            }
            
          });
@@ -3521,9 +3393,9 @@ $(document).on("change", ".list_col3" , function(){
        //HTML data 속성 사용
       input.dataset.code = 'selectedBuscode'+cnt;
       
-      alert('datacode 생성: '+'selectedBuscode'+cnt);
+      //alert('datacode 생성: '+'selectedBuscode'+cnt);
       
-      alert('datacode 리얼: ' + $(this).data("code"));
+      //alert('datacode 리얼: ' + $(this).data("code"));
       
       $("#selectResult").append(app);
       cnt += 1;
@@ -3535,10 +3407,10 @@ $(document).on("change", ".list_col3" , function(){
    //체크박스 해제가 될때 밑에 부분에 적재되있는 같은 데이터의 span태그도 삭제
    //else{   
    else if($(this).is(":checked") == false){
-      alert("위에 셀렉코드 : "+$(this).data("code"));
+      //alert("위에 셀렉코드 : "+$(this).data("code"));
       //data 속성 가져오기 (data-code) 
       selectedBuscode = $(this).data("code");
-      alert('위에 셀렉코드 :'+ selectedBuscode);
+      //alert('위에 셀렉코드 :'+ selectedBuscode);
       
       document.getElementById(selectedBuscode).remove();
    }
@@ -3642,7 +3514,7 @@ function fnChkByte(obj, maxByte)
 function careernoCheck() {
 	
 	
-	alert("careernoCheck");
+	//alert("careernoCheck");
 
 	document.getElementById('career_template').style.display='none';
 	document.getElementById('careerok').classList.remove("active");
@@ -3655,7 +3527,7 @@ function careernoCheck() {
  <script type="text/javascript">
 function careerokCheck() {
 	
-	alert("careerokCheck");
+	//alert("careerokCheck");
 
 	document.getElementById('career_template').style.display='block';
 	document.getElementById('careerno').classList.remove("active");
@@ -4541,14 +4413,14 @@ function licenseCheck2(value) {
 	//alert("licenseCheck2");
 	//alert(value);
 	 if(value=="case2"){
-		 alert("value case2")
+		 //alert("value case2")
 		 document.getElementById('licensechk'+num2).style.display='none';
 		 document.getElementById('languagechk'+num2).style.display='block';
 		 document.getElementById('awardchk'+num2).style.display='none';
 	}
 	 
 	 else if(value=="case3"){
-		 alert("value case3");
+		 //alert("value case3");
 		 document.getElementById('licensechk'+num2).style.display='none';
 		 document.getElementById('languagechk'+num2).style.display='none';
 		 document.getElementById('awardchk'+num2).style.display='block';
@@ -4576,7 +4448,7 @@ $("input:checkbox[name=jobtypes]:checked").each(function() {
 let str = '';
 function test(val) {
 	
-	alert(val);
+	//alert(val);
 	str += val + " ";
 }
 
@@ -4584,7 +4456,7 @@ function test(val) {
 
 function test1() {
 	
-	alert(str);
+	//alert(str);
 	document.getElementById('jobtypes').value = str;
 
 }
@@ -4594,13 +4466,13 @@ function test1() {
 <script type="text/javascript">
 let areas = '';
 function selectArea(val) {
-	alert(val);
+	//alert(val);
 	areas += val + ","
 }
 
 function addArea() {
 	
-	alert(areas);
+	//alert(areas);
 	document.getElementById('Areas').value = areas;
 
 }
@@ -4611,13 +4483,13 @@ function addArea() {
 <script type="text/javascript">
 let bus = '';
 function selectbus(val) {
-	alert(val);
+	//alert(val);
 	bus += val + " "
 }
 
 function addBus() {
 	
-	alert(bus);
+	//alert(bus);
 	document.getElementById('Buses').value = bus;
 
 }
@@ -4629,7 +4501,7 @@ function addBus() {
 <script type="text/javascript">
 let careerAreas = '';
 function selectCareerArea(val) {
-	alert(val);
+	//alert(val);
 	careerAreas += val
 	document.getElementById('pre_area').value = careerAreas;
 }
@@ -4638,10 +4510,10 @@ function selectCareerArea(val) {
 
 <script type="text/javascript">
 function iscompleted() {
-alert("iscompleted");
+//alert("iscompleted");
 
 	document.getElementById('resumeStatus').value = 'NO';
-	alert(document.getElementById('resumeStatus').value);
+	//alert(document.getElementById('resumeStatus').value);
 		
 	$("#resumewrite").submit();
 	

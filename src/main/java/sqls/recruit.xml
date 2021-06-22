@@ -7,39 +7,39 @@
 
 <!-- 공고작성 -->
 <insert id="writerecru" parameterType="java.util.HashMap">
-	INSERT ALL
-	INTO JOB (JOBSEQ , COMPANYID , JOBTITLE , JOBCONTENT , AREA1NAME,
-					AREA2NAME, JOBVOLUMN, SALARY, JOBSTART, JOBEND, EMP_TYPE,
-					EDUCATION , CAREER_TYPE, READCOUNT, REGDATE, DEL)
-	VALUES (JOB_SEQ.NEXTVAL, #{dto.companyId}, #{dto.jobTitle}, #{dto.jobContent},
-			 #{dto.area1Name}, #{dto.area2Name}, #{dto.jobVolumn}, #{dto.salary},
-			 <!-- SYSDATE, -->
-			 TO_DATE(#{dto.jobStart}, 'YYYY-MM-DD HH24:MI:SS'),
-			 TO_DATE(#{dto.jobEnd}, 'YYYY-MM-DD HH24:MI:SS'),
-			 #{dto.emp_Type}, #{dto.education}, #{dto.career_Type},
-			 0,
-			 TO_DATE(SYSDATE, 'YYYY-MM-DD'),
-			 0)
+   INSERT ALL
+   INTO JOB (JOBSEQ , COMPANYID , JOBTITLE , JOBCONTENT , AREA1NAME,
+               AREA2NAME, JOBVOLUMN, SALARY, JOBSTART, JOBEND, EMP_TYPE,
+               EDUCATION , CAREER_TYPE, READCOUNT, REGDATE, DEL)
+   VALUES (JOB_SEQ.NEXTVAL, #{dto.companyId}, #{dto.jobTitle}, #{dto.jobContent},
+          #{dto.area1Name}, #{dto.area2Name}, #{dto.jobVolumn}, #{dto.salary},
+          <!-- SYSDATE, -->
+          TO_DATE(#{dto.jobStart}, 'YYYY-MM-DD HH24:MI:SS'),
+          TO_DATE(#{dto.jobEnd}, 'YYYY-MM-DD HH24:MI:SS'),
+          #{dto.emp_Type}, #{dto.education}, #{dto.career_Type},
+          0,
+          TO_DATE(SYSDATE, 'YYYY-MM-DD'),
+          0)
 
-		<foreach collection="arrayParam" item="item" index="index" separator="" open="" close="">
-			INTO BSCODSTACK (BSCODSTACKSEQ, JOBSEQ, RBUSCODE,  BUSCODE)
-			VALUES (BSCODSTACK_SEQ.nextval, JOB_SEQ.nextval, #{item},
-	        (SELECT BUSNAME
-	        FROM BUSCODE3
-	        WHERE BUSCODE = #{item} )
-	        )
-		</foreach>
+      <foreach collection="arrayParam" item="item" index="index" separator="" open="" close="">
+         INTO BSCODSTACK (BSCODSTACKSEQ, JOBSEQ, RBUSCODE,  BUSCODE)
+         VALUES (BSCODSTACK_SEQ.nextval, JOB_SEQ.nextval, #{item},
+           (SELECT BUSNAME
+           FROM BUSCODE3
+           WHERE BUSCODE = #{item} )
+           )
+      </foreach>
 
-		<if test='mgDetail != null'>
-		   INTO MGDETAIL (mgdetailseq, jobseq, detailAdress1, detailAdress2,  mgName, mgEmail, mgPhone)
-		   VALUES (mgdetail_SEQ.nextval, JOB_SEQ.nextval,
-			<foreach collection="mgDetail" item="item" index="index" separator="," open="" close=")">
-			#{item}
-	    	</foreach>
-		</if>
+      <if test='mgDetail != null'>
+         INTO MGDETAIL (mgdetailseq, jobseq, detailAdress1, detailAdress2,  mgName, mgEmail, mgPhone)
+         VALUES (mgdetail_SEQ.nextval, JOB_SEQ.nextval,
+         <foreach collection="mgDetail" item="item" index="index" separator="," open="" close=")">
+         #{item}
+          </foreach>
+      </if>
 
-	SELECT 1
-	FROM DUAL
+   SELECT 1
+   FROM DUAL
 
 
 </insert>
@@ -210,12 +210,12 @@
 
 <!-- 최종 상세 검색 리스트 가져오기 -->
 <select id="getRecruitSearchList" parameterType="java.util.HashMap" resultType="bit.com.a.dto.RecruitDto">
-   SELECT DISTINCT RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+   SELECT DISTINCT ROWNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
                J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
                J.EDUCATION , J.CAREER_TYPE, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL,
          C.COMPANYNAME, E.EDUNAME, T.EMP_NAME, P.CAREER_DESC
 
-   FROM (SELECT ROW_NUMBER()OVER(ORDER BY JOBSEQ DESC)AS RNUM, J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
+   FROM (SELECT J.JOBSEQ , J.COMPANYID , J.JOBTITLE , J.JOBCONTENT , J.AREA1NAME,
                J.AREA2NAME, J.JOBVOLUMN, J.SALARY, J.JOBSTART, J.JOBEND, J.EMP_TYPE,
                J.EDUCATION , J.CAREER_TYPE, J.CAREER_DESC, J.READCOUNT, J.REGDATE, J.BUSCODE, J.DEL, C.COMPANYNAME
          FROM JOB J, BUSINESS C
@@ -228,6 +228,8 @@
           <if test="choice == 'companyname'">
                AND C.COMPANYNAME LIKE '%'||#{search}||'%'</if>
          </if>
+         
+	     
          )J
    <!-- 회사이름가져오기 -->
    JOIN BUSINESS C
@@ -241,9 +243,7 @@
    <!-- 경력타입가져오기 -->
    JOIN JOB_CAREERTYPE P
    ON P.CAREER_TYPE = J.CAREER_TYPE
-   <!-- 직종네임가져오기 -->
-   JOIN bscodstack K
-   ON J.JOBSEQ = K.JOBSEQ
+   
    WHERE 1=1
    <!-- 학력조건 -->
    <if test='education != 0'>
@@ -269,7 +269,10 @@
    K.RBUSCODE = #{item}
       </foreach>
        </if>
-   AND RNUM BETWEEN ${param.start} AND ${param.end}
+   AND ROWNUM BETWEEN ${param.start} AND ${param.end}
+   
+   
+   
    ORDER BY J.JOBSEQ DESC
 
 </select>

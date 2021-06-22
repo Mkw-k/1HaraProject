@@ -912,18 +912,6 @@ margin-right : 450px;
 				</a>
 			</div>
 		</div>
-		<div class="navi-list-area">
-		<!-- [Dev] 메뉴 on : 클래스 active 추가 -->
-			<div class="sideNavLow">
-				<strong class="sideNavTit"><a id="devLeftMenuRequireTag" href="/User/Qstn/Index?MainType=1" data-tab="1" class="devLoginLayer " devalert="0">답변하기</a></strong>
-			</div>
-			<div class="sideNavLow">
-				<strong class="sideNavTit"><a id="devLeftMenuOwnerTag" href="/User/Qstn/Index?MainType=2" data-tab="2" class="devLoginLayer " devalert="0">나의질문</a></strong>
-			</div>
-			<div class="sideNavLow">
-				<strong class="sideNavTit"><a id="devLeftMenuEntireTag" href="/User/Qstn/Index?MainType=3" data-tab="3" class="">전체질문</a></strong>
-			</div>
-		</div>
 	</div>
 
 

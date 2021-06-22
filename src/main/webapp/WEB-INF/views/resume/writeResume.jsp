@@ -107,7 +107,7 @@ font-weight:600;
 
 body {
 	  font-family: "Ubuntu", sans-serif;
-	  background-color: #3498db;
+	  background-color: #ffffff;
 			}
 .container {
 	  padding-top: 50px;
@@ -183,9 +183,7 @@ nav {
 </head>
 
 <body>
-	<div class="all">
-		<!-- 헤더가 있어야 위쪽을 가리지 않음 -->
-		<header> </header>
+	
 
 		<!-- 네비바 -->
 		<c:import url="../header2.jsp" charEncoding="utf-8"/> 
@@ -244,7 +242,7 @@ nav {
 			<form action="writeAfResume.do" method="post" name="resumewrite" id="resumewrite" enctype="multipart/form-data" >
 
 				<!-- <div class="container" style="margin-top: 0px; margin-right: 400px;"> -->
-					<div class="container" style="margin-top: 50px; margin-right: 200px; margin-left: 200px;">
+					<div class="container" style="margin-top: 50px;margin-right: auto;margin-left: auto;padding-top: 0px;">
 						<div class="col-lg-offset-2 col-lg-12" style="margin-left: 0px;">
 							<section class="panel panel-default">
 								<div class="panel-body">
@@ -1947,17 +1945,17 @@ function login() {
 <script type="text/javascript">
 function licenseCheck(value) {
 	
-	alert("licenseCheck");
-	alert(value);
+	//alert("licenseCheck");
+	//alert(value);
 	 if(value=="case2"){
-		 alert("value case2")
+		 //alert("value case2")
 		 document.getElementById('licensechk').style.display='none';
 		 document.getElementById('languagechk').style.display='block';
 		 document.getElementById('awardchk').style.display='none';
 	}
 	 
 	 else if(value=="case3"){
-		 alert("value case3");
+		 //alert("value case3");
 		 document.getElementById('licensechk').style.display='none';
 		 document.getElementById('languagechk').style.display='none';
 		 document.getElementById('awardchk').style.display='block';
@@ -2094,7 +2092,7 @@ $.ajax({
       });
    },
    error:function(){
-      alert('error');
+      //alert('error');
    }
 
  }); // ajax
@@ -2137,7 +2135,7 @@ $(document).on("change","#_buscodeList1", function(){
               });
            },
            error:function(){
-              alert('error');
+              //alert('error');
            }
 
          });
@@ -2232,7 +2230,7 @@ $(document).on("change","#_buscodeList1", function(){
 
              },
              error:function(){
-                alert('error');
+                //alert('error');
              }
 
            });
@@ -2408,7 +2406,7 @@ function fnChkByte(obj, maxByte)
 function careernoCheck() {
 	
 	
-	alert("careernoCheck");
+	//alert("careernoCheck");
 
 	document.getElementById('career_template').style.display='none';
 	document.getElementById('careerok').classList.remove("active");
@@ -2421,7 +2419,7 @@ function careernoCheck() {
  <script type="text/javascript">
 function careerokCheck() {
 	
-	alert("careerokCheck");
+	//alert("careerokCheck");
 
 	document.getElementById('career_template').style.display='block';
 	document.getElementById('careerno').classList.remove("active");
@@ -3307,14 +3305,14 @@ function licenseCheck2(value) {
 	//alert("licenseCheck2");
 	//alert(value);
 	 if(value=="case2"){
-		 alert("value case2")
+		 //alert("value case2")
 		 document.getElementById('licensechk'+num2).style.display='none';
 		 document.getElementById('languagechk'+num2).style.display='block';
 		 document.getElementById('awardchk'+num2).style.display='none';
 	}
 	 
 	 else if(value=="case3"){
-		 alert("value case3");
+		 //alert("value case3");
 		 document.getElementById('licensechk'+num2).style.display='none';
 		 document.getElementById('languagechk'+num2).style.display='none';
 		 document.getElementById('awardchk'+num2).style.display='block';
@@ -3342,7 +3340,7 @@ $("input:checkbox[name=jobtypes]:checked").each(function() {
 let str = '';
 function jobtypeChk(val) {
 	
-	alert(val);
+	//alert(val);
 	str += val + " ";
 }
 
@@ -3350,7 +3348,7 @@ function jobtypeChk(val) {
 
 function jobtypeAdd() {
 	
-	alert(str);
+	//alert(str);
 	document.getElementById('jobtypes').value = str;
 
 }
@@ -3360,13 +3358,13 @@ function jobtypeAdd() {
 <script type="text/javascript">
 let areas = '';
 function selectArea(val) {
-	alert(val);
+	//alert(val);
 	areas += val + " "
 }
 
 function addArea() {
 	
-	alert(areas);
+	//alert(areas);
 	document.getElementById('Areas').value = areas;
 
 }
@@ -3400,7 +3398,7 @@ function addBus() {
 <script type="text/javascript">
 let careerAreas = '';
 function selectCareerArea(val) {
-	alert(val);
+	//alert(val);
 	careerAreas += val
 	document.getElementById('pre_area').value = careerAreas;
 }
@@ -3410,7 +3408,7 @@ function selectCareerArea(val) {
 <!-- 중간저장 빈칸체크 -->
 <script type="text/javascript">
 $("#incomplete").click(function () {
-alert("incomplete");
+//alert("incomplete");
 /* document.getElementById('resumeStatus').value = 'NO';
 alert(document.getElementById('resumeStatus').value);
  */

@@ -349,70 +349,70 @@ public class RecruitController {
 //TODO채용공고 작성 After(DB에 입력)
    @RequestMapping(value = "recuruitcreateAf.do", method = {RequestMethod.GET, RequestMethod.POST})
    public String recuruitcreateAf(RecruitDto dto, Model model, HttpServletRequest req) {
-      model.addAttribute("doc_title", "채용공고");
+	   model.addAttribute("doc_title", "채용공고");
 
-		  System.out.println("디티오 데이터 :" +dto.toString());
+       System.out.println("디티오 데이터 :" +dto.toString());
 
-		  //시작일 종료일 데이터 정비
-		  String start = dto.getJobStart();
-		  String end = dto.getJobEnd();
-		  //datetime-local 데이터는 중간에 T가 들어있어서 DB저장을 위해 잘라준다
-		  start = start.replace("T", " ");
-		  end = end.replace("T", " ");
-		  dto.setJobStart(start);
-		  dto.setJobEnd(end);
+       //시작일 종료일 데이터 정비
+       String start = dto.getJobStart();
+       String end = dto.getJobEnd();
+       //datetime-local 데이터는 중간에 T가 들어있어서 DB저장을 위해 잘라준다
+       start = start.replace("T", " ");
+       end = end.replace("T", " ");
+       dto.setJobStart(start);
+       dto.setJobEnd(end);
 
-		  System.out.println("시작일 :"+dto.getJobStart());
-		  System.out.println("종료일 :"+dto.getJobEnd());
+       System.out.println("시작일 :"+dto.getJobStart());
+       System.out.println("종료일 :"+dto.getJobEnd());
 
-		  //지역 데이터 재설정 해주기
-		  String area1 = dto.getArea1Name();
-		  //상세 주소 현재 사용안함 (컴퍼니 테이블과 조인하면 상세주소를 가져올수 있을거라 생각됨 여기선 필요없)
-		  String area2 = dto.getArea2Name();
-		  //다음 주소 api를 통해 가져온 주소를 split메서드를 통해 띄어쓰기를 기준으로 잘라준다
-		  String[] area = area1.split("\\s");
-		  //디테일주소 1 셋팅
-		  String detailAdress1 = "";
-		  for (int i = 2; i < area.length; i++) {
-			  detailAdress1 += area[i] + " ";
-		  }
-		  //대분류 지역이름에서 특별시 광역시는 제거해준다
-		  String area1Name = area[0]
-				  				.replace("특별시", "")
-				  				.replace("광역시", "");
-		  System.out.println(area1Name);
-		  dto.setArea1Name(area1Name);
-		  dto.setArea2Name(area[1]);
-		  dto.setDetailAdress1(detailAdress1);
-		  dto.setDetailAdress2(area2);
+       //지역 데이터 재설정 해주기
+       String area1 = dto.getArea1Name();
+       //상세 주소 현재 사용안함 (컴퍼니 테이블과 조인하면 상세주소를 가져올수 있을거라 생각됨 여기선 필요없)
+       String area2 = dto.getArea2Name();
+       //다음 주소 api를 통해 가져온 주소를 split메서드를 통해 띄어쓰기를 기준으로 잘라준다
+       String[] area = area1.split("\\s");
+       //디테일주소 1 셋팅
+       String detailAdress1 = "";
+       for (int i = 2; i < area.length; i++) {
+          detailAdress1 += area[i] + " ";
+       }
+       //대분류 지역이름에서 특별시 광역시는 제거해준다
+       String area1Name = area[0]
+                         .replace("특별시", "")
+                         .replace("광역시", "");
+       System.out.println(area1Name);
+       dto.setArea1Name(area1Name);
+       dto.setArea2Name(area[1]);
+       dto.setDetailAdress1(detailAdress1);
+       dto.setDetailAdress2(area2);
 
-		  String[] mgDetail = new String [] {dto.getDetailAdress1(), dto.getDetailAdress2(), dto.getMgName(), dto.getMgEmail(), dto.getMgPhone()};
+       String[] mgDetail = new String [] {dto.getDetailAdress1(), dto.getDetailAdress2(), dto.getMgName(), dto.getMgEmail(), dto.getMgPhone()};
 
-		  System.out.println("변경된 데이터 :"+dto.toString());
+       System.out.println("변경된 데이터 :"+dto.toString());
 
 
 
-		Map<String, Object> param = new HashMap<String, Object>();
-		//dto를 map에 넣는다.
-		param.put("dto", dto);
+     Map<String, Object> param = new HashMap<String, Object>();
+     //dto를 map에 넣는다.
+     param.put("dto", dto);
 
-		//buscode 여러개를 넘겨받고 배열에 넣어준다
-		String[] arrayParam = req.getParameterValues("buscode");
-		for (int i = 0; i < arrayParam.length; i++) {
-		System.out.println("넘어온버스코드:"+arrayParam[i]);
-		}
+     //buscode 여러개를 넘겨받고 배열에 넣어준다
+     String[] arrayParam = req.getParameterValues("buscode");
+     for (int i = 0; i < arrayParam.length; i++) {
+     System.out.println("넘어온버스코드:"+arrayParam[i]);
+     }
 
-		//map에 배열을 넣는다
-		param.put("arrayParam", arrayParam);
-		param.put("mgDetail", mgDetail);
+     //map에 배열을 넣는다
+     param.put("arrayParam", arrayParam);
+     param.put("mgDetail", mgDetail);
 
-		boolean b = service.writeRecruit(param);
+     boolean b = service.writeRecruit(param);
 
-		if(b) {
-			System.out.println("공고등록성공");
-		}else {
-			System.out.println("공고등록실패");
-		}
+     if(b) {
+        System.out.println("공고등록성공");
+     }else {
+        System.out.println("공고등록실패");
+     }
 
 		return "redirect:/recuruitlist.do";
 	}
@@ -440,6 +440,9 @@ public class RecruitController {
       //직무이름 받아오는 코드
 		  List<String> list = service.getBsnameForDetail(jobseq);
 		  System.out.println("직무이름 :"+ list.toString());
+		  
+		  //직무이름 셋팅 
+		  dto.setBusname(list);
 
 
 		  RecruitParam param = new RecruitParam();
