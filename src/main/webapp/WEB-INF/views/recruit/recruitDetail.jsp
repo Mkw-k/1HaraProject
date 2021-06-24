@@ -600,7 +600,7 @@ white{
             <dt id="keyword1">${dto.area1Name } ${dto.area2Name } ${dto.detailAdress1 } ${dto.detailAdress2 }</dt>
             <dd>
 
-            	<p style="margin-top:-12px">
+            	<p style="margin-top:12px">
 			    <em class="link">
 
 
@@ -628,7 +628,7 @@ white{
   <div style="width:1260px;height:300px;margin-left: auto;margin-right: auto;margin-bottom: 100px;float:center;margin-top: 200px;">
   <div class="py-5">
     <div class="container" s>
-    <h3>기업정보</h3>
+    <h1>기업정보</h1>
     <br>
       <div class="row" style="border-style:outset;">
         <div class="col-md-4 bg-light" >

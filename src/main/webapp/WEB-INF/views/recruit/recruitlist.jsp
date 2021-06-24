@@ -459,16 +459,16 @@ hr {
                                 <option disabled="disabled">경력끝</option>
                                 <option value="100">무관</option>
                                 <option value="1">신입</option>
-                                <option value="2">1년</option>
-                                <option value="3">2년</option>
-                                <option value="4">3년</option>
-                                <option value="5">4년</option>
-                                <option value="6">5년</option>
-                                <option value="7">6년</option>
-                                <option value="8">7년</option>
-                                <option value="9">8년</option>
-                                <option value="10">9년</option>
-                                <option value="11">10년</option>
+                                <option value="2">1년이내</option>
+                                <option value="3">2년이내</option>
+                                <option value="4">3년이내</option>
+                                <option value="5">4년이내</option>
+                                <option value="6">5년이내</option>
+                                <option value="7">6년이내</option>
+                                <option value="8">7년이내</option>
+                                <option value="9">8년이내</option>
+                                <option value="10">9년이내</option>
+                                <option value="11">10년이내</option>
                             </select>
                         </div>
 
@@ -762,7 +762,7 @@ function getrecruitSearchList(pnum) {
 
  	 		//alert(val.jobSeq);
  				let app = "<tr class= 'list_col'>"
- 							+"<td>" + i +"</td>";
+ 							+"<td>" + val.rnum +"</td>";
 
  							if(val.del==0){
 
@@ -935,7 +935,9 @@ function loadPage( totalCount ) {
 
    //alert('몇개냐 :'+_totalPages);
    
-  $("#pagination").twbsPagination('destroy');
+  if($('#pagination').data('twbs-pagination')){
+   	$("#pagination").twbsPagination('destroy');
+   }
 
    $("#pagination").twbsPagination({
       startPage: 1,
@@ -1398,7 +1400,7 @@ $(document).on("change", ".list_col5" , function(){
       app = "<span class=arrAreadata id=selectedAreacode"+cnt2+">"+areacode+
            "<input name='area2name' type='hidden' value='"+areacode+"'>"+
            "<a onclick='delSelAreacode("+cnt2+","+count2+")'>"+
-           "<img alt='왜안뜨지' src='ma.jpg' style='width:30px; height:30px;'>"+
+           "<img alt='왜안뜨지' src='checkbox.png' style='width:15px; height:15px;'>"+
            "</a>"+"</span>"+"&nbsp;&nbsp;";
 
 
