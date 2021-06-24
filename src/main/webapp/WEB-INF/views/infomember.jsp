@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,20 +13,24 @@
 </head>
 <body>
 
+
+<c:import url="header2.jsp" charEncoding="utf-8"/>  
+
+
 <section id="contents">
 	<div class="tit-util">
 		<h2 class="tit">개인정보처리방침</h2>
 		<div class="page-util">
 			<span class="hide-location" id="navi_1">이용안내</span>
-			<span class="hide-location" id="navi_2">워크넷 정책</span>
+			<span class="hide-location" id="navi_2">일하라 정책</span>
 			<span class="hide-location" id="navi_3">개인정보처리방침</span>
 			<!-- 기능 버튼 들어갈 예정 -->
 		</div>
 	</div>
 
 	<div class="box-info bg-gray pd20 mb40">
-		워크넷 서비스는 개인정보 보호법에 따라 정보주체의 개인정보를 보호하고 이와 관련된 고충을 신속하고 원활하게 처리할 수 있도록 다음과 같이 개인정보처리방침을 공개합니다.<br>
-		단, 워크넷에 포함된 링크 또는 배너를 클릭하여 다른 사이트 또는 웹페이지로 이동할 경우 이동한 사이트 또는 웹페이지의 개인정보처리방침을 확인하시기 바랍니다.
+		일하라 서비스는 개인정보 보호법에 따라 정보주체의 개인정보를 보호하고 이와 관련된 고충을 신속하고 원활하게 처리할 수 있도록 다음과 같이 개인정보처리방침을 공개합니다.<br>
+		단, 일하라에 포함된 링크 또는 배너를 클릭하여 다른 사이트 또는 웹페이지로 이동할 경우 이동한 사이트 또는 웹페이지의 개인정보처리방침을 확인하시기 바랍니다.
 	</div>
 
 	<h4 class="tit font-black">1. 개인정보 처리 목적</h4>
@@ -38,8 +43,8 @@
 
 	<h4 class="tit font-black">2. 개인정보의 처리 및 보유기간</h4>
 	<p class="txt">
-		워크넷은 「고용정책기본법」, 「직업안정법」, 「청소년고용촉진특별법」, 「구직자 취업촉진 및 생활안정지원에 관한 법률」 등 관련 법령과 정보주체의 동의에 의해서만 개인정보를 수집·이용합니다.<br>
-		워크넷에 「개인정보 보호법」제32조에 따라 등록·공개하는 개인정보파일의 현황은 다음과 같습니다.
+		일하라은 「고용정책기본법」, 「직업안정법」, 「청소년고용촉진특별법」, 「구직자 취업촉진 및 생활안정지원에 관한 법률」 등 관련 법령과 정보주체의 동의에 의해서만 개인정보를 수집·이용합니다.<br>
+		일하라에 「개인정보 보호법」제32조에 따라 등록·공개하는 개인정보파일의 현황은 다음과 같습니다.
 	</p>
 
 	<div class="data-table mb40">
@@ -63,7 +68,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>워크넷 회원파일</td>
+					<td>일하라 회원파일</td>
 					<td>정보주체 동의,<br>「고용정책기본법」,<br>「직업안정법」,<br>「청소년고용촉진특별법」</td>
 					<td>고용지원<br>민원서비스</td>
 					<td>
@@ -86,7 +91,7 @@
 				<tr>
 					<td>오픈 api 서비스 제공을 위한 회원관리</td>
 					<td>고용정책기본법 제15조(고용직업 정보의 수집 및 제공)</td>
-					<td>오픈 api 서비스 제공을 위한 회원관리(워크넷 오픈api 회원파일)</td>
+					<td>오픈 api 서비스 제공을 위한 회원관리(일하라 오픈api 회원파일)</td>
 					<td>
 						<strong class="font-bold">일반회원</strong>
 						<ul class="dash-list">
@@ -115,7 +120,7 @@
 	</div>
 
 	<h4 class="tit font-black">3. 개인정보의 제3자 제공에 관한 사항</h4>
-	<p class="txt mg00">워크넷 서비스는 수집한 개인정보를 목적외 이용 및 제3자에게 제공하지 않습니다. 
+	<p class="txt mg00">일하라 서비스는 수집한 개인정보를 목적외 이용 및 제3자에게 제공하지 않습니다. 
 	<br> 다만, 개인정보 보호법」제17조(개인정보의 제공) 및 제18조(개인정보의 이용·제공 제한)에 해당하는 다음의 경우에만 개인정보를 제3자에게 제공합니다. </p>
 
 		<ul class="mg05 ml20 dash-list">
@@ -135,7 +140,7 @@
 	
 	<br>
 	<h4 class="tit font-black">4. 개인정보처리의 위탁에 관한 사항</h4>
-    <p class="txt">워크넷 서비스에서 관리하는 개인정보의 처리를 위탁하는 경우, ｢개인정보 보호법｣ 제26조에 근거하여 위탁업체에 따른 개인정보 처리를 제한하는 계약을 체결하고 수탁기관이 기술적·관리적·물리적 보호조치 의무를 이행하도록 관리감독을 시행하고 있습니다.<br>
+    <p class="txt">일하라 서비스에서 관리하는 개인정보의 처리를 위탁하는 경우, ｢개인정보 보호법｣ 제26조에 근거하여 위탁업체에 따른 개인정보 처리를 제한하는 계약을 체결하고 수탁기관이 기술적·관리적·물리적 보호조치 의무를 이행하도록 관리감독을 시행하고 있습니다.<br>
 	</p>
 		<ul class="mg05 ml20 dash-list">
 				<li>위탁업무 수행 목적 외 개인정보의 처리 금지에 관한 사항</li>
@@ -147,7 +152,7 @@
 				<li>개인정보보호법 제26조 제 2항에 따른 수탁자가 준수하여야 할 의무를 위반한 경우의 손해배상 등 책에 관한 사항</li>
 		</ul>
 	
-	<p class="txt">워크넷 서비스는 원활한 개인정보 업무처리를 위하여 다음과 같이 개인정보처리 업무를 위탁하고 있습니다.</p>
+	<p class="txt">일하라 서비스는 원활한 개인정보 업무처리를 위하여 다음과 같이 개인정보처리 업무를 위탁하고 있습니다.</p>
 	<div class="data-table va-m mb40">
 		<table>
 			<caption>개인정보처리의 위탁에 관한 사항</caption>
@@ -247,11 +252,11 @@
 	</ul>
 	
 	<h4 class="tit font-black">6. 처리하는 개인정보의 항목</h4>
-	<p class="txt mg00 mb10">워크넷 서비스에서 처리하는 개인정보 항목은 "2. 개인정보의 처리 및 보유기간"을 참조하여 주시기 바랍니다.</p>
+	<p class="txt mg00 mb10">일하라 서비스에서 처리하는 개인정보 항목은 "2. 개인정보의 처리 및 보유기간"을 참조하여 주시기 바랍니다.</p>
 	
 	<br>
 	<h4 class="tit font-black">7. 개인정보의 파기</h4>
-	<p class="txt mg00 mb10">워크넷 서비스는 개인정보 처리목적이 달성된 경우에는 지체 없이 해당 개인정보를 파기합니다. 다만, 다른 법률에 따라 보존하여야 하는 경우에는 그러하지 않습니다. 파기의 절차, 기한 및 방법은 다음과 같습니다.</p>
+	<p class="txt mg00 mb10">일하라 서비스는 개인정보 처리목적이 달성된 경우에는 지체 없이 해당 개인정보를 파기합니다. 다만, 다른 법률에 따라 보존하여야 하는 경우에는 그러하지 않습니다. 파기의 절차, 기한 및 방법은 다음과 같습니다.</p>
 	<ul class="basic-list mb40">
 		<li>
 			<span class="font-bold">가. 파기절차</span>
@@ -281,7 +286,7 @@
 	</ul>
 
 	<h4 class="tit font-black">8. 개인정보의 안전성 확보 조치</h4>
-	<p class="txt mg00 mb10">워크넷 서비스는 「개인정보보호법」제 29조에 따라 다음과 같이 안전성 확보에 필요한 기술적, 관리적, 물리적 조치를 하고 있습니다. </p>
+	<p class="txt mg00 mb10">일하라 서비스는 「개인정보보호법」제 29조에 따라 다음과 같이 안전성 확보에 필요한 기술적, 관리적, 물리적 조치를 하고 있습니다. </p>
 	<ul class="basic-list mb40">
 		<li>
 			<span class="font-bold">가. 내부관리계획의 수립 및 시행</span>
@@ -326,7 +331,7 @@
 
 	
 	<h4 class="tit font-black">10. 개인정보 자동 수집 장치의 설치·운영 및 거부에 관한 사항</h4>
-	<p class="txt mg00 mb10">워크넷 서비스는 개별적인 맞춤서비스를 제공하기 위해 이용정보를 저장하고 수시로 불러오는‘쿠키(cookie)’를 사용합니다. 쿠키는 웹사이트를 운영하는데 이용되는 서버(http)가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의 하드디스크에 저장되기도 합니다. </p>
+	<p class="txt mg00 mb10">일하라 서비스는 개별적인 맞춤서비스를 제공하기 위해 이용정보를 저장하고 수시로 불러오는‘쿠키(cookie)’를 사용합니다. 쿠키는 웹사이트를 운영하는데 이용되는 서버(http)가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의 하드디스크에 저장되기도 합니다. </p>
 	<ul class="basic-list mb40">
 		<li>
 			<span class="font-bold">가. 쿠키의 사용 목적</span>
@@ -343,7 +348,7 @@
 	</ul>
 		
 	<h4 class="tit font-black">11. 개인정보 보호책임자 및 담당자</h4>
-	<p class="txt mg00 mb10">워크넷은 개인정보 처리의 안전성을 확보하고 국민의 권익보호 및 공공업무의 적정한 수행을 도모하기 위해 개인정보 보호책임자를 다음과 같이 지정·운영하고 있습니다.</p>
+	<p class="txt mg00 mb10">일하라은 개인정보 처리의 안전성을 확보하고 국민의 권익보호 및 공공업무의 적정한 수행을 도모하기 위해 개인정보 보호책임자를 다음과 같이 지정·운영하고 있습니다.</p>
 
 	<div class="data-table va-m mb40">
 		<table>
@@ -368,21 +373,21 @@
 				<tr>
 					<td>개인정보 보호책임자</td>
 					<td>기획정보화본부</td>
-					<td>정종승 본부장</td>
+					<td>고명우 본부장</td>
 					<td>1577-7114</td>
 					<td>bell2u4u@keis.or.kr</td>
 				</tr>
 				<tr>
 					<td>분야별 개인정보 책임자</td>
 					<td>고용정보서비스실</td>
-					<td>임종훈 실장</td>
+					<td>이정우 실장</td>
 					<td>1577-7114</td>
 					<td>ijhun9719@keis.or.kr</td>
 				</tr>
 				<tr>
 					<td>분야별 개인정보 담당자</td>
-					<td>워크넷팀</td>
-					<td>이정민 팀장</td>
+					<td>일하라팀</td>
+					<td>최은지 팀장</td>
 					<td>1577-7114</td>
 					<td>jmlee97@keis.or.kr</td>
 				</tr>
@@ -401,13 +406,13 @@
 
 	
 	<h4 class="tit font-black">12. 개인정보 열람청구</h4>
-	<p class="txt mg00 mb10">정보주체는 개인정보 보호법 제35조에 따라 워크넷 서비스의 개인정보의 열람 청구를 개인정보 보호책임자 및 담당자에게 요구할 수 있습니다. 이용자의 개인정보 열람청구가 신속하게 처리되도록 노력하겠습니다.</p>
+	<p class="txt mg00 mb10">정보주체는 개인정보 보호법 제35조에 따라 일하라 서비스의 개인정보의 열람 청구를 개인정보 보호책임자 및 담당자에게 요구할 수 있습니다. 이용자의 개인정보 열람청구가 신속하게 처리되도록 노력하겠습니다.</p>
 	<ul class="basic-list mb40">
 		<li>
-			<span class="mg05 ml20">- 부서 : 워크넷팀</span>
+			<span class="mg05 ml20">- 부서 : 일하라팀</span>
 		</li>
 		<li>
-			<span class="mg05 ml20">- 담당자 : 강호민 과장</span>
+			<span class="mg05 ml20">- 담당자 : 우정현 과장</span>
 		</li>
 		<li>
 			<span class="mg05 ml20">- 연락처 : 1577-7114</span>
@@ -431,75 +436,20 @@
 	}
 </script>
 <div class="box-info bg-gray pd20 font-bold mb40 a-c">
-	<form id="frm" name="frm" action="indivInfoPrtecPolicy.do" method="post">
-		개인정보처리방침 이력보기
-		<select title="개인정보처리방침 이력보기 버전 선택" class="w130px ml10 mr10" name="indivInfoPrtecVer" id="indivInfoPrtecVer">
-		
-			<option value="55" selected="selected">V5.5</option>
-		
-			<option value="54">V5.4</option>
-		
-			<option value="53">V5.3</option>
-		
-			<option value="52">V5.2</option>
-		
-			<option value="51">V5.1</option>
-		
-			<option value="50">V5.0</option>
-		
-			<option value="49">V4.9</option>
-		
-			<option value="48">V4.8</option>
-		
-			<option value="47">V4.7</option>
-		
-			<option value="46">V4.6</option>
-		
-			<option value="45">V4.5</option>
-		
-			<option value="44">V4.4</option>
-		
-			<option value="43">V4.3</option>
-		
-			<option value="42">V4.2</option>
-		
-			<option value="41">V4.1</option>
-		
-			<option value="40">V4.0</option>
-		
-			<option value="38">V3.8</option>
-		
-			<option value="37">V3.7</option>
-		
-			<option value="36">V3.6</option>
-		
-			<option value="35">V3.5</option>
-		
-			<option value="34">V3.4</option>
-		
-			<option value="33">V3.3</option>
-		
-			<option value="32">V3.2</option>
-		
-			<option value="31">V3.1</option>
-			<option value="3">V3.0</option>
-			<option value="25">V2.5</option>
-			<option value="2">V2.0</option>
-			<option value="1">V1.0</option>
-		</select>
-		<a href="#indivInfoPrtecVer" onclick="selectVersion(); return false;" class="button navy">확인</a>
-		<input type="submit" style="display:none;">
-	<div>
-<input type="hidden" name="_csrf" value="0d99a070-e058-44d6-b2b2-ef0f1648c2a3">
-</div></form>
+	
 </div> 
 
 	<div class="manager-info">
-		<div class="left"><b class="font-bold">담당부서</b> : 워크넷팀</div>
+		<div class="left"><b class="font-bold">담당부서</b> : 일하라팀</div>
 		<div class="right"><b class="font-bold">최종수정일</b> : 2021-04-05</div>
 		<div class="center"><b class="font-bold">문의</b> : 1577-7114</div>
 	</div>
+	
+	
+<c:import url="footer.jsp" charEncoding="utf-8"/>  
+	
 </section>
+
 
 
 </body>

@@ -168,7 +168,7 @@ a{
 }
 .single-price {
 	text-align: center;
-	padding: 30px;
+	padding: 60px;
 	/* box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); */
 }
 .price-title h4 {
@@ -245,7 +245,6 @@ nav {
     vh단위는 브라우저 안쪽 높이(window.innerHeight)을 기준으로
     설정된다. 하지만 태블릿이나, 모바일의 경우에는 뷰 포트에 따라
     맞춰짐*/
-  min-height: 8vh;
   background-color: #504954;
   font-family: "Poppins", sans-serif;
 }
@@ -345,15 +344,24 @@ nav {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* 테이블 th 속성*/
-table thead th {
-    color: #FFFFFF;
-    background-color: #cccccc;
-    border: 1px solid #CCCCCC;
-    border-collapse: collapse;
-    text-align: center;
-    table-layout: auto;
-    vertical-align: middle;
+
+/* 테이블 속성 */
+.table-bordered {
+border: 1px solid #dddddd;
+border-collapse: separate;
+border-left: 0;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
+.table {
+width: 100%;
+margin-bottom: 20px;
+background-color: transparent;
+border-collapse: collapse;
+border-spacing: 0;
+display: table;
 }
 
 </style>
@@ -364,88 +372,10 @@ table thead th {
 
 
 <div class="all">
-<header>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-  <!-- Links -->
-  
-  <div>
-	 <a href=""><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
-	</div>
-  
-  <ul class="navbar-nav">
-<!-- Dropdown -->
-    <li class="nav-item dropdown" style="padding-top: 5px;">
-     <div class="dropdown">
-		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
-		  <div class="dropdown-content">
-		    <a href="#">채용공고</a>
-		    <a href="#">기업정보</a>
-		    <a href="#">취업톡톡</a>
-		    <a href="#">공채달력</a>
-		    <a href="pdslist.do">자료실</a>
-		    <a href="notice.do">공지사항</a>
-		  </div>
-		</div>
-    </li>
 
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">취업톡톡</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="pdslist.do" style="color:#2186eb">자료실</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
-    </li>
-    </ul>
-    
-   
-   <ul class="navbar-nav navbar-nav2">
-     <li class="nav-item">
-      <li class="nav-item">
-            <c:choose>
-               <c:when test="${login.memberid ne null }">
-                  <c:choose>
-                      <c:when test="${login.auth == 1}">
-                          <p><b>${login.name }</b>님 반갑습니다</p>
-                        </c:when>    
-                   <c:otherwise>
-                         <p><b>${login.name }</b>님</p>
-                   </c:otherwise>
-                </c:choose>         
-                </c:when> 
-             </c:choose>  
-        <div class="col-md-6">
-           <div class="">
-              <div class="login">
-                 <c:if test="${ empty login }">
-                     <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: white;background-color: #2186eb;">로그인</a>
-                    <!--    <a href="regi.jsp" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">회원가입</span></a> -->
-                </c:if>       
-              </div>
-         </div>
-      </div>   
-    </li>
-    
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
-    </li>
-  
+<c:import url="../header2.jsp" charEncoding="utf-8"/> 
 
-  </ul>
-</nav>
-<br>
 
  <!-- =========Login 클릭 시 Modal =========== -->
       <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" class="modal modal-center fade ">
@@ -486,8 +416,15 @@ table thead th {
 
 <!-- =======Login 클릭 시 Modal END =========-->
 
+
+
 <!-- 검색창 -->
-<section class="newsletter" style=" background-image:url('자료실1.PNG'); no-repeat; width: 2000px; ">
+<div style="width:980px;height: 1306px;border-style: solid;margin-top: 120px;margin-left: 400px;">
+
+
+
+
+<section class="newsletter" style=" background-image:url('자료실배경.png'); no-repeat; width: 100%; no-repeat; ">
 <div class="container" >
 <div class="row">
 <div class="col-sm-12">
@@ -503,7 +440,7 @@ table thead th {
                <div class="col-xl-12">
 				<div class="single-price">
 				  <div class="price-item">
-					<table class="list_table" style="width: 100%;border-left: solid;border-color: #cccccc;border-left-width: thin;border-bottom: solid;border-bottom-width: thin;border-bottom-color: #cccccc;"">
+					<table  class="table table-striped table-bordered" style="width: 100%;border-left: solid;border-color: #cccccc;border-left-width: thin;border-bottom: solid;border-bottom-width: thin;border-bottom-color: #cccccc;"">
 				<colgroup >
 					<col width="50" style=""><col width="300"><col width="75">
 					<col width="50"><col width="50">
@@ -526,7 +463,7 @@ table thead th {
 					</a>
 				</td>
 				<td>
-				 <button id="btnDown" class="btn btn-primary" type="button" style="width: 120px;height: 36px; background-color: #2186eb" onclick="filedown('${pds.newfilename}', '${pds.pdsseq }', '${pds.filename}')">
+				 <button id="btnDown" class="btn btn-primary" type="button" style="width: 98px;height: 36px; background-color: #2186eb" onclick="filedown('${pds.newfilename}', '${pds.pdsseq }', '${pds.filename}')">
 				 														Download</button>
 					<%-- <input type="button" name="btnDown" value="다운로드" 
 						onclick="filedown('${pds.newfilename}', '${pds.pdsseq }', '${pds.filename}')">	 --%>	
@@ -556,6 +493,7 @@ table thead th {
 </div>
 </c:if>
 
+</div>
 
 
 <!-- 다운로드 버튼을 클릭시 -->

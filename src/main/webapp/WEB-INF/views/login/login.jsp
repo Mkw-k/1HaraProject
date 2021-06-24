@@ -133,6 +133,17 @@ function check(form){
                       <label id="password-label" for="password" style="display: block;">비밀번호</label>
                       <input type="password" id="password" name="pwd" class="txt_tool" value="" maxlength="32">
                    </div>
+                   <c:if test="${msg == '실패'}">
+                  	<div>
+                  		아이디 또는 패스워드가 틀렸슨니다.
+                  	
+                  	</div>	
+                  	
+                  	<!-- 	<script>
+                  			alert('아이디 또는 패스워드가 틀렸습니다');                		
+                  		</script> -->
+                   </c:if>
+                   
                    <button type="submit" class="btn-login">로그인</button>
                  </div>
                  <p class="signup-forgotten">
@@ -390,6 +401,13 @@ function kakaoLogin() {
 }
 
 </script>
+<!-- 자바스크립트는 form태그의 id속성값을 이용하여 form태그에 접근이가능하다 -->
+<script type="text/javascript">
+	
+
+</script>
+
+
 
 </body>
 </html>

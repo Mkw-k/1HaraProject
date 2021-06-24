@@ -35,7 +35,7 @@
 </head>
 
 
-<c:import url="header.jsp" charEncoding="utf-8"/>
+<c:import url="../header2.jsp" charEncoding="utf-8"/> 
 
 
 <body class="bg">
@@ -51,12 +51,12 @@
  
  
   <div class="py-1" >
-    <div class="container">
+    <div class="container" style="margin-left: auto;margin-right: auto;">
       <div class="row">
         <div class="col-md-12" style="margin-bottom: 20px; border-style: outset;">
         <br>
-        <p>프리미엄 회원으로 등록을 원하시면 프리미엄 회원결제를 해주세요. <br>프리미엄 회원이 되시면 우선순위로 공고 최상단에 검색됩니다.</p>
-          <a style="color: blue;">프리미엄 회원 등록하러가기🏅</a><br><br><br>
+        <p>프리미엄 회원으로 등록을 원하시면 프리미엄 회원결제를 해주세요. <br>프리미엄 회원이 되시면 우선순위로 공고 최상단에 검색됩니다. <br>회원등록은 마이페이지 좌측 메뉴에서 프리미엄회원 [가입하기] 버튼을 누르시면 됩니다</p>
+          <a href="buspage.do?memberid=${login.memberid}" style="color: blue;">마이페이지로 이동(프리미엄 회원 등록하러가기)🏅</a><br><br><br>
           
         </div>
       </div>
@@ -64,10 +64,10 @@
     <div class="">
       
       
-      <div class="container" style="border-style: outset;">
+      <div class="container" style="border-style: outset;margin-left: auto;margin-right: auto;padding-bottom: 10px;padding-top: 10px;">
         
           <div class="col-md-12 order-md-1">
-            <form class="needs-validation" id="_recruitcrefrm" novalidate="" method="post">
+            <form class="needs-validation" id="_recruitcrefrm"  method="post">
               <h1 class="" id="_writeFrm1">기본입력사항</h1><br>
               <div class="row">
                 <div class="col-md-6 mb-3"> 
@@ -136,25 +136,25 @@
                         <option value="1"
                         <c:if test="${dto.career_Type == 1}">selected</c:if>>신입</option>
                         <option value="2"
-                        <c:if test="${dto.career_Type == 2}">selected</c:if>>1년</option>
+                        <c:if test="${dto.career_Type == 2}">selected</c:if>>1년이하</option>
                         <option value="3"
-                        <c:if test="${dto.career_Type == 3}">selected</c:if>>2년</option>
+                        <c:if test="${dto.career_Type == 3}">selected</c:if>>2년이하</option>
                         <option value="4"
-                        <c:if test="${dto.career_Type == 4}">selected</c:if>>3년</option>
+                        <c:if test="${dto.career_Type == 4}">selected</c:if>>3년이하</option>
                         <option value="5"
-                        <c:if test="${dto.career_Type == 5}">selected</c:if>>4년</option>
+                        <c:if test="${dto.career_Type == 5}">selected</c:if>>4년이하</option>
                         <option value="6"
-                        <c:if test="${dto.career_Type == 6}">selected</c:if>>5년</option>
+                        <c:if test="${dto.career_Type == 6}">selected</c:if>>5년이하</option>
                         <option value="6"
-                        <c:if test="${dto.career_Type == 7}">selected</c:if>>6년</option>
+                        <c:if test="${dto.career_Type == 7}">selected</c:if>>6년이하</option>
                         <option value="6"
-                        <c:if test="${dto.career_Type == 8}">selected</c:if>>7년</option>
+                        <c:if test="${dto.career_Type == 8}">selected</c:if>>7년이하</option>
                         <option value="6"
-                        <c:if test="${dto.career_Type == 9}">selected</c:if>>8년</option>
+                        <c:if test="${dto.career_Type == 9}">selected</c:if>>8년이하</option>
                         <option value="6"
-                        <c:if test="${dto.career_Type == 10}">selected</c:if>>9년</option>
+                        <c:if test="${dto.career_Type == 10}">selected</c:if>>9년이하</option>
                         <option value="6"
-                        <c:if test="${dto.career_Type == 11}">selected</c:if>>10년</option>
+                        <c:if test="${dto.career_Type == 11}">selected</c:if>>10년이하</option>
                       
                   	</select>
                   <div class="invalid-feedback"> Please provide a valid state. </div>
@@ -187,11 +187,19 @@
                <div class="row">
               <div class="col-md-12 mb-12">
 	               <p><label for="address">공고상세내역</label></p>
-	              	<div class="editor">${dto.jobContent }</div>
+	                   
+	                   <c:choose> 
+			               <c:when test="${dto.certifyUpdate == 'YES'}">
+			                  <div class="editor">${dto.jobContent}</div>                
+			               </c:when> 
+			              <c:otherwise>
+			                 <div class="editor"></div>
+			               </c:otherwise> 
+			            </c:choose> 
 	              	
 	              	
 	              	<input type="hidden" name="jobContent" id="_jobContent">
-	              	<a type="button" href="#_writeFrm2" class="btn btn-primary" style="float: right;">다음입력</a>              	 
+	              	<a type="button" href="#_writeFrm2" class="btn btn-primary" style="float: right; color: white;">다음입력</a>              	 
 	              
               </div>
               </div>
@@ -311,7 +319,7 @@
 					<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 			</div>
          	<br>
-          	<a type="button" href="#_writeFrm3" class="btn btn-primary" style="float: right;">다음입력</a>
+          	<a type="button" href="#_writeFrm3" class="btn btn-primary" style="float: right; color: white;">다음입력</a>
           </div>
         </div>
         
@@ -363,12 +371,12 @@
          	<c:choose> 
           		<c:when test="${dto.certifyUpdate == 'YES'}">
           			<br>
-          			<div class="col-md-12"><a class="btn btn-primary" href="javascript:jobUpdate();">수정하기</a></div>
+          			<div class="col-md-12"><a class="btn btn-primary" id="submit" href="javascript:jobUpdate();">수정하기</a></div>
           			<input type="hidden" value="${dto.jobSeq }" id="_jobSeq" name="jobSeq">          		
           		</c:when> 
         	    <c:otherwise>
         	    	<br>
-          			<div class="col-md-12"><a class="btn btn-primary" id="submit" href="javascript:jobRegi();">작성하기</a></div>
+          			<div class="col-md-12"><a class="btn btn-primary" id="submit" href="javascript:jobRegi();" style="color: white">작성하기</a></div>
           		</c:otherwise> 
           	</c:choose> 
           	
@@ -429,90 +437,263 @@
 <script type="text/javascript">
 
 
-function reseveSms() {
-	 $.ajax({
-	        url : "./reserveSendSms.do",
-	        type : "get",
-	        data: {"phonenum": '01026074128', "reserveDate" : '202106122323'},
-	        success:function(list){
-	           alert('success');
-	           //alert(list);
-			},
-	        error:function(){
-	           alert('error');
-	        }
 
-	      });
-}
 
 function jobRegi() {
- 
+	 
     var busValue = $("input[name='buscode']").length;
     var busData = new Array(busValue);
     
     for(var i=0; i<busValue; i++){                          
-    	busData[i] = $("input[name='buscode']")[i].value;
+       busData[i] = $("input[name='buscode']")[i].value;
     }
     
  
-    
-    //alert($(".editor").html());
-    //$("#_jobContent").val($(".editor").html());
-    
+    if($("input[name = companyId]").val()== ""){
+        alert('회사ID 입력창이 비어있습니다');
+        $("input[name = companyId]").focus();
+        return false;
+     }else if($("input[name = emp_Type]").val()== ""){
+  	   alert('고용타입을 선택해주세요');
+        $("input[name = emp_Type]").focus();
+        return false;
+     }else if($("input[name = education]").val()== ""){
+  	   alert('학력사항을 선택해주세요');
+  	      $("input[name = education]").focus();
+  	      return false;
+     }else if($("input[name = career_Type]").val()== ""){
+  	   alert('경력사항을 선택해주세요');
+  	      $("input[name = career_Type]").focus();
+  	      return false;
+     }else if($("input[name = jobVolumn]").val()== ""){
+  	   alert('채용인원수를 입력해주세요');
+  	      $("input[name = jobVolumn]").focus();
+  	      return false;
+     }else if($("input[name = salary]").val()== ""){
+  	   alert('급여를 입력해주세요');
+  	      $("input[name = salary]").focus();
+  	      return false;
+     }else if($("input[name = jobTitle]").val()== ""){
+  	   alert('공고제목을 입력해주세요');
+  	      $("input[name = jobTitle]").focus();
+  	      return false;
+     }else if($("input[name = buscode]").val()== ""){
+  	   alert('직무를 선택해주세요');
+  	      $("#_buscodeList1").focus();
+  	      return false;
+     }else if($("input[name = area1Name]").val()== ""){
+  	   alert('주소를 입력해주세요');
+  	      $("input[name = area1Name]").focus();
+  	      return false;
+     }else if($("input[name = area2Name]").val()== ""){
+  	   alert('상세주소를 입력해주세요');
+  	      $("input[name = area2Name]").focus();
+  	      return false;
+     }else if($("input[name = mgName]").val()== ""){
+  	   alert('담당자명을 입력해주세요');
+  	      $("input[name = mgName]").focus();
+  	      return false;
+     }else if($("input[name = mgPhone]").val()== ""){
+  	   alert('담당자연락처를 입력해주세요');
+  	      $("input[name = mgPhone]").focus();
+  	      return false;
+     }else if($("input[name = mgEmail]").val()== ""){
+  	   alert('담당자 이메일을 입력해주세요');
+  	      $("input[name = mgEmail]").focus();
+  	      return false;
+     }else if($("input[name = jobStart]").val()== ""){
+  	   alert('공고 시작일을 입력해주세요');
+  	      $("input[name = jobStart]").focus();
+  	      return false;
+     }else if($("input[name = jobEnd]").val()== ""){
+  	   alert('공고 종료일을 입력해주세요');
+  	      $("input[name = jobEnd]").focus();
+  	      return false;
+     }else{
+    	 $("#_recruitcrefrm").attr("action", "recuruitcreateAf.do").submit();
+     }
    
     
-   
     
-    $("#_recruitcrefrm").attr("action", "recuruitcreateAf.do").submit();
 
     
 }
 
 function jobUpdate() {
-	alert($("#_jobSeq").val());
-	
-	//alert("변경시작");
-	var areaname = $("#sample6_address").val();
-	
-	areaname = areaname.split(" ");
-	
-	alert(areaname);
-	//Area1Name쪽 변경된 데이터 변경 (자바쪽에서 nbsp split이 어려워서 nbsp를 ,로 변경)
-	$("#sample6_address").val(areaname);
-	
-	//alert($("#_areaName").val());
+   //alert($("#_jobSeq").val());
+   
+   //alert("변경시작");
+   var areaname = $("#sample6_address").val();
+   
+   areaname = areaname.split(" ");
+   
+   //alert(areaname);
+   //Area1Name쪽 변경된 데이터 변경 (자바쪽에서 nbsp split이 어려워서 nbsp를 ,로 변경)
+   $("#sample6_address").val(areaname);
+   
+   //alert($("#_areaName").val());
+   
+   if($("input[name = companyId]").val()== ""){
+	      alert('회사ID 입력창이 비어있습니다');
+	      $("input[name = companyId]").focus();
+	      return false;
+	   }else if($("input[name = emp_Type]").val()== ""){
+		   alert('고용타입을 선택해주세요');
+	      $("input[name = emp_Type]").focus();
+	      return false;
+	   }else if($("input[name = education]").val()== ""){
+		   alert('학력사항을 선택해주세요');
+		      $("input[name = education]").focus();
+		      return false;
+	   }else if($("input[name = career_Type]").val()== ""){
+		   alert('경력사항을 선택해주세요');
+		      $("input[name = career_Type]").focus();
+		      return false;
+	   }else if($("input[name = jobVolumn]").val()== ""){
+		   alert('채용인원수를 입력해주세요');
+		      $("input[name = jobVolumn]").focus();
+		      return false;
+	   }else if($("input[name = salary]").val()== ""){
+		   alert('급여를 입력해주세요');
+		      $("input[name = salary]").focus();
+		      return false;
+	   }else if($("input[name = jobTitle]").val()== ""){
+		   alert('공고제목을 입력해주세요');
+		      $("input[name = jobTitle]").focus();
+		      return false;
+	   }else if($("input[name = buscode]").val()== ""){
+		   alert('직무를 선택해주세요');
+		      $("#_buscodeList1").focus();
+		      return false;
+	   }else if($("input[name = area1Name]").val()== ""){
+		   alert('주소를 입력해주세요');
+		      $("input[name = area1Name]").focus();
+		      return false;
+	   }else if($("input[name = area2Name]").val()== ""){
+		   alert('상세주소를 입력해주세요');
+		      $("input[name = area2Name]").focus();
+		      return false;
+	   }else if($("input[name = mgName]").val()== ""){
+		   alert('담당자명을 입력해주세요');
+		      $("input[name = mgName]").focus();
+		      return false;
+	   }else if($("input[name = mgPhone]").val()== ""){
+		   alert('담당자연락처를 입력해주세요');
+		      $("input[name = mgPhone]").focus();
+		      return false;
+	   }else if($("input[name = mgEmail]").val()== ""){
+		   alert('담당자 이메일을 입력해주세요');
+		      $("input[name = mgEmail]").focus();
+		      return false;
+	   }else if($("input[name = jobStart]").val()== ""){
+		   alert('공고 시작일을 입력해주세요');
+		      $("input[name = jobStart]").focus();
+		      return false;
+	   }else if($("input[name = jobEnd]").val()== ""){
+		   alert('공고 종료일을 입력해주세요');
+		      $("input[name = jobEnd]").focus();
+		      return false;
+	   }else{
+		   $("#_recruitcrefrm").attr("action", "recuruitupdateAf.do").submit();
+	   }
 
-	$("#_recruitcrefrm").attr("action", "recuruitupdateAf.do").submit();
+   
 }
  
  
 
-	
-
-
-
 
 $(".btnRegister").click(function(){
-	
-	/* var start = $("#_jobStart").val().replace('T', '');
-	var end = $("#_jobEnd").val().replace('T', '');
-	
-	alert("start:" + start);
-	alert("end:" + end);
-	
-	
-	document.getElementByID("_jobStart").value = start;
-	document.getElementByID("_jobEnd").value = end;
-	
-	start = $("#_jobStart").val(); 
-	end = $("#_jobEnd").val();
-	
-	alert("start:" + start);
-	alert("end:" + end); */
-	
-	//$("#_recruitcrefrm").submit();	
+
 
 });
+
+
+/* 유효성검사 */
+function formChk(select) {
+   
+   var check = document.frm;
+   //alert(select);
+
+   
+   if($("input[name = companyId]").val()== ""){
+      alert('회사ID 입력창이 비어있습니다');
+      $("input[name = companyId]").focus();
+      return false;
+   }else if($("input[name = emp_Type]").val()== ""){
+	   alert('고용타입을 선택해주세요');
+      $("input[name = emp_Type]").focus();
+      return false;
+   }else if($("input[name = education]").val()== ""){
+	   alert('학력사항을 선택해주세요');
+	      $("input[name = education]").focus();
+	      return false;
+   }else if($("input[name = career_Type]").val()== ""){
+	   alert('경력사항을 선택해주세요');
+	      $("input[name = career_Type]").focus();
+	      return false;
+   }else if($("input[name = jobVolumn]").val()== ""){
+	   alert('채용인원수를 입력해주세요');
+	      $("input[name = jobVolumn]").focus();
+	      return false;
+   }else if($("input[name = salary]").val()== ""){
+	   alert('급여를 입력해주세요');
+	      $("input[name = salary]").focus();
+	      return false;
+   }else if($("input[name = jobTitle]").val()== ""){
+	   alert('공고제목을 입력해주세요');
+	      $("input[name = jobTitle]").focus();
+	      return false;
+   }else if($("input[name = buscode]").val()== ""){
+	   alert('직무를 선택해주세요');
+	      $("#_buscodeList1").focus();
+	      return false;
+   }else if($("input[name = area1Name]").val()== ""){
+	   alert('주소를 입력해주세요');
+	      $("input[name = area1Name]").focus();
+	      return false;
+   }else if($("input[name = area2Name]").val()== ""){
+	   alert('상세주소를 입력해주세요');
+	      $("input[name = area2Name]").focus();
+	      return false;
+   }else if($("input[name = mgName]").val()== ""){
+	   alert('담당자명을 입력해주세요');
+	      $("input[name = mgName]").focus();
+	      return false;
+   }else if($("input[name = mgPhone]").val()== ""){
+	   alert('담당자연락처를 입력해주세요');
+	      $("input[name = mgPhone]").focus();
+	      return false;
+   }else if($("input[name = mgEmail]").val()== ""){
+	   alert('담당자 이메일을 입력해주세요');
+	      $("input[name = mgEmail]").focus();
+	      return false;
+   }else if($("input[name = jobStart]").val()== ""){
+	   alert('공고 시작일을 입력해주세요');
+	      $("input[name = jobStart]").focus();
+	      return false;
+   }else if($("input[name = jobEnd]").val()== ""){
+	   alert('공고 종료일을 입력해주세요');
+	      $("input[name = jobEnd]").focus();
+	      return false;
+   }else{
+	   
+	/* 유효성검사 모두 확인후 서브및 실행 */
+	/* if(select == 'create'){
+		$("#_recruitcrefrm").attr("action", "recuruitcreateAf.do").submit();
+	}
+	else if(select == 'update'){
+		$("#_recruitcrefrm").attr("action", "recuruitupdateAf.do").submit();
+		
+	}
+
+ */	
+	   
+   }
+   
+}
+
+
 
 
 
@@ -564,6 +745,18 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
+
+
+</script>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
 
 
 //첫번째 BUSCODE1 DATA를 받아서 체크박스로 뿌려주는 코드
@@ -853,7 +1046,7 @@ $("#deleteResult").click(function() {
 	var busname = '${dto.busname}';
 	var busnameArr = busname.split(',');
 	
-	alert(busnameArr[0]);
+	//alert(busnameArr[0]);
 	cnt = 1; 
 	count = 1; 
 	
@@ -879,6 +1072,10 @@ var busData = new Array(busValue);
 for(var i=0; i<busValue; i++){                          
 	busData[i] = $("input[name='buscode']")[i].value;
 }
+
+
+
+
 
 
 
@@ -972,7 +1169,7 @@ for(var i=0; i<busValue; i++){
   //Assuming there is a <button id="submit">Submit</button> in your application.
     document.querySelector( '#submit' ).addEventListener( 'click', () => {
     	const editorData = editor.getData();
-  		alert("이게 에디터 데이터 : "+editorData);
+  		//alert("이게 에디터 데이터 : "+editorData);
 	    $("#_jobContent").val(editorData);
     } );
   

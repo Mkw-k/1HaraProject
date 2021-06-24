@@ -417,7 +417,6 @@ body { padding-top:20px; }
 }
 
 #header, #topbar, #featured_slide, #homecontent, #breadcrumb, #copyright {
-    display: flex;
     position: relative;
     margin: 0 auto;
     align-items: flex-start;
@@ -457,101 +456,7 @@ margin-right : 450px;
 <body>
 
 
-<div class="all">
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-  <!-- Links -->
-  
-  
-  <div>
-	 <a href="home.do"><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
-	</div>
-  
-  <ul class="navbar-nav">
-<!-- Dropdown -->
-
-	 <li class="nav-item">
-            <c:choose>
-            	<c:when test="${login.memberid ne null }">
-            		<c:choose>
-            			 <c:when test="${login.auth == 1}">
-             				 <p><b>[개인]${login.name }</b>님</p>
-             	 		 </c:when>	 
-             			<%-- <%-- <c:when test="${login ne null }">
-         				<p><b>${login.name }</b>님 반갑습니다. 사원으로 입장하셨습니다.</p>	
-         				</c:when> --%>
-             			<c:when test="${login.auth == 2}">
-             				<p><b>[사원]${login.name }</b>님</p>
-    					</c:when>
-    					<c:otherwise>
-             				<p><b>${login.name }</b>님</p>
-    					</c:otherwise>
-    				</c:choose>			
-            	 </c:when> 
-         	 </c:choose>  
-    </li>
-
-    <li class="nav-item dropdown" style="padding-top: 5px;">
-     <div class="dropdown">
-		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
-		  <div class="dropdown-content">
-		    <a href="#">채용공고</a>
-		    <a href="#">기업정보</a>
-		    <a href="jobtalk.do">취업톡톡</a>
-		    <a href="#">공채달력</a>
-		    <a href="#">자료실</a>
-		    <a href="notice.do">공지사항</a>
-		  </div>
-		</div>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link bgc" href="recuruitlist.do" style="color:#2186eb">채용공고</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="jobtalk.do" style="color:#2186eb">취업톡톡</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
-    </li>
-
-
-
-
-
-    
-    <li class="nav-item">
-
-
-     	 <a class="nav-link bgc" href="resumeMain.do" style="color: #2186eb;background-color: #fff;">이력서관리</a>
-
-    </li>
-    <li class="nav-item">
-
-       <c:if test="${login.auth==3}">
-          <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">회원관리</a> 
-      </c:if>
-   </li>
-   <li class="nav-item">
-      <c:if test="${login.memberid ne null}">   
-         <a href="logout.do" class="nav-link bgc" style="color: #2186eb;background-color: #fff;"><i class="fa fa-user"></i>로그아웃</a>
-      </c:if>   
-   </li>
-  </ul>
-</nav>
-<br>
-
-  
-</div>
+<c:import url="../header2.jsp" charEncoding="utf-8"/>  
 
 
 <div class="container" id="container">
@@ -630,23 +535,23 @@ margin-right : 450px;
 	</div>
 
 	<h5 class="sub-title-18 bul mb20 mt40">개인회원 대상 구직신청 절차</h5>
-	<img src="../../static/images/img-join-step-idv.png" alt="step1. 회원가입, step2. 이력서 및 자기소개서 등록, step3. 구직신청, step4. 입사지원">
+	
 	
 	<ul class="dot-list v1 mt10">
-		<li>워크넷에서 구직 서비스를 받기 위해서는 <span class="font-bold">워크넷 또는</span> 고용노동부에서 제공하는 <span class="font-bold">ONE-ID  회원가입</span>이 필요합니다.</li>
+		<li>일하라에서 구직 서비스를 받기 위해서는 <span class="font-bold">일하라 또는</span> 고용노동부에서 제공하는 <span class="font-bold">ONE-ID  회원가입</span>이 필요합니다.</li>
 		<li>이력서 등록 후 마이페이지에서 구직신청이 가능합니다.</li>
-		<li>구직신청 접수 후 개인 이력서는 <span class="font-bold">워크넷 인재정보에 공개되며, 입사지원 및 취업알선</span>을 받으실 수 있습니다.</li>
+		<li>구직신청 접수 후 개인 이력서는 <span class="font-bold">일하라 인재정보에 공개되며, 입사지원 및 취업알선</span>을 받으실 수 있습니다.</li>
 		<li><span class="font-bold">구직 인증은 약 3개월 간 유지</span>되며 기간이 만료된 후에는 다시 구직신청을 하셔야 입사지원을 하실 수 있습니다.</li>
 	</ul>
 	
 	<h5 class="sub-title-18 bul mb20 mt40">기업회원 대상 구인신청 절차</h5>
-	<img src="../../static/images/img-join-step-ent.png" alt="step1. 회원가입, step2. 구인신청, step3. 관할 고용센터 인증, step4. 채용관리">
+	
 	
 	<ul class="dot-list v1 mt10">
-		<li>워크넷에서 구인 서비스를 받기 위해서는 구인신청 과정을 통해 고용센터의 인증을 거쳐야 합니다.</li>
+		<li>일하라에서 구인 서비스를 받기 위해서는 구인신청 과정을 통해 고용센터의 인증을 거쳐야 합니다.</li>
 		<li>인증의 목적은 신뢰성을 높이고 허위 정보로 인한 폐해를 방지하고자 함입니다.</li>
 		<li>구인신청은 한 건 이상 하실 수 있으며, 고용센터의 인증을 받은 후 온라인 알선 등 다양한 서비스를 이용하실 수 있습니다.</li>
-		<li>구인신청 후 인증된 내용은 워크넷에 로그인 하시면 기업회원 서비스 홈에서 확인하실 수 있습니다.</li>
+		<li>구인신청 후 인증된 내용은 일하라에 로그인 하시면 기업회원 서비스 홈에서 확인하실 수 있습니다.</li>
 		<li>구인 인증은 약 2개월 간 유지되며 기간이 만료된 후에는 다시 구인신청을 하셔야 동일한 서비스 혜택을 받으실 수 있습니다.</li>
 	</ul>
 
@@ -656,7 +561,7 @@ margin-right : 450px;
 
 </div>
 
-
+<c:import url="../footer.jsp" charEncoding="utf-8"/>  
 
 </body>
 </html>

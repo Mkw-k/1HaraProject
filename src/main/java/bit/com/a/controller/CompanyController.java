@@ -17,7 +17,7 @@ public class CompanyController {
 	
 	@RequestMapping(value = "companydetail.do",  method = {RequestMethod.GET, RequestMethod.POST})
 	public String companydetail(Model model, String companyid) {
-		
+		System.out.println("companyid="+companyid);
 		
 		CompanyDto dto = service.getCompany(companyid);
 		model.addAttribute("company", dto);
@@ -30,12 +30,13 @@ public class CompanyController {
 	
 	
 	@RequestMapping(value = "companywrite.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String companywrite() {
-		
-		System.out.println("올까요?");
-		
-		return "company/companywrite";
-	}
+	   public String companywrite(Model model , CompanyDto dto, String companyid) {
+	      
+	      System.out.println("올까요?");
+	      dto = service.getCompany(companyid);
+	      model.addAttribute("company", dto);
+	      return "company/companywrite";
+	   }
 	
 	@RequestMapping(value = "companywriteAf.do",  method = {RequestMethod.GET, RequestMethod.POST})
 	public String companywriteAf(Model model, CompanyDto dto) {
@@ -55,24 +56,23 @@ public class CompanyController {
 			/* return "company/companywrite"; */
 			return "company/companywrite";
 		}
-		return "redirect:/recuruitlist.do";
+		return "company/companydetail";
 	}
 	
 	@RequestMapping(value = "companyupdate.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String companyupdate(Model model, String memberid) {
-		
-		System.out.println("update");
-		/*
-		//페이지 받아오기 
-		CompanyDto dto = service.getCompany(memberid);
-		System.out.println("아이디: "+dto.getMemberid());
-		
-		
-		model.addAttribute("company",dto);
-		System.out.println("af투스트링" + dto.toString());
-		*/
-		return "company/companyupdate";
-	}
+	   public String companyupdate(Model model, String companyid) {
+	      
+	      System.out.println("update");
+	      
+	      //페이지 받아오기 
+	      CompanyDto dto = service.getCompany(companyid);
+	      
+	      
+	      model.addAttribute("company",dto);
+	      
+	   
+	      return "company/companyupdate";
+	   }
 	
 		
 	@RequestMapping(value = "companyupdateAf.do", method = {RequestMethod.GET, RequestMethod.POST})
@@ -89,8 +89,10 @@ public class CompanyController {
 			System.out.println("업데이트실패");
 		}
 		
-	
-		return "redirect:/recuruitlist.do";
+		String companyid = dto.getMemberid(); 
+		model.addAttribute("companyid", companyid);
+		
+		return "redirect:/companydetail.do";
 	}
 	
 	

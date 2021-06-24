@@ -14,6 +14,13 @@
 <link href="csss/write.css" rel="stylesheet" type="text/css">
 
 </head>
+
+
+
+<c:import url="../header2.jsp" charEncoding="utf-8"/>
+
+
+
 <body class="qnaWrapBody">
 
 	<div id="wrap">
@@ -29,30 +36,23 @@
 						</span>
 						<dl class="infoBx">
 							<dt class="qnaSpA">
-								<span class="nickname">mentor0642669</span> 
-								<span class="lvIcon">Lv.1</span>
+								<span class="nickname">${login.name}</span> 
+							
 							</dt>
-							<dd>
-								<span>질문 0</span>
-								<span>답변 0 (채택 0)</span>
-							</dd>
 						</dl>
 					</a>
-					<button type="button" class="myPoint devMainCouponButton">
-						<span class="point qnaSpB">0</span><span class="btnCoupon qnaSpA">쿠폰교환</span>
-					</button>
 				</div>
 			</div>
 			<div class="navi-list-area">
 			<!-- [Dev] 메뉴 on : 클래스 active 추가 -->
 				<div class="sideNavLow">
-					<strong class="sideNavTit"><a id="devLeftMenuRequireTag" href="/User/Qstn/Index?MainType=1" data-tab="1" class="devLoginLayer " devalert="0">답변하기</a></strong>
+					<strong class="sideNavTit"><a id="devLeftMenuRequireTag" href="#" data-tab="1" class="devLoginLayer " devalert="0">답변하기</a></strong>
 				</div>
 				<div class="sideNavLow">
-					<strong class="sideNavTit"><a id="devLeftMenuOwnerTag" href="/User/Qstn/Index?MainType=2" data-tab="2" class="devLoginLayer " devalert="0">나의질문</a></strong>
+					<strong class="sideNavTit"><a id="devLeftMenuOwnerTag" href="#" data-tab="2" class="devLoginLayer " devalert="0">나의질문</a></strong>
 				</div>
 				<div class="sideNavLow">
-					<strong class="sideNavTit"><a id="devLeftMenuEntireTag" href="/User/Qstn/Index?MainType=3" data-tab="3" class="">전체질문</a></strong>
+					<strong class="sideNavTit"><a id="devLeftMenuEntireTag" href="jobtalklist.do" data-tab="3" class="">전체질문</a></strong>
 				</div>
 				
 				<div class="sideNavLow has-tooltip">
@@ -63,10 +63,10 @@
 						<span class="skip">나의그룹 설명 보기</span>
 					</button>
 					<ul class="sideNavList">
-									<li><a href="/User/Qstn/QstnBizGroup?GroupCode=1000100">웹프로그래머</a></li>
-									<li><a href="/User/Qstn/QstnBizGroup?GroupCode=1000101">응용프로그래머</a></li>
-									<li><a href="/User/Qstn/QstnBizGroup?GroupCode=1000109">빅데이터·AI(인공지능)</a></li>
-									<li><a href="/User/Qstn/QstnUnivGroup?GroupCode=C0033">김포대학</a></li>
+									<li><a href="#">👦</a></li>
+									<li><a href="#">👩</a></li>
+									<li><a href="#">🧑</a></li>
+									<li><a href="#">👨</a></li>
 						<!-- [Dev] 신규 아이콘 : 클래스 icnNew 추가 -->
 					</ul>
 
@@ -83,13 +83,12 @@
 </div>
 
 
-
         <div id="container">
             <!-- 쓰기 : qnaWriteWrap -->
             <div id="content" class="qnaWriteWrap devQnaWriteLayer">
                 <input type="hidden" id="devGno" name="devGno" value="0">
                 <div class="top-title-wrap">
-                    <h2 class="title"><em>${login.name}</em>님, 어떤 선배들에게 질문하시겠어요?</h2>
+                    <h2 class="title"><em>${login.name}</em>님, 어떤것을 질문하시겠어요?</h2>
                 </div>
                 <div class="lyWriteBoard">   
                     <div class="writeBoxWrap">
@@ -110,15 +109,7 @@
                                     </span>
 
                                 </div>
-                                <div class="agreecheckbox checkboxCommWrap">
-                                    <input type="checkbox" id="lb_agreePoint" class="skip">
-                                    <label for="lb_agreePoint" class="lb_agreePoint qnaSpB">답변 채택 포인트 추가 (1,100원)<span class="info">일하라의 기본 포인트와 합해져 총 1,500P가 채택된 답변자에게 지급됩니다</span></label>
-                                    <p class="txtLayer qnaSpA">답변 채택 포인트를 추가하면, 답변율과 정확도가 높아져요!
-                                    	<button type="button" class="btn-txtLyer-close qnaSpB">
-                                    		<span class="blind">닫기</span>
-                                    	</button>
-                                    </p>
-                                </div>
+                               
                                 <div class="btnCommWrap">
                                     <button type="submit" class="btnQuestion devQnaWriteButton">질문하기</button>
                                     <button type="button" onclick="cancle()" class="btnCancel bg_white devQnaWriteCancelButton">취소</button>
@@ -144,6 +135,8 @@
 		}
 	
 	</script>
+	
+	<c:import url="../footer.jsp" charEncoding="utf-8"/>
 	
 	
 </body>

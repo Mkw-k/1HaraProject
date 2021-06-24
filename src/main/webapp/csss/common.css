@@ -3078,7 +3078,7 @@ button.iconset {border:0;background-color:transparent;}
 
 /* gnb */
 /*#gnb {position:relative; background-color:#3683c3; min-width:1160px;}*/
-#gnb {position:relative; background-color:#1b82ea; min-width:1160px;}/* 고대비 작업 */
+#gnb {position:relative; background-color:#1b82ea;}
 #gnb > ul {display:block; width:1160px; margin:0 auto; position:relative;}
 #gnb .background {width:100%; position:absolute; top:50px; left:0; z-index:101; background-color:#fff; content:""; border-bottom:1px solid #3683c3}
 #gnb ul:before,
@@ -3192,6 +3192,8 @@ button.iconset {border:0;background-color:transparent;}
 
 /* container */
 .container {width:100%; min-height:100%; margin:-180px 0 -227px 0; padding:180px 0 307px 0;}
+.containeer {width:100%; min-height:100%; }
+
 .container.footer-open {margin:-180px 0 -443px 0; padding:180px 0 523px 0;}
 /* .container.bg-gray {background-color:#f1f4f6;} */
 .container .sub-util {height:48px; border-bottom:1px solid #e6e6e6; background-color:#fff;}
@@ -3250,7 +3252,7 @@ button.iconset {border:0;background-color:transparent;}
 #lnb .lnb-one-id {margin:10px 0 0 0;}
 #lnb .lnb-one-id .button {display:block; padding:0; font-size:0.9286em;}
 
-#contents {float:left; width:920px; background-color:#fff;}
+#contents {width:920px; background-color:#fff;}
 #contents .tit-util {position:relative; padding:0;}
 #contents .tit-util:before,
 #contents .tit-util:after {content:''; display:table;}
@@ -4123,7 +4125,7 @@ select, input, option, textarea{font-family:"맑은 고딕", Malgun Gothic, "돋
 .qnaSpB:before, .qnaSpA:after, .qnaSpM:before, .qnaSpM:after{content:""; display:inline-block; background-image:url("/content/images/user/qna/sp_qna.png?202007280011"); background-repeat:no-repeat; background-position:0 0; vertical-align:middle;}
 
 /* layout */
-body{min-width:1200px; background-color:#f3f5f7;}
+body{min-width:1200px;}
 #adTopWrap{width:1200px;}
 #wrap{margin:0 auto; width:1200px;}
 #wrap:after{content:""; clear:both; display:block; visibility:hidden; font-size:0; height:0;}

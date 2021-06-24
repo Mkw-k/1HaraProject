@@ -14,15 +14,17 @@
 <body>
 
 
-<!-- 헤더생성기 (붙여넣기전 코어태그 생성하세요)-->
-<c:import url="script.jsp" charEncoding="utf-8"/>
-<c:import url="header.jsp" charEncoding="utf-8"/>  
-<!-- 헤더 생성기 끝 -->
+
+<c:import url="header2.jsp" charEncoding="utf-8"/>  
 
 
 
 
-<div class="inner-wrap">
+<div class="inner-wrap" style="
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 30px;
+">
 
 
 
@@ -90,217 +92,6 @@ function choiceWantedList(tag){
 </script>
 
 
-<nav id="lnb">
-
-<p class="tit"><a href="/useInfo/worknetInfo/useWorknetGuide.do">이용안내</a></p>
-
-
-
-
-<ul>
-
-
-
-
-	
-		
-		
-		
-		
-			<li>
-				<a href="/useInvite/worknetHomepgInvite/worknetIntro.do" target="_self">워크넷 소개
-			</a>
-			<button class="btn-show">일하라 소개
-			 메뉴 닫기</button>
-			
-		
-	
-
-	
-		
-		
-		
-		
-			</li><li>
-				<a href="/useInfo/worknetInfo/useWorknetSnsLogin.do" target="_self">홈페이지 이용방법
-			</a>
-			<button class="btn-show">홈페이지 이용방법
-			 메뉴 닫기</button>
-			
-		
-	
-
-	
-		
-		
-		
-		
-			</li><li>
-				<a href="/contents.do?relAddr=/useInfo/servAppInfo/eEmpServIntro&amp;titleId=UIFG000003" target="_self">e-채용마당 서비스
-			</a>
-			<button class="btn-show">e-채용마당 서비스
-			 메뉴 닫기</button>
-			
-		
-	
-
-	
-		
-		
-		
-		
-			</li><li>
-				<a href="/useInvite/worknetHomepgInvite/useClause1.do" target="_self">워크넷 정책
-			</a>
-			<button class="btn-show">일하라 정책
-			 메뉴 닫기</button>
-			
-		
-	
-
-	
-		
-		
-		
-		
-			</li><li>
-				<a href="/useInvite/worknetHomepgInvite/securityLvl4.do" target="_self">프로그램 다운로드
-			</a>
-			<button class="btn-show">프로그램 다운로드
-			 메뉴 닫기</button>
-			
-		
-	
-
-	
-		
-		
-		
-			
-				
-				
-					</li><li>
-						<a href="/useInfo/admvTerm/retrieveAdmvTermList.do" target="_self">일하라 행정용어사전
-							
-							
-						</a>
-					</li>
-				
-			
-
-		
-		
-	
-
-	
-		
-		
-		
-			
-				
-				
-					<li>
-						<a href="/useInfo/lieJobadRpt/lieJobadRptList.do" target="_self">거짓구인광고신고
-							
-							
-						</a>
-					</li>
-				
-			
-
-		
-		
-	
-
-	
-		
-		
-		
-			
-				
-				
-					<li>
-						<a href="/useInfo/workContract/workContractInfo.do" target="_self">근로계약서 작성 가이드
-							
-							
-						</a>
-					</li>
-				
-			
-
-		
-		
-	
-
-	
-		
-		
-		
-		
-			<li>
-				<a href="/useInvite/worknetHomepgInvite/sitemap.do" target="_self">사이트맵
-			</a>
-			<button class="btn-show">사이트맵
-			 메뉴 닫기</button>
-			
-		
-	
-
-	
-		
-		
-		
-			
-				
-				
-					</li><li>
-						<a href="http://openapi.work.go.kr/opiMain.do" target="_blank" title="새창">OPEN API
-							
-							
-						</a>
-					</li>
-				
-			
-
-		
-		
-	
-
-	
-		
-		
-		
-			
-				
-				
-					<li>
-						<a href="http://as82.kr/keis" target="_blank" title="새창">원격제어
-							
-							
-						</a>
-					</li>
-				
-			
-
-		
-		
-	
-
-	
-	<li><a href="#" class="worknet-chatbot-start-button-for-client">일하라 챗봇(시범)</a></li>
-	
-</ul>
-</nav>
-
-
-
-
-
-
-
-
-
-
 
 <!-- contents -->
 <section id="contents">
@@ -317,8 +108,6 @@ function choiceWantedList(tag){
 	<div class="tab-list">
 		<ul>
 			<li class="curr" title="선택됨" style="min-width: 240px;"><a href="#"><span>개인회원 이용약관</span></a></li>
-			<li style="min-width: 240px;"><a href="/useInvite/worknetHomepgInvite/useClause2.do"><span>기업회원 이용약관</span></a></li>
-			<li style="min-width: 240px;"><a href="/useInvite/worknetHomepgInvite/useClause3.do"><span>위치서비스 이용약관</span></a></li>
 		</ul>
 	</div><h3 class="ir">개인회원 이용약관 탭 화면 입니다.</h3>
 	
@@ -359,7 +148,7 @@ function choiceWantedList(tag){
 	<h4 class="sub-title-18 bul mb15">제 5 조 (적용범위)</h4>
 	<ol class="decimal-list mb40">
 		<li>이 약관은 고용안정정보망(1hara)의 이용자에게 적용합니다.</li>
-		<li>이 약관은 고용안정정보망(1hara)의 패밀리사이트(지역워크넷, 사이버진로교육센터 등)와 한국장애인고용공단의 워크투게더(<a href="http://www.worktogether.or.kr" target="_blank" class="a-link">http://www.worktogether.or.kr</a>) 통합회원에게도 동일하게 적용합니다.</li>
+		<li>이 약관은 고용안정정보망(1hara)의 패밀리사이트(지역일하라, 사이버진로교육센터 등)와 한국장애인고용공단의 워크투게더(<a href="http://www.worktogether.or.kr" target="_blank" class="a-link">http://www.worktogether.or.kr</a>) 통합회원에게도 동일하게 적용합니다.</li>
 		<li>이 약관에 명시되지 아니한 사항에 대해서는 관계 법령 및 서비스별 이용안내의 취지에 따라 적용할 수 있습니다.</li>
 	</ol>
 
@@ -536,7 +325,7 @@ function choiceWantedList(tag){
 	</ol>
 
 	<div class="manager-info">
-		<div class="left"><b class="font-bold">담당부서</b> : 워크넷팀</div>
+		<div class="left"><b class="font-bold">담당부서</b> : 일하라팀</div>
 		<div class="right"><b class="font-bold">최종수정일</b> : 2015-06-24</div>
 		<div class="center"><b class="font-bold">문의</b> : 1577-7114</div>
 	</div>

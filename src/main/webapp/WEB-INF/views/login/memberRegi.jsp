@@ -77,254 +77,21 @@ body {
 <body>
 
 
-
-<!-- 상단바 -->
-<nav class="navbar navbar-expand-md sticky-top" style="text-shadow: white 0px 0px 0.2px; box-shadow: black 0px 0px 10px;" id="nav-main"><a class="navbar-brand d-none d-md-block ml-3" href="home.do">
-      <img alt="" src="/sample10/image/흰로고다.gif" id="_logo" height="80" width="160" style="float:left; padding-right: 20px">
-
-    </a>
-    <div class="container-fluid" style="margin-left: 120px;"> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar19" style="">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbar19" style="
-    margin-right: 50px;
-">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <div style="position: relative; text-align: right;">
-              <button class="btn dropdown-toggle btn-link" data-toggle="dropdown"> 전체보기</button>
-              <div class="dropdown-menu" style="">
-                <a class="dropdown-item" href="#">Action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-              </div>
-            </div>
-          </li>
-
-      <li class="nav-item">
-            <div style="position: relative;
-    text-align: right;">
-              <button class="btn dropdown-toggle btn-link" data-toggle="dropdown"> 채용공고</button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="recuruitlist.do">채용공고 목록으로</a>
-               <!--  <div class="dropdown-divider"></div> -->
-                <a class="dropdown-item" href="javascript:createRecruitNew()">채용공고 작성 New</a>
-              </div>
-            </div>
-          </li>
-
-
-          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">기업정보</a> </li>
-          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">취업톡톡</a> </li>
-          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">공채달력</a> </li>
-          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">자료실</a> </li>
-          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">이력서관리</a> </li>
-          <li class="nav-item font-weight-bold"> <a class="nav-link active" href="#">기업관리</a> </li>
-
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item"> <a class="nav-link" href="#">
-              <i class="fa fa-twitter fa-fw text-primary"></i>
-            </a> </li>
-          <li class="nav-item">
-            <div style="
-   	position: relative;
-    text-align: right;
-    margin-left: 500px;
-    ">
-          <div class="btn-group"> <!--  -->
-              <button class="btn dropdown-toggle  btn-link" data-toggle="dropdown">로그인해주세요</button>
-              <!-- <button class="btn dropdown-toggle btn-link " data-toggle="dropdown">이주영 님</button> -->
-              <div class="dropdown-menu" style=""> <a class="dropdown-item" href="#">Action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-              </div>
-            </div><a class="btn" style="background-color: #000000; color: #fff !important;" href="#">로그인</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-
-<script type="text/javascript">
-$(function() {
-      $(window).scroll(function() {
-         //ADD CLASS
-         if ($(".navbar").offset().top > 90) {
-            //바탕색상변경
-           $(".sticky-top").addClass("top-nav-collapse");
-            //폰트색상 변경
-            $(".navbar a").addClass("text-light");
-            //드랍다운색상 변경
-            $(".navbar li button").addClass("text-light");
-            //드랍다운 밑에 있는 a태그도 변경
-            $(".navbar li button a").addClass("text-dark");
-            //이미지 변경
-            $("#_logo").attr("src", "<%=request.getContextPath() %>/image/흰 로고 반전.gif");
-         } else {
-            $(".sticky-top").removeClass("top-nav-collapse");
-            $(".navbar a").removeClass("text-light");
-            $(".navbar li button").removeClass("text-light");
-            $(".navbar li button a").removeClass("text-dark");
-            $("#_logo").attr("src", "<%=request.getContextPath() %>/image/흰로고다.gif");
-         }
-      });
-   });
-</script>
-<!-- 상단바 끝 -->
+<c:import url="../header2.jsp" charEncoding="utf-8"/>  
 
 
 
 
-
-
-
-
-
-<div class="container" style="text-align: center;">
+<div class="container" style="text-align: center;margin-left: auto;margin-right: auto; background-color: #1b82ea17;">
 
 
 <nav id="lnb">
-	<!-- S : 2018-09-28 추가 -->
-	<p class="tit"><a href="/indivMemberSrv/main/indivMemberSrvMain.do">회원가입</a></p>
-	<!-- E : 2018-09-28 추가 -->
-	<ul>
-		<li>
-			<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">이력서관리·구직신청</a>
-			<button class="btn-show">이력서관리·구직신청 메뉴 닫기</button>
-			<div class="depth3">
-				<ul>
-					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveResumeRegTp.do" target="_self">이력서 등록</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/retrieveSelfIntroRegIntro.do" target="_self">자기소개서 등록</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeSelfIntroMng.do" target="_self">이력서·자기소개서 관리</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeAtchFileMngList.do" target="_self">첨부파일 관리</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeMngMain.do" target="_self">워크넷 구직신청 </a>
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">입사지원 관리</a>
-			<button class="btn-show">입사지원 관리 메뉴 닫기</button>
-			<div class="depth3">
-				<ul>
-					<li>
-						<a href="/indivMemberSrv/aplentMng/aplentHist/emailAplentHistList.do" target="_self">알선/입사지원 내역</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/aplentMng/seekActvHist/seekActvHistList.do" target="_self">구직활동내역</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/aplentMng/offerCo/offerCoList.do" target="_self">입사제안/스크랩한 기업</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/seekApplyAdmin/resumeMng/resumeReadList.do" target="_self">이력서 열람기업</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/intrstInfo/mailToEmpList.do" target="_self">채용담당자와 한마디</a>
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">나의 맞춤정보</a>
-			<button class="btn-show">나의 맞춤정보 메뉴 닫기</button>
-			<div class="depth3">
-				<ul>
-					<li>
-						<a href="/indivMemberSrv/custmadeInfoMng/custmadeInfoList.do" target="_self">맞춤채용 관리</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/theWork/retrieveTheWorkInfo.do" target="_self">The Work AI추천</a>
-					</li>
-					<li>
-					<a href="#openPopup" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; keis.window.newWindow('/empInfo/customWorkSupportSrv/custSupportMain.do?loginAction=Y', 'pop', 1010, 780, 'yes'); return false;" target="_blank" title="새창">취업나침반</a>
-						<script type="text/javascript">
-							window.name = "mdmOpener";
-						</script>
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">나의 관심정보</a>
-			<button class="btn-show">나의 관심정보 메뉴 닫기</button>
-			<div class="depth3"><ul>
-					<li>
-						<a href="/indivMemberSrv/intrstInfo/myBookmkEmpInfoList.do" target="_self">관심스크랩(찜)</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/intrstInfo/seekEmpInfoSrchHist.do?srchType=3" target="_self">최근 본 채용공고</a>
-					</li>
-					<li>
-						<a href="/empInfo/empInfoSrch/calendar/myCalendarMonth.do" target="_blank">마이캘린더</a>
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			<a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">e-채용마당 서비스</a>
-			<button class="btn-show">e-채용마당 서비스 메뉴 닫기</button>
-			<div class="depth3">
-				<ul>
-					<li>
-						<a href="/empAgencySvc/wApApplication/wApApplicationList.do" target="_self">지원서관리</a>
-					</li>
-					<li>
-						<a href="/eas/indivMemberSrv/employNotice/wNoInterest.do" target="_self">관심정보관리</a>
-					</li>
-					<li>
-						<a href="/eas/indivMemberSrv/employJudge/employJudgeList.do" target="_self">심사평가관리</a>
-					</li>
-					<li>
-						<a href="/empAgencySvc/empBoard/wBuBoardList.do" target="_self">채용게시판</a>
-					</li>
-				</ul>
-			</div>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/intrstInfo/joinResult.do" target="_self">온라인 신청관리</a>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/myCustmadeSrvList.do" target="_self">
-				고용복지 맞춤서비스
-			</a>
-		</li>
-		<li>
-			<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 관리</a>
-			<button class="btn-show">회원정보 관리 메뉴 닫기</button>
-			<div class="depth3">
-				<ul>
-					<li class="curr">
-						<a href="/indivMemberSrv/custInfoAdmin/retrieveIndivCustInfo.do" target="_self">회원정보 조회</a>
-					</li>
-					<li>
-						<a href="mypageUpdate.do" target="_self">회원정보 수정(성명변경)</a>
-					</li>
-					<li>
-						<a href="/indivMemberSrv/custInfoAdmin/modifyIndivCustPwdView.do" target="_self">비밀번호 변경</a>
-					</li>
-					<li>
-						<a href="memberDelete.do" target="_self">회원탈퇴</a>
-					</li>
-				</ul>
-			</div>
-		</li>
-	</ul>
+	
+	
 </nav>
 
 
-    <form method="post" id="myForm" enctype="multipart/form-data" style="border-style: outset;padding-right: 30px;padding-left: 30px;padding-top: 30px;padding-bottom: 30px;width: 466px;margin-left: 500px;">
+    <form method="post" id="myForm" enctype="multipart/form-data" style="border-style: outset;padding-right: 30px;padding-left: 30px;padding-top: 30px;padding-bottom: 30px;width: 466px;margin-left: auto;margin-right: auto;">
         <div class="form-group has-feedback">
 
         <!-- 프로필 사진 -->
@@ -401,14 +168,7 @@ $(function() {
               <input type="text" class="form-control" id="name" name="name" placeholder="">
         </div>
 
-       <!--  <div class="form-group has-feedback">
-           <label class="control-label" for="registrationNum">주민등록번호</label><br>
-              <input class="form-control1" type="text" name="unum1" id="unum1">-</input>
-              <input class="form-control1" type="password" name="unum2" id="unum2"/><br>
-              <input type="button" value="검사" style="border-radius:5px; font-s" onclick="validate();" />
-              <input type="reset" value="다시입력" style="border-radius:5px;" />
-              <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-        </div> -->
+    
         <div class="form-group has-feedback">
         	<label class="control-label" for="registrationNum">주소</label>
         		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
@@ -426,7 +186,7 @@ $(function() {
 			   <input type="text" class="form-control" name="phonenum" id="to" placeholder="전화번호를 입력해주세요.(-는 빼고 적어주세요) ex)01011112222 ">
 			   <p id="phoneCheck" style="font-size: 12px"></p>
 			  	<input type="button" class="btn btn-secondary" id="send" name="phoneBtn" value="본인 인증">
-			   <input type="hidden" name="text" id="text">   인증번호를 히든으로 저장해서 보낸다
+			   <input type="hidden" name="text" id="text">
 		   </div>
 			   <br>
 		</div>
@@ -455,7 +215,11 @@ $(function() {
         <button class="btn btn-success" id="_btnRegi" type="submit">가입</button>
     </form>
 </div>
-<!-- <script src="/js/jquery-3.2.1.js"></script> -->
+
+
+
+<c:import url="../footer.jsp" charEncoding="utf-8"/>  
+
 <script>
 
    // 가입버튼 클릭시
@@ -916,56 +680,8 @@ $(function() {
 
 
 </script>
- <!-- ==============FOOTER================= -->
-      <footer class="main-footer">
-         <div id="footer">
-         <div class="middle-area">
-            <div class="inner-wrap">
-               <div class="link-footer">
-                  <a href="/useInvite/worknetHomepgInvite/worknetIntro.do">일하라 소개</a>
-                  <a href="/useInvite/worknetHomepgInvite/useClause1.do">이용약관</a>
-                  <a href="/useInvite/worknetHomepgInvite/indivInfoPrtecPolicy.do"><b>개인정보처리방침</b></a>
-                  <a href="/useInvite/worknetHomepgInvite/emailAddrWonoticeGatherRefuse.do">이메일주소무단수집거부</a>
-                  <a href="/useInvite/worknetHomepgInvite/webAccessPlcy.do">웹접근성정책</a>
-                  <a href="/useInvite/worknetHomepgInvite/cprgtPolicyAsAllianceInq.do">저작권정책 및 제휴문의</a>
-                  <a href="http://openapi.work.go.kr" target="_blank">Open API</a>
-                  <a href="/contents.do?relAddr=/useInvite/worknetHomepgInvite/workBanner&amp;titleId=UIFG000001">배너 가져가기</a>
-                  <a href="/useInfo/lieJobadRpt/lieJobadRptList.do">거짓구인광고 신고</a>
-               </div>
-            </div>
-         </div>
-
-      <div class="bottom-area">
-         <div class="inner-wrap">
-            <div class="link-logo">
-               <a href="http://www.moel.go.kr/" class="bg-logo-moel" target="_blank" title="새창 열림">고용노동부</a>
-               <a href="http://www.keis.or.kr/" class="bg-logo-keis" target="_blank" title="새창 열림">한국고용정보원</a>
-            </div>
-
-            <div class="info">
-               <address class="address">
-                  서울특별시 마포구 신수동 63-14 비트캠프 신촌센터
-               </address>
-               <p class="copy">
-                  Copyright © 2021 <span class="bg-txt-moel">고용노동부</span> <span class="bg-txt-keis">한국고용정보원</span> all rights reserved.
-               </p>
-               <p class="txt">
-                  일하라 이용문의 1haramaster@keis.or.kr 1577-7114(유료)
-               </p>
-            </div>
-            <img src="./static/images/mainlogo.png">
-            <div class="etc">
-               <a href="/images/useInfo/certification_kor2015.jpg" target="_blank" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; var remote = window.open('https://www.eprivacy.or.kr/front/certifiedSiteMark/certifiedSiteMarkPopup.do?certCmd=E&amp;certNum=2021-E-R001','EPRIVACY','width=527,height=720'); remote.focus(); return false;" title="새창"><img src="./static/images/brn-epriavcy.png" alt="개인정보보호우수사이트 인증서"></a>
-                        <a href="/html/wauMark2020_worknet.html" onclick="try { latte.getEvent(event).stop(); } catch (ex) {};window.open(this.href,'mark2020','width=605,height=850,scrollbars=no');return false;" title="새창" target="_blank" style="margin-top:-3px"><img src="./static/images/brn-wa-2019.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)"></a>
-
-            </div>
-         </div>
-      </div>
-   </div>
-   </footer>
-      <!-- ==============FOOTER END================= -->
-
-
+ 
+ 
 
 </body>
 </html>

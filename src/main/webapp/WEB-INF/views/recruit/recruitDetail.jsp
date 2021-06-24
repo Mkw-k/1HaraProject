@@ -77,16 +77,19 @@ if(logincheck != null) {
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=685fcbb766340d7c8812f4e0a29a6661&libraries=services"></script>
 	<link href="csss/gnb.css" rel="stylesheet" type="text/css">
 	<link href="csss/view.css" rel="stylesheet" type="text/css">
-	
-	
+
 <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> 
 <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	 -->
-	
-	
 
  <!-- 전체 공통 스크립트 임포트 -->
   <c:import url="script.jsp" charEncoding="utf-8"/>
+  
+  <!-- 캐러셀 탑텐 -->
+
+
+
+
 <style type="text/css">
 .star-on {
   color: gray;
@@ -124,6 +127,8 @@ p{
 
 .companydetail{
 display: flex;
+padding-top: 3px;
+padding-bottom: 3px;
 }
 
 .jobtitle{
@@ -181,6 +186,7 @@ white{
    background-color: rgba( 255, 255, 255, 0 );
   }
   
+
 
 /* carousel */
 .blog_section {
@@ -339,6 +345,9 @@ white{
     height: 200px;
 }
 
+  
+  
+
 </style>
 
 
@@ -346,43 +355,36 @@ white{
 <body>
 
 
+<c:import url="../header2.jsp" charEncoding="utf-8"/> 
 
 
-  <div class="py-0 pt-3" style="background-color: #2186eb; color: white; height: 174px;">
+<div style="width:1260px;height:2400px;margin-left: auto;margin-right: auto;">
+
+  <div class="py-0 pt-3" style="background-color: #003f76;color: white;height: 174px; padding-left: 16px;">
     <div class="container">
       <div class="row">
         <div class="col-md-10">
 	        <div>
-	          <p class="" style="color: #eee;">${dto.companyname}&nbsp; &nbsp;&nbsp;</p>
+	          <p class="" style="color: #eee;">
+	          <c:if test="${login.auth==1}">
+		          	<c:choose>
+		          		<c:when test="${dto.favoriteCom >0 and dto.favoriteCom != null }">
+		          					<a style="color:red" class="btn btn-secondary red" href="javascript:dropFavoriteCom(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
+		          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
+		          		</c:when>
+		          		<c:otherwise>
+		          					<a class="btn btn-secondary red" href="javascript:comFavorite(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
+		          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
+		          		</c:otherwise>
+		          	</c:choose>
+					</c:if>
+					&nbsp;&nbsp;${dto.companyname}
+	          </p>
 			</div>
 
 			<div>
 			  <h3 class="jobtitle">
-	           <c:if test="${login.auth==1}">
-	          	<c:choose>
-	          		<c:when test="${dto.favoriteCom >0 and dto.favoriteCom != null }">
-	          					<a style="color:red" class="btn btn-secondary red" href="javascript:dropFavoriteCom(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
-	          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
-	          		</c:when>
-	          		<c:otherwise>
-	          					<a class="btn btn-secondary red" href="javascript:comFavorite(${dto.jobSeq }, '${dto.companyId }', '${login.memberid }')">
-	          					<i class="fa fa-star icon-gray fa-fw fa-1x py-1"></i></a>
-	          		</c:otherwise>
-	          	</c:choose>
-				</c:if>
-	          ${dto.jobTitle}
-	         </h3>
-	         </div>
-
-        </div>
-        <div class="col-md-2 text-right" style="margin-top: 45px;">
-
-		 	<c:if test="${login.auth==1 }">
-         		 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
-			</c:if>
-
-          	<c:choose>
-          		<c:when test="${login.auth == 1 }">
+		            	<c:if test="${login.auth == 1 }">
           			<c:choose>
           				<c:when test="${dto.favoriteJob >0 and dto.favoriteCom != null }">
           					<a style="color:red" class="btn btn-secondary" href="javascript:dropFavoriteJob(${dto.jobSeq }, '${login.memberid }')">
@@ -395,9 +397,24 @@ white{
 				            </a>
           				</c:otherwise>
           			</c:choose>
-          		</c:when>
-          	</c:choose>
+          		</c:if>
+		          ${dto.jobTitle}
+	         </h3>
+	         </div>
 
+        </div>
+        <div class="col-md-2 text-right" id="applyButtonArea" style="margin-top: 45px;">
+
+		 	<c:if test="${login.auth==1 }">
+         		 <button type="button" class="btn btn-primary applybtn" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button><br>
+			</c:if>
+          	
+          		
+          		
+          	
+         
+          	
+		
 			<c:choose>
 				<c:when test="${login.auth == 2 or login.auth == 3}">
  					<c:if test="${login.memberid == dto.companyId or login.auth == 3}">
@@ -406,74 +423,77 @@ white{
           			</c:if>
           		</c:when>
           	</c:choose>
+			
+				
+          	
           </div>
        </div>
 
 
 
 			<!-- 입사지원 모달 -->
-			 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document" style="width: -webkit-fill-available;">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel" style="width: 700px; color: black;">입사지원</h5>
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			          <span aria-hidden="true">×</span>
-			        </button>
-			      </div>
-			      <div class="modal-body">
-			       <table>
-			       <colgroup>
-			       <col width="400"><col width="50">
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+           <div class="modal-dialog" role="document" style="width: -webkit-fill-available;">
+             <div class="modal-content"  style="width: 700px;">
+               <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalLabel" style="width: 1000px; color: black;">지원</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">×</span>
+                 </button>
+               </div>
+               <div class="modal-body">
+                <table>
+                <colgroup>
+                <col width="400"><col width="50">
 
-						<tr><td colspan="2" style="color: black">이력서list</td></tr>
+                  <tr><td colspan="2" style="color: black">이력서list</td></tr>
 
             <%
             if(request.getAttribute("resumelist") != null){
 
             %>
                 <%
-      					for(int i=0; i<resumelist.size(); i++){
-      					%>
+                     for(int i=0; i<resumelist.size(); i++){
+                     %>
 
-						<tr>
-					  <td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a><input type="hidden" value="" id="portfolioseq"></td>
-						<td><button type="button" class="btn btn-primary applybtn" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>')">지원하기</button></td>
-						</tr>
-      					<%
-      					}
+                  <tr>
+                 <td><a href="Resumedetail.do?seq=<%=resumelist.get(i).getResumeseq()%>"><%=resumelist.get(i).getResumetitle() %></a><input type="hidden" value="" id="portfolioseq"></td>
+                  <td><button type="button" class="btn btn-primary applybtn" onclick="javascript:jobApply('${dto.jobSeq}','${login.memberid }','<%=resumelist.get(i).getResumeseq()%>')">지원</button></td>
+                  </tr>
+                     <%
+                     }
              }
-      					%>
+                     %>
 
-					<tr><td colspan="2" style="color: black">포트폴리오 첨부</td></tr>
-					<%
-					if(portlist != null){
-					for(int i=0; i<portlist.size(); i++){
-					%>
+               <tr><td colspan="2" style="color: black">포트폴리오 첨부</td></tr>
+               <%
+               if(portlist != null){
+               for(int i=0; i<portlist.size(); i++){
+               %>
 
-						<tr>
-						<td style="color: black">
-						<select id="portseq" onchange="getportseq('<%=portlist.get(i).getPortfolioseq() %>')">
-						<option>첨부없음</option>
-						<option><%=portlist.get(i).getPortfolioname() %></option>
-						</select>
-						</td>
-						<td><button type="button" class="btn btn-primary">첨부</button></td>
-						</tr>
-					<%
-						}
-					}
-					%>
+                  <tr>
+                  <td style="color: black">
+                  <select id="portseq" onchange="getportseq('<%=portlist.get(i).getPortfolioseq() %>')">
+                  <option>첨부없음</option>
+                  <option><%=portlist.get(i).getPortfolioname() %></option>
+                  </select>
+                  </td>
+                  <td><button type="button" class="btn btn-primary">첨부</button></td>
+                  </tr>
+               <%
+                  }
+               }
+               %>
 
 
-				</table>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
+            </table>
+               </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               </div>
+             </div>
+           </div>
+         </div>
 
 
       </div>
@@ -481,8 +501,10 @@ white{
 
       </div>
     </div>
+  	
+  	
   	<div class="" style="margin-top: 20px;">
-    	<div class="container">
+    	<div class="container" style="padding-bottom: 20px;">
       		<div class="row">
         		<div class="col-md-6">
         		  <li class="companydetail"><p>경력</p>&nbsp; &nbsp; &nbsp; &nbsp; <font class="JobSumData">${dto.career_Desc }</font>
@@ -514,7 +536,7 @@ white{
   <div class="">
     <div class="container">
       <div class="row">
-        <div class="col-md-12" style="float:left;">
+        <div class="col-md-12" style="float:left;margin-top: 40px;">
         <hr class="mb-12">
           <li class="text-right mb-3">조회수&nbsp;&nbsp;<font>${dto.readcount }</font>
           </li>
@@ -534,6 +556,7 @@ white{
     </div>
   </div>
 
+ 
   <div class="py-5">
     <div class="container">
 	  <h3 class="titles">접수기간 및 방법</h3><br>
@@ -548,7 +571,7 @@ white{
             <dd>${dto.jobEnd }</dd>
              <dd>
              	<c:if test="${login.auth==1 }">
-         			 <button type="button" class="btn btn-primary" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
+         			 <button type="button" class="btn btn-primary applybtn" id="_apply" data-toggle="modal" data-target="#exampleModal">입사지원</button>
 				</c:if>
 			</dd>
           </dl>
@@ -566,14 +589,7 @@ white{
       </div>
     </div>
   </div>
-  <div class="py-5">
-    <div class="container">
-	  <h3 class="titles">지원현황</h3>
-      <div class="row">
-        <div class="col-md-12"> 지원현황(선택) </div>
-      </div>
-    </div>
-  </div>
+
   <div class="py-5">
     <div class="container">
 	  <h3 class="titles">근무지</h3>
@@ -584,7 +600,7 @@ white{
             <dt id="keyword1">${dto.area1Name } ${dto.area2Name } ${dto.detailAdress1 } ${dto.detailAdress2 }</dt>
             <dd>
 
-            	<p style="margin-top:-12px">
+            	<p style="margin-top:12px">
 			    <em class="link">
 
 
@@ -599,8 +615,8 @@ white{
           <div class="companydetail"> <p>담당자연락처</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgPhone }</div>
           <div class="companydetail"> <p>담당자이메일주소</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dto.mgEmail }</div>
         </div>
-        <div class="text-primary" style=""> 담당자 정보 수정을 원하시면 버튼을 클릭하세요 &nbsp;&nbsp;&nbsp;
         	<c:if test="${dto.companyId == login.memberid or login.auth == 3}">
+        <div class="text-primary" style=""> 담당자 정보 수정을 원하시면 버튼을 클릭하세요 &nbsp;&nbsp;&nbsp;
         	<a class="btn btn-secondary" href="javascript:mgUpdate()">담당자 정보수정</a>
         	</c:if>
         </div>
@@ -608,15 +624,22 @@ white{
     </div>
   </div>
   
+  
+  <div style="width:1260px;height:300px;margin-left: auto;margin-right: auto;margin-bottom: 100px;float:center;margin-top: 200px;">
   <div class="py-5">
-    <div class="container">
-      <div class="row">
+    <div class="container" s>
+    <h1>기업정보</h1>
+    <br>
+      <div class="row" style="border-style:outset;">
         <div class="col-md-4 bg-light" >
         	
-          <img src="upload/${bsdto.newfilename}" alt="디폴트이미지" width="100%" >
+          <img src="upload/${bsdto.newfilename}" alt="디폴트이미지" width="360px;" height="300px;" style="padding-left: 30px;padding-top: 30px;
+    padding-right: 30px;padding-bottom: 30px;">
         </div>
         <div class="col-md-4 bg-light">
-          <ul>
+          <ul style="
+    margin-top: 30px;
+">
 	          <li style=" list-style: none;"><h3>${com.companyname }</h3></li>
 	          <li style=" list-style: none;"><span>기업형태</span>&nbsp;&nbsp;<span>${com.companytype }</span></li>
 	          <li style=" list-style: none;"><span>업력</span>&nbsp;&nbsp;<span>${com.comyear }</span></li>
@@ -625,8 +648,9 @@ white{
           </ul>
         </div>
         <div class="col-md-4 bg-light">
-	        <ul>
-	          <li style=" list-style: none;"></li><br><br>
+	        <ul style="
+    margin-top: 30px;
+">
 	          <li style=" list-style: none;"><span>직원수</span>&nbsp;&nbsp;<span>${com.empcount }</span></li>
 	          <li style=" list-style: none;"><span>총매출</span>&nbsp;&nbsp;<span>${com.totalsale }</span></li>
 	          <li style=" list-style: none;"><span>평균연봉</span>&nbsp;&nbsp;<span>${com.salaryavg }</span></li>
@@ -636,13 +660,9 @@ white{
       </div>
     </div>
   </div>
+  </div>
   
-  
-  
-  
-  
-  
-  
+
   
          <!--   Google font
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,400i,600,600i,700,700i,900">
@@ -662,93 +682,11 @@ white{
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
   
   
-  
- 
-  
-  <section class="blog_section">
-            <div class="container">
-                <div class="blog_content">
-                    <div class="owl-carousel owl-theme">
-                        <div class="blog_item">
-                            <div class="blog_image">
-                                <img class="img-fluid" src="./image/naver2.png" alt="images not found" style="width: 300px;height: 200px;">
-                                <span><i class="icon ion-md-create"></i></span>
-                            </div>
-                            <div class="blog_details">
-                                <div class="blog_title">
-                                    <h5 style="text-align: center"><a href="#">네이버 신입공채</a></h5>
-                                </div>
-                                <ul>
-                                    <li><i class="icon ion-md-person"></i>Alex</li>
-                                    <li><i class="icon ion-md-calendar"></i>August 1, 2018</li>
-                                </ul>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...</p>
-                                <a href="#">Read More<i class="icofont-long-arrow-right"></i></a>
-                            </div>
-                        </div>                        
-                        <div class="blog_item">
-                            <div class="blog_image">
-                                <img class="img-fluid" src="./image/kakao.jpg" alt="images not found" style="width: 300px;height: 200px;">
-                                <span><i class="icon ion-md-create"></i></span>
-                            </div>
-                            <div class="blog_details">
-                                <div class="blog_title">
-                                    <h5 style="text-align: center"><a href="#">카카오 개발자 모집</a></h5>
-                                </div>
-                                <ul>
-                                    <li><i class="icon ion-md-person"></i>Alex</li>
-                                    <li><i class="icon ion-md-calendar"></i>August 1, 2018</li>
-                                </ul>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...</p>
-                                <a href="#">Read More<i class="icofont-long-arrow-right"></i></a>
-                            </div>
-                        </div>                        
-                        <div class="blog_item">
-                            <div class="blog_image">
-                                <img class="img-fluid" src="./image/coupang.png" alt="images not found" style="width: 300px;height: 200px;">
-                                <span><i class="icon ion-md-create"></i></span>
-                            </div>
-                            <div class="blog_details">
-                                <div class="blog_title">
-                                    <h5 style="text-align: center"><a href="#">쿠팡친구 전국 모집</a></h5>
-                                </div>
-                                <ul>
-                                    <li><i class="icon ion-md-person"></i>Alex</li>
-                                    <li><i class="icon ion-md-calendar"></i>August 1, 2018</li>
-                                </ul>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...</p>
-                                <a href="#">Read More<i class="icofont-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-  
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+ <div style="width:1260px;height:850px;margin-left: auto;margin-right: auto;">
   <div class="py-5">
     <div class="container">
-      <div class="row"> 인기기업 HOT10
+    <h3 class="titles">인기공고HOT10</h3>
+      <div class="row">
       <div class="col-md-12">
          <table class="table table-hover col-sm-12 " style="" id="table">
             <thead class="thead-dark">
@@ -769,106 +707,25 @@ white{
       </div>
     </div>
   </div>
-
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12"> 광고 </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 댓글 -->
-  				<div class="container">
-				<c:if test="${login.memberid != null }">
-
-					<div class="inputBox">
-						<div class="writeBoxWrap cmtWrite">
-							<form action="insertreplyRecruit.do" method="post">
-								<input type="hidden" name="jobSeq" value="${dto.jobSeq}">
-								<fieldset>
-									<div class="uiplaceholder">
-										<span class="ph">솔직하고 따뜻한 답변을 남겨주세요.<br>*휴대폰 번호, 메일 주소, 카카오톡 ID 등 개인정보가 포함된 내용은 비노출 처리 될 수 있습니다.</span>
-										<textarea class="devTxtAreaAnswerWrite" name="reply_content" maxlength="1000" title="답변쓰기"></textarea>
-									</div>
-									<div class="btnWrap">
-                               			<div class="infoBx">
-                            	    	   <a href="/User/Qstn/MainProfile?Target=16755209" class="my-profile" target="_blank">
-                                    		   <span class="proThumb"><img src="https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_8.jpg" target="_blank" alt="프로필 이미지" onerror="this.src='https://i.jobkorea.kr/content/images/m/ver_2/user/qna/profile_thumb/random_default.jpg'"></span>
-                                    	  	   <span class="info">${login.memberid}</span>
-                                   	   	   	   <input type="hidden" name="memberid" value="${login.memberid}">
-                                   	   	   </a>
-                                   	   	 </div>
-                                  	  	 <span class="byte"><b id="count">0</b> / 1,000</span>
-                               	         <button type="submit" id="btnSubmit" class="btnSbm devBtnAnswerWrite">등록</button>
-                           	   		</div>
-								</fieldset>
-							</form>
-						</div>
-						<ul class="notice-box-wrap">
-                		    <li>답변을 등록하면 닉네임으로 질문자에게 전달됩니다.</li>
-                	   		<li>개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법정보 유포 시 이에 대한 민형사상 책임은 작성자에게 있습니다.</li>
-                  			<li>개인정보가 포함되거나 부적절한 답변은 비노출 또는 해당 서비스 이용 불가 처리될 수 있습니다.</li>
-               			</ul>
-					</div>
-				</c:if>
-				<c:forEach var="row" items="${replylist}">
-				<input type="hidden" name="replyrecruitseq" value="${row.replyrecruitseq}">
-				<input type="hidden" name="jobSeq" value="${row.jobSeq}">
-
-				<div class="viewListWrap">
-                	<div class="headerWrap">
-                    	<div class="numBx">
-                           <span>답변 <span class="num">${row.reply_count}</span></span>
-                        </div>
-                    </div>
-					<div class="listWrap commonSecWrap">
-   						 	<ul class="answerArea">
-                				<li>
-                					<div class="contSec devContSection" style="display: block;">
-                						<div class="writeBoxWrap cmtWrite">
-                							<div class="infoBx">
-                								<a href="mypage.do" class="my-profile">
-                									<span class="nickname">${row.memberid}</span>
-                								</a>
-                							</div>
-                							<p class="cont">${row.reply_content}</p>
-                							<div class="cellBx">
-                								<span class="cell devAnswerDate">${row.rdate.substring(0,10)}</span>
-                							</div>
-                							<div class="btnBx devComtRoot" data-answerno="205449">
-                            					<!-- 댓글, 좋아요 버튼 클릭시 클래스 active 추가 -->
-                            					<button type="button" class="btnCmt devBtnComtList active">댓글 <em>${row.reply_count}</em></button>
-                            					<button type="button" class="btnHeart qnaSpB devBtnAnswerLike ">0</button>
-                        					</div>
-                						</div>
-                						<div class="commentSec" style="display: block;">
-                							<div class="cmtArea">
-                								<div class="cmtList replyWrap">
-                									<ul class="cmtList replyWrap">
-                                						<!-- [Dev] 내 댓글일 경우 contSec에 클래스 myCmt 추가, cellBx 버튼: 삭제만 노출 -->
-                            						</ul>
-                								</div>
-                							</div>
-                						</div>
-                					</div>
-                				</li>
-					  		</ul>
-						</div>
-			   		</div>
-			   	</c:forEach>
-			   	</div>
+  
+  <c:import url="../footer.jsp" charEncoding="utf-8"/>
+  
+</div>
+  
 
 
 
 
   <input type="hidden" id="phonenumber">
+  
+  
+
 
 
 <script>
 getTop10List();
 
-//5단 검색바 사용 검색할 경우
+//인기 탑텐 HOT10 가져오기 
 function getTop10List() {
 
     $.ajax({
@@ -884,8 +741,17 @@ function getTop10List() {
  			$(".list_col").remove();
 
  			var memberid = '<c:out value="${login.memberid}"/>';
+ 			var auth = '<c:out value="${login.auth}"/>';
+ 			
 
  			$.each(list, function(i, val){
+ 				
+ 				var end = val.jobEnd;
+ 	 			var regdate = val.regdate;
+ 	 			end = end.substr(2,9);
+ 	 			regdate = regdate.substr(2,9);
+ 	 			
+ 	 			
  				//alert(val.jobSeq);
  				let app = "<tr class= 'list_col'>"
  							+"<td>" + val.rnum +"</td>";
@@ -904,24 +770,30 @@ function getTop10List() {
  									+ "</td>"
  									+"<td style='text-align:left'>"
  									//+ arrow(val.depth)
- 									+"<a href='RecruitDetail.do?jobSeq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
+ 									+"<a href='RecruitDetail.do?jobseq=" + val.jobSeq +"&memberid="+memberid+"'>" + val.jobTitle+ "</a>"
  									+"</td>"
  									+"<td>" + val.eduname +"<br>"+val.career_Desc + "</td>"
  									+"<td>" + val.jobVolumn + "</td>"
  									+"<td>" + val.emp_name +"<br>"+ val.area1Name+" " + val.area2Name +"<br>"+val.salary+" 만원"+ "</td>"
- 									+"<td>" + val.jobEnd +"<br>"+val.regdate+ "&nbsp;&nbsp;"
- 									+"<input type='button' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"+ "</td>";
- 							}
+ 									+"<td>" + end +"<br>"+regdate;
+ 									
+ 									if(val.companyId == memberid || auth == 3){
+ 		 								app += "<input type='button' class='btn btn-primary' value='공고삭제' onClick='deleteRecruit("+val.jobSeq +")' >"
+ 		 									}
 
- 							else{
- 								app += "<td style='text-align:left' colspan='6'>"
- 										+"<font color='#ff0000'>********* 이 글은 작성자에 의해서 삭제되었습니다</font>"
- 										+"</td>";
- 							}
+ 		 								app += "</td>";
 
- 							+"</tr>";
+ 		 							}
 
- 					$("#table").append(app);
+ 		 							else{
+ 		 								app += "<td style='text-align:left' colspan='6'>"
+ 		 										+"<font color='#ff0000'>********* 이 글은 작성자에 의해서 삭제되었습니다</font>"
+ 		 										+"</td>";
+ 		 							}
+
+ 		 							+"</tr>";
+ 									
+					$("#table").append(app);
  			});
  		},
  		error:function(){
@@ -955,7 +827,7 @@ function deleteRecruit(jobSeq) {
 	location.href="deleteRecruit.do?jobSeq="+jobSeq;
 }
 function updateRecruit(jobSeq) {
-	location.href ="RecruitUpdate.do?jobSeq="+jobSeq;
+	location.href ="RecruitUpdate.do?jobseq="+jobSeq;
 }
 function mgUpdate() {
 	$("#_mgData *").remove(); //내부 요소만 삭제
@@ -1127,10 +999,10 @@ function jobFavorite(jobSeq, memberid) {
 
 	let endDate = '${dto.jobEnd}';
 	var reserve = charchen(endDate);
-	alert("이게 예약시간 : "+ reserve);
+	//alert("이게 예약시간 : "+ reserve);
 
 	var phone = getPhonenum(memberid);
-	alert("이게 연락처"+phone);
+	//alert("이게 연락처"+phone);
 
 	var title = '${dto.jobTitle}';
 
@@ -1141,12 +1013,12 @@ function jobFavorite(jobSeq, memberid) {
         url : './reserveSendSms.do',
         data:{phonenum: phone, reserveDate : reserve, title : title },
        success:function(suc){
-			alert("예약문자성공");
-			alert(suc);
+			alert("공고 스크랩 성공! 스크랩하신 공고의 남은 시간이 24시간 이내일 경우 문자가 전송됩니다.");
+			//alert(suc);
 
 		},
 		error:function(){
-			alert('error');
+			//alert('error');
 		}
     });
 
@@ -1202,7 +1074,13 @@ function CountDownTimer(dt, id) {
 
             clearInterval(timer);
             document.getElementById(id).innerHTML = '공고 기한이 만료되었습니다';
-            //$("#_apply").hide();
+            //$(".applybtn").attr("disabled", true);
+            $(".applybtn").css('visibility', 'hidden');
+            
+            var app = "<span style='color:white;'>공고기한이 만료되었습니다</span>";
+            
+            $("#applyButtonArea").append(app);
+            
             //location.reload();
             return;
         }
@@ -1445,6 +1323,9 @@ $('.devBtnComtWrite').click(function () {
 	document.getElementById('portfolioseq').value = portseq;
 
 }
+  
+
+
 
   </script>
   <!-- carousel -->

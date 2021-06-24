@@ -293,46 +293,19 @@
                     </div>
                 </div>
             </li>
-            <li class="form-line" data-type="control_widget" id="id_7"> <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> 찾아오시는길 </label>
-                <div id="cid_7" class="form-input-wide" data-layout="full">
-                    <div data-widget-name="Show Map Location" style="width:100%;text-align:Left;overflow-x:auto" data-component="widget-field"> <iframe data-client-id="5374688fa2c8bddc16000019" title="Show Map Location" frameborder="0" scrolling="no" allowtransparency="true" allow="geolocation; microphone; camera; autoplay; encrypted-media; fullscreen" data-type="iframe" class="custom-field-frame custom-field-frame-rendered frame-xd-ready frame-ready" id="customFieldFrame_7" src="//widgets.jotform.io/mapAddress/?qid=7&amp;ref=http%3A%2F%2Flocalhost%3A8100&amp;injectCSS=false" style="max-width:600px;border:none;width:100%;height:300px" data-width="600" data-height="300"> </iframe>
-                        <div class="widget-inputs-wrapper"> <input type="hidden" id="input_7" class="form-hidden form-widget " name="q7_input7" value=""> <input type="hidden" id="widget_settings_7" class="form-hidden form-widget-settings" value="%5B%7B%22name%22%3A%22lat%22%2C%22value%22%3A%229.9114543%22%7D%2C%7B%22name%22%3A%22lng%22%2C%22value%22%3A%22126.0497553%22%7D%2C%7B%22name%22%3A%22zoom%22%2C%22value%22%3A%2210%22%7D%2C%7B%22name%22%3A%22addressText%22%2C%22value%22%3A%22Please%20enter%20your%20Google%20Map%20API%20Key%5Cnin%20the%20settings%20in%20order%20for%20the%20MAP%20to%20work.%22%7D%2C%7B%22name%22%3A%22customCSS%22%2C%22value%22%3A%22%23addressContainer%20%7B%5Cnwidth%3A%20100%25%3B%5Cn%7D%22%7D%5D" data-version="2"> </div>
-                        <script type="text/javascript">
-                            setTimeout(function() {
-                                var _cFieldFrame = document.getElementById("customFieldFrame_7");
-                                if (_cFieldFrame) {
-                                    _cFieldFrame.onload = function() {
-                                        if (typeof widgetFrameLoaded !== 'undefined') {
-                                            widgetFrameLoaded(7, {
-                                                "formID": 211297993369472
-                                            })
-                                        }
-                                    };
-                                    _cFieldFrame.src = "//widgets.jotform.io/mapAddress/?qid=7&ref=" + encodeURIComponent(window.location.protocol + "//" + window.location.host) + '' + '' + '&injectCSS=' + encodeURIComponent(window.location.search.indexOf("ndt=1") > -1);
-                                    _cFieldFrame.addClassName("custom-field-frame-rendered");
-                                }
-                            }, 0);
-                        </script>
-                    </div>
-                </div>
-            </li>
-            <li class="form-line" data-type="control_fullname" id="id_9" data-compound-hint=","> <label class="form-label form-label-top form-label-auto" id="label_9" for="first_9"> 성함 </label>
-                <div id="cid_9" class="form-input-wide" data-layout="full">
-                    <div data-wrapper-react="true"> <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first"> <input type="text" id="first_9" name="q9_input9[first]" class="form-textbox" size="10" value="" data-component="first" aria-labelledby="label_9 sublabel_9_first"> <label class="form-sub-label" for="first_9" id="sublabel_9_first" style="min-height:13px" aria-hidden="false"> First Name </label> </span> <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">   </span> </div>
-                </div>
-            </li>
-            <li class="form-line jf-required" data-type="control_textbox" id="id_3"> <label class="form-label form-label-top" id="label_3" for="input_3"> 이메일 <span class="form-required"> * </span> </label>
-                <div id="cid_3" class="form-input-wide jf-required" data-layout="half"> <input type="text" id="input_3" name="q3_input3" data-type="input-textbox" class="form-textbox validate[required]" style="width:310px" size="310" value="" placeholder=" " data-component="textbox" aria-labelledby="label_3" required=""> </div>
-            </li>
-            <li class="form-line jf-required" data-type="control_textarea" id="id_4"> <label class="form-label form-label-top form-label-auto" id="label_4" for="input_4"> 메시지 <span class="form-required"> * </span> </label>
-                <div id="cid_4" class="form-input-wide jf-required" data-layout="full"> <textarea id="input_4" class="form-textarea validate[required] custom-hint-group form-custom-hint" name="q4_input4" style="width:648px;height:163px" data-component="textarea" required="" aria-labelledby="label_4" data-customhint="10자 이상을 적어주세요" customhinted="true" placeholder="10자 이상을 적어주세요" spellcheck="false"></textarea> </div>
-            </li>
-            <li class="form-line" data-type="control_button" id="id_2">
-                <div id="cid_2" class="form-input-wide" data-layout="full">
-                    <div data-align="center" class="form-buttons-wrapper form-buttons-center jsTest-button-wrapperField"> <button id="input_2" type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField" data-component="button" data-content=""> 제출 </button> </div>
-                </div>
-            </li>
-            <li style="display:none"> Should be Empty: <input type="text" name="website" value=""> </li>
+            <h2>찾아오시는길</h2>
+            <li><img src="1.png"/></li>
+            
+            <li style="text-align: center; font-size: 2rem;">
+
+대표 : 고명우정현<br>
+연락처	02-707-1480<br>
+이메일	elf200@nate.com<br>
+위치	서울 마포구 백범로 23 지하1층, 3층<br>
+
+</li>
+            
+            
         </ul>
     </div>
     <script>

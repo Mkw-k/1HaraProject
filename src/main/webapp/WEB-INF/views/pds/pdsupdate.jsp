@@ -4,6 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,119 +58,9 @@
 
 
 <style type="text/css">
-  
-/* 모달 */
-#login-modal {
-margin-right : 450px;
-}
+ 
 
-/* 테이블 css */
-.pb-100 {
-	padding-bottom: 100px;
-}
-.pt-100 {
-	padding-top: 100px;
-}
-a{
-    text-decoration:none;
-}
-.section-title h4 {
-  font-size: 14px;
-  font-weight: 500;
-  color: #777;
-}
-.section-title h2 {
-	font-size: 32px;
-	text-transform: capitalize;
-	margin: 15px 0;
-	display: inline-block;
-	position: relative;
-	font-weight: 700;
-	padding-bottom: 15px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-}
-.section-title p {
-	font-weight: 300;
-	font-size: 14px;
-}
-.black-bg .section-title h2, .black-bg .section-title h4, .black-bg .section-title p {
-  color:#fff
-}
-.section-title h2:before {
-  position: absolute;
-  content: "";
-  width: 150px;
-  height: 1px;
-  background-color: #777;
-  bottom: 0;
-  left: 50%;
-  margin-left: -75px;
-}
-.section-title h2:after {
-  position: absolute;
-  content: "";
-  width: 80px;
-  height: 3px;
-  background-color: #e16038;
-  border: darkblue;
-  bottom: -1px;
-  left: 50%;
-  margin-left: -40px;
-}
-.section-title {
-  margin-bottom: 70px;
-}
-.single-price {
-	text-align: center;
-	padding: 30px;
-	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
-}
-.price-title h4 {
-  font-size: 24px;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-.price-tag {
-  margin: 30px 0;
-}
-.price-tag {
-	margin: 30px 0;
-	background-color: #fafafa;
-	color: #000;
-	padding: 10px 0;
-}
-.center.price-tag {
-	background-color: tomato;
-	color:#fff
-}
-.price-tag h2 {
-	font-size: 45px;
-	font-weight: 600;
-	font-family: poppins;
-}
-.price-tag h2 span {
-  font-weight: 300;
-  font-size: 16px;
-  font-style: italic;
-}
-.price-item ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.price-item ul li {
-  font-size: 14px;
-  padding: 5px 0;
-  border-bottom: 1px dashed #eee;
-  margin: 5px 0;
-}
-.price-item ul li:last-child {
-  border-bottom: 0;
-}
-.single-price a {
-  margin-top: 15px;
-}
+/* 버튼 */
 a.box-btn {
 	background-color: #2186eb;
 	padding: 5px 20px;
@@ -179,81 +71,42 @@ a.box-btn {
 	font-size: 15px;
 	transition: .3s;
 }
+
+/* 버튼  */
 a.box-btn:hover, a.border-btn:hover {
 	background-color: #2186eb;
 }
 
-.faqtable{
-	border: 1px;
+
+
+/* 테이블 속성 */
+.table-bordered {
+border: 1px solid #dddddd;
+border-collapse: separate;
+border-left: 0;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
+.table {
+width: 100%;
+margin-bottom: 20px;
+background-color: transparent;
+border-collapse: collapse;
+border-spacing: 0;
+display: table;
 }
 </style>
 </head>
 
 <body>
 <div class="all">
-<!-- 헤더가 있어야 위쪽을 가리지 않음 -->
-<header>
 
-</header>
 
-<!-- 네비바 -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+<c:import url="../header2.jsp" charEncoding="utf-8"/> 
 
-  
-  <div>
-	 <a href="home.do"><img alt="" src="<%=request.getContextPath() %>/image/logo5.gif" height="80" width="160" style="float:left; padding-right: 20px"></a>
-	</div>
-  
-  <ul class="navbar-nav">
-<!-- Dropdown -->
-    <li class="nav-item dropdown" style="padding-top: 5px;">
-     <div class="dropdown">
-		  <button class="dropbtn" style="color:#2186eb; background-color: #fff;">전체보기</button>
-		  <div class="dropdown-content">
-		    <a href="#">채용공고</a>
-		    <a href="#">기업정보</a>
-		    <a href="#">취업톡톡</a>
-		    <a href="#">공채달력</a>
-		    <a href="#">자료실</a>
-		    <a href="notice.do">공지사항</a>
-		  </div>
-		</div>
-    </li>
 
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">채용공고</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">기업정보</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">취업톡톡</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">공채달력</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color:#2186eb">자료실</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="notice.do" style="color:#2186eb">공지사항</a>
-    </li>
-    </ul>
-    
-   
-   <ul class="navbar-nav navbar-nav2" style="margin-left: 50px;">
-     <li class="nav-item">
-     <!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
-      <a href="javascript:login()" id="login-btn" class="nav-link bgc" style="color: #2186eb;background-color: #fff;" >로그인</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link bgc" href="#" style="color: #2186eb;background-color: #fff;">이력서관리</a>
-    </li>
-  
-
-  </ul>
-</nav>
-<br>
 
  <!-- =========Login 클릭 시 Modal =========== -->
       <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" class="modal modal-center fade ">
@@ -302,7 +155,7 @@ System.out.println("dto" +dto);
 
 <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,800,900%7cRaleway:300,400,500,600,700" rel="stylesheet">
 <section class="pricing-area pt-100 pb-100" id="pricing" style="padding-top: 0px;">
-		<div class="container">
+		<div class="container" style="margin-left: auto;margin-right: auto;margin-top: auto;">
 			<div class="row">
                
                <div class="col-xl-12">
@@ -312,7 +165,7 @@ System.out.println("dto" +dto);
 								method="post" enctype="multipart/form-data">
 							<input type="hidden" name="pdsseq" value="${pds.pdsseq}">
 							
-							<table class="faqtable" border="1">
+							<table  class="table table-striped table-bordered" border="1">
 							<colgroup>
 								<col width="200"><col width="500">
 							</colgroup>

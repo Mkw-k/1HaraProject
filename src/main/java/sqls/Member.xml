@@ -22,54 +22,25 @@
 	WHERE MEMBERID=#{memberid}
 </select>
 
-<!-- <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, AUTH, USERPIC, NEWUSERPIC)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, 1, #{userpic}, #{newuserpic})
-</insert> -->
+
 
 <insert id="addmember" parameterType="bit.com.a.dto.MemberDto">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, AUTH, BIRTH, DETAILADDRESS, ADDRESS, USERPIC, NEWUSERPIC,  PHONENUM)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, 1, #{birth}, #{detailaddress}, #{address}, #{userpic}, #{newuserpic}, #{phonenum}  )
+	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, AUTH, DETAILADDRESS, ADDRESS, USERPIC, NEWUSERPIC,  PHONENUM)
+	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, 1, #{detailaddress}, #{address}, #{userpic}, #{newuserpic}, #{phonenum}  )
 </insert>
 
 <!-- 로그인 -->
 <select id="login" parameterType="bit.com.a.dto.MemberDto"
 	resultType="bit.com.a.dto.MemberDto">
-	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, BIRTH, NEWUSERPIC, PHONENUM
+	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, NEWUSERPIC, PHONENUM
 	FROM MEMBER
 	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 </select>
 
-
-<!-- <select id="findId" resultType="user">
-		SELECT *
-		FROM MEMBER
-		WHERE name=#{name} and PHONENUMBER=#{phonenumber}
-</select>
-
-비밀번호 찾기
-<select id="findPassword" resultType="user">
-		SELECT *
-		FROM MEMBER
-		WHERE MEMBERID=#{id} AND NAME=#{name} AND PHONENUMBER=#{phone}
-</select>
-
-비밀번호 찾고 비밀번호 수정
-
-<update id="updatePassword">
-		UPDATE MEMBER
-		SET PWD=#{pwd}
-		WHERE MEMBER=#{id}
-
-</update> -->
-
-
-
-
 <!-- 카카오로그인 -->
 <select id="kakaoLogin" parameterType="bit.com.a.dto.MemberDto"
 	resultType="bit.com.a.dto.MemberDto">
-	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS, BIRTH
+	SELECT MEMBERID, NAME, EMAIL, AUTH, ADDRESS, DETAILADDRESS
 	FROM MEMBER
 	WHERE MEMBERID=#{memberid} AND PWD=#{pwd}
 </select>
@@ -103,7 +74,7 @@
 
 	<!--  뿌려주는것 -->
 	<select id="getMypage" parameterType="java.lang.String" resultType="bit.com.a.dto.MemberDto">
-	SELECT NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, PHONENUM, USERPIC, NEWUSERPIC
+	SELECT NAME, EMAIL, ADDRESS, DETAILADDRESS, PHONENUM, USERPIC, NEWUSERPIC
 	FROM MEMBER
 	WHERE MEMBERID=#{memberid}
 	</select>
@@ -114,11 +85,8 @@
 	SET NAME=#{name}, EMAIL=#{email}, ADDRESS=#{address}, DETAILADDRESS=#{detailaddress}, PHONENUM=#{phonenum}, USERPIC=#{userpic}, NEWUSERPIC=#{newuserpic}
 	WHERE MEMBERID=#{memberid}
 	</update>
-<!--
-	<insert parameterType="bit.com.a.dto.MemberDto" id="addmember">
-	INSERT INTO MEMBER(MEMBERID, PWD, NAME, EMAIL, ADDRESS, DETAILADDRESS, BIRTH, USERPIC, AUTH)
-	VALUES(#{memberid}, #{pwd}, #{name}, #{email}, #{address}, #{detailaddress}, #{birth}, #{userpic} 1)
-	</insert>
- -->
+	
+	
+	
 
 </mapper>

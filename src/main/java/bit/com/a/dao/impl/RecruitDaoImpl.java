@@ -202,5 +202,15 @@ public String getPhonenum(String memberid) {
 	return phonenumber;
 }
 
+@Override
+public List<RecruitDto> getNew6PreJob() {
+	return session.selectList(ns+"getNew6PreJob");
+}
+
+@Override
+public List<RecruitDto> getHot10Comname() {
+	return session.selectList(ns+"Hot10Comname");
+}
+
 
 }

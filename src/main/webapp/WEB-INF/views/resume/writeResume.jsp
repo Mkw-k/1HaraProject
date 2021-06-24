@@ -2,6 +2,7 @@
 <%@page import="bit.com.a.util.UtilEx"%>
 <%@page import="bit.com.a.dto.FAQDto"%>
 <%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -106,7 +107,7 @@ font-weight:600;
 
 body {
 	  font-family: "Ubuntu", sans-serif;
-	  background-color: #3498db;
+	  background-color: #ffffff;
 			}
 .container {
 	  padding-top: 50px;
@@ -165,66 +166,27 @@ dt, dd {
 	height: 200px
 
 }
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* 요소의 최소 너비 지정, height 속성 무시
+    vh단위는 브라우저 안쪽 높이(window.innerHeight)을 기준으로
+    설정된다. 하지만 태블릿이나, 모바일의 경우에는 뷰 포트에 따라
+    맞춰짐*/
+  background-color: #504954;
+  font-family: "Poppins", sans-serif;
+}
 
  
 </style>
 </head>
 
 <body>
-	<div class="all">
-		<!-- 헤더가 있어야 위쪽을 가리지 않음 -->
-		<header> </header>
+	
 
 		<!-- 네비바 -->
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-
-
-			<div>
-				<a href="home.do"><img alt=""
-					src="<%=request.getContextPath() %>/image/logo5.gif" height="80"
-					width="160" style="float: left; padding-right: 20px"></a>
-			</div>
-
-			<ul class="navbar-nav">
-				<!-- Dropdown -->
-				<li class="nav-item dropdown" style="padding-top: 5px;">
-					<div class="dropdown">
-						<button class="dropbtn"
-							style="color: #2186eb; background-color: #fff;">전체보기</button>
-						<div class="dropdown-content">
-							<a href="#">채용공고</a> <a href="#">기업정보</a> <a href="#">취업톡톡</a> <a
-								href="#">공채달력</a> <a href="#">자료실</a> <a href="notice.do">공지사항</a>
-						</div>
-					</div>
-				</li>
-
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">채용공고</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">기업정보</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">취업톡톡</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">공채달력</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb">자료실</a></li>
-				<li class="nav-item"><a class="nav-link bgc" href="notice.do"
-					style="color: #2186eb">공지사항</a></li>
-			</ul>
-
-
-			<ul class="navbar-nav navbar-nav2" style="margin-left: 50px;">
-				<li class="nav-item">
-					<!--  <a class="nav-link bgc" id="_btnRegi" href="#" style="color: white;background-color: #2186eb;">로그인</a> -->
-					<a href="javascript:login()" id="login-btn" class="nav-link bgc"
-					style="color: #2186eb; background-color: #fff;">로그인</a>
-				</li>
-				<li class="nav-item"><a class="nav-link bgc" href="#"
-					style="color: #2186eb; background-color: #fff;">이력서관리</a></li>
-
-
-			</ul>
-		</nav>
+		<c:import url="../header2.jsp" charEncoding="utf-8"/> 
 		<br>
 
 		<!-- =========Login 클릭 시 Modal =========== -->
@@ -277,26 +239,10 @@ dt, dd {
 		<!-- 본문 -->
 		<main>
 
-
-			<!-- 검색창 -->
-			<section class="newsletter"
-				style="margin-top: -150px; padding-bottom: 0px; padding-top: 100px;">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="content">
-								<h2 style="color: #fff"></h2>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
 			<form action="writeAfResume.do" method="post" name="resumewrite" id="resumewrite" enctype="multipart/form-data" >
 
-				<div class="container" style="margin-top: 0px; margin-right: 400px;">
-					<div class="row">
+				<!-- <div class="container" style="margin-top: 0px; margin-right: 400px;"> -->
+					<div class="container" style="margin-top: 50px;margin-right: auto;margin-left: auto;padding-top: 0px;">
 						<div class="col-lg-offset-2 col-lg-12" style="margin-left: 0px;">
 							<section class="panel panel-default">
 								<div class="panel-body">
@@ -1056,7 +1002,7 @@ dt, dd {
 																					name="pre_buscode" value=""
 																					class="box_input" data-api_type="layer"
 																					data-api_id="career_job_category" data-dim="n"
-																					data-position="unused" >
+																					data-position="unused">
 																			</div>
 																		</div>
 																	</div>
@@ -1701,7 +1647,7 @@ dt, dd {
 																<div id="desire_job_category"
 																	class="area_task_input resume_input">
 																	<input type="text" id="Buses" name="desiredjob1"
-																		value="" maxlength="50" class="box_input" >
+																		value="" maxlength="50" class="box_input" readonly="readonly">
 
 																	<div>
 
@@ -1711,19 +1657,42 @@ dt, dd {
 																						src="./image/plus.png" alt="추가하기" height="30"
 																						width="30" /></a>
 																					<div class="hide" style="width: 600px;">
-																						<span class="col-md-3" id="_buscodeList1">
-																							<p>직무분류1</p> <!-- 데이터들어오는자리 -->
-																						</span> <span class="col-md-3" id="_buscodeList2">
-																							<p>직무분류2</p> <!-- 데이터들어오는자리 -->
-																						</span>
-																						<div class="col-md-3" style="" id="_buscodeList3">
-																							<p>직무분류3</p>
-																							<!-- 데이터들어오는자리 -->
-																						</div>
+																						<div class="col-md-4">
+														                                    <div class="form-group wrapper">
+														                                       <label>대분류</label> <select class="form-control"
+														                                          id="_buscodeList1" size="5" onfocus='this.size=5;'
+														                                          onblur='this.size=5;' onchange='this.size=5; this.blur();'>
+														
+														
+														                                       </select>
+														                                    </div>
+														
+														                                 </div>
+														
+														                                 <div class="col-md-4">
+														                                    <div class="form-group wrapper">
+														                                       <label>중분류</label> <select class="form-control"
+														                                          id="_buscodeList2" size="5" onfocus='this.size=5;'
+														                                          onblur='this.size=5;' onchange='this.size=5; this.blur();'>
+														
+														
+														                                       </select>
+														                                    </div>
+														
+														                                 </div>
+																						<div class="col-md-4">
+														                                    <p>소분류</p>
+														                                    <div id="_buscodeList3"
+														                                       style="overflow: auto; width: 350px; height: 150px;">
+														
+														                                    </div>
+														
+														                                 </div>
 																						<div class="col-md-3">
-																							<a style="color: #2186eb; display: flex;"
-																								onclick="addBus()">추가하기</a>
+																							<a style="color: white; display: flex;"
+																								class="btn btn-primary" onclick="addBus()">추가하기</a>
 																						</div>
+																						
 																					</div></li>
 																			</ul>
 																		</div>
@@ -1745,13 +1714,14 @@ dt, dd {
 								</article>
 						</div>
 						</section>
-						
+
+						<div style="margin-left: 450px;">
 						<button id="incomplete" class="btn btn-warning btn-md">중간저장</button>
 						<button id="complete" class="btn btn-info btn-md">작성완료</button>
+						</div>
 						
 					</div>
 				</div>
-	</div>
 	</form>
 	</main>
 	<!-- ####################################################################################################### -->
@@ -1975,17 +1945,17 @@ function login() {
 <script type="text/javascript">
 function licenseCheck(value) {
 	
-	alert("licenseCheck");
-	alert(value);
+	//alert("licenseCheck");
+	//alert(value);
 	 if(value=="case2"){
-		 alert("value case2")
+		 //alert("value case2")
 		 document.getElementById('licensechk').style.display='none';
 		 document.getElementById('languagechk').style.display='block';
 		 document.getElementById('awardchk').style.display='none';
 	}
 	 
 	 else if(value=="case3"){
-		 alert("value case3");
+		 //alert("value case3");
 		 document.getElementById('licensechk').style.display='none';
 		 document.getElementById('languagechk').style.display='none';
 		 document.getElementById('awardchk').style.display='block';
@@ -2093,180 +2063,183 @@ $('document').ready(function() {
 
 <script>
 
-//첫번째 BUSCODE1 DATA를 받아서 체크박스로 뿌려주는 코드 
+//첫번째 BUSCODE1 DATA를 받아서 체크박스로 뿌려주는 코드
 $(document).ready(function() {
-   
-   
+
+
 $.ajax({
-   url : "./buscodeListData.do", 
-   type : "get", 
+   url : "./buscodeListData.do",
+   type : "get",
    success:function(list){
       //alert('success');
       //alert(list);
-      
-      //JSTL로 받아온 지역 정보의 대분류 네임이 서울이면 (일단 자바스크립트 변수로 변경) selected 조건을 줌 
+
+      //JSTL로 받아온 지역 정보의 대분류 네임이 서울이면 (일단 자바스크립트 변수로 변경) selected 조건을 줌
       var area1Name = '<c:out value="${dto.area1Name}"/>';
-      
+
       $(".list_col1").remove();
-      
+
       $.each(list, function(i, val){
 
          //alert(val.jobSeq);
 
          //let app = "<input type='checkbox' class='list_col' name='buscode' value='"+val.buscode1+"' class='form-control'>"+val.buscodename1
-         let app = "<div>"+
-               "<input type='radio' class='list_col1' id='buscode1'"+ 
-               
-               "name='buscode1' value='"+val.buscode1+"'><label for='huey'>"+val.buscodename1+"</label>"+
-               "</div>";
-            
-            $("#_buscodeList1").append(app);
+         let app = "<option value='"+val.buscode1+"'class='list_col1' name='buscode1' id='buscode1'>"+
+                 val.buscodename1+
+                 "</option>";
+
+         $("#_buscodeList1").append(app);
       });
-   }, 
+   },
    error:function(){
-      alert('error');
+      //alert('error');
    }
-   
+
  }); // ajax
- 
-}); // document ready 
+
+}); // document ready
 
 
-//두번째 BUSCODE2 DATA를 받아서 체크박스로 뿌려주는 코드 
-$(document).on("change",".list_col1", function(){
-   
-   if($(this).is(":checked")){
+//두번째 BUSCODE2 DATA를 받아서 체크박스로 뿌려주는 코드
+$(document).on("change","#_buscodeList1", function(){
+
+   //alert('변경');
+   //alert( $(this).prop("selected"));
+
+    let buscode = $(this).find(":selected").val();
+     //alert(buscode);
+
+
         //alert("체크");
         //alert($(this).val());
-        let buscode = $(this).val();
-        
+
+
         $.ajax({
-           url : "./buscode2ListData.do", 
-           type : "get", 
-           data: {"buscode":buscode}, 
+           url : "./buscode2ListData.do",
+           type : "get",
+           data: {"buscode":buscode},
            success:function(list){
               //alert('success');
               //alert(list);
-              
-              $(".list_col2").remove();      
-              
-              
-              
+
+              $(".list_col2").remove();
+
+
+
               $.each(list, function(i, val){
-                     let app = "<div>"+
-                       "<input type='radio' class='list_col2' id='buscode2' name='buscode2' value='"+val.buscode2+"'><label class='list_col2' for='huey'>"+val.buscodename2+"</label>"+
-                       "</div>";
-                    
-                    $("#_buscodeList2").append(app);
+                     let app = "<option class='list_col2' id='buscode2' name='buscode2' value='"+val.buscode2+"'>"+
+                              val.buscodename2+
+                                "</option>";
+
+                  $("#_buscodeList2").append(app);
               });
-           }, 
+           },
            error:function(){
-              alert('error');
+              //alert('error');
            }
-           
+
          });
-   
-    }
+
+
+
+    });
     /* else if($(this).is(":checked")==false){
         alert("체크 해제");
     } */
-   
-});
 
 
-let count = 1;
-//마지막 BUSCODE3 DATA를 받아서 체크박스로 뿌려주는 코드 
-$(document).on("change",".list_col2", function(){
-   
-   if($(this).is(":checked")){
+
+
+    let count = 1;
+  //마지막 BUSCODE3 DATA를 받아서 체크박스로 뿌려주는 코드
+  $(document).on("change","#_buscodeList2", function(){
+
+
         //alert("체크");
-        //alert($(this).val());
-        let buscode = $(this).val();
-        
-        $.ajax({
-           url : "./buscode2ListData.do", 
-           type : "get", 
-           data: {"buscode":buscode}, 
-           success:function(list){
-              //alert('success');
-              //alert(list);
-              
-           
-              //$("_buscodeList3 *").remove(); //내부 요소만 삭제 
-              
-              $(".list_col3").remove(); 
-              
-              var parent = document.getElementById('_buscodeList3');
-              var var1   = parent.getElementsByTagName('br');
+          //alert($(this).val());
 
-              for(var i = var1.length; i--;) {
-                  var1[i].parentNode.removeChild(var1[i]);
-              }
-              
-              
-              
-              //기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 초기셋팅 
-              var stackValue = $("input[name='buscode']").length;
-             var stackData = new Array(stackValue);
-              //alert(stackValue);
-              
-              for(var i=0; i<stackValue; i++){                          
-                 stackData[i] = $("input[name='buscode']")[i].value;
-              }
-              //alert("길이"+stackData.length);
-              
-              $.each(stackData, function(i, data){
-                 //alert("이게 값임"+data);
-              });
-              
-              
-              
-              $.each(list, function(i, val){
-                 let app = "";
-                 
-                 //stackname = 밑에태그 아이디.val (elements) 배열로 해야될듯 
-                 
-                    app += "<span class='list_col3'>"+
-                    "<input type='checkbox' class='list_col3' name="+count+" id='buscode3data"+count+"' value='"+val.busname+"' class='form-control' onclick='selectbus(this.value)'>"+val.busname+
-                    "</span>"; 
-                             
-                   if((i+1)%2==0){
-                       app += "</br>";
-                    }
-                   
-            $("#_buscodeList3").append(app);
-            
-              
-            //기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 최종진행
-            var buscodeTag ="buscode3data"+count;
-            
-            for(var i=0; i<stackValue; i++){                          
-                if(stackData[i] == val.busname){
-                   document.getElementById(buscodeTag).checked = true;
+          let buscode = $(this).find(":selected").val();
+          //alert(buscode);
+
+          $.ajax({
+             url : "./buscode2ListData.do",
+             type : "get",
+             data: {"buscode":buscode},
+             success:function(list){
+                //alert('success');
+                //alert(list);
+
+
+                //$("_buscodeList3 *").remove(); //내부 요소만 삭제
+
+                $(".list_col3").remove();
+
+                var parent = document.getElementById('_buscodeList3');
+                var var1   = parent.getElementsByTagName('br');
+
+                for(var i = var1.length; i--;) {
+                    var1[i].parentNode.removeChild(var1[i]);
                 }
-              }
-            
-            
-            
-            count+=1;
-            
-              });
-              
-              
-              
-           }, 
-           error:function(){
-              alert('error');
-           }
-           
-         });
-   
-    }
-    /* else if($(this).is(":checked")==false){
-        alert("체크 해제");
-    } */
-   
-});
+
+
+
+                //기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 초기셋팅
+                var stackValue = $("input[name='buscode']").length;
+               var stackData = new Array(stackValue);
+                //alert(stackValue);
+
+                for(var i=0; i<stackValue; i++){
+                   stackData[i] = $("input[name='buscode']")[i].value;
+                }
+                //alert("길이"+stackData.length);
+
+
+                $.each(list, function(i, val){
+                   let app = "";
+
+                   //stackname = 밑에태그 아이디.val (elements) 배열로 해야될듯
+
+                      app +=    "<div class='form-check mt-2 form-check-inline list_col3' id='buscodeList3'>"+
+                       "<input class='form-check-input list_col3' onclick='selectbus(this.value)' name="+count+" id='buscode3data"+count+"' value='"+val.busname+"' data-value='"+val.busname+"' type='checkbox'>"+
+                       "<label class='form-check-label' for='exampleCheck1'>"+val.busname+
+                       "</label></div>";
+
+                       if((i+1)%2==0){
+                         app += "</br>";
+                      }
+
+              $("#_buscodeList3").append(app);
+
+
+              //기존에 체크 되어있던 값은 체크가 되어있도록 속성 설정해주는 코드 최종진행
+              var buscodeTag ="buscode3data"+count;
+
+              for(var i=0; i<stackValue; i++){
+                  if(stackData[i] == val.buscode){
+                     document.getElementById(buscodeTag).checked = true;
+                  }
+                }
+
+
+
+              count+=1;
+
+                });
+
+
+
+             },
+             error:function(){
+                //alert('error');
+             }
+
+           });
+
+      /* else if($(this).is(":checked")==false){
+          alert("체크 해제");
+      } */
+
+  });
 
 
 
@@ -2300,6 +2273,8 @@ $(document).on("change", ".list_col3" , function(){
            "<img alt='왜안뜨지' src='ma.jpg' style='width:30px; height:30px;'>"+
            "</a>"+"</span>"+"&nbsp;&nbsp;";
            
+           
+         
 
         var id = $(this).attr("id");
       //alert(id);
@@ -2310,9 +2285,9 @@ $(document).on("change", ".list_col3" , function(){
        //HTML data 속성 사용
       input.dataset.code = 'selectedBuscode'+cnt;
       
-      alert('datacode 생성: '+'selectedBuscode'+cnt);
+      //alert('datacode 생성: '+'selectedBuscode'+cnt);
       
-      alert('datacode 리얼: ' + $(this).data("code"));
+      //alert('datacode 리얼: ' + $(this).data("code"));
       
       $("#selectResult").append(app);
       cnt += 1;
@@ -2324,10 +2299,10 @@ $(document).on("change", ".list_col3" , function(){
    //체크박스 해제가 될때 밑에 부분에 적재되있는 같은 데이터의 span태그도 삭제
    //else{   
    else if($(this).is(":checked") == false){
-      alert("위에 셀렉코드 : "+$(this).data("code"));
+      //alert("위에 셀렉코드 : "+$(this).data("code"));
       //data 속성 가져오기 (data-code) 
       selectedBuscode = $(this).data("code");
-      alert('위에 셀렉코드 :'+ selectedBuscode);
+      //alert('위에 셀렉코드 :'+ selectedBuscode);
       
       document.getElementById(selectedBuscode).remove();
    }
@@ -2341,7 +2316,7 @@ function delSelBuscode(cnt, count) {
    //alert(count);
    
    var spanid = "selectedBuscode"+cnt;
-   alert('밑에셀렉코드 :'+spanid);
+   //alert('밑에셀렉코드 :'+spanid);
    
    var buscodeTag ="buscode3data"+count;
    //alert(buscodeTag);
@@ -2431,7 +2406,7 @@ function fnChkByte(obj, maxByte)
 function careernoCheck() {
 	
 	
-	alert("careernoCheck");
+	//alert("careernoCheck");
 
 	document.getElementById('career_template').style.display='none';
 	document.getElementById('careerok').classList.remove("active");
@@ -2444,7 +2419,7 @@ function careernoCheck() {
  <script type="text/javascript">
 function careerokCheck() {
 	
-	alert("careerokCheck");
+	//alert("careerokCheck");
 
 	document.getElementById('career_template').style.display='block';
 	document.getElementById('careerno').classList.remove("active");
@@ -3330,14 +3305,14 @@ function licenseCheck2(value) {
 	//alert("licenseCheck2");
 	//alert(value);
 	 if(value=="case2"){
-		 alert("value case2")
+		 //alert("value case2")
 		 document.getElementById('licensechk'+num2).style.display='none';
 		 document.getElementById('languagechk'+num2).style.display='block';
 		 document.getElementById('awardchk'+num2).style.display='none';
 	}
 	 
 	 else if(value=="case3"){
-		 alert("value case3");
+		 //alert("value case3");
 		 document.getElementById('licensechk'+num2).style.display='none';
 		 document.getElementById('languagechk'+num2).style.display='none';
 		 document.getElementById('awardchk'+num2).style.display='block';
@@ -3365,7 +3340,7 @@ $("input:checkbox[name=jobtypes]:checked").each(function() {
 let str = '';
 function jobtypeChk(val) {
 	
-	alert(val);
+	//alert(val);
 	str += val + " ";
 }
 
@@ -3373,7 +3348,7 @@ function jobtypeChk(val) {
 
 function jobtypeAdd() {
 	
-	alert(str);
+	//alert(str);
 	document.getElementById('jobtypes').value = str;
 
 }
@@ -3383,13 +3358,13 @@ function jobtypeAdd() {
 <script type="text/javascript">
 let areas = '';
 function selectArea(val) {
-	alert(val);
+	//alert(val);
 	areas += val + " "
 }
 
 function addArea() {
 	
-	alert(areas);
+	//alert(areas);
 	document.getElementById('Areas').value = areas;
 
 }
@@ -3400,13 +3375,13 @@ function addArea() {
 <script type="text/javascript">
 let bus = '';
 function selectbus(val) {
-	alert(val);
+	//alert(val);
 	bus += val + " "
 }
 
 function addBus() {
 	
-	alert(bus);
+	//alert(bus);
 	document.getElementById('Buses').value = bus;
 
 }
@@ -3423,7 +3398,7 @@ function addBus() {
 <script type="text/javascript">
 let careerAreas = '';
 function selectCareerArea(val) {
-	alert(val);
+	//alert(val);
 	careerAreas += val
 	document.getElementById('pre_area').value = careerAreas;
 }
@@ -3433,10 +3408,10 @@ function selectCareerArea(val) {
 <!-- 중간저장 빈칸체크 -->
 <script type="text/javascript">
 $("#incomplete").click(function () {
-alert("incomplete");
-document.getElementById('resumeStatus').value = 'NO';
+//alert("incomplete");
+/* document.getElementById('resumeStatus').value = 'NO';
 alert(document.getElementById('resumeStatus').value);
-
+ */
 if($("#resumetitle").val().trim() == ""){
 	
     alert('이력서 제목을 입력해 주십시오');
@@ -3444,7 +3419,7 @@ if($("#resumetitle").val().trim() == ""){
     return false;
 }
 
-else if($("#university").val().trim() != ""){
+if($("#university").val().trim() != ""){
 
 	
 	if($("#univ_str").val().trim() == ""){
@@ -3475,7 +3450,7 @@ else if($("#university").val().trim() != ""){
 	
 }
 
-else if($("#pre_comname").val().trim() != ""){
+if($("#pre_comname").val().trim() != ""){
 	
     
 	if($("#pre_startdate").val().trim() == ""){
@@ -3516,7 +3491,7 @@ else if($("#pre_comname").val().trim() != ""){
 	
 }
 
-else if($("#act_org").val().trim() != ""){
+if($("#act_org").val().trim() != ""){
 	
     
 	if($("#act_org").val().trim() == ""){
@@ -3545,7 +3520,7 @@ else if($("#act_org").val().trim() != ""){
 	
 }
 
-else if($("#lic_name").val().trim() != ""){
+if($("#lic_name").val().trim() != ""){
 	
     
 	if($("#lic_publisher").val().trim() == ""){
@@ -3560,7 +3535,7 @@ else if($("#lic_name").val().trim() != ""){
     	}
 }
 
-else if($("#lan_exam").val().trim() != ""){
+if($("#lan_exam").val().trim() != ""){
 	
 	if($("#lan_score").val().trim() == ""){
     alert('어학 관련 사항을 모두 입력해 주십시오');
@@ -3574,7 +3549,7 @@ else if($("#lan_exam").val().trim() != ""){
     	}
 }
 
-else if($("#awd_name").val().trim() != ""){
+if($("#awd_name").val().trim() != ""){
 	
 	if($("#awd_date").val().trim() == ""){
     alert('수상 관련 사항을 모두 입력해 주십시오');
@@ -3595,7 +3570,7 @@ else if($("#awd_name").val().trim() != ""){
     return false;
 } */
 
-else if($("#jobtypes").val().trim() == ""){
+if($("#jobtypes").val().trim() == ""){
 	
     alert('희망 근무 형태 사항을 입력해 주십시오');
     $("#jobtypes").focus();
@@ -3604,7 +3579,7 @@ else if($("#jobtypes").val().trim() == ""){
     
 }
 
-else if($("#Areas").val().trim() == ""){
+if($("#Areas").val().trim() == ""){
 	
     alert('희망 지역을 입력해 주십시오');
     $("#Areas").focus();
@@ -3612,13 +3587,17 @@ else if($("#Areas").val().trim() == ""){
     return false;
 }
 
-else if($("#Buses").val().trim() == ""){
+if($("#Buses").val().trim() == ""){
 	
     alert('희망 직종을 입력해 주십시오');
     $("#Buses").focus();
 	
     return false;
 }
+ 
+document.getElementById('resumeStatus').value = 'NO';
+alert(document.getElementById('resumeStatus').value);
+
 	
 });
 </script>
